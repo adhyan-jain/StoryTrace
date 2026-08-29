@@ -1,31 +1,42 @@
-# System Architecture
+# StoryTrace Architecture
 
-## Overview
-StoryTrace is built around a deterministic data extraction pipeline feeding a temporal database, coupled with a single agentic component for reasoning about continuity.
+StoryTrace is a general narrative continuity engine. It parses narrative documents (screenplays, novels) into a unified temporal event stream, stores them in an analytical database (ClickHouse), and uses an agent to investigate candidate continuity errors.
 
-## Data Flow
-1. **Screenplay PDF** -> `ingestion/` (PDF/Text Parser, PyMuPDF) -> Raw Text
-2. **Raw Text** -> `pipeline/` (Scene Parser) -> Scenes
-3. **Scenes** -> `candidate_detection/` (Entity Resolver) -> Entities
-4. **Entities & Scenes** -> `llm/` (Gemini Structured State Extraction) -> State Events
-5. **State Events** -> `story_state/` (Event Builder) -> ClickHouse Story State DB
-6. **ClickHouse** -> `candidate_detection/` (SQL queries) -> Candidate Conflicts
-7. **Candidates** -> `agent/` (Investigation Agent w/ ClickHouse MCP) -> Verdicts
-8. **Verdicts** -> `api/` (FastAPI) -> Next.js UI
+## Core Thesis
+> StoryTrace builds a persistent, queryable model of a story's evolving world.
 
-## Services & Dependencies
-- **Backend**: FastAPI, Python 3.10+
-- **Database**: ClickHouse (temporal state engine)
-- **AI**: Google Gemini (via official SDK), ClickHouse MCP
-- **Frontend**: Next.js, React, Tailwind, shadcn/ui
+By supporting both screenplays and novels, and scaling to multi-book universes, StoryTrace uses ClickHouse as a genuine temporal Story State Engine.
 
-## Runtime Flow
-- The backend API accepts a PDF and queues it.
-- A worker processes the PDF through the deterministic extraction pipeline.
-- Data is written to ClickHouse in an append-only fashion.
-- Background jobs run SQL window functions over ClickHouse to detect suspicious transitions.
-- The Investigation Agent runs asynchronously for each candidate, querying the MCP, and writes a final verdict.
-- The frontend polls or receives WebSocket updates and displays the Continuity Autopsy.
+## High-Level Architecture
 
-## ClickHouse & MCP Role
-ClickHouse is the source of truth for all temporal state. The MCP allows the Investigation Agent to securely run parameterized queries (`get_entity_timeline`, etc.) without writing raw SQL.
+```text
+Screenplay PDF ──→ Screenplay Parser ──┐
+                                       │
+Novel PDF ───────→ Novel Parser ───────┤
+                                       ↓
+                                Narrative Units
+                                       ↓
+                             Entity/State Extraction
+                                       ↓
+                                Story State Events
+                                       ↓
+                                   ClickHouse
+                                       ↓
+                            Temporal Candidate Detection
+                                       ↓
+                              Investigation Agent
+                                       ↓
+                            Evidence-backed Verdict
+```
+
+## 1. Document Ingestion Layer
+Parses PDFs into agnostic `NarrativeUnit` objects (e.g., scenes for screenplays, chapters/passages for novels) preserving exact page boundaries and raw text.
+
+## 2. Event Extraction
+Gemini strictly extracts temporal state events (presence, location, possession, injury, clothing) from each `NarrativeUnit` using Pydantic schemas.
+
+## 3. Temporal State Engine (ClickHouse)
+ClickHouse stores all extracted state events as an append-only log. It supports cross-document queries and complex window functions (like `lagInFrame`) to identify suspicious state transitions.
+
+## 4. Continuity Autopsy (Investigation Agent)
+A single Investigation Agent queries ClickHouse (via an MCP-like tool interface) to verify candidate conflicts. It can search across units, document history, or universe history to deduce bridging events.

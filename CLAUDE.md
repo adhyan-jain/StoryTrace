@@ -1,44 +1,27 @@
-# StoryTrace
+# StoryTrace Guidelines
 
-## Project Purpose
-StoryTrace (formerly SceneSentry) is an agentic screenplay continuity analysis system. It acts as a filmmaker's continuity guardian. It converts a screenplay PDF into a structured temporal model of its story world and tracks character presence, character location, prop possession, injuries, and clothing changes.
+StoryTrace is an agentic, multi-document narrative continuity engine.
 
-## Architecture
-- **Pipeline (Deterministic)**: PDF Parser -> Scene Parser -> Entity Resolver -> Gemini State Extraction -> Story State Builder -> ClickHouse
-- **Detection (Deterministic)**: SQL-based candidate conflict detection from ClickHouse.
-- **Investigation (Agentic)**: ONE Investigation Agent (Gemini + ADK + ClickHouse MCP) verifies candidates using database queries.
-- **Frontend**: Next.js UI reading from a FastAPI backend.
+## Core Rules
 
-## Constraints & Rules
-- Do NOT simply ask an LLM to read the screenplay and hallucinate continuity errors.
-- Every extracted fact must retain exact screenplay evidence (scene, page, excerpt, confidence, establishment type).
-- Only ONE genuinely agentic Investigation Agent.
-- ClickHouse must be real and queried through the official MCP integration.
-- Evidence is first-class data. No finding should exist without provenance.
-- Do not use generic AI-dashboard design; build a professional production tool.
+1. **Document-Type Agnostic**: The backend model uses `NarrativeUnit` (representing scenes, chapters, passages). Do not hardcode "scene" into the core temporal model.
+2. **ClickHouse is the Temporal Engine**: Use ClickHouse to execute temporal analytics (e.g., `lagInFrame`) across vast sequences of story events spanning multiple documents.
+3. **One Investigation Agent**: The parsing, extraction, and detection steps are strictly deterministic (or structured LLM). The single Investigation Agent is invoked only to adjudicate detected candidates using its ClickHouse MCP tools.
+4. **Provenance**: Every extracted event must retain exact `unit_id`, `page_start/end`, and `raw_excerpt`. The user must be able to trace a finding back to the exact text.
+5. **No Fake Intelligence**: If mocking API calls for local demos, clearly mark them.
+6. **Polished Output**: Output code should be production-ready and the UI should feel like a premium tool for filmmakers and authors.
 
-## Design Principles
-- Excellent typography, spacing, and hierarchy.
-- Restrained visual language with meaningful color.
-- No glowing AI effects, giant rounded cards, or chatbot bubbles.
+## Code Structure
 
-## Testing Commands
-- `pytest tests/unit`
-- `pytest tests/integration`
-- Playwright CLI for frontend testing.
-
-## Environment Variables
-- `GEMINI_API_KEY`
-- `CLICKHOUSE_URL`
-- `CLICKHOUSE_USER`
-- `CLICKHOUSE_PASSWORD`
-
-## Important Implementation Decisions
-- See `docs/decisions/`
-- Avoid vector databases unless absolutely required.
-- Use append-only temporal events.
-
-## "Do Not" Rules
-- Do not add random agents to solve reliability problems.
-- Do not expose private chain-of-thought to the UI.
-- Do not fake agent traces or database queries.
+```text
+backend/
+  ingestion/       # PDF parsing to NarrativeUnits
+  llm/             # Gemini structured clients
+  pipeline/        # Event extraction & resolution
+  clickhouse/      # State Engine connections
+  candidate_detection/ # SQL window functions
+  agent/           # Investigation Agent
+  api/             # FastAPI backend
+apps/
+  web/             # Next.js Continuity Autopsy UI
+```

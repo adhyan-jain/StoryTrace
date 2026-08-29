@@ -1,14 +1,12 @@
-from pydantic import BaseModel
-from typing import Optional
+from pydantic import BaseModel, Field
 
-class Scene(BaseModel):
-    scene_id: str
-    screenplay_id: str
-    number: int
-    heading: str
-    interior_ext: Optional[str] = None
-    location: Optional[str] = None
-    time_of_day: Optional[str] = None
-    raw_text: str
-    page_start: int
-    page_end: int
+class NarrativeUnit(BaseModel):
+    unit_id: str = Field(description="Unique identifier for the unit")
+    story_universe_id: str = Field(description="ID of the broader universe")
+    document_id: str = Field(description="ID of the document (screenplay/novel)")
+    unit_type: str = Field(description="'scene', 'chapter', or 'passage'")
+    sequence_number: int = Field(description="Absolute ordering number")
+    title: str = Field(description="Heading or chapter title")
+    page_start: int = Field(description="Starting page number")
+    page_end: int = Field(description="Ending page number")
+    raw_text: str = Field(description="Exact text content")
