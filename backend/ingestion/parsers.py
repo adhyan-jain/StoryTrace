@@ -71,9 +71,10 @@ class NovelParser:
             
             lines = text.split('\n')
             for line in lines:
-                if CHAPTER_PATTERN.match(line):
+                if CHAPTER_PATTERN.match(line) or line.startswith("Chapter ") or line.startswith("•  Chapter"):
                     # Save previous unit
                     if current_unit:
+                        current_unit.raw_text = "".join(current_unit_lines)
                         units.append(current_unit)
                         sequence += 1
                         
@@ -87,11 +88,12 @@ class NovelParser:
                         title=line.strip(),
                         page_start=page_num + 1,
                         page_end=page_num + 1,
-                        raw_text=line + "\n"
+                        raw_text=""
                     )
+                    current_unit_lines = [line + "\n"]
                 else:
                     if current_unit:
-                        current_unit.raw_text += line + "\n"
+                        current_unit_lines.append(line + "\n")
                         current_unit.page_end = page_num + 1
                     else:
                         # Sometimes text starts before a formal chapter heading (e.g. prologue)
@@ -104,10 +106,12 @@ class NovelParser:
                             title="Prologue",
                             page_start=page_num + 1,
                             page_end=page_num + 1,
-                            raw_text=line + "\n"
+                            raw_text=""
                         )
+                        current_unit_lines = [line + "\n"]
                         
         if current_unit:
+            current_unit.raw_text = "".join(current_unit_lines)
             units.append(current_unit)
             
         return units
