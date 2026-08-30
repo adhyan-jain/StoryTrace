@@ -11,6 +11,15 @@ StoryTrace is an agentic, multi-document narrative continuity engine.
 5. **No Fake Intelligence**: If mocking API calls for local demos, clearly mark them.
 6. **Polished Output**: Output code should be production-ready and the UI should feel like a premium tool for filmmakers and authors.
 
+## Skills
+Always apply the frontend-design skill for any UI work.
+Apply web-design-guidelines when reviewing or writing frontend code.
+
+## MCP Tools
+- Use Playwright MCP to verify UI changes after implementing them
+- Use Context7 MCP when working with any external library
+
+
 ## Code Structure
 
 ```text
