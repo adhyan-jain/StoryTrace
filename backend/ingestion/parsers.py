@@ -52,7 +52,7 @@ class ScreenplayParser:
         return units
 
 
-CHAPTER_PATTERN = re.compile(r'^\s*(?:Chapter\s+\d+|[IVXLCDM]+\.?)\s*$', re.IGNORECASE | re.MULTILINE)
+CHAPTER_PATTERN = re.compile(r'^\s*Chapter\s+\d+\b', re.IGNORECASE)
 
 class NovelParser:
     def __init__(self, document_id: str, story_universe_id: str = "default_universe"):
@@ -63,7 +63,9 @@ class NovelParser:
         doc = fitz.open(pdf_path)
         units = []
         current_unit = None
+        current_unit_lines = []
         sequence = 1
+        last_chapter_page = -1
         
         for page_num in range(len(doc)):
             page = doc.load_page(page_num)
@@ -71,7 +73,21 @@ class NovelParser:
             
             lines = text.split('\n')
             for line in lines:
-                if CHAPTER_PATTERN.match(line) or line.startswith("Chapter ") or line.startswith("•  Chapter"):
+                line_stripped = line.strip()
+                # Skip TOC bullets
+                if line_stripped.startswith('•'):
+                    continue
+                    
+                is_chapter_heading = bool(CHAPTER_PATTERN.match(line_stripped))
+                
+                if is_chapter_heading:
+                    # Drop repeat headings on the same page (e.g. a differently
+                    # formatted duplicate heading right after the real one) so
+                    # they don't get echoed into the chapter body as text.
+                    if page_num == last_chapter_page:
+                        continue
+                    last_chapter_page = page_num
+
                     # Save previous unit
                     if current_unit:
                         current_unit.raw_text = "".join(current_unit_lines)
@@ -85,7 +101,7 @@ class NovelParser:
                         document_id=self.document_id,
                         unit_type="chapter",
                         sequence_number=sequence,
-                        title=line.strip(),
+                        title=line_stripped,
                         page_start=page_num + 1,
                         page_end=page_num + 1,
                         raw_text=""
@@ -96,14 +112,14 @@ class NovelParser:
                         current_unit_lines.append(line + "\n")
                         current_unit.page_end = page_num + 1
                     else:
-                        # Sometimes text starts before a formal chapter heading (e.g. prologue)
+                        # Prologue/Front matter
                         current_unit = NarrativeUnit(
                             unit_id=f"{self.document_id}_prologue_0",
                             story_universe_id=self.story_universe_id,
                             document_id=self.document_id,
                             unit_type="passage",
                             sequence_number=sequence,
-                            title="Prologue",
+                            title="Prologue & Front Matter",
                             page_start=page_num + 1,
                             page_end=page_num + 1,
                             raw_text=""
