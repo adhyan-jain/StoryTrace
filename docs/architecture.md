@@ -26,7 +26,9 @@ Novel PDF ───────→ Novel Parser ───────┤
                                        ↓
                               Investigation Agent
                                        ↓
-                            Evidence-backed Verdict
+                            InvestigationVerdict
+                                       ↓
+                              Continuity Autopsy
 ```
 
 ## 1. Document Ingestion Layer
@@ -38,5 +40,8 @@ Gemini strictly extracts temporal state events (presence, location, possession, 
 ## 3. Temporal State Engine (ClickHouse)
 ClickHouse stores all extracted state events as an append-only log. It supports cross-document queries and complex window functions (like `lagInFrame`) to identify suspicious state transitions.
 
-## 4. Continuity Autopsy (Investigation Agent)
-A single Investigation Agent queries ClickHouse (via an MCP-like tool interface) to verify candidate conflicts. It can search across units, document history, or universe history to deduce bridging events.
+## 4. Investigation Agent
+A single Investigation Agent queries ClickHouse (via an MCP-like tool interface) to verify candidate conflicts. It can search across units, document history, or universe history to deduce bridging events. Its output is an `InvestigationVerdict`.
+
+## 5. Continuity Autopsy
+The Continuity Autopsy is not a separate agent or pipeline stage — it is the user-facing presentation of an `InvestigationVerdict`: the candidate conflict, the evidence the agent gathered, and its final determination, traceable back to exact `raw_excerpt`/`page_start`/`page_end` provenance. See `docs/investigation.md`.

@@ -19,29 +19,29 @@ clickhouse = ClickHouseClient()
 def health_check():
     return {"status": "ok"}
 
-@app.get("/api/screenplays/{screenplay_id}/overview")
-def get_overview(screenplay_id: str):
+@app.get("/api/universes/{story_universe_id}/overview")
+def get_overview(story_universe_id: str):
     # Get basic counts
-    scenes = clickhouse.client.query(f"SELECT count() FROM scenes WHERE screenplay_id = '{screenplay_id}'").result_rows[0][0]
-    characters = clickhouse.client.query(f"SELECT count() FROM entities WHERE screenplay_id = '{screenplay_id}' AND type='character'").result_rows[0][0]
-    props = clickhouse.client.query(f"SELECT count() FROM entities WHERE screenplay_id = '{screenplay_id}' AND type='prop'").result_rows[0][0]
-    
-    candidates = clickhouse.client.query(f"SELECT count() FROM candidate_conflicts WHERE screenplay_id = '{screenplay_id}'").result_rows[0][0]
-    
+    units = clickhouse.client.query(f"SELECT count() FROM narrative_units WHERE story_universe_id = '{story_universe_id}'").result_rows[0][0]
+    characters = clickhouse.client.query(f"SELECT count() FROM entities WHERE story_universe_id = '{story_universe_id}' AND type='character'").result_rows[0][0]
+    props = clickhouse.client.query(f"SELECT count() FROM entities WHERE story_universe_id = '{story_universe_id}' AND type='prop'").result_rows[0][0]
+
+    candidates = clickhouse.client.query(f"SELECT count() FROM candidate_conflicts WHERE story_universe_id = '{story_universe_id}'").result_rows[0][0]
+
     return {
-        "scenes": scenes,
+        "narrative_units": units,
         "characters": characters,
         "props": props,
         "candidates": candidates
     }
 
-@app.get("/api/screenplays/{screenplay_id}/conflicts")
-def get_conflicts(screenplay_id: str):
+@app.get("/api/universes/{story_universe_id}/conflicts")
+def get_conflicts(story_universe_id: str):
     query = f"""
         SELECT c.id, c.entity_id, c.description, v.status, v.severity, v.explanation, v.confidence
         FROM candidate_conflicts c
         LEFT JOIN investigation_verdicts v ON c.id = v.candidate_id
-        WHERE c.screenplay_id = '{screenplay_id}'
+        WHERE c.story_universe_id = '{story_universe_id}'
     """
     res = clickhouse.client.query(query)
     conflicts = []
@@ -63,19 +63,19 @@ def get_autopsy(conflict_id: str):
     c_res = clickhouse.client.query(f"SELECT * FROM candidate_conflicts WHERE id = '{conflict_id}'")
     if not c_res.result_rows:
         raise HTTPException(status_code=404, detail="Conflict not found")
-        
+
     c = c_res.result_rows[0]
     candidate = {
         "id": c[0],
-        "screenplay_id": c[1],
+        "story_universe_id": c[1],
         "entity_id": c[2],
-        "prior_scene_id": c[3],
+        "prior_unit_id": c[3],
         "prior_excerpt": c[4],
-        "current_scene_id": c[5],
+        "current_unit_id": c[5],
         "current_excerpt": c[6],
         "description": c[7]
     }
-    
+
     # Fetch verdict
     v_res = clickhouse.client.query(f"SELECT * FROM investigation_verdicts WHERE candidate_id = '{conflict_id}' ORDER BY created_at DESC LIMIT 1")
     verdict = None
@@ -88,7 +88,7 @@ def get_autopsy(conflict_id: str):
             "confidence": v[5],
             "investigation_actions": v[6]
         }
-        
+
     return {
         "candidate": candidate,
         "verdict": verdict

@@ -7,7 +7,7 @@ from backend.agent.tools import AgentTools
 from backend.story_state.models import CandidateConflict, InvestigationVerdict
 
 class AgentAction(BaseModel):
-    tool_name: str = Field(description="Name of the tool to call: get_entity_timeline, get_scene_text, get_state_at_scene, or 'finish'")
+    tool_name: str = Field(description="Name of the tool to call: get_entity_timeline, get_unit_text, get_state_at_unit, find_attribute_changes, or 'finish'")
     kwargs: str = Field(description="JSON string of arguments for the tool, or final verdict JSON if finish")
 
 class FinalVerdict(BaseModel):
@@ -24,29 +24,30 @@ class InvestigationAgent:
     def investigate(self, candidate: CandidateConflict) -> InvestigationVerdict:
         actions_taken = []
         context = f"Investigating candidate: {candidate.description}\n"
-        context += f"Prior: {candidate.prior_evidence_excerpt} (Scene {candidate.prior_evidence_scene_id})\n"
-        context += f"Current: {candidate.current_evidence_excerpt} (Scene {candidate.current_evidence_scene_id})\n"
+        context += f"Prior: {candidate.prior_evidence_excerpt} (Unit {candidate.prior_evidence_unit_id})\n"
+        context += f"Current: {candidate.current_evidence_excerpt} (Unit {candidate.current_evidence_unit_id})\n"
 
         for step in range(self.max_calls):
             prompt = f"""
             {context}
-            
-            You are the Investigation Agent. 
+
+            You are the Investigation Agent.
             Tools available:
-            - get_entity_timeline: args {{"entity_id": str, "from_scene": int, "to_scene": int}}
-            - get_scene_text: args {{"scene_number": int}}
-            - get_state_at_scene: args {{"entity_id": str, "scene_number": int}}
-            
+            - get_entity_timeline: args {{"entity_id": str, "from_sequence": int, "to_sequence": int}}
+            - get_unit_text: args {{"unit_id": str}}
+            - get_state_at_unit: args {{"entity_id": str, "sequence_number": int}}
+            - find_attribute_changes: args {{"entity_id": str, "attribute": str}}
+
             Decide next action. If you have enough evidence to resolve (found a bridge) or verify (no bridge), call 'finish' with kwargs containing FinalVerdict JSON.
             """
-            
+
             req = LLMRequest(stage="investigation", prompt=prompt)
             try:
                 res = self.provider.complete(req, AgentAction)
                 action = res.value
-                
+
                 actions_taken.append(f"Called {action.tool_name} with {action.kwargs}")
-                
+
                 if action.tool_name == 'finish':
                     verdict_data = json.loads(action.kwargs)
                     return InvestigationVerdict(
@@ -58,19 +59,21 @@ class InvestigationAgent:
                         confidence=verdict_data.get("confidence", 0.0),
                         investigation_actions=actions_taken
                     )
-                
+
                 # Execute tool
                 kwargs = json.loads(action.kwargs)
                 tool_res = ""
                 if action.tool_name == "get_entity_timeline":
                     tool_res = str(self.tools.get_entity_timeline(**kwargs))
-                elif action.tool_name == "get_scene_text":
-                    tool_res = str(self.tools.get_scene_text(**kwargs))
-                elif action.tool_name == "get_state_at_scene":
-                    tool_res = str(self.tools.get_state_at_scene(**kwargs))
-                    
+                elif action.tool_name == "get_unit_text":
+                    tool_res = str(self.tools.get_unit_text(**kwargs))
+                elif action.tool_name == "get_state_at_unit":
+                    tool_res = str(self.tools.get_state_at_unit(**kwargs))
+                elif action.tool_name == "find_attribute_changes":
+                    tool_res = str(self.tools.find_attribute_changes(**kwargs))
+
                 context += f"\nObservation from {action.tool_name}: {tool_res}\n"
-                
+
             except Exception as e:
                 actions_taken.append(f"Error: {str(e)}")
                 break

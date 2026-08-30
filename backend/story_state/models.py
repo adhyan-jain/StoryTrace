@@ -3,12 +3,12 @@ from typing import List, Optional
 
 class StateEvent(BaseModel):
     id: str
-    screenplay_id: str
+    story_universe_id: str
     entity_id: str
     attribute: str
     value: str
-    scene_id: str
-    scene_number: int
+    unit_id: str
+    sequence_number: int
     page_ref: int
     raw_excerpt: str
     establishment_type: str
@@ -16,11 +16,11 @@ class StateEvent(BaseModel):
 
 class CandidateConflict(BaseModel):
     id: str
-    screenplay_id: str
+    story_universe_id: str
     entity_id: str
-    prior_evidence_scene_id: str
+    prior_evidence_unit_id: str
     prior_evidence_excerpt: str
-    current_evidence_scene_id: str
+    current_evidence_unit_id: str
     current_evidence_excerpt: str
     description: str
 

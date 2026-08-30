@@ -1,55 +1,57 @@
 CREATE DATABASE IF NOT EXISTS storytrace;
 
-CREATE TABLE IF NOT EXISTS storytrace.scenes (
+CREATE TABLE IF NOT EXISTS storytrace.narrative_units (
     id String,
-    screenplay_id String,
-    number Int32,
-    heading String,
+    story_universe_id String,
+    document_id String,
+    unit_type String,
+    sequence_number Int32,
+    title String,
     text String,
     start_page Int32,
     end_page Int32,
     created_at DateTime DEFAULT now()
 ) ENGINE = MergeTree()
-ORDER BY (screenplay_id, number);
+ORDER BY (story_universe_id, sequence_number);
 
 CREATE TABLE IF NOT EXISTS storytrace.entities (
     id String,
-    screenplay_id String,
+    story_universe_id String,
     type Enum8('character' = 1, 'prop' = 2, 'location' = 3),
     name String,
     aliases Array(String),
     created_at DateTime DEFAULT now()
 ) ENGINE = MergeTree()
-ORDER BY (screenplay_id, type, id);
+ORDER BY (story_universe_id, type, id);
 
 CREATE TABLE IF NOT EXISTS storytrace.state_events (
     id String,
-    screenplay_id String,
+    story_universe_id String,
     entity_id String,
     attribute Enum8('presence' = 1, 'location' = 2, 'possession' = 3, 'injury' = 4, 'clothing' = 5),
     value String,
-    scene_id String,
-    scene_number Int32,
+    unit_id String,
+    sequence_number Int32,
     page_ref Int32,
     raw_excerpt String,
     establishment_type String,
     confidence Float32,
     created_at DateTime DEFAULT now()
 ) ENGINE = MergeTree()
-ORDER BY (screenplay_id, entity_id, scene_number);
+ORDER BY (story_universe_id, entity_id, sequence_number);
 
 CREATE TABLE IF NOT EXISTS storytrace.candidate_conflicts (
     id String,
-    screenplay_id String,
+    story_universe_id String,
     entity_id String,
-    prior_evidence_scene_id String,
+    prior_evidence_unit_id String,
     prior_evidence_excerpt String,
-    current_evidence_scene_id String,
+    current_evidence_unit_id String,
     current_evidence_excerpt String,
     description String,
     created_at DateTime DEFAULT now()
 ) ENGINE = MergeTree()
-ORDER BY (screenplay_id, entity_id, created_at);
+ORDER BY (story_universe_id, entity_id, created_at);
 
 CREATE TABLE IF NOT EXISTS storytrace.investigation_verdicts (
     id String,
