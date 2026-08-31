@@ -45,7 +45,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-clickhouse = ClickHouseClient()
+# clickhouse_connect's HTTP client can't run concurrent queries on one
+# session (raises ProgrammingError) -- the frontend fires /scenes,
+# /entities, /conflicts in parallel via Promise.all, so every request needs
+# its own ClickHouseClient rather than sharing one module-level instance.
 
 # In-memory job/progress tracker, keyed by story_universe_id. A single-process
 # dev API; no new ClickHouse table needed just to track "is this job done yet".
@@ -186,19 +189,20 @@ def get_overview(story_universe_id: str):
     # No in-memory job (e.g. server restarted, or data was loaded outside the
     # upload flow like the CLI pipeline scripts) -- fall back to what's
     # actually in ClickHouse and report it as already complete.
-    units = clickhouse.client.query(
+    client = ClickHouseClient()
+    units = client.client.query(
         f"SELECT count() FROM narrative_units WHERE story_universe_id = '{story_universe_id}'"
     ).result_rows[0][0]
     if units == 0:
         raise HTTPException(status_code=404, detail="Unknown story_universe_id")
 
-    events = clickhouse.client.query(
+    events = client.client.query(
         f"SELECT count(DISTINCT unit_id) FROM state_events WHERE story_universe_id = '{story_universe_id}'"
     ).result_rows[0][0]
-    candidates = clickhouse.client.query(
+    candidates = client.client.query(
         f"SELECT count() FROM candidate_conflicts WHERE story_universe_id = '{story_universe_id}'"
     ).result_rows[0][0]
-    verdicts = clickhouse.client.query(
+    verdicts = client.client.query(
         f"""SELECT count() FROM investigation_verdicts
             WHERE candidate_id IN (SELECT id FROM candidate_conflicts WHERE story_universe_id = '{story_universe_id}')"""
     ).result_rows[0][0]
@@ -216,7 +220,8 @@ def get_overview(story_universe_id: str):
 
 @app.get("/screenplay/{story_universe_id}/scenes")
 def get_scenes(story_universe_id: str):
-    units_res = clickhouse.client.query(
+    client = ClickHouseClient()
+    units_res = client.client.query(
         f"""SELECT id, title, unit_type, sequence_number, start_page, end_page, text
             FROM narrative_units WHERE story_universe_id = '{story_universe_id}'
             ORDER BY sequence_number"""
@@ -225,7 +230,7 @@ def get_scenes(story_universe_id: str):
     # Severity dot per unit: the worst verdict severity among conflicts that
     # touch this unit as prior or current evidence, or "resolved" if every
     # touching verdict resolved cleanly.
-    severity_res = clickhouse.client.query(
+    severity_res = client.client.query(
         f"""
         SELECT unit_id, groupArray(severity) AS severities, groupArray(status) AS statuses
         FROM (
@@ -251,6 +256,42 @@ def get_scenes(story_universe_id: str):
         elif statuses and all(s == "resolved" for s in statuses if s):
             severity_by_unit[unit_id] = "resolved"
 
+    names = _entity_names(client, story_universe_id)
+
+    # Conflict linkage per (unit_id, raw_excerpt): lets the center panel tell
+    # "this highlighted span is a plain extracted fact" from "this one has a
+    # linked conflict you can click into".
+    conflict_res = client.client.query(
+        f"""
+        SELECT c.id, v.severity, unit_id, excerpt FROM candidate_conflicts c
+        LEFT JOIN investigation_verdicts v ON c.id = v.candidate_id
+        ARRAY JOIN [c.prior_evidence_unit_id, c.current_evidence_unit_id] AS unit_id,
+                   [c.prior_evidence_excerpt, c.current_evidence_excerpt] AS excerpt
+        WHERE c.story_universe_id = '{story_universe_id}'
+        """
+    )
+    conflict_by_unit_excerpt: Dict[tuple, Dict[str, Any]] = {
+        (row[2], row[3]): {"conflict_id": row[0], "severity": row[1]} for row in conflict_res.result_rows
+    }
+
+    events_res = client.client.query(
+        f"""SELECT unit_id, entity_id, attribute, value, confidence, raw_excerpt
+            FROM state_events WHERE story_universe_id = '{story_universe_id}'"""
+    )
+    events_by_unit: Dict[str, List[dict]] = {}
+    for unit_id, entity_id, attribute, value, confidence, raw_excerpt in events_res.result_rows:
+        link = conflict_by_unit_excerpt.get((unit_id, raw_excerpt))
+        events_by_unit.setdefault(unit_id, []).append({
+            "entity_id": entity_id,
+            "entity_name": names.get(entity_id, entity_id),
+            "attribute": attribute,
+            "value": value,
+            "confidence": confidence,
+            "raw_excerpt": raw_excerpt,
+            "conflict_id": link["conflict_id"] if link else None,
+            "severity": link["severity"] if link else None,
+        })
+
     return [
         {
             "unit_id": r[0],
@@ -261,6 +302,7 @@ def get_scenes(story_universe_id: str):
             "page_end": r[5],
             "raw_text": r[6],
             "severity": severity_by_unit.get(r[0]),
+            "state_events": events_by_unit.get(r[0], []),
         }
         for r in units_res.result_rows
     ]
@@ -268,10 +310,11 @@ def get_scenes(story_universe_id: str):
 
 @app.get("/screenplay/{story_universe_id}/entities")
 def get_entities(story_universe_id: str):
-    entities_res = clickhouse.client.query(
+    client = ClickHouseClient()
+    entities_res = client.client.query(
         f"SELECT id, name, type FROM entities WHERE story_universe_id = '{story_universe_id}'"
     )
-    findings_res = clickhouse.client.query(
+    findings_res = client.client.query(
         f"SELECT entity_id, count() FROM candidate_conflicts WHERE story_universe_id = '{story_universe_id}' GROUP BY entity_id"
     )
     finding_counts = {row[0]: row[1] for row in findings_res.result_rows}
@@ -287,15 +330,15 @@ def get_entities(story_universe_id: str):
     ]
 
 
-def _entity_names(story_universe_id: str) -> Dict[str, str]:
-    res = clickhouse.client.query(
+def _entity_names(client: ClickHouseClient, story_universe_id: str) -> Dict[str, str]:
+    res = client.client.query(
         f"SELECT id, name FROM entities WHERE story_universe_id = '{story_universe_id}'"
     )
     return {row[0]: row[1] for row in res.result_rows}
 
 
-def _page_by_unit(story_universe_id: str) -> Dict[str, int]:
-    res = clickhouse.client.query(
+def _page_by_unit(client: ClickHouseClient, story_universe_id: str) -> Dict[str, int]:
+    res = client.client.query(
         f"SELECT id, start_page FROM narrative_units WHERE story_universe_id = '{story_universe_id}'"
     )
     return {row[0]: row[1] for row in res.result_rows}
@@ -303,6 +346,7 @@ def _page_by_unit(story_universe_id: str) -> Dict[str, int]:
 
 @app.get("/screenplay/{story_universe_id}/conflicts")
 def get_conflicts(story_universe_id: str):
+    client = ClickHouseClient()
     query = f"""
         SELECT c.id, c.entity_id, c.attribute, c.prior_evidence_unit_id, c.prior_evidence_excerpt,
                c.current_evidence_unit_id, c.current_evidence_excerpt, c.description,
@@ -311,9 +355,9 @@ def get_conflicts(story_universe_id: str):
         LEFT JOIN investigation_verdicts v ON c.id = v.candidate_id
         WHERE c.story_universe_id = '{story_universe_id}'
     """
-    res = clickhouse.client.query(query)
-    names = _entity_names(story_universe_id)
-    pages = _page_by_unit(story_universe_id)
+    res = client.client.query(query)
+    names = _entity_names(client, story_universe_id)
+    pages = _page_by_unit(client, story_universe_id)
 
     conflicts = []
     for r in res.result_rows:
@@ -350,15 +394,16 @@ def _parse_investigation_steps(investigation_actions: List[str]) -> List[dict]:
 
 @app.get("/conflict/{conflict_id}/autopsy")
 def get_autopsy(conflict_id: str):
-    c_res = clickhouse.client.query(f"SELECT * FROM candidate_conflicts WHERE id = '{conflict_id}'")
+    client = ClickHouseClient()
+    c_res = client.client.query(f"SELECT * FROM candidate_conflicts WHERE id = '{conflict_id}'")
     if not c_res.result_rows:
         raise HTTPException(status_code=404, detail="Conflict not found")
 
     c = c_res.result_rows[0]
     story_universe_id = c[1]
     entity_id = c[2]
-    names = _entity_names(story_universe_id)
-    pages = _page_by_unit(story_universe_id)
+    names = _entity_names(client, story_universe_id)
+    pages = _page_by_unit(client, story_universe_id)
 
     conflict = {
         "id": c[0],
@@ -374,7 +419,7 @@ def get_autopsy(conflict_id: str):
         "description": c[8],
     }
 
-    v_res = clickhouse.client.query(
+    v_res = client.client.query(
         f"SELECT * FROM investigation_verdicts WHERE candidate_id = '{conflict_id}' ORDER BY created_at DESC LIMIT 1"
     )
     verdict = None
@@ -405,5 +450,5 @@ def mark_intentional(conflict_id: str):
         confidence=1.0,
         investigation_actions=[json.dumps({"step": "verdict", "verdict": {"status": "intentional", "note": "Manual override"}})],
     )
-    clickhouse.insert_investigation_verdicts([verdict])
+    ClickHouseClient().insert_investigation_verdicts([verdict])
     return {"status": "success"}
