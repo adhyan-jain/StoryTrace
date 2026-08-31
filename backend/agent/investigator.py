@@ -12,6 +12,7 @@ class AgentAction(BaseModel):
 
 class FinalVerdict(BaseModel):
     status: str = Field(description="verified | resolved | uncertain")
+    severity: str = Field(description="critical | warning | info -- how serious this is for the reader/editor, independent of status")
     explanation: str
     confidence: float
 
@@ -22,7 +23,9 @@ class InvestigationAgent:
         self.max_calls = 6
 
     def investigate(self, candidate: CandidateConflict) -> InvestigationVerdict:
-        actions_taken = []
+        # Each step is a JSON object (thought/action/observation/verdict) so the
+        # autopsy view can render a real trace instead of parsing free text.
+        steps: List[dict] = []
         context = f"Investigating candidate: {candidate.description}\n"
         context += f"Prior: {candidate.prior_evidence_excerpt} (Unit {candidate.prior_evidence_unit_id})\n"
         context += f"Current: {candidate.current_evidence_excerpt} (Unit {candidate.current_evidence_unit_id})\n"
@@ -38,7 +41,7 @@ class InvestigationAgent:
             - get_state_at_unit: args {{"entity_id": str, "sequence_number": int}}
             - find_attribute_changes: args {{"entity_id": str, "attribute": str}}
 
-            Decide next action. If you have enough evidence to resolve (found a bridge) or verify (no bridge), call 'finish' with kwargs containing FinalVerdict JSON.
+            Decide next action. If you have enough evidence to resolve (found a bridge) or verify (no bridge), call 'finish' with kwargs containing FinalVerdict JSON (status, severity, explanation, confidence).
             """
 
             req = LLMRequest(stage="investigation", prompt=prompt)
@@ -46,36 +49,37 @@ class InvestigationAgent:
                 res = self.provider.complete(req, AgentAction)
                 action = res.value
 
-                actions_taken.append(f"Called {action.tool_name} with {action.kwargs}")
-
                 if action.tool_name == 'finish':
                     verdict_data = json.loads(action.kwargs)
+                    steps.append({"step": "verdict", "verdict": verdict_data})
                     return InvestigationVerdict(
                         id=f"verdict_{candidate.id}",
                         candidate_id=candidate.id,
                         status=verdict_data.get("status", "uncertain"),
-                        severity="warning",
+                        severity=verdict_data.get("severity", "warning"),
                         explanation=verdict_data.get("explanation", ""),
                         confidence=verdict_data.get("confidence", 0.0),
-                        investigation_actions=actions_taken
+                        investigation_actions=[json.dumps(s) for s in steps],
                     )
 
                 # Execute tool
                 kwargs = json.loads(action.kwargs)
-                tool_res = ""
+                steps.append({"step": "action", "tool": action.tool_name, "args": kwargs})
+                tool_res: Any = None
                 if action.tool_name == "get_entity_timeline":
-                    tool_res = str(self.tools.get_entity_timeline(**kwargs))
+                    tool_res = self.tools.get_entity_timeline(**kwargs)
                 elif action.tool_name == "get_unit_text":
-                    tool_res = str(self.tools.get_unit_text(**kwargs))
+                    tool_res = self.tools.get_unit_text(**kwargs)
                 elif action.tool_name == "get_state_at_unit":
-                    tool_res = str(self.tools.get_state_at_unit(**kwargs))
+                    tool_res = self.tools.get_state_at_unit(**kwargs)
                 elif action.tool_name == "find_attribute_changes":
-                    tool_res = str(self.tools.find_attribute_changes(**kwargs))
+                    tool_res = self.tools.find_attribute_changes(**kwargs)
 
+                steps.append({"step": "observation", "tool": action.tool_name, "result": tool_res})
                 context += f"\nObservation from {action.tool_name}: {tool_res}\n"
 
             except Exception as e:
-                actions_taken.append(f"Error: {str(e)}")
+                steps.append({"step": "error", "message": str(e)})
                 break
 
         return InvestigationVerdict(
@@ -85,5 +89,5 @@ class InvestigationAgent:
             severity="warning",
             explanation="Max tool calls reached without conclusion.",
             confidence=0.0,
-            investigation_actions=actions_taken
+            investigation_actions=[json.dumps(s) for s in steps],
         )
