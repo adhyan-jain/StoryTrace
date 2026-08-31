@@ -68,3 +68,41 @@ class ClickHouseClient:
             data,
             column_names=['id', 'story_universe_id', 'entity_id', 'attribute', 'value', 'unit_id', 'sequence_number', 'page_ref', 'raw_excerpt', 'establishment_type', 'confidence']
         )
+
+    def insert_candidate_conflicts(self, conflicts: List[Any]):
+        if not conflicts:
+            return
+
+        data = [
+            [
+                c.id, c.story_universe_id, c.entity_id, c.attribute,
+                c.prior_evidence_unit_id, c.prior_evidence_excerpt,
+                c.current_evidence_unit_id, c.current_evidence_excerpt,
+                c.description
+            ]
+            for c in conflicts
+        ]
+
+        self.client.insert(
+            'candidate_conflicts',
+            data,
+            column_names=['id', 'story_universe_id', 'entity_id', 'attribute', 'prior_evidence_unit_id', 'prior_evidence_excerpt', 'current_evidence_unit_id', 'current_evidence_excerpt', 'description']
+        )
+
+    def insert_investigation_verdicts(self, verdicts: List[Any]):
+        if not verdicts:
+            return
+
+        data = [
+            [
+                v.id, v.candidate_id, v.status, v.severity,
+                v.explanation, v.confidence, v.investigation_actions
+            ]
+            for v in verdicts
+        ]
+
+        self.client.insert(
+            'investigation_verdicts',
+            data,
+            column_names=['id', 'candidate_id', 'status', 'severity', 'explanation', 'confidence', 'investigation_actions']
+        )
