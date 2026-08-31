@@ -70,6 +70,17 @@ The raw_excerpt field is where you put the supporting evidence text.
 The value field must be a single controlled term from the list above,
 or a concise noun phrase for location/clothing.
 
+CRITICAL RULES:
+- The value field must ONLY contain a term from the lists above
+  (or a short noun phrase for location/clothing).
+- Do NOT put descriptions, quotes, or explanations in value.
+  Descriptions go in raw_excerpt only.
+- For injury events: entity_name must be the character RECEIVING
+  the injury. If character A injures character B or an object,
+  do NOT log an injury event for character A.
+  Only log injury for the character who is harmed.
+- If you are unsure whether a fact fits the vocabulary, omit it.
+
 Rules:
 - Return ONLY a valid JSON array. No preamble, no markdown fences, no explanation.
 - If uncertain about a fact, omit it. Do not guess.
