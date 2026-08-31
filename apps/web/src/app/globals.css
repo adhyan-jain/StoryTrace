@@ -1,41 +1,72 @@
 @import "tailwindcss";
 
-/* Manuscript / forensic-annotation identity: a warm paper ground (the
-   reading surface), a cooler white chrome for UI panels, an indigo ink
-   for navigation/selection, and a crimson "red pen" accent reserved for
-   continuity findings -- the one place color carries real meaning. */
 :root {
-  --background: #faf8f3;
-  --foreground: #211d18;
-  --color-chrome: #fffefb;
-  --color-line: #e7e1d3;
-  --color-ink: #211d18;
-  --color-ink-muted: #83786a;
-  --color-accent: #33348a;
-  --color-accent-soft: #ecebf8;
-  --color-flag: #a3172c;
-  --color-flag-soft: #fbeeec;
+  --bg-base: #0d0f12;
+  --bg-surface: #13161b;
+  --bg-elevated: #1c2028;
+  --bg-border: #2a2f3a;
+  --text-primary: #e8eaf0;
+  --text-secondary: #8b92a5;
+  --text-muted: #4a5068;
+  --accent-blue: #4f8ef7;
+  --severity-critical: #ef4444;
+  --severity-warning: #f59e0b;
+  --severity-info: #6366f1;
+  --severity-resolved: #22c55e;
+  --severity-uncertain: #64748b;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-chrome: var(--color-chrome);
-  --color-line: var(--color-line);
-  --color-ink: var(--color-ink);
-  --color-ink-muted: var(--color-ink-muted);
-  --color-accent: var(--color-accent);
-  --color-accent-soft: var(--color-accent-soft);
-  --color-flag: var(--color-flag);
-  --color-flag-soft: var(--color-flag-soft);
+  --color-bg-base: var(--bg-base);
+  --color-bg-surface: var(--bg-surface);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-bg-border: var(--bg-border);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-accent-blue: var(--accent-blue);
+  --color-severity-critical: var(--severity-critical);
+  --color-severity-warning: var(--severity-warning);
+  --color-severity-info: var(--severity-info);
+  --color-severity-resolved: var(--severity-resolved);
+  --color-severity-uncertain: var(--severity-uncertain);
   --font-display: var(--font-display);
-  --font-reading: var(--font-reading);
-  --font-ui: var(--font-ui);
-  --font-data: var(--font-data);
+  --font-reader: var(--font-reader);
+  --font-mono: var(--font-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-ui), ui-sans-serif, system-ui, sans-serif;
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--accent-blue);
+  color: white;
+}
+
+/* Thin, dark scrollbars -- default light scrollbars look wrong on this palette */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--bg-border) transparent;
+}
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--bg-border);
+  border-radius: 4px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
 }

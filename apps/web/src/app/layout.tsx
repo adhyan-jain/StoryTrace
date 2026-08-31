@@ -1,46 +1,36 @@
 import type { Metadata } from "next";
-import { Fraunces, Source_Serif_4, IBM_Plex_Mono, Inter } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-// A manuscript/forensic-annotation identity: a characterful display serif for
-// the wordmark and chapter headings, a comfortable reading serif for the
-// prose itself, a UI sans for chrome, and a mono face for the analytical
-// bits (page numbers, sequence numbers, confidence scores) that gives the
-// continuity-autopsy findings a "case file" register.
-const displaySerif = Fraunces({
-  variable: "--font-display",
-  subsets: ["latin"],
-  axes: ["opsz", "SOFT", "WONK"],
-});
-
-const readingSerif = Source_Serif_4({
-  variable: "--font-reading",
+const displayFont = Inter({
+  variable: "--font-display-family",
   subsets: ["latin"],
 });
 
-const uiSans = Inter({
-  variable: "--font-ui",
+const monoFont = JetBrains_Mono({
+  variable: "--font-mono-family",
   subsets: ["latin"],
-});
-
-const dataMono = IBM_Plex_Mono({
-  variable: "--font-data",
-  subsets: ["latin"],
-  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
-  title: "StoryTrace — Continuity Autopsy",
-  description: "A document-agnostic continuity engine for screenplays and novels.",
+  title: "StoryTrace",
+  description: "Narrative continuity intelligence.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${displaySerif.variable} ${readingSerif.variable} ${uiSans.variable} ${dataMono.variable} h-full antialiased`}
+      className={`${displayFont.variable} ${monoFont.variable} h-full antialiased`}
+      style={{
+        // Georgia is a system font, no next/font loading needed for it.
+        // @ts-expect-error -- custom properties aren't in the CSSProperties type
+        "--font-display": "var(--font-display-family), ui-sans-serif, system-ui, sans-serif",
+        "--font-reader": "Georgia, 'Times New Roman', serif",
+        "--font-mono": "var(--font-mono-family), ui-monospace, monospace",
+      }}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full">{children}</body>
     </html>
   );
 }
