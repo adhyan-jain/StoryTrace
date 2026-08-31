@@ -1,5 +1,6 @@
 import asyncio
 import os
+import time
 
 from backend.ingestion.parsers import ScreenplayParser
 from backend.ingestion.models import NarrativeUnit
@@ -33,12 +34,22 @@ async def run_pipeline(
     print(f"✓ Inserted {len(units)} narrative units into ClickHouse Story State DB")
 
     llm = llm or _default_provider()
-    print(f"  Using {llm.tier} provider: {llm.model}")
+    print(f"  Using {llm.tier} provider: {llm.model}", flush=True)
     total_events = 0
-    for unit in units:
+    start = time.monotonic()
+    for i, unit in enumerate(units, 1):
+        unit_start = time.monotonic()
         events = await extract_state_events(unit, story_universe_id, llm)
         await write_state_events(events, client)
         total_events += len(events)
+        elapsed = time.monotonic() - start
+        avg = elapsed / i
+        remaining = avg * (len(units) - i)
+        print(
+            f"  [{i}/{len(units)}] {unit.unit_id}: {len(events)} events "
+            f"({time.monotonic() - unit_start:.1f}s, ~{remaining / 60:.0f}m left)",
+            flush=True,
+        )
     print(f"✓ Extracted and wrote {total_events} state events across {len(units)} units")
 
     detector = CandidateDetector(client)
