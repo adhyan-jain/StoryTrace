@@ -28,7 +28,11 @@ CREATE TABLE IF NOT EXISTS storytrace.state_events (
     id String,
     story_universe_id String,
     entity_id String,
-    attribute Enum8('presence' = 1, 'location' = 2, 'possession' = 3, 'injury' = 4, 'clothing' = 5),
+    -- Full dotted attribute path ("location", "possession.gun",
+    -- "injury.left_arm", "clothing.jacket") rather than a fixed enum, so a
+    -- transition on one specific prop/body part doesn't get conflated with
+    -- every other prop/body part sharing the same coarse category.
+    attribute String,
     value String,
     unit_id String,
     sequence_number Int32,
@@ -44,6 +48,7 @@ CREATE TABLE IF NOT EXISTS storytrace.candidate_conflicts (
     id String,
     story_universe_id String,
     entity_id String,
+    attribute String,
     prior_evidence_unit_id String,
     prior_evidence_excerpt String,
     current_evidence_unit_id String,

@@ -32,8 +32,8 @@ class CandidateDetector:
         SELECT *
         FROM ranked_events
         WHERE
-            (attribute = 'possession' AND prev_value = 'lost' AND value = 'held') OR
-            (attribute = 'injury' AND prev_value = 'injured' AND value = 'healed')
+            ((attribute = 'possession' OR startsWith(attribute, 'possession.')) AND prev_value = 'lost' AND value = 'held') OR
+            (startsWith(attribute, 'injury.') AND prev_value = 'injured' AND value = 'healed')
         """
 
         result = self.client.client.query(query)
@@ -55,6 +55,7 @@ class CandidateDetector:
                 id=f"{story_universe_id}_{uuid.uuid4().hex[:8]}",
                 story_universe_id=story_universe_id,
                 entity_id=entity_id,
+                attribute=attribute,
                 prior_evidence_unit_id=prev_unit_id,
                 prior_evidence_excerpt=prev_raw_excerpt,
                 current_evidence_unit_id=unit_id,

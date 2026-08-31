@@ -1,4 +1,4 @@
-"""Gemini-backed state-fact extraction for a single NarrativeUnit.
+"""LLM-backed state-fact extraction for a single NarrativeUnit.
 
 Takes a NarrativeUnit, asks the LLM (via the existing LLMProvider
 abstraction) what trackable story-state facts it contains, and turns the
@@ -8,6 +8,7 @@ result into StateEvents ready for `ClickHouseClient.insert_state_events`.
 from __future__ import annotations
 
 import logging
+import re
 import uuid
 from enum import Enum
 
@@ -42,6 +43,32 @@ Allowed attribute patterns:
   character -> possession.<prop_name>
   prop -> status (held/acquired/lost)
   prop -> holder
+
+REQUIRED VALUE VOCABULARY -- you must use exactly these values, no others:
+
+possession.{prop}:
+  "held"      -- character currently has/is holding the item
+  "acquired"  -- character just obtained the item this unit
+  "lost"      -- character no longer has the item (dropped, taken, used up)
+
+injury.{body_part}:
+  "injured"   -- injury is present and active
+  "healed"    -- injury has resolved or been treated
+  "dead"      -- character has died from this or other causes
+
+character -> location:
+  Use the location name exactly as it appears in the text.
+  e.g. "Gu Yue Clan", "flower wine monk's cave", "city gates"
+
+character -> clothing.{item}:
+  Describe concisely in 2-4 words.
+  e.g. "grey robe", "torn sleeve", "battle armor"
+
+Do NOT use free-form descriptions as values.
+Do NOT include quotes, parentheses, or explanations in the value field.
+The raw_excerpt field is where you put the supporting evidence text.
+The value field must be a single controlled term from the list above,
+or a concise noun phrase for location/clothing.
 
 Rules:
 - Return ONLY a valid JSON array. No preamble, no markdown fences, no explanation.
@@ -83,37 +110,73 @@ class StateFactsExtraction(BaseModel):
     facts: list[StateFact] = Field(default_factory=list)
 
 
-# storytrace.state_events.attribute is a ClickHouse Enum8 with exactly these
-# five values (backend/clickhouse/schema.sql) -- unlike the richer dotted
-# patterns the prompt asks for (e.g. "injury.left_arm"), so every fact must be
-# folded into one of these buckets before it can be inserted.
-_ALLOWED_ATTRIBUTES = {"presence", "location", "possession", "injury", "clothing"}
+_POSSESSION_VALUES = {"held", "acquired", "lost"}
+_INJURY_VALUES = {"injured", "healed", "dead"}
 _MIN_CONFIDENCE = 0.6
+_STRIP_CHARS = re.compile(r'["\'()]')
 
 
-def _map_attribute(raw_attribute: str, value: str) -> tuple[str, str]:
-    """Map a free-form 'category.detail' attribute (e.g. 'injury.left_arm',
-    'clothing.jacket', prop 'status'/'holder') down to the schema's five
-    Enum8 buckets, folding the detail into `value` rather than dropping it."""
+def _clean(value: str) -> str:
+    """Strip quotes/parens the model adds despite being told not to, and
+    collapse whitespace -- cosmetic cleanup, not a meaning change."""
+    return _STRIP_CHARS.sub("", value).strip()
+
+
+def _normalize_attribute(raw_attribute: str, entity_type: str, raw_value: str) -> tuple[str, str] | None:
+    """Build the full dotted attribute ('possession.gun', 'injury.left_arm',
+    'location', 'clothing.jacket') and validate/clean its value against the
+    controlled vocabulary. Returns None if the fact doesn't fit any allowed
+    shape or (for possession/injury) uses a value outside the fixed set --
+    dropping an ambiguous fact is safer than storing an uncontrolled one the
+    detector can never match.
+    """
     base, _, sub = raw_attribute.strip().lower().partition(".")
+    value = _clean(raw_value)
 
+    if base == "status" and entity_type == "prop":
+        # prop -> status without a named prop in the attribute path; the
+        # entity itself *is* the prop, so possession is keyed by entity, not
+        # by a sub-attribute name.
+        base = "possession"
+        sub = ""
     if base == "holder":
-        return "possession", f"{value} (holder)"
-    if base == "status":
-        return "possession", value
-    if base in _ALLOWED_ATTRIBUTES:
-        return (base, f"{value} ({sub})") if sub else (base, value)
+        # Redundant with possession from the character's side; not part of
+        # the controlled vocabulary and not needed for conflict detection.
+        return None
 
-    # Attribute shape the prompt didn't anticipate: keep the fact (it was
-    # still confidently extracted) under the closest catch-all bucket rather
-    # than silently discarding it.
-    return "presence", value
+    if base == "possession":
+        if value not in _POSSESSION_VALUES:
+            return None
+        attribute = f"possession.{sub}" if sub else "possession"
+        return attribute, value
+
+    if base == "injury":
+        if value not in _INJURY_VALUES:
+            return None
+        if not sub:
+            return None
+        return f"injury.{sub}", value
+
+    if base == "clothing":
+        if not sub or not value:
+            return None
+        return f"clothing.{sub}", value
+
+    if base == "location":
+        if not value:
+            return None
+        return "location", value
+
+    # Attribute shape the prompt didn't anticipate: don't invent a bucket for
+    # it (there's no controlled vocabulary to validate against), drop it.
+    return None
 
 
 async def extract_state_events(
     unit: NarrativeUnit,
     story_universe_id: str,
     llm_provider: LLMProvider,
+    registry: EntityRegistry | None = None,
 ) -> list[StateEvent]:
     """Extract StateEvents for one NarrativeUnit. Never raises on a bad or
     unparseable LLM response -- logs and returns an empty list instead, so
@@ -136,7 +199,7 @@ Extract all trackable state facts from this text."""
         logger.error("state extraction failed for unit %s: %s", unit.unit_id, exc)
         return []
 
-    registry = EntityRegistry(story_universe_id)
+    registry = registry if registry is not None else EntityRegistry(story_universe_id)
     events: list[StateEvent] = []
 
     for fact in result.value.facts:
@@ -156,7 +219,10 @@ Extract all trackable state facts from this text."""
         except ValueError:
             continue
 
-        attribute, value = _map_attribute(fact.attribute, fact.value)
+        normalized = _normalize_attribute(fact.attribute, entity_type.value, fact.value)
+        if normalized is None:
+            continue
+        attribute, value = normalized
         entity_id = registry.resolve(fact.entity_name, entity_type.value)
 
         events.append(

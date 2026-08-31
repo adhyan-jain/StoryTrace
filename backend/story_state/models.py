@@ -18,6 +18,7 @@ class CandidateConflict(BaseModel):
     id: str
     story_universe_id: str
     entity_id: str
+    attribute: str
     prior_evidence_unit_id: str
     prior_evidence_excerpt: str
     current_evidence_unit_id: str
