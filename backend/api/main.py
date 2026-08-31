@@ -1,7 +1,39 @@
-from fastapi import FastAPI, HTTPException
+import asyncio
+import json
+import os
+import tempfile
+import uuid
+from datetime import datetime, timezone
+from typing import Any, Dict, List, Optional
+
+import fitz
+from fastapi import BackgroundTasks, FastAPI, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
+
+from backend.agent.investigator import InvestigationAgent
+from backend.agent.tools import AgentTools
+from backend.candidate_detection.detector import CandidateDetector
 from backend.clickhouse.client import ClickHouseClient
-from typing import List, Dict, Any
+from backend.ingestion.models import NarrativeUnit
+from backend.ingestion.parsers import CHAPTER_PATTERN, FountainParser, HEADING_PATTERN, NovelParser, ScreenplayParser
+from backend.llm.base import LLMProvider
+from backend.llm.client import GeminiProvider
+from backend.llm.ollama import OllamaProvider
+from backend.pipeline.entity_resolution import EntityRegistry
+from backend.pipeline.state_extraction import extract_state_events, write_state_events
+
+
+def _detect_document_parser(file_path: str):
+    """A .pdf/.epub could be a screenplay or a novel; the extension alone
+    doesn't say. Sniff which heading style (INT./EXT. vs Chapter N) actually
+    appears in the first few pages and pick the matching parser."""
+    doc = fitz.open(file_path)
+    sample = "\n".join(doc.load_page(i).get_text("text") for i in range(min(5, len(doc))))
+    doc.close()
+
+    screenplay_hits = len(HEADING_PATTERN.findall(sample))
+    novel_hits = len(CHAPTER_PATTERN.findall(sample))
+    return ScreenplayParser if screenplay_hits > novel_hits else NovelParser
 
 app = FastAPI(title="StoryTrace API")
 
@@ -15,70 +47,338 @@ app.add_middleware(
 
 clickhouse = ClickHouseClient()
 
+# In-memory job/progress tracker, keyed by story_universe_id. A single-process
+# dev API; no new ClickHouse table needed just to track "is this job done yet".
+_JOBS: Dict[str, Dict[str, Any]] = {}
+
+_EXT_PARSERS = {
+    ".pdf": NovelParser,
+    ".epub": NovelParser,
+    ".fountain": FountainParser,
+}
+
+
+def _default_provider() -> LLMProvider:
+    """MODEL_PROVIDER=ollama (default) runs free/local; =gemini switches to
+    the paid API tier. Mirrors scripts/demo_pipeline._default_provider --
+    duplicated rather than imported, since backend/ shouldn't depend on
+    scripts/."""
+    if os.environ.get("MODEL_PROVIDER", "ollama") == "gemini":
+        return GeminiProvider()
+    return OllamaProvider()
+
+
 @app.get("/")
 def health_check():
     return {"status": "ok"}
 
-@app.get("/api/universes/{story_universe_id}/overview")
-def get_overview(story_universe_id: str):
-    # Get basic counts
-    units = clickhouse.client.query(f"SELECT count() FROM narrative_units WHERE story_universe_id = '{story_universe_id}'").result_rows[0][0]
-    characters = clickhouse.client.query(f"SELECT count() FROM entities WHERE story_universe_id = '{story_universe_id}' AND type='character'").result_rows[0][0]
-    props = clickhouse.client.query(f"SELECT count() FROM entities WHERE story_universe_id = '{story_universe_id}' AND type='prop'").result_rows[0][0]
 
-    candidates = clickhouse.client.query(f"SELECT count() FROM candidate_conflicts WHERE story_universe_id = '{story_universe_id}'").result_rows[0][0]
+@app.post("/screenplay/upload")
+async def upload_screenplay(file: UploadFile, background_tasks: BackgroundTasks):
+    filename = file.filename or ""
+    ext = os.path.splitext(filename)[1].lower()
+    if ext not in _EXT_PARSERS:
+        raise HTTPException(status_code=400, detail=f"Unsupported file type '{ext}'. Use .pdf, .epub, or .fountain.")
 
-    return {
-        "narrative_units": units,
-        "characters": characters,
-        "props": props,
-        "candidates": candidates
+    story_universe_id = uuid.uuid4().hex
+
+    with tempfile.NamedTemporaryFile(suffix=ext, delete=False) as tmp:
+        tmp.write(await file.read())
+        tmp_path = tmp.name
+
+    _JOBS[story_universe_id] = {
+        "status": "parsing",
+        "total_units": 0,
+        "units_extracted": 0,
+        "candidates_detected": 0,
+        "verdicts_complete": 0,
+        "document_title": filename,
+        "started_at": datetime.now(timezone.utc).isoformat(),
+        "error": None,
     }
 
-@app.get("/api/universes/{story_universe_id}/conflicts")
+    # Fountain is screenplay-shaped by format, always. A .pdf/.epub could be
+    # either a screenplay or a novel -- the extension alone doesn't say, so
+    # sniff the actual heading style used in the first few pages.
+    if ext == ".fountain":
+        ParserCls = FountainParser
+    else:
+        ParserCls = _detect_document_parser(tmp_path)
+
+    background_tasks.add_task(_run_pipeline_job, story_universe_id, tmp_path, ParserCls)
+
+    return {"story_universe_id": story_universe_id}
+
+
+def _run_pipeline_job(story_universe_id: str, file_path: str, ParserCls) -> None:
+    """Runs synchronously inside a FastAPI background task (its own thread,
+    since fitz/httpx calls here are blocking) -- kicked off, not awaited, by
+    the upload endpoint so it returns immediately."""
+    job = _JOBS[story_universe_id]
+    client = ClickHouseClient()
+
+    try:
+        parser = ParserCls(document_id=story_universe_id, story_universe_id=story_universe_id)
+        units: List[NarrativeUnit] = parser.parse(file_path)
+        client.insert_narrative_units(units)
+        job["total_units"] = len(units)
+
+        job["status"] = "extracting"
+        llm = _default_provider()
+        registry = EntityRegistry(story_universe_id)
+        for unit in units:
+            events = asyncio.run(extract_state_events(unit, story_universe_id, llm, registry))
+            asyncio.run(write_state_events(events, client))
+            job["units_extracted"] += 1
+        client.insert_entities(registry.get_all())
+
+        job["status"] = "detecting"
+        detector = CandidateDetector(client)
+        conflicts = detector.detect_conflicts(story_universe_id)
+        client.insert_candidate_conflicts(conflicts)
+        job["candidates_detected"] = len(conflicts)
+
+        job["status"] = "investigating"
+        agent = InvestigationAgent(_InvestigationLLM(llm), AgentTools(client, story_universe_id))
+        for conflict in conflicts:
+            verdict = agent.investigate(conflict)
+            client.insert_investigation_verdicts([verdict])
+            job["verdicts_complete"] += 1
+
+        job["status"] = "complete"
+    except Exception as exc:
+        job["status"] = "error"
+        job["error"] = str(exc)
+    finally:
+        try:
+            os.unlink(file_path)
+        except OSError:
+            pass
+
+
+class _InvestigationLLM:
+    """InvestigationAgent's constructor is typed for GeminiProvider, but it
+    only calls .complete()/.model like any LLMProvider -- wrap whichever
+    provider _default_provider() picked so Ollama-backed investigation works
+    without changing the agent's signature."""
+
+    def __init__(self, provider: LLMProvider):
+        self._provider = provider
+
+    def __getattr__(self, name):
+        return getattr(self._provider, name)
+
+
+@app.get("/screenplay/{story_universe_id}/overview")
+def get_overview(story_universe_id: str):
+    job = _JOBS.get(story_universe_id)
+    if job is not None:
+        return {
+            "total_units": job["total_units"],
+            "units_extracted": job["units_extracted"],
+            "candidates_detected": job["candidates_detected"],
+            "verdicts_complete": job["verdicts_complete"],
+            "status": job["status"],
+            "error": job["error"],
+            "document_title": job["document_title"],
+        }
+
+    # No in-memory job (e.g. server restarted, or data was loaded outside the
+    # upload flow like the CLI pipeline scripts) -- fall back to what's
+    # actually in ClickHouse and report it as already complete.
+    units = clickhouse.client.query(
+        f"SELECT count() FROM narrative_units WHERE story_universe_id = '{story_universe_id}'"
+    ).result_rows[0][0]
+    if units == 0:
+        raise HTTPException(status_code=404, detail="Unknown story_universe_id")
+
+    events = clickhouse.client.query(
+        f"SELECT count(DISTINCT unit_id) FROM state_events WHERE story_universe_id = '{story_universe_id}'"
+    ).result_rows[0][0]
+    candidates = clickhouse.client.query(
+        f"SELECT count() FROM candidate_conflicts WHERE story_universe_id = '{story_universe_id}'"
+    ).result_rows[0][0]
+    verdicts = clickhouse.client.query(
+        f"""SELECT count() FROM investigation_verdicts
+            WHERE candidate_id IN (SELECT id FROM candidate_conflicts WHERE story_universe_id = '{story_universe_id}')"""
+    ).result_rows[0][0]
+
+    return {
+        "total_units": units,
+        "units_extracted": events,
+        "candidates_detected": candidates,
+        "verdicts_complete": verdicts,
+        "status": "complete",
+        "error": None,
+        "document_title": None,
+    }
+
+
+@app.get("/screenplay/{story_universe_id}/scenes")
+def get_scenes(story_universe_id: str):
+    units_res = clickhouse.client.query(
+        f"""SELECT id, title, unit_type, sequence_number, start_page, end_page, text
+            FROM narrative_units WHERE story_universe_id = '{story_universe_id}'
+            ORDER BY sequence_number"""
+    )
+
+    # Severity dot per unit: the worst verdict severity among conflicts that
+    # touch this unit as prior or current evidence, or "resolved" if every
+    # touching verdict resolved cleanly.
+    severity_res = clickhouse.client.query(
+        f"""
+        SELECT unit_id, groupArray(severity) AS severities, groupArray(status) AS statuses
+        FROM (
+            SELECT c.prior_evidence_unit_id AS unit_id, v.severity AS severity, v.status AS status
+            FROM candidate_conflicts c
+            LEFT JOIN investigation_verdicts v ON c.id = v.candidate_id
+            WHERE c.story_universe_id = '{story_universe_id}'
+            UNION ALL
+            SELECT c.current_evidence_unit_id AS unit_id, v.severity AS severity, v.status AS status
+            FROM candidate_conflicts c
+            LEFT JOIN investigation_verdicts v ON c.id = v.candidate_id
+            WHERE c.story_universe_id = '{story_universe_id}'
+        )
+        GROUP BY unit_id
+        """
+    )
+    severity_by_unit: Dict[str, str] = {}
+    for unit_id, severities, statuses in severity_res.result_rows:
+        if "critical" in severities:
+            severity_by_unit[unit_id] = "critical"
+        elif "warning" in severities:
+            severity_by_unit[unit_id] = "warning"
+        elif statuses and all(s == "resolved" for s in statuses if s):
+            severity_by_unit[unit_id] = "resolved"
+
+    return [
+        {
+            "unit_id": r[0],
+            "title": r[1],
+            "unit_type": r[2],
+            "sequence_number": r[3],
+            "page_start": r[4],
+            "page_end": r[5],
+            "raw_text": r[6],
+            "severity": severity_by_unit.get(r[0]),
+        }
+        for r in units_res.result_rows
+    ]
+
+
+@app.get("/screenplay/{story_universe_id}/entities")
+def get_entities(story_universe_id: str):
+    entities_res = clickhouse.client.query(
+        f"SELECT id, name, type FROM entities WHERE story_universe_id = '{story_universe_id}'"
+    )
+    findings_res = clickhouse.client.query(
+        f"SELECT entity_id, count() FROM candidate_conflicts WHERE story_universe_id = '{story_universe_id}' GROUP BY entity_id"
+    )
+    finding_counts = {row[0]: row[1] for row in findings_res.result_rows}
+
+    return [
+        {
+            "entity_id": r[0],
+            "name": r[1],
+            "type": r[2],
+            "finding_count": finding_counts.get(r[0], 0),
+        }
+        for r in entities_res.result_rows
+    ]
+
+
+def _entity_names(story_universe_id: str) -> Dict[str, str]:
+    res = clickhouse.client.query(
+        f"SELECT id, name FROM entities WHERE story_universe_id = '{story_universe_id}'"
+    )
+    return {row[0]: row[1] for row in res.result_rows}
+
+
+def _page_by_unit(story_universe_id: str) -> Dict[str, int]:
+    res = clickhouse.client.query(
+        f"SELECT id, start_page FROM narrative_units WHERE story_universe_id = '{story_universe_id}'"
+    )
+    return {row[0]: row[1] for row in res.result_rows}
+
+
+@app.get("/screenplay/{story_universe_id}/conflicts")
 def get_conflicts(story_universe_id: str):
     query = f"""
-        SELECT c.id, c.entity_id, c.description, v.status, v.severity, v.explanation, v.confidence
+        SELECT c.id, c.entity_id, c.attribute, c.prior_evidence_unit_id, c.prior_evidence_excerpt,
+               c.current_evidence_unit_id, c.current_evidence_excerpt, c.description,
+               v.status, v.severity, v.confidence
         FROM candidate_conflicts c
         LEFT JOIN investigation_verdicts v ON c.id = v.candidate_id
         WHERE c.story_universe_id = '{story_universe_id}'
     """
     res = clickhouse.client.query(query)
+    names = _entity_names(story_universe_id)
+    pages = _page_by_unit(story_universe_id)
+
     conflicts = []
     for r in res.result_rows:
+        entity_id = r[1]
         conflicts.append({
             "id": r[0],
-            "entity_id": r[1],
-            "description": r[2],
-            "status": r[3] if r[3] else "uninvestigated",
-            "severity": r[4],
-            "explanation": r[5],
-            "confidence": r[6]
+            "entity_id": entity_id,
+            "entity_name": names.get(entity_id, entity_id),
+            "attribute": r[2],
+            "prior_unit_id": r[3],
+            "prior_excerpt": r[4],
+            "prior_page": pages.get(r[3]),
+            "current_unit_id": r[5],
+            "current_excerpt": r[6],
+            "current_page": pages.get(r[5]),
+            "description": r[7],
+            "status": r[8] if r[8] else "uninvestigated",
+            "severity": r[9],
+            "confidence": r[10],
         })
     return conflicts
 
-@app.get("/api/conflicts/{conflict_id}/autopsy")
+
+def _parse_investigation_steps(investigation_actions: List[str]) -> List[dict]:
+    steps = []
+    for raw in investigation_actions:
+        try:
+            steps.append(json.loads(raw))
+        except (json.JSONDecodeError, TypeError):
+            # Pre-existing free-text action from before structured logging.
+            steps.append({"step": "note", "message": raw})
+    return steps
+
+
+@app.get("/conflict/{conflict_id}/autopsy")
 def get_autopsy(conflict_id: str):
-    # Fetch candidate
     c_res = clickhouse.client.query(f"SELECT * FROM candidate_conflicts WHERE id = '{conflict_id}'")
     if not c_res.result_rows:
         raise HTTPException(status_code=404, detail="Conflict not found")
 
     c = c_res.result_rows[0]
-    candidate = {
+    story_universe_id = c[1]
+    entity_id = c[2]
+    names = _entity_names(story_universe_id)
+    pages = _page_by_unit(story_universe_id)
+
+    conflict = {
         "id": c[0],
-        "story_universe_id": c[1],
-        "entity_id": c[2],
-        "prior_unit_id": c[3],
-        "prior_excerpt": c[4],
-        "current_unit_id": c[5],
-        "current_excerpt": c[6],
-        "description": c[7]
+        "entity_id": entity_id,
+        "entity_name": names.get(entity_id, entity_id),
+        "attribute": c[3],
+        "prior_unit_id": c[4],
+        "prior_excerpt": c[5],
+        "prior_page": pages.get(c[4]),
+        "current_unit_id": c[6],
+        "current_excerpt": c[7],
+        "current_page": pages.get(c[6]),
+        "description": c[8],
     }
 
-    # Fetch verdict
-    v_res = clickhouse.client.query(f"SELECT * FROM investigation_verdicts WHERE candidate_id = '{conflict_id}' ORDER BY created_at DESC LIMIT 1")
+    v_res = clickhouse.client.query(
+        f"SELECT * FROM investigation_verdicts WHERE candidate_id = '{conflict_id}' ORDER BY created_at DESC LIMIT 1"
+    )
     verdict = None
+    steps: List[dict] = []
     if v_res.result_rows:
         v = v_res.result_rows[0]
         verdict = {
@@ -86,23 +386,24 @@ def get_autopsy(conflict_id: str):
             "severity": v[3],
             "explanation": v[4],
             "confidence": v[5],
-            "investigation_actions": v[6]
         }
+        steps = _parse_investigation_steps(v[6])
 
-    return {
-        "candidate": candidate,
-        "verdict": verdict
-    }
+    return {"conflict": conflict, "verdict": verdict, "steps": steps}
 
-@app.post("/api/conflicts/{conflict_id}/mark_intentional")
+
+@app.post("/conflict/{conflict_id}/intentional")
 def mark_intentional(conflict_id: str):
-    # Appends a new verdict
-    data = [
-        [f"verdict_manual_{conflict_id}", conflict_id, "intentional", "info", "User marked as intentional.", 1.0, ["Manual Override"]]
-    ]
-    clickhouse.client.insert(
-        'investigation_verdicts',
-        data,
-        column_names=['id', 'candidate_id', 'status', 'severity', 'explanation', 'confidence', 'investigation_actions']
+    from backend.story_state.models import InvestigationVerdict
+
+    verdict = InvestigationVerdict(
+        id=f"verdict_manual_{conflict_id}",
+        candidate_id=conflict_id,
+        status="intentional",
+        severity="info",
+        explanation="User marked as intentional.",
+        confidence=1.0,
+        investigation_actions=[json.dumps({"step": "verdict", "verdict": {"status": "intentional", "note": "Manual override"}})],
     )
+    clickhouse.insert_investigation_verdicts([verdict])
     return {"status": "success"}
