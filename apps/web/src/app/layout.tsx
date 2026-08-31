@@ -11,7 +11,6 @@ const displaySerif = Fraunces({
   variable: "--font-display",
   subsets: ["latin"],
   axes: ["opsz", "SOFT", "WONK"],
-  weight: ["400", "600"],
 });
 
 const readingSerif = Source_Serif_4({
