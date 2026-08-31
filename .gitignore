@@ -2,3 +2,14 @@ venv/
 __pycache__/
 *.pyc
 .env
+
+# Playwright/e2e artifacts
+.playwright-mcp/
+apps/web/playwright-report/
+apps/web/test-results/
+
+# graphify skill output
+graphify-out/
+
+# Raw/processed novel datasets (large, regeneratable via scripts/*)
+data/
