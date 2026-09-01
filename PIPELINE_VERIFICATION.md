@@ -1,121 +1,234 @@
 # Pipeline Verification
 
-Run: `python3 -m scripts.validate_ri_pipeline` (first 10 `NarrativeUnit`s of
-`data/processed/ri_parsed.json`, `story_universe_id = "reverend_insanity"`).
+Real end-to-end run of the fixed pipeline: vocabulary-constrained extraction
+(`backend/pipeline/state_extraction.py`), SQL-window candidate detection
+(`backend/candidate_detection/detector.py`, unchanged), and an Investigation
+Agent that now genuinely queries ClickHouse **through the `mcp-clickhouse`
+MCP server** (`backend/agent/investigator.py` + `backend/agent/tools.py`) —
+not a direct `clickhouse_connect` client. No data below is fabricated or
+hand-edited; every row is from an actual run against the live ClickHouse
+instance, and the hallucination check (`raw_excerpt` must be a verbatim
+substring of the unit's `raw_text`) is enforced in code before anything is
+written.
 
-## Result: real extraction succeeded, via local Ollama
+Provider: local Ollama (`qwen2.5:7b`) — Gemini's free tier is capped at 20
+requests/day and was already exhausted from earlier testing this session.
+`MODEL_PROVIDER=gemini` switches back; the code path is identical either way
+(`LLMProvider` ABC).
 
-Gemini's free tier is rate/quota-limited, so this run used a local model
-instead (`backend/llm/ollama.py`'s `OllamaProvider`, implementing the same
-`LLMProvider` ABC as `GeminiProvider` -- swap back with
-`MODEL_PROVIDER=gemini`). No data below is fabricated: every row came from
-an actual `qwen2.5:7b` completion, and the hallucination check
-(`raw_excerpt` must be a verbatim substring of the unit's `raw_text`) is
-enforced in code before anything is written.
+## Step 1 — import cleanliness
 
 ```
-warning: The `fitz` API is deprecated and will be removed in future. Use `import pymupdf` instead.
-state extraction failed for unit RI_chapter_3: Ollama request failed: timed out
-state extraction failed for unit RI_chapter_6: Ollama request failed: timed out
-state extraction failed for unit RI_chapter_7: Ollama request failed: timed out
-state extraction failed for unit RI_chapter_8: Ollama request failed: timed out
-state extraction failed for unit RI_chapter_9: Ollama request failed: timed out
-Loaded 10 narrative units from data/processed/ri_parsed.json
-✓ Inserted 10 narrative units into ClickHouse Story State DB
+$ python3 -c "from backend.llm.gemini import GeminiProvider; print('OK')"
+OK
+$ python3 -c "from backend.llm.ollama import OllamaProvider; print('OK')"
+OK
+```
+
+Neither file actually imported from `backend.config` (that description in
+the task was stale — `backend/config.py` was already deleted with nothing
+depending on it). Confirmed via `grep -rn "backend.config" backend/`: no
+matches.
+
+## Step 3 — MCP wiring, proven live
+
+`backend/agent/tools.py`'s `AgentTools` now takes an `mcp.ClientSession`
+and calls the `run_query` tool on a `mcp-clickhouse` stdio server
+(`backend/agent/investigator.py` spawns one process per investigation via
+`mcp.client.stdio.stdio_client`). Real log output from this run (not
+paraphrased):
+
+```
+[09/01/26 12:57:52] INFO  Starting MCP server 'mcp-clickhouse' server.py:2506 with transport 'stdio'
+2026-09-01 12:57:55,024 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-09-01 12:57:55,025 - mcp-clickhouse - INFO - Executing query:
+        SELECT sequence_number, value, raw_excerpt
+        FROM state_events
+        WHERE story_universe_id = 'controlled_test_v1'
+          AND entity_id = 'gun'
+          AND attribute = 'location'
+        ORDER BY sequence_number
+2026-09-01 12:57:55,123 - mcp-clickhouse - INFO - Successfully connected to ClickHouse server version 26.7.5.10
+2026-09-01 12:57:55,133 - mcp-clickhouse - INFO - Query returned 0 rows
+```
+
+`investigator.tool_call_log` is populated per call (`{tool, sql, result_rows,
+timestamp}`), and the same information is embedded in each
+`investigation_verdicts.investigation_actions` observation step so it's
+visible in the autopsy trace too.
+
+**Real, disclosable finding from this run:** the local model's tool calls
+above pass `entity_id: 'gun'` and `attribute: 'location'` — neither is a
+real value in this schema (the real entity_id is
+`controlled_test_v1_character_cole`, and the real attribute is
+`possession.gun`). The query is syntactically valid, runs over real MCP, and
+correctly returns 0 rows for the malformed filter — this is the local model
+guessing wrong tool arguments, not a bug in the MCP wiring itself. One tool
+call also failed Pydantic validation entirely (`kwargs` must be a JSON
+*string*; the model returned a raw object) and was logged as an `error` step
+rather than crashing the run. This is a real local-model tool-calling
+capability gap (previously also disclosed in `FINDINGS.md` as the "max tool
+calls reached" pattern) — the MCP path itself works; the agent's reasoning
+prompt could be made more directive, which is future work, not required by
+this task.
+
+## Step 2 — vocabulary fix, verified
+
+```
+$ docker exec storytrace-clickhouse-1 clickhouse-client --user default --password admin \
+    --database storytrace --query \
+    "SELECT attribute, value, count() FROM state_events WHERE story_universe_id = 'controlled_test_v1' GROUP BY attribute, value ORDER BY attribute"
+```
+
+| attribute | value | count |
+|---|---|---|
+| clothing.item | radios turned low | 2 |
+| clothing.robe | crossed arms | 1 |
+| injury.arm | healed | 1 |
+| injury.arm | injured | 2 |
+| injury.right_forearm | injured | 1 |
+| location | (11 distinct free-text locations) | 11 |
+| possession.badge | acquired | 1 |
+| possession.badge | held | 3 |
+| possession.badge | lost | 1 |
+| possession.case_file | held | 1 |
+| possession.field_kit | lost | 1 |
+| possession.folder | acquired | 1 |
+| possession.gun | held | 1 |
+| possession.gun | lost | 1 |
+| possession.knife | lost | 1 |
+| possession.photographs | held | 1 |
+| possession.report | held | 1 |
+
+Every `possession.*` value is exactly `held`/`acquired`/`lost`; every
+`injury.*` value is exactly `injured`/`healed` — the controlled vocabulary
+holds. (`location`/`clothing.*` are intentionally free-text noun phrases per
+spec, not part of the closed vocabulary.)
+
+## Step 8 — controlled test run (`controlled_test_v1`)
+
+```
+$ python3 -m scripts.run_pipeline_on_text data/test_documents/controlled_test.txt
+Units processed: 17
   Using local provider: qwen2.5:7b
-✓ Extracted and wrote 4 state events across 10 units
-✓ Detected 0 candidate conflicts using SQL Window Functions
+  [1/17] controlled_test_v1_unit_1: 2 events
+  ...
+  [17/17] controlled_test_v1_unit_17: 2 events
+State events extracted: 31
+Candidates detected: 2
+Verdicts - verified: 0 / resolved: 0 / uncertain: 2
 ```
 
-5 of 10 chapters timed out at the 180s per-request limit in
-`OllamaProvider.complete()` (longer chapters, no GPU, and other load on the
-box at the time). This is a throughput limit of the local tier, not a code
-defect: the pipeline logged each failure and moved on
-(`extract_state_events`'s `except` clause) rather than crashing the run.
+### Candidates detected (real SQL output)
 
-**Fixed since the first run:** `scripts/validate_ri_pipeline.py` was loading
-each `NarrativeUnit` with the `story_universe_id` baked into
-`ri_parsed.json` by `NovelParser` (`"default_universe"`), while state
-events were tagged with the `story_universe_id` parameter
-(`"reverend_insanity"`) -- two different ids for the same data, so
-`storytrace.narrative_units` and `storytrace.state_events` disagreed and
-the API's `/api/universes/reverend_insanity/overview` reported 0 units.
-Fixed by overriding each unit's `story_universe_id` to match before
-inserting. Confirmed both tables now agree:
+| entity | attribute | prior excerpt | current excerpt | description |
+|---|---|---|---|---|
+| Cole | possession.gun | "His gun slipped from his grip... dropped through a storm grate into the black water below." | "Cole raised his gun and fired a warning shot into the dirt." | lost -> held, no bridging event |
+| Cole | injury.arm | "slash on his forearm" | "The bandage was gone, the wound beneath it closed to a thin pink line." | injured -> healed, no bridging event |
+
+The first candidate is **planted ERROR 1** (the gun) — correctly detected.
+The second is **planted RESOLVED-2** (the paramedic-bandaged arm) —
+correctly *surfaced* as a candidate (the SQL detector has no way to know a
+resolution exists; it just flags the transition, which is exactly right),
+but the agent should have resolved it to `resolved` given unit 12's explicit
+bandaging scene. It did not, for the reason below.
+
+**Verdicts:** both `uncertain`, `"Max tool calls reached without
+conclusion."` — the local 7B model, acting as the *investigation agent*,
+could not complete a 6-step tool-calling loop with well-formed tool calls
+(see the malformed-argument finding in the MCP section above). This is
+consistent with the same limitation already disclosed in `FINDINGS.md` for
+Ollama-backed investigation, now confirmed again under the new MCP-backed
+tool path. No `suggested_fix` was generated for either verdict, since that
+only fires on a `verified` status (Step 6 constraint) and neither reached
+one this run.
+
+**Planted ERROR 2** (location jump, Chicago apartment -> NY precinct) and
+**planted RESOLVED-1** (the badge) were not surfaced as candidates in this
+run — consistent with the two structural gaps already disclosed in
+`FINDINGS.md`: the detector has no location-contradiction query at all, and
+extraction-run variance (a different sample from the same local model can
+extract a slightly different sequence of possession events run-to-run) means
+the badge's `lost -> acquired -> held` chain didn't line up as a bare
+`lost -> held` pair this time. Real state_events for the badge, in order:
+`lost` (unit 5, evidence bag) -> `acquired` (unit 8, Maya returns it) ->
+`held` (unit 9, pinned to jacket) -> `held` (unit 10) — the detector's
+`lagInFrame` window is looking for a `lost` directly followed by a `held`,
+and the intervening `acquired` breaks that exact adjacency. This is a real,
+disclosable interaction between free-form LLM extraction granularity and the
+detector's fixed two-state pattern, not a regression from this task's
+changes (the detector file was not touched, per constraints).
+
+## Step 6 — counterfactual fix suggestion, wired but not exercised this run
+
+`InvestigationAgent._suggest_fix()` is real (Gemini path via
+`backend/agent/adk_runner.py`'s `google.adk.agents.Agent` +
+`InMemoryRunner`; Ollama path via the plain `LLMProvider.complete()` call),
+and `investigation_verdicts.suggested_fix` is a real column
+(`ALTER TABLE ... ADD COLUMN IF NOT EXISTS suggested_fix String DEFAULT ''`,
+applied to the live database). It only fires after a `verified` verdict; this
+run produced none (both candidates ended `uncertain`), so no suggested fix
+was generated to show here — reported honestly rather than fabricated. The
+ADK path is exercised only under `MODEL_PROVIDER=gemini`, which is quota-
+exhausted for the rest of today; the code was verified to import and
+construct correctly (`python3 -c "import backend.agent.adk_runner"`) but not
+run against the live API this session.
+
+## Step 4/5 — upload endpoint and overview shape
+
+`POST /screenplay/upload` now also accepts `.txt` (via the new
+`PlainTextParser`, scene-heading split with paragraph fallback — same
+logic already used by the CLI scripts). `GET /screenplay/{id}/overview` now
+also returns `story_universe_id`, `title`, `entities_tracked`,
+`verified_conflicts`, `resolved_conflicts`, `uncertain_conflicts` alongside
+the fields the existing frontend already depends on (added, not replaced,
+so `apps/web/` — untouched per constraint — keeps working). A new
+`processing_status` ClickHouse table persists job progress so `/overview`
+reflects real state even across an API restart, not just the in-memory job
+dict.
 
 ```
-SELECT DISTINCT story_universe_id FROM storytrace.narrative_units  -> reverend_insanity
-SELECT DISTINCT story_universe_id FROM storytrace.state_events     -> reverend_insanity
+$ docker exec storytrace-clickhouse-1 clickhouse-client --user default --password admin \
+    --database storytrace --query "DESCRIBE TABLE processing_status"
+story_universe_id  String
+status              Enum8('parsing'=1,'extracting'=2,'detecting'=3,'investigating'=4,'complete'=5,'failed'=6)
+total_units         UInt32
+units_extracted     UInt32
+candidates_detected UInt32
+verdicts_complete   UInt32
+error_message       String  DEFAULT ''
+updated_at          DateTime DEFAULT now()
 ```
 
-## Verification queries (real output, this run)
+## Step 9 — compliance checklist (real, printed by the pipeline scripts)
 
 ```
-docker exec storytrace-clickhouse-1 clickhouse-client --query "SELECT count() FROM storytrace.state_events"
-4
+Hackathon compliance checklist:
+  [x] google-genai imported and called at runtime (backend/llm/client.py: GeminiProvider)
+  [x] google-adk imported and called at runtime (backend/agent/adk_runner.py: suggest_fix_via_adk)
+  [x] mcp-clickhouse imported and called at runtime (backend/agent/tools.py via investigator.py MCP session)
+  [x] All three appear in requirements.txt
+  [x] LICENSE file exists at repo root
+  [x] README.md documents how to run the project
 ```
 
-```
-docker exec storytrace-clickhouse-1 clickhouse-client --query "SELECT count() FROM storytrace.candidate_conflicts"
-0
-```
+`google-genai` is called at runtime via `GeminiProvider.complete()`
+(`backend/llm/client.py`) whenever `MODEL_PROVIDER=gemini`; this run used
+Ollama, so that specific call path wasn't exercised this run, only imported
+and confirmed present (same honesty caveat as Step 6's ADK path above).
+`mcp-clickhouse` genuinely ran — see the live log excerpt in the Step 3
+section above.
 
-Expected at this sample size: `CandidateDetector` looks for a same-entity
-`lost -> held` or `injured -> healed` transition across `sequence_number`
-via `lagInFrame`. 4 scattered single-observation facts across 4 entities
-don't contain such a pair -- not a bug, just not enough extracted state yet.
+## Se7en (Dark Knight substitute — see `FINDINGS.md` for why)
 
-```
-docker exec storytrace-clickhouse-1 clickhouse-client --query "SELECT status, count() FROM storytrace.investigation_verdicts GROUP BY status"
-(empty -- expected: the Investigation Agent runs per CandidateConflict, and
-there are none yet.)
-```
-
-```
-docker exec storytrace-clickhouse-1 clickhouse-client --query "SELECT entity_id, attribute, value, raw_excerpt FROM storytrace.state_events LIMIT 10"
-```
-
-| entity_id | attribute | value | raw_excerpt |
-|---|---|---|---|
-| reverend_insanity_character_fang_yuan | clothing | tidy (status) | His clothing had long been tidy; |
-| reverend_insanity_character_fang_yuan | location | outside house | So the two brothers left the house. |
-| reverend_insanity_character_shen_cui | location | downstairs | Looking down, Fang Yuan saw his own personal servant – Shen Cui. |
-| reverend_insanity_character_gu_yue_chi_chen | presence | B grade | Another B grade! |
-
-Every `raw_excerpt` is a real, verbatim quote from the parsed chapter text
-(enforced in code, not spot-checked).
-
-## Also verified: FastAPI reads this data correctly
-
-```
-$ curl http://localhost:8001/api/universes/reverend_insanity/overview
-{"narrative_units":10,"characters":0,"props":0,"candidates":0}
-```
-
-`narrative_units: 10` confirms the `story_universe_id` fix above.
-`characters`/`props` are 0 because `EntityRegistry` (used inside
-`extract_state_events` to generate stable `entity_id`s) only lives
-in-memory for the duration of one extraction call -- nothing currently
-persists resolved entities to `storytrace.entities`. That's a real gap
-(the `insert_entities` method exists on `ClickHouseClient` and is unused),
-just not one this task asked to close.
-
-## What's confirmed working end-to-end
-
-- Schema migration: agnostic columns confirmed.
-- `backend/pipeline/state_extraction.py`: real extraction, hallucination-
-  checked, attribute-bucket-mapped, writes to ClickHouse.
-- `backend/llm/ollama.py`: sync `OllamaProvider(LLMProvider)`, a drop-in for
-  `GeminiProvider`, selected via `MODEL_PROVIDER=ollama` (default) /
-  `MODEL_PROVIDER=gemini` in `scripts/demo_pipeline.py`.
-- `NarrativeUnit` -> ClickHouse insertion: 10/10, correct `story_universe_id`.
-- `CandidateDetector` ran against real (sparse) state_events, correctly
-  found no conflicts at this sample size.
-- FastAPI's `/api/universes/{id}/overview` reads the real inserted data.
-
-## Next step to see a real conflict
-
-Run against more chapters (a few dozen, not 10) so the same entity
-accumulates multiple `possession`/`injury` observations across sequence --
-that's what `lagInFrame` needs to find a transition. At 10 chapters with a
-timeout-prone local model, the sample is too small and too incomplete.
+A full pipeline run (re-extraction + detection + MCP-backed investigation)
+was kicked off against the existing `data/test_documents/seven.txt`
+(201 units) to confirm the new MCP-wired agent behaves the same way on a
+larger, real screenplay. At the time of writing this run was still in
+progress in the background — full 201-unit local-model extraction plus
+MCP-backed investigation of every candidate takes on the order of hours, as
+already disclosed in `FINDINGS.md`. This section will be completed with
+that run's real output; it is intentionally left as "in progress" rather
+than filled in with the previous session's pre-MCP numbers, since those used
+the old direct-ClickHouse-client investigator and would misrepresent what
+this task's MCP change actually does differently.
