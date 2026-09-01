@@ -68,7 +68,7 @@ it has no location-contradiction query at all. This is a scope
 limitation of the existing (unmodified, per constraints) detector, not
 an extraction failure.
 
-## The Dark Knight
+## The Dark Knight (substituted with Se7en)
 
 **Substitution disclosed up front:** *The Dark Knight*'s script is not
 actually hosted on IMSDB — its movie page has no "Read Script" link at
@@ -80,17 +80,81 @@ rather than force a broken download. Saved as
 `data/test_documents/seven_raw.html` / `seven.txt`, not under a
 misleading "dark_knight" filename.
 
-[Results pending — pipeline run in progress at time of writing. Will be
-filled in with real output once `run_pipeline_on_screenplay.py` completes
-for `seven.txt`.]
+- Units: 201 (scene-heading split)
+- State events extracted: 268
+- Candidates: 2
+- Verdicts: uncertain: 2 / verified: 0 / resolved: 0
+
+### Candidates
+
+| Entity | Attribute | Prior | Current |
+|---|---|---|---|
+| notebook (prop) | possession | "He walks to another wall, pulls another notebook." | "Same deal." |
+| painting (prop) | possession | "Somerset pushes the painting away, stands, frustrated." | "Somerset motions to the huge canvas." |
+
+Both verdicts: `uncertain`, "Max tool calls reached without conclusion"
+(same local-model agent limitation as the controlled test).
+
+**Honest read on these two:** neither looks like a genuine continuity
+error on inspection. "Same deal" as a possession excerpt for a notebook,
+and "painting" vs "huge canvas" as the same prop, both look like
+extraction noise from vague, pronoun-heavy screenplay description rather
+than a real narrative contradiction. This is a real precision problem
+worth flagging, not a success to overstate: the detector did its job
+correctly given the input, but the input (Ollama's fact extraction) is
+noisy enough on a 200-scene document to produce false-positive-shaped
+candidates.
+
+Sample real extracted facts (from 268 total): `Jules — possession.gun:
+held`, `Mills — injury.body: injured`, `Somerset — location: tenement
+apartment`. Full extraction log:
+`data/test_documents/seven_pipeline_results.txt` (kept locally,
+gitignored with the rest of `data/`).
 
 ## Pulp Fiction
 
-[Results pending — pipeline run in progress at time of writing.]
+- Units: 93 (scene-heading split)
+- State events extracted: 122
+- Candidates: 0
+- Verdicts: none (nothing to investigate)
+
+No candidates were detected. This is an honest 0, not a broken run —
+122 real facts were extracted (e.g. `Vincent — possession.gun: held`,
+`Butch — possession.cigarettes: held`, `Jody — injury.clit: injured`),
+but no exact `lost → held` / `injured → healed` pair for the same
+`(entity, attribute)` occurred in what got extracted. Pulp Fiction's
+real structure (vignettes, out-of-order chronology, dialogue-heavy scenes
+with few explicit possession/injury statements) plausibly produces fewer
+of the specific transition patterns this detector looks for than a
+crime-procedural-style plot would. One extraction-quality issue visible
+in the sample: a few `clothing.item` values are verbs/actions ("smiles",
+"turns to him") rather than a clothing description — the controlled
+vocabulary in the prompt constrains `possession`/`injury` values but not
+`clothing`, and the local model doesn't always respect the "concise
+noun phrase" instruction for that one.
+
+Full extraction log: `data/test_documents/pulp_fiction_pipeline_results.txt`.
 
 ## Gladiator
 
-[Results pending — pipeline run in progress at time of writing.]
+- Units: 117 (scene-heading split)
+- State events extracted: 154
+- Candidates: 0
+- Verdicts: none
+
+Also an honest 0. Real facts extracted include `Maximus — injury.arm:
+injured` ("A wound on Maximus' arm has been bound") and `catapults (prop)
+— possession: held/lost` transitions — interestingly, catapult
+possession *did* show a lost→held-shaped pattern in the raw events, but
+apparently not with an exact matching pair on the same attribute string
+(the sample shows `held`, then `lost`, not `lost` then `held`, which is
+the specific direction the detector's WHERE clause checks for — a
+`held → lost` transition isn't flagged as suspicious the way `lost →
+held` is, which is itself a real, disclosable asymmetry in the
+detector's fixed rule: losing something is never treated as suspicious
+on its own, only *unexplained reacquisition* is).
+
+Full extraction log: `data/test_documents/gladiator_pipeline_results.txt`.
 
 ## Provider note
 
