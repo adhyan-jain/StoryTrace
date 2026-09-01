@@ -184,3 +184,60 @@ class FountainParser:
             units.append(current_unit)
 
         return units
+
+
+class PlainTextParser:
+    """Generic .txt ingestion: splits at INT./EXT. scene headings if the
+    document has any (screenplay-shaped), otherwise falls back to one
+    NarrativeUnit per double-newline-separated paragraph (novel/prose-shaped).
+    Mirrors scripts/run_pipeline_on_screenplay.py's load_units so the upload
+    endpoint and the CLI pipeline scripts treat plain text the same way."""
+
+    def __init__(self, document_id: str, story_universe_id: str = "default_universe"):
+        self.document_id = document_id
+        self.story_universe_id = story_universe_id
+
+    def parse(self, text_path: str) -> List[NarrativeUnit]:
+        with open(text_path, encoding="utf-8") as f:
+            lines = f.readlines()
+
+        heading_lines = [i for i, line in enumerate(lines) if HEADING_PATTERN.match(line)]
+
+        units: List[NarrativeUnit] = []
+        if heading_lines:
+            boundaries = heading_lines + [len(lines)]
+            for seq, (start, end) in enumerate(zip(boundaries, boundaries[1:]), start=1):
+                chunk = "".join(lines[start:end]).strip()
+                if not chunk:
+                    continue
+                units.append(
+                    NarrativeUnit(
+                        unit_id=f"{self.document_id}_unit_{seq}",
+                        story_universe_id=self.story_universe_id,
+                        document_id=self.document_id,
+                        unit_type="scene",
+                        sequence_number=seq,
+                        title=lines[start].strip()[:80],
+                        page_start=1,
+                        page_end=1,
+                        raw_text=chunk,
+                    )
+                )
+        else:
+            text = "".join(lines)
+            paragraphs = [p.strip() for p in text.split("\n\n") if p.strip()]
+            for seq, paragraph in enumerate(paragraphs, start=1):
+                units.append(
+                    NarrativeUnit(
+                        unit_id=f"{self.document_id}_unit_{seq}",
+                        story_universe_id=self.story_universe_id,
+                        document_id=self.document_id,
+                        unit_type="passage",
+                        sequence_number=seq,
+                        title=f"Passage {seq}",
+                        page_start=1,
+                        page_end=1,
+                        raw_text=paragraph,
+                    )
+                )
+        return units
