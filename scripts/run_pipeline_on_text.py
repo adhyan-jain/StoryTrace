@@ -9,7 +9,6 @@ import os
 import sys
 
 from backend.agent.investigator import InvestigationAgent
-from backend.agent.tools import AgentTools
 from backend.candidate_detection.detector import CandidateDetector
 from backend.clickhouse.client import ClickHouseClient
 from backend.ingestion.models import NarrativeUnit
@@ -106,10 +105,10 @@ async def run(text_path: str) -> None:
         for r in rows:
             print(f"  {r[0]:<22} {r[1]:<12} {r[2]:<30} {r[3]:<25} {r[4][:60]}")
 
-    agent = InvestigationAgent(llm, AgentTools(client, STORY_UNIVERSE_ID))
+    agent = InvestigationAgent(llm, STORY_UNIVERSE_ID)
     counts = {"verified": 0, "resolved": 0, "uncertain": 0, "intentional": 0}
     for conflict in conflicts:
-        verdict = agent.investigate(conflict)
+        verdict = await agent.investigate_async(conflict)
         client.insert_investigation_verdicts([verdict])
         counts[verdict.status] = counts.get(verdict.status, 0) + 1
 
@@ -124,6 +123,10 @@ def main():
         print("Usage: python3 -m scripts.run_pipeline_on_text <path.txt>")
         raise SystemExit(1)
     asyncio.run(run(sys.argv[1]))
+
+    from scripts.compliance_check import main as print_compliance
+
+    print_compliance()
 
 
 if __name__ == "__main__":

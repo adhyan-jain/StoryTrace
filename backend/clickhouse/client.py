@@ -15,6 +15,29 @@ class ClickHouseClient:
             host=host, port=port, user=user, password=password, database=database
         )
 
+    def upsert_processing_status(
+        self,
+        story_universe_id: str,
+        status: str,
+        total_units: int = 0,
+        units_extracted: int = 0,
+        candidates_detected: int = 0,
+        verdicts_complete: int = 0,
+        error_message: str = "",
+    ) -> None:
+        """ReplacingMergeTree keyed on story_universe_id -- each call inserts a
+        new row that supersedes the prior one (on the next merge) rather than
+        mutating in place, which is the standard ClickHouse pattern for a
+        small, frequently-updated status row."""
+        self.client.insert(
+            "processing_status",
+            [[story_universe_id, status, total_units, units_extracted, candidates_detected, verdicts_complete, error_message]],
+            column_names=[
+                "story_universe_id", "status", "total_units", "units_extracted",
+                "candidates_detected", "verdicts_complete", "error_message",
+            ],
+        )
+
     def insert_narrative_units(self, units: List[BaseModel]):
         if not units:
             return
@@ -96,7 +119,7 @@ class ClickHouseClient:
         data = [
             [
                 v.id, v.candidate_id, v.status, v.severity,
-                v.explanation, v.confidence, v.investigation_actions
+                v.explanation, v.confidence, v.investigation_actions, v.suggested_fix
             ]
             for v in verdicts
         ]
@@ -104,5 +127,5 @@ class ClickHouseClient:
         self.client.insert(
             'investigation_verdicts',
             data,
-            column_names=['id', 'candidate_id', 'status', 'severity', 'explanation', 'confidence', 'investigation_actions']
+            column_names=['id', 'candidate_id', 'status', 'severity', 'explanation', 'confidence', 'investigation_actions', 'suggested_fix']
         )

@@ -33,3 +33,4 @@ class InvestigationVerdict(BaseModel):
     explanation: str
     confidence: float
     investigation_actions: List[str]
+    suggested_fix: str = ""

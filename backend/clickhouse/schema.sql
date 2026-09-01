@@ -58,6 +58,21 @@ CREATE TABLE IF NOT EXISTS storytrace.candidate_conflicts (
 ) ENGINE = MergeTree()
 ORDER BY (story_universe_id, entity_id, created_at);
 
+CREATE TABLE IF NOT EXISTS storytrace.processing_status (
+    story_universe_id String,
+    status Enum8(
+        'parsing'=1,'extracting'=2,'detecting'=3,
+        'investigating'=4,'complete'=5,'failed'=6
+    ),
+    total_units UInt32,
+    units_extracted UInt32,
+    candidates_detected UInt32,
+    verdicts_complete UInt32,
+    error_message String DEFAULT '',
+    updated_at DateTime DEFAULT now()
+) ENGINE = ReplacingMergeTree(updated_at)
+ORDER BY (story_universe_id);
+
 CREATE TABLE IF NOT EXISTS storytrace.investigation_verdicts (
     id String,
     candidate_id String,
@@ -66,6 +81,7 @@ CREATE TABLE IF NOT EXISTS storytrace.investigation_verdicts (
     explanation String,
     confidence Float32,
     investigation_actions Array(String),
+    suggested_fix String DEFAULT '',
     created_at DateTime DEFAULT now()
 ) ENGINE = MergeTree()
 ORDER BY (candidate_id, created_at);
