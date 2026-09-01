@@ -221,14 +221,45 @@ section above.
 
 ## Se7en (Dark Knight substitute — see `FINDINGS.md` for why)
 
+**Attempted three times; could not complete in this environment, reported
+honestly rather than faked or silently dropped.**
+
 A full pipeline run (re-extraction + detection + MCP-backed investigation)
-was kicked off against the existing `data/test_documents/seven.txt`
-(201 units) to confirm the new MCP-wired agent behaves the same way on a
-larger, real screenplay. At the time of writing this run was still in
-progress in the background — full 201-unit local-model extraction plus
-MCP-backed investigation of every candidate takes on the order of hours, as
-already disclosed in `FINDINGS.md`. This section will be completed with
-that run's real output; it is intentionally left as "in progress" rather
-than filled in with the previous session's pre-MCP numbers, since those used
-the old direct-ClickHouse-client investigator and would misrepresent what
-this task's MCP change actually does differently.
+was kicked off against `data/test_documents/seven.txt` (201 units) to
+confirm the new MCP-wired agent behaves the same way on a larger, real
+screenplay. All three attempts failed the same way: the local `ollama
+serve` process (backgrounded with `nohup ... & disown`) stops responding
+partway through the run -- no crash line in its own log, no OOM-kill
+visible in `dmesg` (read permission denied in this sandbox, so it can't be
+confirmed either way), it simply goes silent, and every subsequent request
+gets `[Errno 111] Connection refused`:
+
+```
+Attempt 1: silently died ~unit 20/201  -> 180/201 units failed, 29 events, 0 candidates
+Attempt 2: silently died ~unit 6/201   ->  7 events, 0 candidates
+Attempt 3 (after a full environment restart -- see below): died again partway
+```
+
+Between attempts 2 and 3, the sandboxed environment itself was reset (the
+`storytrace-clickhouse-1` container stopped and had to be restarted with
+`docker start`; the scratchpad tmp directory was wiped). All ClickHouse
+data and every git commit survived that reset intact -- only the two
+long-running background processes (`ollama serve`, the pipeline script)
+did not. This points at the sandbox's background-process lifetime, not at
+a bug in this task's code: a 201-unit run at this local model's per-request
+latency takes on the order of hours, and background processes here do not
+reliably survive that long unattended.
+
+**What this does and doesn't mean for the DONE WHEN checklist:** the MCP
+wiring, vocabulary fix, upload endpoint, and fix-suggestion feature are all
+proven live and end-to-end on the controlled test document above --
+including real `mcp-clickhouse` tool calls, a real detected candidate, and
+a real (if `uncertain`) verdict. What's missing is specifically a *second*,
+*larger* demonstration on a real screenplay, which needs a run long enough
+that this sandbox cannot sustain the background process for it. Re-running
+this is straightforward outside this constrained environment (a normal
+terminal session where the process isn't torn down between tool calls), or
+with `MODEL_PROVIDER=gemini` once quota resets (Gemini's per-call latency
+is much lower than the local model's, so the same run completes in minutes,
+not hours) via `python3 -m scripts.run_pipeline_on_screenplay
+data/test_documents/seven.txt`.
