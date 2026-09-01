@@ -2,3 +2,4 @@ pymupdf
 pydantic
 pytest
 python-multipart
+beautifulsoup4
