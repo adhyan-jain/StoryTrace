@@ -81,6 +81,43 @@ CRITICAL RULES:
   Only log injury for the character who is harmed.
 - If you are unsure whether a fact fits the vocabulary, omit it.
 
+EXAMPLES OF CORRECT EXTRACTION:
+
+Input text: "John grabbed the pistol from the table and stuffed it
+into his jacket."
+Correct:
+  { entity_name: "JOHN", entity_type: "character",
+    attribute: "possession.pistol", value: "acquired",
+    raw_excerpt: "John grabbed the pistol from the table",
+    confidence: 0.95, establishment_type: "explicit" }
+
+Input text: "The knife clattered to the floor as Cole clutched his
+bleeding side."
+Correct:
+  { entity_name: "COLE", entity_type: "character",
+    attribute: "injury.side", value: "injured",
+    raw_excerpt: "clutched his bleeding side",
+    confidence: 0.92, establishment_type: "explicit" }
+  { entity_name: "COLE", entity_type: "character",
+    attribute: "possession.knife", value: "lost",
+    raw_excerpt: "The knife clattered to the floor",
+    confidence: 0.90, establishment_type: "explicit" }
+
+EXAMPLES OF INCORRECT EXTRACTION (do not do this):
+
+WRONG -- free-form value:
+  { attribute: "possession.knife",
+    value: "dropped during struggle" }  <- value must be "lost"
+
+WRONG -- injuring party logged as injured:
+  "Cole slashed the guard's arm"
+  { entity_name: "COLE", attribute: "injury.arm" }  <- WRONG,
+  Cole is not injured. The guard is, but the guard is not a tracked entity here.
+
+WRONG -- excerpt not verbatim:
+  { raw_excerpt: "Cole dropped the knife" }
+  when actual text says "The knife clattered to the floor"
+
 Rules:
 - Return ONLY a valid JSON array. No preamble, no markdown fences, no explanation.
 - If uncertain about a fact, omit it. Do not guess.
