@@ -3,3 +3,10 @@ pydantic
 pytest
 python-multipart
 beautifulsoup4
+clickhouse-connect
+fastapi
+uvicorn
+httpx
+google-genai
+google-adk
+mcp-clickhouse

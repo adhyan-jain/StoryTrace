@@ -14,6 +14,41 @@ StoryTrace is an agentic, multi-document narrative continuity engine. It convert
 6.  **Continuity Autopsy**: The user-facing presentation of an `InvestigationVerdict` — not a separate agent or stage. See [docs/architecture.md](docs/architecture.md).
 7.  **Frontend**: Next.js UI providing a premium professional filmmaking tool experience.
 
+## Running the project
+
+```bash
+# 1. ClickHouse (via docker-compose) + schema
+docker compose up -d
+docker exec -i storytrace-clickhouse-1 clickhouse-client --database storytrace < backend/clickhouse/schema.sql
+
+# 2. Python deps
+python3 -m venv venv && source venv/bin/activate
+pip install -r requirements.txt
+
+# 3. Configure environment
+cp .env.example .env    # then set GEMINI_API_KEY, or leave MODEL_PROVIDER=ollama for local-only
+
+# 4. Local LLM (optional, for MODEL_PROVIDER=ollama -- the default, no API key needed)
+ollama pull qwen2.5:7b
+
+# 5. Backend API
+uvicorn backend.api.main:app --reload --port 8000
+
+# 6. Frontend
+cd apps/web && npm install && npm run dev
+```
+
+Upload a `.pdf`, `.epub`, `.txt`, or `.fountain` document via `POST /screenplay/upload` (or the web UI) to kick off the full parse -> extract -> detect -> investigate pipeline as a background job; poll `GET /screenplay/{id}/overview` for progress.
+
+To run the pipeline directly from the CLI against a plain-text document instead of through the API:
+
+```bash
+python3 -m scripts.run_pipeline_on_text data/test_documents/controlled_test.txt
+python3 -m scripts.run_pipeline_on_screenplay data/test_documents/<screenplay>.txt
+```
+
+Set `MODEL_PROVIDER=gemini` to use Gemini instead of the local Ollama default (Gemini's free tier is capped at 20 requests/day per model -- see `FINDINGS.md`).
+
 ## Documentation
 
 -   [Architecture](docs/architecture.md)
