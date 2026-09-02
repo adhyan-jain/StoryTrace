@@ -7,10 +7,19 @@ from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional
 
 import fitz
-from fastapi import BackgroundTasks, FastAPI, HTTPException, UploadFile
+from fastapi import BackgroundTasks, Depends, FastAPI, Form, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel, EmailStr
 
 from backend.agent.investigator import InvestigationAgent
+from backend.auth import (
+    UserPublic,
+    create_access_token,
+    get_current_user_id,
+    hash_password,
+    new_id,
+    verify_password,
+)
 from backend.candidate_detection.detector import CandidateDetector
 from backend.clickhouse.client import ClickHouseClient
 from backend.ingestion.models import NarrativeUnit
@@ -43,9 +52,19 @@ def _detect_document_parser(file_path: str):
 
 app = FastAPI(title="StoryTrace API")
 
+# A wildcard origin plus credentialed requests (Authorization headers) is a
+# real exposure once the API holds per-user data -- restrict to the actual
+# frontend origin(s) instead. FRONTEND_ORIGIN accepts a comma-separated list
+# for local dev + a deployed origin.
+_frontend_origins = [
+    origin.strip()
+    for origin in os.environ.get("FRONTEND_ORIGIN", "http://localhost:3000").split(",")
+    if origin.strip()
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=_frontend_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -83,14 +102,116 @@ def health_check():
     return {"status": "ok"}
 
 
+# -- Auth ---------------------------------------------------------------
+
+
+class SignupRequest(BaseModel):
+    email: EmailStr
+    password: str
+
+
+class LoginRequest(BaseModel):
+    email: EmailStr
+    password: str
+
+
+class AuthResponse(BaseModel):
+    access_token: str
+    user: UserPublic
+
+
+@app.post("/auth/signup", response_model=AuthResponse)
+def signup(req: SignupRequest):
+    if len(req.password) < 8:
+        raise HTTPException(status_code=400, detail="Password must be at least 8 characters.")
+    client = ClickHouseClient()
+    # Best-effort uniqueness check: ReplacingMergeTree dedups on email async,
+    # not synchronously, so this narrows (does not eliminate) a race between
+    # two near-simultaneous signups for the same address -- a known,
+    # disclosed tradeoff of using ClickHouse (not a real OLTP store with a
+    # unique constraint) for user records.
+    if client.get_user_by_email(req.email) is not None:
+        raise HTTPException(status_code=409, detail="An account with this email already exists.")
+
+    user_id = new_id()
+    client.create_user(user_id, req.email, hash_password(req.password))
+    token = create_access_token(user_id, req.email)
+    row = client.get_user_by_id(user_id)
+    return AuthResponse(
+        access_token=token,
+        user=UserPublic(id=row[0], email=row[1], created_at=str(row[2])),
+    )
+
+
+@app.post("/auth/login", response_model=AuthResponse)
+def login(req: LoginRequest):
+    client = ClickHouseClient()
+    row = client.get_user_by_email(req.email)
+    # Same generic error whether the email doesn't exist or the password is
+    # wrong -- distinguishing the two lets an attacker enumerate registered
+    # emails.
+    if row is None or not verify_password(req.password, row[2]):
+        raise HTTPException(status_code=401, detail="Invalid email or password.")
+    token = create_access_token(row[0], row[1])
+    return AuthResponse(
+        access_token=token,
+        user=UserPublic(id=row[0], email=row[1], created_at=str(row[3])),
+    )
+
+
+@app.get("/auth/me", response_model=UserPublic)
+def get_me(user_id: str = Depends(get_current_user_id)):
+    client = ClickHouseClient()
+    row = client.get_user_by_id(user_id)
+    if row is None:
+        raise HTTPException(status_code=401, detail="Invalid authentication token.")
+    return UserPublic(id=row[0], email=row[1], created_at=str(row[2]))
+
+
+def _authorize_story_universe(client: ClickHouseClient, story_universe_id: str, user_id: str) -> None:
+    """Every project-linked story_universe_id must belong to the caller.
+    story_universe_ids with no project_versions row predate this feature
+    (CLI-inserted test data) and have no owner to check against -- treated
+    as legacy/ungated rather than blocked, so existing demo data keeps
+    working. Every NEW upload always creates a project_versions row, so this
+    gap only ever covers pre-existing data, never new uploads."""
+    rows = client.client.query(
+        "SELECT project_id FROM project_versions WHERE id = {id:String} LIMIT 1",
+        parameters={"id": story_universe_id},
+    ).result_rows
+    if not rows:
+        return
+    project = client.get_project(rows[0][0])
+    if project is None or project[1] != user_id:
+        raise HTTPException(status_code=403, detail="You do not have access to this document.")
+
+
 @app.post("/screenplay/upload")
-async def upload_screenplay(file: UploadFile, background_tasks: BackgroundTasks):
+async def upload_screenplay(
+    file: UploadFile,
+    background_tasks: BackgroundTasks,
+    project_id: Optional[str] = Form(default=None),
+    user_id: str = Depends(get_current_user_id),
+):
     filename = file.filename or ""
     ext = os.path.splitext(filename)[1].lower()
     if ext not in _EXT_PARSERS:
         raise HTTPException(status_code=400, detail=f"Unsupported file type '{ext}'. Use .pdf, .epub, .txt, or .fountain.")
 
+    client = ClickHouseClient()
+
+    if project_id:
+        project = client.get_project(project_id)
+        if project is None or project[1] != user_id:
+            raise HTTPException(status_code=403, detail="You do not have access to this project.")
+        version_number = client.get_latest_version_number(project_id) + 1
+    else:
+        project_id = new_id()
+        client.create_project(project_id, user_id, filename)
+        version_number = 1
+
     story_universe_id = uuid.uuid4().hex
+    client.create_project_version(story_universe_id, project_id, version_number, filename)
 
     with tempfile.NamedTemporaryFile(suffix=ext, delete=False) as tmp:
         tmp.write(await file.read())
@@ -117,12 +238,12 @@ async def upload_screenplay(file: UploadFile, background_tasks: BackgroundTasks)
     else:
         ParserCls = _detect_document_parser(tmp_path)
 
-    background_tasks.add_task(_run_pipeline_job, story_universe_id, tmp_path, ParserCls)
+    background_tasks.add_task(_run_pipeline_job, story_universe_id, tmp_path, ParserCls, project_id)
 
-    return {"story_universe_id": story_universe_id}
+    return {"story_universe_id": story_universe_id, "project_id": project_id, "version_number": version_number}
 
 
-def _run_pipeline_job(story_universe_id: str, file_path: str, ParserCls) -> None:
+def _run_pipeline_job(story_universe_id: str, file_path: str, ParserCls, project_id: str) -> None:
     """Runs synchronously inside a FastAPI background task (its own thread,
     since fitz/httpx calls here are blocking) -- kicked off, not awaited, by
     the upload endpoint so it returns immediately."""
@@ -153,7 +274,7 @@ def _run_pipeline_job(story_universe_id: str, file_path: str, ParserCls) -> None
 
         job["status"] = "extracting"
         llm = _default_provider()
-        registry = EntityRegistry(story_universe_id)
+        registry = EntityRegistry(story_universe_id, id_scope=project_id)
         for unit in units:
             events = asyncio.run(extract_state_events(unit, story_universe_id, llm, registry))
             asyncio.run(write_state_events(events, client))
@@ -202,10 +323,11 @@ class _InvestigationLLM:
 
 
 @app.get("/screenplay/{story_universe_id}/overview")
-def get_overview(story_universe_id: str):
+def get_overview(story_universe_id: str, user_id: str = Depends(get_current_user_id)):
+    client = ClickHouseClient()
+    _authorize_story_universe(client, story_universe_id, user_id)
     job = _JOBS.get(story_universe_id)
     if job is not None:
-        client = ClickHouseClient()
         entities_tracked = client.client.query(
             f"SELECT count() FROM entities WHERE story_universe_id = '{story_universe_id}'"
         ).result_rows[0][0]
@@ -229,7 +351,6 @@ def get_overview(story_universe_id: str):
     # No in-memory job (e.g. server restarted, or data was loaded outside the
     # upload flow like the CLI pipeline scripts) -- fall back to what's
     # actually in ClickHouse and report it as already complete.
-    client = ClickHouseClient()
     units = client.client.query(
         f"SELECT count() FROM narrative_units WHERE story_universe_id = '{story_universe_id}'"
     ).result_rows[0][0]
@@ -279,8 +400,9 @@ def _verdict_counts_by_status(client: ClickHouseClient, story_universe_id: str) 
 
 
 @app.get("/screenplay/{story_universe_id}/scenes")
-def get_scenes(story_universe_id: str):
+def get_scenes(story_universe_id: str, user_id: str = Depends(get_current_user_id)):
     client = ClickHouseClient()
+    _authorize_story_universe(client, story_universe_id, user_id)
     units_res = client.client.query(
         f"""SELECT id, title, unit_type, sequence_number, start_page, end_page, text
             FROM narrative_units WHERE story_universe_id = '{story_universe_id}'
@@ -290,20 +412,27 @@ def get_scenes(story_universe_id: str):
     # Severity dot per unit: the worst verdict severity among conflicts that
     # touch this unit as prior or current evidence, or "resolved" if every
     # touching verdict resolved cleanly.
+    # v.id is selected alongside severity/status purely as a join-miss
+    # sentinel: ClickHouse's LEFT JOIN returns an Enum8 column's zero-value
+    # (displayed as the first-declared name, e.g. "verified"/"critical") for
+    # unmatched rows rather than a real NULL, so severity/status can't be
+    # trusted on their own -- only rows where v.id is non-empty had an
+    # actual investigation_verdicts match.
     severity_res = client.client.query(
         f"""
         SELECT unit_id, groupArray(severity) AS severities, groupArray(status) AS statuses
         FROM (
-            SELECT c.prior_evidence_unit_id AS unit_id, v.severity AS severity, v.status AS status
+            SELECT c.prior_evidence_unit_id AS unit_id, v.severity AS severity, v.status AS status, v.id AS verdict_id
             FROM candidate_conflicts c
             LEFT JOIN investigation_verdicts v ON c.id = v.candidate_id
             WHERE c.story_universe_id = '{story_universe_id}'
             UNION ALL
-            SELECT c.current_evidence_unit_id AS unit_id, v.severity AS severity, v.status AS status
+            SELECT c.current_evidence_unit_id AS unit_id, v.severity AS severity, v.status AS status, v.id AS verdict_id
             FROM candidate_conflicts c
             LEFT JOIN investigation_verdicts v ON c.id = v.candidate_id
             WHERE c.story_universe_id = '{story_universe_id}'
         )
+        WHERE verdict_id != ''
         GROUP BY unit_id
         """
     )
@@ -323,7 +452,7 @@ def get_scenes(story_universe_id: str):
     # linked conflict you can click into".
     conflict_res = client.client.query(
         f"""
-        SELECT c.id, v.severity, unit_id, excerpt FROM candidate_conflicts c
+        SELECT c.id, v.severity, unit_id, excerpt, v.id AS verdict_id FROM candidate_conflicts c
         LEFT JOIN investigation_verdicts v ON c.id = v.candidate_id
         ARRAY JOIN [c.prior_evidence_unit_id, c.current_evidence_unit_id] AS unit_id,
                    [c.prior_evidence_excerpt, c.current_evidence_excerpt] AS excerpt
@@ -331,7 +460,7 @@ def get_scenes(story_universe_id: str):
         """
     )
     conflict_by_unit_excerpt: Dict[tuple, Dict[str, Any]] = {
-        (row[2], row[3]): {"conflict_id": row[0], "severity": row[1]} for row in conflict_res.result_rows
+        (row[2], row[3]): {"conflict_id": row[0], "severity": row[1] if row[4] else None} for row in conflict_res.result_rows
     }
 
     events_res = client.client.query(
@@ -369,8 +498,9 @@ def get_scenes(story_universe_id: str):
 
 
 @app.get("/screenplay/{story_universe_id}/entities")
-def get_entities(story_universe_id: str):
+def get_entities(story_universe_id: str, user_id: str = Depends(get_current_user_id)):
     client = ClickHouseClient()
+    _authorize_story_universe(client, story_universe_id, user_id)
     entities_res = client.client.query(
         f"SELECT id, name, type FROM entities WHERE story_universe_id = '{story_universe_id}'"
     )
@@ -405,12 +535,13 @@ def _page_by_unit(client: ClickHouseClient, story_universe_id: str) -> Dict[str,
 
 
 @app.get("/screenplay/{story_universe_id}/conflicts")
-def get_conflicts(story_universe_id: str):
+def get_conflicts(story_universe_id: str, user_id: str = Depends(get_current_user_id)):
     client = ClickHouseClient()
+    _authorize_story_universe(client, story_universe_id, user_id)
     query = f"""
         SELECT c.id, c.entity_id, c.attribute, c.prior_evidence_unit_id, c.prior_evidence_excerpt,
                c.current_evidence_unit_id, c.current_evidence_excerpt, c.description,
-               v.status, v.severity, v.confidence
+               v.status, v.severity, v.confidence, v.id AS verdict_id
         FROM candidate_conflicts c
         LEFT JOIN investigation_verdicts v ON c.id = v.candidate_id
         WHERE c.story_universe_id = '{story_universe_id}'
@@ -422,6 +553,7 @@ def get_conflicts(story_universe_id: str):
     conflicts = []
     for r in res.result_rows:
         entity_id = r[1]
+        has_verdict = bool(r[11])
         conflicts.append({
             "id": r[0],
             "entity_id": entity_id,
@@ -434,9 +566,9 @@ def get_conflicts(story_universe_id: str):
             "current_excerpt": r[6],
             "current_page": pages.get(r[5]),
             "description": r[7],
-            "status": r[8] if r[8] else "uninvestigated",
-            "severity": r[9],
-            "confidence": r[10],
+            "status": r[8] if has_verdict else "uninvestigated",
+            "severity": r[9] if has_verdict else None,
+            "confidence": r[10] if has_verdict else None,
         })
     return conflicts
 
@@ -453,7 +585,7 @@ def _parse_investigation_steps(investigation_actions: List[str]) -> List[dict]:
 
 
 @app.get("/conflict/{conflict_id}/autopsy")
-def get_autopsy(conflict_id: str):
+def get_autopsy(conflict_id: str, user_id: str = Depends(get_current_user_id)):
     client = ClickHouseClient()
     c_res = client.client.query(f"SELECT * FROM candidate_conflicts WHERE id = '{conflict_id}'")
     if not c_res.result_rows:
@@ -461,6 +593,7 @@ def get_autopsy(conflict_id: str):
 
     c = c_res.result_rows[0]
     story_universe_id = c[1]
+    _authorize_story_universe(client, story_universe_id, user_id)
     entity_id = c[2]
     names = _entity_names(client, story_universe_id)
     pages = _page_by_unit(client, story_universe_id)
@@ -499,8 +632,14 @@ def get_autopsy(conflict_id: str):
 
 
 @app.post("/conflict/{conflict_id}/intentional")
-def mark_intentional(conflict_id: str):
+def mark_intentional(conflict_id: str, user_id: str = Depends(get_current_user_id)):
     from backend.story_state.models import InvestigationVerdict
+
+    client = ClickHouseClient()
+    c_res = client.client.query(f"SELECT story_universe_id FROM candidate_conflicts WHERE id = '{conflict_id}'")
+    if not c_res.result_rows:
+        raise HTTPException(status_code=404, detail="Conflict not found")
+    _authorize_story_universe(client, c_res.result_rows[0][0], user_id)
 
     verdict = InvestigationVerdict(
         id=f"verdict_manual_{conflict_id}",
@@ -511,5 +650,207 @@ def mark_intentional(conflict_id: str):
         confidence=1.0,
         investigation_actions=[json.dumps({"step": "verdict", "verdict": {"status": "intentional", "note": "Manual override"}})],
     )
-    ClickHouseClient().insert_investigation_verdicts([verdict])
+    client.insert_investigation_verdicts([verdict])
     return {"status": "success"}
+
+
+# -- Projects / versions / diff / report ---------------------------------
+
+
+@app.get("/projects")
+def list_projects(user_id: str = Depends(get_current_user_id)):
+    client = ClickHouseClient()
+    projects = client.list_projects(user_id)
+
+    result = []
+    for project_id, _user_id, title, created_at in projects:
+        versions = client.list_project_versions(project_id)
+        if not versions:
+            continue
+        latest = versions[-1]
+        latest_story_universe_id = latest[0]
+        verdict_counts = _verdict_counts_by_status(client, latest_story_universe_id)
+        if verdict_counts.get("verified", 0) > 0:
+            severity = "critical"
+        elif verdict_counts.get("uncertain", 0) > 0:
+            severity = "warning"
+        else:
+            severity = "resolved"
+        result.append({
+            "project_id": project_id,
+            "title": title,
+            "created_at": str(created_at),
+            "version_count": len(versions),
+            "latest_story_universe_id": latest_story_universe_id,
+            "latest_version_number": latest[2],
+            "severity": severity,
+        })
+    return result
+
+
+@app.get("/projects/{project_id}/versions")
+def list_versions(project_id: str, user_id: str = Depends(get_current_user_id)):
+    client = ClickHouseClient()
+    project = client.get_project(project_id)
+    if project is None or project[1] != user_id:
+        raise HTTPException(status_code=403, detail="You do not have access to this project.")
+
+    versions = client.list_project_versions(project_id)
+    return [
+        {
+            "story_universe_id": v[0],
+            "version_number": v[2],
+            "document_title": v[3],
+            "created_at": str(v[4]),
+        }
+        for v in versions
+    ]
+
+
+@app.get("/projects/{project_id}/versions/{version_number}/diff")
+def get_version_diff(project_id: str, version_number: int, user_id: str = Depends(get_current_user_id)):
+    """Compares this version's candidate_conflicts against the immediately
+    prior version's, joined on (entity_id, attribute) -- conflict/verdict IDs
+    are scoped per-upload and never match across versions, but entity_id is
+    now stable across a project's versions (see EntityRegistry's id_scope),
+    so that pair is the real join key."""
+    client = ClickHouseClient()
+    project = client.get_project(project_id)
+    if project is None or project[1] != user_id:
+        raise HTTPException(status_code=403, detail="You do not have access to this project.")
+
+    versions = {v[2]: v[0] for v in client.list_project_versions(project_id)}
+    if version_number not in versions:
+        raise HTTPException(status_code=404, detail="Unknown version_number for this project.")
+    current_id = versions[version_number]
+    prior_id = versions.get(version_number - 1)
+
+    def _conflict_rows(story_universe_id: str) -> Dict[tuple, dict]:
+        res = client.client.query(
+            f"""SELECT c.id, c.entity_id, c.attribute, c.description,
+                       c.prior_evidence_excerpt, c.current_evidence_excerpt,
+                       v.status, v.severity, c.prior_evidence_unit_id, c.current_evidence_unit_id,
+                       v.id AS verdict_id
+                FROM candidate_conflicts c
+                LEFT JOIN investigation_verdicts v ON c.id = v.candidate_id
+                WHERE c.story_universe_id = '{story_universe_id}'"""
+        )
+        names = _entity_names(client, story_universe_id)
+        rows = {}
+        for r in res.result_rows:
+            key = (r[1], r[2])
+            has_verdict = bool(r[10])
+            rows[key] = {
+                "id": r[0],
+                "entity_id": r[1],
+                "entity_name": names.get(r[1], r[1]),
+                "attribute": r[2],
+                "description": r[3],
+                "prior_excerpt": r[4],
+                "current_excerpt": r[5],
+                "status": r[6] if has_verdict else None,
+                "severity": r[7] if has_verdict else None,
+                "prior_unit_id": r[8],
+                "current_unit_id": r[9],
+            }
+        return rows
+
+    current_rows = _conflict_rows(current_id)
+
+    if prior_id is None:
+        diff = [{**row, "diff_status": "new"} for row in current_rows.values()]
+        return {
+            "has_previous": False,
+            "current_story_universe_id": current_id,
+            "prior_story_universe_id": None,
+            "conflicts": diff,
+            "entities_with_issues": list({row["entity_id"] for row in diff}),
+        }
+
+    prior_rows = _conflict_rows(prior_id)
+    current_keys = set(current_rows)
+    prior_keys = set(prior_rows)
+
+    diff = []
+    for key in current_keys & prior_keys:
+        diff.append({**current_rows[key], "diff_status": "recurring"})
+    for key in current_keys - prior_keys:
+        diff.append({**current_rows[key], "diff_status": "new"})
+    for key in prior_keys - current_keys:
+        # The transition no longer triggers the detector in this version --
+        # honestly, this means "not detected here anymore," not verified
+        # proof the narrative gap was intentionally fixed.
+        diff.append({**prior_rows[key], "diff_status": "resolved_in_version"})
+
+    return {
+        "has_previous": True,
+        "current_story_universe_id": current_id,
+        "prior_story_universe_id": prior_id,
+        "conflicts": diff,
+        "entities_with_issues": list({
+            row["entity_id"] for row in diff if row["diff_status"] in ("recurring", "new")
+        }),
+    }
+
+
+@app.get("/screenplay/{story_universe_id}/report")
+def get_report(story_universe_id: str, user_id: str = Depends(get_current_user_id)):
+    """Assembles a real Markdown findings report from the same data the
+    /scenes, /entities, /conflicts endpoints already query -- no separate
+    report-generation logic to keep in sync with the actual pipeline output."""
+    client = ClickHouseClient()
+    _authorize_story_universe(client, story_universe_id, user_id)
+
+    units = client.client.query(
+        f"""SELECT id, title, sequence_number FROM narrative_units
+            WHERE story_universe_id = '{story_universe_id}' ORDER BY sequence_number"""
+    ).result_rows
+    entities = client.client.query(
+        f"SELECT id, name, type FROM entities WHERE story_universe_id = '{story_universe_id}'"
+    ).result_rows
+    conflicts_res = client.client.query(
+        f"""SELECT c.id, c.entity_id, c.attribute, c.description,
+                   c.prior_evidence_excerpt, c.current_evidence_excerpt,
+                   v.status, v.severity, v.explanation, v.confidence, v.suggested_fix, v.id AS verdict_id
+            FROM candidate_conflicts c
+            LEFT JOIN investigation_verdicts v ON c.id = v.candidate_id
+            WHERE c.story_universe_id = '{story_universe_id}'"""
+    ).result_rows
+    names = _entity_names(client, story_universe_id)
+
+    lines = [f"# StoryTrace Continuity Report", "", f"`story_universe_id`: `{story_universe_id}`", ""]
+    lines.append(f"## Overview")
+    lines.append(f"- {len(units)} narrative units")
+    lines.append(f"- {len(entities)} tracked entities")
+    lines.append(f"- {len(conflicts_res)} detected conflicts")
+    lines.append("")
+
+    lines.append("## Entities")
+    for entity_id, name, etype in entities:
+        lines.append(f"- **{name}** ({etype})")
+    lines.append("")
+
+    lines.append("## Findings")
+    if not conflicts_res:
+        lines.append("No continuity conflicts were detected.")
+    for r in conflicts_res:
+        entity_id, attribute, description = r[1], r[2], r[3]
+        has_verdict = bool(r[11])
+        status = r[6] if has_verdict else "uninvestigated"
+        severity = r[7] if has_verdict else "n/a"
+        explanation = r[8] if has_verdict else ""
+        suggested_fix = r[10] if has_verdict else ""
+        lines.append(f"### {names.get(entity_id, entity_id)} -- {attribute}")
+        lines.append(f"- **Status**: {status} ({severity})")
+        lines.append(f"- **Description**: {description}")
+        lines.append(f"- **Prior**: \"{r[4]}\"")
+        lines.append(f"- **Current**: \"{r[5]}\"")
+        if explanation:
+            lines.append(f"- **Investigation**: {explanation}")
+        if suggested_fix:
+            lines.append(f"- **Suggested fix**: {suggested_fix}")
+        lines.append("")
+
+    from fastapi.responses import PlainTextResponse
+
+    return PlainTextResponse("\n".join(lines), media_type="text/markdown")
