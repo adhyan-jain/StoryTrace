@@ -13,10 +13,15 @@ export function ChapterList({
   units,
   activeUnitId,
   onSelect,
+  diffColorByUnit,
 }: {
   units: NarrativeUnit[];
   activeUnitId: string | null;
   onSelect: (unitId: string) => void;
+  /** When set (a version comparison is active), every unit gets a dot --
+   * red/orange from the map when the unit has a diff finding, green
+   * otherwise -- instead of only showing a dot for units with a severity. */
+  diffColorByUnit?: Record<string, string>;
 }) {
   return (
     <div className="flex-1 overflow-y-auto">
@@ -41,12 +46,20 @@ export function ChapterList({
             >
               {unit.title}
             </span>
-            {unit.severity && (
+            {diffColorByUnit ? (
               <span
                 className="w-1.5 h-1.5 rounded-full flex-shrink-0"
-                style={{ backgroundColor: DOT_COLOR[unit.severity] }}
+                style={{ backgroundColor: diffColorByUnit[unit.unit_id] ?? "var(--severity-resolved)" }}
                 aria-hidden="true"
               />
+            ) : (
+              unit.severity && (
+                <span
+                  className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+                  style={{ backgroundColor: DOT_COLOR[unit.severity] }}
+                  aria-hidden="true"
+                />
+              )
             )}
           </button>
         );

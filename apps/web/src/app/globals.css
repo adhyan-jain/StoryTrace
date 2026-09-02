@@ -14,6 +14,12 @@
   --severity-info: #6366f1;
   --severity-resolved: #22c55e;
   --severity-uncertain: #64748b;
+  /* Cross-version diff status: an issue that no longer triggers detection in
+     a newer draft. Distinct from --severity-resolved (an in-document
+     Investigation Agent verdict) -- different concept, same green family
+     would be confusing to distinguish at a glance, so this gets its own hue. */
+  --diff-resolved: #f59e0b;
+  --diff-resolved-bg: #78350f;
 }
 
 @theme inline {
@@ -30,6 +36,8 @@
   --color-severity-info: var(--severity-info);
   --color-severity-resolved: var(--severity-resolved);
   --color-severity-uncertain: var(--severity-uncertain);
+  --color-diff-resolved: var(--diff-resolved);
+  --color-diff-resolved-bg: var(--diff-resolved-bg);
   --font-display: var(--font-display);
   --font-reader: var(--font-reader);
   --font-mono: var(--font-mono);
