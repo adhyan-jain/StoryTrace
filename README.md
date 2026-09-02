@@ -13,6 +13,13 @@ StoryTrace is an agentic, multi-document narrative continuity engine. It convert
 5.  **Investigation Agent**: ONE genuinely agentic component (using ClickHouse MCP) that investigates conflicts and outputs an `InvestigationVerdict`.
 6.  **Continuity Autopsy**: The user-facing presentation of an `InvestigationVerdict` — not a separate agent or stage. See [docs/architecture.md](docs/architecture.md).
 7.  **Frontend**: Next.js UI providing a premium professional filmmaking tool experience.
+8.  **Auth & Projects**: Email/password + JWT auth (`backend/auth.py`) gates every route. A `project` groups multiple document uploads as *versions* of the same work — re-uploading a revised draft under the same `project_id` compares its detected conflicts against the previous version (`GET /projects/{id}/versions/{n}/diff`), joined on `(entity_id, attribute)` rather than any per-upload ID, since `EntityRegistry` is now scoped by `project_id` so the same character keeps the same `entity_id` across versions.
+
+## Auth
+
+Every route requires `Authorization: Bearer <token>` from `POST /auth/signup` or `POST /auth/login`. Passwords are bcrypt-hashed; JWTs are HS256-signed with `JWT_SECRET` (set your own in `.env`, generated via `openssl rand -hex 32` — never commit a real value). Every project/version/conflict/report route checks the caller owns the resource before returning anything.
+
+Known limitation: `users`/`projects` live in ClickHouse (not a real OLTP store), so the signup email-uniqueness check is check-then-insert rather than a database-enforced unique constraint — a narrow race is possible between two near-simultaneous signups for the same address. Acceptable for this project's scope; a production deployment would use a real relational store for these tables.
 
 ## Running the project
 
@@ -26,7 +33,8 @@ python3 -m venv venv && source venv/bin/activate
 pip install -r requirements.txt
 
 # 3. Configure environment
-cp .env.example .env    # then set GEMINI_API_KEY, or leave MODEL_PROVIDER=ollama for local-only
+cp .env.example .env    # then set GEMINI_API_KEY (or leave MODEL_PROVIDER=ollama for local-only)
+                         # and JWT_SECRET (openssl rand -hex 32) -- required for any auth/upload call
 
 # 4. Local LLM (optional, for MODEL_PROVIDER=ollama -- the default, no API key needed)
 ollama pull qwen2.5:7b
@@ -38,7 +46,7 @@ uvicorn backend.api.main:app --reload --port 8000
 cd apps/web && npm install && npm run dev
 ```
 
-Upload a `.pdf`, `.epub`, `.txt`, or `.fountain` document via `POST /screenplay/upload` (or the web UI) to kick off the full parse -> extract -> detect -> investigate pipeline as a background job; poll `GET /screenplay/{id}/overview` for progress.
+Sign up (`POST /auth/signup`) and log in via the web UI, then upload a `.pdf`, `.epub`, `.txt`, or `.fountain` document (`POST /screenplay/upload`) to kick off the full parse -> extract -> detect -> investigate pipeline as a background job; poll `GET /screenplay/{id}/overview` for progress. Uploading again with the same `project_id` adds a new version to that project instead of starting a new one, and `GET /projects/{id}/versions/{n}/diff` compares it against the version before it. `FRONTEND_ORIGIN` (default `http://localhost:3000`) controls which origin CORS allows -- set it to your deployed frontend's URL in production.
 
 To run the pipeline directly from the CLI against a plain-text document instead of through the API:
 
