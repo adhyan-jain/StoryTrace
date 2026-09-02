@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import clsx from "clsx";
 import { uploadDocument, ApiError } from "@/lib/api";
 
-const ACCEPTED_EXTENSIONS = [".pdf", ".epub", ".fountain"];
+const ACCEPTED_EXTENSIONS = [".pdf", ".epub", ".fountain", ".txt"];
 
 function formatSize(bytes: number): string {
   if (bytes < 1024) return `${bytes} B`;
@@ -28,7 +28,16 @@ function DocumentIcon() {
   );
 }
 
-export function DropZone() {
+interface DropZoneProps {
+  /** When set, the upload becomes a new version of this project instead of
+   * a new project -- used by the "Upload new version" flow on a project's
+   * page. Navigates to /projects/[id] afterward instead of /analyze/[id]
+   * so the new version shows up in the version list. */
+  projectId?: string;
+  onUploaded?: (result: { story_universe_id: string; project_id: string }) => void;
+}
+
+export function DropZone({ projectId, onUploaded }: DropZoneProps = {}) {
   const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
   const [file, setFile] = useState<File | null>(null);
@@ -38,7 +47,7 @@ export function DropZone() {
 
   const handleFile = useCallback((candidate: File) => {
     if (!isAccepted(candidate.name)) {
-      setError("Unsupported file type. Please upload a PDF, EPUB, or Fountain file.");
+      setError("Unsupported file type. Please upload a PDF, EPUB, Fountain, or plain text file.");
       setFile(null);
       return;
     }
@@ -61,9 +70,15 @@ export function DropZone() {
     setUploading(true);
     setError(null);
     try {
-      const { story_universe_id } = await uploadDocument(file);
-      localStorage.setItem("storytrace_active_id", story_universe_id);
-      router.push(`/analyze/${story_universe_id}`);
+      const result = await uploadDocument(file, projectId);
+      if (onUploaded) {
+        onUploaded(result);
+      } else if (projectId) {
+        router.push(`/projects/${projectId}`);
+      } else {
+        localStorage.setItem("storytrace_active_id", result.story_universe_id);
+        router.push(`/analyze/${result.story_universe_id}`);
+      }
     } catch (err) {
       const message =
         err instanceof ApiError
@@ -94,7 +109,7 @@ export function DropZone() {
           <>
             <DocumentIcon />
             <p className="text-[var(--text-primary)] text-sm">Drop your screenplay or novel here</p>
-            <p className="text-[var(--text-secondary)] text-xs">PDF, EPUB, Fountain (.fountain)</p>
+            <p className="text-[var(--text-secondary)] text-xs">PDF, EPUB, Fountain (.fountain), or plain text (.txt)</p>
             <button
               onClick={() => inputRef.current?.click()}
               className="mt-2 px-4 py-2 rounded-md text-sm font-medium text-white bg-[var(--accent-blue)] hover:opacity-90 transition-opacity cursor-pointer"
