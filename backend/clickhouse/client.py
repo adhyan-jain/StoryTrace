@@ -15,6 +15,71 @@ class ClickHouseClient:
             host=host, port=port, user=user, password=password, database=database
         )
 
+    # -- Auth / projects / versions -----------------------------------
+
+    def get_user_by_email(self, email: str) -> Any:
+        rows = self.client.query(
+            "SELECT id, email, password_hash, created_at FROM users WHERE email = {email:String} LIMIT 1",
+            parameters={"email": email},
+        ).result_rows
+        return rows[0] if rows else None
+
+    def create_user(self, user_id: str, email: str, password_hash: str) -> None:
+        self.client.insert(
+            "users",
+            [[user_id, email, password_hash]],
+            column_names=["id", "email", "password_hash"],
+        )
+
+    def get_user_by_id(self, user_id: str) -> Any:
+        rows = self.client.query(
+            "SELECT id, email, created_at FROM users WHERE id = {id:String} LIMIT 1",
+            parameters={"id": user_id},
+        ).result_rows
+        return rows[0] if rows else None
+
+    def create_project(self, project_id: str, user_id: str, title: str) -> None:
+        self.client.insert(
+            "projects",
+            [[project_id, user_id, title]],
+            column_names=["id", "user_id", "title"],
+        )
+
+    def get_project(self, project_id: str) -> Any:
+        rows = self.client.query(
+            "SELECT id, user_id, title, created_at FROM projects WHERE id = {id:String} LIMIT 1",
+            parameters={"id": project_id},
+        ).result_rows
+        return rows[0] if rows else None
+
+    def list_projects(self, user_id: str) -> List[Any]:
+        return self.client.query(
+            "SELECT id, user_id, title, created_at FROM projects WHERE user_id = {user_id:String} ORDER BY created_at DESC",
+            parameters={"user_id": user_id},
+        ).result_rows
+
+    def create_project_version(self, version_id: str, project_id: str, version_number: int, document_title: str) -> None:
+        self.client.insert(
+            "project_versions",
+            [[version_id, project_id, version_number, document_title]],
+            column_names=["id", "project_id", "version_number", "document_title"],
+        )
+
+    def list_project_versions(self, project_id: str) -> List[Any]:
+        return self.client.query(
+            """SELECT id, project_id, version_number, document_title, created_at
+               FROM project_versions WHERE project_id = {project_id:String}
+               ORDER BY version_number ASC""",
+            parameters={"project_id": project_id},
+        ).result_rows
+
+    def get_latest_version_number(self, project_id: str) -> int:
+        rows = self.client.query(
+            "SELECT max(version_number) FROM project_versions WHERE project_id = {project_id:String}",
+            parameters={"project_id": project_id},
+        ).result_rows
+        return rows[0][0] if rows and rows[0][0] is not None else 0
+
     def upsert_processing_status(
         self,
         story_universe_id: str,

@@ -73,6 +73,34 @@ CREATE TABLE IF NOT EXISTS storytrace.processing_status (
 ) ENGINE = ReplacingMergeTree(updated_at)
 ORDER BY (story_universe_id);
 
+CREATE TABLE IF NOT EXISTS storytrace.users (
+    id String,
+    email String,
+    password_hash String,
+    created_at DateTime DEFAULT now()
+) ENGINE = ReplacingMergeTree(created_at)
+ORDER BY (email);
+
+CREATE TABLE IF NOT EXISTS storytrace.projects (
+    id String,
+    user_id String,
+    title String,
+    created_at DateTime DEFAULT now()
+) ENGINE = MergeTree()
+ORDER BY (user_id, created_at);
+
+CREATE TABLE IF NOT EXISTS storytrace.project_versions (
+    -- id == the story_universe_id that version's pipeline run is keyed by,
+    -- so every existing narrative_units/state_events/candidate_conflicts
+    -- query (all scoped by story_universe_id) needs no change.
+    id String,
+    project_id String,
+    version_number UInt32,
+    document_title String,
+    created_at DateTime DEFAULT now()
+) ENGINE = MergeTree()
+ORDER BY (project_id, version_number);
+
 CREATE TABLE IF NOT EXISTS storytrace.investigation_verdicts (
     id String,
     candidate_id String,

@@ -9,8 +9,15 @@ class Entity(BaseModel):
     aliases: List[str]
 
 class EntityRegistry:
-    def __init__(self, story_universe_id: str):
+    def __init__(self, story_universe_id: str, id_scope: str | None = None):
+        """`id_scope` is what entity_id is derived from -- pass a project_id
+        here (not story_universe_id) when this document is one version of a
+        multi-version project, so the same character resolves to the SAME
+        entity_id across versions and cross-version diffing has a stable
+        join key. Defaults to story_universe_id (old, single-document
+        behavior) when no project exists, e.g. the CLI pipeline scripts."""
         self.story_universe_id = story_universe_id
+        self.id_scope = id_scope or story_universe_id
         self.entities: Dict[str, Entity] = {}
 
     def normalize_name(self, name: str) -> str:
@@ -25,7 +32,7 @@ class EntityRegistry:
                 return entity_id
 
         # If not found, create a new one deterministically
-        entity_id = f"{self.story_universe_id}_{entity_type}_{normalized.replace(' ', '_')}".lower()
+        entity_id = f"{self.id_scope}_{entity_type}_{normalized.replace(' ', '_')}".lower()
         self.entities[entity_id] = Entity(
             id=entity_id,
             story_universe_id=self.story_universe_id,
