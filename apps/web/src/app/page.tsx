@@ -1,31 +1,17 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { DropZone } from "@/components/Upload/DropZone";
+import { useAuth } from "@/lib/auth";
 
 export default function Home() {
   const router = useRouter();
-  const [checked, setChecked] = useState(false);
+  const { user, loading } = useAuth();
 
   useEffect(() => {
-    const activeId = localStorage.getItem("storytrace_active_id");
-    if (activeId) {
-      router.replace(`/analyze/${activeId}`);
-    } else {
-      setChecked(true);
-    }
-  }, [router]);
+    if (loading) return;
+    router.replace(user ? "/dashboard" : "/login");
+  }, [loading, user, router]);
 
-  if (!checked) return null;
-
-  return (
-    <div className="min-h-screen flex flex-col items-center justify-center gap-12 bg-[var(--bg-base)] px-6">
-      <div className="text-center">
-        <h1 className="text-3xl font-semibold text-[var(--text-primary)] tracking-tight">StoryTrace</h1>
-        <p className="text-[var(--text-secondary)] text-sm mt-2">Narrative continuity intelligence.</p>
-      </div>
-      <DropZone />
-    </div>
-  );
+  return null;
 }

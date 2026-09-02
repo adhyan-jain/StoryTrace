@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
+import { AuthProvider } from "@/lib/auth";
 import "./globals.css";
 
 const displayFont = Inter({
@@ -30,7 +31,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         "--font-mono": "var(--font-mono-family), ui-monospace, monospace",
       }}
     >
-      <body className="min-h-full">{children}</body>
+      <body className="min-h-full">
+        <AuthProvider>{children}</AuthProvider>
+      </body>
     </html>
   );
 }

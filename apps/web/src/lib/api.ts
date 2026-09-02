@@ -1,10 +1,17 @@
 import type {
+  AuthResponse,
   AutopsyResponse,
   ConflictWithVerdict,
   Entity,
   NarrativeUnit,
   OverviewResponse,
+  ProjectSummary,
+  ProjectVersion,
+  UploadResponse,
+  User,
+  VersionDiffResponse,
 } from "./types";
+import { getStoredToken } from "./auth";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
 
@@ -19,9 +26,13 @@ class ApiError extends Error {
 }
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
+  const token = getStoredToken();
+  const headers = new Headers(init?.headers);
+  if (token) headers.set("Authorization", `Bearer ${token}`);
+
   let res: Response;
   try {
-    res = await fetch(`${API_BASE}${path}`, init);
+    res = await fetch(`${API_BASE}${path}`, { ...init, headers });
   } catch {
     throw new ApiError(`Could not reach the StoryTrace API at ${API_BASE}. Is the backend running?`, 0);
   }
@@ -35,12 +46,40 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
     }
     throw new ApiError(detail, res.status);
   }
+  if (res.headers.get("content-type")?.includes("text/markdown")) {
+    return res.text() as Promise<T>;
+  }
   return res.json() as Promise<T>;
 }
 
-export async function uploadDocument(file: File): Promise<{ story_universe_id: string }> {
+// -- Auth --------------------------------------------------------------
+
+export async function signup(email: string, password: string): Promise<AuthResponse> {
+  return request("/auth/signup", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, password }),
+  });
+}
+
+export async function login(email: string, password: string): Promise<AuthResponse> {
+  return request("/auth/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, password }),
+  });
+}
+
+export async function getMe(): Promise<User> {
+  return request("/auth/me");
+}
+
+// -- Documents / pipeline ------------------------------------------------
+
+export async function uploadDocument(file: File, projectId?: string): Promise<UploadResponse> {
   const form = new FormData();
   form.append("file", file);
+  if (projectId) form.append("project_id", projectId);
   return request("/screenplay/upload", { method: "POST", body: form });
 }
 
@@ -66,6 +105,24 @@ export async function getAutopsy(conflictId: string): Promise<AutopsyResponse> {
 
 export async function markIntentional(conflictId: string): Promise<void> {
   await request(`/conflict/${conflictId}/intentional`, { method: "POST" });
+}
+
+export async function getReport(id: string): Promise<string> {
+  return request(`/screenplay/${id}/report`);
+}
+
+// -- Projects / versions / diff ------------------------------------------
+
+export async function listProjects(): Promise<ProjectSummary[]> {
+  return request("/projects");
+}
+
+export async function listVersions(projectId: string): Promise<ProjectVersion[]> {
+  return request(`/projects/${projectId}/versions`);
+}
+
+export async function getVersionDiff(projectId: string, versionNumber: number): Promise<VersionDiffResponse> {
+  return request(`/projects/${projectId}/versions/${versionNumber}/diff`);
 }
 
 export { ApiError };

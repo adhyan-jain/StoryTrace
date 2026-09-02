@@ -12,6 +12,71 @@ export interface OverviewResponse {
   status: PipelineStatus;
   error: string | null;
   document_title: string | null;
+  story_universe_id?: string;
+  title?: string | null;
+  entities_tracked?: number;
+  verified_conflicts?: number;
+  resolved_conflicts?: number;
+  uncertain_conflicts?: number;
+}
+
+export interface User {
+  id: string;
+  email: string;
+  created_at: string;
+}
+
+export interface AuthResponse {
+  access_token: string;
+  user: User;
+}
+
+export interface UploadResponse {
+  story_universe_id: string;
+  project_id: string;
+  version_number: number;
+}
+
+export interface ProjectSummary {
+  project_id: string;
+  title: string;
+  created_at: string;
+  version_count: number;
+  latest_story_universe_id: string;
+  latest_version_number: number;
+  severity: "critical" | "warning" | "resolved";
+}
+
+export interface ProjectVersion {
+  story_universe_id: string;
+  version_number: number;
+  document_title: string;
+  created_at: string;
+}
+
+export type DiffStatus = "new" | "recurring" | "resolved_in_version";
+
+export interface DiffConflict {
+  id: string;
+  entity_id: string;
+  entity_name: string;
+  attribute: string;
+  description: string;
+  prior_excerpt: string;
+  current_excerpt: string;
+  status: VerdictStatus | null;
+  severity: Severity | null;
+  diff_status: DiffStatus;
+  prior_unit_id: string;
+  current_unit_id: string;
+}
+
+export interface VersionDiffResponse {
+  has_previous: boolean;
+  current_story_universe_id: string;
+  prior_story_universe_id: string | null;
+  conflicts: DiffConflict[];
+  entities_with_issues: string[];
 }
 
 export interface UnitStateEvent {
