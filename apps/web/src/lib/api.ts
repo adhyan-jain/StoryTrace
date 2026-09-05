@@ -64,8 +64,12 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
     }
     throw new ApiError(detail, res.status);
   }
-  if (res.headers.get("content-type")?.includes("text/markdown")) {
+  const contentType = res.headers.get("content-type") ?? "";
+  if (contentType.includes("text/markdown")) {
     return res.text() as Promise<T>;
+  }
+  if (contentType.includes("application/pdf")) {
+    return res.blob() as Promise<T>;
   }
   return res.json() as Promise<T>;
 }
@@ -125,7 +129,7 @@ export async function markIntentional(conflictId: string): Promise<void> {
   await request(`/conflict/${conflictId}/intentional`, { method: "POST" });
 }
 
-export async function getReport(id: string): Promise<string> {
+export async function getReport(id: string): Promise<Blob> {
   return request(`/screenplay/${id}/report`);
 }
 

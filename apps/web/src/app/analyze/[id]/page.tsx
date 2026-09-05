@@ -34,12 +34,11 @@ function Header({
 
   async function handleDownloadReport() {
     try {
-      const markdown = await getReport(id);
-      const blob = new Blob([markdown], { type: "text/markdown" });
+      const blob = await getReport(id);
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = `storytrace-report-${id}.md`;
+      a.download = `storytrace-report-${id}.pdf`;
       a.click();
       URL.revokeObjectURL(url);
     } catch {

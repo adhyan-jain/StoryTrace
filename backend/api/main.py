@@ -900,11 +900,21 @@ def get_version_diff(project_id: str, version_number: int, user_id: str = Depend
     }
 
 
+def _pdf_text(s: str) -> str:
+    """fpdf2's built-in Helvetica font is latin-1 only -- narrative text
+    (curly quotes, em dashes, names with accents) routinely isn't. Replace
+    what doesn't encode rather than let the whole report fail to render."""
+    return s.encode("latin-1", errors="replace").decode("latin-1")
+
+
 @app.get("/screenplay/{story_universe_id}/report")
 def get_report(story_universe_id: str, user_id: str = Depends(get_current_user_id)):
-    """Assembles a real Markdown findings report from the same data the
+    """Assembles a real PDF findings report from the same data the
     /scenes, /entities, /conflicts endpoints already query -- no separate
     report-generation logic to keep in sync with the actual pipeline output."""
+    from fpdf import FPDF
+    from fastapi.responses import Response
+
     client = ClickHouseClient()
     _authorize_story_universe(client, story_universe_id, user_id)
 
@@ -925,21 +935,45 @@ def get_report(story_universe_id: str, user_id: str = Depends(get_current_user_i
     ).result_rows
     names = _entity_names(client, story_universe_id)
 
-    lines = [f"# StoryTrace Continuity Report", "", f"`story_universe_id`: `{story_universe_id}`", ""]
-    lines.append(f"## Overview")
-    lines.append(f"- {len(units)} narrative units")
-    lines.append(f"- {len(entities)} tracked entities")
-    lines.append(f"- {len(conflicts_res)} detected conflicts")
-    lines.append("")
+    pdf = FPDF()
+    pdf.set_auto_page_break(auto=True, margin=18)
+    pdf.add_page()
 
-    lines.append("## Entities")
-    for entity_id, name, etype in entities:
-        lines.append(f"- **{name}** ({etype})")
-    lines.append("")
+    def line(text: str, size: int = 11, bold: bool = False, mono: bool = False, gray: bool = False, h: int = 6) -> None:
+        # fpdf2's multi_cell(w=0, ...) uses "remaining width from the
+        # CURRENT x position" -- after a previous multi_cell call, x isn't
+        # guaranteed to still be at the left margin, so a later call can be
+        # left with ~0 width and raise "Not enough horizontal space to
+        # render a single character". Resetting x explicitly before every
+        # call, rather than trusting the cursor fpdf left behind, is what
+        # actually fixes that (a real failure hit on the very first report
+        # generated after switching this endpoint from Markdown to PDF).
+        pdf.set_x(pdf.l_margin)
+        pdf.set_font("Courier" if mono else "Helvetica", "B" if bold else "", size)
+        if gray:
+            pdf.set_text_color(110, 110, 110)
+        pdf.multi_cell(pdf.epw, h, _pdf_text(text))
+        if gray:
+            pdf.set_text_color(0, 0, 0)
 
-    lines.append("## Findings")
+    line("StoryTrace Continuity Report", size=18, bold=True, h=10)
+    line(f"story_universe_id: {story_universe_id}", size=9, mono=True, gray=True)
+    pdf.ln(2)
+
+    line("Overview", size=14, bold=True, h=8)
+    line(f"- {len(units)} narrative units")
+    line(f"- {len(entities)} tracked entities")
+    line(f"- {len(conflicts_res)} detected conflicts")
+    pdf.ln(4)
+
+    line("Entities", size=14, bold=True, h=8)
+    for _entity_id, name, etype in entities:
+        line(f"- {name} ({etype})")
+    pdf.ln(4)
+
+    line("Findings", size=14, bold=True, h=8)
     if not conflicts_res:
-        lines.append("No continuity conflicts were detected.")
+        line("No continuity conflicts were detected.")
     for r in conflicts_res:
         entity_id, attribute, description = r[1], r[2], r[3]
         has_verdict = bool(r[11])
@@ -947,17 +981,21 @@ def get_report(story_universe_id: str, user_id: str = Depends(get_current_user_i
         severity = r[7] if has_verdict else "n/a"
         explanation = r[8] if has_verdict else ""
         suggested_fix = r[10] if has_verdict else ""
-        lines.append(f"### {names.get(entity_id, entity_id)} -- {attribute}")
-        lines.append(f"- **Status**: {status} ({severity})")
-        lines.append(f"- **Description**: {description}")
-        lines.append(f"- **Prior**: \"{r[4]}\"")
-        lines.append(f"- **Current**: \"{r[5]}\"")
+
+        pdf.ln(2)
+        line(f"{names.get(entity_id, entity_id)} -- {attribute}", size=12, bold=True, h=7)
+        line(f"Status: {status} ({severity})", size=10)
+        line(f"Description: {description}", size=10)
+        line(f'Prior: "{r[4]}"', size=10)
+        line(f'Current: "{r[5]}"', size=10)
         if explanation:
-            lines.append(f"- **Investigation**: {explanation}")
+            line(f"Investigation: {explanation}", size=10)
         if suggested_fix:
-            lines.append(f"- **Suggested fix**: {suggested_fix}")
-        lines.append("")
+            line(f"Suggested fix: {suggested_fix}", size=10)
 
-    from fastapi.responses import PlainTextResponse
-
-    return PlainTextResponse("\n".join(lines), media_type="text/markdown")
+    pdf_bytes = bytes(pdf.output())
+    return Response(
+        content=pdf_bytes,
+        media_type="application/pdf",
+        headers={"Content-Disposition": f'attachment; filename="storytrace-report-{story_universe_id}.pdf"'},
+    )
