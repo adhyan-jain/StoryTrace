@@ -152,6 +152,13 @@ export function DropZone({ projectId, onUploaded }: DropZoneProps = {}) {
         )}
       </div>
       {error && <p className="text-[var(--severity-critical)] text-sm max-w-[600px] text-center">{error}</p>}
+      {file && !error && (
+        <p className="text-[var(--text-muted)] text-xs max-w-[600px] text-center">
+          Full analysis typically takes 3–8 minutes for a feature-length screenplay (longer for a full novel) — the
+          agent reads every scene, then investigates each conflict it flags. It's safe to navigate away; processing
+          continues in the background and you can check back on this project's page.
+        </p>
+      )}
     </div>
   );
 }
