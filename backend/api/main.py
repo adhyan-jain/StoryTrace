@@ -7,9 +7,12 @@ from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional
 
 import fitz
-from fastapi import BackgroundTasks, Depends, FastAPI, Form, HTTPException, UploadFile
+from fastapi import BackgroundTasks, Depends, FastAPI, Form, HTTPException, Request, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, EmailStr
+from slowapi import Limiter, _rate_limit_exceeded_handler
+from slowapi.errors import RateLimitExceeded
+from slowapi.util import get_remote_address
 
 from backend.agent.investigator import InvestigationAgent
 from backend.auth import (
@@ -36,6 +39,7 @@ from backend.llm.client import GeminiProvider
 from backend.llm.ollama import OllamaProvider
 from backend.pipeline.entity_resolution import EntityRegistry
 from backend.pipeline.state_extraction import extract_state_events, write_state_events
+from backend.seed_demo_projects import seed_demo_projects_for_user
 
 
 def _detect_document_parser(file_path: str):
@@ -69,6 +73,15 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Per-IP limiter for the unauthenticated auth endpoints (login/signup are the
+# only routes an attacker can hit without a token, so they're the only ones
+# that need brute-force throttling). Keyed by remote address rather than
+# email/user, since the attack this guards against is credential stuffing
+# from one source, not abuse of one account.
+limiter = Limiter(key_func=get_remote_address)
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
 # clickhouse_connect's HTTP client can't run concurrent queries on one
 # session (raises ProgrammingError) -- the frontend fires /scenes,
@@ -121,7 +134,8 @@ class AuthResponse(BaseModel):
 
 
 @app.post("/auth/signup", response_model=AuthResponse)
-def signup(req: SignupRequest):
+@limiter.limit("5/minute")
+def signup(request: Request, req: SignupRequest):
     if len(req.password) < 8:
         raise HTTPException(status_code=400, detail="Password must be at least 8 characters.")
     client = ClickHouseClient()
@@ -135,6 +149,30 @@ def signup(req: SignupRequest):
 
     user_id = new_id()
     client.create_user(user_id, req.email, hash_password(req.password))
+
+    # Post-insert re-check: ReplacingMergeTree hasn't merged duplicate rows
+    # yet at this point, so a plain SELECT (no FINAL) still sees every row
+    # inserted for this email, including one from a concurrent request that
+    # slipped past the pre-insert check above. Deterministically pick the
+    # earliest (created_at, then id) as the winner; if it isn't the row this
+    # request just wrote, this request lost the race and must not hand back
+    # a token for an account that won't end up owning the email. This closes
+    # the window to "two inserts land within the same query's visibility",
+    # not zero -- a real unique constraint is not available on this table
+    # engine, so a vanishingly rare double-signup is an accepted residual
+    # risk, not a fixed one.
+    winner_id = client.get_earliest_user_id_for_email(req.email)
+    if winner_id != user_id:
+        raise HTTPException(status_code=409, detail="An account with this email already exists.")
+
+    # Every new account starts with the demo projects (pre-run, results
+    # included) so the dashboard isn't empty on first login -- see
+    # backend/seed_demo_projects.py and docs/deployment-improvements.md.
+    try:
+        seed_demo_projects_for_user(client, user_id)
+    except Exception:
+        pass  # demo seeding is a nice-to-have; must never block real signup
+
     token = create_access_token(user_id, req.email)
     row = client.get_user_by_id(user_id)
     return AuthResponse(
@@ -144,7 +182,8 @@ def signup(req: SignupRequest):
 
 
 @app.post("/auth/login", response_model=AuthResponse)
-def login(req: LoginRequest):
+@limiter.limit("5/minute")
+def login(request: Request, req: LoginRequest):
     client = ClickHouseClient()
     row = client.get_user_by_email(req.email)
     # Same generic error whether the email doesn't exist or the password is

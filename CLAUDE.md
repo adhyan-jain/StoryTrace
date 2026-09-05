@@ -30,7 +30,21 @@ backend/
   clickhouse/      # State Engine connections
   candidate_detection/ # SQL window functions
   agent/           # Investigation Agent
-  api/             # FastAPI backend
+  api/             # FastAPI backend (rate-limited auth via slowapi)
+  auth.py          # Signup/login, JWT issuance
 apps/
   web/             # Next.js Continuity Autopsy UI
+    src/lib/api.ts   # Shared API client; 401 -> session-expiry redirect to /login
+    src/lib/auth.tsx # Auth state/provider
+tests/
+  unit/            # pytest (FastAPI TestClient) — auth, projects, diff, report
+Dockerfile          # Backend image (uvicorn)
+apps/web/Dockerfile # Frontend image (Next.js standalone build)
+docker-compose.yml  # clickhouse + backend + web, see README Deployment section
 ```
+
+## Deployment Notes
+- `docker compose up --build` runs ClickHouse, backend, and web together; see README's Deployment section for required env vars.
+- Login/signup are rate-limited (slowapi, in-memory per-process — not shared across replicas without Redis).
+- ClickHouse has no true unique constraint; signup narrows (not eliminates) the duplicate-email race via a re-check-after-insert — see the comment in `backend/api/main.py`'s signup handler.
+- The frontend's `src/lib/api.ts` treats a 401 on an authenticated request as session expiry (clears token, redirects to `/login`), distinct from a login-attempt 401.
