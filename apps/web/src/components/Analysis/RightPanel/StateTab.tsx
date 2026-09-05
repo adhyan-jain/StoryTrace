@@ -61,7 +61,7 @@ export function StateTab({ units, activeUnit }: { units: NarrativeUnit[]; active
     <div className="flex-1 overflow-y-auto p-4 flex flex-col gap-4">
       {state.map((entity) => (
         <div key={entity.entityName}>
-          <p className="text-sm font-medium text-[var(--text-primary)] mb-1.5">{entity.entityName}</p>
+          <p className="font-[family-name:var(--font-display)] font-semibold text-sm text-[var(--text-primary)] mb-1.5">{entity.entityName}</p>
           <div className="flex flex-col gap-1 pl-3 border-l border-[var(--bg-border)]">
             {entity.attributes.map((attr) => (
               <div key={attr.attribute} className="flex items-baseline justify-between gap-3">

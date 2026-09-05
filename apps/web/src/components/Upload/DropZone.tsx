@@ -101,7 +101,7 @@ export function DropZone({ projectId, onUploaded }: DropZoneProps = {}) {
         onDragLeave={() => setDragActive(false)}
         onDrop={handleDrop}
         className={clsx(
-          "w-[600px] h-[320px] border-2 border-dashed flex flex-col items-center justify-center gap-3 transition-colors bg-[var(--bg-elevated)]",
+          "w-[600px] max-w-full h-[320px] border-2 border-dashed flex flex-col items-center justify-center gap-3 transition-colors bg-[var(--bg-elevated)]",
           dragActive ? "border-[var(--accent-blue)]" : "border-[var(--bg-border)]",
         )}
       >
@@ -114,7 +114,7 @@ export function DropZone({ projectId, onUploaded }: DropZoneProps = {}) {
             </p>
             <button
               onClick={() => inputRef.current?.click()}
-              className="mt-2 px-5 py-3 text-sm font-bold tracking-wide uppercase text-[var(--accent-blue-contrast)] bg-[var(--accent-blue)] hover:opacity-90 transition-opacity cursor-pointer"
+              className="stamp !text-[13px] mt-2 px-5 py-3 text-[var(--accent-blue-contrast)] bg-[var(--accent-blue)] border-[var(--accent-blue)] hover:opacity-90 transition-opacity cursor-pointer"
             >
               Browse Files
             </button>
@@ -140,16 +140,16 @@ export function DropZone({ projectId, onUploaded }: DropZoneProps = {}) {
               <button
                 onClick={() => setFile(null)}
                 disabled={uploading}
-                className="px-5 py-3 text-sm font-bold tracking-wide uppercase text-[var(--text-secondary)] border border-[var(--bg-border)] hover:text-[var(--text-primary)] transition-colors cursor-pointer disabled:opacity-50"
+                className="font-[family-name:var(--font-mono)] px-5 py-3 text-[13px] font-semibold tracking-wide uppercase text-[var(--text-secondary)] border border-[var(--bg-border)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-surface)] transition-colors cursor-pointer disabled:opacity-50"
               >
                 Change File
               </button>
               <button
                 onClick={handleStart}
                 disabled={uploading}
-                className="px-5 py-3 text-sm font-bold tracking-wide uppercase text-[var(--accent-blue-contrast)] bg-[var(--accent-blue)] hover:opacity-90 transition-opacity cursor-pointer disabled:opacity-50"
+                className="stamp !text-[13px] px-5 py-3 text-[var(--accent-blue-contrast)] bg-[var(--accent-blue)] border-[var(--accent-blue)] hover:opacity-90 transition-opacity cursor-pointer disabled:opacity-50"
               >
-                {uploading ? "Starting..." : "Start Analysis"}
+                {uploading ? "Starting…" : "Start Analysis"}
               </button>
             </div>
           </>

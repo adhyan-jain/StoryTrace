@@ -1,26 +1,42 @@
 @import "tailwindcss";
 
+/*
+  DESIGN SYSTEM: "CASE FILE"
+  ---------------------------------------------------------------
+  StoryTrace's job is forensic: it opens a manuscript, extracts every
+  claim a story makes about its own world, and flags the ones that
+  contradict each other -- then an Investigation Agent cross-examines
+  the flagged ones against the source text. That is a dossier, not a
+  dashboard. The visual system borrows the paper-and-ink vocabulary of
+  an actual case file / evidence log: warm paper stock, black hairline
+  rules used as real structure (not decoration), a red ink stamp for
+  verdicts, typewriter mono for data, a slab grotesk for section heads,
+  and a literary serif for the manuscript text itself. Nothing here is
+  rounded. Nothing glows. Every border means something.
+*/
+
 :root {
-  --bg-base: #0a0a0a;
-  --bg-surface: #121212;
-  --bg-elevated: #151515;
-  --bg-border: #232323;
-  --text-primary: #f5f3ee;
-  --text-secondary: #6b6560;
-  --text-muted: #46423e;
-  --accent-blue: #b8ff3c;
-  --accent-blue-contrast: #0a0a0a;
-  --severity-critical: #b8ff3c;
-  --severity-warning: #e8b64a;
-  --severity-info: #7c8cff;
-  --severity-resolved: #4ade80;
-  --severity-uncertain: #6b6560;
-  /* Cross-version diff status: an issue that no longer triggers detection in
-     a newer draft. Distinct from --severity-resolved (an in-document
-     Investigation Agent verdict) -- different concept, same green family
-     would be confusing to distinguish at a glance, so this gets its own hue. */
-  --diff-resolved: #e8b64a;
-  --diff-resolved-bg: #2a2109;
+  --bg-base: #eae6d9;
+  --bg-surface: #e1dcc9;
+  --bg-elevated: #f6f3e9;
+  --bg-border: #1a160d;
+  --text-primary: #1a160d;
+  --text-secondary: #55503f;
+  --text-muted: #8c8570;
+
+  --accent-blue: #a12a1c;
+  --accent-blue-contrast: #f6f3e9;
+
+  --severity-critical: #a12a1c;
+  --severity-warning: #8a5f10;
+  --severity-info: #263a63;
+  --severity-resolved: #2c522f;
+  --severity-uncertain: #8c8570;
+
+  --diff-resolved: #8a5f10;
+  --diff-resolved-bg: #ecdfbe;
+
+  --rule-hair: rgba(26, 22, 13, 0.16);
 }
 
 @theme inline {
@@ -65,18 +81,17 @@ body {
   color: var(--accent-blue-contrast);
 }
 
-/* Thin, dark scrollbars -- default light scrollbars look wrong on this palette */
+/* Thin ink-colored scrollbars to match the paper theme. */
 * {
   scrollbar-width: thin;
-  scrollbar-color: var(--bg-border) transparent;
+  scrollbar-color: var(--text-muted) transparent;
 }
 *::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 *::-webkit-scrollbar-thumb {
-  background: var(--bg-border);
-  border-radius: 4px;
+  background: var(--text-muted);
 }
 *::-webkit-scrollbar-track {
   background: transparent;
@@ -85,21 +100,22 @@ body {
 /* Browser autofill (saved credentials) paints its own light-blue background
    via an internal UA style that can't be overridden with plain
    background-color -- the box-shadow inset trick papers over it with the
-   dark theme instead, and the very long transition delays the moment
+   paper theme instead, and the very long transition delays the moment
    Chrome's autofill animation would otherwise flash the light background
    back in. Covers both text and password autofill states. */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0px 1000px var(--bg-base) inset;
+  -webkit-box-shadow: 0 0 0px 1000px var(--bg-elevated) inset;
   -webkit-text-fill-color: var(--text-primary);
   caret-color: var(--text-primary);
   transition: background-color 5000s ease-in-out 0s;
 }
 
-/* Subtle film-grain texture behind hero/header surfaces -- see
-   .grain-surface usage in the dashboard/analyze headers. */
+/* Newsprint dot-screen texture behind hero/header surfaces -- a halftone
+   print artifact rather than a decorative gradient. See .grain-surface
+   usage in the dashboard/analyze headers. */
 .grain-surface {
   position: relative;
 }
@@ -107,8 +123,46 @@ input:-webkit-autofill:active {
   content: "";
   position: absolute;
   inset: 0;
-  opacity: 0.05;
+  opacity: 0.5;
   pointer-events: none;
-  background-image: radial-gradient(circle at 1px 1px, #fff 1px, transparent 0);
-  background-size: 3px 3px;
+  background-image: radial-gradient(circle at 1px 1px, var(--text-primary) 1px, transparent 0);
+  background-size: 4px 4px;
+  mix-blend-mode: multiply;
+  opacity: 0.045;
+}
+
+/* Rubber-ink stamp: used for verdict/severity badges and primary actions.
+   A slight rotation and a doubled border read as a physically stamped
+   mark rather than a UI chip. */
+.stamp {
+  display: inline-flex;
+  align-items: center;
+  border: 1.5px solid currentColor;
+  padding: 0.15em 0.55em;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transform: rotate(-1.2deg);
+  white-space: nowrap;
+}
+
+/* A hairline rule used deliberately as a compositional element, not a
+   component boundary -- e.g. under section labels. */
+.rule {
+  border: none;
+  border-top: 1px solid var(--bg-border);
+}
+
+/* Oversized ghost index numerals set behind section headers, Businessweek
+   style -- ultra-condensed weight sits low in opacity so it reads as
+   texture/structure, not as content. */
+.ghost-index {
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+  opacity: 0.06;
+  line-height: 0.8;
+  pointer-events: none;
+  user-select: none;
 }

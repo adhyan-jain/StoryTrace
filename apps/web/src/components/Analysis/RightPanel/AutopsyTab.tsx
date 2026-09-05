@@ -106,8 +106,8 @@ export function AutopsyTab({
   return (
     <div className="flex-1 overflow-y-auto p-4 flex flex-col gap-5">
       <div>
-        <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.12em] text-[var(--accent-blue)] mb-1.5">
-          / Autopsy
+        <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.2em] text-[var(--accent-blue)] mb-1.5">
+          Autopsy Report
         </p>
         <p className="text-sm text-[var(--text-primary)] font-medium">
           {conflict.entity_name} <span className="text-[var(--text-secondary)]">· {conflict.attribute}</span>
@@ -165,19 +165,19 @@ export function AutopsyTab({
             setMarking(false);
           }}
           disabled={marking}
-          className="font-[family-name:var(--font-mono)] px-3 py-1.5 text-[11px] uppercase tracking-wide font-medium text-[var(--text-secondary)] border border-[var(--bg-border)] hover:text-[var(--text-primary)] transition-colors cursor-pointer disabled:opacity-50"
+          className="font-[family-name:var(--font-mono)] px-3 py-1.5 text-[11px] uppercase tracking-wide font-medium text-[var(--text-secondary)] border border-[var(--bg-border)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-elevated)] transition-colors cursor-pointer disabled:opacity-50"
         >
           Mark as Intentional
         </button>
         <button
           onClick={() => onJumpToUnit(conflict.prior_unit_id)}
-          className="font-[family-name:var(--font-mono)] px-3 py-1.5 text-[11px] uppercase tracking-wide font-medium text-[var(--text-secondary)] border border-[var(--bg-border)] hover:text-[var(--text-primary)] transition-colors cursor-pointer"
+          className="font-[family-name:var(--font-mono)] px-3 py-1.5 text-[11px] uppercase tracking-wide font-medium text-[var(--text-secondary)] border border-[var(--bg-border)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-elevated)] transition-colors cursor-pointer"
         >
           Jump to Unit {conflict.prior_unit_id.split("_").pop()}
         </button>
         <button
           onClick={() => onJumpToUnit(conflict.current_unit_id)}
-          className="font-[family-name:var(--font-mono)] px-3 py-1.5 text-[11px] uppercase tracking-wide font-medium text-[var(--text-secondary)] border border-[var(--bg-border)] hover:text-[var(--text-primary)] transition-colors cursor-pointer"
+          className="font-[family-name:var(--font-mono)] px-3 py-1.5 text-[11px] uppercase tracking-wide font-medium text-[var(--text-secondary)] border border-[var(--bg-border)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-elevated)] transition-colors cursor-pointer"
         >
           Jump to Unit {conflict.current_unit_id.split("_").pop()}
         </button>

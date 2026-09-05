@@ -48,12 +48,12 @@ function Header({
   }
 
   return (
-    <div className="grain-surface px-5 py-4 border-b border-[var(--bg-border)] flex items-center justify-between flex-shrink-0">
+    <div className="grain-surface px-5 py-4 border-b-2 border-[var(--bg-border)] flex items-center justify-between flex-shrink-0">
       <div className="min-w-0">
-        <p className="font-[family-name:var(--font-mono)] text-[10px] tracking-[0.12em] uppercase text-[var(--accent-blue)] mb-1">
-          / Continuity Autopsy
+        <p className="font-[family-name:var(--font-mono)] text-[10px] tracking-[0.2em] uppercase text-[var(--accent-blue)] mb-1">
+          Case File &mdash; Continuity Autopsy
         </p>
-        <p className="font-[family-name:var(--font-heading)] text-xl text-[var(--text-primary)] truncate max-w-[420px]">
+        <p className="font-[family-name:var(--font-heading)] uppercase text-xl text-[var(--text-primary)] truncate max-w-[420px]">
           {overview?.document_title ?? "Untitled document"}
         </p>
         <p className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-wide text-[var(--text-secondary)] mt-1">
@@ -63,7 +63,7 @@ function Header({
       <div className="flex items-center gap-2 flex-shrink-0">
         <button
           onClick={handleDownloadReport}
-          className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-wide text-[var(--text-secondary)] border border-[var(--bg-border)] px-3 py-2 hover:text-[var(--text-primary)] transition-colors cursor-pointer"
+          className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-wide text-[var(--text-secondary)] border border-[var(--bg-border)] px-3 py-2 hover:text-[var(--text-primary)] hover:bg-[var(--bg-elevated)] transition-colors cursor-pointer"
         >
           Download Report
         </button>
@@ -72,7 +72,7 @@ function Header({
             localStorage.removeItem("storytrace_active_id");
             router.push("/dashboard");
           }}
-          className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-wide text-[var(--accent-blue-contrast)] bg-[var(--accent-blue)] px-3 py-2 hover:opacity-90 transition-opacity cursor-pointer"
+          className="stamp !text-[11px] text-[var(--accent-blue-contrast)] bg-[var(--accent-blue)] border-[var(--accent-blue)] px-3 py-2 hover:opacity-90 transition-opacity cursor-pointer"
         >
           My Documents
         </button>

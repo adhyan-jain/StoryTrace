@@ -27,8 +27,8 @@ export function ConflictCard({
           )}
           <StatusBadge status={conflict.status} />
         </div>
-        <p className="text-sm text-[var(--text-primary)]">
-          {conflict.entity_name} <span className="text-[var(--text-secondary)]">· {conflict.attribute}</span>
+        <p className="font-[family-name:var(--font-display)] font-semibold text-sm text-[var(--text-primary)]">
+          {conflict.entity_name} <span className="font-normal text-[var(--text-secondary)]">· {conflict.attribute}</span>
         </p>
         <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-wide text-[var(--text-secondary)]">
           Unit {conflict.prior_unit_id.split("_").pop()} &rarr; Unit {conflict.current_unit_id.split("_").pop()}

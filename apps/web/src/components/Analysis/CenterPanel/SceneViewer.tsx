@@ -20,12 +20,12 @@ export function SceneViewer({
 
   return (
     <div className="flex-1 flex flex-col min-h-0">
-      <div className="px-6 py-3 border-b border-[var(--bg-border)] flex items-center justify-between flex-shrink-0">
+      <div className="px-6 py-3 border-b-2 border-[var(--bg-border)] flex items-center justify-between flex-shrink-0 bg-[var(--bg-elevated)]">
         <span className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-wide text-[var(--text-secondary)]">
-          / {String(unit.sequence_number).padStart(2, "0")} &middot; {unit.title}
+          Exhibit {String(unit.sequence_number).padStart(2, "0")} &middot; {unit.title}
         </span>
         <span className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-wide text-[var(--text-muted)]">
-          PG. {unit.page_start}
+          Pg. {unit.page_start}
           {unit.page_end !== unit.page_start ? `–${unit.page_end}` : ""}
         </span>
       </div>

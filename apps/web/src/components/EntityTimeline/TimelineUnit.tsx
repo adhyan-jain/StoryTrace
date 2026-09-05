@@ -27,7 +27,7 @@ export function TimelineUnit({
       <span className="absolute left-[4.5px] top-4 bottom-[-1.5rem] w-px bg-[var(--bg-border)]" />
 
       <div className="flex items-baseline justify-between mb-2">
-        <p className="text-sm font-medium text-[var(--text-primary)]">
+        <p className="font-[family-name:var(--font-display)] font-semibold text-sm text-[var(--text-primary)]">
           Unit {unit.sequence_number} — {unit.title}
         </p>
         <span className="font-[family-name:var(--font-mono)] text-xs text-[var(--text-muted)] flex-shrink-0 ml-3">
@@ -58,7 +58,7 @@ export function TimelineUnit({
           <span className="text-xs text-[var(--text-secondary)]">{conflict.description}</span>
           <Link
             href={`/analyze/${id}?conflict=${conflict.id}`}
-            className="text-xs text-[var(--accent-blue)] hover:underline flex-shrink-0"
+            className="font-[family-name:var(--font-mono)] text-xs uppercase tracking-wide text-[var(--accent-blue)] hover:underline flex-shrink-0"
           >
             View Autopsy →
           </Link>
