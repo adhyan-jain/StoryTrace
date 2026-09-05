@@ -90,6 +90,12 @@ export function UploadProgress({ overview, startedAt, stalled }: { overview: Ove
       <p className="font-[family-name:var(--font-mono)] text-xs text-[var(--text-muted)]">
         {minutes}m {seconds.toString().padStart(2, "0")}s elapsed
       </p>
+      {!stalled && overview.status !== "error" && (
+        <p className="text-xs text-[var(--text-muted)] max-w-md text-center">
+          A full screenplay usually takes 3–8 minutes to analyze — the agent is reading every scene and
+          investigating flagged conflicts one at a time. This is expected, not a stall.
+        </p>
+      )}
       {stalled && (
         <p className="text-xs text-[var(--severity-warning)] max-w-md text-center">
           Processing is taking longer than expected. The pipeline may still be running — check back in a moment.
