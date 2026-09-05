@@ -74,7 +74,7 @@ export function UploadProgress({ overview, startedAt, stalled }: { overview: Ove
                 <div>
                   <p
                     className={clsx(
-                      "text-sm",
+                      "font-[family-name:var(--font-mono)] text-xs uppercase tracking-wide",
                       state === "pending" ? "text-[var(--text-muted)]" : "text-[var(--text-primary)]",
                     )}
                   >

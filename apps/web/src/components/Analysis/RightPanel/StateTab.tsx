@@ -65,7 +65,9 @@ export function StateTab({ units, activeUnit }: { units: NarrativeUnit[]; active
           <div className="flex flex-col gap-1 pl-3 border-l border-[var(--bg-border)]">
             {entity.attributes.map((attr) => (
               <div key={attr.attribute} className="flex items-baseline justify-between gap-3">
-                <span className="text-xs text-[var(--text-secondary)]">{attr.attribute}</span>
+                <span className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-wide text-[var(--text-secondary)]">
+                  {attr.attribute}
+                </span>
                 <span className="font-[family-name:var(--font-mono)] text-xs text-[var(--text-primary)] text-right">{attr.value}</span>
               </div>
             ))}

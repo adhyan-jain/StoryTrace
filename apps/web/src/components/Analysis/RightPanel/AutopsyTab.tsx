@@ -30,7 +30,7 @@ function StepView({ step }: { step: InvestigationStep }) {
       <div>
         <p className="font-[family-name:var(--font-mono)] text-[10px] text-[var(--text-muted)] uppercase tracking-wider mb-1">verdict</p>
         <div
-          className="rounded-md border px-3 py-2 bg-[var(--bg-elevated)]"
+          className="border px-3 py-2 bg-[var(--bg-elevated)]"
           style={{ borderColor: severityColor((step.verdict.severity as never) ?? null) }}
         >
           <p className="font-[family-name:var(--font-mono)] text-xs text-[var(--text-primary)]">{JSON.stringify(step.verdict, null, 2)}</p>
@@ -106,11 +106,14 @@ export function AutopsyTab({
   return (
     <div className="flex-1 overflow-y-auto p-4 flex flex-col gap-5">
       <div>
-        <p className="text-sm text-[var(--text-primary)] font-medium">
-          Conflict: {conflict.entity_name} · {conflict.attribute}
+        <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.12em] text-[var(--accent-blue)] mb-1.5">
+          / Autopsy
         </p>
-        <p className="text-xs text-[var(--text-secondary)] mt-1">
-          Units {conflict.prior_unit_id.split("_").pop()} → {conflict.current_unit_id.split("_").pop()}
+        <p className="text-sm text-[var(--text-primary)] font-medium">
+          {conflict.entity_name} <span className="text-[var(--text-secondary)]">· {conflict.attribute}</span>
+        </p>
+        <p className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-wide text-[var(--text-secondary)] mt-1">
+          Units {conflict.prior_unit_id.split("_").pop()} &rarr; {conflict.current_unit_id.split("_").pop()}
         </p>
         {verdict && (
           <div className="flex items-center gap-2 mt-2">
@@ -125,14 +128,14 @@ export function AutopsyTab({
 
       <div className="grid grid-cols-2 gap-3">
         <div>
-          <p className="text-[10px] uppercase tracking-wider text-[var(--text-muted)] mb-1.5">
-            Prior state (Unit {conflict.prior_unit_id.split("_").pop()}, pg. {conflict.prior_page ?? "?"})
+          <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-wider text-[var(--text-muted)] mb-1.5">
+            Prior (Unit {conflict.prior_unit_id.split("_").pop()}, pg. {conflict.prior_page ?? "?"})
           </p>
           <ExcerptBox>{conflict.prior_excerpt}</ExcerptBox>
         </div>
         <div>
-          <p className="text-[10px] uppercase tracking-wider text-[var(--text-muted)] mb-1.5">
-            Observed state (Unit {conflict.current_unit_id.split("_").pop()}, pg. {conflict.current_page ?? "?"})
+          <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-wider text-[var(--text-muted)] mb-1.5">
+            Observed (Unit {conflict.current_unit_id.split("_").pop()}, pg. {conflict.current_page ?? "?"})
           </p>
           <ExcerptBox>{conflict.current_excerpt}</ExcerptBox>
         </div>
@@ -140,7 +143,9 @@ export function AutopsyTab({
 
       {steps.length > 0 && (
         <div>
-          <p className="text-[10px] uppercase tracking-wider text-[var(--text-muted)] mb-2">Investigation trace</p>
+          <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-wider text-[var(--text-muted)] mb-2">
+            Investigation trace
+          </p>
           <div className="flex flex-col gap-3 pl-3 border-l border-[var(--bg-border)]">
             {steps.map((step, i) => (
               <StepView key={i} step={step} />
@@ -160,19 +165,19 @@ export function AutopsyTab({
             setMarking(false);
           }}
           disabled={marking}
-          className="px-3 py-1.5 rounded-md text-xs font-medium text-[var(--text-secondary)] border border-[var(--bg-border)] hover:text-[var(--text-primary)] transition-colors cursor-pointer disabled:opacity-50"
+          className="font-[family-name:var(--font-mono)] px-3 py-1.5 text-[11px] uppercase tracking-wide font-medium text-[var(--text-secondary)] border border-[var(--bg-border)] hover:text-[var(--text-primary)] transition-colors cursor-pointer disabled:opacity-50"
         >
           Mark as Intentional
         </button>
         <button
           onClick={() => onJumpToUnit(conflict.prior_unit_id)}
-          className="px-3 py-1.5 rounded-md text-xs font-medium text-[var(--text-secondary)] border border-[var(--bg-border)] hover:text-[var(--text-primary)] transition-colors cursor-pointer"
+          className="font-[family-name:var(--font-mono)] px-3 py-1.5 text-[11px] uppercase tracking-wide font-medium text-[var(--text-secondary)] border border-[var(--bg-border)] hover:text-[var(--text-primary)] transition-colors cursor-pointer"
         >
           Jump to Unit {conflict.prior_unit_id.split("_").pop()}
         </button>
         <button
           onClick={() => onJumpToUnit(conflict.current_unit_id)}
-          className="px-3 py-1.5 rounded-md text-xs font-medium text-[var(--text-secondary)] border border-[var(--bg-border)] hover:text-[var(--text-primary)] transition-colors cursor-pointer"
+          className="font-[family-name:var(--font-mono)] px-3 py-1.5 text-[11px] uppercase tracking-wide font-medium text-[var(--text-secondary)] border border-[var(--bg-border)] hover:text-[var(--text-primary)] transition-colors cursor-pointer"
         >
           Jump to Unit {conflict.current_unit_id.split("_").pop()}
         </button>

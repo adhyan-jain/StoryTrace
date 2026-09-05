@@ -38,19 +38,21 @@ export function EntityList({ id, entities }: { id: string; entities: Entity[] })
         <button
           key={entity.entity_id}
           onClick={() => router.push(`/analyze/${id}/entity/${entity.entity_id}`)}
-          className="w-full flex items-center gap-2.5 px-3 py-2 text-left hover:bg-[var(--bg-elevated)] transition-colors cursor-pointer"
+          className="w-full flex items-center gap-2.5 px-3 py-2.5 text-left hover:bg-[var(--bg-elevated)] transition-colors cursor-pointer"
         >
           <EntityIcon type={entity.type} />
           <span className="truncate text-[13px] text-[var(--text-secondary)] flex-1">{entity.name}</span>
           {entity.finding_count > 0 && (
-            <span className="font-[family-name:var(--font-mono)] text-[10px] text-[var(--severity-warning)]">
+            <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-wide text-[var(--severity-warning)] border border-[var(--severity-warning)] px-1.5 py-0.5">
               {entity.finding_count}
             </span>
           )}
         </button>
       ))}
       {entities.length === 0 && (
-        <p className="px-3 py-6 text-center text-[13px] text-[var(--text-muted)]">No entities extracted yet.</p>
+        <p className="font-[family-name:var(--font-mono)] px-3 py-6 text-center text-[11px] uppercase tracking-wide text-[var(--text-muted)]">
+          No entities extracted yet.
+        </p>
       )}
     </div>
   );

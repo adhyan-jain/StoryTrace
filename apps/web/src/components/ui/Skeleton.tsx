@@ -1,7 +1,7 @@
 import clsx from "clsx";
 
 export function Skeleton({ className }: { className?: string }) {
-  return <div className={clsx("animate-pulse rounded-md bg-[var(--bg-elevated)]", className)} />;
+  return <div className={clsx("animate-pulse bg-[var(--bg-elevated)]", className)} />;
 }
 
 /** Matches the row shape used by the dashboard's project list and a
@@ -9,13 +9,11 @@ export function Skeleton({ className }: { className?: string }) {
  * real rows replace it. */
 export function ListRowSkeleton() {
   return (
-    <div className="flex items-center justify-between rounded-lg border border-[var(--bg-border)] bg-[var(--bg-surface)] px-4 py-3">
-      <div className="flex items-center gap-3">
-        <Skeleton className="w-2.5 h-2.5 rounded-full shrink-0" />
-        <div className="flex flex-col gap-1.5">
-          <Skeleton className="h-3.5 w-40" />
-          <Skeleton className="h-3 w-24" />
-        </div>
+    <div className="flex items-center gap-6 border-t border-[var(--bg-border)] py-6">
+      <Skeleton className="w-7 h-3 shrink-0" />
+      <div className="flex flex-col gap-1.5 flex-1">
+        <Skeleton className="h-6 w-40" />
+        <Skeleton className="h-3 w-24" />
       </div>
       <Skeleton className="h-3 w-16 hidden sm:block" />
     </div>

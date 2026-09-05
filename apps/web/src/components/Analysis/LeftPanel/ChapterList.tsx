@@ -3,7 +3,7 @@
 import clsx from "clsx";
 import type { NarrativeUnit } from "@/lib/types";
 
-const DOT_COLOR: Record<string, string> = {
+const FLAG_COLOR: Record<string, string> = {
   critical: "var(--severity-critical)",
   warning: "var(--severity-warning)",
   resolved: "var(--severity-resolved)",
@@ -32,14 +32,14 @@ export function ChapterList({
             key={unit.unit_id}
             onClick={() => onSelect(unit.unit_id)}
             className={clsx(
-              "w-full flex items-center gap-2 pl-3 pr-3 py-2 text-left border-l-2 transition-colors cursor-pointer",
+              "w-full flex items-center gap-3 pl-3 pr-3 py-2.5 text-left border-l-2 transition-colors cursor-pointer",
               isActive
                 ? "bg-[var(--bg-elevated)] border-[var(--accent-blue)]"
                 : "border-transparent hover:bg-[var(--bg-elevated)]",
             )}
           >
-            <span className="font-[family-name:var(--font-mono)] text-[10px] text-[var(--text-muted)] w-6 text-right flex-shrink-0 tabular-nums">
-              {unit.sequence_number}
+            <span className="font-[family-name:var(--font-mono)] text-[10px] text-[var(--text-muted)] w-6 flex-shrink-0 tabular-nums">
+              {String(unit.sequence_number).padStart(2, "0")}
             </span>
             <span
               className={clsx("truncate text-[13px] flex-1", isActive ? "text-[var(--text-primary)]" : "text-[var(--text-secondary)]")}
@@ -48,15 +48,15 @@ export function ChapterList({
             </span>
             {diffColorByUnit ? (
               <span
-                className="w-1.5 h-1.5 rounded-full flex-shrink-0"
-                style={{ backgroundColor: diffColorByUnit[unit.unit_id] ?? "var(--severity-resolved)" }}
+                className="w-1.5 h-1.5 border flex-shrink-0"
+                style={{ borderColor: diffColorByUnit[unit.unit_id] ?? "var(--severity-resolved)" }}
                 aria-hidden="true"
               />
             ) : (
               unit.severity && (
                 <span
-                  className="w-1.5 h-1.5 rounded-full flex-shrink-0"
-                  style={{ backgroundColor: DOT_COLOR[unit.severity] }}
+                  className="w-1.5 h-1.5 border flex-shrink-0"
+                  style={{ borderColor: FLAG_COLOR[unit.severity] }}
                   aria-hidden="true"
                 />
               )

@@ -101,7 +101,7 @@ export function DropZone({ projectId, onUploaded }: DropZoneProps = {}) {
         onDragLeave={() => setDragActive(false)}
         onDrop={handleDrop}
         className={clsx(
-          "w-[600px] h-[320px] rounded-xl border-2 border-dashed flex flex-col items-center justify-center gap-3 transition-colors bg-[var(--bg-elevated)]",
+          "w-[600px] h-[320px] border-2 border-dashed flex flex-col items-center justify-center gap-3 transition-colors bg-[var(--bg-elevated)]",
           dragActive ? "border-[var(--accent-blue)]" : "border-[var(--bg-border)]",
         )}
       >
@@ -109,12 +109,14 @@ export function DropZone({ projectId, onUploaded }: DropZoneProps = {}) {
           <>
             <DocumentIcon />
             <p className="text-[var(--text-primary)] text-sm">Drop your screenplay or novel here</p>
-            <p className="text-[var(--text-secondary)] text-xs">PDF, EPUB, Fountain (.fountain), or plain text (.txt)</p>
+            <p className="font-[family-name:var(--font-mono)] text-[var(--text-secondary)] text-[11px] uppercase tracking-wide">
+              PDF, EPUB, Fountain (.fountain), or plain text (.txt)
+            </p>
             <button
               onClick={() => inputRef.current?.click()}
-              className="mt-2 px-4 py-2 rounded-md text-sm font-medium text-white bg-[var(--accent-blue)] hover:opacity-90 transition-opacity cursor-pointer"
+              className="mt-2 px-5 py-3 text-sm font-bold tracking-wide uppercase text-[var(--accent-blue-contrast)] bg-[var(--accent-blue)] hover:opacity-90 transition-opacity cursor-pointer"
             >
-              Browse files
+              Browse Files
             </button>
             <input
               ref={inputRef}
@@ -131,19 +133,21 @@ export function DropZone({ projectId, onUploaded }: DropZoneProps = {}) {
           <>
             <DocumentIcon />
             <p className="text-[var(--text-primary)] text-sm font-medium">{file.name}</p>
-            <p className="text-[var(--text-secondary)] text-xs">{formatSize(file.size)}</p>
+            <p className="font-[family-name:var(--font-mono)] text-[var(--text-secondary)] text-[11px] uppercase tracking-wide">
+              {formatSize(file.size)}
+            </p>
             <div className="flex gap-2 mt-2">
               <button
                 onClick={() => setFile(null)}
                 disabled={uploading}
-                className="px-4 py-2 rounded-md text-sm font-medium text-[var(--text-secondary)] border border-[var(--bg-border)] hover:text-[var(--text-primary)] transition-colors cursor-pointer disabled:opacity-50"
+                className="px-5 py-3 text-sm font-bold tracking-wide uppercase text-[var(--text-secondary)] border border-[var(--bg-border)] hover:text-[var(--text-primary)] transition-colors cursor-pointer disabled:opacity-50"
               >
-                Change file
+                Change File
               </button>
               <button
                 onClick={handleStart}
                 disabled={uploading}
-                className="px-4 py-2 rounded-md text-sm font-medium text-white bg-[var(--accent-blue)] hover:opacity-90 transition-opacity cursor-pointer disabled:opacity-50"
+                className="px-5 py-3 text-sm font-bold tracking-wide uppercase text-[var(--accent-blue-contrast)] bg-[var(--accent-blue)] hover:opacity-90 transition-opacity cursor-pointer disabled:opacity-50"
               >
                 {uploading ? "Starting..." : "Start Analysis"}
               </button>
@@ -153,10 +157,10 @@ export function DropZone({ projectId, onUploaded }: DropZoneProps = {}) {
       </div>
       {error && <p className="text-[var(--severity-critical)] text-sm max-w-[600px] text-center">{error}</p>}
       {file && !error && (
-        <p className="text-[var(--text-muted)] text-xs max-w-[600px] text-center">
+        <p className="font-[family-name:var(--font-mono)] text-[var(--text-muted)] text-[11px] max-w-[600px] text-center">
           Full analysis typically takes 3–8 minutes for a feature-length screenplay (longer for a full novel) — the
-          agent reads every scene, then investigates each conflict it flags. It's safe to navigate away; processing
-          continues in the background and you can check back on this project's page.
+          agent reads every scene, then investigates each conflict it flags. It&apos;s safe to navigate away; processing
+          continues in the background and you can check back on this project&apos;s page.
         </p>
       )}
     </div>

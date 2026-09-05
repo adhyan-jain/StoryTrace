@@ -5,7 +5,15 @@ import { getVersionDiff, ApiError } from "@/lib/api";
 import { DiffStatusBadge } from "@/components/ui/SeverityBadge";
 import type { VersionDiffResponse } from "@/lib/types";
 
-export function VersionDiffTab({ projectId, versionNumber }: { projectId: string; versionNumber: number }) {
+export function VersionDiffTab({
+  projectId,
+  versionNumber,
+  onSelect,
+}: {
+  projectId: string;
+  versionNumber: number;
+  onSelect: (conflictId: string, unitId: string) => void;
+}) {
   const [diff, setDiff] = useState<VersionDiffResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -72,13 +80,14 @@ export function VersionDiffTab({ projectId, versionNumber }: { projectId: string
         ({ items, title }) =>
           items.length > 0 && (
             <div key={title} className="flex flex-col gap-2">
-              <p className="text-xs font-semibold uppercase tracking-wide text-[var(--text-secondary)]">
+              <p className="font-[family-name:var(--font-mono)] text-[11px] font-semibold uppercase tracking-[0.1em] text-[var(--text-secondary)]">
                 {title} ({items.length})
               </p>
               {items.map((c) => (
-                <div
+                <button
                   key={c.id}
-                  className="rounded-lg border border-[var(--bg-border)] bg-[var(--bg-elevated)] p-3 flex flex-col gap-1.5"
+                  onClick={() => onSelect(c.id, c.current_unit_id)}
+                  className="text-left border border-[var(--bg-border)] bg-[var(--bg-elevated)] p-3 flex flex-col gap-1.5 hover:border-[var(--accent-blue)] transition-colors cursor-pointer"
                 >
                   <div className="flex items-center justify-between">
                     <span className="text-sm font-medium text-[var(--text-primary)]">
@@ -87,7 +96,7 @@ export function VersionDiffTab({ projectId, versionNumber }: { projectId: string
                     <DiffStatusBadge status={c.diff_status} />
                   </div>
                   <p className="text-xs text-[var(--text-secondary)]">{c.description}</p>
-                </div>
+                </button>
               ))}
             </div>
           ),

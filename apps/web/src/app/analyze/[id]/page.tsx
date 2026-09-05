@@ -48,28 +48,31 @@ function Header({
   }
 
   return (
-    <div className="px-4 py-3 border-b border-[var(--bg-border)] flex items-center justify-between flex-shrink-0">
-      <div>
-        <p className="text-sm font-medium text-[var(--text-primary)] truncate max-w-[200px]">
+    <div className="grain-surface px-5 py-4 border-b border-[var(--bg-border)] flex items-center justify-between flex-shrink-0">
+      <div className="min-w-0">
+        <p className="font-[family-name:var(--font-mono)] text-[10px] tracking-[0.12em] uppercase text-[var(--accent-blue)] mb-1">
+          / Continuity Autopsy
+        </p>
+        <p className="font-[family-name:var(--font-heading)] text-xl text-[var(--text-primary)] truncate max-w-[420px]">
           {overview?.document_title ?? "Untitled document"}
         </p>
-        <p className="text-xs text-[var(--text-secondary)] mt-0.5">
-          {overview?.total_units ?? 0} units · {entityCount} entities · {findingCount} findings
+        <p className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-wide text-[var(--text-secondary)] mt-1">
+          {overview?.total_units ?? 0} units &middot; {entityCount} entities &middot; {findingCount} findings
         </p>
       </div>
       <div className="flex items-center gap-2 flex-shrink-0">
         <button
           onClick={handleDownloadReport}
-          className="text-xs text-[var(--text-secondary)] border border-[var(--bg-border)] rounded-md px-2.5 py-1.5 hover:text-[var(--text-primary)] transition-colors cursor-pointer"
+          className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-wide text-[var(--text-secondary)] border border-[var(--bg-border)] px-3 py-2 hover:text-[var(--text-primary)] transition-colors cursor-pointer"
         >
-          Download report
+          Download Report
         </button>
         <button
           onClick={() => {
             localStorage.removeItem("storytrace_active_id");
             router.push("/dashboard");
           }}
-          className="text-xs text-[var(--text-secondary)] border border-[var(--bg-border)] rounded-md px-2.5 py-1.5 hover:text-[var(--text-primary)] transition-colors cursor-pointer"
+          className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-wide text-[var(--accent-blue-contrast)] bg-[var(--accent-blue)] px-3 py-2 hover:opacity-90 transition-opacity cursor-pointer"
         >
           My Documents
         </button>
@@ -265,7 +268,14 @@ export default function AnalyzePage() {
         {rightTab === "STATE" && <StateTab units={units} activeUnit={activeUnit} />}
         {rightTab === "AUTOPSY" && <AutopsyTab conflictId={selectedConflictId} onJumpToUnit={handleJumpToUnit} />}
         {rightTab === "DIFF" && projectId && versionNumber && (
-          <VersionDiffTab projectId={projectId} versionNumber={versionNumber} />
+          <VersionDiffTab
+            projectId={projectId}
+            versionNumber={versionNumber}
+            onSelect={(conflictId, unitId) => {
+              handleSelectConflict(conflictId);
+              handleJumpToUnit(unitId);
+            }}
+          />
         )}
       </div>
       </div>

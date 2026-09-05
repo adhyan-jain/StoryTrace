@@ -1,25 +1,26 @@
 @import "tailwindcss";
 
 :root {
-  --bg-base: #0d0f12;
-  --bg-surface: #13161b;
-  --bg-elevated: #1c2028;
-  --bg-border: #2a2f3a;
-  --text-primary: #e8eaf0;
-  --text-secondary: #8b92a5;
-  --text-muted: #4a5068;
-  --accent-blue: #4f8ef7;
-  --severity-critical: #ef4444;
-  --severity-warning: #f59e0b;
-  --severity-info: #6366f1;
-  --severity-resolved: #22c55e;
-  --severity-uncertain: #64748b;
+  --bg-base: #0a0a0a;
+  --bg-surface: #121212;
+  --bg-elevated: #151515;
+  --bg-border: #232323;
+  --text-primary: #f5f3ee;
+  --text-secondary: #6b6560;
+  --text-muted: #46423e;
+  --accent-blue: #b8ff3c;
+  --accent-blue-contrast: #0a0a0a;
+  --severity-critical: #b8ff3c;
+  --severity-warning: #e8b64a;
+  --severity-info: #7c8cff;
+  --severity-resolved: #4ade80;
+  --severity-uncertain: #6b6560;
   /* Cross-version diff status: an issue that no longer triggers detection in
      a newer draft. Distinct from --severity-resolved (an in-document
      Investigation Agent verdict) -- different concept, same green family
      would be confusing to distinguish at a glance, so this gets its own hue. */
-  --diff-resolved: #f59e0b;
-  --diff-resolved-bg: #78350f;
+  --diff-resolved: #e8b64a;
+  --diff-resolved-bg: #2a2109;
 }
 
 @theme inline {
@@ -31,6 +32,7 @@
   --color-text-secondary: var(--text-secondary);
   --color-text-muted: var(--text-muted);
   --color-accent-blue: var(--accent-blue);
+  --color-accent-blue-contrast: var(--accent-blue-contrast);
   --color-severity-critical: var(--severity-critical);
   --color-severity-warning: var(--severity-warning);
   --color-severity-info: var(--severity-info);
@@ -39,6 +41,7 @@
   --color-diff-resolved: var(--diff-resolved);
   --color-diff-resolved-bg: var(--diff-resolved-bg);
   --font-display: var(--font-display);
+  --font-heading: var(--font-heading);
   --font-reader: var(--font-reader);
   --font-mono: var(--font-mono);
 }
@@ -59,7 +62,7 @@ body {
 
 ::selection {
   background: var(--accent-blue);
-  color: white;
+  color: var(--accent-blue-contrast);
 }
 
 /* Thin, dark scrollbars -- default light scrollbars look wrong on this palette */
@@ -77,4 +80,35 @@ body {
 }
 *::-webkit-scrollbar-track {
   background: transparent;
+}
+
+/* Browser autofill (saved credentials) paints its own light-blue background
+   via an internal UA style that can't be overridden with plain
+   background-color -- the box-shadow inset trick papers over it with the
+   dark theme instead, and the very long transition delays the moment
+   Chrome's autofill animation would otherwise flash the light background
+   back in. Covers both text and password autofill states. */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0px 1000px var(--bg-base) inset;
+  -webkit-text-fill-color: var(--text-primary);
+  caret-color: var(--text-primary);
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Subtle film-grain texture behind hero/header surfaces -- see
+   .grain-surface usage in the dashboard/analyze headers. */
+.grain-surface {
+  position: relative;
+}
+.grain-surface::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.05;
+  pointer-events: none;
+  background-image: radial-gradient(circle at 1px 1px, #fff 1px, transparent 0);
+  background-size: 3px 3px;
 }

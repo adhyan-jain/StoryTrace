@@ -17,8 +17,8 @@ const STATUS_COLOR: Record<VerdictStatus, string> = {
 export function SeverityBadge({ severity }: { severity: Severity }) {
   return (
     <span
-      className="text-[10px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded"
-      style={{ color: SEVERITY_COLOR[severity], backgroundColor: `color-mix(in srgb, ${SEVERITY_COLOR[severity]} 15%, transparent)` }}
+      className="font-[family-name:var(--font-mono)] text-[10px] font-semibold uppercase tracking-[0.1em] px-1.5 py-0.5 border"
+      style={{ color: SEVERITY_COLOR[severity], borderColor: SEVERITY_COLOR[severity] }}
     >
       {severity}
     </span>
@@ -28,8 +28,8 @@ export function SeverityBadge({ severity }: { severity: Severity }) {
 export function StatusBadge({ status }: { status: VerdictStatus }) {
   return (
     <span
-      className="text-[10px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded border"
-      style={{ color: STATUS_COLOR[status], borderColor: `color-mix(in srgb, ${STATUS_COLOR[status]} 40%, transparent)` }}
+      className="font-[family-name:var(--font-mono)] text-[10px] font-semibold uppercase tracking-[0.1em] px-1.5 py-0.5 border"
+      style={{ color: STATUS_COLOR[status], borderColor: STATUS_COLOR[status] }}
     >
       {status}
     </span>
@@ -63,8 +63,8 @@ export function DiffStatusBadge({ status }: { status: DiffStatus }) {
   const color = DIFF_COLOR[status];
   return (
     <span
-      className="text-[10px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded"
-      style={{ color, backgroundColor: `color-mix(in srgb, ${color} 15%, transparent)` }}
+      className="font-[family-name:var(--font-mono)] text-[10px] font-semibold uppercase tracking-[0.1em] px-1.5 py-0.5 border"
+      style={{ color, borderColor: color }}
     >
       {DIFF_LABEL[status]}
     </span>

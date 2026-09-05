@@ -82,7 +82,7 @@ export function FindingsTab({
             key={filter}
             onClick={() => toggleFilter(filter)}
             className={clsx(
-              "text-[10px] font-semibold uppercase tracking-wide px-2 py-1 rounded-full border transition-colors cursor-pointer",
+              "font-[family-name:var(--font-mono)] text-[10px] font-semibold uppercase tracking-[0.1em] px-2 py-1 border transition-colors cursor-pointer",
               activeFilters.has(filter) ? "text-[var(--bg-base)]" : "text-[var(--text-secondary)] border-[var(--bg-border)]",
             )}
             style={
