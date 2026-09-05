@@ -133,4 +133,16 @@ export async function getVersionDiff(projectId: string, versionNumber: number): 
   return request(`/projects/${projectId}/versions/${versionNumber}/diff`);
 }
 
+export async function renameProject(projectId: string, title: string): Promise<void> {
+  await request(`/projects/${projectId}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ title }),
+  });
+}
+
+export async function deleteProject(projectId: string): Promise<void> {
+  await request(`/projects/${projectId}`, { method: "DELETE" });
+}
+
 export { ApiError };

@@ -1,4 +1,5 @@
 import asyncio
+import concurrent.futures
 import os
 import time
 
@@ -9,15 +10,29 @@ from backend.candidate_detection.detector import CandidateDetector
 from backend.llm.base import LLMProvider
 from backend.llm.client import GeminiProvider
 from backend.llm.ollama import OllamaProvider
-from backend.pipeline.state_extraction import extract_state_events, write_state_events
+from backend.llm.vertexai import VertexAIProvider
+from backend.pipeline.entity_resolution import EntityRegistry
+from backend.pipeline.state_extraction import extract_state_events_batch, write_state_events
 
 
 def _default_provider() -> LLMProvider:
     """MODEL_PROVIDER=ollama (default) runs free/local for heavy passes;
-    MODEL_PROVIDER=gemini switches to the paid API tier."""
-    if os.environ.get("MODEL_PROVIDER", "ollama") == "gemini":
+    MODEL_PROVIDER=gemini switches to the paid API tier; MODEL_PROVIDER=vertexai
+    switches to Vertex AI (GCP project + ADC auth)."""
+    provider = os.environ.get("MODEL_PROVIDER", "ollama")
+    if provider == "vertexai":
+        return VertexAIProvider()
+    if provider == "gemini":
         return GeminiProvider()
     return OllamaProvider()
+
+
+# Same knobs as backend/api/main.py's _run_pipeline_job -- batching cuts the
+# number of LLM calls by ~BATCH_SIZE, concurrency fans those calls out in
+# parallel bounded to stay under the provider's rate limit. Both tunable via
+# env since the right values depend on the provider/tier/quota in use.
+_BATCH_SIZE = int(os.environ.get("EXTRACTION_BATCH_SIZE", "4"))
+_EXTRACTION_CONCURRENCY = int(os.environ.get("EXTRACTION_CONCURRENCY", "5"))
 
 
 async def run_pipeline(
@@ -26,30 +41,46 @@ async def run_pipeline(
     client: ClickHouseClient,
     llm: LLMProvider | None = None,
 ) -> None:
-    """Shared orchestration: insert units, extract state events per unit via
-    the LLM, write them, then run candidate detection. Used by the screenplay
-    demo below and by the Reverend Insanity pipeline validation."""
+    """Shared orchestration: insert units, extract state events in batched,
+    concurrent LLM calls, write them, then run candidate detection. Used by
+    the screenplay demo below and by the Reverend Insanity pipeline
+    validation -- the latter is the one long/dense enough for batching and
+    concurrency to matter."""
 
     client.insert_narrative_units(units)
     print(f"✓ Inserted {len(units)} narrative units into ClickHouse Story State DB")
 
     llm = llm or _default_provider()
     print(f"  Using {llm.tier} provider: {llm.model}", flush=True)
+    registry = EntityRegistry(story_universe_id)
+
+    batches = [units[i : i + _BATCH_SIZE] for i in range(0, len(units), _BATCH_SIZE)]
+    print(
+        f"  {len(units)} units -> {len(batches)} batches of up to {_BATCH_SIZE}, "
+        f"{_EXTRACTION_CONCURRENCY} concurrent",
+        flush=True,
+    )
+
+    def _extract_batch(batch: list[NarrativeUnit]) -> list:
+        return asyncio.run(extract_state_events_batch(batch, story_universe_id, llm, registry))
+
     total_events = 0
+    done_units = 0
     start = time.monotonic()
-    for i, unit in enumerate(units, 1):
-        unit_start = time.monotonic()
-        events = await extract_state_events(unit, story_universe_id, llm)
-        await write_state_events(events, client)
-        total_events += len(events)
-        elapsed = time.monotonic() - start
-        avg = elapsed / i
-        remaining = avg * (len(units) - i)
-        print(
-            f"  [{i}/{len(units)}] {unit.unit_id}: {len(events)} events "
-            f"({time.monotonic() - unit_start:.1f}s, ~{remaining / 60:.0f}m left)",
-            flush=True,
-        )
+    with concurrent.futures.ThreadPoolExecutor(max_workers=_EXTRACTION_CONCURRENCY) as pool:
+        for batch, events in zip(batches, pool.map(_extract_batch, batches)):
+            await write_state_events(events, client)
+            total_events += len(events)
+            done_units += len(batch)
+            elapsed = time.monotonic() - start
+            avg = elapsed / done_units
+            remaining = avg * (len(units) - done_units)
+            print(
+                f"  [{done_units}/{len(units)}] +{len(events)} events "
+                f"({elapsed:.0f}s elapsed, ~{remaining / 60:.1f}m left)",
+                flush=True,
+            )
+    client.insert_entities(registry.get_all())
     print(f"✓ Extracted and wrote {total_events} state events across {len(units)} units")
 
     detector = CandidateDetector(client)
