@@ -1,4 +1,5 @@
 import asyncio
+import concurrent.futures
 import json
 import os
 import tempfile
@@ -37,8 +38,9 @@ from backend.ingestion.parsers import (
 from backend.llm.base import LLMProvider
 from backend.llm.client import GeminiProvider
 from backend.llm.ollama import OllamaProvider
+from backend.llm.vertexai import VertexAIProvider
 from backend.pipeline.entity_resolution import EntityRegistry
-from backend.pipeline.state_extraction import extract_state_events, write_state_events
+from backend.pipeline.state_extraction import extract_state_events_batch, write_state_events
 from backend.seed_demo_projects import seed_demo_projects_for_user
 
 
@@ -92,6 +94,17 @@ app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 # dev API; no new ClickHouse table needed just to track "is this job done yet".
 _JOBS: Dict[str, Dict[str, Any]] = {}
 
+# Bounded fan-out for per-unit extraction and per-conflict investigation --
+# high enough to cut wall-clock time substantially on a full screenplay, low
+# enough to stay under Vertex AI's per-minute quota (an unbounded fan-out
+# across ~100 units triggered 429s in testing). Override via env for a
+# provider/tier with different limits.
+_EXTRACTION_CONCURRENCY = int(os.environ.get("EXTRACTION_CONCURRENCY", "5"))
+# How many units go into one LLM extraction call. Cuts total call count
+# (and therefore total wall-clock time and rate-limit pressure) by roughly
+# this factor on top of _EXTRACTION_CONCURRENCY's parallel fan-out.
+_EXTRACTION_BATCH_SIZE = int(os.environ.get("EXTRACTION_BATCH_SIZE", "4"))
+
 _EXT_PARSERS = {
     ".pdf": NovelParser,
     ".epub": NovelParser,
@@ -102,10 +115,14 @@ _EXT_PARSERS = {
 
 def _default_provider() -> LLMProvider:
     """MODEL_PROVIDER=ollama (default) runs free/local; =gemini switches to
-    the paid API tier. Mirrors scripts/demo_pipeline._default_provider --
-    duplicated rather than imported, since backend/ shouldn't depend on
+    the Gemini API (API key auth); =vertexai switches to Vertex AI (GCP
+    project + ADC auth) instead. Mirrors scripts/demo_pipeline._default_provider
+    -- duplicated rather than imported, since backend/ shouldn't depend on
     scripts/."""
-    if os.environ.get("MODEL_PROVIDER", "ollama") == "gemini":
+    provider = os.environ.get("MODEL_PROVIDER", "ollama")
+    if provider == "vertexai":
+        return VertexAIProvider()
+    if provider == "gemini":
         return GeminiProvider()
     return OllamaProvider()
 
@@ -165,7 +182,7 @@ def signup(request: Request, req: SignupRequest):
     if winner_id != user_id:
         raise HTTPException(status_code=409, detail="An account with this email already exists.")
 
-    # Every new account starts with the demo projects (pre-run, results
+    # Every new account starts with the 3 demo projects (pre-run, results
     # included) so the dashboard isn't empty on first login -- see
     # backend/seed_demo_projects.py and docs/deployment-improvements.md.
     try:
@@ -314,10 +331,27 @@ def _run_pipeline_job(story_universe_id: str, file_path: str, ParserCls, project
         job["status"] = "extracting"
         llm = _default_provider()
         registry = EntityRegistry(story_universe_id, id_scope=project_id)
-        for unit in units:
-            events = asyncio.run(extract_state_events(unit, story_universe_id, llm, registry))
-            asyncio.run(write_state_events(events, client))
-            job["units_extracted"] += 1
+
+        batches = [units[i : i + _EXTRACTION_BATCH_SIZE] for i in range(0, len(units), _EXTRACTION_BATCH_SIZE)]
+
+        def _extract_batch(batch: List[NarrativeUnit]) -> list:
+            # registry.resolve() is safe to call from multiple threads: entity
+            # ids are derived deterministically from the name, so a race
+            # produces at worst an idempotent duplicate write, not corruption.
+            return asyncio.run(extract_state_events_batch(batch, story_universe_id, llm, registry))
+
+        # Sequential, one-unit-per-call (one LLM round-trip per unit, awaited
+        # one at a time) was the dominant cost on a full screenplay --
+        # 20+ minutes for ~100 units. Two independent levers on top of that:
+        # batching (several units per LLM call, cutting the call count by
+        # ~_EXTRACTION_BATCH_SIZE) and concurrency (fanning those calls out in
+        # parallel, bounded to stay under the provider's per-minute rate limit
+        # rather than trigger the 429s an unbounded fan-out caused in testing).
+        with concurrent.futures.ThreadPoolExecutor(max_workers=_EXTRACTION_CONCURRENCY) as pool:
+            for batch, events in zip(batches, pool.map(_extract_batch, batches)):
+                asyncio.run(write_state_events(events, client))
+                job["units_extracted"] += len(batch)
+                _sync_status()
         client.insert_entities(registry.get_all())
         _sync_status()
 
@@ -329,11 +363,18 @@ def _run_pipeline_job(story_universe_id: str, file_path: str, ParserCls, project
         _sync_status()
 
         job["status"] = "investigating"
-        agent = InvestigationAgent(_InvestigationLLM(llm), story_universe_id)
-        for conflict in conflicts:
-            verdict = agent.investigate(conflict)
-            client.insert_investigation_verdicts([verdict])
-            job["verdicts_complete"] += 1
+
+        def _investigate_one(conflict) -> Any:
+            # A fresh InvestigationAgent per call, not one shared instance --
+            # investigate_async mutates self.tool_call_log, which would race
+            # across threads on a shared agent.
+            agent = InvestigationAgent(_InvestigationLLM(llm), story_universe_id)
+            return agent.investigate(conflict)
+
+        with concurrent.futures.ThreadPoolExecutor(max_workers=_EXTRACTION_CONCURRENCY) as pool:
+            for verdict in pool.map(_investigate_one, conflicts):
+                client.insert_investigation_verdicts([verdict])
+                job["verdicts_complete"] += 1
 
         job["status"] = "complete"
         _sync_status()
@@ -725,6 +766,33 @@ def list_projects(user_id: str = Depends(get_current_user_id)):
             "severity": severity,
         })
     return result
+
+
+class RenameProjectRequest(BaseModel):
+    title: str
+
+
+@app.patch("/projects/{project_id}")
+def rename_project(project_id: str, body: RenameProjectRequest, user_id: str = Depends(get_current_user_id)):
+    client = ClickHouseClient()
+    project = client.get_project(project_id)
+    if project is None or project[1] != user_id:
+        raise HTTPException(status_code=403, detail="You do not have access to this project.")
+    title = body.title.strip()
+    if not title:
+        raise HTTPException(status_code=400, detail="Title cannot be empty.")
+    client.rename_project(project_id, title)
+    return {"status": "success", "title": title}
+
+
+@app.delete("/projects/{project_id}")
+def delete_project(project_id: str, user_id: str = Depends(get_current_user_id)):
+    client = ClickHouseClient()
+    project = client.get_project(project_id)
+    if project is None or project[1] != user_id:
+        raise HTTPException(status_code=403, detail="You do not have access to this project.")
+    client.delete_project(project_id)
+    return {"status": "success"}
 
 
 @app.get("/projects/{project_id}/versions")

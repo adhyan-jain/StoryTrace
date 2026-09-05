@@ -14,6 +14,7 @@ from backend.clickhouse.client import ClickHouseClient
 from backend.ingestion.models import NarrativeUnit
 from backend.llm.client import GeminiProvider
 from backend.llm.ollama import OllamaProvider
+from backend.llm.vertexai import VertexAIProvider
 from backend.pipeline.entity_resolution import EntityRegistry
 from backend.pipeline.state_extraction import extract_state_events, write_state_events
 
@@ -22,8 +23,12 @@ def _get_provider():
     """Gemini's free tier caps at 20 requests/DAY (not per-minute) --
     exhausted almost immediately by a multi-unit run plus multi-step
     investigation. MODEL_PROVIDER=ollama (default here) runs local instead,
-    no daily cap, at the cost of per-call latency. =gemini switches back."""
-    if os.environ.get("MODEL_PROVIDER", "ollama") == "gemini":
+    no daily cap, at the cost of per-call latency. =gemini switches to the
+    API-key tier; =vertexai switches to Vertex AI (GCP project + ADC)."""
+    provider = os.environ.get("MODEL_PROVIDER", "ollama")
+    if provider == "vertexai":
+        return VertexAIProvider()
+    if provider == "gemini":
         return GeminiProvider()
     return OllamaProvider()
 

@@ -72,7 +72,11 @@ class LLMRequest:
     stage: str
     prompt: str
     system: str = ""
-    max_tokens: int = 2048
+    # 2048 was too tight for a multi-fact scene extraction plus the repeated
+    # schema instructions -- Vertex AI truncated mid-JSON often enough on a
+    # full-length screenplay run to lose real events (see gladiator/pulp_fiction
+    # smoke tests). Bumped for headroom across all providers, not just Vertex.
+    max_tokens: int = 4096
     temperature: float = 0.0
     # Free-form hints a provider may ignore.
     extra: dict[str, object] = field(default_factory=dict)

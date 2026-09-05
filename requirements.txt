@@ -9,7 +9,9 @@ uvicorn
 httpx
 google-genai
 google-adk
+google-cloud-aiplatform>=1.38.0
 mcp-clickhouse
 pyjwt
 bcrypt
 email-validator
+slowapi

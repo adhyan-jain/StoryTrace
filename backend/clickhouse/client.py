@@ -31,6 +31,17 @@ class ClickHouseClient:
             column_names=["id", "email", "password_hash"],
         )
 
+    def get_earliest_user_id_for_email(self, email: str) -> Any:
+        """Used right after an insert to resolve a signup race: returns the id
+        of whichever row for this email was written first (ties broken by id),
+        without waiting for ReplacingMergeTree's async background merge."""
+        rows = self.client.query(
+            "SELECT id FROM users WHERE email = {email:String} "
+            "ORDER BY created_at ASC, id ASC LIMIT 1",
+            parameters={"email": email},
+        ).result_rows
+        return rows[0][0] if rows else None
+
     def get_user_by_id(self, user_id: str) -> Any:
         rows = self.client.query(
             "SELECT id, email, created_at FROM users WHERE id = {id:String} LIMIT 1",
@@ -79,6 +90,43 @@ class ClickHouseClient:
             parameters={"project_id": project_id},
         ).result_rows
         return rows[0][0] if rows and rows[0][0] is not None else 0
+
+    def rename_project(self, project_id: str, title: str) -> None:
+        self.client.command(
+            "ALTER TABLE projects UPDATE title = {title:String} WHERE id = {id:String}",
+            parameters={"title": title, "id": project_id},
+        )
+
+    def delete_project(self, project_id: str) -> None:
+        """Cascades: every table keyed by story_universe_id for each of this
+        project's versions, then the versions themselves, then the project
+        row. ClickHouse mutations (ALTER TABLE ... DELETE) run async in the
+        background, not synchronously within this call -- acceptable here
+        since the project disappears from list_projects immediately (the
+        `projects` row delete is what that query reads) even while the
+        larger per-version tables finish clearing out behind it."""
+        story_universe_ids = [v[0] for v in self.list_project_versions(project_id)]
+        for story_universe_id in story_universe_ids:
+            for table in ("narrative_units", "entities", "state_events", "candidate_conflicts", "processing_status"):
+                self.client.command(
+                    f"ALTER TABLE {table} DELETE WHERE story_universe_id = {{sid:String}}",
+                    parameters={"sid": story_universe_id},
+                )
+            # investigation_verdicts has no story_universe_id column -- its
+            # candidate_id is "{story_universe_id}_..." (see the LIKE-pattern
+            # query in get_version_diff/_verdict_counts_by_status).
+            self.client.command(
+                "ALTER TABLE investigation_verdicts DELETE WHERE candidate_id LIKE {prefix:String}",
+                parameters={"prefix": f"{story_universe_id}_%"},
+            )
+        self.client.command(
+            "ALTER TABLE project_versions DELETE WHERE project_id = {project_id:String}",
+            parameters={"project_id": project_id},
+        )
+        self.client.command(
+            "ALTER TABLE projects DELETE WHERE id = {project_id:String}",
+            parameters={"project_id": project_id},
+        )
 
     def upsert_processing_status(
         self,

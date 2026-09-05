@@ -158,6 +158,28 @@ class StateFactsExtraction(BaseModel):
     facts: list[StateFact] = Field(default_factory=list)
 
 
+class BatchStateFact(StateFact):
+    """Same as StateFact, plus which unit in the batch this fact came from --
+    the model is given several units in one prompt (see extract_state_events_batch),
+    so each fact must say which one it's about. 1-based to match the labels
+    ("UNIT 1", "UNIT 2", ...) put in front of each unit's text in the prompt."""
+
+    unit_index: int = Field(ge=1)
+
+
+class BatchStateFactsExtraction(BaseModel):
+    facts: list[BatchStateFact] = Field(default_factory=list)
+
+
+_BATCH_FORMAT_NOTE = """
+You will be given several narrative units in one request, each labeled
+"UNIT <n>". Extract facts from ALL of them, and set each fact's unit_index
+to the number of the unit it came from (the <n> in "UNIT <n>"). Do not mix
+facts across units -- raw_excerpt must be a verbatim substring of THAT
+unit's text specifically, not any other unit's.
+"""
+
+
 _POSSESSION_VALUES = {"held", "acquired", "lost"}
 _INJURY_VALUES = {"injured", "healed", "dead"}
 _MIN_CONFIDENCE = 0.6
@@ -220,6 +242,53 @@ def _normalize_attribute(raw_attribute: str, entity_type: str, raw_value: str) -
     return None
 
 
+def _fact_to_event(
+    fact: StateFact,
+    unit: NarrativeUnit,
+    story_universe_id: str,
+    registry: EntityRegistry,
+) -> StateEvent | None:
+    """Shared validation/normalization path for one extracted fact against
+    the specific unit it's claimed to be about. Used by both the single-unit
+    and batched extraction paths so a fact from either goes through the same
+    hallucination check, controlled-vocabulary check, and entity resolution."""
+    if fact.confidence < _MIN_CONFIDENCE:
+        return None
+    # Hallucination check: raw_excerpt must be evidence that actually
+    # appears in the source text, not a paraphrase (provenance is not
+    # optional -- see CLAUDE.md).
+    if not fact.raw_excerpt or fact.raw_excerpt not in unit.raw_text:
+        return None
+    try:
+        entity_type = EntityType(fact.entity_type.strip().lower())
+    except ValueError:
+        return None
+    try:
+        establishment_type = EstablishmentType(fact.establishment_type.strip().lower())
+    except ValueError:
+        return None
+
+    normalized = _normalize_attribute(fact.attribute, entity_type.value, fact.value)
+    if normalized is None:
+        return None
+    attribute, value = normalized
+    entity_id = registry.resolve(fact.entity_name, entity_type.value)
+
+    return StateEvent(
+        id=str(uuid.uuid4()),
+        story_universe_id=story_universe_id,
+        entity_id=entity_id,
+        attribute=attribute,
+        value=value,
+        unit_id=unit.unit_id,
+        sequence_number=unit.sequence_number,
+        page_ref=unit.page_start,
+        raw_excerpt=fact.raw_excerpt,
+        establishment_type=establishment_type.value,
+        confidence=fact.confidence,
+    )
+
+
 async def extract_state_events(
     unit: NarrativeUnit,
     story_universe_id: str,
@@ -249,46 +318,94 @@ Extract all trackable state facts from this text."""
 
     registry = registry if registry is not None else EntityRegistry(story_universe_id)
     events: list[StateEvent] = []
-
     for fact in result.value.facts:
-        if fact.confidence < _MIN_CONFIDENCE:
-            continue
-        # Hallucination check: raw_excerpt must be evidence that actually
-        # appears in the source text, not a paraphrase (provenance is not
-        # optional -- see CLAUDE.md).
-        if not fact.raw_excerpt or fact.raw_excerpt not in unit.raw_text:
-            continue
-        try:
-            entity_type = EntityType(fact.entity_type.strip().lower())
-        except ValueError:
-            continue
-        try:
-            establishment_type = EstablishmentType(fact.establishment_type.strip().lower())
-        except ValueError:
-            continue
+        event = _fact_to_event(fact, unit, story_universe_id, registry)
+        if event is not None:
+            events.append(event)
+    return events
 
-        normalized = _normalize_attribute(fact.attribute, entity_type.value, fact.value)
-        if normalized is None:
-            continue
-        attribute, value = normalized
-        entity_id = registry.resolve(fact.entity_name, entity_type.value)
 
-        events.append(
-            StateEvent(
-                id=str(uuid.uuid4()),
-                story_universe_id=story_universe_id,
-                entity_id=entity_id,
-                attribute=attribute,
-                value=value,
-                unit_id=unit.unit_id,
-                sequence_number=unit.sequence_number,
-                page_ref=unit.page_start,
-                raw_excerpt=fact.raw_excerpt,
-                establishment_type=establishment_type.value,
-                confidence=fact.confidence,
-            )
+# How many LLM output tokens to budget per unit in a batch call. A real
+# 501-chapter run measured 49% of batches (62/126) hitting mid-JSON
+# truncation at the old 1500/unit budget, each retriggering a 4x-call
+# per-unit fallback -- effectively erasing most of batching's call-count
+# win. Raising the ceiling costs nothing extra (billing is per actual
+# output token generated, not the budget), so this is set generously
+# relative to gemini-2.5-flash's much larger real output cap.
+_BATCH_TOKENS_PER_UNIT = 4000
+
+
+async def extract_state_events_batch(
+    units: list[NarrativeUnit],
+    story_universe_id: str,
+    llm_provider: LLMProvider,
+    registry: EntityRegistry | None = None,
+) -> list[StateEvent]:
+    """Same extraction as extract_state_events, but for several units in one
+    LLM call -- cuts the total call count (and therefore wall-clock time and
+    rate-limit pressure) by roughly len(units)x on top of the concurrency
+    fan-out in backend/api/main.py's _run_pipeline_job. Falls back to
+    per-unit extraction for this batch if the batched call itself fails or
+    returns nothing usable, so a batch failure costs the same calls as never
+    batching, not more."""
+    if not units:
+        return []
+    if len(units) == 1:
+        return await extract_state_events(units[0], story_universe_id, llm_provider, registry)
+
+    registry = registry if registry is not None else EntityRegistry(story_universe_id)
+
+    sections = "\n\n".join(
+        f"UNIT {i}:\n{unit.raw_text}" for i, unit in enumerate(units, start=1)
+    )
+    prompt = f"""{sections}
+
+Extract all trackable state facts from EVERY unit above. Remember to set
+each fact's unit_index to the number of the unit it came from."""
+
+    request = LLMRequest(
+        stage="state_extraction_batch",
+        prompt=prompt,
+        system=SYSTEM_PROMPT + _BATCH_FORMAT_NOTE,
+        max_tokens=_BATCH_TOKENS_PER_UNIT * len(units),
+    )
+
+    try:
+        result = llm_provider.complete(request, BatchStateFactsExtraction)
+    except LLMError as exc:
+        logger.error(
+            "batch state extraction failed for units %s: %s -- falling back to per-unit",
+            [u.unit_id for u in units], exc,
         )
+        return await _extract_units_individually(units, story_universe_id, llm_provider, registry)
+    except Exception as exc:  # provider/parse failure of any other kind
+        logger.error(
+            "batch state extraction failed for units %s: %s -- falling back to per-unit",
+            [u.unit_id for u in units], exc,
+        )
+        return await _extract_units_individually(units, story_universe_id, llm_provider, registry)
 
+    by_index = {i: unit for i, unit in enumerate(units, start=1)}
+    events: list[StateEvent] = []
+    for fact in result.value.facts:
+        unit = by_index.get(fact.unit_index)
+        if unit is None:
+            continue
+        event = _fact_to_event(fact, unit, story_universe_id, registry)
+        if event is not None:
+            events.append(event)
+    return events
+
+
+async def _extract_units_individually(
+    units: list[NarrativeUnit],
+    story_universe_id: str,
+    llm_provider: LLMProvider,
+    registry: EntityRegistry,
+) -> list[StateEvent]:
+    events: list[StateEvent] = []
+    for unit in units:
+        events.extend(await extract_state_events(unit, story_universe_id, llm_provider, registry))
     return events
 
 
