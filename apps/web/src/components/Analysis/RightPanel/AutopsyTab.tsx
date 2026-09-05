@@ -6,13 +6,65 @@ import { ExcerptBox } from "@/components/ui/ExcerptBox";
 import { SeverityBadge, StatusBadge, severityColor } from "@/components/ui/SeverityBadge";
 import type { AutopsyResponse, InvestigationStep } from "@/lib/types";
 
+/** Renders a plain object as "key: value" lines instead of a raw JSON
+ * blob -- readable at a glance instead of a wrapped, bracket-heavy dump. */
+function KeyValueLines({ data }: { data: Record<string, unknown> }) {
+  return (
+    <>
+      {Object.entries(data).map(([key, value]) => (
+        <div key={key} className="flex gap-2">
+          <span className="text-[var(--text-muted)] shrink-0">{key}:</span>
+          <span className="text-[var(--text-primary)] break-all">
+            {typeof value === "object" ? JSON.stringify(value) : String(value)}
+          </span>
+        </div>
+      ))}
+    </>
+  );
+}
+
+/** The investigation tools return either a plain string, a single object,
+ * or an array of objects (e.g. find_attribute_changes' per-sequence rows) --
+ * format whichever shape shows up as readable lines instead of a raw
+ * JSON.stringify dump. */
+function FormattedResult({ result }: { result: unknown }) {
+  if (typeof result === "string") return <>{result || "(empty)"}</>;
+  if (Array.isArray(result)) {
+    if (result.length === 0) return <>(no rows)</>;
+    return (
+      <div className="flex flex-col gap-2.5">
+        {result.map((row, i) => (
+          <div key={i} className="flex flex-col gap-0.5 pb-2 border-b border-[var(--bg-border)] last:border-0 last:pb-0">
+            {row && typeof row === "object" ? (
+              <KeyValueLines data={row as Record<string, unknown>} />
+            ) : (
+              <span>{String(row)}</span>
+            )}
+          </div>
+        ))}
+      </div>
+    );
+  }
+  if (result && typeof result === "object") {
+    return (
+      <div className="flex flex-col gap-0.5">
+        <KeyValueLines data={result as Record<string, unknown>} />
+      </div>
+    );
+  }
+  return <>{String(result)}</>;
+}
+
 function StepView({ step }: { step: InvestigationStep }) {
   if (step.step === "action") {
     return (
       <div>
         <p className="font-[family-name:var(--font-mono)] text-[10px] text-[var(--text-muted)] uppercase tracking-wider mb-1">action</p>
         <ExcerptBox>
-          {step.tool}({JSON.stringify(step.args)})
+          <span className="font-medium">{step.tool}</span>
+          <div className="flex flex-col gap-0.5 mt-1">
+            <KeyValueLines data={step.args as Record<string, unknown>} />
+          </div>
         </ExcerptBox>
       </div>
     );
@@ -21,7 +73,9 @@ function StepView({ step }: { step: InvestigationStep }) {
     return (
       <div>
         <p className="font-[family-name:var(--font-mono)] text-[10px] text-[var(--text-muted)] uppercase tracking-wider mb-1">observation</p>
-        <ExcerptBox>{typeof step.result === "string" ? step.result : JSON.stringify(step.result, null, 2)}</ExcerptBox>
+        <ExcerptBox>
+          <FormattedResult result={step.result} />
+        </ExcerptBox>
       </div>
     );
   }
@@ -33,7 +87,9 @@ function StepView({ step }: { step: InvestigationStep }) {
           className="border px-3 py-2 bg-[var(--bg-elevated)]"
           style={{ borderColor: severityColor((step.verdict.severity as never) ?? null) }}
         >
-          <p className="font-[family-name:var(--font-mono)] text-xs text-[var(--text-primary)]">{JSON.stringify(step.verdict, null, 2)}</p>
+          <div className="font-[family-name:var(--font-mono)] text-xs text-[var(--text-primary)] flex flex-col gap-0.5">
+            <KeyValueLines data={step.verdict as Record<string, unknown>} />
+          </div>
         </div>
       </div>
     );
