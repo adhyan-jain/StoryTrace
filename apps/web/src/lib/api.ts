@@ -40,7 +40,17 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
     let detail = res.statusText;
     try {
       const body = await res.json();
-      detail = body.detail ?? detail;
+      // FastAPI's validation-error detail (422) is an array of
+      // {loc, msg, type} objects, not a string -- stringify it into
+      // something readable instead of letting it flow into an Error's
+      // message as-is, which renders as the literal text "[object Object]".
+      if (Array.isArray(body.detail)) {
+        detail = body.detail.map((e: { msg?: string }) => e.msg ?? JSON.stringify(e)).join("; ") || detail;
+      } else if (typeof body.detail === "string") {
+        detail = body.detail;
+      } else if (body.detail && typeof body.detail === "object") {
+        detail = body.detail.msg ?? JSON.stringify(body.detail);
+      }
     } catch {
       // response wasn't JSON, keep statusText
     }

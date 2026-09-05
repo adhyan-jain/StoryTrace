@@ -217,21 +217,23 @@ export default function AnalyzePage() {
 
   if (overview.status !== "complete") {
     return (
-      <div className="flex h-screen bg-[var(--bg-base)] overflow-hidden">
-        <div className="w-[280px] border-r border-[var(--bg-border)] bg-[var(--bg-surface)] flex flex-col">
-          <Header id={id} overview={overview} entityCount={0} findingCount={0} />
+      <div className="flex flex-col h-screen bg-[var(--bg-base)] overflow-hidden">
+        <Header id={id} overview={overview} entityCount={0} findingCount={0} />
+        <div className="flex flex-1 overflow-hidden">
+          <div className="w-[280px] border-r border-[var(--bg-border)] bg-[var(--bg-surface)] flex flex-col" />
+          <UploadProgress overview={overview} startedAt={startedAt.current} stalled={stalled} />
+          <div className="w-[360px] border-l border-[var(--bg-border)] bg-[var(--bg-surface)]" />
         </div>
-        <UploadProgress overview={overview} startedAt={startedAt.current} stalled={stalled} />
-        <div className="w-[360px] border-l border-[var(--bg-border)] bg-[var(--bg-surface)]" />
       </div>
     );
   }
 
   return (
-    <div className="flex h-screen bg-[var(--bg-base)] overflow-hidden">
+    <div className="flex flex-col h-screen bg-[var(--bg-base)] overflow-hidden">
+      <Header id={id} overview={overview} entityCount={entities.length} findingCount={conflicts.length} />
+      <div className="flex flex-1 overflow-hidden">
       {/* Left Panel */}
       <div className="w-[280px] border-r border-[var(--bg-border)] bg-[var(--bg-surface)] flex flex-col flex-shrink-0">
-        <Header id={id} overview={overview} entityCount={entities.length} findingCount={conflicts.length} />
         <TabBar tabs={["CHAPTERS", "ENTITIES"] as const} active={leftTab} onChange={setLeftTab} />
         {leftTab === "CHAPTERS" ? (
           <ChapterList
@@ -265,6 +267,7 @@ export default function AnalyzePage() {
         {rightTab === "DIFF" && projectId && versionNumber && (
           <VersionDiffTab projectId={projectId} versionNumber={versionNumber} />
         )}
+      </div>
       </div>
     </div>
   );
