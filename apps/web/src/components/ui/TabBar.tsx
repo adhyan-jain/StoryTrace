@@ -18,7 +18,7 @@ export function TabBar<T extends string>({
           key={tab}
           onClick={() => onChange(tab)}
           className={clsx(
-            "px-3 py-2.5 text-xs font-semibold uppercase tracking-wider border-b-2 -mb-px transition-colors cursor-pointer",
+            "px-3 py-2.5 font-[family-name:var(--font-mono)] text-[11px] tracking-[0.1em] uppercase border-b-2 -mb-px transition-colors cursor-pointer",
             active === tab
               ? "text-[var(--text-primary)] border-[var(--accent-blue)]"
               : "text-[var(--text-muted)] border-transparent hover:text-[var(--text-secondary)]",

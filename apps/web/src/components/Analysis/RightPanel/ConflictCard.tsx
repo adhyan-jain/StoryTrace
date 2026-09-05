@@ -13,7 +13,7 @@ export function ConflictCard({
   return (
     <button
       onClick={onClick}
-      className="w-full text-left bg-[var(--bg-elevated)] border border-[var(--bg-border)] overflow-hidden cursor-pointer hover:border-[var(--text-muted)] transition-colors"
+      className="w-full text-left bg-[var(--bg-elevated)] border border-[var(--bg-border)] cursor-pointer hover:border-[var(--text-muted)] transition-colors"
       style={{ borderLeft: `3px solid ${severityColor(conflict.severity)}` }}
     >
       <div className="p-3 flex flex-col gap-2">

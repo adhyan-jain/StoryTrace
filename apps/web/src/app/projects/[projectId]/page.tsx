@@ -39,7 +39,7 @@ export default function ProjectPage() {
   return (
     <div className="min-h-screen bg-[var(--bg-base)]">
       <div className="grain-surface border-b-2 border-[var(--bg-border)] relative overflow-hidden">
-        <div className="max-w-4xl mx-auto px-5 py-10 sm:px-8 relative">
+        <div className="max-w-4xl mx-auto px-8 py-10 sm:px-14 relative">
           <span
             className="ghost-index absolute -top-8 right-2 sm:right-6 text-[8rem] sm:text-[10rem] select-none"
             aria-hidden="true"
@@ -70,7 +70,7 @@ export default function ProjectPage() {
         </div>
       </div>
 
-      <div className="max-w-4xl mx-auto px-5 py-10 sm:px-8">
+      <div className="max-w-4xl mx-auto px-8 py-10 sm:px-14">
         {showUpload && (
           <div className="mb-10 flex justify-center">
             <DropZone projectId={projectId} onUploaded={() => { setShowUpload(false); refresh(); }} />

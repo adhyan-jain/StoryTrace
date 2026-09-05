@@ -80,7 +80,7 @@ export default function DashboardPage() {
   return (
     <div className="min-h-screen bg-[var(--bg-base)]">
       <div className="grain-surface border-b-2 border-[var(--bg-border)] relative overflow-hidden">
-        <div className="max-w-6xl mx-auto px-5 py-10 sm:px-10 sm:py-14 relative">
+        <div className="max-w-6xl mx-auto px-8 py-10 sm:px-16 sm:py-14 relative">
           <span
             className="ghost-index absolute -top-6 right-4 sm:right-10 text-[9rem] sm:text-[13rem] select-none"
             aria-hidden="true"
@@ -125,7 +125,7 @@ export default function DashboardPage() {
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-5 py-10 sm:px-10">
+      <div className="max-w-6xl mx-auto px-8 py-10 sm:px-16">
 
         {showUpload && (
           <div className="mb-10 flex justify-center">
