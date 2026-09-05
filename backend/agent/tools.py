@@ -56,7 +56,23 @@ class AgentTools:
         LIMIT 1
         """
         rows = await self._query(sql, "get_unit_text")
-        return rows[0]["text"] if rows else ""
+        if not rows:
+            return ""
+        text = rows[0]["text"]
+        # A screenplay scene is ~1-3K chars; a novel chapter can run
+        # 10-20K+ (measured: Reverend Insanity averaged ~12K, up to 22K).
+        # Returning the whole thing verbatim both bloats the agent's own
+        # context every time it inspects a long unit (crowding out room for
+        # its own structured-output formatting, a likely contributor to the
+        # JSON-parse failures seen disproportionately on that novel) and
+        # dumps an entire chapter into the small Autopsy trace panel in the
+        # UI. Cap it -- the agent already has the specific prior/current
+        # excerpts it's investigating; this tool is for surrounding context,
+        # not a full-text substitute.
+        _MAX_CHARS = 1500
+        if len(text) > _MAX_CHARS:
+            text = text[:_MAX_CHARS] + f"... [truncated, {len(text)} chars total]"
+        return text
 
     async def get_state_at_unit(self, entity_id: str, sequence_number: int) -> List[Dict[str, Any]]:
         sql = f"""
