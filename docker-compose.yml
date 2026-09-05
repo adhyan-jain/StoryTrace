@@ -13,6 +13,70 @@ services:
     volumes:
       - clickhouse_data:/var/lib/clickhouse
       - ./backend/clickhouse/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8123/ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # host networking: the bridge network's forwarding path to host-bound
+    # services (Ollama on 127.0.0.1) was firewalled off in local testing, so
+    # the backend shares the host's network namespace directly instead --
+    # reaches ClickHouse and Ollama via localhost, no bridge/firewall
+    # involved. `ports:` is meaningless under host networking (the container
+    # already binds host ports directly) and is omitted.
+    network_mode: host
+    environment:
+      CLICKHOUSE_HOST: localhost
+      CLICKHOUSE_PORT: 8123
+      CLICKHOUSE_USER: default
+      CLICKHOUSE_PASSWORD: "admin"
+      CLICKHOUSE_DB: storytrace
+      JWT_SECRET: ${JWT_SECRET:?JWT_SECRET must be set -- generate one with `openssl rand -hex 32`}
+      FRONTEND_ORIGIN: ${FRONTEND_ORIGIN:-http://localhost:3000}
+      MODEL_PROVIDER: ${MODEL_PROVIDER:-ollama}
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+      GOOGLE_API_KEY: ${GOOGLE_API_KEY:-}
+      OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-http://localhost:11434}
+      # Only used when MODEL_PROVIDER=vertexai. GOOGLE_APPLICATION_CREDENTIALS
+      # is left unset by default -- set it (and mount the key file below) only
+      # if not relying on gcloud ADC / Workload Identity for auth.
+      GOOGLE_CLOUD_PROJECT: ${GOOGLE_CLOUD_PROJECT:-}
+      GOOGLE_CLOUD_LOCATION: ${GOOGLE_CLOUD_LOCATION:-us-central1}
+      VERTEX_MODEL: ${VERTEX_MODEL:-gemini-3.6-flash-lite}
+      GOOGLE_APPLICATION_CREDENTIALS: ${GOOGLE_APPLICATION_CREDENTIALS:-}
+    # Uncomment to mount a service-account key for Vertex AI when
+    # GOOGLE_APPLICATION_CREDENTIALS points at /app/credentials.json:
+    # volumes:
+    #   - ./credentials.json:/app/credentials.json:ro
+    depends_on:
+      clickhouse:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+      args:
+        # Must be reachable from the browser (not the "backend" service
+        # name, which only resolves inside the compose network) -- override
+        # in a deployed environment via NEXT_PUBLIC_API_URL.
+        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:8000}
+    ports:
+      - "3002:3000"
+    depends_on:
+      backend:
+        condition: service_healthy
 
 volumes:
   clickhouse_data:

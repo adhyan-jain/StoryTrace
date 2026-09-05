@@ -34,6 +34,24 @@ function storeToken(token: string | null) {
   else window.localStorage.removeItem(TOKEN_KEY);
 }
 
+// Called by api.ts's request() when an authenticated call comes back 401 --
+// the token expired (24h TTL) or was revoked server-side. Clears storage and
+// bounces to /login directly (rather than through the AuthProvider's React
+// state, which this module-level function can't reach) so a request fired
+// from anywhere -- not just inside a component with access to useAuth() --
+// still ends the stuck session instead of looping on retries.
+export function handleSessionExpired() {
+  storeToken(null);
+  if (typeof window === "undefined") return;
+  if (window.location.pathname !== "/login") {
+    // A hard navigation, not useRouter().push(): this runs from api.ts,
+    // called from arbitrary non-component code with no router instance in
+    // scope, and it also forces a full reload that clears any in-memory
+    // AuthProvider state left over from the expired session.
+    window.location.assign("/login");
+  }
+}
+
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [token, setToken] = useState<string | null>(null);

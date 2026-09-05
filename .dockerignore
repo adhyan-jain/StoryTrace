@@ -1,0 +1,17 @@
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.env
+.git/
+.gitignore
+data/
+demo/
+docs/
+graphify-out/
+.playwright-mcp/
+apps/web/node_modules/
+apps/web/.next/
+tests/
+scripts/
+*.md

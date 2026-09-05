@@ -19,7 +19,11 @@ StoryTrace is an agentic, multi-document narrative continuity engine. It convert
 
 Every route requires `Authorization: Bearer <token>` from `POST /auth/signup` or `POST /auth/login`. Passwords are bcrypt-hashed; JWTs are HS256-signed with `JWT_SECRET` (set your own in `.env`, generated via `openssl rand -hex 32` — never commit a real value). Every project/version/conflict/report route checks the caller owns the resource before returning anything.
 
-Known limitation: `users`/`projects` live in ClickHouse (not a real OLTP store), so the signup email-uniqueness check is check-then-insert rather than a database-enforced unique constraint — a narrow race is possible between two near-simultaneous signups for the same address. Acceptable for this project's scope; a production deployment would use a real relational store for these tables.
+Login and signup are rate-limited (`slowapi`, 5 requests/minute per IP) to blunt credential-stuffing/brute-force attempts against `/auth/login`.
+
+Known limitation: `users`/`projects` live in ClickHouse (not a real OLTP store), so there's no database-enforced unique constraint on email. Signup does a pre-insert existence check *and* a post-insert re-check (picks the earliest `(created_at, id)` row for the email and rejects the request if it isn't the one it just wrote) to close most of the race window between two near-simultaneous signups for the same address, but ReplacingMergeTree still gives no atomic compare-and-swap, so a vanishingly rare double-signup remains possible in theory. Acceptable for this project's scope; a production deployment would use a real relational store with a unique constraint for these tables.
+
+The frontend also has no server-side session store: a 24h-old JWT is simply rejected with 401, and the API client (`apps/web/src/lib/api.ts`) treats any 401 on an authenticated request as an expired session, clearing the stored token and redirecting to `/login`.
 
 ## Running the project
 
@@ -55,7 +59,30 @@ python3 -m scripts.run_pipeline_on_text data/test_documents/controlled_test.txt
 python3 -m scripts.run_pipeline_on_screenplay data/test_documents/<screenplay>.txt
 ```
 
-Set `MODEL_PROVIDER=gemini` to use Gemini instead of the local Ollama default (Gemini's free tier is capped at 20 requests/day per model -- see `FINDINGS.md`).
+Set `MODEL_PROVIDER=gemini` to use the Gemini API (API key auth) instead of the local Ollama default (Gemini's free tier is capped at 20 requests/day per model -- see `FINDINGS.md`). Set `MODEL_PROVIDER=vertexai` to use Vertex AI instead -- same Gemini models, but authenticated against a GCP project via Application Default Credentials rather than an API key, with GCP's normal Vertex AI rate limits rather than the free-tier per-day cap. Requires `GOOGLE_CLOUD_PROJECT` (and `gcloud auth application-default login` locally, or `GOOGLE_APPLICATION_CREDENTIALS` pointing at a service-account key for deployment) -- see `.env.example`.
+
+## Deployment
+
+The whole stack (ClickHouse, backend, frontend) runs via Docker Compose:
+
+```bash
+cp .env.example .env   # set JWT_SECRET (openssl rand -hex 32) at minimum
+export JWT_SECRET=$(grep ^JWT_SECRET= .env | cut -d= -f2)
+docker compose up --build
+```
+
+This builds the backend (`Dockerfile`, FastAPI + uvicorn on port 8000) and frontend (`apps/web/Dockerfile`, Next.js standalone build on port 3000) images, starts ClickHouse first, waits for its healthcheck, loads `backend/clickhouse/schema.sql` automatically via ClickHouse's `docker-entrypoint-initdb.d`, then brings up the backend and finally the frontend once the backend's healthcheck passes.
+
+Environment variables the compose file reads from the shell (see `.env.example` for the full list):
+
+-   `JWT_SECRET` (required) -- compose refuses to start the backend without it.
+-   `FRONTEND_ORIGIN` -- CORS allow-list; set to your deployed frontend's public URL.
+-   `NEXT_PUBLIC_API_URL` -- the URL the *browser* uses to reach the API; baked into the frontend at build time, so it must be the API's public URL, not the in-network `backend` service name.
+-   `MODEL_PROVIDER`, `GEMINI_API_KEY` / `GOOGLE_API_KEY` -- only needed if using `MODEL_PROVIDER=gemini`; `ollama` (the default) needs a reachable Ollama instance instead, which this compose file does not provision.
+-   `MODEL_PROVIDER=vertexai`, `GOOGLE_CLOUD_PROJECT`, `GOOGLE_CLOUD_LOCATION`, `VERTEX_MODEL`, `GOOGLE_APPLICATION_CREDENTIALS` -- only needed if using `MODEL_PROVIDER=vertexai`. `GOOGLE_APPLICATION_CREDENTIALS` should point at a mounted service-account key (see the commented-out `volumes:` entry on the `backend` service in `docker-compose.yml`); on Cloud Run, prefer attaching a service account directly (`gcloud run services update <service> --service-account=<sa>@<project>.iam.gserviceaccount.com` with `roles/aiplatform.user` granted) over shipping a key file, so `GOOGLE_APPLICATION_CREDENTIALS` can be left unset entirely.
+-   ClickHouse connection vars (`CLICKHOUSE_HOST`/`PORT`/`USER`/`PASSWORD`/`DB`) are pre-wired to the `clickhouse` service and don't need overriding for local/single-host deployment.
+
+Not covered by this setup: TLS termination, a reverse proxy/domain, and Ollama's own container (bring your own, or set `MODEL_PROVIDER=gemini`/`vertexai`) -- add those in front of this compose file for a real public deployment.
 
 ## Documentation
 

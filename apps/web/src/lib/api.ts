@@ -11,7 +11,7 @@ import type {
   User,
   VersionDiffResponse,
 } from "./types";
-import { getStoredToken } from "./auth";
+import { getStoredToken, handleSessionExpired } from "./auth";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
 
@@ -43,6 +43,14 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
       detail = body.detail ?? detail;
     } catch {
       // response wasn't JSON, keep statusText
+    }
+    // A 401 on a request that carried a token means the token expired or was
+    // rejected -- bounce to /login rather than letting every caller up the
+    // stack invent its own handling. A 401 with no token (e.g. bad
+    // credentials on /auth/login) is a normal auth failure, not an expired
+    // session, so it's left for the caller to show as a form error.
+    if (res.status === 401 && token) {
+      handleSessionExpired();
     }
     throw new ApiError(detail, res.status);
   }
