@@ -11,5 +11,12 @@ apps/web/test-results/
 # graphify skill output
 graphify-out/
 
-# Raw/processed novel datasets (large, regeneratable via scripts/*)
-data/
+# Raw/processed novel datasets (large, regeneratable via scripts/*).
+# Uses data/* (not data/) so git still traverses into data/eval/ below --
+# a trailing-slash directory match blocks re-inclusion of anything nested
+# inside it, even with a later "!" pattern.
+data/*
+# ...except the eval golden dataset -- small, hand-written source code, not
+# a regeneratable data blob, and other eval code imports it directly.
+!data/eval/
+!data/eval/golden_dataset.py
