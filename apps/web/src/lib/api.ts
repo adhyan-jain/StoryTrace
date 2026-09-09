@@ -3,6 +3,7 @@ import type {
   AutopsyResponse,
   ConflictWithVerdict,
   Entity,
+  ManualVerdictStatus,
   NarrativeUnit,
   OverviewResponse,
   ProjectSummary,
@@ -125,8 +126,16 @@ export async function getAutopsy(conflictId: string): Promise<AutopsyResponse> {
   return request(`/conflict/${conflictId}/autopsy`);
 }
 
-export async function markIntentional(conflictId: string): Promise<void> {
-  await request(`/conflict/${conflictId}/intentional`, { method: "POST" });
+export async function setConflictStatus(conflictId: string, status: ManualVerdictStatus): Promise<void> {
+  await request(`/conflict/${conflictId}/status`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ status }),
+  });
+}
+
+export async function clearConflictStatusOverride(conflictId: string): Promise<void> {
+  await request(`/conflict/${conflictId}/status`, { method: "DELETE" });
 }
 
 export async function getReport(id: string): Promise<Blob> {

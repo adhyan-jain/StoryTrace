@@ -5,7 +5,7 @@ import os
 import tempfile
 import uuid
 from datetime import datetime, timezone
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Literal, Optional
 
 import fitz
 from fastapi import BackgroundTasks, Depends, FastAPI, Form, HTTPException, Request, UploadFile
@@ -719,30 +719,96 @@ def get_autopsy(conflict_id: str, user_id: str = Depends(get_current_user_id)):
             "explanation": v[4],
             "confidence": v[5],
             "suggested_fix": v[7] if len(v) > 7 else "",
+            "is_manual_override": v[0].startswith("verdict_manual_"),
         }
         steps = _parse_investigation_steps(v[6])
 
     return {"conflict": conflict, "verdict": verdict, "steps": steps}
 
 
-@app.post("/conflict/{conflict_id}/intentional")
-def mark_intentional(conflict_id: str, user_id: str = Depends(get_current_user_id)):
-    from backend.story_state.models import InvestigationVerdict
+_MANUAL_STATUS_SEVERITY = {
+    "verified": "critical",
+    "uncertain": "warning",
+    "resolved": "info",
+    "intentional": "info",
+}
 
-    client = ClickHouseClient()
+
+class SetConflictStatusRequest(BaseModel):
+    status: Literal["verified", "resolved", "uncertain", "intentional"]
+
+
+def _authorized_conflict_universe(client: ClickHouseClient, conflict_id: str, user_id: str) -> None:
     c_res = client.client.query(f"SELECT story_universe_id FROM candidate_conflicts WHERE id = '{conflict_id}'")
     if not c_res.result_rows:
         raise HTTPException(status_code=404, detail="Conflict not found")
     _authorize_story_universe(client, c_res.result_rows[0][0], user_id)
 
+
+@app.post("/conflict/{conflict_id}/status")
+def set_conflict_status(
+    conflict_id: str, body: SetConflictStatusRequest, user_id: str = Depends(get_current_user_id)
+):
+    """Manual verdict override -- lets the user set (or change) a finding's
+    status to any of verified/resolved/uncertain/intentional directly,
+    superseding whatever the Investigation Agent concluded. Implemented as
+    inserting a new verdict row (id-prefixed 'verdict_manual_') rather than
+    updating in place, since investigation_verdicts is an append-only
+    MergeTree and /conflict/{id}/autopsy already reads the latest row by
+    created_at -- the same pattern the original mark-as-intentional endpoint
+    used, just generalized to any status instead of only 'intentional'."""
+    from backend.story_state.models import InvestigationVerdict
+
+    client = ClickHouseClient()
+    _authorized_conflict_universe(client, conflict_id, user_id)
+
     verdict = InvestigationVerdict(
-        id=f"verdict_manual_{conflict_id}",
+        id=f"verdict_manual_{uuid.uuid4().hex[:8]}_{conflict_id}",
         candidate_id=conflict_id,
-        status="intentional",
-        severity="info",
-        explanation="User marked as intentional.",
+        status=body.status,
+        severity=_MANUAL_STATUS_SEVERITY[body.status],
+        explanation=f"User manually set status to '{body.status}'.",
         confidence=1.0,
-        investigation_actions=[json.dumps({"step": "verdict", "verdict": {"status": "intentional", "note": "Manual override"}})],
+        investigation_actions=[
+            json.dumps({"step": "verdict", "verdict": {"status": body.status, "note": "Manual override"}})
+        ],
+    )
+    client.insert_investigation_verdicts([verdict])
+    return {"status": "success"}
+
+
+@app.delete("/conflict/{conflict_id}/status")
+def clear_conflict_status_override(conflict_id: str, user_id: str = Depends(get_current_user_id)):
+    """Undo a manual override, reverting to the Investigation Agent's own
+    verdict. Implemented as re-inserting a fresh copy of the latest
+    non-manual verdict rather than deleting the override row -- ClickHouse's
+    ALTER TABLE DELETE is an async mutation and wouldn't be visible to the
+    very next read, whereas a plain INSERT is immediately the new "latest"
+    row for /autopsy's ORDER BY created_at DESC LIMIT 1."""
+    from backend.story_state.models import InvestigationVerdict
+
+    client = ClickHouseClient()
+    _authorized_conflict_universe(client, conflict_id, user_id)
+
+    agent_res = client.client.query(
+        f"""SELECT status, severity, explanation, confidence, investigation_actions, suggested_fix
+            FROM investigation_verdicts
+            WHERE candidate_id = '{conflict_id}' AND id NOT LIKE 'verdict_manual_%'
+            ORDER BY created_at DESC LIMIT 1"""
+    )
+    if not agent_res.result_rows:
+        raise HTTPException(status_code=404, detail="No prior investigation verdict to revert to.")
+    status, severity, explanation, confidence, investigation_actions, suggested_fix = agent_res.result_rows[0]
+
+    verdict = InvestigationVerdict(
+        id=f"verdict_revert_{uuid.uuid4().hex[:8]}_{conflict_id}",
+        candidate_id=conflict_id,
+        status=status,
+        severity=severity,
+        explanation=explanation,
+        confidence=confidence,
+        investigation_actions=list(investigation_actions),
+        suggested_fix=suggested_fix or "",
     )
     client.insert_investigation_verdicts([verdict])
     return {"status": "success"}

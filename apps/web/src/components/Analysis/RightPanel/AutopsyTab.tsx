@@ -1,10 +1,17 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getAutopsy, markIntentional, ApiError } from "@/lib/api";
+import { getAutopsy, setConflictStatus, clearConflictStatusOverride, ApiError } from "@/lib/api";
 import { ExcerptBox } from "@/components/ui/ExcerptBox";
 import { SeverityBadge, StatusBadge, severityColor } from "@/components/ui/SeverityBadge";
-import type { AutopsyResponse, InvestigationStep } from "@/lib/types";
+import type { AutopsyResponse, InvestigationStep, ManualVerdictStatus } from "@/lib/types";
+
+const MANUAL_STATUSES: { value: ManualVerdictStatus; label: string }[] = [
+  { value: "verified", label: "Verified" },
+  { value: "resolved", label: "Resolved" },
+  { value: "uncertain", label: "Uncertain" },
+  { value: "intentional", label: "Intentional" },
+];
 
 /** Renders a plain object as "key: value" lines instead of a raw JSON
  * blob -- readable at a glance instead of a wrapped, bracket-heavy dump. */
@@ -119,7 +126,7 @@ export function AutopsyTab({
 }) {
   const [data, setData] = useState<AutopsyResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [marking, setMarking] = useState(false);
+  const [updatingStatus, setUpdatingStatus] = useState<ManualVerdictStatus | "revert" | null>(null);
 
   useEffect(() => {
     if (!conflictId) {
@@ -210,21 +217,58 @@ export function AutopsyTab({
         </div>
       )}
 
-      <div className="flex flex-wrap gap-2 pt-2 border-t border-[var(--bg-border)]">
-        <button
-          onClick={async () => {
-            if (!conflictId) return;
-            setMarking(true);
-            await markIntentional(conflictId);
-            const refreshed = await getAutopsy(conflictId);
-            setData(refreshed);
-            setMarking(false);
-          }}
-          disabled={marking}
-          className="font-[family-name:var(--font-mono)] px-3 py-1.5 text-[11px] uppercase tracking-wide font-medium text-[var(--text-secondary)] border border-[var(--bg-border)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-elevated)] transition-colors cursor-pointer disabled:opacity-50"
-        >
-          Mark as Intentional
-        </button>
+      <div className="flex flex-col gap-2 pt-2 border-t border-[var(--bg-border)]">
+        <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-wider text-[var(--text-muted)]">
+          Set status
+        </p>
+        <div className="flex flex-wrap gap-2">
+          {MANUAL_STATUSES.map(({ value, label }) => {
+            const isCurrent = verdict?.status === value;
+            return (
+              <button
+                key={value}
+                onClick={async () => {
+                  if (!conflictId || isCurrent) return;
+                  setUpdatingStatus(value);
+                  await setConflictStatus(conflictId, value);
+                  const refreshed = await getAutopsy(conflictId);
+                  setData(refreshed);
+                  setUpdatingStatus(null);
+                }}
+                disabled={updatingStatus !== null || isCurrent}
+                title={isCurrent ? "This is the current status" : `Set status to ${label}`}
+                className="font-[family-name:var(--font-mono)] px-3 py-1.5 text-[11px] uppercase tracking-wide font-medium border transition-colors cursor-pointer disabled:cursor-default disabled:opacity-50"
+                style={
+                  isCurrent
+                    ? { color: "var(--bg-base)", backgroundColor: "var(--accent-blue)", borderColor: "var(--accent-blue)" }
+                    : { color: "var(--text-secondary)", borderColor: "var(--bg-border)" }
+                }
+              >
+                {label}
+              </button>
+            );
+          })}
+          {verdict?.is_manual_override && (
+            <button
+              onClick={async () => {
+                if (!conflictId) return;
+                setUpdatingStatus("revert");
+                await clearConflictStatusOverride(conflictId);
+                const refreshed = await getAutopsy(conflictId);
+                setData(refreshed);
+                setUpdatingStatus(null);
+              }}
+              disabled={updatingStatus !== null}
+              title="Undo this manual override and revert to the Investigation Agent's own verdict"
+              className="font-[family-name:var(--font-mono)] px-3 py-1.5 text-[11px] uppercase tracking-wide font-medium text-[var(--severity-critical)] border border-[var(--severity-critical)] hover:bg-[var(--bg-elevated)] transition-colors cursor-pointer disabled:opacity-50"
+            >
+              Undo Override
+            </button>
+          )}
+        </div>
+      </div>
+
+      <div className="flex flex-wrap gap-2">
         <button
           onClick={() => onJumpToUnit(conflict.prior_unit_id)}
           className="font-[family-name:var(--font-mono)] px-3 py-1.5 text-[11px] uppercase tracking-wide font-medium text-[var(--text-secondary)] border border-[var(--bg-border)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-elevated)] transition-colors cursor-pointer"

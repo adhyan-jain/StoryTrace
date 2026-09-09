@@ -152,7 +152,10 @@ export interface AutopsyVerdict {
   severity: Severity;
   explanation: string;
   confidence: number;
+  is_manual_override: boolean;
 }
+
+export type ManualVerdictStatus = "verified" | "resolved" | "uncertain" | "intentional";
 
 export interface AutopsyResponse {
   conflict: AutopsyConflict;
