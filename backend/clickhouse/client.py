@@ -53,11 +53,11 @@ class ClickHouseClient:
         ).result_rows
         return rows[0] if rows else None
 
-    def create_project(self, project_id: str, user_id: str, title: str) -> None:
+    def create_project(self, project_id: str, user_id: str, title: str, demo_source_id: str = "") -> None:
         self.client.insert(
             "projects",
-            [[project_id, user_id, title]],
-            column_names=["id", "user_id", "title"],
+            [[project_id, user_id, title, demo_source_id]],
+            column_names=["id", "user_id", "title", "demo_source_id"],
         )
 
     def get_project(self, project_id: str) -> Any:

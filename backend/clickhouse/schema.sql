@@ -85,6 +85,12 @@ CREATE TABLE IF NOT EXISTS storytrace.projects (
     id String,
     user_id String,
     title String,
+    -- Stable identifier of which DEMO_SOURCES entry this project was cloned
+    -- from (see backend/seed_demo_projects.py), empty for a real user upload.
+    -- Deliberately NOT the title: titles are user-renameable (PATCH
+    -- /projects/{id}), so matching on title would silently stop recognizing
+    -- a renamed demo project as already-seeded.
+    demo_source_id String DEFAULT '',
     created_at DateTime DEFAULT now()
 ) ENGINE = MergeTree()
 ORDER BY (user_id, created_at);

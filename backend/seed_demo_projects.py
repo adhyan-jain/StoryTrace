@@ -29,6 +29,10 @@ from backend.clickhouse.client import ClickHouseClient
 # user's seeded copy is derived from them at signup/seed time.
 DEMO_SOURCES = [
     {
+        # Stable id this demo project is recognized by, independent of its
+        # (user-renameable) title -- see has_demo_projects and
+        # projects.demo_source_id in schema.sql.
+        "demo_source_id": "reverend_insanity",
         "source_project_id": "0dec3afb5ebe4483a4ea45136f3eea20",
         "title": "Reverend Insanity (Sample)",
         "versions": [
@@ -36,6 +40,7 @@ DEMO_SOURCES = [
         ],
     },
     {
+        "demo_source_id": "controlled_test",
         "source_project_id": "e5ee7501878c4c24ae9f1d831f5316aa",
         "title": "Demo: Controlled Test",
         "versions": [
@@ -44,6 +49,7 @@ DEMO_SOURCES = [
         ],
     },
     {
+        "demo_source_id": "oppenheimer",
         "source_project_id": "af78c054e6a9427881e297a0a6162589",
         "title": "Demo: Oppenheimer",
         "versions": [
@@ -51,8 +57,6 @@ DEMO_SOURCES = [
         ],
     },
 ]
-
-_DEMO_TITLES = [source["title"] for source in DEMO_SOURCES]
 
 
 def _new_id() -> str:
@@ -73,10 +77,7 @@ def seed_demo_projects_for_user(client: ClickHouseClient, user_id: str) -> list[
         new_pid = _new_id()
         created_project_ids.append(new_pid)
 
-        client.client.command(
-            "INSERT INTO projects (id, user_id, title) VALUES ({pid:String}, {uid:String}, {title:String})",
-            parameters={"pid": new_pid, "uid": user_id, "title": title},
-        )
+        client.create_project(new_pid, user_id, title, demo_source_id=source["demo_source_id"])
 
         for version_number, old_suid, version_title in source["versions"]:
             new_suid = _new_id()
@@ -190,9 +191,12 @@ def _clone_version(client: ClickHouseClient, old_pid: str, new_pid: str, old_sui
 
 
 def has_demo_projects(client: ClickHouseClient, user_id: str) -> bool:
+    """True if this user has ANY seeded demo project, by the stable
+    demo_source_id marker -- not by title, which is user-renameable and so
+    can't be trusted to still say "Demo: ..." by the time this runs."""
     rows = client.client.query(
-        "SELECT count() FROM projects WHERE user_id = {uid:String} AND title IN {titles:Array(String)}",
-        parameters={"uid": user_id, "titles": _DEMO_TITLES},
+        "SELECT count() FROM projects WHERE user_id = {uid:String} AND demo_source_id != ''",
+        parameters={"uid": user_id},
     ).result_rows
     return bool(rows and rows[0][0] > 0)
 
