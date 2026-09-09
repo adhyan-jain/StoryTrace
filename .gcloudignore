@@ -1,0 +1,17 @@
+.gcloudignore
+.git
+.gitignore
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.env
+node_modules/
+apps/web/.next/
+apps/web/node_modules/
+data/
+*.epub
+*.pdf
+models/
+*.gguf
+.venv/
