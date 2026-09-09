@@ -63,6 +63,10 @@ character -> location:
 character -> clothing.{item}:
   Describe concisely in 2-4 words.
   e.g. "grey robe", "torn sleeve", "battle armor"
+  Use clothing ONLY for garments actually worn. A badge, ID, weapon, tool,
+  or other handheld/carried item is possession.<item> even when it is
+  pinned, clipped, or holstered onto the body -- do not log the same
+  object as clothing in one scene and possession in another.
 
 Do NOT use free-form descriptions as values.
 Do NOT include quotes, parentheses, or explanations in the value field.
