@@ -155,6 +155,14 @@ export async function renameProject(projectId: string, title: string): Promise<v
   });
 }
 
+export async function renameProjectVersion(projectId: string, versionNumber: number, title: string): Promise<void> {
+  await request(`/projects/${projectId}/versions/${versionNumber}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ title }),
+  });
+}
+
 export async function deleteProject(projectId: string): Promise<void> {
   await request(`/projects/${projectId}`, { method: "DELETE" });
 }

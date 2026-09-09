@@ -10,9 +10,13 @@ class ClickHouseClient:
         user = os.environ.get("CLICKHOUSE_USER", "default")
         password = os.environ.get("CLICKHOUSE_PASSWORD", "admin")
         database = os.environ.get("CLICKHOUSE_DB", "storytrace")
+        # ClickHouse Cloud terminates HTTPS on 8443 and rejects a plaintext
+        # connection outright -- local/docker-compose ClickHouse (8123) has no
+        # TLS at all, so this must stay opt-in via env rather than always-on.
+        secure = os.environ.get("CLICKHOUSE_SECURE", "false").strip().lower() in ("1", "true", "yes")
 
         self.client = clickhouse_connect.get_client(
-            host=host, port=port, user=user, password=password, database=database
+            host=host, port=port, user=user, password=password, database=database, secure=secure
         )
 
     # -- Auth / projects / versions -----------------------------------
@@ -90,6 +94,24 @@ class ClickHouseClient:
             parameters={"project_id": project_id},
         ).result_rows
         return rows[0][0] if rows and rows[0][0] is not None else 0
+
+    def get_version_title(self, story_universe_id: str) -> Any:
+        """The project_versions table is the source of truth for a version's
+        display title (renamed or default) -- used by /overview so a rename
+        made on the version-history page shows up even when there's no
+        in-memory upload job for this id (server restart, demo-seeded data,
+        or a story_universe_id loaded outside the upload flow)."""
+        rows = self.client.query(
+            "SELECT document_title FROM project_versions WHERE id = {id:String} LIMIT 1",
+            parameters={"id": story_universe_id},
+        ).result_rows
+        return rows[0][0] if rows else None
+
+    def rename_project_version(self, story_universe_id: str, title: str) -> None:
+        self.client.command(
+            "ALTER TABLE project_versions UPDATE document_title = {title:String} WHERE id = {id:String}",
+            parameters={"title": title, "id": story_universe_id},
+        )
 
     def rename_project(self, project_id: str, title: str) -> None:
         self.client.command(

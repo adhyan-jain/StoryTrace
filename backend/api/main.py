@@ -256,18 +256,25 @@ async def upload_screenplay(
 
     client = ClickHouseClient()
 
+    doc_base = os.path.splitext(filename)[0] or "document"
     if project_id:
         project = client.get_project(project_id)
         if project is None or project[1] != user_id:
             raise HTTPException(status_code=403, detail="You do not have access to this project.")
         version_number = client.get_latest_version_number(project_id) + 1
+        doc_base = os.path.splitext(project[2])[0] or doc_base
     else:
         project_id = new_id()
         client.create_project(project_id, user_id, filename)
         version_number = 1
 
+    # Default, editable-later display name for this version -- not the raw
+    # filename, which is unhelpful once a project has several versions (see
+    # rename_project_version / PATCH .../versions/{n} for user renames).
+    default_title = f"{doc_base}_V{version_number}"
+
     story_universe_id = uuid.uuid4().hex
-    client.create_project_version(story_universe_id, project_id, version_number, filename)
+    client.create_project_version(story_universe_id, project_id, version_number, default_title)
 
     with tempfile.NamedTemporaryFile(suffix=ext, delete=False) as tmp:
         tmp.write(await file.read())
@@ -412,16 +419,22 @@ def get_overview(story_universe_id: str, user_id: str = Depends(get_current_user
             f"SELECT count() FROM entities WHERE story_universe_id = '{story_universe_id}'"
         ).result_rows[0][0]
         verdict_counts = _verdict_counts_by_status(client, story_universe_id)
+        # project_versions.document_title is the source of truth for display
+        # name (it reflects a rename made on the version-history page); the
+        # in-memory job only knows the raw upload filename, so prefer the DB
+        # value and fall back to the job's for a version row that predates
+        # this feature.
+        title = client.get_version_title(story_universe_id) or job["document_title"]
         return {
             "story_universe_id": story_universe_id,
-            "title": job["document_title"],
+            "title": title,
             "total_units": job["total_units"],
             "units_extracted": job["units_extracted"],
             "candidates_detected": job["candidates_detected"],
             "verdicts_complete": job["verdicts_complete"],
             "status": job["status"],
             "error": job["error"],
-            "document_title": job["document_title"],
+            "document_title": title,
             "entities_tracked": entities_tracked,
             "verified_conflicts": verdict_counts.get("verified", 0),
             "resolved_conflicts": verdict_counts.get("resolved", 0),
@@ -452,17 +465,18 @@ def get_overview(story_universe_id: str, user_id: str = Depends(get_current_user
         f"SELECT count() FROM entities WHERE story_universe_id = '{story_universe_id}'"
     ).result_rows[0][0]
     verdict_counts = _verdict_counts_by_status(client, story_universe_id)
+    title = client.get_version_title(story_universe_id)
 
     return {
         "story_universe_id": story_universe_id,
-        "title": None,
+        "title": title,
         "total_units": units,
         "units_extracted": events,
         "candidates_detected": candidates,
         "verdicts_complete": verdicts,
         "status": "complete",
         "error": None,
-        "document_title": None,
+        "document_title": title,
         "entities_tracked": entities_tracked,
         "verified_conflicts": verdict_counts.get("verified", 0),
         "resolved_conflicts": verdict_counts.get("resolved", 0),
@@ -812,6 +826,29 @@ def list_versions(project_id: str, user_id: str = Depends(get_current_user_id)):
         }
         for v in versions
     ]
+
+
+class RenameVersionRequest(BaseModel):
+    title: str
+
+
+@app.patch("/projects/{project_id}/versions/{version_number}")
+def rename_version(
+    project_id: str, version_number: int, body: RenameVersionRequest, user_id: str = Depends(get_current_user_id)
+):
+    client = ClickHouseClient()
+    project = client.get_project(project_id)
+    if project is None or project[1] != user_id:
+        raise HTTPException(status_code=403, detail="You do not have access to this project.")
+    title = body.title.strip()
+    if not title:
+        raise HTTPException(status_code=400, detail="Title cannot be empty.")
+    versions = {v[2]: v[0] for v in client.list_project_versions(project_id)}
+    story_universe_id = versions.get(version_number)
+    if story_universe_id is None:
+        raise HTTPException(status_code=404, detail="Unknown version_number for this project.")
+    client.rename_project_version(story_universe_id, title)
+    return {"status": "success", "title": title}
 
 
 @app.get("/projects/{project_id}/versions/{version_number}/diff")
