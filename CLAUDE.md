@@ -38,6 +38,13 @@ apps/
     src/lib/auth.tsx # Auth state/provider
 tests/
   unit/            # pytest (FastAPI TestClient) — auth, projects, diff, report
+data/
+  eval/            # golden_dataset.py — hand-verified ground truth (not gitignored,
+                   #   unlike the rest of data/, which holds regeneratable novel corpora)
+scripts/
+  eval/            # Preprocessing pipeline eval: python3 -m scripts.eval.
+                   # Real precision/recall/F1 vs data/eval/golden_dataset.py,
+                   # writes EVAL_REPORT.md. See README's Evaluation section.
 Dockerfile          # Backend image (uvicorn)
 apps/web/Dockerfile # Frontend image (Next.js standalone build)
 docker-compose.yml  # clickhouse + backend + web, see README Deployment section

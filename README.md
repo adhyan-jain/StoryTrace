@@ -61,6 +61,18 @@ python3 -m scripts.run_pipeline_on_screenplay data/test_documents/<screenplay>.t
 
 Set `MODEL_PROVIDER=gemini` to use the Gemini API (API key auth) instead of the local Ollama default (Gemini's free tier is capped at 20 requests/day per model -- see `FINDINGS.md`). Set `MODEL_PROVIDER=vertexai` to use Vertex AI instead -- same Gemini models, but authenticated against a GCP project via Application Default Credentials rather than an API key, with GCP's normal Vertex AI rate limits rather than the free-tier per-day cap. Requires `GOOGLE_CLOUD_PROJECT` (and `gcloud auth application-default login` locally, or `GOOGLE_APPLICATION_CREDENTIALS` pointing at a service-account key for deployment) -- see `.env.example`.
 
+## Evaluation
+
+`scripts/eval/` measures the preprocessing pipeline (parsing -> extraction -> detection -> investigation) against a manually verified golden dataset for `data/test_documents/controlled_test.txt` (`data/eval/golden_dataset.py`), reporting real Precision/Recall/F1 per phase -- never fabricated:
+
+```bash
+MODEL_PROVIDER=vertexai python3 -m scripts.eval   # or MODEL_PROVIDER=gemini
+```
+
+This runs the real pipeline end-to-end against a dedicated `eval_controlled_test` story_universe_id (never a demo ID -- see `scripts/eval/run_eval.py`'s `DEMO_IDS` guard), then measures extraction/detection/investigation concurrently via `asyncio.gather`, prints a color-coded terminal report, and writes `EVAL_REPORT.md` to the repo root. It also runs a short adversarial baseline (`scripts/eval/adversarial.py`): the same extraction prompt with its controlled vocabulary and few-shot examples stripped out, to quantify what that prompt engineering is actually worth. Exits non-zero if overall F1 drops below 0.6, so it can gate CI later. Expect this to take several minutes -- the investigation phase spawns a fresh `mcp-clickhouse` subprocess and a multi-step ReAct loop per detected candidate.
+
+Two structural detector limitations are expected to show up as false negatives, not eval bugs: the SQL candidate detector (`backend/candidate_detection/detector.py`) only flags `possession: lost -> held` and `injury: injured -> healed` transitions against the *immediately preceding* event for an entity+attribute (ClickHouse `lagInFrame`), so a conflict with no value transition at all, or one separated by an intervening bridging event, will never be raised as a candidate regardless of how the Investigation Agent would have judged it.
+
 ## Deployment
 
 The whole stack (ClickHouse, backend, frontend) runs via Docker Compose:
@@ -92,6 +104,7 @@ Not covered by this setup: TLS termination, a reverse proxy/domain, and Ollama's
 -   [Investigation / Autopsy](docs/investigation.md)
 -   [Design System](docs/design.md)
 -   [Development Guidelines](CLAUDE.md)
+-   [Evaluation Report](EVAL_REPORT.md) -- latest real run of `scripts/eval` against the golden dataset
 
 ## Reused Infrastructure
 
