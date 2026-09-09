@@ -145,7 +145,7 @@ class InvestigationAgent:
         async with stdio_client(_MCP_SERVER_PARAMS) as (read, write):
             async with ClientSession(read, write) as session:
                 await session.initialize()
-                tools = AgentTools(session, self.story_universe_id, log=self.tool_call_log)
+                tools = AgentTools(session, self.story_universe_id, log=self.tool_call_log, candidate=candidate)
                 return await self._run_loop(candidate, tools)
 
     async def _run_loop(self, candidate: CandidateConflict, tools: AgentTools) -> InvestigationVerdict:
@@ -184,7 +184,15 @@ class InvestigationAgent:
             try:
                 res = self.provider.complete(req, AgentAction)
                 action = res.value
+            except Exception as e:
+                # Malformed/unparseable AgentAction from the model itself --
+                # nothing to retry against, so this iteration is simply
+                # wasted (bounded by max_calls, same as everything else).
+                steps.append({"step": "error", "message": f"invalid AgentAction: {e}"})
+                context += f"\nYour previous response could not be parsed as a valid action: {e}\n"
+                continue
 
+            try:
                 if action.tool_name == "finish":
                     # Getting the verdict via its own schema-validated call
                     # (instead of asking the model to hand-nest an
@@ -229,8 +237,20 @@ class InvestigationAgent:
                 context += f"\nObservation from {action.tool_name}: {tool_res}\n"
 
             except Exception as e:
-                steps.append({"step": "error", "message": str(e)})
-                break
+                # A bad tool call (most commonly a hallucinated/mismatched
+                # kwarg name, e.g. get_state_at_unit(unit_id=...) borrowed
+                # from the sibling get_unit_text(unit_id) signature) used to
+                # `break` here, discarding the rest of the call budget on a
+                # single mistake the model could otherwise self-correct from.
+                # Feeding the error back as an observation and continuing
+                # lets it retry with corrected arguments, same as any other
+                # tool observation -- max_calls is still the real backstop.
+                steps.append({"step": "error", "tool": action.tool_name, "message": str(e)})
+                context += (
+                    f"\nYour call to {action.tool_name} failed: {e}. "
+                    "Check the tool's exact argument names above and try again.\n"
+                )
+                continue
 
         return InvestigationVerdict(
             id=f"verdict_{candidate.id}",

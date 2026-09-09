@@ -26,3 +26,7 @@ StoryTrace uses **ONE Investigation Agent**. The pipeline itself is deterministi
 - The agent MUST use the ClickHouse MCP for database queries.
 - If uncertain, the agent must return `uncertain`. High precision is required over recall.
 - Private chain-of-thought must not be exposed. Only concise, auditable summaries are returned.
+- A bad tool call (wrong/hallucinated argument name, wrong type) is fed back to the
+  model as an observation and the loop continues, rather than aborting the
+  investigation on the first mistake -- `max_calls` (6) is the real backstop, not
+  the first exception. See `backend/agent/investigator.py`'s `_run_loop`.
