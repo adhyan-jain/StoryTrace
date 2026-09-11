@@ -33,8 +33,37 @@ class CandidateDetector:
         FROM ranked_events
         WHERE
             ((attribute = 'possession' OR startsWith(attribute, 'possession.')) AND prev_value = 'lost' AND value = 'held') OR
-            (startsWith(attribute, 'injury.') AND prev_value = 'injured' AND value = 'healed')
+            ((attribute = 'possession' OR startsWith(attribute, 'possession.')) AND prev_value = 'lost' AND value = 'acquired') OR
+            (startsWith(attribute, 'injury.') AND prev_value = 'injured' AND value = 'healed') OR
+            (attribute = 'location.city' AND prev_value != '' AND value != prev_value)
         """
+        # location.city (distinct from plain 'location') is populated by the
+        # extraction prompt ONLY when a city/region is explicitly named --
+        # unlike scene-level 'location', it should change on the order of
+        # once or twice in an entire story, not every unit. That's what
+        # makes a bare "value changed" rule safe here where it was NOT safe
+        # for plain 'location' (see the reverted-rule note above): city
+        # mentions are rare enough that this can't degrade into flagging
+        # ordinary scene transitions the way the reverted rule did.
+        # lost -> acquired is the same "item came back with no explanation
+        # logged yet" shape as lost -> held -- an item can't be re-acquired
+        # if it was never lost in the first place, so this is just as
+        # narrow/specific as the original two patterns (unlike the reverted
+        # location rule, this can't fire on ordinary narrative flow). Added
+        # specifically because it's a distinct value pair from lost -> held,
+        # so the original rule alone can never catch a lost -> acquired ->
+        # held chain at the first (suspicious) transition.
+        # A "flag any location change" rule was tried here and reverted: on a
+        # real eval run it turned every ordinary scene-to-scene transition
+        # (precinct -> warehouse -> apartment -> rooftop -> ...) into a
+        # candidate -- 16 of 18 candidates were false positives, tanking
+        # Detection precision from 1.000 to 0.111. "Is this location change
+        # narratively explained" is not a structural property a SQL window
+        # function can evaluate; it requires reading the actual text, which
+        # is the Investigation Agent's job, not the deterministic detector's.
+        # Location-based conflicts (e.g. Chicago -> New York with no travel
+        # scene) remain a known, disclosed detection gap -- see
+        # data/eval/golden_dataset.py's docstring.
 
         result = self.client.client.query(query)
 

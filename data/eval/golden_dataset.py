@@ -10,20 +10,34 @@ from a summary — so they should match exactly what
 blank lines into 17 NarrativeUnits.
 
 Detection-recall caveat: the deterministic SQL candidate detector
-(`backend/candidate_detection/detector.py`) only flags two specific
-transition patterns via ClickHouse `lagInFrame` compared against the
-IMMEDIATELY PRECEDING event for a given entity+attribute:
+(`backend/candidate_detection/detector.py`) flags four transition patterns
+via ClickHouse `lagInFrame` compared against the IMMEDIATELY PRECEDING event
+for a given entity+attribute:
   - possession: lost -> held
+  - possession: lost -> acquired
   - injury: injured -> healed
-Two of the golden conflicts below therefore structurally cannot be produced
-by the SQL detector and are expected to appear as false negatives at the
-detection stage (not a bug in the eval, and not to be silently smoothed
-over in eval notes/report commentary):
+  - location.city: any value change (rare by construction -- see below)
+
+A location-change rule on the ORIGINAL scene-level `location` attribute
+("any location -> a different location") was tried and reverted after a
+real eval run showed it flagging nearly every ordinary scene transition as
+a candidate (16 of 18 candidates were false positives; Detection precision
+fell from 1.000 to 0.111) -- whether a location change is narratively
+explained isn't a structural property a SQL window function can evaluate.
+The fix that replaced it: a separate `location.city` attribute (see the
+extraction prompt in `backend/pipeline/state_extraction.py`), populated
+ONLY when a city/region is explicitly named, changing on the order of once
+or twice per story instead of every unit -- so a bare value-change rule on
+it is safe in a way it never was for scene-level `location`.
+
+Only one golden conflict below is still structurally undetectable by the
+SQL detector, and this is expected (not a bug in the eval, not to be
+silently smoothed over in eval notes/report commentary):
   - Conflict #3 (injury, seq 6 -> 11): both endpoints are "injured" — there
-    is no value transition at all for the SQL to key off of.
-  - Conflict #4 (badge, seq 5 -> 7): the sequence is lost(5) -> acquired(7)
-    -> held(8); "acquired" sits between "lost" and "held", so no adjacent
-    lost->held pair for lagInFrame to see.
+    is no value transition at all for the SQL to key off of. Catching this
+    would require comparing a persistent state against a narrated ACTION
+    (climbing a ladder with both hands), which is a different kind of
+    signal than any of the value-diff rules above.
 """
 
 from dataclasses import dataclass, field
@@ -135,21 +149,32 @@ GOLDEN_DATASET = GoldenDataset(
             sequence_number=9,
             excerpt_contains="gun",
         ),
-        # 7. Opening scene establishes Chicago precinct.
+        # 7. Opening scene establishes Chicago precinct. Two attributes now:
+        # location.city (new, added specifically so the detector can key off
+        # city-level changes without drowning in scene-level ones -- see
+        # CandidateDetector) and the scene-level location itself.
+        GoldenStateEvent(
+            entity_name="COLE",
+            entity_type="character",
+            attribute="location.city",
+            value="chicago",
+            sequence_number=1,
+            excerpt_contains="Chicago",
+        ),
         GoldenStateEvent(
             entity_name="COLE",
             entity_type="character",
             attribute="location",
-            value="chicago",
+            value="chicago precinct",
             sequence_number=1,
-            excerpt_contains="Chicago",
+            excerpt_contains="Chicago precinct",
         ),
         # 8. Cole is suddenly in a New York precinct, no travel established.
         # Planted continuity conflict.
         GoldenStateEvent(
             entity_name="COLE",
             entity_type="character",
-            attribute="location",
+            attribute="location.city",
             value="new york",
             sequence_number=10,
             excerpt_contains="New York",
@@ -175,6 +200,62 @@ GOLDEN_DATASET = GoldenDataset(
             sequence_number=14,
             excerpt_contains="bandage",
         ),
+        # 11-19. Plain, unambiguous facts that were previously missing from
+        # this fixture entirely -- not planted errors, just real background
+        # facts the extractor was correctly finding and getting penalized
+        # for as "false positives" purely because the golden set never
+        # covered them (see EVAL_REPORT.md: extraction precision 0.109 with
+        # 49 FPs, most of which were exactly this). Deliberately kept to
+        # facts with no reasonable ambiguity in wording or controlled-
+        # vocabulary value -- e.g. NOT "MAYA/possession.evidence bag" or
+        # "COLE/possession.coffee", where whether the described action
+        # actually means acquired/held/lost is a judgment call, not a
+        # clear-cut fact.
+        GoldenStateEvent(
+            entity_name="COLE", entity_type="character",
+            attribute="location", value="briefing room",
+            sequence_number=1, excerpt_contains="briefing room",
+        ),
+        GoldenStateEvent(
+            entity_name="COLE", entity_type="character",
+            attribute="possession.file", value="acquired",
+            sequence_number=1, excerpt_contains="case file",
+        ),
+        GoldenStateEvent(
+            entity_name="MAYA", entity_type="character",
+            attribute="location", value="doorframe",
+            sequence_number=2, excerpt_contains="doorframe",
+        ),
+        GoldenStateEvent(
+            entity_name="COLE", entity_type="character",
+            attribute="possession.file", value="lost",
+            sequence_number=2, excerpt_contains="dropped the file",
+        ),
+        GoldenStateEvent(
+            entity_name="COLE", entity_type="character",
+            attribute="location", value="opposite rows",
+            sequence_number=3, excerpt_contains="opposite rows",
+        ),
+        GoldenStateEvent(
+            entity_name="MAYA", entity_type="character",
+            attribute="location", value="opposite rows",
+            sequence_number=3, excerpt_contains="opposite rows",
+        ),
+        GoldenStateEvent(
+            entity_name="COLE", entity_type="character",
+            attribute="possession.radio", value="held",
+            sequence_number=3, excerpt_contains="radios turned low",
+        ),
+        GoldenStateEvent(
+            entity_name="MAYA", entity_type="character",
+            attribute="possession.radio", value="held",
+            sequence_number=3, excerpt_contains="radios turned low",
+        ),
+        GoldenStateEvent(
+            entity_name="PARAMEDIC", entity_type="character",
+            attribute="possession.gauze", value="held",
+            sequence_number=12, excerpt_contains="gauze",
+        ),
     ],
     conflicts=[
         GoldenConflict(
@@ -190,7 +271,7 @@ GOLDEN_DATASET = GoldenDataset(
         ),
         GoldenConflict(
             entity_name="COLE",
-            attribute="location",
+            attribute="location.city",
             prior_sequence=1,
             current_sequence=10,
             expected_verdict="verified",

@@ -38,6 +38,7 @@ Return a JSON array of state facts. Each fact must have:
 
 Allowed attribute patterns:
   character -> location
+  character -> location.city
   character -> injury.<body_part>
   character -> clothing.<item>
   character -> possession.<prop_name>
@@ -59,6 +60,19 @@ injury.{body_part}:
 character -> location:
   Use the location name exactly as it appears in the text.
   e.g. "Gu Yue Clan", "flower wine monk's cave", "city gates"
+  This changes on almost every scene (room, building, street) -- that is
+  expected and normal, not a continuity signal by itself.
+
+character -> location.city:
+  ONLY when a specific real city, region, or named territory is explicitly
+  stated for where the character currently is (e.g. "Chicago", "New York",
+  the name of a kingdom/country/province). Do NOT log this for every scene --
+  most scenes don't name one at all, and you should only emit a new
+  location.city event when the text explicitly names one, not on every unit.
+  Unlike character -> location, this should change rarely: once per city/
+  region the story actually moves the character to, not per room or
+  building. If no city/region is named in this unit, do not emit this
+  attribute at all for this unit.
 
 character -> clothing.{item}:
   Describe concisely in 2-4 words.
@@ -106,6 +120,28 @@ Correct:
     attribute: "possession.knife", value: "lost",
     raw_excerpt: "The knife clattered to the floor",
     confidence: 0.90, establishment_type: "explicit" }
+
+Input text: "Detective COLE stood at the window of the Chicago precinct,
+watching rain streak the glass."
+Correct (BOTH events, one for the scene, one for the city -- they are not
+the same attribute and this unit genuinely has both):
+  { entity_name: "COLE", entity_type: "character",
+    attribute: "location", value: "Chicago precinct",
+    raw_excerpt: "the window of the Chicago precinct",
+    confidence: 0.9, establishment_type: "explicit" }
+  { entity_name: "COLE", entity_type: "character",
+    attribute: "location.city", value: "Chicago",
+    raw_excerpt: "the Chicago precinct",
+    confidence: 0.9, establishment_type: "explicit" }
+
+Input text: "Cole and Maya split up, moving along opposite rows, radios
+turned low."
+Correct: only a `location` event (no city/region is named here, so no
+location.city event at all for this unit):
+  { entity_name: "COLE", entity_type: "character",
+    attribute: "location", value: "opposite rows",
+    raw_excerpt: "moving along opposite rows",
+    confidence: 0.85, establishment_type: "explicit" }
 
 EXAMPLES OF INCORRECT EXTRACTION (do not do this):
 
@@ -189,11 +225,44 @@ _INJURY_VALUES = {"injured", "healed", "dead"}
 _MIN_CONFIDENCE = 0.6
 _STRIP_CHARS = re.compile(r'["\'()]')
 
+# Body-part naming is freeform (not a controlled vocabulary like
+# possession/injury values), so the same wound can come back as "forearm" in
+# one unit and "right_forearm"/"right forearm" in another. Track the injury
+# by body part alone -- side is rarely load-bearing for a continuity check,
+# and splitting it fragments one wound's history across two attribute keys,
+# which is exactly what breaks the detector's exact (entity, attribute) join.
+_LATERALITY_PREFIXES = ("left_", "right_", "left ", "right ")
+
+# Known synonyms for the same prop the model has been observed to name two
+# different ways across units of the same document (e.g. "the case file"
+# introduced by name, then just "the file" on a later reference). Grows as
+# new collisions are found -- not a general NLP synonym solver, just a table
+# of confirmed aliases.
+_POSSESSION_SUB_ALIASES = {
+    "case file": "file",
+}
+
+# Conservative surface-level cleanup only: strips a leading article so
+# "the precinct" and "precinct" compare equal, without merging genuinely
+# different named locations into each other.
+_LEADING_ARTICLE = re.compile(r"^(the|a|an)\s+", re.IGNORECASE)
+
 
 def _clean(value: str) -> str:
     """Strip quotes/parens the model adds despite being told not to, and
     collapse whitespace -- cosmetic cleanup, not a meaning change."""
     return _STRIP_CHARS.sub("", value).strip()
+
+
+def _strip_laterality(sub: str) -> str:
+    for prefix in _LATERALITY_PREFIXES:
+        if sub.startswith(prefix):
+            return sub[len(prefix):]
+    return sub
+
+
+def _clean_location_value(value: str) -> str:
+    return _LEADING_ARTICLE.sub("", value).strip()
 
 
 def _normalize_attribute(raw_attribute: str, entity_type: str, raw_value: str) -> tuple[str, str] | None:
@@ -221,6 +290,7 @@ def _normalize_attribute(raw_attribute: str, entity_type: str, raw_value: str) -
     if base == "possession":
         if value not in _POSSESSION_VALUES:
             return None
+        sub = _POSSESSION_SUB_ALIASES.get(sub, sub)
         attribute = f"possession.{sub}" if sub else "possession"
         return attribute, value
 
@@ -229,7 +299,7 @@ def _normalize_attribute(raw_attribute: str, entity_type: str, raw_value: str) -
             return None
         if not sub:
             return None
-        return f"injury.{sub}", value
+        return f"injury.{_strip_laterality(sub)}", value
 
     if base == "clothing":
         if not sub or not value:
@@ -239,7 +309,13 @@ def _normalize_attribute(raw_attribute: str, entity_type: str, raw_value: str) -
     if base == "location":
         if not value:
             return None
-        return "location", value
+        # "location.city" is kept as its OWN attribute, not collapsed into
+        # plain "location" -- the whole point is that it changes rarely
+        # (once per city/region) while scene-level "location" changes every
+        # unit, so the detector can key off the former without drowning in
+        # the latter. See CandidateDetector's location.city rule.
+        attribute = "location.city" if sub == "city" else "location"
+        return attribute, _clean_location_value(value)
 
     # Attribute shape the prompt didn't anticipate: don't invent a bucket for
     # it (there's no controlled vocabulary to validate against), drop it.

@@ -130,7 +130,14 @@ class InvestigationAgent:
     def __init__(self, provider, story_universe_id: str):
         self.provider = provider
         self.story_universe_id = story_universe_id
-        self.max_calls = 6
+        # Was 6. The per-step prompt grew a real "what counts as a bridge"
+        # section (see _run_loop) that gives the model more to weigh each
+        # turn -- a real eval run hit "max tool calls reached" on a
+        # candidate that a prior run (with the shorter prompt) resolved
+        # cleanly. A couple of extra calls costs little against the 638s/860s
+        # eval wall-clock already dominated by LLM latency, and directly
+        # trades against the exact failure mode just observed.
+        self.max_calls = 8
         self.tool_call_log: List[dict] = []
 
     def investigate(self, candidate: CandidateConflict) -> InvestigationVerdict:
@@ -176,6 +183,37 @@ class InvestigationAgent:
             - get_unit_text: args {{"unit_id": str}}
             - get_state_at_unit: args {{"entity_id": str, "sequence_number": int}}
             - find_attribute_changes: args {{"entity_id": str, "attribute": str}}
+
+            Before concluding there is no bridge, you MUST check the actual narrative
+            text, not just the two excerpts above: call get_unit_text on the prior and
+            current unit themselves, AND call find_attribute_changes (or
+            get_entity_timeline) for this entity/attribute to see every recorded step in
+            between -- a bridging event (e.g. an item being returned) is often its own
+            intervening step that this candidate's prior/current excerpts don't show you,
+            because the candidate only shows the two ENDPOINTS of the suspicious jump.
+
+            What counts as a valid bridge (resolves the candidate, not a real conflict):
+            - Injury healing: an explicit treatment/medical event (paramedic, bandage,
+              gauze, field kit) is BY ITSELF a sufficient bridge -- do not also require an
+              explicit "days later"/time-skip phrase on top of it. This is true even when
+              the treatment is described in the SAME unit as the "prior" (injured)
+              evidence itself -- e.g. if the prior excerpt already shows a wound being
+              cleaned and bandaged, that IS the bridge, not merely a restatement that the
+              injury exists. Untreated injuries take time to heal and real narration often
+              skips ahead implicitly once treatment is shown; treat the treatment event
+              alone as enough. Only fall back to requiring a narrated time lapse when NO
+              treatment event exists anywhere in the prior excerpt or unit text. Merely
+              not being mentioned again, with neither treatment nor a time lapse, is NOT a
+              bridge.
+            - Possession reappearing: the item being explicitly returned, reissued, or
+              handed back (e.g. "returned it the next morning"), not just picked back up
+              with no explanation.
+            - Location change: an explicit travel/transit scene, a clearly narrated time
+              skip, or the character being told/shown to have moved. Two locations
+              simply appearing in sequence with nothing narrated in between is NOT a
+              bridge -- that is exactly the kind of unexplained jump this system exists
+              to catch, so when in doubt on location, prefer 'verified' or 'uncertain'
+              over 'resolved'.
 
             Decide next action. If you have enough evidence to resolve (found a bridge) or verify (no bridge), call 'finish' with empty kwargs ({{}}) -- you'll be asked for the verdict itself in a follow-up.
             """

@@ -90,6 +90,43 @@ def load_units(golden: GoldenDataset) -> list[NarrativeUnit]:
     return units
 
 
+def _wait_for_count(
+    client: ClickHouseClient, table: str, story_universe_id: str, expected: int, timeout_s: float = 10.0
+) -> None:
+    """Poll until `table` actually reports `expected` rows for this
+    story_universe_id, or give up after timeout_s.
+
+    Needed because ClickHouse Cloud's SharedMergeTree does not appear to
+    give the same immediate-read-your-write guarantee as local/Docker
+    ClickHouse for a table whose rows were deleted moments earlier: a real
+    run had `insert_narrative_units` return normally, extraction/detection/
+    investigation all complete successfully downstream (state_events and
+    candidate_conflicts are inserted much later, with LLM calls in between,
+    and were consistently visible), yet a `SELECT count()` against
+    narrative_units run right after the insert returned 0 -- the metrics
+    phases then resolved every unit_id -> sequence_number lookup to -1,
+    silently zeroing out Detection/Investigation's scores without raising
+    any error. Only narrative_units (inserted immediately after the
+    per-run DELETE, with no delay before the next read) was ever observed
+    doing this; state_events/candidate_conflicts happen to get a natural
+    delay from the LLM calls in between and were never observed stale.
+    """
+    deadline = time.time() + timeout_s
+    last_seen = -1
+    while time.time() < deadline:
+        last_seen = client.client.command(
+            f"SELECT count() FROM {table} WHERE story_universe_id = {{sid:String}}",
+            parameters={"sid": story_universe_id},
+        )
+        if int(last_seen) == expected:
+            return
+        time.sleep(0.25)
+    raise RuntimeError(
+        f"{table} never reached {expected} rows for {story_universe_id!r} within "
+        f"{timeout_s}s (last saw {last_seen}) -- ClickHouse Cloud consistency lag, not a pipeline bug"
+    )
+
+
 def _clear_eval_data(client: ClickHouseClient, story_universe_id: str) -> None:
     if story_universe_id in DEMO_IDS or not story_universe_id.startswith("eval_"):
         raise RuntimeError(
@@ -147,6 +184,7 @@ async def run_pipeline_subagent(golden: GoldenDataset, provider) -> dict:
     units = load_units(golden)
     notes.append(f"Loaded {len(units)} narrative units from {golden.document_path}")
     await asyncio.to_thread(client.insert_narrative_units, units)
+    await asyncio.to_thread(_wait_for_count, client, "narrative_units", eval_id, len(units))
 
     registry = EntityRegistry(eval_id)
     total_events = 0
