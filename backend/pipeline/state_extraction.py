@@ -49,7 +49,13 @@ REQUIRED VALUE VOCABULARY -- you must use exactly these values, no others:
 
 possession.{prop}:
   "held"      -- character currently has/is holding the item
-  "acquired"  -- character just obtained the item this unit
+  "acquired"  -- character just obtained the item THIS UNIT (the moment of
+                 first getting it -- taking, receiving, picking up for the
+                 first time). If the unit does not narrate the item being
+                 obtained (it's simply already in the character's hand/
+                 pocket/grip from earlier), use "held", not "acquired".
+                 Only ONE unit per item should ever be "acquired" -- every
+                 later unit where the character still has it is "held".
   "lost"      -- character no longer has the item (dropped, taken, used up)
 
 injury.{body_part}:
@@ -58,7 +64,12 @@ injury.{body_part}:
   "dead"      -- character has died from this or other causes
 
 character -> location:
-  Use the location name exactly as it appears in the text.
+  Use the NAME of the place itself, not a description of where within it
+  the character is standing. Extract the shortest named location the text
+  actually gives -- e.g. from "at the window of the Chicago precinct",
+  the location is "Chicago precinct" (the named place), NOT "window of
+  the Chicago precinct" (a position within that place). A window, table,
+  doorway, or corner is a detail of blocking, not a distinct location.
   e.g. "Gu Yue Clan", "flower wine monk's cave", "city gates"
   This changes on almost every scene (room, building, street) -- that is
   expected and normal, not a continuity signal by itself.
@@ -357,6 +368,22 @@ _LOCATION_PRONOUN_FILTER = re.compile(
     r"\b(them|him|her|us|you|it|me|they|we|he|she)\b", re.IGNORECASE
 )
 
+# Furniture/architectural-detail nouns that are a detail of blocking within
+# a scene, not a distinct named location -- e.g. "table", "low fence",
+# "window" (of a room the character is already in). A real eval run showed
+# the model extracting these as the location value on their own (1-2 words,
+# ending in one of these nouns) even after the SYSTEM_PROMPT was told to
+# prefer the named place over a position within it -- this catches what
+# that prompt clarification alone didn't. Only rejected when short (<=2
+# words) so a genuine named place that happens to end in one of these words
+# (unlikely, but e.g. "Long Table Inn") isn't blocked.
+_FURNITURE_OBJECT_LOCATIONS = {
+    "table", "chair", "desk", "counter", "bench", "stool",
+    "window", "door", "doorway", "wall", "floor", "ceiling",
+    "fence", "railing", "ledge", "sill", "corner", "shelf",
+    "cabinet", "drawer", "bed", "couch", "sofa",
+}
+
 # Maximum depth of a dotted possession sub-attribute (counting only the
 # sub-attribute parts after "possession."). "possession.gun" -> depth 1 (ok).
 # "possession.field_kit.gauze" -> depth 2 (rejected -- over-nested; model should
@@ -392,12 +419,18 @@ def _normalize_attribute(raw_attribute: str, entity_type: str, raw_value: str) -
     base, _, sub = raw_attribute.strip().lower().partition(".")
     value = _clean(raw_value)
 
-    if base == "status" and entity_type == "prop":
-        # prop -> status without a named prop in the attribute path; the
-        # entity itself *is* the prop, so possession is keyed by entity, not
-        # by a sub-attribute name.
-        base = "possession"
-        sub = ""
+    if entity_type != "character" and base in ("status", "possession"):
+        # Both "prop -> status" (the schema's own allowed shape) and a
+        # directly-emitted "prop -> possession" key a possession fact to
+        # the item itself (entity_id = the prop, e.g. entity_name="BADGE"
+        # or "FILE"). The prompt's CRITICAL RULES section is explicit that
+        # possession must always be keyed to the CHARACTER who holds/
+        # loses/acquires the item, NEVER the item -- and golden_dataset.py
+        # never expects a prop-keyed possession event, only character-keyed
+        # ones. Reject both paths; letting either through only ever
+        # produces a false positive (e.g. "BADGE/possession=held",
+        # "FILE/possession=acquired") with no golden-dataset counterpart.
+        return None
     if base == "holder":
         # Redundant with possession from the character's side; not part of
         # the controlled vocabulary and not needed for conflict detection.
@@ -471,6 +504,11 @@ def _normalize_attribute(raw_attribute: str, entity_type: str, raw_value: str) -
         # Reject relational phrases containing pronouns -- these are not real
         # locations (e.g. "between them", "across from him", "behind her").
         if _LOCATION_PRONOUN_FILTER.search(loc_val):
+            return None
+        # Reject short values that are really a piece of furniture/blocking
+        # detail, not a distinct named place (e.g. "table", "low fence").
+        loc_words = loc_val.split()
+        if len(loc_words) <= 2 and loc_words[-1].lower() in _FURNITURE_OBJECT_LOCATIONS:
             return None
         return "location", loc_val
 
