@@ -50,6 +50,17 @@ apps/web/Dockerfile # Frontend image (Next.js standalone build)
 docker-compose.yml  # clickhouse + backend + web, see README Deployment section
 ```
 
+## Local Testing / Model Provider
+
+> **RULE: For local testing and eval, ALWAYS use Ollama. NEVER use Vertex AI
+> or the Gemini API unless the user explicitly names it for that specific
+> request.** This applies to `python3 -m scripts.eval`, all pipeline scripts,
+> and all iteration loops. Violating this rule wastes real money and quota.
+
+- **Default to Ollama for all local testing and eval runs** (`MODEL_PROVIDER=ollama` in `.env`, already the default in `backend/llm/provider.py`/`scripts/eval/run_eval.py`'s `get_provider()` when the env var is unset). Do NOT switch `MODEL_PROVIDER` to `vertexai` (or run anything that hits Vertex AI/Gemini API) for local iteration unless the user explicitly asks for it in that message.
+- Why: Vertex AI calls cost real money and are rate-limited (429 RESOURCE_EXHAUSTED was hit repeatedly during iterative eval runs); Ollama runs fully local and free against models already pulled (`qwen2.5:7b` is the current default — see `backend/llm/ollama.py`).
+- This applies to `python3 -m scripts.eval` and any other local pipeline run. Only use Vertex/Gemini when the user names it explicitly for that task (e.g. a final demo run, or explicitly comparing provider quality).
+
 ## Deployment Notes
 - `docker compose up --build` runs ClickHouse, backend, and web together; see README's Deployment section for required env vars.
 - Login/signup are rate-limited (slowapi, in-memory per-process — not shared across replicas without Redis).
