@@ -2,15 +2,15 @@
 
 **Document:** data/test_documents/controlled_test.txt
 
-**Timestamp:** 2026-09-12T13:03:03.560600+00:00
+**Timestamp:** 2026-09-12T14:00:26.171484+00:00
 
-**Overall F1:** 0.785 :warning:
+**Overall F1:** 0.783 :warning:
 
 ## Phase Metrics
 
 | Phase | Precision | Recall | F1 | TP | FP | FN |
 | --- | --- | --- | --- | --- | --- | --- |
-| Extraction | 0.511 | 0.667 | 0.578 :x: | 24 | 23 | 12 |
+| Extraction | 0.588 | 0.556 | 0.571 :x: | 20 | 14 | 16 |
 | Detection | 1.000 | 0.800 | 0.889 :white_check_mark: | 4 | 0 | 1 |
 | Investigation | 1.000 | 0.800 | 0.889 :white_check_mark: | 4 | 0 | 1 |
 
@@ -18,67 +18,63 @@
 
 | Unit | Extracted | Matched | Missed | Missed Attributes |
 | --- | --- | --- | --- | --- |
-| 1 | 4 | 4 | 0 |  |
+| 1 | 4 | 3 | 1 |  |
 | 2 | 2 | 1 | 1 | location=doorframe |
-| 3 | 4 | 4 | 0 |  |
-| 4 | 3 | 1 | 2 |  |
-| 5 | 4 | 3 | 1 |  |
-| 6 | 1 | 1 | 0 |  |
-| 7 | 4 | 2 | 1 | location=apartment |
-| 8 | 2 | 1 | 1 | possession.badge=held |
-| 9 | 3 | 2 | 1 |  |
-| 10 | 3 | 1 | 1 | location=precinct in New York |
-| 11 | 2 | 2 | 0 |  |
-| 12 | 5 | 1 | 1 | injury.forearm=injured |
-| 13 | 6 | 1 | 5 |  |
-| 14 | 2 | 0 | 2 | injury.forearm=healed, injury.forearm=injured |
-| 15 | 2 | 0 | 1 | location=interrogation room |
-| 17 | 0 | 0 | 4 | location=precinct, location=Chicago precinct, location=precinct, location=Chicago precinct |
+| 3 | 2 | 2 | 4 | location=warehouse district, location=opposite rows, possession.radio=held, possession.radio=held |
+| 4 | 1 | 1 | 2 | location=river access road, location=river access road |
+| 5 | 2 | 2 | 1 | location=precinct |
+| 6 | 2 | 0 | 2 |  |
+| 7 | 2 | 1 | 3 | possession.badge=acquired, injury.forearm=injured, location=apartment |
+| 8 | 1 | 1 | 1 | location=precinct |
+| 9 | 2 | 1 | 1 | location=old rail yard |
+| 10 | 3 | 2 | 1 |  |
+| 11 | 3 | 1 | 2 |  |
+| 12 | 2 | 1 | 1 | injury.forearm=injured |
+| 13 | 2 | 1 | 1 | location=precinct |
+| 14 | 1 | 1 | 0 |  |
+| 15 | 1 | 0 | 1 | location=interrogation room |
+| 16 | 2 | 0 | 2 |  |
+| 17 | 2 | 2 | 0 |  |
 
 ## False Positives
 
 ### Extraction
 
-- `MAYA` / `possession.badge` = `held`
-- `COLE` / `location` = `river access road`
-- `SUSPECT` / `location` = `river access road`
-- `MAYA` / `location` = `precinct`
-- `COLE` / `location` = `Coles apartment`
-- `MAYA` / `possession.badge` = `held`
-- `COLE` / `possession.badge` = `acquired`
+- `COLE` / `possession.file` = `held`
+- `COLE` / `location` = `doorframe`
+- `COLE` / `injury.forearm` = `injured`
+- `COLE` / `location` = `opposite rows`
+- `MAYA` / `possession.badge` = `acquired`
 - `SUSPECT` / `location` = `old rail yard`
 - `COLE` / `possession.badge` = `held`
-- `COLE` / `location` = `precinct`
+- `COLE` / `location` = `top of the fire escape`
+- `COLE` / `location` = `top of the rooftop`
 - `COLE` / `injury.forearm` = `injured`
-- `COLE` / `location` = `rooftop`
-- `PARAMEDIC` / `possession.field_kit` = `held`
-- `PARAMEDIC` / `location` = `rooftop`
-- `COLE` / `possession.photographs` = `held`
-- `COLE` / `possession.corkboard` = `held`
 - `MAYA` / `location` = `precinct`
-- `MAYA` / `possession.folder` = `held`
-- `MAYA` / `possession.financial_records` = `held`
-- `COLE` / `possession.bandage` = `lost`
-- `COLE` / `injury.forearm` = `healed`
 - `COLE` / `location` = `interrogation room`
-- `SUSPECT'S LAWYER` / `location` = `interrogation room`
+- `COLE` / `location` = `Chicago precinct`
+- `MAYA` / `location` = `Chicago precinct`
 
 ## False Negatives
 
 ### Extraction
 
-- `COLE` / `possession.badge` = `held` @ unit 8
+- `COLE` / `location` = `river access road` @ unit 4
+- `SUSPECT` / `location` = `river access road` @ unit 4
+- `COLE` / `possession.badge` = `acquired` @ unit 7
 - `COLE` / `injury.forearm` = `injured` @ unit 12
-- `COLE` / `injury.forearm` = `healed` @ unit 14
-- `COLE` / `injury.forearm` = `injured` @ unit 14
+- `COLE` / `injury.forearm` = `injured` @ unit 7
 - `MAYA` / `location` = `doorframe` @ unit 2
+- `MAYA` / `location` = `warehouse district` @ unit 3
+- `MAYA` / `location` = `opposite rows` @ unit 3
+- `COLE` / `possession.radio` = `held` @ unit 3
+- `MAYA` / `possession.radio` = `held` @ unit 3
+- `COLE` / `location` = `precinct` @ unit 5
 - `COLE` / `location` = `apartment` @ unit 7
+- `COLE` / `location` = `precinct` @ unit 8
+- `COLE` / `location` = `old rail yard` @ unit 9
+- `MAYA` / `location` = `precinct` @ unit 13
 - `COLE` / `location` = `interrogation room` @ unit 15
-- `COLE` / `location` = `precinct in New York` @ unit 10
-- `COLE` / `location` = `precinct` @ unit 17
-- `COLE` / `location` = `Chicago precinct` @ unit 17
-- `MAYA` / `location` = `precinct` @ unit 17
-- `MAYA` / `location` = `Chicago precinct` @ unit 17
 
 ### Detection
 
@@ -95,12 +91,12 @@ Units tested: 5
 | Condition | F1 |
 | --- | --- |
 | No constraints | 0.000 |
-| With vocabulary + few-shot | 0.824 |
+| With vocabulary + few-shot | 0.621 |
 
 ## Pipeline Notes
 
 - Loaded 17 narrative units from data/test_documents/controlled_test.txt
-- Extracted 47 state events across 17 units
+- Extracted 34 state events across 17 units
 - Detected 4 candidate conflicts
 - Produced 4/4 investigation verdicts
-- Eval completed in 397.8s
+- Eval completed in 2951.4s

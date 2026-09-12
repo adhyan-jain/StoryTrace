@@ -90,6 +90,19 @@ GOLDEN_DATASET = GoldenDataset(
             sequence_number=4,
             excerpt_contains="gun slipped from his grip",
         ),
+        # Unit 4: unambiguous real background fact, previously uncovered --
+        # both Cole and the suspect are explicitly placed at the river
+        # access road in this unit's text.
+        GoldenStateEvent(
+            entity_name="COLE", entity_type="character",
+            attribute="location", value="river access road",
+            sequence_number=4, excerpt_contains="river access road",
+        ),
+        GoldenStateEvent(
+            entity_name="SUSPECT", entity_type="character",
+            attribute="location", value="river access road",
+            sequence_number=4, excerpt_contains="river access road",
+        ),
         # 2. Maya takes Cole's badge as evidence. Possession is tracked
         # per-character on the entity who has/loses the item, so this is
         # logged as COLE's possession.badge=lost, not a MAYA event.
@@ -330,6 +343,13 @@ GOLDEN_DATASET = GoldenDataset(
         # Unit 13: Cole is back at the precinct after the rooftop confrontation.
         GoldenStateEvent(
             entity_name="COLE", entity_type="character",
+            attribute="location", value="precinct",
+            sequence_number=13, excerpt_contains="precinct",
+        ),
+        # Maya explicitly "arrived" in the same unit -- unambiguously also
+        # at the precinct, same coverage principle as Cole's entry above.
+        GoldenStateEvent(
+            entity_name="MAYA", entity_type="character",
             attribute="location", value="precinct",
             sequence_number=13, excerpt_contains="precinct",
         ),
