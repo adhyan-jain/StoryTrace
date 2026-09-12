@@ -5,7 +5,7 @@ this work cold. Update it after every meaningful change — don't let it go stal
 
 ---
 
-## Current status (as of 2026-09-12, session 4)
+## Current status (as of 2026-09-13, session 5)
 
 > **⚠ Read the full Session 4 entry before trusting any number in this
 > document.** Batches 1-3 tell a complete, load-bearing story: batch 1 found
@@ -15,22 +15,20 @@ this work cold. Update it after every meaningful change — don't let it go stal
 > was silently starving the Investigation phase. Don't skip to this summary
 > without reading why each number moved.
 
-**Investigation-phase goal MET, confirmed across 2 runs**: precision 1.000
-(≥0.85 target), F1 0.889 (≥0.80 target). Detection matches it exactly
-(P 1.000, F1 0.889). Ollama / qwen2.5:7b, deterministic (single pass,
-`_SELF_CONSISTENCY_TEMPS = (0.0,)`), `controlled_test.txt`:
+**Extraction goal MET, confirmed across 2 runs**: overall F1 0.825-0.832
+(≥0.80 target), Extraction F1 0.698-0.719 (up from session 4's 0.575-0.583).
+Detection/Investigation unchanged from session 4 (P 1.000, F1 0.889 both).
+Ollama / qwen2.5:7b, deterministic (single pass), `controlled_test.txt`:
 
 | | Run 1 | Run 2 |
 |---|---|---|
-| Overall F1 | 0.787 | 0.784 |
-| Extraction P / R / F1 | 0.583 / 0.583 / 0.583 | 0.568 / 0.583 / 0.575 |
+| Overall F1 | 0.825 | 0.832 |
+| Extraction P / R / F1 | 0.815 / 0.611 / 0.698 | 0.821 / 0.639 / 0.719 |
 | Detection P / F1 | 1.000 / 0.889 | 1.000 / 0.889 |
 | Investigation P / F1 | 1.000 / 0.889 | 1.000 / 0.889 |
 
-Extraction remains the weakest phase (~0.58 F1) and is now the priority for
-any future session — see "How to continue" below. It was NOT the target of
-this goal and was intentionally not chased further once Investigation
-cleared its bar, per the user's time constraint.
+See "Session 5" below for what moved the number and a fix-within-a-fix worth
+knowing about before adding another grounding check.
 
 The historical session-3 table below was a single Vertex AI run and is
 retained for reference only.
@@ -359,6 +357,63 @@ confirmed identically across both confirmation runs.
 - The nvidia driver kernel-module mismatch (615.71.09 installed vs 610.43.02
   loaded) is still pending a reboot; unrelated to this goal, doesn't affect
   Ollama's CUDA path.
+
+---
+
+### Session 5 (2026-09-13) — Grounding checks for extraction, and a fix-within-a-fix
+
+Picked up mid-session with two uncommitted, untested functions already on
+disk (`_location_grounded`, `_injury_grounded`) from prior work in this
+session that hadn't been eval-verified yet. Investigated before trusting them.
+
+34. **`_location_grounded`** (kept) — rejects a location fact whose excerpt
+    doesn't actually contain the value's words. Real motivating bug: a run
+    returned `COLE/location="opposite rows"` (a phrase from a wholly
+    different, earlier unit) with excerpt `"and kept moving"` -- a genuine
+    quote from the current unit that establishes nothing about "opposite
+    rows". The verbatim-substring hallucination check only proves the
+    excerpt is real text FROM the unit; it says nothing about whether that
+    text supports THIS value. Checks that every content word of the value
+    appears in its own excerpt.
+35. **`_injury_grounded`** (kept, but had to be fixed first) — same idea for
+    injury facts: reject a body part whose excerpt never names it. Real
+    motivating bug: `SUSPECT/injury.head="injured"` with excerpt `"fired a
+    warning shot into the dirt"`, a genuine quote about a wholly different
+    action. **First version regressed Investigation from 0.889 back to
+    0.750**, because it only checked the fact's own excerpt, not the whole
+    unit -- and unit 14's healed-injury fact (the exact one session 4's
+    case-insensitivity fix worked to recover) legitimately resolves
+    `forearm` from an EARLIER sentence ("running a hand along his forearm")
+    while its own excerpt clause ("the wound beneath it closed to a thin
+    pink line") only says "wound". The fix: also accept the body part if it
+    appears ANYWHERE in the unit's full text, not just the fact's own
+    excerpt -- mirroring `_resolve_generic_body_part`'s existing pattern for
+    generic terms, extended to the specific-term case. Verified via two
+    fresh eval runs after the fix: Investigation back to 0.889/1.000 on both,
+    Extraction precision held at 0.815-0.821 (vs pre-grounding-check
+    0.568-0.583).
+36. Also found and fixed: Ollama's `serve` daemon wasn't running at the start
+    of this session (`curl localhost:11434` connection-refused, all 17 units
+    failing). Not a code bug -- infra needing a manual `ollama serve &`
+    restart. If a run inexplicably returns F1 0.000 with "Connection refused"
+    in the log, check this first before assuming a regression.
+
+**Remaining known extraction gaps** (goal met; these are not blockers):
+- `SUSPECT/injury.head="injured"` (unit 9) is grounded now (the word "head"
+  does appear in that unit -- "hands rising slowly above his head") but
+  still semantically wrong: it's a body-position description, not an
+  injury. Word-presence grounding can't catch this; would need the model to
+  not conflate positional mentions with injury claims, a harder prompt
+  problem than a filter can solve.
+- `MAYA/possession.badge="held"` (golden expects `acquired`) is still a
+  recurring FP -- the re-acquisition wording fix (item #32) covers COLE's
+  badge return but not Maya's original confiscation-as-evidence framing.
+- River access road (unit 4, both Cole and the suspect) is a genuine recall
+  miss in both session-5 runs despite being an unambiguous, previously
+  golden-covered fact (session 2, item... see golden_dataset.py) -- worth
+  checking whether the multi-character extraction pattern from item #25
+  (reverted in session 4 for lack of proven benefit) actually is the fix,
+  now that the measurement is trustworthy enough to tell.
 
 ---
 
