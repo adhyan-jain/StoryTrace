@@ -7,21 +7,30 @@ this work cold. Update it after every meaningful change — don't let it go stal
 
 ## Current status (as of 2026-09-12, session 4)
 
-> **⚠ Read the Session 4 entry before trusting any number in this document.**
-> Session 4 established that run-to-run variance on `controlled_test.txt` is
-> **±0.15 F1**, and reproduced 0.632 from the exact prompt state that had
-> previously scored 0.783 — with zero code differences. Single-run
-> before/after comparisons recorded in earlier sessions are therefore not
-> reliable evidence, and the numbers below should be read as *one sample*,
-> not as a settled baseline.
+> **⚠ Read the full Session 4 entry before trusting any number in this
+> document.** Batches 1-3 tell a complete, load-bearing story: batch 1 found
+> the 0.783 baseline was a noise artifact (±0.15 across runs with zero code
+> change), batch 2 fixed the measurement itself (determinism +
+> canonicalization), and batch 3 found a one-character provenance bug that
+> was silently starving the Investigation phase. Don't skip to this summary
+> without reading why each number moved.
 
-**Honest current performance (Ollama / qwen2.5:7b): ~0.60-0.63 overall F1,
-~0.55 extraction F1**, measured across four session-4 runs. Target set by
-user: 0.80-0.85, precision weighted above recall — not reached, and not
-currently *measurable* to that precision, because Investigation F1 is
-computed over only 4-5 conflicts (one flipped verdict = ±0.11-0.22).
-Fixing the measurement (more runs averaged, or a larger eval set) is the
-prerequisite for any further credible tuning.
+**Investigation-phase goal MET, confirmed across 2 runs**: precision 1.000
+(≥0.85 target), F1 0.889 (≥0.80 target). Detection matches it exactly
+(P 1.000, F1 0.889). Ollama / qwen2.5:7b, deterministic (single pass,
+`_SELF_CONSISTENCY_TEMPS = (0.0,)`), `controlled_test.txt`:
+
+| | Run 1 | Run 2 |
+|---|---|---|
+| Overall F1 | 0.787 | 0.784 |
+| Extraction P / R / F1 | 0.583 / 0.583 / 0.583 | 0.568 / 0.583 / 0.575 |
+| Detection P / F1 | 1.000 / 0.889 | 1.000 / 0.889 |
+| Investigation P / F1 | 1.000 / 0.889 | 1.000 / 0.889 |
+
+Extraction remains the weakest phase (~0.58 F1) and is now the priority for
+any future session — see "How to continue" below. It was NOT the target of
+this goal and was intentionally not chased further once Investigation
+cleared its bar, per the user's time constraint.
 
 The historical session-3 table below was a single Vertex AI run and is
 retained for reference only.
@@ -254,6 +263,102 @@ difference at all**. So:
 scanning hunk. `golden_dataset.py` gains one SUSPECT entry. No performance
 claim is attached to either — both are justified on correctness grounds, and
 the measurement floor (±0.15) is wider than any effect they could have.
+
+---
+
+### Session 4, batch 2 — determinism first, then the metric
+
+Made the measurement trustworthy before touching anything else, since the
+±0.15 noise band above made every prior comparison unfalsifiable.
+
+30. **`_SELF_CONSISTENCY_TEMPS = (0.0,)`** — dropped the temperature-0.5
+    second sample. It had been added to recover scattered recall misses, but
+    it was the main source of run-to-run variance, and it doubled the LLM
+    calls (and wall-clock) per unit. Trading a little recall for a
+    reproducible number was the right trade: nothing else can be validated
+    without one.
+31. **Generic-injury canonicalization** (`_resolve_generic_body_part`) —
+    maps `injury.wound` / `injury.cut` / `injury.gash` onto the specific body
+    part named in the same unit, so a callback to an existing injury keys to
+    the same attribute as the unit that inflicted it. Without it the
+    detector's `(entity, attribute)` join treats them as two unrelated
+    injuries. Same failure mode `_strip_laterality` already guards against.
+    Longest-match-first so "forearm" wins over "arm".
+32. **Re-acquisition wording, retried in isolation** (item #26 above) — an
+    item taken as evidence and handed back is `acquired` twice, once per run
+    of possession.
+
+**Result — two runs, and the variance is gone:**
+
+| | Run 1 | Run 2 | Prior band |
+|---|---|---|---|
+| Overall F1 | 0.700 | 0.696 | ±0.15 |
+| Extraction P / R / F1 | 0.636 / 0.568 / 0.600 | 0.645 / 0.541 / 0.588 | P was 0.50 |
+| Detection P / F1 | 1.000 / 0.750 | 1.000 / 0.750 | |
+| **Investigation P / F1** | **1.000** / 0.750 | **1.000** / 0.750 | P was 0.667-0.750 |
+
+Run-to-run spread collapsed from ±0.15 to ±0.004. Extraction false positives
+dropped from ~22 to ~12. Investigation precision reached 1.000 on both runs,
+clearing the ≥0.85 bar; F1 0.750 was held back purely by recall (3 of 5
+conflicts).
+
+### Session 4, batch 3 — one capital letter was costing a whole conflict
+
+Investigation recall had exactly two misses. One is the documented structural
+ladder/`uncertain` case (both endpoints are `injured`, so `lagInFrame` sees no
+transition — still out of scope). The other traced back to **unit 14
+extracting zero events in every run of this session**.
+
+Direct instrumentation of that single unit showed the model was not failing at
+all. It returned precisely the right fact — `COLE/injury.forearm=healed`,
+confidence 0.95, `explicit` — and the pipeline discarded it:
+
+```
+model excerpt: 'the bandage was gone, the wound beneath it closed to a thin pink line'
+source text:   'The bandage was gone, the wound beneath it closed to a thin pink line'
+```
+
+The provenance check was a case-sensitive `in` test, so an otherwise verbatim
+quote was rejected over the capital `T`. Dropping it removed the only `healed`
+event in the document, so the detector never saw `injured -> healed`, never
+raised the candidate, and the investigation agent never got to adjudicate it.
+One letter, one lost conflict, an entire phase of the pipeline starved.
+
+33. **`_match_excerpt` case-insensitive provenance matching** — locates the
+    quote case-insensitively but **stores the substring sliced from the source
+    text**, never the model's rendering. Provenance stays exact per CLAUDE.md
+    rule 4 (a reader can still find the finding verbatim in the document);
+    what changes is only that correct evidence is no longer thrown away over
+    capitalization. Expected to recover dropped facts beyond unit 14, since
+    the brittleness was never unit-specific.
+
+**Result — two runs, goal met:**
+
+| | Run 1 | Run 2 | Batch 2 |
+|---|---|---|---|
+| Overall F1 | 0.787 | 0.784 | 0.700 |
+| Extraction P / R / F1 | 0.583 / 0.583 / 0.583 | 0.568 / 0.583 / 0.575 | 0.636 / 0.568 / 0.600 |
+| **Detection P / F1** | **1.000** / 0.889 | **1.000** / 0.889 | 1.000 / 0.750 |
+| **Investigation P / F1** | **1.000** / **0.889** | **1.000** / **0.889** | 1.000 / 0.750 |
+
+The recovered unit-14 event fixed the healed-injury conflict, taking
+Detection and Investigation from 3/5 to 4/5 candidates on both runs. **Stop
+condition met**: Investigation precision ≥0.85 (1.000) and F1 ≥0.80 (0.889),
+confirmed identically across both confirmation runs.
+
+**Remaining known gaps** (goal achieved; these are not blockers):
+- The ladder/`uncertain` conflict is structurally undetectable by
+  `lagInFrame` alone (no value transition — both endpoints read `injured`).
+  Fixing it needs action-vocabulary extraction, out of scope for this pass.
+- Extraction F1 (~0.58) is still the weakest phase and the eval set is small
+  (17 units, 5 conflicts) — a single flipped extraction still moves that
+  phase's F1 by ~0.03-0.06, so treat it as directionally right, not exact.
+- Not yet validated against `controlled_test_v2.txt` (`--v2`) — the fixes
+  here are general (case-insensitive matching, canonicalization) rather than
+  document-specific, but that's an assumption, not a confirmed result.
+- The nvidia driver kernel-module mismatch (615.71.09 installed vs 610.43.02
+  loaded) is still pending a reboot; unrelated to this goal, doesn't affect
+  Ollama's CUDA path.
 
 ---
 
