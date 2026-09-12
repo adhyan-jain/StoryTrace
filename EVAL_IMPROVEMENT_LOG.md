@@ -5,23 +5,34 @@ this work cold. Update it after every meaningful change — don't let it go stal
 
 ---
 
-## Current status (as of 2026-09-12, eval run in progress)
+## Current status (as of 2026-09-12, session 3)
 
-**Best known F1: 0.581** (eval run #2 with Ollama + partial improvements)
+**Best known F1: 0.785** (Vertex AI / gemini-2.5-flash, up from an Ollama
+baseline of 0.667 this session). Target set by user: 0.80-0.85, precision
+weighted above recall. Not yet reached -- gains have clearly plateaued
+(last three runs: 0.782, 0.779, 0.785, within normal run-to-run noise of
+each other) after a run of real fixes; see "Session 3" below for what
+was tried and what's left.
 
 | Phase | Precision | Recall | F1 | TP | FP | FN |
 | --- | --- | --- | --- | --- | --- | --- |
-| Extraction | 0.444 | 0.552 | 0.492 | 16 | 20 | 13 |
-| Detection | 1.000 | 0.600 | 0.750 | 3 | 0 | 2 |
-| Investigation | 0.667 | 0.400 | 0.500 | 2 | 1 | 3 |
+| Extraction | 0.511 | 0.667 | 0.578 | 24 | 23 | 12 |
+| Detection | 1.000 | 0.800 | 0.889 | 4 | 0 | 1 |
+| Investigation | 1.000 | 0.800 | 0.889 | 4 | 0 | 1 |
 
-**Target**: F1 > 0.9 on `controlled_test.txt` (v1) without overfitting.
+**Target**: F1 0.80-0.85 on `controlled_test.txt` (v1), precision-weighted.
 Then validate on `controlled_test_v2.txt` (golden_dataset_v2.py already exists).
 
-> **IMPORTANT**: Use `MODEL_PROVIDER=ollama` (already in `.env`). Do NOT use
-> Vertex AI / Gemini API for any eval or pipeline run unless explicitly asked.
-> Ollama uses `qwen2.5:7b` locally at no quota cost.
-> Run: `source venv/bin/activate && set -a && source .env && set +a && python3 -m scripts.eval`
+> **IMPORTANT**: Use `MODEL_PROVIDER=ollama` (already in `.env`) as the
+> default for ALL local testing/eval unless the user explicitly names
+> Vertex/Gemini for that specific request. Session 3 got explicit one-off
+> permission to use Vertex AI (gemini-2.5-flash) for verification runs
+> because Ollama's qwen2.5:7b run-to-run extraction noise was making it
+> impossible to tell a real fix from random variance -- this is a
+> standing exception for THIS reason, not a blanket switch. Revert to
+> Ollama by default once iterating again.
+> Ollama run: `source venv/bin/activate && set -a && source .env && set +a && python3 -m scripts.eval`
+> Vertex run (only when explicitly asked): same, prefixed with `MODEL_PROVIDER=vertexai`.
 
 > **Do not run against Reverend Insanity or Oppenheimer** — too expensive per user direction.
 
