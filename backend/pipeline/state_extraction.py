@@ -614,6 +614,65 @@ def _match_excerpt(raw_excerpt: str, unit_text: str) -> str | None:
     return unit_text[index:index + len(raw_excerpt)]
 
 
+_GROUNDING_STOPWORDS = {
+    "the", "a", "an", "of", "in", "at", "on", "and", "to", "his", "her",
+    "its", "their", "s",
+}
+
+
+def _content_words(text: str) -> set[str]:
+    return {
+        w for w in re.findall(r"[a-zA-Z]+", text.lower())
+        if w not in _GROUNDING_STOPWORDS
+    }
+
+
+def _location_grounded(value: str, excerpt: str) -> bool:
+    """Reject a location fact whose raw_excerpt does not actually mention the
+    place it claims. The verbatim-substring hallucination check only proves
+    the excerpt is real TEXT from the unit -- it says nothing about whether
+    that text supports THIS value. A real run returned
+    COLE/location="opposite rows" (a phrase from a wholly different, earlier
+    unit) with excerpt "and kept moving" -- a genuine quote from the current
+    unit, just one that establishes nothing about "opposite rows". Requiring
+    every content word of the value to appear in its own excerpt catches
+    this: a location the text actually names always has its own words in the
+    sentence that names it (e.g. excerpt "the window of the Chicago
+    precinct" contains both "chicago" and "precinct" for value "chicago
+    precinct"); a carried-over or invented one usually shares no words with
+    whatever unrelated sentence got picked as "evidence".
+    """
+    value_words = _content_words(value)
+    if not value_words:
+        return True
+    excerpt_words = _content_words(excerpt)
+    return value_words <= excerpt_words
+
+
+def _injury_grounded(body_part: str, excerpt: str, unit_text: str) -> bool:
+    """Reject an injury fact whose body part is named NOWHERE in the unit --
+    not just missing from its own excerpt. A real run returned
+    SUSPECT/injury.head="injured" with excerpt "fired a warning shot into
+    the dirt" -- a real quote, verbatim, about a completely different action,
+    with no mention of a head anywhere in that unit. But a specific body
+    part legitimately resolved from an EARLIER sentence in the same unit
+    (e.g. "...running a hand along his forearm..." earlier, "the wound
+    beneath it closed to a thin pink line" as this fact's own excerpt) must
+    not be rejected just because this fact's own clause doesn't re-name the
+    limb -- same reasoning _resolve_generic_body_part already relies on for
+    generic terms, extended here to the specific-term case. Checking the
+    whole unit (not just the excerpt) is what keeps this from being
+    defeated by that legitimate same-unit-different-sentence pattern while
+    still catching a body part that appears nowhere in the unit at all.
+    Generic terms ("wound", "cut") are always exempt regardless.
+    """
+    if body_part in _GENERIC_INJURY_PARTS:
+        return True
+    if body_part in _content_words(excerpt):
+        return True
+    return bool(re.search(rf"\b{re.escape(body_part)}\b", unit_text.lower()))
+
+
 def _fact_to_event(
     fact: StateFact,
     unit: NarrativeUnit,
@@ -655,8 +714,14 @@ def _fact_to_event(
     if normalized is None:
         return None
     attribute, value = normalized
+    if attribute in ("location", "location.city"):
+        if not _location_grounded(value, excerpt):
+            return None
     if attribute.startswith("injury."):
-        body_part = _resolve_generic_body_part(attribute.split(".", 1)[1], unit.raw_text)
+        raw_body_part = attribute.split(".", 1)[1]
+        if not _injury_grounded(raw_body_part, excerpt, unit.raw_text):
+            return None
+        body_part = _resolve_generic_body_part(raw_body_part, unit.raw_text)
         attribute = f"injury.{body_part}"
     entity_id = registry.resolve(fact.entity_name, entity_type.value)
 
