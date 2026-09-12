@@ -138,6 +138,19 @@ Correct:
     raw_excerpt: "John grabbed the pistol from the table",
     confidence: 0.95, establishment_type: "explicit" }
 
+Input text: "Maya took Cole's badge and sealed it in an evidence bag."
+Correct:
+  { entity_name: "MAYA", entity_type: "character",
+    attribute: "possession.badge", value: "acquired",
+    raw_excerpt: "Maya took Cole's badge and sealed it in an evidence bag",
+    confidence: 0.9, establishment_type: "explicit" }
+  Note: This is "acquired", NOT "held" -- a formal custody transfer
+  (confiscating, sealing as evidence, taking into custody) is still the
+  moment Maya first gets the item, exactly like a casual grab. Don't
+  reserve "acquired" only for informal taking -- any explicit taking
+  action, procedural or not, is "acquired" for whoever ends up holding it.
+  (Also log "COLE/possession.badge=lost" here -- Cole no longer has it.)
+
 Input text: "The knife clattered to the floor as Cole clutched his
 bleeding side."
 Correct:
