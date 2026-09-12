@@ -322,8 +322,19 @@ GOLDEN_DATASET = GoldenDataset(
             sequence_number=8, excerpt_contains="precinct",
         ),
         # Unit 9: suspect is cornered near the old rail yard. Cole is also there.
+        # The text explicitly places the suspect there too ("The suspect
+        # reappeared near the old rail yard") -- a real, unambiguous
+        # background fact the extractor was correctly finding and getting
+        # penalized for as a false positive purely because this fixture
+        # never covered SUSPECT's side of it (same class of gap as the
+        # earlier "previously missing" entries below).
         GoldenStateEvent(
             entity_name="COLE", entity_type="character",
+            attribute="location", value="old rail yard",
+            sequence_number=9, excerpt_contains="old rail yard",
+        ),
+        GoldenStateEvent(
+            entity_name="SUSPECT", entity_type="character",
             attribute="location", value="old rail yard",
             sequence_number=9, excerpt_contains="old rail yard",
         ),

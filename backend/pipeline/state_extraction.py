@@ -26,6 +26,14 @@ SYSTEM_PROMPT = """
 You are a narrative continuity analyst. Extract all trackable story state facts
 from the provided scene or chapter text.
 
+Many units contain SEVERAL distinct facts at once (e.g. a location, an
+injury, AND a possession change, all in one paragraph) -- do not stop
+scanning after finding the first one or two. Before finalizing your
+answer, check the text separately against EACH of these four categories:
+location, injury, possession, clothing -- a unit that mentions a place,
+a wound, and an item changing hands should produce facts for all three,
+not just whichever you noticed first.
+
 Return a JSON array of state facts. Each fact must have:
 - entity_name: the canonical name of the character, prop, or location
 - entity_type: "character", "prop", or "location"
@@ -367,7 +375,11 @@ _LEADING_ARTICLE = re.compile(r"^(the|a|an)\s+", re.IGNORECASE)
 # location.city values that are too generic to be useful -- if the model
 # emits one of these as a city, it's noise (the extraction prompt already
 # says "only when a specific real city/region is explicitly stated").
-_VAGUE_CITY_VALUES = {"city", "town", "village", "the city", "here", "there", "home", "unknown"}
+_VAGUE_CITY_VALUES = {
+    "city", "town", "village", "the city", "here", "there", "home", "unknown",
+    "unspecified", "unnamed", "not specified", "n/a", "none", "undisclosed",
+    "unclear", "somewhere",
+}
 
 # Minimum length for a valid scene-level location value -- short strings like
 # "here" or "there" or even "him" (a hallucination) are not real locations.
