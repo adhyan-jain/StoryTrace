@@ -44,15 +44,27 @@ class FinalVerdict(BaseModel):
     - severity given as "medium"/"high"/"low" rather than warning/critical/info
     - confidence given as a word ("high") rather than a number
     Only known-equivalent variants are smoothed over; anything else still
-    fails validation and the caller falls back safely."""
+    fails validation and the caller falls back safely.
 
+    Field order matters here and is deliberate: `explanation` is declared
+    BEFORE `status`/`severity`/`confidence`. A real eval run on qwen2.5:7b
+    (via Ollama's JSON mode, which has no true constrained decoding) showed
+    the model emitting an `explanation` that plainly argued for "resolved"
+    ("this meets the criteria for a valid bridge") while `status` still came
+    out "verified" -- the two fields were generated independently with no
+    real reasoning-then-conclusion link between them, because `status` was
+    asked for FIRST, before the model had "thought out loud" via the
+    explanation text. Putting `explanation` first lets the model's own
+    free-text reasoning happen before it has to commit to the enum, so the
+    enum can actually follow from the reasoning instead of preceding it."""
+
+    explanation: str
     status: Literal["verified", "resolved", "uncertain"] = Field(
-        description="verified | resolved | uncertain"
+        description="verified | resolved | uncertain -- MUST follow logically from the explanation above, not be decided independently of it"
     )
     severity: Literal["critical", "warning", "info"] = Field(
         description="critical | warning | info -- how serious this is for the reader/editor, independent of status"
     )
-    explanation: str
     confidence: float
 
     @field_validator("status", mode="before")
@@ -117,6 +129,52 @@ def _mcp_env() -> dict:
 
 _MCP_SERVER_PARAMS = StdioServerParameters(command="mcp-clickhouse", args=[], env=_mcp_env())
 
+# Shared between the per-step action prompt AND the final verdict prompt --
+# a real bug found via eval: this used to live ONLY in the action prompt, so
+# by the time the model was asked to actually COMMIT to a verdict, these
+# criteria had fallen out of its immediate context and it fell back to its
+# own generic (and inconsistent) judgment even after retrieving the exact
+# bridging text via a tool call. Verdicts must be judged against the same
+# rules that were used to decide whether to keep investigating.
+_BRIDGE_CRITERIA = """
+What counts as a valid bridge (resolves the candidate, not a real conflict):
+- Injury healing: an explicit treatment/medical event (paramedic, bandage,
+  gauze, field kit, wrapped, cleaned, treated) is BY ITSELF a sufficient
+  bridge -- do not also require an explicit "days later"/time-skip phrase on
+  top of it. IMPORTANT: this is true even when the treatment is described in
+  the SAME unit as the "prior" (injured) evidence itself. For example, if the
+  prior excerpt already shows a wound being cleaned/wrapped/bandaged by a
+  paramedic, that IS the bridge, and the verdict MUST be 'resolved'.
+  Do not second-guess this: if you can see medical treatment words in the
+  prior excerpt or prior unit text (paramedic, gauze, bandage, wrapped,
+  cleaned, field kit), verdict = 'resolved'. Period.
+  Only fall back to 'uncertain' when NO treatment event exists anywhere --
+  neither in the prior excerpt, nor in the prior unit text, nor in any
+  intervening unit -- AND no explicit time-lapse is narrated.
+  Merely not being mentioned again, with neither treatment nor a time lapse,
+  is NOT a bridge and yields 'uncertain'.
+- Possession reappearing: the item being explicitly returned, reissued, or
+  handed back (e.g. "returned it the next morning"), not just picked back up
+  with no explanation.
+- Location change: an explicit travel/transit scene, a clearly narrated time
+  skip, or the character being told/shown to have moved. Two locations
+  simply appearing in sequence with nothing narrated in between is NOT a
+  bridge -- that is exactly the kind of unexplained jump this system exists
+  to catch, so when in doubt on location, prefer 'verified' or 'uncertain'
+  over 'resolved'.
+  CRITICAL FOR CITY CHANGES: A location.city change (e.g. Chicago → New York)
+  is a VERIFIED conflict unless you can find explicit travel narration (e.g.
+  "Cole flew to New York", "took the overnight train", "drove up"). If the
+  character simply appears in the new city with no travel mentioned, verdict
+  MUST be 'verified'. Default answer for city changes = 'verified'.
+
+QUICK-DECISION RULE: Before calling any tools, scan the prior excerpt shown
+in context above. If it already contains medical/treatment words (paramedic,
+gauze, bandage, wrapped, cleaned, field kit) for an injury candidate, you
+ALREADY have enough to conclude 'resolved'. Call 'finish' immediately with
+that verdict -- no additional tool calls needed for this case.
+"""
+
 
 class InvestigationAgent:
     """ReAct-style loop over the Investigation Agent's four ClickHouse tools.
@@ -173,6 +231,59 @@ class InvestigationAgent:
         context += f"Prior: {candidate.prior_evidence_excerpt} (Unit {candidate.prior_evidence_unit_id})\n"
         context += f"Current: {candidate.current_evidence_excerpt} (Unit {candidate.current_evidence_unit_id})\n"
 
+        # Smaller local models (e.g. qwen2.5:7b via Ollama) were observed
+        # calling the exact same tool with the exact same args repeatedly --
+        # e.g. get_unit_text on the same unit_id 7 times in a row -- burning
+        # the entire max_calls budget without ever reaching 'finish'. Detect
+        # an exact repeat, skip re-executing it (the observation is already
+        # in context, nothing new to learn), and tell the model directly so
+        # it doesn't just keep guessing the same dead end.
+        seen_calls: set[tuple] = set()
+        repeat_streak = 0
+
+        async def finalize() -> InvestigationVerdict:
+            verdict_req = LLMRequest(
+                stage="investigation_verdict",
+                prompt=f"{context}\n{_BRIDGE_CRITERIA}\nYou have decided to conclude. Provide your final verdict now, judged strictly against the bridge criteria above.",
+            )
+            try:
+                verdict = self.provider.complete(verdict_req, FinalVerdict).value
+            except Exception as e:
+                steps.append({"step": "error", "message": f"invalid FinalVerdict: {e}"})
+                return InvestigationVerdict(
+                    id=f"verdict_{candidate.id}",
+                    candidate_id=candidate.id,
+                    status="uncertain",
+                    severity="warning",
+                    explanation="Could not obtain a valid final verdict from the model.",
+                    confidence=0.0,
+                    investigation_actions=[json.dumps(s) for s in steps],
+                    suggested_fix="",
+                )
+            steps.append({"step": "verdict", "verdict": verdict.model_dump()})
+            suggested_fix = ""
+            if verdict.status == "verified":
+                try:
+                    suggested_fix = await self._suggest_fix(candidate)
+                except Exception:
+                    # _suggest_fix already catches its own internal errors,
+                    # but a real run hit a google-adk exception (429
+                    # RESOURCE_EXHAUSTED) that escaped its try/except and
+                    # crashed the whole investigation -- suggested_fix is a
+                    # nice-to-have UI extra, never worth losing an otherwise-
+                    # correct verdict over.
+                    suggested_fix = ""
+            return InvestigationVerdict(
+                id=f"verdict_{candidate.id}",
+                candidate_id=candidate.id,
+                status=verdict.status,
+                severity=verdict.severity,
+                explanation=verdict.explanation,
+                confidence=verdict.confidence,
+                investigation_actions=[json.dumps(s) for s in steps],
+                suggested_fix=suggested_fix,
+            )
+
         for _ in range(self.max_calls):
             prompt = f"""
             {context}
@@ -192,28 +303,7 @@ class InvestigationAgent:
             intervening step that this candidate's prior/current excerpts don't show you,
             because the candidate only shows the two ENDPOINTS of the suspicious jump.
 
-            What counts as a valid bridge (resolves the candidate, not a real conflict):
-            - Injury healing: an explicit treatment/medical event (paramedic, bandage,
-              gauze, field kit) is BY ITSELF a sufficient bridge -- do not also require an
-              explicit "days later"/time-skip phrase on top of it. This is true even when
-              the treatment is described in the SAME unit as the "prior" (injured)
-              evidence itself -- e.g. if the prior excerpt already shows a wound being
-              cleaned and bandaged, that IS the bridge, not merely a restatement that the
-              injury exists. Untreated injuries take time to heal and real narration often
-              skips ahead implicitly once treatment is shown; treat the treatment event
-              alone as enough. Only fall back to requiring a narrated time lapse when NO
-              treatment event exists anywhere in the prior excerpt or unit text. Merely
-              not being mentioned again, with neither treatment nor a time lapse, is NOT a
-              bridge.
-            - Possession reappearing: the item being explicitly returned, reissued, or
-              handed back (e.g. "returned it the next morning"), not just picked back up
-              with no explanation.
-            - Location change: an explicit travel/transit scene, a clearly narrated time
-              skip, or the character being told/shown to have moved. Two locations
-              simply appearing in sequence with nothing narrated in between is NOT a
-              bridge -- that is exactly the kind of unexplained jump this system exists
-              to catch, so when in doubt on location, prefer 'verified' or 'uncertain'
-              over 'resolved'.
+            {_BRIDGE_CRITERIA}
 
             Decide next action. If you have enough evidence to resolve (found a bridge) or verify (no bridge), call 'finish' with empty kwargs ({{}}) -- you'll be asked for the verdict itself in a follow-up.
             """
@@ -243,29 +333,27 @@ class InvestigationAgent:
                     # or apostrophe inside its own explanation text -- a real,
                     # frequent failure on the RI novel ("Expecting ','
                     # delimiter" from a single bad escape deep in the string).
-                    verdict_req = LLMRequest(
-                        stage="investigation_verdict",
-                        prompt=f"{context}\n\nYou have decided to conclude. Provide your final verdict now.",
+                    return await finalize()
+
+                call_key = (action.tool_name, tuple(sorted(action.kwargs.items())))
+                if call_key in seen_calls:
+                    repeat_streak += 1
+                    steps.append({"step": "repeat_skipped", "tool": action.tool_name, "args": action.kwargs})
+                    context += (
+                        f"\nYou already called {action.tool_name}({action.kwargs}) earlier -- "
+                        "that observation is already above, calling it again will not reveal "
+                        "anything new. Either try a DIFFERENT tool/arguments, or call 'finish' "
+                        "now and give your verdict with the evidence you already have.\n"
                     )
-                    try:
-                        verdict = self.provider.complete(verdict_req, FinalVerdict).value
-                    except Exception as e:
-                        steps.append({"step": "error", "message": f"invalid FinalVerdict: {e}"})
-                        break
-                    steps.append({"step": "verdict", "verdict": verdict.model_dump()})
-                    suggested_fix = ""
-                    if verdict.status == "verified":
-                        suggested_fix = await self._suggest_fix(candidate)
-                    return InvestigationVerdict(
-                        id=f"verdict_{candidate.id}",
-                        candidate_id=candidate.id,
-                        status=verdict.status,
-                        severity=verdict.severity,
-                        explanation=verdict.explanation,
-                        confidence=verdict.confidence,
-                        investigation_actions=[json.dumps(s) for s in steps],
-                        suggested_fix=suggested_fix,
-                    )
+                    if repeat_streak >= 2:
+                        # Two identical repeats in a row means the model is
+                        # stuck, not exploring -- stop burning the remaining
+                        # call budget on more of the same and force a verdict
+                        # from whatever evidence was actually gathered.
+                        return await finalize()
+                    continue
+                repeat_streak = 0
+                seen_calls.add(call_key)
 
                 steps.append({"step": "action", "tool": action.tool_name, "args": action.kwargs})
                 tool_fn = getattr(tools, action.tool_name, None)
