@@ -209,16 +209,21 @@ GOLDEN_DATASET = GoldenDataset(
             sequence_number=7,
             excerpt_contains="forearm throbbing",
         ),
-        # Unit 13: Cole runs a hand along his forearm "out of habit" -- the
-        # bandage is still on (visible from the mention of "The bandage was
-        # gone" in unit 14). A mention of the forearm in a non-healed context
-        # is evidence of continued injury.
+        # Unit 14 (not 13 -- verified against controlled_test.txt: unit 13's
+        # text, "Back at the precinct, Cole spread photographs...", never
+        # mentions "forearm" at all; this comment's own description --
+        # "Cole runs a hand along his forearm 'out of habit'... the bandage
+        # was gone" -- is unit 14's actual text verbatim. Same off-by-one
+        # class of bug as the interrogation-room entry above.) Cole notices
+        # his forearm before the bandage/healing observation later in the
+        # same unit -- a mention of the forearm in a non-healed context is
+        # evidence of continued injury at that point in the paragraph.
         GoldenStateEvent(
             entity_name="COLE",
             entity_type="character",
             attribute="injury.forearm",
             value="injured",
-            sequence_number=13,
+            sequence_number=14,
             excerpt_contains="forearm",
         ),
         # 11-19. Plain, unambiguous facts that were previously missing from
@@ -328,11 +333,17 @@ GOLDEN_DATASET = GoldenDataset(
             attribute="location", value="precinct",
             sequence_number=13, excerpt_contains="precinct",
         ),
-        # Unit 14: interrogation room.
+        # Unit 15 (not 14 -- verified against controlled_test.txt: unit 14's
+        # text is "Cole leaned back in his chair... forearm... thin pink
+        # line" with no location mentioned at all; "interrogation room"
+        # only appears in unit 15's text, "The interrogation room was
+        # small...". This was previously mistagged at sequence_number=14,
+        # an off-by-one that no hallucination-safe extraction could ever
+        # satisfy since the substring doesn't exist in that unit's text.
         GoldenStateEvent(
             entity_name="COLE", entity_type="character",
             attribute="location", value="interrogation room",
-            sequence_number=14, excerpt_contains="interrogation room",
+            sequence_number=15, excerpt_contains="interrogation room",
         ),
         # Unit 10: New York precinct -- model sometimes extracts
         # "precinct in New York" as the location value.
@@ -352,56 +363,26 @@ GOLDEN_DATASET = GoldenDataset(
             attribute="location", value="behind a shuttered diner",
             sequence_number=11, excerpt_contains="shuttered diner",
         ),
-        # Unit 15: Cole is at the precinct (corkboard room after rooftop).
-        # The model sometimes extracts "Chicago precinct" (importing earlier city context)
-        # even though the text just says "precinct" -- both are valid for this unit.
-        GoldenStateEvent(
-            entity_name="COLE", entity_type="character",
-            attribute="location", value="precinct",
-            sequence_number=15, excerpt_contains="precinct",
-        ),
-        GoldenStateEvent(
-            entity_name="COLE", entity_type="character",
-            attribute="location", value="Chicago precinct",
-            sequence_number=15, excerpt_contains="precinct",
-        ),
-        GoldenStateEvent(
-            entity_name="MAYA", entity_type="character",
-            attribute="location", value="precinct",
-            sequence_number=15, excerpt_contains="precinct",
-        ),
-        GoldenStateEvent(
-            entity_name="MAYA", entity_type="character",
-            attribute="location", value="Chicago precinct",
-            sequence_number=15, excerpt_contains="precinct",
-        ),
         # Unit 5: Maya acquires Cole's badge (evidence bag procedure).
         GoldenStateEvent(
             entity_name="MAYA", entity_type="character",
             attribute="possession.badge", value="acquired",
             sequence_number=5, excerpt_contains="badge",
         ),
-        # Unit 16: final report scene.
-        GoldenStateEvent(
-            entity_name="COLE", entity_type="character",
-            attribute="location", value="precinct",
-            sequence_number=16, excerpt_contains="precinct",
-        ),
-        GoldenStateEvent(
-            entity_name="COLE", entity_type="character",
-            attribute="location", value="Chicago precinct",
-            sequence_number=16, excerpt_contains="precinct",
-        ),
-        GoldenStateEvent(
-            entity_name="MAYA", entity_type="character",
-            attribute="location", value="precinct",
-            sequence_number=16, excerpt_contains="precinct",
-        ),
-        GoldenStateEvent(
-            entity_name="MAYA", entity_type="character",
-            attribute="location", value="Chicago precinct",
-            sequence_number=16, excerpt_contains="precinct",
-        ),
+        # NOTE: units 15 and 16 previously had "precinct"/"Chicago precinct"
+        # location entries here too, removed after verifying against
+        # controlled_test.txt directly -- neither unit's actual text
+        # contains the word "precinct" at all (unit 15 is the interrogation
+        # room scene, see above; unit 16 is "Maya briefed the captain...
+        # filed the final report", no location noun at all). Every
+        # hallucination-safe extractor (raw_excerpt must be a verbatim
+        # substring of that unit's text -- see CLAUDE.md's provenance rule
+        # and _fact_to_event's check in state_extraction.py) was
+        # structurally incapable of ever satisfying these, so they were
+        # counted as false negatives regardless of extraction quality.
+        # Unit 17 correctly keeps its precinct entries below since the text
+        # there ("Cole and Maya walked out of the precinct together...")
+        # does contain the word.
         # Unit 17: walking out of the precinct.
         GoldenStateEvent(
             entity_name="COLE", entity_type="character",
