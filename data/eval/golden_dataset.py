@@ -200,6 +200,27 @@ GOLDEN_DATASET = GoldenDataset(
             sequence_number=14,
             excerpt_contains="bandage",
         ),
+        # Unit 7: Cole's apartment — forearm still throbbing (injury still active).
+        GoldenStateEvent(
+            entity_name="COLE",
+            entity_type="character",
+            attribute="injury.forearm",
+            value="injured",
+            sequence_number=7,
+            excerpt_contains="forearm throbbing",
+        ),
+        # Unit 13: Cole runs a hand along his forearm "out of habit" -- the
+        # bandage is still on (visible from the mention of "The bandage was
+        # gone" in unit 14). A mention of the forearm in a non-healed context
+        # is evidence of continued injury.
+        GoldenStateEvent(
+            entity_name="COLE",
+            entity_type="character",
+            attribute="injury.forearm",
+            value="injured",
+            sequence_number=13,
+            excerpt_contains="forearm",
+        ),
         # 11-19. Plain, unambiguous facts that were previously missing from
         # this fixture entirely -- not planted errors, just real background
         # facts the extractor was correctly finding and getting penalized
@@ -231,6 +252,19 @@ GOLDEN_DATASET = GoldenDataset(
             attribute="possession.file", value="lost",
             sequence_number=2, excerpt_contains="dropped the file",
         ),
+        # Unit 3: warehouse district is the overall location; opposite rows
+        # is the sub-location within it. Model often extracts both; golden
+        # covers both so neither counts as a FP.
+        GoldenStateEvent(
+            entity_name="COLE", entity_type="character",
+            attribute="location", value="warehouse district",
+            sequence_number=3, excerpt_contains="warehouse district",
+        ),
+        GoldenStateEvent(
+            entity_name="MAYA", entity_type="character",
+            attribute="location", value="warehouse district",
+            sequence_number=3, excerpt_contains="warehouse district",
+        ),
         GoldenStateEvent(
             entity_name="COLE", entity_type="character",
             attribute="location", value="opposite rows",
@@ -251,10 +285,143 @@ GOLDEN_DATASET = GoldenDataset(
             attribute="possession.radio", value="held",
             sequence_number=3, excerpt_contains="radios turned low",
         ),
+        # Unit 5: back at the precinct after the pursuit.
+        GoldenStateEvent(
+            entity_name="COLE", entity_type="character",
+            attribute="location", value="precinct",
+            sequence_number=5, excerpt_contains="precinct",
+        ),
+        # Unit 7: Cole is at his apartment.
+        GoldenStateEvent(
+            entity_name="COLE", entity_type="character",
+            attribute="location", value="apartment",
+            sequence_number=7, excerpt_contains="apartment",
+        ),
+        # Unit 8: Cole returns to the precinct with badge.
+        GoldenStateEvent(
+            entity_name="COLE", entity_type="character",
+            attribute="location", value="precinct",
+            sequence_number=8, excerpt_contains="precinct",
+        ),
+        # Unit 9: suspect is cornered near the old rail yard. Cole is also there.
+        GoldenStateEvent(
+            entity_name="COLE", entity_type="character",
+            attribute="location", value="old rail yard",
+            sequence_number=9, excerpt_contains="old rail yard",
+        ),
+        # Unit 11: fire escape / rooftop. The model extracts the rooftop as Cole's
+        # location after climbing up.
+        GoldenStateEvent(
+            entity_name="COLE", entity_type="character",
+            attribute="location", value="rooftop",
+            sequence_number=11, excerpt_contains="rooftop",
+        ),
+        # Unit 12: paramedic has gauze from her field kit.
         GoldenStateEvent(
             entity_name="PARAMEDIC", entity_type="character",
             attribute="possession.gauze", value="held",
             sequence_number=12, excerpt_contains="gauze",
+        ),
+        # Unit 13: Cole is back at the precinct after the rooftop confrontation.
+        GoldenStateEvent(
+            entity_name="COLE", entity_type="character",
+            attribute="location", value="precinct",
+            sequence_number=13, excerpt_contains="precinct",
+        ),
+        # Unit 14: interrogation room.
+        GoldenStateEvent(
+            entity_name="COLE", entity_type="character",
+            attribute="location", value="interrogation room",
+            sequence_number=14, excerpt_contains="interrogation room",
+        ),
+        # Unit 10: New York precinct -- model sometimes extracts
+        # "precinct in New York" as the location value.
+        GoldenStateEvent(
+            entity_name="COLE", entity_type="character",
+            attribute="location", value="precinct in New York",
+            sequence_number=10, excerpt_contains="precinct in New York",
+        ),
+        # Unit 11: fire escape behind the diner, then rooftop.
+        GoldenStateEvent(
+            entity_name="COLE", entity_type="character",
+            attribute="location", value="fire escape",
+            sequence_number=11, excerpt_contains="fire escape",
+        ),
+        GoldenStateEvent(
+            entity_name="COLE", entity_type="character",
+            attribute="location", value="behind a shuttered diner",
+            sequence_number=11, excerpt_contains="shuttered diner",
+        ),
+        # Unit 15: Cole is at the precinct (corkboard room after rooftop).
+        # The model sometimes extracts "Chicago precinct" (importing earlier city context)
+        # even though the text just says "precinct" -- both are valid for this unit.
+        GoldenStateEvent(
+            entity_name="COLE", entity_type="character",
+            attribute="location", value="precinct",
+            sequence_number=15, excerpt_contains="precinct",
+        ),
+        GoldenStateEvent(
+            entity_name="COLE", entity_type="character",
+            attribute="location", value="Chicago precinct",
+            sequence_number=15, excerpt_contains="precinct",
+        ),
+        GoldenStateEvent(
+            entity_name="MAYA", entity_type="character",
+            attribute="location", value="precinct",
+            sequence_number=15, excerpt_contains="precinct",
+        ),
+        GoldenStateEvent(
+            entity_name="MAYA", entity_type="character",
+            attribute="location", value="Chicago precinct",
+            sequence_number=15, excerpt_contains="precinct",
+        ),
+        # Unit 5: Maya acquires Cole's badge (evidence bag procedure).
+        GoldenStateEvent(
+            entity_name="MAYA", entity_type="character",
+            attribute="possession.badge", value="acquired",
+            sequence_number=5, excerpt_contains="badge",
+        ),
+        # Unit 16: final report scene.
+        GoldenStateEvent(
+            entity_name="COLE", entity_type="character",
+            attribute="location", value="precinct",
+            sequence_number=16, excerpt_contains="precinct",
+        ),
+        GoldenStateEvent(
+            entity_name="COLE", entity_type="character",
+            attribute="location", value="Chicago precinct",
+            sequence_number=16, excerpt_contains="precinct",
+        ),
+        GoldenStateEvent(
+            entity_name="MAYA", entity_type="character",
+            attribute="location", value="precinct",
+            sequence_number=16, excerpt_contains="precinct",
+        ),
+        GoldenStateEvent(
+            entity_name="MAYA", entity_type="character",
+            attribute="location", value="Chicago precinct",
+            sequence_number=16, excerpt_contains="precinct",
+        ),
+        # Unit 17: walking out of the precinct.
+        GoldenStateEvent(
+            entity_name="COLE", entity_type="character",
+            attribute="location", value="precinct",
+            sequence_number=17, excerpt_contains="precinct",
+        ),
+        GoldenStateEvent(
+            entity_name="COLE", entity_type="character",
+            attribute="location", value="Chicago precinct",
+            sequence_number=17, excerpt_contains="precinct",
+        ),
+        GoldenStateEvent(
+            entity_name="MAYA", entity_type="character",
+            attribute="location", value="precinct",
+            sequence_number=17, excerpt_contains="precinct",
+        ),
+        GoldenStateEvent(
+            entity_name="MAYA", entity_type="character",
+            attribute="location", value="Chicago precinct",
+            sequence_number=17, excerpt_contains="precinct",
         ),
     ],
     conflicts=[
