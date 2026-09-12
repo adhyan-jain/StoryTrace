@@ -5,14 +5,26 @@ this work cold. Update it after every meaningful change — don't let it go stal
 
 ---
 
-## Current status (as of 2026-09-12, session 3)
+## Current status (as of 2026-09-12, session 4)
 
-**Best known F1: 0.785** (Vertex AI / gemini-2.5-flash, up from an Ollama
-baseline of 0.667 this session). Target set by user: 0.80-0.85, precision
-weighted above recall. Not yet reached -- gains have clearly plateaued
-(last three runs: 0.782, 0.779, 0.785, within normal run-to-run noise of
-each other) after a run of real fixes; see "Session 3" below for what
-was tried and what's left.
+> **⚠ Read the Session 4 entry before trusting any number in this document.**
+> Session 4 established that run-to-run variance on `controlled_test.txt` is
+> **±0.15 F1**, and reproduced 0.632 from the exact prompt state that had
+> previously scored 0.783 — with zero code differences. Single-run
+> before/after comparisons recorded in earlier sessions are therefore not
+> reliable evidence, and the numbers below should be read as *one sample*,
+> not as a settled baseline.
+
+**Honest current performance (Ollama / qwen2.5:7b): ~0.60-0.63 overall F1,
+~0.55 extraction F1**, measured across four session-4 runs. Target set by
+user: 0.80-0.85, precision weighted above recall — not reached, and not
+currently *measurable* to that precision, because Investigation F1 is
+computed over only 4-5 conflicts (one flipped verdict = ±0.11-0.22).
+Fixing the measurement (more runs averaged, or a larger eval set) is the
+prerequisite for any further credible tuning.
+
+The historical session-3 table below was a single Vertex AI run and is
+retained for reference only.
 
 | Phase | Precision | Recall | F1 | TP | FP | FN |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -157,9 +169,110 @@ changes were made to compensate:
 
 ---
 
+### Session 4 (2026-09-12) — Measurement credibility: the 0.783 baseline was noise
+
+**The single most important finding of this session is a measurement one, not a
+fix**: the previously recorded `F1 = 0.783` is NOT a reproducible baseline. It
+was one lucky sample.
+
+Five Ollama (`qwen2.5:7b`) runs were performed on `controlled_test.txt`:
+
+| # | Prompt state | Overall F1 | Extraction F1 | Investigation F1 |
+|---|--------------|-----------|---------------|------------------|
+| (prior) | pending hunk only | 0.783 | 0.571 | 0.889 |
+| 1 | + multi-char/re-acquisition prompt edits | 0.629 | 0.554 | 0.667 |
+| 2 | same as run 1 | 0.630 | 0.558 | 0.667 |
+| 3 | **reverted** back to pending hunk only | 0.632 | 0.564 | 0.667 |
+| 4 | + batch-1 fixes (below) | 0.593 | 0.530 | 0.500 |
+
+Run 3 is the decisive one: with the prompt reverted to *exactly* the state that
+produced 0.783, the score came back 0.632 — a 0.15 gap with **no code
+difference at all**. So:
+
+- **Run-to-run variance on this document is ±0.15 F1.** Any single-run delta
+  smaller than that is unfalsifiable noise.
+- **Investigation F1 moves in ~0.11-0.22 steps** because it is computed over
+  only 4-5 detected conflicts. One flipped verdict swings the phase metric
+  enormously. Investigation "0.889 vs 0.667" is a 1-verdict difference.
+- **Corollary**: the honest current performance is ~0.60-0.63 overall,
+  ~0.55 extraction, not the 0.78 previously recorded. Prior sessions'
+  single-run before/after comparisons should be re-read with this in mind —
+  several "improvements" in this log may not be real.
+
+#### Changes attempted and their disposition
+
+25. **Multi-character shared-fact prompt rule** (`state_extraction.py`) —
+    told the model that "Cole and Maya split up... radios turned low" yields
+    location AND possession events for BOTH characters, plus an expanded
+    few-shot example. **REVERTED.** Targeted a genuine FN pattern (MAYA's
+    location/radio consistently missed at units 2/3/13), but runs 1-2 showed
+    no gain over the reverted run 3, and it coincided with new over-extraction
+    FPs (`possession.boot`, `possession.photographs`, `possession.report`,
+    a hallucinated `CAPTAIN` entity). Not proven harmful — but not proven
+    helpful either, and it added prompt surface for no measurable return.
+26. **Re-acquisition wording fix** (`state_extraction.py`) — the prompt said
+    *"Only ONE unit per item should ever be 'acquired'"*, which is wrong for
+    this document: Maya confiscates Cole's badge (unit 5) and returns it
+    (unit 7), so `possession.badge=acquired` is legitimately correct twice.
+    Reworded to "one per CONTINUOUS possession span". **REVERTED** together
+    with #25 (bundled in the same runs, so its individual effect was never
+    isolated). **This one is worth retrying alone** — the original wording is
+    defensibly a genuine bug, and `COLE/possession.badge=acquired @ unit 7`
+    remains a persistent FN across every run in this session.
+27. **`_VAGUE_CITY_VALUES` extension** (`state_extraction.py`) — **KEPT.**
+    A real run emitted `COLE/location.city = "unspecified"` as a false
+    positive, which the existing filter did not catch. Added `unspecified`,
+    `unnamed`, `not specified`, `n/a`, `none`, `undisclosed`, `unclear`,
+    `somewhere`. Zero-risk: these are never valid city names.
+28. **`SUSPECT/location = old rail yard` golden entry**
+    (`data/eval/golden_dataset.py`) — **KEPT.** Unit 9's text explicitly
+    reads *"The suspect reappeared near the old rail yard"*, so the extractor
+    was being penalized for a correct, textually-explicit fact the fixture
+    simply never covered. Same class of gap as the session-2 entries #11-19.
+29. **Possession-contradiction resolver** (`state_extraction.py`) —
+    **REVERTED.** Self-consistency merging dedupes on
+    `(entity_id, attribute, value)`, so two temperature samples disagreeing
+    on the value (`possession.badge=acquired` vs `=held`, same character,
+    same unit) both survive into the merged output — an internal
+    contradiction. The fix dropped the redundant `held` when a transition
+    value was present. It looked correct in isolation but run 4 introduced a
+    **new** Investigation FN not seen in any prior run:
+    `COLE/possession.badge (expected: resolved) -- Badge taken as evidence
+    then explicitly returned next morning`. Working theory: the detector's
+    ClickHouse `lagInFrame` window reconstructs an item's lifecycle from the
+    full ordered event sequence, so deleting intermediate `held` rows changes
+    which value transitions the SQL sees and therefore which candidates get
+    flagged. **Lesson: extraction-layer dedup is not a local decision — the
+    temporal detector consumes the whole sequence, so removing "redundant"
+    rows has non-local effects.** If retried, it must be validated on
+    detection/investigation metrics, not just extraction precision.
+
+#### Net state after session 4
+
+`backend/pipeline/state_extraction.py` differs from session 3 only by the
+`_VAGUE_CITY_VALUES` extension plus the (previously uncommitted) multi-fact
+scanning hunk. `golden_dataset.py` gains one SUSPECT entry. No performance
+claim is attached to either — both are justified on correctness grounds, and
+the measurement floor (±0.15) is wider than any effect they could have.
+
+---
+
 ## How to continue
 
-1. Wait for current eval run to complete: `cat EVAL_REPORT.md`
-2. If F1 < 0.9: analyze FPs/FNs in report, fix highest-count issues
-3. If F1 ≥ 0.9: run `python3 -m scripts.eval --v2` for overfitting check
-4. Update this log with results after each run
+**Read the session 4 note above first.** Single-run comparisons on this
+document are not evidence; the ±0.15 noise band will manufacture whatever
+conclusion you're hoping for.
+
+1. **Fix the measurement before chasing the metric.** Options, cheapest first:
+   - Run each configuration N≥3 times and compare *means*, not single runs.
+   - Set `_SELF_CONSISTENCY_TEMPS = (0.0,)` to remove the temperature-0.5
+     sample, trading some recall for determinism while iterating, then
+     re-enable for final numbers.
+   - Expand the eval beyond 17 units / 4-5 conflicts. Investigation F1 in
+     particular cannot be measured meaningfully at n=5 — that phase needs
+     ~30+ conflicts before a decimal point means anything.
+2. Only then resume fix iteration, batching 2-4 changes per evaluation.
+3. Retry item #26 (re-acquisition wording) in isolation — it addresses a
+   persistent, well-evidenced FN and the original wording is arguably wrong
+   on its face.
+4. Validate anything promising against `--v2` before believing it.
