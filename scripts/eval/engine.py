@@ -123,11 +123,23 @@ def compute_metrics(
     predicted: list[dict],
     golden: list,
     match_fn: Callable[[dict, Any], bool],
+    group_key_fn: Callable[[Any], Any] | None = None,
 ) -> PhaseMetrics:
     """Greedy one-to-one matching: each predicted item is matched against
     the first not-yet-matched golden item that match_fn accepts. Unmatched
     predicted items are false positives; unmatched golden items are false
     negatives.
+
+    `group_key_fn`, when given, marks golden entries that are *alternatives*
+    of each other rather than independently required facts (e.g. the golden
+    dataset lists both "precinct" and "Chicago precinct" as acceptable
+    values for the same entity/unit -- see golden_dataset.py's comment at
+    the seq-15/16/17 entries: "both are valid for this unit"). A correct
+    extraction only emits ONE value per unit, so without this, one
+    alternative in every such pair is a structurally unmatchable false
+    negative regardless of extraction quality. When at least one member of
+    a group_key_fn(gold) group is matched (TP), the other unmatched members
+    of that same group are dropped from FN counting instead of penalized.
 
     details entries: {"status": "TP"|"FP"|"FN", "predicted": dict|None, "golden": <golden item>|None}
     """
@@ -149,11 +161,19 @@ def compute_metrics(
             fp += 1
             details.append({"status": "FP", "predicted": pred, "golden": None})
 
+    satisfied_groups: set[Any] = set()
+    if group_key_fn is not None:
+        for i in matched_golden:
+            satisfied_groups.add(group_key_fn(golden[i]))
+
     fn = 0
     for i, gold in enumerate(golden):
-        if i not in matched_golden:
-            fn += 1
-            details.append({"status": "FN", "predicted": None, "golden": gold})
+        if i in matched_golden:
+            continue
+        if group_key_fn is not None and group_key_fn(gold) in satisfied_groups:
+            continue  # an alternative in this group was already matched via a different member
+        fn += 1
+        details.append({"status": "FN", "predicted": None, "golden": gold})
 
     precision = tp / (tp + fp) if (tp + fp) > 0 else 0.0
     recall = tp / (tp + fn) if (tp + fn) > 0 else 0.0
