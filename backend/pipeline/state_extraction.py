@@ -62,8 +62,12 @@ possession.{prop}:
                  first time). If the unit does not narrate the item being
                  obtained (it's simply already in the character's hand/
                  pocket/grip from earlier), use "held", not "acquired".
-                 Only ONE unit per item should ever be "acquired" -- every
-                 later unit where the character still has it is "held".
+                 Only ONE unit per CONTINUOUS run of possession should be
+                 "acquired" -- every later unit where the character still has
+                 it is "held". If the character LOSES the item and only then
+                 gets it back, that return is a fresh "acquired", because it
+                 starts a new run of possession. An item taken as evidence and
+                 handed back days later is acquired twice, not once.
   "lost"      -- character no longer has the item (dropped, taken, used up)
 
 injury.{body_part}:
@@ -320,6 +324,16 @@ _STRIP_CHARS = re.compile(r'["\'()]')
 # which is exactly what breaks the detector's exact (entity, attribute) join.
 _LATERALITY_PREFIXES = ("left_", "right_", "left ", "right ")
 
+# Generic wound-words the model sometimes uses as the injury "body part" when
+# the text refers back to an already-established injury without renaming the
+# limb -- e.g. unit text "the wound beneath it closed to a thin pink line"
+# yields injury.wound, while the same wound was logged as injury.forearm when
+# it was inflicted. That fragments one injury's history across two attribute
+# keys and breaks the detector's exact (entity, attribute) join -- the same
+# failure mode _strip_laterality exists to prevent. These are resolved
+# against a real body part named in the same unit's text where one exists.
+_GENERIC_INJURY_PARTS = {"wound", "body", "injury", "cut", "slash", "gash"}
+
 # Allowlist of valid human body-part names for injury attributes. Rejects
 # hallucinated body parts like "car", "ceiling", or "water" that small models
 # sometimes emit when context words appear near injury vocabulary (e.g., the
@@ -341,6 +355,13 @@ _VALID_BODY_PARTS = {
     # general
     "body", "wound", "skull",
 }
+
+# Specific body parts (generics excluded), longest first so "forearm" wins
+# over "arm" when a unit's text contains both -- matching "arm" inside
+# "forearm" would re-fragment the very history this is meant to unify.
+_SPECIFIC_BODY_PARTS_BY_LENGTH = sorted(
+    _VALID_BODY_PARTS - _GENERIC_INJURY_PARTS, key=len, reverse=True
+)
 
 # Entity names that are clearly props/objects, not characters. If the model
 # emits entity_name="FILE" or entity_name="BADGE" with entity_type="character",
@@ -431,6 +452,30 @@ def _strip_laterality(sub: str) -> str:
 
 def _clean_location_value(value: str) -> str:
     return _LEADING_ARTICLE.sub("", value).strip()
+
+
+def _resolve_generic_body_part(body_part: str, unit_text: str) -> str:
+    """Map a generic wound-word ("wound", "cut", "gash") onto the specific body
+    part named in the same unit's text, so a follow-up mention of an existing
+    injury keys to the same attribute as the unit that inflicted it.
+
+    "The blade caught his right forearm" -> injury.forearm, and the later
+    "the wound beneath it closed to a thin pink line" (same unit also says
+    "forearm") -> injury.forearm rather than injury.wound. Without this the
+    detector's (entity, attribute) join sees two unrelated injuries and can
+    never observe the injured -> healed transition.
+
+    Falls back to the generic term unchanged when the unit names no specific
+    body part -- guessing one from another unit's context would invent
+    provenance the text doesn't support.
+    """
+    if body_part not in _GENERIC_INJURY_PARTS:
+        return body_part
+    lowered = unit_text.lower()
+    for candidate in _SPECIFIC_BODY_PARTS_BY_LENGTH:
+        if re.search(rf"\b{re.escape(candidate)}\b", lowered):
+            return candidate
+    return body_part
 
 
 def _normalize_attribute(raw_attribute: str, entity_type: str, raw_value: str) -> tuple[str, str] | None:
@@ -542,6 +587,33 @@ def _normalize_attribute(raw_attribute: str, entity_type: str, raw_value: str) -
     return None
 
 
+def _match_excerpt(raw_excerpt: str, unit_text: str) -> str | None:
+    """Locate the model's quoted evidence in the source text and return the
+    text's own wording of it, or None if it isn't really there.
+
+    The match is case-insensitive because models routinely reproduce a quote
+    accurately but lowercase its first letter when it began a sentence. A real
+    run returned "the bandage was gone, the wound beneath it closed to a thin
+    pink line" for text reading "The bandage was gone, ..."; a case-sensitive
+    check discarded that correct, confidence-0.95 healed event over the
+    capital T alone. Losing it cost the entire injured -> healed transition,
+    so the detector saw no value change, raised no candidate, and the
+    investigation agent never got to adjudicate it.
+
+    What is RETURNED (and therefore stored) is the substring sliced out of
+    the source text, never the model's rendering -- so provenance stays exact
+    and a reader can still find the finding verbatim in the document.
+    """
+    if not raw_excerpt:
+        return None
+    if raw_excerpt in unit_text:
+        return raw_excerpt
+    index = unit_text.lower().find(raw_excerpt.lower())
+    if index == -1:
+        return None
+    return unit_text[index:index + len(raw_excerpt)]
+
+
 def _fact_to_event(
     fact: StateFact,
     unit: NarrativeUnit,
@@ -557,7 +629,8 @@ def _fact_to_event(
     # Hallucination check: raw_excerpt must be evidence that actually
     # appears in the source text, not a paraphrase (provenance is not
     # optional -- see CLAUDE.md).
-    if not fact.raw_excerpt or fact.raw_excerpt not in unit.raw_text:
+    excerpt = _match_excerpt(fact.raw_excerpt, unit.raw_text)
+    if excerpt is None:
         return None
     try:
         entity_type = EntityType(fact.entity_type.strip().lower())
@@ -582,6 +655,9 @@ def _fact_to_event(
     if normalized is None:
         return None
     attribute, value = normalized
+    if attribute.startswith("injury."):
+        body_part = _resolve_generic_body_part(attribute.split(".", 1)[1], unit.raw_text)
+        attribute = f"injury.{body_part}"
     entity_id = registry.resolve(fact.entity_name, entity_type.value)
 
     return StateEvent(
@@ -593,7 +669,7 @@ def _fact_to_event(
         unit_id=unit.unit_id,
         sequence_number=unit.sequence_number,
         page_ref=unit.page_start,
-        raw_excerpt=fact.raw_excerpt,
+        raw_excerpt=excerpt,
         establishment_type=establishment_type.value,
         confidence=fact.confidence,
     )
@@ -648,7 +724,16 @@ Extract all trackable state facts from this text."""
 # and doubling their call volume would violate the whole point of using a
 # stronger model (fewer calls needed, and would cost real money).
 _SELF_CONSISTENCY_TIER = "local"
-_SELF_CONSISTENCY_TEMPS = (0.0, 0.5)
+# Deliberately a single deterministic pass. The temperature-0.5 second sample
+# was added to recover scattered recall misses, but session 4 measured what it
+# costs: reverting the prompt to a state that had scored F1 0.783 reproduced
+# 0.632 with no code change at all -- a +/-0.15 noise band, far wider than any
+# fix being evaluated, which made every single-run before/after comparison
+# unfalsifiable. A stable, reproducible number is worth more than the recall
+# the extra sample bought, because without one no further tuning can be
+# validated. Restore (0.0, 0.5) only alongside an averaging harness that runs
+# each configuration N>=3 times and compares means.
+_SELF_CONSISTENCY_TEMPS = (0.0,)
 
 
 async def extract_state_events(
