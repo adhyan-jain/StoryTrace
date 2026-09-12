@@ -2,103 +2,94 @@
 
 **Document:** data/test_documents/controlled_test.txt
 
-**Timestamp:** 2026-09-11T09:49:39.579861+00:00
+**Timestamp:** 2026-09-12T10:54:58.740298+00:00
 
-**Overall F1:** 0.655 :warning:
+**Overall F1:** 0.667 :warning:
 
 ## Phase Metrics
 
 | Phase | Precision | Recall | F1 | TP | FP | FN |
 | --- | --- | --- | --- | --- | --- | --- |
-| Extraction | 0.276 | 0.800 | 0.410 :x: | 16 | 42 | 4 |
-| Detection | 1.000 | 0.800 | 0.889 :white_check_mark: | 4 | 0 | 1 |
-| Investigation | 0.750 | 0.600 | 0.667 :warning: | 3 | 1 | 2 |
+| Extraction | 0.606 | 0.426 | 0.500 :x: | 20 | 13 | 27 |
+| Detection | 1.000 | 0.600 | 0.750 :warning: | 3 | 0 | 2 |
+| Investigation | 1.000 | 0.600 | 0.750 :warning: | 3 | 0 | 2 |
 
 ## Per-Unit Extraction Breakdown
 
 | Unit | Extracted | Matched | Missed | Missed Attributes |
 | --- | --- | --- | --- | --- |
-| 1 | 5 | 3 | 1 | location=chicago precinct |
-| 2 | 4 | 2 | 2 |  |
-| 3 | 4 | 4 | 0 |  |
-| 4 | 4 | 1 | 3 |  |
-| 5 | 5 | 1 | 4 |  |
-| 6 | 3 | 1 | 2 |  |
-| 7 | 4 | 0 | 4 |  |
-| 8 | 2 | 1 | 1 | possession.badge=held |
-| 9 | 3 | 1 | 2 |  |
-| 10 | 4 | 1 | 3 |  |
-| 11 | 3 | 0 | 3 |  |
-| 12 | 4 | 1 | 1 | injury.forearm=injured |
-| 13 | 5 | 0 | 5 |  |
-| 14 | 4 | 0 | 1 | injury.forearm=healed |
-| 15 | 1 | 0 | 1 |  |
-| 16 | 1 | 0 | 1 |  |
-| 17 | 2 | 0 | 2 |  |
+| 1 | 3 | 2 | 2 | location=briefing room, possession.file=acquired |
+| 2 | 3 | 2 | 1 |  |
+| 3 | 2 | 2 | 4 | location=warehouse district, location=opposite rows, possession.radio=held, possession.radio=held |
+| 4 | 1 | 1 | 0 |  |
+| 5 | 3 | 2 | 1 | possession.badge=acquired |
+| 6 | 1 | 0 | 1 |  |
+| 7 | 3 | 2 | 2 | possession.badge=acquired, injury.forearm=injured |
+| 8 | 1 | 1 | 1 | location=precinct |
+| 9 | 2 | 1 | 1 | location=old rail yard |
+| 10 | 3 | 2 | 1 |  |
+| 11 | 2 | 1 | 2 | location=rooftop, location=fire escape |
+| 12 | 2 | 2 | 1 | injury.forearm=injured |
+| 13 | 2 | 0 | 1 | location=precinct |
+| 14 | 0 | 0 | 2 | injury.forearm=healed, location=interrogation room |
+| 15 | 1 | 0 | 4 | location=precinct, location=Chicago precinct, location=precinct, location=Chicago precinct |
+| 16 | 2 | 0 | 2 | location=Chicago precinct, location=Chicago precinct |
+| 17 | 2 | 2 | 4 | location=precinct, location=Chicago precinct, location=precinct, location=Chicago precinct |
 
 ## False Positives
 
 ### Extraction
 
-- `COLE` / `location` = `window of the Chicago precinct`
-- `CASE FILE` / `possession` = `acquired`
-- `COLE` / `location` = `table`
-- `MAYA` / `possession.badge` = `held`
-- `GUN` / `possession` = `lost`
-- `COLE` / `location` = `river access road`
-- `SUSPECT` / `location` = `river access road`
-- `MAYA` / `possession.evidence bag` = `held`
+- `COLE` / `possession.file` = `held`
+- `FILE` / `possession` = `acquired`
+- `COLE` / `location` = `Chicago precinct`
+- `COLE` / `injury.forearm` = `injured`
 - `MAYA` / `possession.badge` = `acquired`
-- `MAYA` / `location` = `precinct`
-- `COLE` / `location` = `precinct`
-- `SUSPECT` / `possession.knife` = `lost`
-- `SUSPECT` / `possession.knife` = `held`
-- `COLE` / `location` = `couch`
-- `MAYA` / `possession.badge` = `held`
-- `COLE` / `injury.forearm` = `injured`
-- `COLE` / `location` = `Coles apartment`
-- `COLE` / `location` = `precinct doors`
-- `THE SUSPECT` / `location` = `chain-link fence`
-- `THE SUSPECT` / `location` = `old rail yard`
-- `COLE` / `location` = `corner office`
+- `SUSPECT` / `injury.head` = `injured`
 - `COLE` / `possession.badge` = `held`
-- `COLE` / `location` = `precinct`
-- `COLE` / `location` = `rooftop`
-- `COLE` / `location` = `fire escape behind a shuttered diner`
-- `COLE` / `possession.rusted ladder` = `held`
-- `PARAMEDIC` / `possession.field kit` = `held`
-- `COLE` / `injury.forearm` = `injured`
-- `COLE` / `location` = `beside paramedic`
-- `MAYA` / `location` = `precinct`
-- `MAYA` / `possession.folder of financial records` = `held`
-- `COLE` / `possession.red string` = `held`
-- `COLE` / `possession.photographs` = `held`
-- `COLE` / `location` = `precinct`
-- `COLE` / `location` = `his chair`
-- `COLE` / `possession.bandage` = `lost`
-- `COLE` / `injury.forearm` = `healed`
-- `COLE` / `possession.coffee` = `acquired`
+- `COLE` / `location` = `top of the rooftop`
+- `COLE` / `location` = `Chicago precinct`
+- `MAYA` / `location` = `Chicago precinct`
 - `COLE` / `location` = `interrogation room`
-- `COLE` / `possession.final report` = `held`
-- `COLE` / `location` = `precinct`
-- `MAYA` / `location` = `precinct`
-
-### Investigation
-
-- `COLE` / `injury.forearm`
+- `COLE` / `location` = `Chicago precinct`
+- `MAYA` / `location` = `Chicago precinct`
 
 ## False Negatives
 
 ### Extraction
 
-- `COLE` / `possession.badge` = `held` @ unit 8
-- `COLE` / `location` = `chicago precinct` @ unit 1
+- `COLE` / `possession.badge` = `acquired` @ unit 7
 - `COLE` / `injury.forearm` = `injured` @ unit 12
 - `COLE` / `injury.forearm` = `healed` @ unit 14
+- `COLE` / `injury.forearm` = `injured` @ unit 7
+- `COLE` / `location` = `briefing room` @ unit 1
+- `COLE` / `possession.file` = `acquired` @ unit 1
+- `MAYA` / `location` = `warehouse district` @ unit 3
+- `MAYA` / `location` = `opposite rows` @ unit 3
+- `COLE` / `possession.radio` = `held` @ unit 3
+- `MAYA` / `possession.radio` = `held` @ unit 3
+- `COLE` / `location` = `precinct` @ unit 8
+- `COLE` / `location` = `old rail yard` @ unit 9
+- `COLE` / `location` = `rooftop` @ unit 11
+- `COLE` / `location` = `precinct` @ unit 13
+- `COLE` / `location` = `interrogation room` @ unit 14
+- `COLE` / `location` = `fire escape` @ unit 11
+- `COLE` / `location` = `precinct` @ unit 15
+- `COLE` / `location` = `Chicago precinct` @ unit 15
+- `MAYA` / `location` = `precinct` @ unit 15
+- `MAYA` / `location` = `Chicago precinct` @ unit 15
+- `MAYA` / `possession.badge` = `acquired` @ unit 5
+- `COLE` / `location` = `Chicago precinct` @ unit 16
+- `MAYA` / `location` = `Chicago precinct` @ unit 16
+- `COLE` / `location` = `precinct` @ unit 17
+- `COLE` / `location` = `Chicago precinct` @ unit 17
+- `MAYA` / `location` = `precinct` @ unit 17
+- `MAYA` / `location` = `Chicago precinct` @ unit 17
 
 ### Detection
 
 - `COLE` / `injury.forearm` (expected: uncertain) -- Climbs a ladder with both hands shortly after a forearm slash — injury status at this point is ambiguous, not clearly re-established or healed
+- `COLE` / `injury.forearm` (expected: resolved) -- Injury explicitly healed via paramedic treatment and narrated recovery — not a real conflict
 
 ### Investigation
 
@@ -112,12 +103,12 @@ Units tested: 5
 | Condition | F1 |
 | --- | --- |
 | No constraints | 0.000 |
-| With vocabulary + few-shot | 0.727 |
+| With vocabulary + few-shot | 0.615 |
 
 ## Pipeline Notes
 
 - Loaded 17 narrative units from data/test_documents/controlled_test.txt
-- Extracted 58 state events across 17 units
-- Detected 4 candidate conflicts
-- Produced 4/4 investigation verdicts
-- Eval completed in 460.7s
+- Extracted 33 state events across 17 units
+- Detected 3 candidate conflicts
+- Produced 3/3 investigation verdicts
+- Eval completed in 1881.8s
