@@ -22,6 +22,13 @@ class OllamaProvider(LLMProvider):
     def __init__(self, model_name: str | None = None, base_url: str | None = None):
         self._model = model_name or os.environ.get("OLLAMA_MODEL", "qwen2.5:7b")
         self.base_url = base_url or os.environ.get("OLLAMA_BASE_URL", "http://localhost:11434")
+        # Default num_ctx (4096) is small enough that qwen2.5:7b's weights +
+        # KV cache fit entirely in an 8GB laptop GPU (measured: the model's
+        # own default of 32768 forced a 15%/85% CPU/GPU split via `ollama ps`
+        # -- CPU offload we don't want for eval-loop latency). num_gpu=-1
+        # tells the runner to offload every layer it can to GPU rather than
+        # leaving any on CPU by default.
+        self._num_ctx = int(os.environ.get("OLLAMA_NUM_CTX", "4096"))
 
     @property
     def model(self) -> str:
@@ -50,7 +57,11 @@ class OllamaProvider(LLMProvider):
             ],
             "format": "json",
             "stream": False,
-            "options": {"temperature": request.temperature},
+            "options": {
+                "temperature": request.temperature,
+                "num_ctx": self._num_ctx,
+                "num_gpu": -1,  # offload every layer possible to GPU, none to CPU
+            },
         }
 
         try:
