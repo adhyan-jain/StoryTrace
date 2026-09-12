@@ -91,7 +91,7 @@ def load_units(golden: GoldenDataset) -> list[NarrativeUnit]:
 
 
 def _wait_for_count(
-    client: ClickHouseClient, table: str, story_universe_id: str, expected: int, timeout_s: float = 10.0
+    client: ClickHouseClient, table: str, story_universe_id: str, expected: int, timeout_s: float = 45.0
 ) -> None:
     """Poll until `table` actually reports `expected` rows for this
     story_universe_id, or give up after timeout_s.
@@ -251,6 +251,12 @@ async def measure_extraction_subagent(golden: GoldenDataset) -> tuple[PhaseMetri
         predicted=extracted,
         golden=golden.state_events,
         match_fn=lambda pred, gold: match_state_event(pred, gold, tolerance_sequences=1),
+        # Some golden entries are alternative acceptable values for the same
+        # entity/unit (e.g. "precinct" vs "Chicago precinct" at seq 15-17 --
+        # see golden_dataset.py's comment there), not independently required
+        # facts. Group by (entity_name, attribute, sequence_number) so
+        # matching any one alternative satisfies the whole group.
+        group_key_fn=lambda gold: (gold.entity_name.strip().lower(), gold.attribute, gold.sequence_number),
     )
 
     # Step 6: per-unit breakdown, keyed by sequence number.
