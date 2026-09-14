@@ -1,0 +1,32 @@
+{
+  "_note": "Phase 0 PILOT manifest only (2 STAGE screenplays + controlled_test). Scale to the full 10-film corpus only after the Phase 0 checkpoint in ~/.claude/plans/dapper-stargazing-adleman.md passes. real_scene_count is computed from actual INT./EXT. headers in the fetched text (scripts/eval/fetch_stage_screenplay.py) -- STAGE_v0's own english_movie_info.csv num_scenes column was found to use a different, larger unit (see plan item A3) and should not be used for the >80 / 30-80 scene bucket selection.",
+  "films": [
+    {
+      "film": "Aliens (film)",
+      "film_slug": "aliens_film",
+      "story_universe_id": "eval_aliens_film",
+      "bucket": ">80 scenes",
+      "real_scene_count": 192,
+      "word_count": 27657,
+      "script_url": "http://www.imsdb.com/scripts/Aliens.html",
+      "screenplay_path": "data/eval/screenplays/aliens_film.txt"
+    },
+    {
+      "film": "Scream 2",
+      "film_slug": "scream_2",
+      "story_universe_id": "eval_scream_2",
+      "bucket": "30-80 scenes",
+      "real_scene_count": 76,
+      "word_count": 20512,
+      "script_url": "http://www.imsdb.com/scripts/Scream-2.html",
+      "screenplay_path": "data/eval/screenplays/scream_2.txt"
+    },
+    {
+      "film": "Controlled Test (Synthetic)",
+      "story_universe_id": "eval_controlled_test",
+      "scene_count": 18,
+      "gold_complete": true,
+      "note": "Synthetic document with 3 planted verified conflicts and 2 planted resolved cases. Used as diagnostic benchmark. document_path: data/test_documents/controlled_test.txt (see data/eval/golden_dataset.py for the pre-existing golden annotations already used by scripts/eval/run_eval.py)."
+    }
+  ]
+}
