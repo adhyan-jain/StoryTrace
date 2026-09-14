@@ -107,7 +107,11 @@ def test_report_returns_markdown(client):
 
     def _query(sql, **kwargs):
         if "project_versions" in sql:
-            return _query_result([])  # legacy/ungated story_universe_id, per _authorize_story_universe
+            # story_universe_id must resolve to a project_versions row owned
+            # by the caller -- _authorize_story_universe rejects (404) any
+            # id with no such row, so the mock must reflect a real, owned
+            # version rather than the old "legacy/ungated" bypass.
+            return _query_result([("proj-1",)])
         if "narrative_units" in sql:
             return _query_result([("u1", "Scene 1", 1)])
         if "candidate_conflicts" in sql and "JOIN" not in sql:
@@ -122,5 +126,9 @@ def test_report_returns_markdown(client):
         res = client.get("/screenplay/su-1/report")
 
     assert res.status_code == 200, res.text
-    assert res.headers["content-type"].startswith("text/markdown")
-    assert "StoryTrace Continuity Report" in res.text
+    # get_report generates a real PDF (fpdf2), not markdown -- this
+    # assertion was stale from before that switch (see _pdf_text's
+    # docstring in backend/api/main.py); the report title text is baked
+    # into the PDF bytes rather than present as plain text.
+    assert res.headers["content-type"] == "application/pdf"
+    assert res.content.startswith(b"%PDF")

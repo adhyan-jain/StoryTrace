@@ -25,6 +25,19 @@ _MAX_ROWS = 20
 _MAX_EXCERPT_CHARS = 220
 
 
+def _sql_str(value: str) -> str:
+    """Builds a safely-quoted SQL string literal. entity_id/attribute/unit_id
+    here trace back to LLM-extracted text (see module docstring) and reach
+    this module as raw tool-call arguments from the model itself, not from a
+    trusted caller -- the `run_query` MCP tool takes only a single SQL
+    string, so there is no server-side parameter binding available the way
+    backend/clickhouse/client.py uses. Escaping the single quote (ClickHouse's
+    string delimiter and escape mechanism, same as standard SQL) is what
+    prevents a crafted value from breaking out of the literal and injecting
+    additional SQL."""
+    return "'" + str(value).replace("\\", "\\\\").replace("'", "\\'") + "'"
+
+
 def _shorten(text: str, max_chars: int = _MAX_EXCERPT_CHARS) -> str:
     if not text or len(text) <= max_chars:
         return text
@@ -78,8 +91,8 @@ class AgentTools:
         sql = f"""
         SELECT sequence_number, attribute, value, raw_excerpt, confidence
         FROM state_events
-        WHERE story_universe_id = '{self.story_universe_id}'
-          AND entity_id = '{entity_id}'
+        WHERE story_universe_id = {_sql_str(self.story_universe_id)}
+          AND entity_id = {_sql_str(entity_id)}
           AND sequence_number >= {int(from_sequence)}
           AND sequence_number <= {int(to_sequence)}
         ORDER BY sequence_number
@@ -90,7 +103,7 @@ class AgentTools:
         sql = f"""
         SELECT text, title, start_page
         FROM narrative_units
-        WHERE story_universe_id = '{self.story_universe_id}' AND id = '{unit_id}'
+        WHERE story_universe_id = {_sql_str(self.story_universe_id)} AND id = {_sql_str(unit_id)}
         LIMIT 1
         """
         rows = await self._query(sql, "get_unit_text")
@@ -139,8 +152,8 @@ class AgentTools:
                argMax(value, sequence_number) AS current_value,
                argMax(raw_excerpt, sequence_number) AS excerpt
         FROM state_events
-        WHERE story_universe_id = '{self.story_universe_id}'
-          AND entity_id = '{entity_id}'
+        WHERE story_universe_id = {_sql_str(self.story_universe_id)}
+          AND entity_id = {_sql_str(entity_id)}
           AND sequence_number <= {int(sequence_number)}
         GROUP BY attribute
         """
@@ -150,9 +163,9 @@ class AgentTools:
         sql = f"""
         SELECT sequence_number, value, raw_excerpt
         FROM state_events
-        WHERE story_universe_id = '{self.story_universe_id}'
-          AND entity_id = '{entity_id}'
-          AND attribute = '{attribute}'
+        WHERE story_universe_id = {_sql_str(self.story_universe_id)}
+          AND entity_id = {_sql_str(entity_id)}
+          AND attribute = {_sql_str(attribute)}
         ORDER BY sequence_number
         """
         return _cap_rows(await self._query(sql, "find_attribute_changes"))

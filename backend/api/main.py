@@ -1,6 +1,7 @@
 import asyncio
 import concurrent.futures
 import json
+import logging
 import os
 import tempfile
 import uuid
@@ -56,6 +57,8 @@ def _detect_document_parser(file_path: str):
     novel_hits = len(CHAPTER_PATTERN.findall(sample))
     return ScreenplayParser if screenplay_hits > novel_hits else NovelParser
 
+logger = logging.getLogger("storytrace")
+
 app = FastAPI(title="StoryTrace API")
 
 # A wildcard origin plus credentialed requests (Authorization headers) is a
@@ -72,9 +75,26 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=_frontend_origins,
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
+    allow_headers=["Authorization", "Content-Type"],
 )
+
+
+@app.middleware("http")
+async def _security_headers(request: Request, call_next):
+    """No reverse proxy is assumed in front of this API (see docker-compose.yml
+    / README deployment notes -- TLS termination is the operator's
+    responsibility), so these headers are set here rather than relied on from
+    a proxy layer. Meaningful mainly over HTTPS: HSTS is a no-op on plain
+    HTTP, and CSP matters most for the paired Next.js frontend, but setting
+    them on API responses too costs nothing and covers any HTML this service
+    ever returns directly."""
+    response = await call_next(request)
+    response.headers["X-Content-Type-Options"] = "nosniff"
+    response.headers["X-Frame-Options"] = "DENY"
+    response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
+    response.headers["Strict-Transport-Security"] = "max-age=63072000; includeSubDomains"
+    return response
 
 # Per-IP limiter for the unauthenticated auth endpoints (login/signup are the
 # only routes an attacker can hit without a token, so they're the only ones
@@ -155,6 +175,10 @@ class AuthResponse(BaseModel):
 def signup(request: Request, req: SignupRequest):
     if len(req.password) < 8:
         raise HTTPException(status_code=400, detail="Password must be at least 8 characters.")
+    if not (any(c.isalpha() for c in req.password) and any(c.isdigit() for c in req.password)):
+        raise HTTPException(
+            status_code=400, detail="Password must contain at least one letter and one number."
+        )
     client = ClickHouseClient()
     # Best-effort uniqueness check: ReplacingMergeTree dedups on email async,
     # not synchronously, so this narrows (does not eliminate) a race between
@@ -226,24 +250,31 @@ def get_me(user_id: str = Depends(get_current_user_id)):
 
 def _authorize_story_universe(client: ClickHouseClient, story_universe_id: str, user_id: str) -> None:
     """Every project-linked story_universe_id must belong to the caller.
-    story_universe_ids with no project_versions row predate this feature
-    (CLI-inserted test data) and have no owner to check against -- treated
-    as legacy/ungated rather than blocked, so existing demo data keeps
-    working. Every NEW upload always creates a project_versions row, so this
-    gap only ever covers pre-existing data, never new uploads."""
+    A story_universe_id with no project_versions row has no owner to check
+    against -- denied outright rather than treated as ungated/legacy, since
+    an unowned id is otherwise a standing IDOR: any authenticated user who
+    learns or guesses one could read (and, via /conflict/{id}/status,
+    mutate) it. Every upload always creates a project_versions row, so this
+    only ever rejects pre-existing CLI-inserted rows with no real owner --
+    never a real upload."""
     rows = client.client.query(
         "SELECT project_id FROM project_versions WHERE id = {id:String} LIMIT 1",
         parameters={"id": story_universe_id},
     ).result_rows
     if not rows:
-        return
+        raise HTTPException(status_code=404, detail="Unknown story_universe_id")
     project = client.get_project(rows[0][0])
     if project is None or project[1] != user_id:
         raise HTTPException(status_code=403, detail="You do not have access to this document.")
 
 
+_MAX_UPLOAD_BYTES = int(os.environ.get("MAX_UPLOAD_BYTES", str(50 * 1024 * 1024)))  # 50 MB
+
+
 @app.post("/screenplay/upload")
+@limiter.limit("10/minute")
 async def upload_screenplay(
+    request: Request,
     file: UploadFile,
     background_tasks: BackgroundTasks,
     project_id: Optional[str] = Form(default=None),
@@ -276,9 +307,23 @@ async def upload_screenplay(
     story_universe_id = uuid.uuid4().hex
     client.create_project_version(story_universe_id, project_id, version_number, default_title)
 
+    # Stream to disk in chunks rather than `await file.read()`, which would
+    # buffer the entire upload in memory before this check ever runs --
+    # an unbounded read is a trivial memory-exhaustion vector with no rate
+    # limit on file size (only on request count, via @limiter.limit above).
+    total_bytes = 0
     with tempfile.NamedTemporaryFile(suffix=ext, delete=False) as tmp:
-        tmp.write(await file.read())
         tmp_path = tmp.name
+        while chunk := await file.read(1024 * 1024):
+            total_bytes += len(chunk)
+            if total_bytes > _MAX_UPLOAD_BYTES:
+                tmp.close()
+                os.unlink(tmp_path)
+                raise HTTPException(
+                    status_code=413,
+                    detail=f"File exceeds the {_MAX_UPLOAD_BYTES // (1024 * 1024)}MB upload limit.",
+                )
+            tmp.write(chunk)
 
     _JOBS[story_universe_id] = {
         "status": "parsing",
@@ -385,9 +430,14 @@ def _run_pipeline_job(story_universe_id: str, file_path: str, ParserCls, project
 
         job["status"] = "complete"
         _sync_status()
-    except Exception as exc:
+    except Exception:
+        # Log the real exception server-side only -- job["error"] reaches
+        # the client verbatim via GET /overview, and a raw driver/library
+        # exception message can carry internal connection details or stack
+        # fragments that shouldn't be handed to any authenticated caller.
+        logger.exception("Pipeline job failed for story_universe_id=%s", story_universe_id)
         job["status"] = "error"
-        job["error"] = str(exc)
+        job["error"] = "Processing failed. Please try uploading again or contact support."
         _sync_status()
     finally:
         try:
@@ -416,7 +466,8 @@ def get_overview(story_universe_id: str, user_id: str = Depends(get_current_user
     job = _JOBS.get(story_universe_id)
     if job is not None:
         entities_tracked = client.client.query(
-            f"SELECT count() FROM entities WHERE story_universe_id = '{story_universe_id}'"
+            "SELECT count() FROM entities WHERE story_universe_id = {sid:String}",
+            parameters={"sid": story_universe_id},
         ).result_rows[0][0]
         verdict_counts = _verdict_counts_by_status(client, story_universe_id)
         # project_versions.document_title is the source of truth for display
@@ -445,24 +496,29 @@ def get_overview(story_universe_id: str, user_id: str = Depends(get_current_user
     # upload flow like the CLI pipeline scripts) -- fall back to what's
     # actually in ClickHouse and report it as already complete.
     units = client.client.query(
-        f"SELECT count() FROM narrative_units WHERE story_universe_id = '{story_universe_id}'"
+        "SELECT count() FROM narrative_units WHERE story_universe_id = {sid:String}",
+        parameters={"sid": story_universe_id},
     ).result_rows[0][0]
     if units == 0:
         raise HTTPException(status_code=404, detail="Unknown story_universe_id")
 
     events = client.client.query(
-        f"SELECT count(DISTINCT unit_id) FROM state_events WHERE story_universe_id = '{story_universe_id}'"
+        "SELECT count(DISTINCT unit_id) FROM state_events WHERE story_universe_id = {sid:String}",
+        parameters={"sid": story_universe_id},
     ).result_rows[0][0]
     candidates = client.client.query(
-        f"SELECT count() FROM candidate_conflicts WHERE story_universe_id = '{story_universe_id}'"
+        "SELECT count() FROM candidate_conflicts WHERE story_universe_id = {sid:String}",
+        parameters={"sid": story_universe_id},
     ).result_rows[0][0]
     verdicts = client.client.query(
-        f"""SELECT count() FROM investigation_verdicts
-            WHERE candidate_id IN (SELECT id FROM candidate_conflicts WHERE story_universe_id = '{story_universe_id}')"""
+        """SELECT count() FROM investigation_verdicts
+            WHERE candidate_id IN (SELECT id FROM candidate_conflicts WHERE story_universe_id = {sid:String})""",
+        parameters={"sid": story_universe_id},
     ).result_rows[0][0]
 
     entities_tracked = client.client.query(
-        f"SELECT count() FROM entities WHERE story_universe_id = '{story_universe_id}'"
+        "SELECT count() FROM entities WHERE story_universe_id = {sid:String}",
+        parameters={"sid": story_universe_id},
     ).result_rows[0][0]
     verdict_counts = _verdict_counts_by_status(client, story_universe_id)
     title = client.get_version_title(story_universe_id)
@@ -486,9 +542,10 @@ def get_overview(story_universe_id: str, user_id: str = Depends(get_current_user
 
 def _verdict_counts_by_status(client: ClickHouseClient, story_universe_id: str) -> Dict[str, int]:
     rows = client.client.query(
-        f"""SELECT status, count() FROM investigation_verdicts
-            WHERE candidate_id IN (SELECT id FROM candidate_conflicts WHERE story_universe_id = '{story_universe_id}')
-            GROUP BY status"""
+        """SELECT status, count() FROM investigation_verdicts
+            WHERE candidate_id IN (SELECT id FROM candidate_conflicts WHERE story_universe_id = {sid:String})
+            GROUP BY status""",
+        parameters={"sid": story_universe_id},
     ).result_rows
     return {row[0]: row[1] for row in rows}
 
@@ -498,9 +555,10 @@ def get_scenes(story_universe_id: str, user_id: str = Depends(get_current_user_i
     client = ClickHouseClient()
     _authorize_story_universe(client, story_universe_id, user_id)
     units_res = client.client.query(
-        f"""SELECT id, title, unit_type, sequence_number, start_page, end_page, text
-            FROM narrative_units WHERE story_universe_id = '{story_universe_id}'
-            ORDER BY sequence_number"""
+        """SELECT id, title, unit_type, sequence_number, start_page, end_page, text
+            FROM narrative_units WHERE story_universe_id = {sid:String}
+            ORDER BY sequence_number""",
+        parameters={"sid": story_universe_id},
     )
 
     # Severity dot per unit: the worst verdict severity among conflicts that
@@ -513,22 +571,23 @@ def get_scenes(story_universe_id: str, user_id: str = Depends(get_current_user_i
     # trusted on their own -- only rows where v.id is non-empty had an
     # actual investigation_verdicts match.
     severity_res = client.client.query(
-        f"""
+        """
         SELECT unit_id, groupArray(severity) AS severities, groupArray(status) AS statuses
         FROM (
             SELECT c.prior_evidence_unit_id AS unit_id, v.severity AS severity, v.status AS status, v.id AS verdict_id
             FROM candidate_conflicts c
             LEFT JOIN investigation_verdicts v ON c.id = v.candidate_id
-            WHERE c.story_universe_id = '{story_universe_id}'
+            WHERE c.story_universe_id = {sid:String}
             UNION ALL
             SELECT c.current_evidence_unit_id AS unit_id, v.severity AS severity, v.status AS status, v.id AS verdict_id
             FROM candidate_conflicts c
             LEFT JOIN investigation_verdicts v ON c.id = v.candidate_id
-            WHERE c.story_universe_id = '{story_universe_id}'
+            WHERE c.story_universe_id = {sid:String}
         )
         WHERE verdict_id != ''
         GROUP BY unit_id
-        """
+        """,
+        parameters={"sid": story_universe_id},
     )
     severity_by_unit: Dict[str, str] = {}
     for unit_id, severities, statuses in severity_res.result_rows:
@@ -545,21 +604,23 @@ def get_scenes(story_universe_id: str, user_id: str = Depends(get_current_user_i
     # "this highlighted span is a plain extracted fact" from "this one has a
     # linked conflict you can click into".
     conflict_res = client.client.query(
-        f"""
+        """
         SELECT c.id, v.severity, unit_id, excerpt, v.id AS verdict_id FROM candidate_conflicts c
         LEFT JOIN investigation_verdicts v ON c.id = v.candidate_id
         ARRAY JOIN [c.prior_evidence_unit_id, c.current_evidence_unit_id] AS unit_id,
                    [c.prior_evidence_excerpt, c.current_evidence_excerpt] AS excerpt
-        WHERE c.story_universe_id = '{story_universe_id}'
-        """
+        WHERE c.story_universe_id = {sid:String}
+        """,
+        parameters={"sid": story_universe_id},
     )
     conflict_by_unit_excerpt: Dict[tuple, Dict[str, Any]] = {
         (row[2], row[3]): {"conflict_id": row[0], "severity": row[1] if row[4] else None} for row in conflict_res.result_rows
     }
 
     events_res = client.client.query(
-        f"""SELECT unit_id, entity_id, attribute, value, confidence, raw_excerpt
-            FROM state_events WHERE story_universe_id = '{story_universe_id}'"""
+        """SELECT unit_id, entity_id, attribute, value, confidence, raw_excerpt
+            FROM state_events WHERE story_universe_id = {sid:String}""",
+        parameters={"sid": story_universe_id},
     )
     events_by_unit: Dict[str, List[dict]] = {}
     for unit_id, entity_id, attribute, value, confidence, raw_excerpt in events_res.result_rows:
@@ -596,10 +657,12 @@ def get_entities(story_universe_id: str, user_id: str = Depends(get_current_user
     client = ClickHouseClient()
     _authorize_story_universe(client, story_universe_id, user_id)
     entities_res = client.client.query(
-        f"SELECT id, name, type FROM entities WHERE story_universe_id = '{story_universe_id}'"
+        "SELECT id, name, type FROM entities WHERE story_universe_id = {sid:String}",
+        parameters={"sid": story_universe_id},
     )
     findings_res = client.client.query(
-        f"SELECT entity_id, count() FROM candidate_conflicts WHERE story_universe_id = '{story_universe_id}' GROUP BY entity_id"
+        "SELECT entity_id, count() FROM candidate_conflicts WHERE story_universe_id = {sid:String} GROUP BY entity_id",
+        parameters={"sid": story_universe_id},
     )
     finding_counts = {row[0]: row[1] for row in findings_res.result_rows}
 
@@ -616,14 +679,16 @@ def get_entities(story_universe_id: str, user_id: str = Depends(get_current_user
 
 def _entity_names(client: ClickHouseClient, story_universe_id: str) -> Dict[str, str]:
     res = client.client.query(
-        f"SELECT id, name FROM entities WHERE story_universe_id = '{story_universe_id}'"
+        "SELECT id, name FROM entities WHERE story_universe_id = {sid:String}",
+        parameters={"sid": story_universe_id},
     )
     return {row[0]: row[1] for row in res.result_rows}
 
 
 def _page_by_unit(client: ClickHouseClient, story_universe_id: str) -> Dict[str, int]:
     res = client.client.query(
-        f"SELECT id, start_page FROM narrative_units WHERE story_universe_id = '{story_universe_id}'"
+        "SELECT id, start_page FROM narrative_units WHERE story_universe_id = {sid:String}",
+        parameters={"sid": story_universe_id},
     )
     return {row[0]: row[1] for row in res.result_rows}
 
@@ -632,15 +697,15 @@ def _page_by_unit(client: ClickHouseClient, story_universe_id: str) -> Dict[str,
 def get_conflicts(story_universe_id: str, user_id: str = Depends(get_current_user_id)):
     client = ClickHouseClient()
     _authorize_story_universe(client, story_universe_id, user_id)
-    query = f"""
+    query = """
         SELECT c.id, c.entity_id, c.attribute, c.prior_evidence_unit_id, c.prior_evidence_excerpt,
                c.current_evidence_unit_id, c.current_evidence_excerpt, c.description,
                v.status, v.severity, v.confidence, v.id AS verdict_id
         FROM candidate_conflicts c
         LEFT JOIN investigation_verdicts v ON c.id = v.candidate_id
-        WHERE c.story_universe_id = '{story_universe_id}'
+        WHERE c.story_universe_id = {sid:String}
     """
-    res = client.client.query(query)
+    res = client.client.query(query, parameters={"sid": story_universe_id})
     names = _entity_names(client, story_universe_id)
     pages = _page_by_unit(client, story_universe_id)
 
@@ -681,7 +746,10 @@ def _parse_investigation_steps(investigation_actions: List[str]) -> List[dict]:
 @app.get("/conflict/{conflict_id}/autopsy")
 def get_autopsy(conflict_id: str, user_id: str = Depends(get_current_user_id)):
     client = ClickHouseClient()
-    c_res = client.client.query(f"SELECT * FROM candidate_conflicts WHERE id = '{conflict_id}'")
+    c_res = client.client.query(
+        "SELECT * FROM candidate_conflicts WHERE id = {cid:String}",
+        parameters={"cid": conflict_id},
+    )
     if not c_res.result_rows:
         raise HTTPException(status_code=404, detail="Conflict not found")
 
@@ -707,7 +775,8 @@ def get_autopsy(conflict_id: str, user_id: str = Depends(get_current_user_id)):
     }
 
     v_res = client.client.query(
-        f"SELECT * FROM investigation_verdicts WHERE candidate_id = '{conflict_id}' ORDER BY created_at DESC LIMIT 1"
+        "SELECT * FROM investigation_verdicts WHERE candidate_id = {cid:String} ORDER BY created_at DESC LIMIT 1",
+        parameters={"cid": conflict_id},
     )
     verdict = None
     steps: List[dict] = []
@@ -739,7 +808,10 @@ class SetConflictStatusRequest(BaseModel):
 
 
 def _authorized_conflict_universe(client: ClickHouseClient, conflict_id: str, user_id: str) -> None:
-    c_res = client.client.query(f"SELECT story_universe_id FROM candidate_conflicts WHERE id = '{conflict_id}'")
+    c_res = client.client.query(
+        "SELECT story_universe_id FROM candidate_conflicts WHERE id = {cid:String}",
+        parameters={"cid": conflict_id},
+    )
     if not c_res.result_rows:
         raise HTTPException(status_code=404, detail="Conflict not found")
     _authorize_story_universe(client, c_res.result_rows[0][0], user_id)
@@ -791,10 +863,11 @@ def clear_conflict_status_override(conflict_id: str, user_id: str = Depends(get_
     _authorized_conflict_universe(client, conflict_id, user_id)
 
     agent_res = client.client.query(
-        f"""SELECT status, severity, explanation, confidence, investigation_actions, suggested_fix
+        """SELECT status, severity, explanation, confidence, investigation_actions, suggested_fix
             FROM investigation_verdicts
-            WHERE candidate_id = '{conflict_id}' AND id NOT LIKE 'verdict_manual_%'
-            ORDER BY created_at DESC LIMIT 1"""
+            WHERE candidate_id = {cid:String} AND id NOT LIKE 'verdict_manual_%'
+            ORDER BY created_at DESC LIMIT 1""",
+        parameters={"cid": conflict_id},
     )
     if not agent_res.result_rows:
         raise HTTPException(status_code=404, detail="No prior investigation verdict to revert to.")
@@ -937,13 +1010,14 @@ def get_version_diff(project_id: str, version_number: int, user_id: str = Depend
 
     def _conflict_rows(story_universe_id: str) -> Dict[tuple, dict]:
         res = client.client.query(
-            f"""SELECT c.id, c.entity_id, c.attribute, c.description,
+            """SELECT c.id, c.entity_id, c.attribute, c.description,
                        c.prior_evidence_excerpt, c.current_evidence_excerpt,
                        v.status, v.severity, c.prior_evidence_unit_id, c.current_evidence_unit_id,
                        v.id AS verdict_id
                 FROM candidate_conflicts c
                 LEFT JOIN investigation_verdicts v ON c.id = v.candidate_id
-                WHERE c.story_universe_id = '{story_universe_id}'"""
+                WHERE c.story_universe_id = {sid:String}""",
+            parameters={"sid": story_universe_id},
         )
         names = _entity_names(client, story_universe_id)
         rows = {}
@@ -1022,19 +1096,22 @@ def get_report(story_universe_id: str, user_id: str = Depends(get_current_user_i
     _authorize_story_universe(client, story_universe_id, user_id)
 
     units = client.client.query(
-        f"""SELECT id, title, sequence_number FROM narrative_units
-            WHERE story_universe_id = '{story_universe_id}' ORDER BY sequence_number"""
+        """SELECT id, title, sequence_number FROM narrative_units
+            WHERE story_universe_id = {sid:String} ORDER BY sequence_number""",
+        parameters={"sid": story_universe_id},
     ).result_rows
     entities = client.client.query(
-        f"SELECT id, name, type FROM entities WHERE story_universe_id = '{story_universe_id}'"
+        "SELECT id, name, type FROM entities WHERE story_universe_id = {sid:String}",
+        parameters={"sid": story_universe_id},
     ).result_rows
     conflicts_res = client.client.query(
-        f"""SELECT c.id, c.entity_id, c.attribute, c.description,
+        """SELECT c.id, c.entity_id, c.attribute, c.description,
                    c.prior_evidence_excerpt, c.current_evidence_excerpt,
                    v.status, v.severity, v.explanation, v.confidence, v.suggested_fix, v.id AS verdict_id
             FROM candidate_conflicts c
             LEFT JOIN investigation_verdicts v ON c.id = v.candidate_id
-            WHERE c.story_universe_id = '{story_universe_id}'"""
+            WHERE c.story_universe_id = {sid:String}""",
+        parameters={"sid": story_universe_id},
     ).result_rows
     names = _entity_names(client, story_universe_id)
 
