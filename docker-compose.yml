@@ -3,13 +3,26 @@ version: '3.8'
 services:
   clickhouse:
     image: clickhouse/clickhouse-server:latest
+    # Bound to loopback only: the backend reaches this over `localhost`
+    # (see the network_mode: host note below), but clickhouse's HTTP/native
+    # ports must not be reachable from outside this host -- a prior default
+    # of publishing 0.0.0.0:8123/9000 with a default "admin" password would
+    # give anyone on the network unauthenticated-in-practice full read/write
+    # over every tenant's data.
     ports:
-      - "8123:8123"
-      - "9000:9000"
+      - "127.0.0.1:8123:8123"
+      - "127.0.0.1:9000:9000"
     environment:
       CLICKHOUSE_DB: storytrace
       CLICKHOUSE_USER: default
-      CLICKHOUSE_PASSWORD: "admin"
+      # Deliberately a separate variable from CLICKHOUSE_PASSWORD: that one
+      # is now whatever the backend's *active* target (local or Cloud, per
+      # .env) uses -- reusing it here meant switching the backend to Cloud
+      # silently reset this container's own local credential to the Cloud
+      # password on next recreate, locking out local access. This variable
+      # always means "this local container's own password," independent of
+      # which ClickHouse the backend is currently pointed at.
+      CLICKHOUSE_PASSWORD: ${CLICKHOUSE_LOCAL_PASSWORD:?CLICKHOUSE_LOCAL_PASSWORD must be set -- generate one with `openssl rand -hex 24`}
     volumes:
       - clickhouse_data:/var/lib/clickhouse
       - ./backend/clickhouse/schema.sql:/docker-entrypoint-initdb.d/schema.sql
@@ -23,6 +36,16 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        # Must match the host user that owns the mounted gcloud ADC file
+        # below (0600 permissions -- the container user can't read it
+        # otherwise). Defaults to 1000 (the common single-user-host default,
+        # e.g. this project's own dev host, confirmed via `id`); override in
+        # .env if this host's operator has a different uid/gid (`id -u`/`id -g`).
+        # Not named UID/GID: those are read-only bash builtins, not real env
+        # vars, so a plain ${UID} substitution here would silently see nothing.
+        BACKEND_UID: ${BACKEND_HOST_UID:-1000}
+        BACKEND_GID: ${BACKEND_HOST_GID:-1000}
     # host networking: the bridge network's forwarding path to host-bound
     # services (Ollama on 127.0.0.1) was firewalled off in local testing, so
     # the backend shares the host's network namespace directly instead --
@@ -31,28 +54,32 @@ services:
     # already binds host ports directly) and is omitted.
     network_mode: host
     environment:
-      CLICKHOUSE_HOST: localhost
-      CLICKHOUSE_PORT: 8123
-      CLICKHOUSE_USER: default
-      CLICKHOUSE_PASSWORD: "admin"
-      CLICKHOUSE_DB: storytrace
+      # These now actually come from .env instead of being hardcoded to the
+      # local compose clickhouse service -- a prior bug: CLICKHOUSE_HOST was
+      # a literal "localhost" here, so pointing .env at ClickHouse Cloud had
+      # no effect on the deployed backend at all.
+      CLICKHOUSE_HOST: ${CLICKHOUSE_HOST:-localhost}
+      CLICKHOUSE_PORT: ${CLICKHOUSE_PORT:-8123}
+      CLICKHOUSE_USER: ${CLICKHOUSE_USER:-default}
+      CLICKHOUSE_PASSWORD: ${CLICKHOUSE_PASSWORD:?CLICKHOUSE_PASSWORD must be set -- generate one with `openssl rand -hex 24`}
+      CLICKHOUSE_DB: ${CLICKHOUSE_DB:-storytrace}
+      CLICKHOUSE_SECURE: ${CLICKHOUSE_SECURE:-false}
       JWT_SECRET: ${JWT_SECRET:?JWT_SECRET must be set -- generate one with `openssl rand -hex 32`}
       FRONTEND_ORIGIN: ${FRONTEND_ORIGIN:-http://localhost:3000}
       MODEL_PROVIDER: ${MODEL_PROVIDER:-ollama}
       GEMINI_API_KEY: ${GEMINI_API_KEY:-}
       GOOGLE_API_KEY: ${GOOGLE_API_KEY:-}
       OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-http://localhost:11434}
-      # Only used when MODEL_PROVIDER=vertexai. GOOGLE_APPLICATION_CREDENTIALS
-      # is left unset by default -- set it (and mount the key file below) only
-      # if not relying on gcloud ADC / Workload Identity for auth.
       GOOGLE_CLOUD_PROJECT: ${GOOGLE_CLOUD_PROJECT:-}
       GOOGLE_CLOUD_LOCATION: ${GOOGLE_CLOUD_LOCATION:-us-central1}
       VERTEX_MODEL: ${VERTEX_MODEL:-gemini-3.6-flash-lite}
+      # Path *inside the container* -- see the volume mount below, which
+      # brings in the host's gcloud ADC user-credential file (no
+      # service-account key exists for this project; auth is via
+      # `gcloud auth application-default login` on the host).
       GOOGLE_APPLICATION_CREDENTIALS: ${GOOGLE_APPLICATION_CREDENTIALS:-}
-    # Uncomment to mount a service-account key for Vertex AI when
-    # GOOGLE_APPLICATION_CREDENTIALS points at /app/credentials.json:
-    # volumes:
-    #   - ./credentials.json:/app/credentials.json:ro
+    volumes:
+      - ${HOME}/.config/gcloud/application_default_credentials.json:/app/gcloud/application_default_credentials.json:ro
     depends_on:
       clickhouse:
         condition: service_healthy

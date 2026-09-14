@@ -8,7 +8,12 @@ class ClickHouseClient:
         host = os.environ.get("CLICKHOUSE_HOST", "localhost")
         port = int(os.environ.get("CLICKHOUSE_PORT", "8123"))
         user = os.environ.get("CLICKHOUSE_USER", "default")
-        password = os.environ.get("CLICKHOUSE_PASSWORD", "admin")
+        password = os.environ.get("CLICKHOUSE_PASSWORD")
+        if not password:
+            raise RuntimeError(
+                "CLICKHOUSE_PASSWORD is not set. Generate one with `openssl rand -hex 24` "
+                "and put it in .env -- there is no default credential."
+            )
         database = os.environ.get("CLICKHOUSE_DB", "storytrace")
         # ClickHouse Cloud terminates HTTPS on 8443 and rejects a plaintext
         # connection outright -- local/docker-compose ClickHouse (8123) has no
