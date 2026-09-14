@@ -3,11 +3,20 @@ LLM to find continuity errors" approach, with no deterministic detection, no
 controlled vocabulary, and no investigation agent.
 
 Per the user's explicit decision (see ~/.claude/plans/dapper-stargazing-adleman.md,
-item A1): this uses the literal "Gemini 1.5 Pro" model named in the original
-spec, NOT the gemini-2.5-flash Condition A runs on -- this is a real
+item A1): this uses the "Gemini 1.5 Pro" model named in the original spec,
+NOT the gemini-2.5-flash Condition A runs on -- this is a real
 model-version confound versus Condition A and MUST be disclosed as such in
 the paper's Limitations section and the patent disclosure's experimental-
 evidence section, not presented as an apples-to-apples comparison.
+
+The entire Gemini 1.5 family (gemini-1.5-pro, -pro-002, -flash, -flash-002)
+404s as of the 2026-09-14 pilot run -- confirmed retired/unavailable in this
+GCP project across all four variants, not a transient region issue.
+User-confirmed substitution (2026-09-14): gemini-2.5-pro, the closest
+available Pro-tier model. This substitution -- distinct from, and in
+addition to, the pre-existing Condition-A-vs-D model-mismatch caveat above
+-- must also be disclosed in the paper's Limitations and the patent
+disclosure's experimental-evidence section.
 """
 
 from __future__ import annotations
@@ -26,7 +35,7 @@ from backend.eval.cost_tracker import CostTracker  # noqa: E402
 from backend.llm.base import LLMError, LLMRequest  # noqa: E402
 from backend.llm.vertexai import VertexAIProvider  # noqa: E402
 
-BASELINE_MODEL = "gemini-1.5-pro"
+BASELINE_MODEL = "gemini-2.5-pro"
 MAX_CHARS = 50_000
 
 BASELINE_PROMPT = """You are a professional script supervisor. Read this screenplay and

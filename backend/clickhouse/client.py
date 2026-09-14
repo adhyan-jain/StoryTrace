@@ -182,19 +182,50 @@ class ClickHouseClient:
         if not units:
             return
 
-        data = [
-            [
-                u.unit_id, u.story_universe_id, u.document_id, u.unit_type,
-                u.sequence_number, u.title, u.raw_text, u.page_start, u.page_end
+        # Chunked + verified-with-retry, deliberately. Root cause (found
+        # 2026-09-14 during the Aliens pilot ablation run, confirmed via
+        # direct isolation, not just correlation): CLICKHOUSE_HOST is a real
+        # ClickHouse Cloud endpoint (SHOW CREATE TABLE confirms
+        # ENGINE = SharedMergeTree, not the local docker-compose MergeTree).
+        # A story_universe_id that has accumulated many prior DELETE
+        # mutations (the eval harness's own clear-and-reuse pattern across
+        # Conditions A/B/C/D and across re-runs) can get into a state where
+        # inserts filtered/sorted on that same key (ORDER BY
+        # (story_universe_id, sequence_number)) silently insert zero rows
+        # -- reproduced by inserting the *identical* row data under a fresh
+        # story_universe_id (worked instantly) vs. the churned one (0 rows,
+        # even after a 3-minute poll with zero concurrent writers). Retrying
+        # the same churned id does NOT reliably self-heal within a handful
+        # of attempts; if this RuntimeError fires repeatedly, the real fix
+        # is a fresh story_universe_id, not more retries. This loop still
+        # guards against ordinary transient Cloud hiccups on a healthy key.
+        _CHUNK = 100
+        _MAX_ATTEMPTS = 4
+        for i in range(0, len(units), _CHUNK):
+            chunk = units[i:i + _CHUNK]
+            data = [
+                [
+                    u.unit_id, u.story_universe_id, u.document_id, u.unit_type,
+                    u.sequence_number, u.title, u.raw_text, u.page_start, u.page_end
+                ]
+                for u in chunk
             ]
-            for u in units
-        ]
-
-        self.client.insert(
-            'narrative_units',
-            data,
-            column_names=['id', 'story_universe_id', 'document_id', 'unit_type', 'sequence_number', 'title', 'text', 'start_page', 'end_page']
-        )
+            column_names = ['id', 'story_universe_id', 'document_id', 'unit_type', 'sequence_number', 'title', 'text', 'start_page', 'end_page']
+            chunk_ids = [u.unit_id for u in chunk]
+            for attempt in range(1, _MAX_ATTEMPTS + 1):
+                self.client.insert('narrative_units', data, column_names=column_names)
+                landed = self.client.query(
+                    "SELECT count() FROM narrative_units WHERE id IN {ids:Array(String)}",
+                    parameters={"ids": chunk_ids},
+                ).result_rows[0][0]
+                if landed == len(chunk):
+                    break
+                if attempt == _MAX_ATTEMPTS:
+                    raise RuntimeError(
+                        f"insert_narrative_units: chunk of {len(chunk)} rows never landed "
+                        f"after {_MAX_ATTEMPTS} attempts (last saw {landed}) -- see the "
+                        "docstring above this loop for the known ClickHouse Cloud issue."
+                    )
 
     def insert_entities(self, entities: List[Any]):
         if not entities:

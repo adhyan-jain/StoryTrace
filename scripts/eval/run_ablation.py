@@ -93,11 +93,21 @@ async def _run_condition_a_or_b(
     condition: str,  # "A" or "B"
     tracker: CostTracker,
 ) -> dict:
+    # NOTE: the ClickHouse calls below run synchronously (no asyncio.to_thread)
+    # deliberately. asyncio.to_thread hands each call to a *different* worker
+    # thread from the default executor pool, and clickhouse_connect's client
+    # is not safe to bounce across threads that way -- reproduced concretely
+    # during the 2026-09-14 pilot run: a clear+insert+wait sequence wrapped in
+    # asyncio.to_thread intermittently left insert_narrative_units's rows
+    # invisible to an immediate follow-up count query (the exact same
+    # sequence run synchronously, same client instance, never failed). The
+    # prior _wait_for_count timeout message ("ClickHouse Cloud consistency
+    # lag") was misdiagnosing this thread-hop bug as a Cloud-only issue.
     client = ClickHouseClient()
-    await asyncio.to_thread(_clear_eval_data, client, story_universe_id)
+    _clear_eval_data(client, story_universe_id)
 
-    await asyncio.to_thread(client.insert_narrative_units, units)
-    await asyncio.to_thread(_wait_for_count, client, "narrative_units", story_universe_id, len(units))
+    client.insert_narrative_units(units)
+    _wait_for_count(client, "narrative_units", story_universe_id, len(units))
 
     base_provider = get_provider()
     tracked_provider = TrackedProvider(base_provider, tracker)
@@ -106,11 +116,11 @@ async def _run_condition_a_or_b(
     for unit in units:
         events = await extract_state_events(unit, story_universe_id, tracked_provider, registry)
         await write_state_events(events, client)
-    await asyncio.to_thread(client.insert_entities, registry.get_all())
+    client.insert_entities(registry.get_all())
 
     detector = CandidateDetector(client)
-    conflicts = await asyncio.to_thread(detector.detect_conflicts, story_universe_id)
-    await asyncio.to_thread(client.insert_candidate_conflicts, conflicts)
+    conflicts = detector.detect_conflicts(story_universe_id)
+    client.insert_candidate_conflicts(conflicts)
 
     if condition == "A":
         agent = InvestigationAgent(tracked_provider, story_universe_id)
@@ -120,7 +130,7 @@ async def _run_condition_a_or_b(
     findings = []
     for conflict in conflicts:
         verdict = await agent.investigate_async(conflict)
-        await asyncio.to_thread(client.insert_investigation_verdicts, [verdict])
+        client.insert_investigation_verdicts([verdict])
         findings.append({
             "conflict_id": conflict.id,
             "entity_id": conflict.entity_id,
@@ -152,11 +162,13 @@ async def _run_condition_c(
     agent. Uses its own ClickHouse rows (same story_universe_id, cleared and
     reused sequentially after A/B run) since the detector/agent are unmodified
     and read/write the same tables regardless of which extractor populated them."""
+    # See the matching NOTE in _run_condition_a_or_b above -- these
+    # ClickHouse calls are deliberately synchronous, not asyncio.to_thread.
     client = ClickHouseClient()
-    await asyncio.to_thread(_clear_eval_data, client, story_universe_id)
+    _clear_eval_data(client, story_universe_id)
 
-    await asyncio.to_thread(client.insert_narrative_units, units)
-    await asyncio.to_thread(_wait_for_count, client, "narrative_units", story_universe_id, len(units))
+    client.insert_narrative_units(units)
+    _wait_for_count(client, "narrative_units", story_universe_id, len(units))
 
     base_provider = get_provider()
     tracked_provider = TrackedProvider(base_provider, tracker)
@@ -165,17 +177,17 @@ async def _run_condition_c(
     for unit in units:
         events = await extract_state_events_unconstrained(unit, story_universe_id, tracked_provider, registry)
         await write_state_events(events, client)
-    await asyncio.to_thread(client.insert_entities, registry.get_all())
+    client.insert_entities(registry.get_all())
 
     detector = CandidateDetector(client)
-    conflicts = await asyncio.to_thread(detector.detect_conflicts, story_universe_id)
-    await asyncio.to_thread(client.insert_candidate_conflicts, conflicts)
+    conflicts = detector.detect_conflicts(story_universe_id)
+    client.insert_candidate_conflicts(conflicts)
 
     agent = InvestigationAgent(tracked_provider, story_universe_id)
     findings = []
     for conflict in conflicts:
         verdict = await agent.investigate_async(conflict)
-        await asyncio.to_thread(client.insert_investigation_verdicts, [verdict])
+        client.insert_investigation_verdicts([verdict])
         findings.append({
             "conflict_id": conflict.id,
             "entity_id": conflict.entity_id,
