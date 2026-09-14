@@ -1,0 +1,69 @@
+{
+  "film": "controlled_test",
+  "condition": "A",
+  "candidates_generated": 4,
+  "conflicts_surfaced": 2,
+  "findings": [
+    {
+      "conflict_id": "eval_controlled_test_pilot_a_1edfbf07",
+      "entity_id": "eval_controlled_test_pilot_a_character_cole",
+      "attribute": "possession.badge",
+      "description": "Suspicious transition for possession.badge: lost -> acquired without bridging event.",
+      "prior_evidence_unit_id": "eval_controlled_test_pilot_a_unit_7",
+      "prior_evidence_excerpt": "Maya returned the next morning with his badge",
+      "current_evidence_unit_id": "eval_controlled_test_pilot_a_unit_8",
+      "current_evidence_excerpt": "Cole pinned the badge to his jacket",
+      "status": "resolved",
+      "severity": "info",
+      "confidence": 1.0,
+      "explanation": "The prior unit text explicitly states that 'Maya returned the next morning with his badge'. This directly fulfills the criteria for a 'Possession reappearing' bridge, which requires the item to be explicitly returned, reissued, or handed back. The badge was returned, thus bridging the 'lost' to 'acquired' transition."
+    },
+    {
+      "conflict_id": "eval_controlled_test_pilot_a_af2d9159",
+      "entity_id": "eval_controlled_test_pilot_a_character_cole",
+      "attribute": "possession.gun",
+      "description": "Suspicious transition for possession.gun: lost -> held without bridging event.",
+      "prior_evidence_unit_id": "eval_controlled_test_pilot_a_unit_4",
+      "prior_evidence_excerpt": "His gun slipped from his grip as he vaulted a low fence, and it dropped through a storm grate into the black water below",
+      "current_evidence_unit_id": "eval_controlled_test_pilot_a_unit_9",
+      "current_evidence_excerpt": "Cole raised his gun",
+      "status": "verified",
+      "severity": "critical",
+      "confidence": 1.0,
+      "explanation": "Cole's gun was explicitly lost when it slipped from his grip and dropped through a storm grate into the water, and he did not stop to look for it. Later, he is described as raising his gun without any narrative explanation of how he reacquired it. There is no mention of the gun being returned, reissued, or found, which is required for a valid bridge for possession reappearing."
+    },
+    {
+      "conflict_id": "eval_controlled_test_pilot_a_8474575e",
+      "entity_id": "eval_controlled_test_pilot_a_character_cole",
+      "attribute": "location.city",
+      "description": "Suspicious transition for location.city: chicago -> new york without bridging event.",
+      "prior_evidence_unit_id": "eval_controlled_test_pilot_a_unit_1",
+      "prior_evidence_excerpt": "the Chicago precinct",
+      "current_evidence_unit_id": "eval_controlled_test_pilot_a_unit_10",
+      "current_evidence_excerpt": "the precinct in New York",
+      "status": "verified",
+      "severity": "critical",
+      "confidence": 1.0,
+      "explanation": "The candidate involves a change in `location.city` from 'chicago' to 'new york'. The provided unit texts show Cole in Chicago in the prior unit and then in New York in the current unit, with no explicit narration of travel or a time skip between these two points. According to the bridging criteria for location changes, a city change without explicit travel narration (e.g., 'Cole flew to New York') is considered a 'verified' conflict. The character simply appears in the new city without explanation for the transition."
+    },
+    {
+      "conflict_id": "eval_controlled_test_pilot_a_76f5cb36",
+      "entity_id": "eval_controlled_test_pilot_a_character_cole",
+      "attribute": "injury.forearm",
+      "description": "Suspicious transition for injury.forearm: injured -> healed without bridging event.",
+      "prior_evidence_unit_id": "eval_controlled_test_pilot_a_unit_12",
+      "prior_evidence_excerpt": "the slash on his forearm",
+      "current_evidence_unit_id": "eval_controlled_test_pilot_a_unit_14",
+      "current_evidence_excerpt": "the wound beneath it closed to a thin pink line",
+      "status": "resolved",
+      "severity": "info",
+      "confidence": 1.0,
+      "explanation": "The unit text for the 'Prior' state (Unit eval_controlled_test_pilot_a_unit_12) explicitly describes a medical treatment event for the forearm injury. It mentions a 'paramedic', 'gauze', 'field kit', 'cleaned the slash', and 'wrapped it tightly'. According to the bridge criteria, an explicit treatment/medical event is a sufficient bridge for injury healing, even if described in the same unit as the prior evidence. Therefore, this transition is resolved."
+    }
+  ],
+  "api_calls_total": 33,
+  "tokens_used": 91695,
+  "prompt_tokens_total": 86487,
+  "completion_tokens_total": 5208,
+  "estimated_cost_usd": 0.038966
+}

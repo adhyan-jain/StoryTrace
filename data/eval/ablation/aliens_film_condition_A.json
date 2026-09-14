@@ -1,0 +1,27 @@
+{
+  "film": "aliens_film",
+  "condition": "A",
+  "candidates_generated": 1,
+  "conflicts_surfaced": 0,
+  "findings": [
+    {
+      "conflict_id": "eval_aliens_film_04251bf6",
+      "entity_id": "eval_aliens_film_character_newt",
+      "attribute": "possession.casey",
+      "description": "Suspicious transition for possession.casey: lost -> acquired without bridging event.",
+      "prior_evidence_unit_id": "eval_aliens_film_unit_119",
+      "prior_evidence_excerpt": "Ripley lifts the doll's head from Newt's tiny fingers",
+      "current_evidence_unit_id": "eval_aliens_film_unit_119",
+      "current_evidence_excerpt": "Ripley closes the doll's eyes and hands her back.",
+      "status": "resolved",
+      "severity": "info",
+      "confidence": 1.0,
+      "explanation": "The prior state indicates Ripley takes the doll's head from Newt, implying a loss of possession. The current state explicitly states, 'Ripley closes the doll's eyes and hands her back.' This action directly fulfills the bridging criteria for 'Possession reappearing,' which requires the item to be 'explicitly returned, reissued, or handed back.' Therefore, the transition from lost to acquired possession is adequately bridged."
+    }
+  ],
+  "api_calls_total": 182,
+  "tokens_used": 789969,
+  "prompt_tokens_total": 711709,
+  "completion_tokens_total": 78260,
+  "estimated_cost_usd": 0.409163
+}

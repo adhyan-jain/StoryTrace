@@ -1,0 +1,35 @@
+{
+  "label": "Phase 0 pilot: Condition A (gemini-2.5-flash) scored against existing golden_dataset.py",
+  "story_universe_id": "eval_controlled_test_pilot_a",
+  "document": "data/test_documents/controlled_test.txt",
+  "extraction": {
+    "phase": "extraction",
+    "precision": 0.6304347826086957,
+    "recall": 0.6904761904761905,
+    "f1": 0.6590909090909092,
+    "true_positives": 29,
+    "false_positives": 17,
+    "false_negatives": 13
+  },
+  "detection": {
+    "phase": "detection",
+    "precision": 1.0,
+    "recall": 0.8,
+    "f1": 0.888888888888889,
+    "true_positives": 4,
+    "false_positives": 0,
+    "false_negatives": 1
+  },
+  "investigation": {
+    "phase": "investigation",
+    "precision": 1.0,
+    "recall": 0.8,
+    "f1": 0.888888888888889,
+    "true_positives": 4,
+    "false_positives": 0,
+    "false_negatives": 1
+  },
+  "overall_f1": 0.8122895622895623,
+  "timestamp": "2026-09-15",
+  "note": "N=1 pilot run, not the reported Phase 1/2 study. See docs/paper/draft.md Section 6.0."
+}

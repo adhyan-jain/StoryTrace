@@ -1,0 +1,16 @@
+{
+  "film": "scream_2",
+  "condition": "B",
+  "candidates_generated": 1,
+  "conflicts_surfaced": 1,
+  "findings": [
+    {
+      "status": "verified"
+    }
+  ],
+  "api_calls_total": 68,
+  "tokens_used": 318984,
+  "prompt_tokens_total": 281284,
+  "completion_tokens_total": 37700,
+  "estimated_cost_usd": 0.178635
+}

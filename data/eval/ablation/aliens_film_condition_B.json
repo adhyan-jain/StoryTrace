@@ -1,0 +1,41 @@
+{
+  "film": "aliens_film",
+  "condition": "B",
+  "candidates_generated": 2,
+  "conflicts_surfaced": 2,
+  "findings": [
+    {
+      "conflict_id": "eval_aliens_film_v2_0775e777",
+      "entity_id": "eval_aliens_film_v2_character_newt",
+      "attribute": "possession.doll",
+      "description": "Suspicious transition for possession.doll: lost -> acquired without bridging event.",
+      "prior_evidence_unit_id": "eval_aliens_film_v2_unit_119",
+      "prior_evidence_excerpt": "Ripley lifts the doll's head from Newt's tiny fingers",
+      "current_evidence_unit_id": "eval_aliens_film_v2_unit_119",
+      "current_evidence_excerpt": "Ripley closes the doll's eyes and hands her back.",
+      "status": "verified",
+      "severity": "critical",
+      "confidence": 0.5,
+      "explanation": "Pipeline-only mode (Condition B): candidate flagged without investigation."
+    },
+    {
+      "conflict_id": "eval_aliens_film_v2_578c3bc3",
+      "entity_id": "eval_aliens_film_v2_character_ripley",
+      "attribute": "location.city",
+      "description": "Suspicious transition for location.city: dallas -> los angeles without bridging event.",
+      "prior_evidence_unit_id": "eval_aliens_film_v2_unit_5",
+      "prior_evidence_excerpt": "DALLAS",
+      "current_evidence_unit_id": "eval_aliens_film_v2_unit_28",
+      "current_evidence_excerpt": "Los Angeles",
+      "status": "verified",
+      "severity": "warning",
+      "confidence": 0.5,
+      "explanation": "Pipeline-only mode (Condition B): candidate flagged without investigation."
+    }
+  ],
+  "api_calls_total": 178,
+  "tokens_used": 781687,
+  "prompt_tokens_total": 702991,
+  "completion_tokens_total": 78696,
+  "estimated_cost_usd": 0.407637
+}

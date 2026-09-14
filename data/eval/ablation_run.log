@@ -1,0 +1,42 @@
+[2026-09-14 16:08:19] scream_2: loaded 76 scene units from data/eval/screenplays/scream_2.txt
+[2026-09-14 16:08:19] scream_2: starting Condition A
+[2026-09-14 16:09:02] scream_2: Condition A done -- 0 candidates, 0 surfaced, 0 calls, $0.0000 -> /home/adhyan/Desktop/StoryTrace/data/eval/ablation/scream_2_condition_A.json
+[2026-09-14 16:09:02] scream_2: starting Condition B
+[2026-09-14 16:09:13] scream_2: Condition B done -- 0 candidates, 0 surfaced, 0 calls, $0.0000 -> /home/adhyan/Desktop/StoryTrace/data/eval/ablation/scream_2_condition_B.json
+[2026-09-14 16:09:13] scream_2: starting Condition C
+[2026-09-14 16:09:25] scream_2: Condition C done -- 0 candidates, 0 surfaced, 0 calls, $0.0000 -> /home/adhyan/Desktop/StoryTrace/data/eval/ablation/scream_2_condition_C.json
+[2026-09-14 16:09:25] scream_2: starting Condition D
+[2026-09-14 16:09:25] scream_2: Condition D done -- 0 findings, 0 calls, $0.0000 -> /home/adhyan/Desktop/StoryTrace/data/eval/ablation/scream_2_condition_D.json
+[2026-09-14 16:09:45] scream_2: loaded 76 scene units from data/eval/screenplays/scream_2.txt
+[2026-09-14 16:09:45] scream_2: starting Condition A
+[2026-09-14 16:52:02] scream_2: Condition A done -- 0 candidates, 0 surfaced, 67 calls, $0.1746 -> /home/adhyan/Desktop/StoryTrace/data/eval/ablation/scream_2_condition_A.json
+[2026-09-14 16:52:02] scream_2: starting Condition B
+[2026-09-14 16:52:58] scream_2: Condition B FAILED: narrative_units never reached 76 rows for 'eval_scream_2' within 45.0s (last saw 0) -- ClickHouse Cloud consistency lag, not a pipeline bug
+[2026-09-14 16:52:58] scream_2: starting Condition C
+[2026-09-14 17:12:21] scream_2: Condition C done -- 0 candidates, 0 surfaced, 64 calls, $0.1581 -> /home/adhyan/Desktop/StoryTrace/data/eval/ablation/scream_2_condition_C.json
+[2026-09-14 17:12:21] scream_2: starting Condition D
+[2026-09-14 17:12:23] scream_2: Condition D done -- 0 findings, 0 calls, $0.0000 -> /home/adhyan/Desktop/StoryTrace/data/eval/ablation/scream_2_condition_D.json
+[2026-09-14 18:12:13] aliens_film: loaded 192 scene units from data/eval/screenplays/aliens_film.txt
+[2026-09-14 18:12:13] aliens_film: starting Condition A
+[2026-09-14 21:46:51] aliens_film: Condition A FAILED: [Errno 2] No such file or directory: 'mcp-clickhouse'
+[2026-09-14 21:46:51] aliens_film: starting Condition B
+[2026-09-14 21:47:47] aliens_film: Condition B FAILED: narrative_units never reached 192 rows for 'eval_aliens_film' within 45.0s (last saw 0) -- ClickHouse Cloud consistency lag, not a pipeline bug
+[2026-09-14 21:47:47] aliens_film: starting Condition C
+[2026-09-14 21:48:28] aliens_film: loaded 192 scene units from data/eval/screenplays/aliens_film.txt
+[2026-09-14 21:48:28] aliens_film: starting Condition A
+[2026-09-14 21:49:24] aliens_film: Condition A FAILED: narrative_units never reached 192 rows for 'eval_aliens_film' within 45.0s (last saw 0) -- ClickHouse Cloud consistency lag, not a pipeline bug
+[2026-09-14 21:49:24] aliens_film: starting Condition B
+[2026-09-14 21:50:19] aliens_film: Condition B FAILED: narrative_units never reached 192 rows for 'eval_aliens_film' within 45.0s (last saw 0) -- ClickHouse Cloud consistency lag, not a pipeline bug
+[2026-09-14 21:50:19] aliens_film: starting Condition C
+[2026-09-14 21:51:15] aliens_film: Condition C FAILED: narrative_units never reached 192 rows for 'eval_aliens_film' within 45.0s (last saw 50) -- ClickHouse Cloud consistency lag, not a pipeline bug
+[2026-09-14 21:51:15] aliens_film: starting Condition D
+[2026-09-14 21:52:05] aliens_film: Condition D done -- 3 findings, 1 calls, $0.0198 -> /home/adhyan/Desktop/StoryTrace/data/eval/ablation/aliens_film_condition_D.json
+[2026-09-14 21:59:09] aliens_film: loaded 192 scene units from data/eval/screenplays/aliens_film.txt
+[2026-09-14 21:59:09] aliens_film: starting Condition A
+[2026-09-14 22:41:49] aliens_film: Condition A done -- 1 candidates, 0 surfaced, 182 calls, $0.4092 -> /home/adhyan/Desktop/StoryTrace/data/eval/ablation/aliens_film_condition_A.json
+[2026-09-14 22:41:49] aliens_film: starting Condition B
+[2026-09-14 22:42:46] aliens_film: Condition B FAILED: narrative_units never reached 192 rows for 'eval_aliens_film' within 45.0s (last saw 0) -- ClickHouse Cloud consistency lag, not a pipeline bug
+[2026-09-14 22:42:46] aliens_film: starting Condition C
+[2026-09-14 22:43:43] aliens_film: Condition C FAILED: narrative_units never reached 192 rows for 'eval_aliens_film' within 45.0s (last saw 0) -- ClickHouse Cloud consistency lag, not a pipeline bug
+[2026-09-14 22:43:43] aliens_film: starting Condition D
+[2026-09-14 22:44:53] aliens_film: Condition D done -- 3 findings, 1 calls, $0.0201 -> /home/adhyan/Desktop/StoryTrace/data/eval/ablation/aliens_film_condition_D.json

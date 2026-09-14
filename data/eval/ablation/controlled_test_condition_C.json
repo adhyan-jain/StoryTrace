@@ -1,0 +1,23 @@
+{
+  "film": "controlled_test",
+  "condition": "C",
+  "candidates_generated": 1,
+  "conflicts_surfaced": 1,
+  "findings": [
+    {
+      "conflict_id": "eval_controlled_test_pilot_c_73a979fc",
+      "entity_id": "eval_controlled_test_pilot_c_character_cole",
+      "attribute": "location.city",
+      "description": "Suspicious transition for location.city: chicago -> new york without bridging event.",
+      "status": "verified",
+      "severity": "critical",
+      "confidence": 1.0,
+      "explanation": "The character Cole is described in Chicago in the prior unit and then immediately appears in New York in the current unit. There is no explicit narration of travel, transit, or a time skip between these two locations. According to the provided criteria for location.city changes, this constitutes a verified conflict, as the character simply appears in the new city without explanation."
+    }
+  ],
+  "api_calls_total": 22,
+  "tokens_used": 34528,
+  "prompt_tokens_total": 26636,
+  "completion_tokens_total": 7892,
+  "estimated_cost_usd": 0.027721
+}

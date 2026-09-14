@@ -1,0 +1,12 @@
+{
+  "film": "aliens_film",
+  "condition": "C",
+  "candidates_generated": 0,
+  "conflicts_surfaced": 0,
+  "findings": [],
+  "api_calls_total": 162,
+  "tokens_used": 327539,
+  "prompt_tokens_total": 216594,
+  "completion_tokens_total": 110945,
+  "estimated_cost_usd": 0.342341
+}

@@ -1,0 +1,45 @@
+{
+  "film": "aliens_film",
+  "condition": "D",
+  "model": "gemini-2.5-pro",
+  "candidates_generated": null,
+  "conflicts_surfaced": 3,
+  "truncated": true,
+  "original_char_count": 258361,
+  "chars_sent": 50000,
+  "error": null,
+  "findings": [
+    {
+      "entity": "ECA Representative",
+      "attribute": "Knowledge of colony on LV-426",
+      "prior_scene": "Scene 6 - The Board of Inquiry hearing",
+      "current_scene": "Scene 9 - Corridor conversation with Van Leuwen",
+      "prior_excerpt": "No. It's a rock. No indigenous life larger than a simple virus.",
+      "current_excerpt": "Terraformers...planet engineers. It's what we call a shake 'n' bake colony. They set up atmosphere processors to make the air breathable...big job. Takes decades. They've already been there over twenty years. Peacefully.",
+      "explanation": "The Extrasolar Colonization Administration (ECA) Representative claims LV-426 is just a surveyed, lifeless rock during the inquiry. Minutes later, Van Leuwen reveals to Ripley that a terraforming colony has existed there for over twenty years. It is a major continuity error that the representative for the colonization administration would be unaware of, or fail to mention, this colony during a hearing specifically about that planet."
+    },
+    {
+      "entity": "Jorden Family / Hadley's Hope Operations",
+      "attribute": "Reason for discovering the derelict ship",
+      "prior_scene": "Scene 13 - Operations Room",
+      "current_scene": "Scene 15 - Jorden's Tractor",
+      "prior_excerpt": "Some honch in a cushy office on Earth says go look at a grid reference in the middle of nowhere, we look.",
+      "current_excerpt": "Look at this fat, juicy magnetic profile. And it's mine, mine, mine.",
+      "explanation": "In Scene 13, Manager Simpson states that the prospectors (the Jordens) were sent to a specific grid reference by the company. However, in Scene 15, Russ Jorden's dialogue and his earlier call about honoring his 'claim' imply he is an independent prospector who made the discovery by chance. These are two contradictory motivations for their presence at the derelict ship."
+    },
+    {
+      "entity": "Bishop",
+      "attribute": "Job Title / Role",
+      "prior_scene": "Scene 30 - Hypersleep Vault",
+      "current_scene": "Scene 30 - Hypersleep Vault",
+      "prior_excerpt": "...except for EXECUTIVE OFFICER (ECA) Bishop...",
+      "current_excerpt": "...who supervises planetary maneuvering.",
+      "explanation": "Bishop is introduced with the title 'Executive Officer,' which is a second-in-command position. However, the script states there is no other crew, meaning there is no Commanding Officer for him to be an executive to. Furthermore, his sole described duty is to 'supervise planetary maneuvering,' a technical role more akin to a pilot or navigator, not a command position like XO. The title is inconsistent with the described role and the ship's command structure."
+    }
+  ],
+  "api_calls_total": 1,
+  "tokens_used": 11391,
+  "prompt_tokens_total": 10726,
+  "completion_tokens_total": 665,
+  "estimated_cost_usd": 0.020057
+}

@@ -1,0 +1,63 @@
+{
+  "film": "controlled_test",
+  "condition": "D",
+  "model": "gemini-2.5-pro",
+  "candidates_generated": null,
+  "conflicts_surfaced": 5,
+  "truncated": false,
+  "original_char_count": 4055,
+  "chars_sent": 4055,
+  "error": null,
+  "findings": [
+    {
+      "entity": "Cole's gun",
+      "attribute": "possession",
+      "prior_scene": "Warehouse district chase",
+      "current_scene": "Rail yard confrontation",
+      "prior_excerpt": "His gun slipped from his grip as he vaulted a low fence, and it dropped through a storm grate into the black water below.",
+      "current_excerpt": "Cole raised his gun and fired a warning shot into the dirt.",
+      "explanation": "Cole loses his gun down a storm grate and it is not recovered. He should not have a gun to fire in a later scene without any explanation of how he acquired a new one."
+    },
+    {
+      "entity": "Setting",
+      "attribute": "location",
+      "prior_scene": "Opening scene",
+      "current_scene": "Mid-story precinct scene",
+      "prior_excerpt": "Detective COLE stood at the window of the Chicago precinct, watching rain streak the glass.",
+      "current_excerpt": "Cole walked into the precinct in New York, badge already out for the desk officer.",
+      "explanation": "The story is established as taking place in Chicago, but a later scene abruptly and without explanation places Cole in a New York precinct."
+    },
+    {
+      "entity": "Cole's badge",
+      "attribute": "reason for confiscation",
+      "prior_scene": "Warehouse district chase",
+      "current_scene": "Precinct evidence processing",
+      "prior_excerpt": "His gun slipped from his grip as he vaulted a low fence, and it dropped through a storm grate into the black water below.",
+      "current_excerpt": "Back at the precinct, Maya took Cole's badge and sealed it in an evidence bag. \"Standard procedure after a discharge report,\" she said.",
+      "explanation": "Maya confiscates Cole's badge due to a 'discharge report,' which implies he fired his weapon. However, Cole did not fire his weapon; he lost it. The justification for the procedure contradicts the events."
+    },
+    {
+      "entity": "Cole's injury",
+      "attribute": "treatment timeline",
+      "prior_scene": "Confrontation where Cole is cut",
+      "current_scene": "Rooftop confrontation aftermath",
+      "prior_excerpt": "The blade caught his right forearm in a shallow slash before Cole knocked the weapon away.",
+      "current_excerpt": "A paramedic knelt beside Cole after the rooftop confrontation, unwinding gauze from a field kit. She cleaned the slash on his forearm and wrapped it tightly...",
+      "explanation": "The scenes are presented out of chronological order. Cole is cut, then goes home, has another confrontation, and only then receives first aid from a paramedic for the original wound. The treatment should have occurred much earlier."
+    },
+    {
+      "entity": "Cole's injury",
+      "attribute": "healing progression",
+      "prior_scene": "Paramedic treats the wound",
+      "current_scene": "Cole in the precinct with Maya",
+      "prior_excerpt": "She cleaned the slash on his forearm and wrapped it tightly, telling him to keep it dry for a few days.",
+      "current_excerpt": "The bandage was gone, the wound beneath it closed to a thin pink line.",
+      "explanation": "A fresh slash requiring a paramedic's attention and a bandage heals to a 'thin pink line' in an unrealistically short amount of time, likely within a day or two of the injury."
+    }
+  ],
+  "api_calls_total": 1,
+  "tokens_used": 2253,
+  "prompt_tokens_total": 1467,
+  "completion_tokens_total": 786,
+  "estimated_cost_usd": 0.009694
+}

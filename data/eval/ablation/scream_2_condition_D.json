@@ -1,0 +1,27 @@
+{
+  "film": "scream_2",
+  "condition": "D",
+  "model": "gemini-2.5-pro",
+  "candidates_generated": null,
+  "conflicts_surfaced": 1,
+  "truncated": true,
+  "original_char_count": 169130,
+  "chars_sent": 50000,
+  "error": null,
+  "findings": [
+    {
+      "entity": "Cici's Friend",
+      "attribute": "location",
+      "prior_scene": "INT. SORORITY HOUSE / LIVING ROOM - NIGHT",
+      "current_scene": "INT. SORORITY HOUSE / LIVING ROOM - NIGHT",
+      "prior_excerpt": "CICI (CONT'D): Teddy's on the other line. He sounds drunk. I'll call you back.",
+      "current_excerpt": "GIRL ON PHONE: Was it Teddy?",
+      "explanation": "Cici tells her friend she will call her back and then clicks over to the other line to speak to the killer. The friend should not be on the line anymore. However, a few moments later, the friend is suddenly back on the line asking Cici a question, without Cici having called her back or the friend having hung up and called again."
+    }
+  ],
+  "api_calls_total": 1,
+  "tokens_used": 13104,
+  "prompt_tokens_total": 12898,
+  "completion_tokens_total": 206,
+  "estimated_cost_usd": 0.018182
+}

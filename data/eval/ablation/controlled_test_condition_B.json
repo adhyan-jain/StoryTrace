@@ -1,0 +1,69 @@
+{
+  "film": "controlled_test",
+  "condition": "B",
+  "candidates_generated": 4,
+  "conflicts_surfaced": 4,
+  "findings": [
+    {
+      "conflict_id": "eval_controlled_test_pilot_b_e71493be",
+      "entity_id": "eval_controlled_test_pilot_b_character_cole",
+      "attribute": "possession.badge",
+      "description": "Suspicious transition for possession.badge: lost -> acquired without bridging event.",
+      "prior_evidence_unit_id": "eval_controlled_test_pilot_b_unit_5",
+      "prior_evidence_excerpt": "Maya took Cole's badge",
+      "current_evidence_unit_id": "eval_controlled_test_pilot_b_unit_7",
+      "current_evidence_excerpt": "Maya returned the next morning with his badge",
+      "status": "verified",
+      "severity": "critical",
+      "confidence": 0.5,
+      "explanation": "Pipeline-only mode (Condition B): candidate flagged without investigation."
+    },
+    {
+      "conflict_id": "eval_controlled_test_pilot_b_8797cb78",
+      "entity_id": "eval_controlled_test_pilot_b_character_cole",
+      "attribute": "possession.gun",
+      "description": "Suspicious transition for possession.gun: lost -> held without bridging event.",
+      "prior_evidence_unit_id": "eval_controlled_test_pilot_b_unit_4",
+      "prior_evidence_excerpt": "His gun slipped from his grip as he vaulted a low fence, and it dropped through a storm grate into the black water below",
+      "current_evidence_unit_id": "eval_controlled_test_pilot_b_unit_9",
+      "current_evidence_excerpt": "Cole raised his gun",
+      "status": "verified",
+      "severity": "critical",
+      "confidence": 0.5,
+      "explanation": "Pipeline-only mode (Condition B): candidate flagged without investigation."
+    },
+    {
+      "conflict_id": "eval_controlled_test_pilot_b_e9186e1d",
+      "entity_id": "eval_controlled_test_pilot_b_character_cole",
+      "attribute": "location.city",
+      "description": "Suspicious transition for location.city: chicago -> new york without bridging event.",
+      "prior_evidence_unit_id": "eval_controlled_test_pilot_b_unit_1",
+      "prior_evidence_excerpt": "the Chicago precinct",
+      "current_evidence_unit_id": "eval_controlled_test_pilot_b_unit_10",
+      "current_evidence_excerpt": "the precinct in New York",
+      "status": "verified",
+      "severity": "warning",
+      "confidence": 0.5,
+      "explanation": "Pipeline-only mode (Condition B): candidate flagged without investigation."
+    },
+    {
+      "conflict_id": "eval_controlled_test_pilot_b_c1b7ad4b",
+      "entity_id": "eval_controlled_test_pilot_b_character_cole",
+      "attribute": "injury.forearm",
+      "description": "Suspicious transition for injury.forearm: injured -> healed without bridging event.",
+      "prior_evidence_unit_id": "eval_controlled_test_pilot_b_unit_12",
+      "prior_evidence_excerpt": "cleaned the slash on his forearm",
+      "current_evidence_unit_id": "eval_controlled_test_pilot_b_unit_14",
+      "current_evidence_excerpt": "the wound beneath it closed to a thin pink line",
+      "status": "verified",
+      "severity": "critical",
+      "confidence": 0.5,
+      "explanation": "Pipeline-only mode (Condition B): candidate flagged without investigation."
+    }
+  ],
+  "api_calls_total": 17,
+  "tokens_used": 68330,
+  "prompt_tokens_total": 63766,
+  "completion_tokens_total": 4564,
+  "estimated_cost_usd": 0.03054
+}
