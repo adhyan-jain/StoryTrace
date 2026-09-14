@@ -1,0 +1,262 @@
+# Invention Disclosure: StoryTrace Narrative Continuity Analysis System
+
+> **How to read this document.** This is a *filing-readiness* artifact: a
+> complete technical description, preliminary claims, and a prior-art table
+> that a coding agent can competently assemble from the shipped system and
+> its own test/documentation trail. It is explicitly **not** an assessment
+> of patent-*grant* likelihood -- novelty and non-obviousness require a
+> professional prior-art search and legal judgment this document cannot
+> provide. Every legal/jurisdictional conclusion below is marked
+> **[ASSERT -- VERIFY WITH COUNSEL]** rather than stated as settled fact.
+> See item A7 of `~/.claude/plans/dapper-stargazing-adleman.md` for why.
+
+## 0. Ownership Check [ASSERT -- VERIFY WITH COUNSEL/IP CELL FIRST]
+
+Before any filing decision: confirm with VIT Vellore's IP cell whether this
+work, given any lab/course/faculty affiliation under which it was built, is
+subject to a university invention-assignment clause. If it is, the
+university (not the individual student) may be the party entitled to file,
+or a co-ownership/assignment agreement may be required before an individual
+provisional filing is even procedurally possible. This is a threshold
+question that should be resolved before Sections 11-12 below are acted on.
+
+## 1. Title of Invention
+System and Method for Evidence-Grounded Narrative Continuity Analysis Using
+Deterministic Candidate Detection and Bounded Agentic Investigation
+
+## 2. Inventors
+[INSERT: full legal name(s), VIT Vellore registration number(s), and role of
+each co-inventor if applicable -- to be completed by the applicant(s), not
+inferred here.]
+
+## 3. Date of First Public Disclosure
+[INSERT: exact date -- the original prompt named September 9, 2026, a
+hackathon submission to a public GitHub repository]. **[ASSERT -- VERIFY
+WITH COUNSEL]**: confirm the exact date, the exact commit/content that was
+made public on that date, and whether that content constituted an
+"enabling disclosure" of the claims below under the applicable
+jurisdiction's standard -- these are factual/legal determinations, not
+something this document can certify.
+
+## 4. Field of the Invention
+The invention relates to natural language processing systems for automated
+analysis of long-form narrative documents including screenplays, novels,
+and other sequential narrative texts. Specifically, it provides a method
+for detecting and verifying continuity inconsistencies across narrative
+units using a combination of structured data extraction, deterministic
+SQL-based candidate generation, and bounded tool-augmented investigation.
+
+## 5. Background and Problem Statement
+Script supervisors on professional productions manually track character and
+prop state (injuries, possessions, locations, clothing) across scenes to
+catch continuity errors before they reach the screen; this is
+labor-intensive and largely unavailable to independent productions and
+authors. Existing automated approaches typically apply a single generative
+language model call (or a long-context retrieval-augmented variant) to
+judge continuity directly from raw text, which (a) has no persistent
+queryable state -- every judgment is re-derived from text under context-
+window pressure -- and (b) conflates "is this a candidate worth examining"
+with "is this a real error" in one generative step, so precision is
+bottlenecked by that single pass with no cheap deterministic filter ahead
+of it.
+
+## 6. Summary of the Invention
+The invention comprises four sequential technical stages:
+
+**Stage 1: Controlled-Vocabulary Entity State Extraction.** A generative
+language model is prompted, per narrative unit, to extract entity state
+facts constrained to a small closed vocabulary for certain attribute
+categories: `possession.<prop>` values limited to `{held, acquired, lost}`
+and `injury.<body_part>` values limited to `{injured, healed, dead}` (see
+`backend/pipeline/state_extraction.py`, `_POSSESSION_VALUES`/
+`_INJURY_VALUES`). Other attribute categories (`location`, `location.city`,
+`clothing.<item>`) remain free-text but are validated by a grounding check
+requiring the value's content words to appear in its own cited supporting
+excerpt. This constraint is what makes Stage 3's SQL-only detection
+possible: without a closed vocabulary, semantically-identical state changes
+expressed in different words cannot be joined by exact-match SQL.
+
+**Stage 2: Append-Only Temporal Event Log.** Extracted facts are stored as
+rows in an append-only ClickHouse table (`state_events`), each row carrying
+`entity_id, attribute, value, unit_id, sequence_number, raw_excerpt`. Rows
+are never overwritten -- the full history of an attribute's value over the
+narrative's sequence is preserved and queryable, ordered for efficient
+partition-and-scan by `(entity_id, attribute, sequence_number)`.
+
+**Stage 3: Deterministic SQL Candidate Generation.** Candidate conflicts are
+generated by a SQL query using window functions -- reproduced verbatim
+below from `backend/candidate_detection/detector.py` at time of writing (a
+file this invention disclosure process was instructed not to modify;
+re-verify against the live file before final filing) -- with **no
+generative model invoked during this stage**:
+
+```sql
+WITH ranked_events AS (
+    SELECT
+        entity_id, unit_id, sequence_number, attribute, value, raw_excerpt,
+        lagInFrame(value) OVER (PARTITION BY entity_id, attribute ORDER BY sequence_number) AS prev_value,
+        lagInFrame(unit_id) OVER (PARTITION BY entity_id, attribute ORDER BY sequence_number) AS prev_unit_id,
+        lagInFrame(raw_excerpt) OVER (PARTITION BY entity_id, attribute ORDER BY sequence_number) AS prev_raw_excerpt
+    FROM state_events
+    WHERE story_universe_id = '{story_universe_id}'
+    ORDER BY entity_id, sequence_number
+)
+SELECT *
+FROM ranked_events
+WHERE
+    ((attribute = 'possession' OR startsWith(attribute, 'possession.')) AND prev_value = 'lost' AND value = 'held') OR
+    ((attribute = 'possession' OR startsWith(attribute, 'possession.')) AND prev_value = 'lost' AND value = 'acquired') OR
+    (startsWith(attribute, 'injury.') AND prev_value = 'injured' AND value = 'healed') OR
+    (attribute = 'location.city' AND prev_value != '' AND value != prev_value)
+```
+
+The controlled vocabulary from Stage 1 is what makes an exact-match window
+function ("did this attribute's value change between two adjacent-in-
+sequence facts for the same entity") a sufficient and reliable detector,
+without invoking any generative model at detection time.
+
+**Stage 4: Bounded Tool-Augmented Investigation Agent.** Each candidate
+conflict is passed to a ReAct-style agent loop
+(`backend/agent/investigator.py`) that may call up to
+[INSERT: current value of `self.max_calls` -- 8 at time of writing, raised
+from an earlier default of 6; re-check the file before filing, as this is a
+tunable runtime parameter, not a fixed architectural constant] of five
+tools -- `get_entity_timeline`, `get_unit_text`, `get_state_at_unit`,
+`find_attribute_changes`, and `finish` -- each executing a parameterized
+query against the same append-only event log via a Model Context Protocol
+(MCP) ClickHouse server. The agent produces a verdict from
+`{verified, resolved, uncertain}`, a severity, a confidence score, and a
+free-text explanation that must precede (not follow) the verdict field in
+the model's output schema, plus the full tool-call trace as provenance. A
+`verified` verdict triggers a suggested-fix generation sub-step. Duplicate
+tool-call detection forces early finalization if the same call is repeated
+twice, bounding worst-case cost independent of the configured call limit.
+
+## 7. Claims (preliminary -- for attorney to refine)
+
+These are plain-English preliminary claims, not legal claims, intended as a
+starting point for an attorney's drafting, not a final claim set.
+
+**Independent Claim 1.**
+A computer-implemented method comprising:
+(a) extracting entity state events from narrative document segments using a
+    generative language model constrained to produce values from a
+    predefined closed vocabulary for at least one attribute category;
+(b) storing said state events in an append-only database table ordered by
+    entity identifier and sequence position;
+(c) generating candidate continuity conflicts by applying database window
+    functions to detect value changes within said append-only table,
+    without invoking a generative language model during candidate
+    generation;
+(d) for each candidate conflict, executing a bounded investigation loop
+    wherein a language-model-driven agent selects and executes database
+    queries against said append-only table to retrieve surrounding
+    narrative context, and produces a verdict supported by stored verbatim
+    evidence from that context.
+
+**Dependent Claim 2.** The method of Claim 1, wherein the bound on
+investigation tool calls in step (d) is a configurable runtime parameter.
+
+**Dependent Claim 3.** The method of Claim 1, further comprising generating
+a suggested resolution sentence for each candidate conflict receiving a
+"verified" verdict.
+
+**Dependent Claim 4.** The method of Claim 1, further comprising
+cross-version conflict diffing, wherein continuity conflicts detected across
+two revisions of the same document are compared by joining on entity
+identifier and attribute rather than by document position.
+
+**Dependent Claim 5.** The method of Claim 1, wherein the predefined closed
+vocabulary constrains a possession-state attribute to values selected from
+{held, acquired, lost} and constrains an injury-state attribute to values
+selected from {injured, healed, dead}.
+
+**Dependent Claim 6.** The method of Claim 1, wherein the verdict in step
+(d) is one of a fixed set comprising at least "verified" (the conflict is a
+genuine continuity error), "resolved" (the apparent conflict is explained by
+narrative context retrieved during the investigation loop), and "uncertain."
+
+**Dependent Claim 7.** The method of Claim 1, wherein the investigation loop
+detects a repeated identical query and forces early termination of the loop
+independent of the configured call bound.
+
+**Dependent Claim 8.** The method of Claim 1, wherein the language-model
+output for the verdict in step (d) is structured such that a free-text
+explanation field is generated by the model before a categorical verdict
+field, so that the categorical verdict is conditioned on the model's own
+preceding explanation.
+
+## 8. Prior Art Distinguished
+
+- **ConStory-Checker** [INSERT CITE -- arXiv:2603.05890]: unified
+  LLM-as-judge scoring over narrative spans in a single generative pass.
+  Distinguished by StoryTrace's non-generative, SQL-only candidate
+  generation stage preceding any generative judgment, and by StoryTrace's
+  requirement that every verdict cite a specific stored `unit_id`/
+  `raw_excerpt` from a queryable append-only log, rather than a free-text
+  judgment over an ungrounded context window.
+- **E²RAG** [INSERT CITE -- arXiv:2506.05939]: retrieval-augmented narrative
+  state tracking via embedding similarity. Distinguished by StoryTrace's use
+  of a closed, exact-match value vocabulary that enables deterministic SQL
+  window-function detection with no similarity threshold or embedding index.
+- **STAGE** [INSERT CITE -- arXiv:2601.08510]: a benchmark/task-asset
+  release for evaluating narrative-change understanding; it does not
+  disclose a detection or investigation *system* at all, only task
+  checkpoints and questions -- not analogous prior art for the claims above,
+  though used as an evaluation corpus source (Section 9).
+- **US12499515B2** [INSERT: independently verify this patent number and its
+  actual claims exist and are relevant before citing -- not verified in this
+  drafting pass]: [INSERT distinguishing analysis once verified].
+
+## 9. Experimental Evidence of Technical Effect
+A Phase 0 pilot ran 2026-09-14/15 (all 4 conditions, real Vertex AI, on 2
+screenplays + 1 synthetic document) to validate the pipeline runs
+end-to-end before the full evidentiary run -- see `docs/paper/draft.md`
+Section 6.0. This is preliminary validation only (N=1, no statistical
+test) and does NOT itself constitute the experimental evidence this
+section requires; that still needs the full Phase 1/2 run below.
+[INSERT once Phase 2 of the eval plan produces real numbers -- see
+`data/eval/metrics/aggregate.json`.] Template: "The controlled-vocabulary
+constrained extraction + SQL detection approach achieves precision of X%
+versus Y% for the one-shot LLM baseline (Condition D), a Z% reduction in
+false positives at comparable recall, measured on [N] STAGE-sourced
+screenplays (Section 5.1) with human-annotated gold labels (Section 5.2)."
+**Note**: Condition D and Condition A were run on different underlying
+model versions (Section 5.4) -- this confound must be disclosed alongside
+any percentage improvement cited here, not omitted, since a patent
+examiner's or licensee's confidence in "technical effect" evidence depends
+on knowing what was and wasn't controlled for.
+
+## 10. Code Repository
+[INSERT: actual repository URL] -- commit hash at time of disclosure:
+[INSERT: run `git rev-parse HEAD` at the actual disclosure moment, not this
+drafting session's HEAD, which will already be stale by the time of filing].
+
+## 11. Public Disclosure Date and Grace Period Notice [ASSERT -- VERIFY WITH COUNSEL]
+[INSERT stated disclosure date]. **The following is NOT a verified legal
+conclusion -- it is a plain-language description of what US law *may*
+provide, to be confirmed by a patent attorney before being relied on for
+any filing deadline:** under 35 U.S.C. §102(b)(1), a US utility (and
+provisional) patent application may need to be filed within 12 months of
+the inventor's own public disclosure to preserve US patent rights, PROVIDED
+the disclosure meets that provision's specific requirements (which turn on
+exact facts about what was disclosed, by whom, and how) -- do not treat a
+specific calendar deadline as fixed until an attorney confirms the
+underlying facts. Separately, **India and most European jurisdictions
+generally do not have an equivalent inventor's-own-disclosure grace period**
+for novelty purposes -- but whether rights are "foreclosed" in those
+jurisdictions specifically, and as of what date, is again a legal
+determination for counsel, not asserted as settled fact here.
+
+## 12. Recommended Next Steps for IP Cell
+1. Resolve Section 0 (ownership/assignment) before any filing action.
+2. Engage a patent attorney experienced in software/AI-system claims to
+   refine Section 7's claims and run an independent prior-art search
+   (Section 8's list is a starting point, not exhaustive).
+3. If a US filing is desired, have counsel confirm the actual grace-period
+   deadline against the verified disclosure facts (Section 11) as soon as
+   possible given the stated timeline urgency.
+4. Decide, with counsel, whether India/EU filings are still worth pursuing
+   given the disclosure-timing question in Section 11, or whether trade
+   secret / defensive publication is the more realistic posture for those
+   jurisdictions.

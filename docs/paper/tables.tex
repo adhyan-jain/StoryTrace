@@ -1,0 +1,65 @@
+% StoryTrace paper tables. All [X] placeholders are filled from
+% data/eval/metrics/aggregate.json, entity_type_breakdown.json, and
+% cost_analysis.json once Phase 1/2 of the eval plan complete real Vertex AI
+% runs and human annotation. Do not hand-fill a plausible-looking number --
+% every value here must trace to a specific file in data/eval/metrics/.
+
+% Table 1: Main results
+\begin{table}[h]
+\centering
+\begin{tabular}{lccc}
+\hline
+System & Precision & Recall & F1 \\
+\hline
+One-shot LLM (Cond. D) & [X] & [X] & [X] \\
+Pipeline-only (Cond. B) & [X] & [X] & [X] \\
+Unconstrained+Agent (Cond. C) & [X] & [X] & [X] \\
+StoryTrace (Cond. A) & \textbf{[X]} & \textbf{[X]} & \textbf{[X]} \\
+\hline
+\end{tabular}
+\caption{Main evaluation results on [N] STAGE-sourced screenplays (see
+Section 5.1 for corpus notes; STAGE\_v0 ships no screenplay text itself --
+screenplays were resolved via its per-film \texttt{script\_url} metadata).
+Bold indicates best performance. Condition D uses Gemini 1.5 Pro; Condition
+A uses [MODEL] -- see Section 5.4/8.2 for the resulting model-version
+confound this comparison does not control for.}
+\label{tab:main-results}
+\end{table}
+
+% Table 2: Entity-type breakdown for StoryTrace (Condition A only)
+\begin{table}[h]
+\centering
+\begin{tabular}{lccc}
+\hline
+Attribute Category & Precision & Recall & F1 \\
+\hline
+possession.* & [X] & [X] & [X] \\
+injury.* & [X] & [X] & [X] \\
+location / location.city & [X] & [X] & [X] \\
+clothing.* & [X] & [X] & [X] \\
+\hline
+\end{tabular}
+\caption{StoryTrace (Condition A) precision/recall/F1 broken down by
+attribute category, from data/eval/metrics/entity\_type\_breakdown.json.}
+\label{tab:entity-breakdown}
+\end{table}
+
+% Table 3: Cost efficiency comparison
+\begin{table}[h]
+\centering
+\begin{tabular}{lcccc}
+\hline
+System & API calls / 100 scenes & Tokens / 100 scenes & Cost / 100 scenes (USD) & Cost / verified finding (USD) \\
+\hline
+One-shot LLM (Cond. D) & [X] & [X] & [X] & [X] \\
+Pipeline-only (Cond. B) & [X] & [X] & [X] & [X] \\
+Unconstrained+Agent (Cond. C) & [X] & [X] & [X] & [X] \\
+StoryTrace (Cond. A) & [X] & [X] & [X] & [X] \\
+\hline
+\end{tabular}
+\caption{Cost efficiency across conditions, from data/eval/cost\_analysis.json.
+Pricing is a snapshot (see backend/eval/cost\_tracker.py's
+\_PRICING\_USD\_PER\_1M\_TOKENS) -- re-verify against
+cloud.google.com/vertex-ai/generative-ai/pricing before final submission.}
+\label{tab:cost-efficiency}
+\end{table}
