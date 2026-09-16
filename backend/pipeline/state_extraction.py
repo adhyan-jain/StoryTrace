@@ -275,9 +275,9 @@ class StateFact(BaseModel):
     entity_type: str
     attribute: str
     value: str
-    raw_excerpt: str
-    confidence: float = Field(ge=0.0, le=1.0)
-    establishment_type: str
+    raw_excerpt: str = ""
+    confidence: float = Field(default=0.9, ge=0.0, le=1.0)
+    establishment_type: str = "explicit"
 
 
 class StateFactsExtraction(BaseModel):

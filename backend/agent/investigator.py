@@ -207,11 +207,23 @@ class InvestigationAgent:
 
     async def investigate_async(self, candidate: CandidateConflict) -> InvestigationVerdict:
         self.tool_call_log = []
-        async with stdio_client(_MCP_SERVER_PARAMS) as (read, write):
-            async with ClientSession(read, write) as session:
-                await session.initialize()
-                tools = AgentTools(session, self.story_universe_id, log=self.tool_call_log, candidate=candidate)
-                return await self._run_loop(candidate, tools)
+        try:
+            async with stdio_client(_MCP_SERVER_PARAMS) as (read, write):
+                async with ClientSession(read, write) as session:
+                    await session.initialize()
+                    tools = AgentTools(session, self.story_universe_id, log=self.tool_call_log, candidate=candidate)
+                    return await self._run_loop(candidate, tools)
+        except Exception as e:
+            return InvestigationVerdict(
+                id=f"verdict_{candidate.id}",
+                candidate_id=candidate.id,
+                status="uncertain",
+                severity="warning",
+                explanation=f"Investigation session failed: {e}",
+                confidence=0.0,
+                investigation_actions=[json.dumps({"step": "fatal_error", "message": str(e)})],
+                suggested_fix="",
+            )
 
     async def _run_loop(self, candidate: CandidateConflict, tools: AgentTools) -> InvestigationVerdict:
         steps: List[dict] = []

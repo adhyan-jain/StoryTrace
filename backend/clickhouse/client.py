@@ -21,7 +21,8 @@ class ClickHouseClient:
         secure = os.environ.get("CLICKHOUSE_SECURE", "false").strip().lower() in ("1", "true", "yes")
 
         self.client = clickhouse_connect.get_client(
-            host=host, port=port, user=user, password=password, database=database, secure=secure
+            host=host, port=port, user=user, password=password, database=database, secure=secure,
+            connect_timeout=30, send_receive_timeout=300,
         )
 
     # -- Auth / projects / versions -----------------------------------
