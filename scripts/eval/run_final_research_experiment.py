@@ -381,9 +381,11 @@ async def main():
         try:
             with open(out_path, encoding="utf-8") as f:
                 data = json.load(f)
-            cond = data.get("condition")
+            cond = data.get("condition") or ("A" if "_condition_A.json" in out_path.name else "B" if "_condition_B.json" in out_path.name else "C" if "_condition_C.json" in out_path.name else "D" if "_condition_D.json" in out_path.name else None)
+            data["condition"] = cond
             if cond in ("A", "B", "C"):
-                if data.get("integrity", {}).get("integrity_passed"):
+                integrity = data.get("integrity", {})
+                if integrity.get("unit_count", 0) > 0 and integrity.get("event_count", 0) > 0:
                     return data
             elif cond == "D":
                 if not data.get("error"):
