@@ -404,6 +404,8 @@ async def main():
 
         film_results = {}
 
+        run_ts = int(time.time())
+
         # 1. Condition A
         file_a = ABLATION_DIR / f"{film_slug}_condition_A.json"
         cached_a = is_valid_cached(file_a)
@@ -411,7 +413,7 @@ async def main():
             logger.info(f"[{film_slug}] Using cached Condition A...")
             res_a = cached_a
         else:
-            sid_a = f"exp_res_{film_slug}_condA"
+            sid_a = f"exp_res_{film_slug}_condA_{run_ts}"
             units_a = load_screenplay_units(full_path, sid_a)
             logger.info(f"[{film_slug}] Executing Condition A...")
             res_a = await run_condition_a_or_b(units_a, sid_a, "A", provider, client)
@@ -428,7 +430,7 @@ async def main():
             logger.info(f"[{film_slug}] Using cached Condition B...")
             res_b = cached_b
         else:
-            sid_b = f"exp_res_{film_slug}_condB"
+            sid_b = f"exp_res_{film_slug}_condB_{run_ts}"
             units_b = load_screenplay_units(full_path, sid_b)
             logger.info(f"[{film_slug}] Executing Condition B...")
             res_b = await run_condition_a_or_b(units_b, sid_b, "B", provider, client)
@@ -445,7 +447,7 @@ async def main():
             logger.info(f"[{film_slug}] Using cached Condition C...")
             res_c = cached_c
         else:
-            sid_c = f"exp_res_{film_slug}_condC"
+            sid_c = f"exp_res_{film_slug}_condC_{run_ts}"
             units_c = load_screenplay_units(full_path, sid_c)
             logger.info(f"[{film_slug}] Executing Condition C...")
             res_c = await run_condition_c(units_c, sid_c, provider, client)
@@ -462,7 +464,7 @@ async def main():
             logger.info(f"[{film_slug}] Using cached Condition D...")
             res_d = cached_d
         else:
-            sid_d = f"exp_res_{film_slug}_condD"
+            sid_d = f"exp_res_{film_slug}_condD_{run_ts}"
             logger.info(f"[{film_slug}] Executing Condition D...")
             res_d = await run_condition_d(full_path, sid_d, provider)
             res_d["film"] = film_slug
