@@ -1,6 +1,7 @@
 import asyncio
 import json
 import os
+from pathlib import Path
 from typing import Any, List, Literal
 
 from mcp import ClientSession, StdioServerParameters
@@ -127,7 +128,19 @@ def _mcp_env() -> dict:
     return env
 
 
-_MCP_SERVER_PARAMS = StdioServerParameters(command="mcp-clickhouse", args=[], env=_mcp_env())
+import shutil
+import sys
+
+def _get_mcp_command() -> str:
+    which_cmd = shutil.which("mcp-clickhouse")
+    if which_cmd:
+        return which_cmd
+    venv_cmd = Path(sys.executable).parent / "mcp-clickhouse"
+    if venv_cmd.exists():
+        return str(venv_cmd)
+    return "mcp-clickhouse"
+
+_MCP_SERVER_PARAMS = StdioServerParameters(command=_get_mcp_command(), args=[], env=_mcp_env())
 
 # Shared between the per-step action prompt AND the final verdict prompt --
 # a real bug found via eval: this used to live ONLY in the action prompt, so
