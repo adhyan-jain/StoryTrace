@@ -1,0 +1,279 @@
+{
+  "qwen2.5:7b": {
+    "model": "qwen2.5:7b",
+    "story_universe_id": "val_model_qwen2_5_7b_r1",
+    "units": 51,
+    "total_events": 78,
+    "entities_registered": 17,
+    "candidates": 5,
+    "verdict_counts": {
+      "verified": 3,
+      "resolved": 2,
+      "uncertain": 0,
+      "intentional": 0
+    },
+    "verdict_details": [
+      {
+        "candidate_id": "val_model_qwen2_5_7b_r1_044e339f",
+        "attribute": "possession.radio",
+        "status": "resolved",
+        "confidence": 0.9,
+        "explanation": "The prior excerpt shows the radio 'clipped free and skidded across the wet concrete', which does not provide a clear bridge for possession.radio transitioning from lost to held. However, the current excerpt states that Marcus 'clipped the radio to his belt', indicating he now possesses it. While there is no explicit narration of retrieving or reissuing the radio, the context suggests he picked it up and attached it to his belt without any intervening loss.",
+        "actions": [
+          "{\"step\": \"action\", \"tool\": \"find_attribute_changes\", \"args\": {\"entity_id\": \"val_model_qwen2_5_7b_r1_character_marcus\", \"attribute\": \"possession.radio\"}}",
+          "{\"step\": \"observation\", \"tool\": \"find_attribute_changes\", \"result\": [{\"sequence_number\": 4, \"value\": \"lost\", \"raw_excerpt\": \"His radio clipped free and skidded across the wet concrete\"}, {\"sequence_number\": 8, \"value\": \"held\", \"raw_excerpt\": \"clipped the radio to his belt\"}]}",
+          "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_model_qwen2_5_7b_r1_unit_4\"}}",
+          "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"Marcus broke into a sprint as the suspect bolted toward the rear exit. His radio clipped free and skidded across the wet concrete as he vaulted a chain-link section. He didn't stop to retrieve it; the suspect was faster than expected.\"}",
+          "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_model_qwen2_5_7b_r1_unit_4\"}}",
+          "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_model_qwen2_5_7b_r1_unit_4\"}}",
+          "{\"step\": \"verdict\", \"verdict\": {\"explanation\": \"The prior excerpt shows the radio 'clipped free and skidded across the wet concrete', which does not provide a clear bridge for possession.radio transitioning from lost to held. However, the current excerpt states that Marcus 'clipped the radio to his belt', indicating he now possesses it. While there is no explicit narration of retrieving or reissuing the radio, the context suggests he picked it up and attached it to his belt without any intervening loss.\", \"status\": \"resolved\", \"severity\": \"info\", \"confidence\": 0.9}}"
+        ]
+      },
+      {
+        "candidate_id": "val_model_qwen2_5_7b_r1_98c19563",
+        "attribute": "injury.shoulder",
+        "status": "resolved",
+        "confidence": 0.9,
+        "explanation": "The prior excerpt shows that Marcus was injured by a blow to his shoulder and then examined by a paramedic who wrapped it with a compression bandage. This meets the criteria for a valid bridge as an explicit treatment/medical event is present in the same unit, which directly resolves the injury candidate.",
+        "actions": [
+          "{\"step\": \"action\", \"tool\": \"find_attribute_changes\", \"args\": {\"entity_id\": \"val_model_qwen2_5_7b_r1_character_marcus\", \"attribute\": \"injury.shoulder\"}}",
+          "{\"step\": \"observation\", \"tool\": \"find_attribute_changes\", \"result\": [{\"sequence_number\": 6, \"value\": \"injured\", \"raw_excerpt\": \"turned at the alley corner and caught Marcus across the shoulder with an iron pipe. The blow knocked him sideways into a dumpster.\"}, {\"sequence_number\": 7, \"value\": \"injured\", \"raw_excerpt\": \"shoulder aching\"}, {\"sequence_number\": 11, \"value\": \"injured\", \"raw_excerpt\": \"examined the shoulder, pressed along the joint\"}, {\"sequence_number\": 13, \"value\": \"healed\", \"raw_excerpt\": \"The bandage was still on but the deep ache had faded to a dull soreness.\"}, {\"sequence_number\": 35, \"value\": \"healed\", \"raw_excerpt\": \"His shoulder barely bothered him anymore\"}, {\"sequence_number\": 48, \"value\": \"healed\", \"raw_excerpt\": \"His shoulder had fully healed by this point\"}]}",
+          "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_model_qwen2_5_7b_r1_unit_11\"}}",
+          "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"A paramedic met Marcus at the scene after the depot confrontation. She examined the shoulder, pressed along the joint, and wrapped it with a compression bandage. \\\"Ice it tonight,\\\" she said. Marcus thanked her and declined a stretcher.\"}",
+          "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_model_qwen2_5_7b_r1_unit_13\"}}",
+          "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"Marcus flexed his shoulder experimentally. The bandage was still on but the deep ache had faded to a dull soreness. He reached overhead to pull a file from the shelf without wincing. Sara pretended not to notice.\"}",
+          "{\"step\": \"verdict\", \"verdict\": {\"explanation\": \"The prior excerpt shows that Marcus was injured by a blow to his shoulder and then examined by a paramedic who wrapped it with a compression bandage. This meets the criteria for a valid bridge as an explicit treatment/medical event is present in the same unit, which directly resolves the injury candidate.\", \"status\": \"resolved\", \"severity\": \"info\", \"confidence\": 0.9}}"
+        ]
+      },
+      {
+        "candidate_id": "val_model_qwen2_5_7b_r1_e29fe06c",
+        "attribute": "location.city",
+        "status": "verified",
+        "confidence": 0.9,
+        "explanation": "The prior excerpt shows Sara flying into New York to interview a witness who had relocated since the first robbery. There is no explicit travel narration between the units indicating how she got from Chicago to New York. The current unit text mentions her being in Los Angeles, but this does not provide any information about the transition between locations.",
+        "actions": [
+          "{\"step\": \"action\", \"tool\": \"find_attribute_changes\", \"args\": {\"entity_id\": \"val_model_qwen2_5_7b_r1_character_sara\", \"attribute\": \"location.city\"}}",
+          "{\"step\": \"observation\", \"tool\": \"find_attribute_changes\", \"result\": [{\"sequence_number\": 10, \"value\": \"new york\", \"raw_excerpt\": \"flew into New York\"}, {\"sequence_number\": 29, \"value\": \"los angeles\", \"raw_excerpt\": \"Los Angeles\"}, {\"sequence_number\": 30, \"value\": \"chicago\", \"raw_excerpt\": \"landed in Chicago\"}, {\"sequence_number\": 45, \"value\": \"new york\", \"raw_excerpt\": \"the New York interview\"}]}",
+          "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_model_qwen2_5_7b_r1_unit_10\"}}",
+          "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"Sara flew into New York to interview a witness who had relocated since the first robbery. The federal building was colder than the Chicago field office and twice as bureaucratic. She kept her badge clipped to her jacket the entire time.\"}",
+          "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_model_qwen2_5_7b_r1_unit_10\"}}",
+          "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_model_qwen2_5_7b_r1_unit_29\"}}",
+          "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"Sara read Bellamy's update at her desk in Los Angeles, where she had been sent to follow a secondary lead. The match confirmed what she had suspected: the same actor, two scenes, two weeks apart. She booked a flight back.\"}",
+          "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_model_qwen2_5_7b_r1_unit_29\"}}",
+          "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_model_qwen2_5_7b_r1_unit_10\"}}",
+          "{\"step\": \"verdict\", \"verdict\": {\"explanation\": \"The prior excerpt shows Sara flying into New York to interview a witness who had relocated since the first robbery. There is no explicit travel narration between the units indicating how she got from Chicago to New York. The current unit text mentions her being in Los Angeles, but this does not provide any information about the transition between locations.\", \"status\": \"verified\", \"severity\": \"info\", \"confidence\": 0.9}}"
+        ]
+      },
+      {
+        "candidate_id": "val_model_qwen2_5_7b_r1_3c1e40be",
+        "attribute": "location.city",
+        "status": "verified",
+        "confidence": 0.9,
+        "explanation": "The location change from Los Angeles to Chicago is not explicitly narrated in the intervening unit text. The character simply appears in Chicago without any travel mentioned.",
+        "actions": [
+          "{\"step\": \"action\", \"tool\": \"find_attribute_changes\", \"args\": {\"entity_id\": \"val_model_qwen2_5_7b_r1_character_sara\", \"attribute\": \"location.city\"}}",
+          "{\"step\": \"observation\", \"tool\": \"find_attribute_changes\", \"result\": [{\"sequence_number\": 10, \"value\": \"new york\", \"raw_excerpt\": \"flew into New York\"}, {\"sequence_number\": 29, \"value\": \"los angeles\", \"raw_excerpt\": \"Los Angeles\"}, {\"sequence_number\": 30, \"value\": \"chicago\", \"raw_excerpt\": \"landed in Chicago\"}, {\"sequence_number\": 45, \"value\": \"new york\", \"raw_excerpt\": \"the New York interview\"}]}",
+          "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_model_qwen2_5_7b_r1_unit_29\"}}",
+          "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"Sara read Bellamy's update at her desk in Los Angeles, where she had been sent to follow a secondary lead. The match confirmed what she had suspected: the same actor, two scenes, two weeks apart. She booked a flight back.\"}",
+          "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_model_qwen2_5_7b_r1_unit_29\"}}",
+          "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_model_qwen2_5_7b_r1_unit_29\"}}",
+          "{\"step\": \"verdict\", \"verdict\": {\"explanation\": \"The location change from Los Angeles to Chicago is not explicitly narrated in the intervening unit text. The character simply appears in Chicago without any travel mentioned.\", \"status\": \"verified\", \"severity\": \"info\", \"confidence\": 0.9}}"
+        ]
+      },
+      {
+        "candidate_id": "val_model_qwen2_5_7b_r1_0fa189ed",
+        "attribute": "location.city",
+        "status": "verified",
+        "confidence": 0.9,
+        "explanation": "The character's location change from Chicago to New York is not explicitly bridged by any travel narration such as 'flew to New York' or 'took the overnight train'. The transition occurs without any narrative explaining how she got there, only that she was in New York for an interview.",
+        "actions": [
+          "{\"step\": \"action\", \"tool\": \"find_attribute_changes\", \"args\": {\"entity_id\": \"val_model_qwen2_5_7b_r1_character_sara\", \"attribute\": \"location.city\"}}",
+          "{\"step\": \"observation\", \"tool\": \"find_attribute_changes\", \"result\": [{\"sequence_number\": 10, \"value\": \"new york\", \"raw_excerpt\": \"flew into New York\"}, {\"sequence_number\": 29, \"value\": \"los angeles\", \"raw_excerpt\": \"Los Angeles\"}, {\"sequence_number\": 30, \"value\": \"chicago\", \"raw_excerpt\": \"landed in Chicago\"}, {\"sequence_number\": 45, \"value\": \"new york\", \"raw_excerpt\": \"the New York interview\"}]}",
+          "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_model_qwen2_5_7b_r1_unit_30\"}}",
+          "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"Sara landed in Chicago the next morning. The forensic comparison log was waiting on her desk along with a voicemail from the DA. She went through both before leaving for the precinct.\"}",
+          "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_model_qwen2_5_7b_r1_unit_30\"}}",
+          "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_model_qwen2_5_7b_r1_unit_30\"}}",
+          "{\"step\": \"verdict\", \"verdict\": {\"explanation\": \"The character's location change from Chicago to New York is not explicitly bridged by any travel narration such as 'flew to New York' or 'took the overnight train'. The transition occurs without any narrative explaining how she got there, only that she was in New York for an interview.\", \"status\": \"verified\", \"severity\": \"warning\", \"confidence\": 0.9}}"
+        ]
+      }
+    ],
+    "extraction_errors": 0,
+    "investigation_errors": 0,
+    "total_runtime_sec": 2142.6,
+    "extraction_sec": 2022.02,
+    "detection_sec": 1.32,
+    "investigation_sec": 119.26,
+    "avg_unit_latency_sec": 39.63,
+    "attribute_distribution": {
+      "location": 23,
+      "injury.shoulder": 7,
+      "location.city": 6,
+      "possession.napkin": 3,
+      "possession.phone": 3,
+      "possession.knife": 3,
+      "clothing.belt": 2,
+      "possession.badge": 2,
+      "possession.file": 2,
+      "possession.compression_bandage": 2,
+      "possession.coffee": 2,
+      "possession.radio": 2,
+      "possession.wallet": 1,
+      "clothing.hoodie": 1,
+      "injury.body": 1,
+      "possession.log_entry": 1,
+      "possession.watch": 1,
+      "possession.folding_knife": 1,
+      "possession.burner_phone": 1,
+      "possession.flash_drive": 1,
+      "possession.case_folders": 1,
+      "possession.folder": 1,
+      "possession.full_prints": 1,
+      "possession.notes": 1,
+      "possession.gun": 1,
+      "possession.name_on_napkin": 1,
+      "possession.interview_notes": 1,
+      "possession.partial_prints": 1,
+      "possession.confession_excerpts": 1,
+      "injury.chest": 1,
+      "possession.supplemental_reports": 1,
+      "possession.surveillance_logs": 1,
+      "possession.photograph_of_napkin": 1
+    },
+    "integrity_verified": true
+  },
+  "qwen3:8b": {
+    "model": "qwen3:8b",
+    "story_universe_id": "val_model_qwen3_8b_r1",
+    "units": 51,
+    "total_events": 81,
+    "entities_registered": 15,
+    "candidates": 6,
+    "verdict_counts": {
+      "verified": 4,
+      "resolved": 2,
+      "uncertain": 0,
+      "intentional": 0
+    },
+    "verdict_details": [
+      {
+        "candidate_id": "val_model_qwen3_8b_r1_97085827",
+        "attribute": "possession.radio",
+        "status": "resolved",
+        "confidence": 0.95,
+        "explanation": "The transition from 'lost' to 'held' is resolved by Sara returning the radio to Marcus in Unit 7 ('Sara arrived with his radio'). This explicit reissue of the item bridges the gap, satisfying the possession reappearing criterion.",
+        "actions": [
+          "{\"step\": \"error\", \"message\": \"invalid AgentAction: Ollama request failed: timed out\"}",
+          "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_model_qwen3_8b_r1_unit_7\"}}",
+          "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"Marcus's apartment was dark except for the glow of his laptop. He sat on the edge of the bed, shoulder aching, and stared at the case board he'd built on the opposite wall. Sara arrived an hour later with his radio, review closed.\"}",
+          "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_model_qwen3_8b_r1_unit_7\"}}",
+          "{\"step\": \"verdict\", \"verdict\": {\"explanation\": \"The transition from 'lost' to 'held' is resolved by Sara returning the radio to Marcus in Unit 7 ('Sara arrived with his radio'). This explicit reissue of the item bridges the gap, satisfying the possession reappearing criterion.\", \"status\": \"resolved\", \"severity\": \"info\", \"confidence\": 0.95}}"
+        ]
+      },
+      {
+        "candidate_id": "val_model_qwen3_8b_r1_f5cc7bc8",
+        "attribute": "injury.shoulder",
+        "status": "resolved",
+        "confidence": 1.0,
+        "explanation": "The prior excerpt explicitly mentions the bandage being still on, which is a treatment event. According to the criteria, any medical treatment (bandage, etc.) in the prior excerpt alone is sufficient to resolve the injury transition without needing additional bridging text.",
+        "actions": [
+          "{\"step\": \"verdict\", \"verdict\": {\"explanation\": \"The prior excerpt explicitly mentions the bandage being still on, which is a treatment event. According to the criteria, any medical treatment (bandage, etc.) in the prior excerpt alone is sufficient to resolve the injury transition without needing additional bridging text.\", \"status\": \"resolved\", \"severity\": \"info\", \"confidence\": 1.0}}"
+        ]
+      },
+      {
+        "candidate_id": "val_model_qwen3_8b_r1_dccbc34c",
+        "attribute": "location.city",
+        "status": "verified",
+        "confidence": 0.9,
+        "explanation": "The transition from New York to Chicago lacks a bridging event such as explicit travel narration, time skip, or possession reappearing. Since the prior excerpt only mentions 'flew into New York' and no subsequent travel details exist between locations, this is a verified conflict per the city change rule.",
+        "actions": [
+          "{\"step\": \"verdict\", \"verdict\": {\"explanation\": \"The transition from New York to Chicago lacks a bridging event such as explicit travel narration, time skip, or possession reappearing. Since the prior excerpt only mentions 'flew into New York' and no subsequent travel details exist between locations, this is a verified conflict per the city change rule.\", \"status\": \"verified\", \"severity\": \"info\", \"confidence\": 0.9}}"
+        ]
+      },
+      {
+        "candidate_id": "val_model_qwen3_8b_r1_cea40cf4",
+        "attribute": "location.city",
+        "status": "verified",
+        "confidence": 0.8,
+        "explanation": "The transition from Chicago to Los Angeles lacks explicit travel narration. The prior unit mentions Sara flying into New York (a different city) but no travel details between Chicago and Los Angeles. The current unit states she was 'sent to Los Angeles' but does not describe movement, so no bridge exists. Per guidelines, city changes without explicit transit are 'verified' conflicts.",
+        "actions": [
+          "{\"step\": \"error\", \"message\": \"invalid AgentAction: Ollama request failed: timed out\"}",
+          "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_model_qwen3_8b_r1_unit_10\"}}",
+          "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"Sara flew into New York to interview a witness who had relocated since the first robbery. The federal building was colder than the Chicago field office and twice as bureaucratic. She kept her badge clipped to her jacket the entire time.\"}",
+          "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_model_qwen3_8b_r1_unit_29\"}}",
+          "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"Sara read Bellamy's update at her desk in Los Angeles, where she had been sent to follow a secondary lead. The match confirmed what she had suspected: the same actor, two scenes, two weeks apart. She booked a flight back.\"}",
+          "{\"step\": \"error\", \"message\": \"invalid AgentAction: Ollama request failed: timed out\"}",
+          "{\"step\": \"verdict\", \"verdict\": {\"explanation\": \"The transition from Chicago to Los Angeles lacks explicit travel narration. The prior unit mentions Sara flying into New York (a different city) but no travel details between Chicago and Los Angeles. The current unit states she was 'sent to Los Angeles' but does not describe movement, so no bridge exists. Per guidelines, city changes without explicit transit are 'verified' conflicts.\", \"status\": \"verified\", \"severity\": \"info\", \"confidence\": 0.8}}"
+        ]
+      },
+      {
+        "candidate_id": "val_model_qwen3_8b_r1_58d1e49f",
+        "attribute": "location.city",
+        "status": "verified",
+        "confidence": 1.0,
+        "explanation": "The transition from Los Angeles to Chicago lacks explicit travel narration or a bridging event. The prior excerpt (Unit 29) shows Sara in Los Angeles with no mention of Chicago or travel. The current excerpt (Unit 30) only states she booked a flight back, which implies returning to LA, not moving to Chicago. No medical treatment, possession reissue, or time-skip is present. City changes without explicit travel are automatically 'verified' conflicts.",
+        "actions": [
+          "{\"step\": \"action\", \"tool\": \"find_attribute_changes\", \"args\": {\"entity_id\": \"val_model_qwen3_8b_r1_character_sara\", \"attribute\": \"location.city\"}}",
+          "{\"step\": \"observation\", \"tool\": \"find_attribute_changes\", \"result\": [{\"sequence_number\": 10, \"value\": \"new york\", \"raw_excerpt\": \"flew into New York\"}, {\"sequence_number\": 10, \"value\": \"chicago\", \"raw_excerpt\": \"Chicago\"}, {\"sequence_number\": 29, \"value\": \"los angeles\", \"raw_excerpt\": \"in Los Angeles\"}, {\"sequence_number\": 30, \"value\": \"chicago\", \"raw_excerpt\": \"Chicago\"}]}",
+          "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_model_qwen3_8b_r1_unit_29\"}}",
+          "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"Sara read Bellamy's update at her desk in Los Angeles, where she had been sent to follow a secondary lead. The match confirmed what she had suspected: the same actor, two scenes, two weeks apart. She booked a flight back.\"}",
+          "{\"step\": \"verdict\", \"verdict\": {\"explanation\": \"The transition from Los Angeles to Chicago lacks explicit travel narration or a bridging event. The prior excerpt (Unit 29) shows Sara in Los Angeles with no mention of Chicago or travel. The current excerpt (Unit 30) only states she booked a flight back, which implies returning to LA, not moving to Chicago. No medical treatment, possession reissue, or time-skip is present. City changes without explicit travel are automatically 'verified' conflicts.\", \"status\": \"verified\", \"severity\": \"critical\", \"confidence\": 1.0}}"
+        ]
+      },
+      {
+        "candidate_id": "val_model_qwen3_8b_r1_71999a3e",
+        "attribute": "location.city",
+        "status": "verified",
+        "confidence": 0.99,
+        "explanation": "The transition from Berlin to Amsterdam lacks explicit travel/transit narration or time-skip indication. No medical treatment events (paramedic, bandage, etc.) exist in prior/unit text to bridge the location change. The observation only notes two separate accounts without explaining movement between cities.",
+        "actions": [
+          "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_model_qwen3_8b_r1_unit_38\"}}",
+          "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"Young traced the first account to a registered address in Berlin. The second account was routed through a bank in Amsterdam. He presented his findings at the morning brief and recommended an international records request.\"}",
+          "{\"step\": \"verdict\", \"verdict\": {\"explanation\": \"The transition from Berlin to Amsterdam lacks explicit travel/transit narration or time-skip indication. No medical treatment events (paramedic, bandage, etc.) exist in prior/unit text to bridge the location change. The observation only notes two separate accounts without explaining movement between cities.\", \"status\": \"verified\", \"severity\": \"critical\", \"confidence\": 0.99}}"
+        ]
+      }
+    ],
+    "extraction_errors": 0,
+    "investigation_errors": 0,
+    "total_runtime_sec": 3215.36,
+    "extraction_sec": 1942.35,
+    "detection_sec": 1.16,
+    "investigation_sec": 1271.85,
+    "avg_unit_latency_sec": 38.061,
+    "attribute_distribution": {
+      "location": 24,
+      "possession.radio": 8,
+      "location.city": 7,
+      "injury.shoulder": 6,
+      "possession.knife": 2,
+      "possession.badge": 2,
+      "possession.file": 2,
+      "possession.napkin": 2,
+      "possession.coffee": 2,
+      "possession.notes": 2,
+      "possession.phone": 2,
+      "possession.case_folders": 1,
+      "clothing.hoodie": 1,
+      "possession.rebuttal": 1,
+      "possession.case_board": 1,
+      "possession.flash_drive": 1,
+      "possession.copy": 1,
+      "possession.summary": 1,
+      "possession.case_folder": 1,
+      "possession.folder": 1,
+      "possession.photograph": 1,
+      "possession.entries": 1,
+      "possession.bandage": 1,
+      "possession.gun": 1,
+      "injury.chest": 1,
+      "possession.report": 1,
+      "possession.account": 1,
+      "possession.burner phone": 1,
+      "possession.forensic_comparison_log": 1,
+      "possession.comparison_log": 1,
+      "possession.confession_excerpt": 1,
+      "possession.chain_of_custody": 1,
+      "possession.surveillance_logs": 1
+    },
+    "integrity_verified": true
+  }
+}

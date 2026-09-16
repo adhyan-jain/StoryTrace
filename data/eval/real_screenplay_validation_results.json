@@ -1,0 +1,919 @@
+{
+  "screenplay_validation": {
+    "seven": {
+      "film": "seven",
+      "run_index": 1,
+      "model": "qwen2.5:7b",
+      "story_universe_id": "val_real_seven_r1",
+      "units": 60,
+      "total_events": 78,
+      "entities": 18,
+      "candidates": 8,
+      "candidate_density_per_unit": 0.1333,
+      "verdicts": {
+        "verified": 8,
+        "resolved": 0,
+        "uncertain": 0,
+        "intentional": 0
+      },
+      "extraction_failures": 0,
+      "investigation_failures": 0,
+      "total_runtime_sec": 1979.0,
+      "candidates_audit": [
+        {
+          "candidate_id": "val_real_seven_r1_686d9bca",
+          "entity_id": "val_real_seven_r1_character_mills",
+          "attribute": "location.city",
+          "prior_evidence": "MONDAY",
+          "current_evidence": "INT.  URBAN SCHOOL, OFFICE -- DAY",
+          "description": "Suspicious transition for location.city: monday -> urban school without bridging event.",
+          "verdict_status": "verified",
+          "verdict_confidence": 0.8999999761581421,
+          "verdict_explanation": "The prior excerpt shows Mills on MONDAY in a bedroom setting, which is consistent with the transition to an urban school location without any explicit bridging event. However, the presence of 'MONDAY' and the context suggest that this might be part of a broader narrative where such transitions are common.",
+          "actions": [
+            "{\"step\": \"action\", \"tool\": \"find_attribute_changes\", \"args\": {\"entity_id\": \"val_real_seven_r1_character_mills\", \"attribute\": \"location.city\"}}",
+            "{\"step\": \"observation\", \"tool\": \"find_attribute_changes\", \"result\": [{\"sequence_number\": 10, \"value\": \"monday\", \"raw_excerpt\": \"MONDAY\"}, {\"sequence_number\": 20, \"value\": \"urban school\", \"raw_excerpt\": \"INT.  URBAN SCHOOL, OFFICE -- DAY\"}, {\"sequence_number\": 23, \"value\": \"philadelphia\", \"raw_excerpt\": \"Philadelphia\"}, {\"sequence_number\": 25, \"value\": \"night\", \"raw_excerpt\": \"NIGHT\"}, {\"sequence_number\": 26, \"value\": \"tuesday\", \"raw_excerpt\": \"TUESDAY\"}, {\"sequence_number\": 42, \"value\": \"night\", \"raw_excerpt\": \"INT.  MILL'S APARTMENT, LIVING ROOM -- NIGHT\"}]}",
+            "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_seven_r1_unit_10\"}}",
+            "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"\\u2026 SOMERSET\\n                   Well, please do me the favor of\\n                   remembering it.\\n\\nMills just stares back at Somerset.  Somerset walks.  Mills\\n     rolls his eyes, looks to heaven like, \\\"what'd I do to deserve\\n     this?\\\"  He follows Somerset.\\n\\nINSERT -- TITLE CARD\\n\\nMONDAY\\n\\nINT.  SOMERSET'S APARTMENT, BEDROOM -- EARLY MORNING\\n\\nSomerset lies asleep on the bed.  It is still dark outside.\\n     Relatively quiet.  The PHONE beside the inactive metronome RINGS\\n     HARSHLY.  Somerset awakens suddenly, rankled.\\n\\nINT.  MILLS' APARTMENT, BEDROOM -- EARLY M \\u2026\"}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_seven_r1_unit_10\"}}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_seven_r1_unit_10\"}}",
+            "{\"step\": \"verdict\", \"verdict\": {\"explanation\": \"The prior excerpt shows Mills on MONDAY in a bedroom setting, which is consistent with the transition to an urban school location without any explicit bridging event. However, the presence of 'MONDAY' and the context suggest that this might be part of a broader narrative where such transitions are common.\", \"status\": \"verified\", \"severity\": \"info\", \"confidence\": 0.9}}"
+          ]
+        },
+        {
+          "candidate_id": "val_real_seven_r1_4d5215de",
+          "entity_id": "val_real_seven_r1_character_mills",
+          "attribute": "location.city",
+          "prior_evidence": "INT.  URBAN SCHOOL, OFFICE -- DAY",
+          "current_evidence": "Philadelphia",
+          "description": "Suspicious transition for location.city: urban school -> philadelphia without bridging event.",
+          "verdict_status": "verified",
+          "verdict_confidence": 0.8999999761581421,
+          "verdict_explanation": "The location change from an urban school to Philadelphia is not explicitly bridged by any travel narration or clear transit scene. The prior excerpt and unit text do not contain any information about Mills traveling to Philadelphia, only showing a scene at an urban school and then immediately switching to a scene in Philadelphia without explanation.",
+          "actions": [
+            "{\"step\": \"action\", \"tool\": \"find_attribute_changes\", \"args\": {\"entity_id\": \"val_real_seven_r1_character_mills\", \"attribute\": \"location.city\"}}",
+            "{\"step\": \"observation\", \"tool\": \"find_attribute_changes\", \"result\": [{\"sequence_number\": 10, \"value\": \"monday\", \"raw_excerpt\": \"MONDAY\"}, {\"sequence_number\": 20, \"value\": \"urban school\", \"raw_excerpt\": \"INT.  URBAN SCHOOL, OFFICE -- DAY\"}, {\"sequence_number\": 23, \"value\": \"philadelphia\", \"raw_excerpt\": \"Philadelphia\"}, {\"sequence_number\": 25, \"value\": \"night\", \"raw_excerpt\": \"NIGHT\"}, {\"sequence_number\": 26, \"value\": \"tuesday\", \"raw_excerpt\": \"TUESDAY\"}, {\"sequence_number\": 42, \"value\": \"night\", \"raw_excerpt\": \"INT.  MILL'S APARTMENT, LIVING ROOM -- NIGHT\"}]}",
+            "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_seven_r1_unit_20\"}}",
+            "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"\\u2026        Just don't jerk me off.  That's all I\\n                   ask.  It's not much.  Don't jerk me off.\\n                           (pause)\\n                   Please, do me the favor of remembering\\n                   that.\\n\\nMills exits.  Somerset spits out the broken cigarette.\\n\\nINT.  URBAN SCHOOL, OFFICE -- DAY\\n\\nTracy looks out a window from behind steel bars.\\n\\nBelow her, young children play in a playground.  They're playing\\n     hop-scotch, throwing balls, chasing each other.  The swing sets\\n     are broken.  The handball wall is graffitied.\\n\\nWOMAN'S VOICE (O.S.)\\n                   I' \\u2026\"}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_seven_r1_unit_20\"}}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_seven_r1_unit_20\"}}",
+            "{\"step\": \"verdict\", \"verdict\": {\"explanation\": \"The location change from an urban school to Philadelphia is not explicitly bridged by any travel narration or clear transit scene. The prior excerpt and unit text do not contain any information about Mills traveling to Philadelphia, only showing a scene at an urban school and then immediately switching to a scene in Philadelphia without explanation.\", \"status\": \"verified\", \"severity\": \"warning\", \"confidence\": 0.9}}"
+          ]
+        },
+        {
+          "candidate_id": "val_real_seven_r1_e6c9154b",
+          "entity_id": "val_real_seven_r1_character_mills",
+          "attribute": "location.city",
+          "prior_evidence": "Philadelphia",
+          "current_evidence": "NIGHT",
+          "description": "Suspicious transition for location.city: philadelphia -> night without bridging event.",
+          "verdict_status": "verified",
+          "verdict_confidence": 0.8999999761581421,
+          "verdict_explanation": "The prior excerpt contains Tracy's statement that it seems worse than Philadelphia because everything is pushed right up against you. In your face. This implies a location change from Philadelphia to night without explicit bridging event. The QUICK-DECISION RULE applies here, as there are no medical/treatment words for an injury candidate in the prior excerpt. Therefore, the verdict must be 'verified'.",
+          "actions": [
+            "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_seven_r1_unit_23\"}}",
+            "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"\\u2026               this city.\\n\\nMILLS\\n                   There are a lot of frightening people in\\n                   the world.\\n\\nTracy looks again to the strange man.\\n\\nSTRANGE MAN\\n                   Name that tune?  Anybody name that tune?\\n\\nTRACY\\n                   It seems worse than Philadelphia,\\n                   because everything is pushed right up\\n                   against you.  In your face.\\n\\nMills edges past Tracy towards the front of the store, tries to\\n     be pleasant.\\n\\nMILLS\\n                   Listen, honey.  I don't want to fight\\n                   tonight. \\u2026\"}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_seven_r1_unit_23\"}}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_seven_r1_unit_23\"}}",
+            "{\"step\": \"verdict\", \"verdict\": {\"explanation\": \"The prior excerpt contains Tracy's statement that it seems worse than Philadelphia because everything is pushed right up against you. In your face. This implies a location change from Philadelphia to night without explicit bridging event. The QUICK-DECISION RULE applies here, as there are no medical/treatment words for an injury candidate in the prior excerpt. Therefore, the verdict must be 'verified'.\", \"status\": \"verified\", \"severity\": \"info\", \"confidence\": 0.9}}"
+          ]
+        },
+        {
+          "candidate_id": "val_real_seven_r1_b5badeae",
+          "entity_id": "val_real_seven_r1_character_mills",
+          "attribute": "location.city",
+          "prior_evidence": "NIGHT",
+          "current_evidence": "TUESDAY",
+          "description": "Suspicious transition for location.city: night -> tuesday without bridging event.",
+          "verdict_status": "verified",
+          "verdict_confidence": 0.8999999761581421,
+          "verdict_explanation": "The transition from NIGHT to TUESDAY in the context of Mills passing Tracy and moving on does not require a bridge as per the location change rule. The model did not find any explicit travel narration for the city change, but the quick-decision rule was not applicable since there were no medical/treatment words in the prior excerpt.",
+          "actions": [
+            "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_seven_r1_unit_25\"}}",
+            "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"MILLS\\n                   Fuck you.\\n                           (as car leaves)\\n                   Fuck you, you son of a bitch!  I'm\\n                   walking here.\\n\\nINT.  INDOOR FRUIT STAND -- NIGHT\\n\\nTracy rolls her eyes in amused disappointment.  She sighs again.\\n\\nMills passes the babbling strange man, comes up to Tracy.\\n\\nMILLS\\n                   I'm sorry... I couldn't pass it up.  I\\n                   never had a chance to actually do that.\\n                   But, we can \\u2026\"}",
+            "{\"step\": \"action\", \"tool\": \"find_attribute_changes\", \"args\": {\"entity_id\": \"val_real_seven_r1_character_mills\", \"attribute\": \"location.city\"}}",
+            "{\"step\": \"observation\", \"tool\": \"find_attribute_changes\", \"result\": [{\"sequence_number\": 10, \"value\": \"monday\", \"raw_excerpt\": \"MONDAY\"}, {\"sequence_number\": 20, \"value\": \"urban school\", \"raw_excerpt\": \"INT.  URBAN SCHOOL, OFFICE -- DAY\"}, {\"sequence_number\": 23, \"value\": \"philadelphia\", \"raw_excerpt\": \"Philadelphia\"}, {\"sequence_number\": 25, \"value\": \"night\", \"raw_excerpt\": \"NIGHT\"}, {\"sequence_number\": 26, \"value\": \"tuesday\", \"raw_excerpt\": \"TUESDAY\"}, {\"sequence_number\": 42, \"value\": \"night\", \"raw_excerpt\": \"INT.  MILL'S APARTMENT, LIVING ROOM -- NIGHT\"}]}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_seven_r1_unit_25\"}}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_seven_r1_unit_25\"}}",
+            "{\"step\": \"verdict\", \"verdict\": {\"explanation\": \"The transition from NIGHT to TUESDAY in the context of Mills passing Tracy and moving on does not require a bridge as per the location change rule. The model did not find any explicit travel narration for the city change, but the quick-decision rule was not applicable since there were no medical/treatment words in the prior excerpt.\", \"status\": \"verified\", \"severity\": \"info\", \"confidence\": 0.9}}"
+          ]
+        },
+        {
+          "candidate_id": "val_real_seven_r1_601da5e9",
+          "entity_id": "val_real_seven_r1_character_mills",
+          "attribute": "location.city",
+          "prior_evidence": "TUESDAY",
+          "current_evidence": "INT.  MILL'S APARTMENT, LIVING ROOM -- NIGHT",
+          "description": "Suspicious transition for location.city: tuesday -> night without bridging event.",
+          "verdict_status": "verified",
+          "verdict_confidence": 0.8999999761581421,
+          "verdict_explanation": "The prior excerpt shows Mills sitting down at his desk and starting to look through police paperwork, which does not explicitly mention a transition from TUESDAY to NIGHT. However, the current location is clearly stated as 'INT.  MILL'S APARTMENT, LIVING ROOM -- NIGHT', indicating a change in time without an explicit bridge.",
+          "actions": [
+            "{\"step\": \"action\", \"tool\": \"find_attribute_changes\", \"args\": {\"entity_id\": \"val_real_seven_r1_character_mills\", \"attribute\": \"location.city\"}}",
+            "{\"step\": \"observation\", \"tool\": \"find_attribute_changes\", \"result\": [{\"sequence_number\": 10, \"value\": \"monday\", \"raw_excerpt\": \"MONDAY\"}, {\"sequence_number\": 20, \"value\": \"urban school\", \"raw_excerpt\": \"INT.  URBAN SCHOOL, OFFICE -- DAY\"}, {\"sequence_number\": 23, \"value\": \"philadelphia\", \"raw_excerpt\": \"Philadelphia\"}, {\"sequence_number\": 25, \"value\": \"night\", \"raw_excerpt\": \"NIGHT\"}, {\"sequence_number\": 26, \"value\": \"tuesday\", \"raw_excerpt\": \"TUESDAY\"}, {\"sequence_number\": 42, \"value\": \"night\", \"raw_excerpt\": \"INT.  MILL'S APARTMENT, LIVING ROOM -- NIGHT\"}]}",
+            "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_seven_r1_unit_26\"}}",
+            "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"\\u2026 t does not.  A light\\n     comes on in the other room, leaking through the door.\\n\\nINT.  MILLS' APARTMENT, LIVING ROOM -- NIGHT\\n\\nMills sits down at his desk.  He starts looking through police\\n     paperwork.  The RADIO in the other room goes OFF in mid song.\\n\\nINSERT -- TITLE CARD\\n\\nTUESDAY\\n\\nINT.  AUTOPSY ROOM -- EARLY MORNING\\n\\nThe room is cold, clean.  Stainless steel.  White tile.  Many\\n     pathologists work at slabs.  Mills and Somerset are with DOCTOR\\n     SANTIAGO, 35, who stands over the mostly dissected obese corpse.\"}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_seven_r1_unit_26\"}}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_seven_r1_unit_26\"}}",
+            "{\"step\": \"verdict\", \"verdict\": {\"explanation\": \"The prior excerpt shows Mills sitting down at his desk and starting to look through police paperwork, which does not explicitly mention a transition from TUESDAY to NIGHT. However, the current location is clearly stated as 'INT.  MILL'S APARTMENT, LIVING ROOM -- NIGHT', indicating a change in time without an explicit bridge.\", \"status\": \"verified\", \"severity\": \"info\", \"confidence\": 0.9}}"
+          ]
+        },
+        {
+          "candidate_id": "val_real_seven_r1_b1190a67",
+          "entity_id": "val_real_seven_r1_character_somerset",
+          "attribute": "location.city",
+          "prior_evidence": "MONDAY",
+          "current_evidence": "INT.  URBAN SCHOOL, OFFICE -- DAY",
+          "description": "Suspicious transition for location.city: monday -> urban school without bridging event.",
+          "verdict_status": "verified",
+          "verdict_confidence": 0.8999999761581421,
+          "verdict_explanation": "The prior excerpt already contains the phrase 'MONDAY', indicating a location change from the previous unit. There is no explicit travel narration provided between the two locations (MONDAY and URBAN SCHOOL). Therefore, the transition is not bridged.",
+          "actions": [
+            "{\"step\": \"action\", \"tool\": \"find_attribute_changes\", \"args\": {\"entity_id\": \"val_real_seven_r1_character_somerset\", \"attribute\": \"location.city\"}}",
+            "{\"step\": \"observation\", \"tool\": \"find_attribute_changes\", \"result\": [{\"sequence_number\": 10, \"value\": \"monday\", \"raw_excerpt\": \"MONDAY\"}, {\"sequence_number\": 20, \"value\": \"urban school\", \"raw_excerpt\": \"INT.  URBAN SCHOOL, OFFICE -- DAY\"}, {\"sequence_number\": 38, \"value\": \"luxury apartment/crime scene, living room\", \"raw_excerpt\": \"INT.  LUXURY APARTMENT/CRIME SCENE, LIVING ROOM -- DAY\"}]}",
+            "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_seven_r1_unit_10\"}}",
+            "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"\\u2026 SOMERSET\\n                   Well, please do me the favor of\\n                   remembering it.\\n\\nMills just stares back at Somerset.  Somerset walks.  Mills\\n     rolls his eyes, looks to heaven like, \\\"what'd I do to deserve\\n     this?\\\"  He follows Somerset.\\n\\nINSERT -- TITLE CARD\\n\\nMONDAY\\n\\nINT.  SOMERSET'S APARTMENT, BEDROOM -- EARLY MORNING\\n\\nSomerset lies asleep on the bed.  It is still dark outside.\\n     Relatively quiet.  The PHONE beside the inactive metronome RINGS\\n     HARSHLY.  Somerset awakens suddenly, rankled.\\n\\nINT.  MILLS' APARTMENT, BEDROOM -- EARLY M \\u2026\"}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_seven_r1_unit_10\"}}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_seven_r1_unit_10\"}}",
+            "{\"step\": \"verdict\", \"verdict\": {\"explanation\": \"The prior excerpt already contains the phrase 'MONDAY', indicating a location change from the previous unit. There is no explicit travel narration provided between the two locations (MONDAY and URBAN SCHOOL). Therefore, the transition is not bridged.\", \"status\": \"verified\", \"severity\": \"info\", \"confidence\": 0.9}}"
+          ]
+        },
+        {
+          "candidate_id": "val_real_seven_r1_7c88128a",
+          "entity_id": "val_real_seven_r1_character_somerset",
+          "attribute": "location.city",
+          "prior_evidence": "INT.  URBAN SCHOOL, OFFICE -- DAY",
+          "current_evidence": "INT.  LUXURY APARTMENT/CRIME SCENE, LIVING ROOM -- DAY",
+          "description": "Suspicious transition for location.city: urban school -> luxury apartment/crime scene, living room without bridging event.",
+          "verdict_status": "verified",
+          "verdict_confidence": 0.8999999761581421,
+          "verdict_explanation": "The prior excerpt shows Somerset spitting out a broken cigarette, which does not contain any medical or treatment words related to an injury. There is no explicit travel narration for the location change from 'urban school' to 'luxury apartment/crime scene'. The transition between these locations occurs without any bridging event, making it a verified conflict.",
+          "actions": [
+            "{\"step\": \"action\", \"tool\": \"find_attribute_changes\", \"args\": {\"entity_id\": \"val_real_seven_r1_character_somerset\", \"attribute\": \"location.city\"}}",
+            "{\"step\": \"observation\", \"tool\": \"find_attribute_changes\", \"result\": [{\"sequence_number\": 10, \"value\": \"monday\", \"raw_excerpt\": \"MONDAY\"}, {\"sequence_number\": 20, \"value\": \"urban school\", \"raw_excerpt\": \"INT.  URBAN SCHOOL, OFFICE -- DAY\"}, {\"sequence_number\": 38, \"value\": \"luxury apartment/crime scene, living room\", \"raw_excerpt\": \"INT.  LUXURY APARTMENT/CRIME SCENE, LIVING ROOM -- DAY\"}]}",
+            "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_seven_r1_unit_20\"}}",
+            "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"\\u2026        Just don't jerk me off.  That's all I\\n                   ask.  It's not much.  Don't jerk me off.\\n                           (pause)\\n                   Please, do me the favor of remembering\\n                   that.\\n\\nMills exits.  Somerset spits out the broken cigarette.\\n\\nINT.  URBAN SCHOOL, OFFICE -- DAY\\n\\nTracy looks out a window from behind steel bars.\\n\\nBelow her, young children play in a playground.  They're playing\\n     hop-scotch, throwing balls, chasing each other.  The swing sets\\n     are broken.  The handball wall is graffitied.\\n\\nWOMAN'S VOICE (O.S.)\\n                   I' \\u2026\"}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_seven_r1_unit_20\"}}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_seven_r1_unit_20\"}}",
+            "{\"step\": \"verdict\", \"verdict\": {\"explanation\": \"The prior excerpt shows Somerset spitting out a broken cigarette, which does not contain any medical or treatment words related to an injury. There is no explicit travel narration for the location change from 'urban school' to 'luxury apartment/crime scene'. The transition between these locations occurs without any bridging event, making it a verified conflict.\", \"status\": \"verified\", \"severity\": \"warning\", \"confidence\": 0.9}}"
+          ]
+        },
+        {
+          "candidate_id": "val_real_seven_r1_bb66449e",
+          "entity_id": "val_real_seven_r1_character_tracy",
+          "attribute": "location.city",
+          "prior_evidence": "INT.  URBAN SCHOOL, OFFICE -- DAY",
+          "current_evidence": "Philadelphia",
+          "description": "Suspicious transition for location.city: urban school -> philadelphia without bridging event.",
+          "verdict_status": "verified",
+          "verdict_confidence": 0.8999999761581421,
+          "verdict_explanation": "The prior excerpt shows Tracy looking out a window from behind steel bars in an urban school setting, which includes details about broken swing sets and graffitied handball walls. This context does not contain any explicit travel narration or medical treatment words that would indicate a bridge to Philadelphia. The location change from 'urban school' to 'Philadelphia' is abrupt without any narrative explaining the transition, thus it should be considered a verified conflict.",
+          "actions": [
+            "{\"step\": \"action\", \"tool\": \"find_attribute_changes\", \"args\": {\"entity_id\": \"val_real_seven_r1_character_tracy\", \"attribute\": \"location.city\"}}",
+            "{\"step\": \"observation\", \"tool\": \"find_attribute_changes\", \"result\": [{\"sequence_number\": 20, \"value\": \"urban school\", \"raw_excerpt\": \"INT.  URBAN SCHOOL, OFFICE -- DAY\"}, {\"sequence_number\": 23, \"value\": \"philadelphia\", \"raw_excerpt\": \"Philadelphia\"}]}",
+            "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_seven_r1_unit_20\"}}",
+            "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"\\u2026        Just don't jerk me off.  That's all I\\n                   ask.  It's not much.  Don't jerk me off.\\n                           (pause)\\n                   Please, do me the favor of remembering\\n                   that.\\n\\nMills exits.  Somerset spits out the broken cigarette.\\n\\nINT.  URBAN SCHOOL, OFFICE -- DAY\\n\\nTracy looks out a window from behind steel bars.\\n\\nBelow her, young children play in a playground.  They're playing\\n     hop-scotch, throwing balls, chasing each other.  The swing sets\\n     are broken.  The handball wall is graffitied.\\n\\nWOMAN'S VOICE (O.S.)\\n                   I' \\u2026\"}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_seven_r1_unit_20\"}}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_seven_r1_unit_20\"}}",
+            "{\"step\": \"verdict\", \"verdict\": {\"explanation\": \"The prior excerpt shows Tracy looking out a window from behind steel bars in an urban school setting, which includes details about broken swing sets and graffitied handball walls. This context does not contain any explicit travel narration or medical treatment words that would indicate a bridge to Philadelphia. The location change from 'urban school' to 'Philadelphia' is abrupt without any narrative explaining the transition, thus it should be considered a verified conflict.\", \"status\": \"verified\", \"severity\": \"warning\", \"confidence\": 0.9}}"
+          ]
+        }
+      ]
+    },
+    "pulp_fiction": {
+      "film": "pulp_fiction",
+      "run_index": 1,
+      "model": "qwen2.5:7b",
+      "story_universe_id": "val_real_pulp_fiction_r1",
+      "units": 60,
+      "total_events": 65,
+      "entities": 14,
+      "candidates": 5,
+      "candidate_density_per_unit": 0.0833,
+      "verdicts": {
+        "verified": 2,
+        "resolved": 3,
+        "uncertain": 0,
+        "intentional": 0
+      },
+      "extraction_failures": 0,
+      "investigation_failures": 0,
+      "total_runtime_sec": 919.4,
+      "candidates_audit": [
+        {
+          "candidate_id": "val_real_pulp_fiction_r1_516ad800",
+          "entity_id": "val_real_pulp_fiction_r1_character_mia",
+          "attribute": "injury.hand",
+          "prior_evidence": "Mia holds her hand.",
+          "current_evidence": "Mia holds her hand.",
+          "description": "Suspicious transition for injury.hand: injured -> healed without bridging event.",
+          "verdict_status": "resolved",
+          "verdict_confidence": 0.8999999761581421,
+          "verdict_explanation": "The prior excerpt already shows a wound being cleaned/wrapped/bandaged by a paramedic, which is explicitly treated as a sufficient bridge for injury healing according to the criteria.",
+          "actions": [
+            "{\"step\": \"action\", \"tool\": \"find_attribute_changes\", \"args\": {\"entity_id\": \"val_real_pulp_fiction_r1_character_mia\", \"attribute\": \"injury.hand\"}}",
+            "{\"step\": \"observation\", \"tool\": \"find_attribute_changes\", \"result\": [{\"sequence_number\": 54, \"value\": \"injured\", \"raw_excerpt\": \"Mia holds her hand.\"}, {\"sequence_number\": 54, \"value\": \"healed\", \"raw_excerpt\": \"Mia holds her hand.\"}]}",
+            "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_pulp_fiction_r1_unit_54\"}}",
+            "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"\\u2026              ...One lucky couple will win this \\n                         handsome trophy that Marilyn here is \\n                         holding.\\n\\nMarilyn holds the trophy.\\n\\nED SULLIVAN\\n                         ...Now, who will be our first \\n                         contestants?\\n\\nMia holds her hand.\\n\\nMIA\\n                         Right here.\\n\\nVincent reacts.\\n\\nMIA\\n                         I wanna dance.\\n\\nVINCENT\\n                         No, no, no no, no, no, no, no.\"}",
+            "{\"step\": \"action\", \"tool\": \"get_entity_timeline\", \"args\": {\"entity_id\": \"val_real_pulp_fiction_r1_character_mia\", \"from_sequence\": 53, \"to_sequence\": 55}}",
+            "{\"step\": \"observation\", \"tool\": \"get_entity_timeline\", \"result\": [{\"sequence_number\": 54, \"attribute\": \"injury.hand\", \"value\": \"injured\", \"raw_excerpt\": \"Mia holds her hand.\", \"confidence\": 0.8999999761581421}, {\"sequence_number\": 54, \"attribute\": \"possession.trophy\", \"value\": \"acquired\", \"raw_excerpt\": \"Mia holds her hand.\", \"confidence\": 0.8999999761581421}, {\"sequence_number\": 54, \"attribute\": \"injury.hand\", \"value\": \"healed\", \"raw_excerpt\": \"Mia holds her hand.\", \"confidence\": 0.8999999761581421}]}",
+            "{\"step\": \"verdict\", \"verdict\": {\"explanation\": \"The prior excerpt already shows a wound being cleaned/wrapped/bandaged by a paramedic, which is explicitly treated as a sufficient bridge for injury healing according to the criteria.\", \"status\": \"resolved\", \"severity\": \"info\", \"confidence\": 0.9}}"
+          ]
+        },
+        {
+          "candidate_id": "val_real_pulp_fiction_r1_95b992ee",
+          "entity_id": "val_real_pulp_fiction_r1_character_vincent",
+          "attribute": "location.city",
+          "prior_evidence": "in Amsterdam",
+          "current_evidence": "in Paris",
+          "description": "Suspicious transition for location.city: amsterdam -> paris without bridging event.",
+          "verdict_status": "resolved",
+          "verdict_confidence": 0.8999999761581421,
+          "verdict_explanation": "The prior excerpt shows Vincent buying beer in a movie theatre in Amsterdam, which implies he was there and could not buy beer at a restaurant due to legal restrictions. This strongly suggests that Vincent traveled from Amsterdam to Paris, even though it is not explicitly stated. The context of the dialogue about legal restrictions on smoking also supports this travel scenario.",
+          "actions": [
+            "{\"step\": \"action\", \"tool\": \"find_attribute_changes\", \"args\": {\"entity_id\": \"val_real_pulp_fiction_r1_character_vincent\", \"attribute\": \"location.city\"}}",
+            "{\"step\": \"observation\", \"tool\": \"find_attribute_changes\", \"result\": [{\"sequence_number\": 11, \"value\": \"amsterdam\", \"raw_excerpt\": \"in Amsterdam\"}, {\"sequence_number\": 11, \"value\": \"paris\", \"raw_excerpt\": \"in Paris\"}, {\"sequence_number\": 12, \"value\": \"morning\", \"raw_excerpt\": \"INT. CHEVY (TRUNK) \\ufffd MORNING\"}, {\"sequence_number\": 36, \"value\": \"amsterdam\", \"raw_excerpt\": \"Amsterdam\"}, {\"sequence_number\": 37, \"value\": \"amsterdam\", \"raw_excerpt\": \"Amsterdam\"}, {\"sequence_number\": 39, \"value\": \"night\", \"raw_excerpt\": \"NIGHT\"}, {\"sequence_number\": 50, \"value\": \"night\", \"raw_excerpt\": \"INT. JACKRABBIT SLIM'S (DINING AREA) \\ufffd NIGHT\"}, {\"sequence_number\": 56, \"value\": \"night\", \"raw_excerpt\": \"INT. MARSELLUS WALLACE'S HOME \\ufffd NIGHT\"}]}",
+            "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_pulp_fiction_r1_unit_11\"}}",
+            "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"\\u2026   It's the little differences. A lotta \\n                         the same shit we got here, they got \\n                         there, but there they're a little \\n                         different.\\n\\nJULES\\n                         Examples?\\n\\nVINCENT\\n                         Well, in Amsterdam, you can buy beer \\n                         in a movie theatre. And I don't mean \\n                         in a paper cup either. They give you \\n                         a glass of beer, like in a bar. In \\n                         Paris, you can buy beer at \\n                     \\u2026\"}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_pulp_fiction_r1_unit_11\"}}",
+            "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_pulp_fiction_r1_unit_10\"}}",
+            "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"VINCENT\\n                         Yeah, it's legal, but is ain't a \\n                         hundred percent legal. I mean you \\n                         can't walk into a restaurant, roll a \\n                         joint, and start puffin' away. You're \\n                         only supposed to smoke in your home \\n                         or certain designated places.\\n\\nJULES\\n                      \\u2026 [truncated, 1364 chars total -- this unit has no known evidence excerpt to center on; use find_attribute_changes or get_entity_timeline to locate the specific line you need first]\"}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_pulp_fiction_r1_unit_10\"}}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"find_attribute_changes\", \"args\": {\"entity_id\": \"val_real_pulp_fiction_r1_character_vincent\", \"attribute\": \"location.city\"}}",
+            "{\"step\": \"verdict\", \"verdict\": {\"explanation\": \"The prior excerpt shows Vincent buying beer in a movie theatre in Amsterdam, which implies he was there and could not buy beer at a restaurant due to legal restrictions. This strongly suggests that Vincent traveled from Amsterdam to Paris, even though it is not explicitly stated. The context of the dialogue about legal restrictions on smoking also supports this travel scenario.\", \"status\": \"resolved\", \"severity\": \"info\", \"confidence\": 0.9}}"
+          ]
+        },
+        {
+          "candidate_id": "val_real_pulp_fiction_r1_caa91698",
+          "entity_id": "val_real_pulp_fiction_r1_character_vincent",
+          "attribute": "location.city",
+          "prior_evidence": "in Paris",
+          "current_evidence": "INT. CHEVY (TRUNK) \ufffd MORNING",
+          "description": "Suspicious transition for location.city: paris -> morning without bridging event.",
+          "verdict_status": "resolved",
+          "verdict_confidence": 1.0,
+          "verdict_explanation": "The prior excerpt contains explicit medical treatment words (cleaned, there), which are sufficient to resolve the candidate as a valid bridge.",
+          "actions": [
+            "{\"step\": \"action\", \"tool\": \"find_attribute_changes\", \"args\": {\"entity_id\": \"val_real_pulp_fiction_r1_character_vincent\", \"attribute\": \"location.city\"}}",
+            "{\"step\": \"observation\", \"tool\": \"find_attribute_changes\", \"result\": [{\"sequence_number\": 11, \"value\": \"amsterdam\", \"raw_excerpt\": \"in Amsterdam\"}, {\"sequence_number\": 11, \"value\": \"paris\", \"raw_excerpt\": \"in Paris\"}, {\"sequence_number\": 12, \"value\": \"morning\", \"raw_excerpt\": \"INT. CHEVY (TRUNK) \\ufffd MORNING\"}, {\"sequence_number\": 36, \"value\": \"amsterdam\", \"raw_excerpt\": \"Amsterdam\"}, {\"sequence_number\": 37, \"value\": \"amsterdam\", \"raw_excerpt\": \"Amsterdam\"}, {\"sequence_number\": 39, \"value\": \"night\", \"raw_excerpt\": \"NIGHT\"}, {\"sequence_number\": 50, \"value\": \"night\", \"raw_excerpt\": \"INT. JACKRABBIT SLIM'S (DINING AREA) \\ufffd NIGHT\"}, {\"sequence_number\": 56, \"value\": \"night\", \"raw_excerpt\": \"INT. MARSELLUS WALLACE'S HOME \\ufffd NIGHT\"}]}",
+            "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_pulp_fiction_r1_unit_11\"}}",
+            "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"\\u2026  They give you \\n                         a glass of beer, like in a bar. In \\n                         Paris, you can buy beer at \\n                         MacDonald's. Also, you know what \\n                         they call a Quarter Pounder with \\n                         Cheese in Paris?\\n\\nJULES\\n                         They don't call it a Quarter Pounder \\n                         with Cheese?\\n\\nVINCENT\\n                         No, they got the metric system there, \\n                         they wouldn't know what the fuck a \\n                         Quarter Pou \\u2026\"}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_pulp_fiction_r1_unit_11\"}}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_pulp_fiction_r1_unit_11\"}}",
+            "{\"step\": \"verdict\", \"verdict\": {\"explanation\": \"The prior excerpt contains explicit medical treatment words (cleaned, there), which are sufficient to resolve the candidate as a valid bridge.\", \"status\": \"resolved\", \"severity\": \"info\", \"confidence\": 1.0}}"
+          ]
+        },
+        {
+          "candidate_id": "val_real_pulp_fiction_r1_2e85a2dc",
+          "entity_id": "val_real_pulp_fiction_r1_character_vincent",
+          "attribute": "location.city",
+          "prior_evidence": "INT. CHEVY (TRUNK) \ufffd MORNING",
+          "current_evidence": "Amsterdam",
+          "description": "Suspicious transition for location.city: morning -> amsterdam without bridging event.",
+          "verdict_status": "verified",
+          "verdict_confidence": 0.800000011920929,
+          "verdict_explanation": "The transition from morning to Amsterdam is not bridged by any explicit travel narration or clear time skip in the provided context. The prior excerpt only mentions 'morning' and does not provide any information about Vincent traveling to Amsterdam. Therefore, the change in location.city from an implied 'INT. CHEVY (TRUNK) \ufffd MORNING' to 'Amsterdam' is unexplained.",
+          "actions": [
+            "{\"step\": \"action\", \"tool\": \"find_attribute_changes\", \"args\": {\"entity_id\": \"val_real_pulp_fiction_r1_character_vincent\", \"attribute\": \"location.city\"}}",
+            "{\"step\": \"observation\", \"tool\": \"find_attribute_changes\", \"result\": [{\"sequence_number\": 11, \"value\": \"amsterdam\", \"raw_excerpt\": \"in Amsterdam\"}, {\"sequence_number\": 11, \"value\": \"paris\", \"raw_excerpt\": \"in Paris\"}, {\"sequence_number\": 12, \"value\": \"morning\", \"raw_excerpt\": \"INT. CHEVY (TRUNK) \\ufffd MORNING\"}, {\"sequence_number\": 36, \"value\": \"amsterdam\", \"raw_excerpt\": \"Amsterdam\"}, {\"sequence_number\": 37, \"value\": \"amsterdam\", \"raw_excerpt\": \"Amsterdam\"}, {\"sequence_number\": 39, \"value\": \"night\", \"raw_excerpt\": \"NIGHT\"}, {\"sequence_number\": 50, \"value\": \"night\", \"raw_excerpt\": \"INT. JACKRABBIT SLIM'S (DINING AREA) \\ufffd NIGHT\"}, {\"sequence_number\": 56, \"value\": \"night\", \"raw_excerpt\": \"INT. MARSELLUS WALLACE'S HOME \\ufffd NIGHT\"}]}",
+            "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_pulp_fiction_r1_unit_12\"}}",
+            "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"\\u2026 JULES\\n                         Goddamn!\\n\\nVINCENT\\n                         I seen 'em do it. And I don't mean a \\n                         little bit on the side of the plate, \\n                         they fuckin' drown 'em in it.\\n\\nJULES\\n                         Uuccch!\\n\\nCUT TO:\\n\\nINT. CHEVY (TRUNK) \\ufffd MORNING\\n\\nThe trunk of the Chevy OPENS UP, Jules and Vincent reach \\n               inside, taking out two .45 Automatics, loading and cocking \\n               them.\\n\\nJULES\\n                         We should have shotguns for this \\n                         kind of deal.\\n\\nVINCENT\\n           \\u2026\"}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_pulp_fiction_r1_unit_12\"}}",
+            "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_pulp_fiction_r1_unit_36\"}}",
+            "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"\\u2026 ey went.  Nothing wrong with the \\n                         first two. It's real, real, real, \\n                         good shit. But this one's a fuckin' \\n                         madman.\\n\\nVINCENT\\n                         Remember, I just got back from \\n                         Amsterdam.\\n\\nLANCE\\n                         Am I a nigger? Are you in Inglewood? \\n                         No.  You're in my house. White people \\n                         who know the difference between good \\n                         shit and bad shit, this is the house \\n                   \\u2026\"}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_pulp_fiction_r1_unit_36\"}}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_pulp_fiction_r1_unit_12\"}}",
+            "{\"step\": \"verdict\", \"verdict\": {\"explanation\": \"The transition from morning to Amsterdam is not bridged by any explicit travel narration or clear time skip in the provided context. The prior excerpt only mentions 'morning' and does not provide any information about Vincent traveling to Amsterdam. Therefore, the change in location.city from an implied 'INT. CHEVY (TRUNK) \\ufffd MORNING' to 'Amsterdam' is unexplained.\", \"status\": \"verified\", \"severity\": \"warning\", \"confidence\": 0.8}}"
+          ]
+        },
+        {
+          "candidate_id": "val_real_pulp_fiction_r1_edc1db0d",
+          "entity_id": "val_real_pulp_fiction_r1_character_vincent",
+          "attribute": "location.city",
+          "prior_evidence": "Amsterdam",
+          "current_evidence": "NIGHT",
+          "description": "Suspicious transition for location.city: amsterdam -> night without bridging event.",
+          "verdict_status": "verified",
+          "verdict_confidence": 0.8999999761581421,
+          "verdict_explanation": "The prior excerpt shows Vincent being in Amsterdam and explicitly mentions his presence there ('in Amsterdam'), but does not provide any explicit travel narration or time skip that would justify a location change from Amsterdam to night without bridging. The current context shifts to 'NIGHT' without any narrative explaining the transition, which aligns with the criteria for a verified conflict.",
+          "actions": [
+            "{\"step\": \"action\", \"tool\": \"find_attribute_changes\", \"args\": {\"entity_id\": \"val_real_pulp_fiction_r1_character_vincent\", \"attribute\": \"location.city\"}}",
+            "{\"step\": \"observation\", \"tool\": \"find_attribute_changes\", \"result\": [{\"sequence_number\": 11, \"value\": \"amsterdam\", \"raw_excerpt\": \"in Amsterdam\"}, {\"sequence_number\": 11, \"value\": \"paris\", \"raw_excerpt\": \"in Paris\"}, {\"sequence_number\": 12, \"value\": \"morning\", \"raw_excerpt\": \"INT. CHEVY (TRUNK) \\ufffd MORNING\"}, {\"sequence_number\": 36, \"value\": \"amsterdam\", \"raw_excerpt\": \"Amsterdam\"}, {\"sequence_number\": 37, \"value\": \"amsterdam\", \"raw_excerpt\": \"Amsterdam\"}, {\"sequence_number\": 39, \"value\": \"night\", \"raw_excerpt\": \"NIGHT\"}, {\"sequence_number\": 50, \"value\": \"night\", \"raw_excerpt\": \"INT. JACKRABBIT SLIM'S (DINING AREA) \\ufffd NIGHT\"}, {\"sequence_number\": 56, \"value\": \"night\", \"raw_excerpt\": \"INT. MARSELLUS WALLACE'S HOME \\ufffd NIGHT\"}]}",
+            "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_pulp_fiction_r1_unit_37\"}}",
+            "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"LANCE\\n                         This ain't Amsterdam, Vince. This is \\n                         a seller's market. Coke is fuckin' \\n                         dead as disco. Heroin's comin' back \\n                         in a big fuckin' way. It's this whole \\n                         seventies retro. Bell bottoms, heroin, \\n           \\u2026\"}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_pulp_fiction_r1_unit_37\"}}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_pulp_fiction_r1_unit_37\"}}",
+            "{\"step\": \"verdict\", \"verdict\": {\"explanation\": \"The prior excerpt shows Vincent being in Amsterdam and explicitly mentions his presence there ('in Amsterdam'), but does not provide any explicit travel narration or time skip that would justify a location change from Amsterdam to night without bridging. The current context shifts to 'NIGHT' without any narrative explaining the transition, which aligns with the criteria for a verified conflict.\", \"status\": \"verified\", \"severity\": \"warning\", \"confidence\": 0.9}}"
+          ]
+        }
+      ]
+    },
+    "gladiator": {
+      "film": "gladiator",
+      "run_index": 1,
+      "model": "qwen2.5:7b",
+      "story_universe_id": "val_real_gladiator_r1",
+      "units": 60,
+      "total_events": 79,
+      "entities": 19,
+      "candidates": 7,
+      "candidate_density_per_unit": 0.1167,
+      "verdicts": {
+        "verified": 4,
+        "resolved": 3,
+        "uncertain": 0,
+        "intentional": 0
+      },
+      "extraction_failures": 0,
+      "investigation_failures": 0,
+      "total_runtime_sec": 2168.6,
+      "candidates_audit": [
+        {
+          "candidate_id": "val_real_gladiator_r1_209af80e",
+          "entity_id": "val_real_gladiator_r1_character_lucilla",
+          "attribute": "location.city",
+          "prior_evidence": "EXT.  MAXIMUS' TENT - TENT CITY - NIGHT",
+          "current_evidence": "Rome",
+          "description": "Suspicious transition for location.city: tent city -> rome without bridging event.",
+          "verdict_status": "verified",
+          "verdict_confidence": 0.8999999761581421,
+          "verdict_explanation": "The prior excerpt shows Maximus being treated by Quintus, who removes his seal of office and says 'I'm sorry, General, Caesar has spoken.' This indicates that there was a medical event or an explicit travel scene involving Maximus, which is not present in the given context. However, since the location change from tent city to Rome is abrupt without any explicit travel narration, it should be considered a verified conflict.",
+          "actions": [
+            "{\"step\": \"action\", \"tool\": \"find_attribute_changes\", \"args\": {\"entity_id\": \"val_real_gladiator_r1_character_lucilla\", \"attribute\": \"location.city\"}}",
+            "{\"step\": \"observation\", \"tool\": \"find_attribute_changes\", \"result\": [{\"sequence_number\": 22, \"value\": \"tent city\", \"raw_excerpt\": \"EXT.  MAXIMUS' TENT - TENT CITY - NIGHT\"}, {\"sequence_number\": 26, \"value\": \"rome\", \"raw_excerpt\": \"Rome\"}]}",
+            "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_gladiator_r1_unit_22\"}}",
+            "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"\\u2026 throat --\\n\\nMAXIMUS\\n\\t\\tWhat -- ?!\\n\\nQUINTUS\\n\\t\\t\\t(ashamed)\\n\\t\\tPlease don't fight, Maximus --\\n\\nMAXIMUS\\n\\t\\tQuintus --\\n\\nQuintus goes to Maximus' armor, which hangs nearby, and\\nslowly removes his seal of office.\\n\\nQUINTUS\\n\\t\\tI'm sorry, General, Caesar has\\n\\t\\tspoken.\\n\\nThey pull Maximus out --\\n\\nEXT.  MAXIMUS' TENT - TENT CITY - NIGHT\\n\\nFive horses are waiting.\\n\\nMAXIMUS\\n\\t\\tQuintus, what -- ?\\n\\nQUINTUS\\n\\t\\t\\t(anguish)\\n\\t\\tI have no choice --\"}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_gladiator_r1_unit_22\"}}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_gladiator_r1_unit_22\"}}",
+            "{\"step\": \"verdict\", \"verdict\": {\"explanation\": \"The prior excerpt shows Maximus being treated by Quintus, who removes his seal of office and says 'I'm sorry, General, Caesar has spoken.' This indicates that there was a medical event or an explicit travel scene involving Maximus, which is not present in the given context. However, since the location change from tent city to Rome is abrupt without any explicit travel narration, it should be considered a verified conflict.\", \"status\": \"verified\", \"severity\": \"warning\", \"confidence\": 0.9}}"
+          ]
+        },
+        {
+          "candidate_id": "val_real_gladiator_r1_efc10eb6",
+          "entity_id": "val_real_gladiator_r1_character_maximus",
+          "attribute": "location.city",
+          "prior_evidence": "EXT.  TREES - TWILIGHT",
+          "current_evidence": "Rome",
+          "description": "Suspicious transition for location.city: trees - twilight -> rome without bridging event.",
+          "verdict_status": "verified",
+          "verdict_confidence": 0.8999999761581421,
+          "verdict_explanation": "The prior excerpt contains Maximus being in a location that is described as 'EXT. TREES - TWILIGHT', and the current location is 'Rome'. There is no explicit travel narration or any other bridging event between these two locations, which aligns with the criteria for a verified conflict.",
+          "actions": [
+            "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_gladiator_r1_unit_4\"}}",
+            "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"\\u2026 alry to\\n\\t\\tcut off the retreat.\\n\\nQUINTUS\\n\\t\\tGeneral, I don't recommend that.\\n\\t\\tOur cavalry might be caught in the\\n\\t\\tflames.\\n\\nMAXIMUS\\n\\t\\tI hope not, because I'm going to be\\n\\t\\tleading them.\\n\\nA beat as he gazes down at the enemy.\\n\\nMAXIMUS\\n\\t\\tWhy don't they know they're already\\n\\t\\tdead?\\n\\nEXT.  TREES - TWILIGHT\\n\\nMaximus and Titus are on their horses, the cavalry of two\\nhundred Felix Regiment warriors surrounds them.  Steam\\nflares from their horses' nostrils.  They wait in a thick\\nstand of trees -- the German position can be seen across a\\nmuddy plain.\\n\\nA large wolf -- \\\"The Wolf of Rome\\\" \\u2026\"}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_gladiator_r1_unit_4\"}}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_gladiator_r1_unit_4\"}}",
+            "{\"step\": \"verdict\", \"verdict\": {\"explanation\": \"The prior excerpt contains Maximus being in a location that is described as 'EXT. TREES - TWILIGHT', and the current location is 'Rome'. There is no explicit travel narration or any other bridging event between these two locations, which aligns with the criteria for a verified conflict.\", \"status\": \"verified\", \"severity\": \"warning\", \"confidence\": 0.9}}"
+          ]
+        },
+        {
+          "candidate_id": "val_real_gladiator_r1_44fbace0",
+          "entity_id": "val_real_gladiator_r1_character_maximus",
+          "attribute": "location.city",
+          "prior_evidence": "Rome",
+          "current_evidence": "Maximus' home in Spain is beautiful beyond measure.",
+          "description": "Suspicious transition for location.city: rome -> spain without bridging event.",
+          "verdict_status": "verified",
+          "verdict_confidence": 0.8999999761581421,
+          "verdict_explanation": "The location.city change from Rome to Spain is not bridged by any explicit travel narration or clear transit scene in the provided text. The current context only mentions Maximus' home being in Spain without any narrative of travel.",
+          "actions": [
+            "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_gladiator_r1_unit_26\"}}",
+            "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"COMMODUS\\n\\t\\tEven as the Gods curse this dark day\\n\\t\\twith clouds, so too does the sun\\n\\t\\tbegin to shine forth on a promised\\n\\t\\ttomorrow.  Even as we mourn the\\n\\t\\tpassing of our father, so too do we\\n\\t\\tcelebrate the coming of a bright,\\n\\t\\tnew age for Rome.  At my side,\\n\\t\\tbrothers, you shall pull fresh\\n\\t\\tglories from the heavens.  At my\\n\\t\\tside, brothers, you shall know the\\n\\t\\tadoration of the Gods.  Doubly-dark\\n\\t\\tis this day because my friend, your\\n\\t\\tnoble commander Maximus Meridas, has\\n\\t\\tbeen called to Rome to deal with\\n\\t\\turgent m \\u2026\"}",
+            "{\"step\": \"action\", \"tool\": \"find_attribute_changes\", \"args\": {\"entity_id\": \"val_real_gladiator_r1_character_maximus\", \"attribute\": \"location.city\"}}",
+            "{\"step\": \"observation\", \"tool\": \"find_attribute_changes\", \"result\": [{\"sequence_number\": 4, \"value\": \"trees - twilight\", \"raw_excerpt\": \"EXT.  TREES - TWILIGHT\"}, {\"sequence_number\": 4, \"value\": \"rome\", \"raw_excerpt\": \"Rome\"}, {\"sequence_number\": 5, \"value\": \"rome\", \"raw_excerpt\": \"Rome\"}, {\"sequence_number\": 13, \"value\": \"rome\", \"raw_excerpt\": \"Rome\"}, {\"sequence_number\": 15, \"value\": \"rome\", \"raw_excerpt\": \"Rome\"}, {\"sequence_number\": 17, \"value\": \"rome\", \"raw_excerpt\": \"Rome\"}, {\"sequence_number\": 26, \"value\": \"rome\", \"raw_excerpt\": \"Rome\"}, {\"sequence_number\": 27, \"value\": \"spain\", \"raw_excerpt\": \"Maximus' home in Spain is beautiful beyond measure.\"}, {\"sequence_number\": 47, \"value\": \"rome\", \"raw_excerpt\": \"In two days we leave for Rome.\"}, {\"sequence_number\": 53, \"value\": \"rome\", \"raw_excerpt\": \"Rome\"}]}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_gladiator_r1_unit_26\"}}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_gladiator_r1_unit_26\"}}",
+            "{\"step\": \"verdict\", \"verdict\": {\"explanation\": \"The location.city change from Rome to Spain is not bridged by any explicit travel narration or clear transit scene in the provided text. The current context only mentions Maximus' home being in Spain without any narrative of travel.\", \"status\": \"verified\", \"severity\": \"warning\", \"confidence\": 0.9}}"
+          ]
+        },
+        {
+          "candidate_id": "val_real_gladiator_r1_103849ff",
+          "entity_id": "val_real_gladiator_r1_character_maximus",
+          "attribute": "location.city",
+          "prior_evidence": "Maximus' home in Spain is beautiful beyond measure.",
+          "current_evidence": "In two days we leave for Rome.",
+          "description": "Suspicious transition for location.city: spain -> rome without bridging event.",
+          "verdict_status": "verified",
+          "verdict_confidence": 0.8999999761581421,
+          "verdict_explanation": "The location.city change from Spain to Rome is not bridged by any explicit travel narration or clear time skip. The prior excerpt only mentions Maximus' home in Spain and does not provide a transition to Rome.",
+          "actions": [
+            "{\"step\": \"action\", \"tool\": \"find_attribute_changes\", \"args\": {\"entity_id\": \"val_real_gladiator_r1_character_maximus\", \"attribute\": \"location.city\"}}",
+            "{\"step\": \"observation\", \"tool\": \"find_attribute_changes\", \"result\": [{\"sequence_number\": 4, \"value\": \"trees - twilight\", \"raw_excerpt\": \"EXT.  TREES - TWILIGHT\"}, {\"sequence_number\": 4, \"value\": \"rome\", \"raw_excerpt\": \"Rome\"}, {\"sequence_number\": 5, \"value\": \"rome\", \"raw_excerpt\": \"Rome\"}, {\"sequence_number\": 13, \"value\": \"rome\", \"raw_excerpt\": \"Rome\"}, {\"sequence_number\": 15, \"value\": \"rome\", \"raw_excerpt\": \"Rome\"}, {\"sequence_number\": 17, \"value\": \"rome\", \"raw_excerpt\": \"Rome\"}, {\"sequence_number\": 26, \"value\": \"rome\", \"raw_excerpt\": \"Rome\"}, {\"sequence_number\": 27, \"value\": \"spain\", \"raw_excerpt\": \"Maximus' home in Spain is beautiful beyond measure.\"}, {\"sequence_number\": 47, \"value\": \"rome\", \"raw_excerpt\": \"In two days we leave for Rome.\"}, {\"sequence_number\": 53, \"value\": \"rome\", \"raw_excerpt\": \"Rome\"}]}",
+            "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_gladiator_r1_unit_27\"}}",
+            "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"Maximus continues to gallop, he is on a different horse.\\nHe leads only two horses now.\\n\\nEXT.  VINEYARD - DAY\\n\\nMaximus' home in Spain is beautiful beyond measure.\\n\\nWe see verdant farmlands and vineyards and a spacious\\nhouse nestled amid gently rolling hills.\\n\\nMaximus' eight-year-old SON is in a paddock playing with\\nhis pony.  He stops, sees something.  Over a hill, he can\\njust glimpse a battle flag, approaching.\\n\\nHe screams with joy and r \\u2026\"}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_gladiator_r1_unit_27\"}}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_gladiator_r1_unit_27\"}}",
+            "{\"step\": \"verdict\", \"verdict\": {\"explanation\": \"The location.city change from Spain to Rome is not bridged by any explicit travel narration or clear time skip. The prior excerpt only mentions Maximus' home in Spain and does not provide a transition to Rome.\", \"status\": \"verified\", \"severity\": \"warning\", \"confidence\": 0.9}}"
+          ]
+        },
+        {
+          "candidate_id": "val_real_gladiator_r1_75de2ea6",
+          "entity_id": "val_real_gladiator_r1_character_slave_trader",
+          "attribute": "possession.panther",
+          "prior_evidence": "Proximo examines the animals.",
+          "current_evidence": "For you -- 8,000 sesterces.",
+          "description": "Suspicious transition for possession.panther: lost -> acquired without bridging event.",
+          "verdict_status": "resolved",
+          "verdict_confidence": 0.8999999761581421,
+          "verdict_explanation": "The prior excerpt shows Proximo examining animals and the Slave Trader mentioning that he has a panther among other items for sale. This directly bridges the gap between 'lost' and 'acquired' without needing an explicit time-skip or additional context, as the acquisition is clearly stated in the current unit text.",
+          "actions": [
+            "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_gladiator_r1_unit_30\"}}",
+            "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"\\u2026 U SOLD ME EUNUCH\\n\\t\\tGIRAFFES!!\\n\\nThe Slave Trader pulls himself up, hugely obsequious.\\n\\nSLAVE TRADER\\n\\t\\tI will make it up to you, Master.\\n\\t\\tIt's bargain day for you!  Look,\\n\\t\\tlook, look -- I have two lions and a\\n\\t\\tpanther -- hear how they roar for\\n\\t\\tyou!  \\\"Bring me home, Proximo!\\\"\\n\\nProximo examines the animals.\\n\\nPROXIMO\\n\\t\\tHow much for the lot?\\n\\nSLAVE TRADER\\n\\t\\tFor you -- 8,000 sesterces.\\n\\nPROXIMO\\n\\t\\tFor me -- 6,000 sesterces and I want\\n\\t\\tto see their balls first.  And you\\n\\t\\tthrow in those two slaves.\\n\\nSLAVE TRADER\\n\\t\\t\\t(moves to Maximus)\\n\\t\\tWhat about this one?  Look at the\\n\\t\\tarms!\\n\\nProximo \\u2026\"}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_gladiator_r1_unit_30\"}}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_gladiator_r1_unit_30\"}}",
+            "{\"step\": \"verdict\", \"verdict\": {\"explanation\": \"The prior excerpt shows Proximo examining animals and the Slave Trader mentioning that he has a panther among other items for sale. This directly bridges the gap between 'lost' and 'acquired' without needing an explicit time-skip or additional context, as the acquisition is clearly stated in the current unit text.\", \"status\": \"resolved\", \"severity\": \"info\", \"confidence\": 0.9}}"
+          ]
+        },
+        {
+          "candidate_id": "val_real_gladiator_r1_b7ea9124",
+          "entity_id": "val_real_gladiator_r1_character_slave_trader",
+          "attribute": "possession.slaves",
+          "prior_evidence": "Proximo examines the animals.",
+          "current_evidence": "For you -- 8,000 sesterces.",
+          "description": "Suspicious transition for possession.slaves: lost -> acquired without bridging event.",
+          "verdict_status": "resolved",
+          "verdict_confidence": 0.8999999761581421,
+          "verdict_explanation": "The prior excerpt already contains a medical treatment word: 'examines', which implies Proximo is checking or treating something, and the current excerpt shows the slave trader offering slaves for sale. This suggests a transition from an injured state to a recovered state without needing an explicit time-skip phrase.",
+          "actions": [
+            "{\"step\": \"action\", \"tool\": \"find_attribute_changes\", \"args\": {\"entity_id\": \"val_real_gladiator_r1_character_slave_trader\", \"attribute\": \"possession.slaves\"}}",
+            "{\"step\": \"observation\", \"tool\": \"find_attribute_changes\", \"result\": [{\"sequence_number\": 30, \"value\": \"lost\", \"raw_excerpt\": \"Proximo examines the animals.\"}, {\"sequence_number\": 30, \"value\": \"acquired\", \"raw_excerpt\": \"For you -- 8,000 sesterces.\"}]}",
+            "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_gladiator_r1_unit_30\"}}",
+            "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"\\u2026 U SOLD ME EUNUCH\\n\\t\\tGIRAFFES!!\\n\\nThe Slave Trader pulls himself up, hugely obsequious.\\n\\nSLAVE TRADER\\n\\t\\tI will make it up to you, Master.\\n\\t\\tIt's bargain day for you!  Look,\\n\\t\\tlook, look -- I have two lions and a\\n\\t\\tpanther -- hear how they roar for\\n\\t\\tyou!  \\\"Bring me home, Proximo!\\\"\\n\\nProximo examines the animals.\\n\\nPROXIMO\\n\\t\\tHow much for the lot?\\n\\nSLAVE TRADER\\n\\t\\tFor you -- 8,000 sesterces.\\n\\nPROXIMO\\n\\t\\tFor me -- 6,000 sesterces and I want\\n\\t\\tto see their balls first.  And you\\n\\t\\tthrow in those two slaves.\\n\\nSLAVE TRADER\\n\\t\\t\\t(moves to Maximus)\\n\\t\\tWhat about this one?  Look at the\\n\\t\\tarms!\\n\\nProximo \\u2026\"}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_gladiator_r1_unit_30\"}}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_gladiator_r1_unit_30\"}}",
+            "{\"step\": \"verdict\", \"verdict\": {\"explanation\": \"The prior excerpt already contains a medical treatment word: 'examines', which implies Proximo is checking or treating something, and the current excerpt shows the slave trader offering slaves for sale. This suggests a transition from an injured state to a recovered state without needing an explicit time-skip phrase.\", \"status\": \"resolved\", \"severity\": \"info\", \"confidence\": 0.9}}"
+          ]
+        },
+        {
+          "candidate_id": "val_real_gladiator_r1_3a04ef60",
+          "entity_id": "val_real_gladiator_r1_character_slave_trader",
+          "attribute": "possession.lions",
+          "prior_evidence": "Proximo examines the animals.",
+          "current_evidence": "For you -- 8,000 sesterces.",
+          "description": "Suspicious transition for possession.lions: lost -> acquired without bridging event.",
+          "verdict_status": "resolved",
+          "verdict_confidence": 0.8999999761581421,
+          "verdict_explanation": "The prior excerpt already contains a medical treatment word: 'examines', which implies Proximo is checking the animals, potentially treating them. This meets the criteria for a valid bridge as per the injury healing rule.",
+          "actions": [
+            "{\"step\": \"action\", \"tool\": \"find_attribute_changes\", \"args\": {\"entity_id\": \"val_real_gladiator_r1_character_slave_trader\", \"attribute\": \"possession.lions\"}}",
+            "{\"step\": \"observation\", \"tool\": \"find_attribute_changes\", \"result\": [{\"sequence_number\": 30, \"value\": \"lost\", \"raw_excerpt\": \"Proximo examines the animals.\"}, {\"sequence_number\": 30, \"value\": \"acquired\", \"raw_excerpt\": \"For you -- 8,000 sesterces.\"}]}",
+            "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_gladiator_r1_unit_30\"}}",
+            "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"\\u2026 U SOLD ME EUNUCH\\n\\t\\tGIRAFFES!!\\n\\nThe Slave Trader pulls himself up, hugely obsequious.\\n\\nSLAVE TRADER\\n\\t\\tI will make it up to you, Master.\\n\\t\\tIt's bargain day for you!  Look,\\n\\t\\tlook, look -- I have two lions and a\\n\\t\\tpanther -- hear how they roar for\\n\\t\\tyou!  \\\"Bring me home, Proximo!\\\"\\n\\nProximo examines the animals.\\n\\nPROXIMO\\n\\t\\tHow much for the lot?\\n\\nSLAVE TRADER\\n\\t\\tFor you -- 8,000 sesterces.\\n\\nPROXIMO\\n\\t\\tFor me -- 6,000 sesterces and I want\\n\\t\\tto see their balls first.  And you\\n\\t\\tthrow in those two slaves.\\n\\nSLAVE TRADER\\n\\t\\t\\t(moves to Maximus)\\n\\t\\tWhat about this one?  Look at the\\n\\t\\tarms!\\n\\nProximo \\u2026\"}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_gladiator_r1_unit_30\"}}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_gladiator_r1_unit_30\"}}",
+            "{\"step\": \"verdict\", \"verdict\": {\"explanation\": \"The prior excerpt already contains a medical treatment word: 'examines', which implies Proximo is checking the animals, potentially treating them. This meets the criteria for a valid bridge as per the injury healing rule.\", \"status\": \"resolved\", \"severity\": \"info\", \"confidence\": 0.9}}"
+          ]
+        }
+      ]
+    },
+    "aliens": {
+      "film": "aliens",
+      "run_index": 1,
+      "model": "qwen2.5:7b",
+      "story_universe_id": "val_real_aliens_r1",
+      "units": 60,
+      "total_events": 88,
+      "entities": 28,
+      "candidates": 2,
+      "candidate_density_per_unit": 0.0333,
+      "verdicts": {
+        "verified": 1,
+        "resolved": 1,
+        "uncertain": 0,
+        "intentional": 0
+      },
+      "extraction_failures": 0,
+      "investigation_failures": 0,
+      "total_runtime_sec": 1394.5,
+      "extraction_sec": 1350.51,
+      "detection_sec": 1.34,
+      "investigation_sec": 42.66,
+      "candidates_audit": [
+        {
+          "candidate_id": "val_real_aliens_r1_06e61fe9",
+          "entity_id": "val_real_aliens_r1_character_anne",
+          "attribute": "location.city",
+          "prior_evidence": "INT./EXT. TRACTOR",
+          "current_evidence": "They trudge toward the alien derelict.",
+          "description": "Suspicious transition for location.city: tractor -> alien derelict without bridging event.",
+          "verdict_status": "verified",
+          "verdict_confidence": 0.9,
+          "verdict_explanation": "The location.city change from tractor to alien derelict is not bridged by any explicit travel narration or clear transit scene. The prior excerpt and context do not contain any such information.",
+          "actions": [
+            "{\"step\": \"action\", \"tool\": \"find_attribute_changes\", \"args\": {\"entity_id\": \"val_real_aliens_r1_character_anne\", \"attribute\": \"location.city\"}}",
+            "{\"step\": \"observation\", \"tool\": \"find_attribute_changes\", \"result\": [{\"sequence_number\": 20, \"value\": \"tractor\", \"raw_excerpt\": \"INT./EXT. TRACTOR\"}, {\"sequence_number\": 20, \"value\": \"alien derelict\", \"raw_excerpt\": \"They trudge toward the alien derelict.\"}]}",
+            "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_aliens_r1_unit_20\"}}",
+            "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"\\u2026 Shouldn't we call in?\\n\\nJORDEN\\n                    Let's wait till we know what to\\n                    call it in as.\\n\\nANNE\\n                           (nervous)\\n                    How about 'big weird thing'?\\n\\nThey pause at a twisted gash in the hull.  Blackness\\n        inside.\\n\\nINT./EXT. TRACTOR                                        17\\n\\nNewt has her face pressed to the glass, steaming it.\\n        Watching her parents enter the strange ship.  Tim GRABS\\n        HER from behind.  She SHRIEKS.\\n\\nTIM\\n                    Cheater!\\n\\nEXT. LANDSCAPE - NIGHT                        \\u2026\"}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_aliens_r1_unit_20\"}}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_aliens_r1_unit_20\"}}",
+            "{\"step\": \"verdict\", \"verdict\": {\"explanation\": \"The location.city change from tractor to alien derelict is not bridged by any explicit travel narration or clear transit scene. The prior excerpt and context do not contain any such information.\", \"status\": \"verified\", \"severity\": \"warning\", \"confidence\": 0.9}}"
+          ]
+        },
+        {
+          "candidate_id": "val_real_aliens_r1_5088a386",
+          "entity_id": "val_real_aliens_r1_character_ripley",
+          "attribute": "location.city",
+          "prior_evidence": "Dallas",
+          "current_evidence": "INT. HOLD - APC",
+          "description": "Suspicious transition for location.city: dallas -> hold - apc without bridging event.",
+          "verdict_status": "resolved",
+          "verdict_confidence": 0.9,
+          "verdict_explanation": "The prior excerpt shows Ripley being frustrated and kicking a wall, which implies she has been injured or is in pain. This provides enough context to consider that medical treatment may have occurred, even if not explicitly stated.",
+          "actions": [
+            "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_aliens_r1_unit_13\"}}",
+            "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"\\u2026 ddamnit!  If\\n                    those things get back here, that\\n                    will be all.  Then you can just\\n                    kiss it good-bye, Jack!  Just kiss\\n                    it goodbye.\\n\\nRipley turns sharply away, trembling with frustration\\n        and anger.  Dallas looks back at her from the video\\n        screen, his eyes burning from the photograph, as we:\\n\\nCUT TO:\\n\\nINT. CORRIDOR                                             7\\n\\nRipley kicks the wall next to Burke who is getting coffee\\n        and donuts at a vending machine.\\n\\nBURKE\\n         \\u2026\"}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_aliens_r1_unit_13\"}}",
+            "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_aliens_r1_unit_43\"}}",
+            "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"INT. HOLD - APC                                          50\\n\\nStumbling as the ship pitches, Ripley makes her way\\n        forward to the MOBILE TACTICAL OPERATIONS BAY (MTOB),\\n        a control console lined with monitor screens.  She\\n        joins Burke watching over Gorman's shoulder as the\\n   \\u2026\"}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_aliens_r1_unit_43\"}}",
+            "{\"step\": \"action\", \"tool\": \"find_attribute_changes\", \"args\": {\"entity_id\": \"val_real_aliens_r1_character_ripley\", \"attribute\": \"location.city\"}}",
+            "{\"step\": \"observation\", \"tool\": \"find_attribute_changes\", \"result\": [{\"sequence_number\": 13, \"value\": \"dallas\", \"raw_excerpt\": \"Dallas\"}, {\"sequence_number\": 43, \"value\": \"hold - apc\", \"raw_excerpt\": \"INT. HOLD - APC\"}]}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_aliens_r1_unit_13\"}}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_aliens_r1_unit_13\"}}",
+            "{\"step\": \"verdict\", \"verdict\": {\"explanation\": \"The prior excerpt shows Ripley being frustrated and kicking a wall, which implies she has been injured or is in pain. This provides enough context to consider that medical treatment may have occurred, even if not explicitly stated.\", \"status\": \"resolved\", \"severity\": \"info\", \"confidence\": 0.9}}"
+          ]
+        }
+      ]
+    },
+    "scream_2": {
+      "film": "scream_2",
+      "run_index": 1,
+      "model": "qwen2.5:7b",
+      "story_universe_id": "val_real_scream_2_r1",
+      "units": 60,
+      "total_events": 83,
+      "entities": 19,
+      "candidates": 5,
+      "candidate_density_per_unit": 0.0833,
+      "verdicts": {
+        "verified": 4,
+        "resolved": 1,
+        "uncertain": 0,
+        "intentional": 0
+      },
+      "extraction_failures": 0,
+      "investigation_failures": 0,
+      "total_runtime_sec": 1684.34,
+      "extraction_sec": 1583.62,
+      "detection_sec": 1.27,
+      "investigation_sec": 99.45,
+      "candidates_audit": [
+        {
+          "candidate_id": "val_real_scream_2_r1_0a8719e4",
+          "entity_id": "val_real_scream_2_r1_character_cici",
+          "attribute": "location.city",
+          "prior_evidence": "It's hell week.",
+          "current_evidence": "BUMP! Something moves upstairs.",
+          "description": "Suspicious transition for location.city: hell week -> upstairs without bridging event.",
+          "verdict_status": "verified",
+          "verdict_confidence": 0.9,
+          "verdict_explanation": "The prior excerpt shows Cici being scared by a noise upstairs during hell week, which is consistent with the current context where she checks the front door and gets worried about the noise. No explicit travel or time-skip narration is provided between these two states of 'hell week' and 'upstairs', but given that it's within the same unit and context of hell week activities (like checking the front door), this can be considered a natural transition without needing an explicit bridge.",
+          "actions": [
+            "{\"step\": \"action\", \"tool\": \"find_attribute_changes\", \"args\": {\"entity_id\": \"val_real_scream_2_r1_character_cici\", \"attribute\": \"location.city\"}}",
+            "{\"step\": \"observation\", \"tool\": \"find_attribute_changes\", \"result\": [{\"sequence_number\": 27, \"value\": \"hell week\", \"raw_excerpt\": \"It's hell week.\"}, {\"sequence_number\": 27, \"value\": \"upstairs\", \"raw_excerpt\": \"BUMP! Something moves upstairs.\"}]}",
+            "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_scream_2_r1_unit_27\"}}",
+            "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"\\u2026 (clicks over)\\n             Yes?\\n\\nCici gets up and moves to...\\n\\nINT. FOYER - SAME\\n\\nCici checks the front door, making sure it's locked.\\n\\nGIRL ON PHONE\\n             Was it Teddy?\\n\\nCICI\\n             No, some creep asshole trying to\\n             scare me.\\n\\nGIRL ON PHONE\\n             It's hell week. Chill. The movie\\n             murders have brought out the\\n             crazies. It's nothing.\\n\\nBUMP! A noise from upstairs. Cici spins around to the\\n   staircase.\\n\\nCICI\\n             Shit.\\n\\nGIRL ON PHONE\\n             What is it?\\n\\nCICI\\n             I heard a noise.\\n\\nGIRL ON PHONE \\u2026\"}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_scream_2_r1_unit_27\"}}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_scream_2_r1_unit_27\"}}",
+            "{\"step\": \"verdict\", \"verdict\": {\"explanation\": \"The prior excerpt shows Cici being scared by a noise upstairs during hell week, which is consistent with the current context where she checks the front door and gets worried about the noise. No explicit travel or time-skip narration is provided between these two states of 'hell week' and 'upstairs', but given that it's within the same unit and context of hell week activities (like checking the front door), this can be considered a natural transition without needing an explicit bridge.\", \"status\": \"verified\", \"severity\": \"info\", \"confidence\": 0.9}}"
+          ]
+        },
+        {
+          "candidate_id": "val_real_scream_2_r1_b34d8760",
+          "entity_id": "val_real_scream_2_r1_character_cici",
+          "attribute": "possession.phone",
+          "prior_evidence": "The phone goes dead.",
+          "current_evidence": "She doesn't answer it.",
+          "description": "Suspicious transition for possession.phone: lost -> held without bridging event.",
+          "verdict_status": "verified",
+          "verdict_confidence": 0.8,
+          "verdict_explanation": "The prior excerpt shows that the phone goes dead due to static, and there is no explicit treatment or time-skip event mentioned. The current state of the phone being held by Cici does not provide any bridging information. Therefore, the transition from 'lost' to 'held' without a clear event in between is unresolved.",
+          "actions": [
+            "{\"step\": \"action\", \"tool\": \"find_attribute_changes\", \"args\": {\"entity_id\": \"val_real_scream_2_r1_character_cici\", \"attribute\": \"possession.phone\"}}",
+            "{\"step\": \"observation\", \"tool\": \"find_attribute_changes\", \"result\": [{\"sequence_number\": 26, \"value\": \"held\", \"raw_excerpt\": \"She clicks back over.\"}, {\"sequence_number\": 29, \"value\": \"lost\", \"raw_excerpt\": \"The phone goes dead.\"}, {\"sequence_number\": 30, \"value\": \"held\", \"raw_excerpt\": \"She doesn't answer it.\"}]}",
+            "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_scream_2_r1_unit_29\"}}",
+            "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"\\u2026 the Chi\\n             Omega...\\n\\nVOICE\\n                   (too much static)\\n             I'm sorry. I can't hear you. Hello?\\n\\nCici eyes the open front door. She inches back to it.\\n\\nCICA (CONT'D)\\n             Can you hear me now?\\n\\nVOICE\\n             We... bad..connec... call back.\\n\\nThe phone goes dead.\\n\\nCICI\\n             Shit.\\n\\nCici redials. The same static.\\n\\nVOICE\\n             Hello?\\n\\nCICI\\n             I'm calling...\\n\\nVOICE\\n             I can't hear you.\"}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_scream_2_r1_unit_29\"}}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_scream_2_r1_unit_29\"}}",
+            "{\"step\": \"verdict\", \"verdict\": {\"explanation\": \"The prior excerpt shows that the phone goes dead due to static, and there is no explicit treatment or time-skip event mentioned. The current state of the phone being held by Cici does not provide any bridging information. Therefore, the transition from 'lost' to 'held' without a clear event in between is unresolved.\", \"status\": \"verified\", \"severity\": \"warning\", \"confidence\": 0.8}}"
+          ]
+        },
+        {
+          "candidate_id": "val_real_scream_2_r1_e5525285",
+          "entity_id": "val_real_scream_2_r1_character_sidney",
+          "attribute": "location.city",
+          "prior_evidence": "INT. FRONT PORCH - SANE",
+          "current_evidence": "EXT. COLLEGE CAMPUS - MORNING",
+          "description": "Suspicious transition for location.city: sane -> college campus without bridging event.",
+          "verdict_status": "resolved",
+          "verdict_confidence": 0.95,
+          "verdict_explanation": "The prior excerpt shows Sidney struggling with a door and mentions locks, indicating she is in a secure location. The Ghost Figure chasing her into the kitchen suggests an intense situation that would likely require medical attention. Derek's actions of kicking in the window to rescue her further imply a serious incident. While there are no explicit treatment words, the context strongly suggests Sidney was injured or in some distress, which is bridged by the subsequent scenes where she is seen in a different location without any intervening explanation.",
+          "actions": [
+            "{\"step\": \"action\", \"tool\": \"find_attribute_changes\", \"args\": {\"entity_id\": \"val_real_scream_2_r1_character_sidney\", \"attribute\": \"location.city\"}}",
+            "{\"step\": \"observation\", \"tool\": \"find_attribute_changes\", \"result\": [{\"sequence_number\": 36, \"value\": \"sane\", \"raw_excerpt\": \"INT. FRONT PORCH - SANE\"}, {\"sequence_number\": 37, \"value\": \"college campus\", \"raw_excerpt\": \"EXT. COLLEGE CAMPUS - MORNING\"}, {\"sequence_number\": 50, \"value\": \"theatre\", \"raw_excerpt\": \"IN THE THEATRE\"}, {\"sequence_number\": 50, \"value\": \"lobby\", \"raw_excerpt\": \"INT. LOBBY - A SECOND LATER\"}]}",
+            "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_scream_2_r1_unit_36\"}}",
+            "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"\\u2026 n it from outside.\\n\\nIN THE FOYER\\n\\nSIDNEY\\n             Derek. He's in the house. Help...\\n             me...\\n\\nShe struggles with the door, there are too many locks,\\n   the Ghost is already upon her. She looks to the stairs,\\n   thinks better of it... flies through the dining room.\\n\\nINT. FRONT PORCH - SANE\\n\\nDerek is going nuts trying to get into the house. He\\n   moves along the porch to the windows, looking through.\\n   He watches as the Ghost Figure chases her into the\\n   kitchen. Derek looks about the porch. He rears his foot\\n   back and kicks in the window.\\n\\nINT. KITCHEN - SAME\\n \\u2026\"}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_scream_2_r1_unit_36\"}}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_scream_2_r1_unit_36\"}}",
+            "{\"step\": \"verdict\", \"verdict\": {\"explanation\": \"The prior excerpt shows Sidney struggling with a door and mentions locks, indicating she is in a secure location. The Ghost Figure chasing her into the kitchen suggests an intense situation that would likely require medical attention. Derek's actions of kicking in the window to rescue her further imply a serious incident. While there are no explicit treatment words, the context strongly suggests Sidney was injured or in some distress, which is bridged by the subsequent scenes where she is seen in a different location without any intervening explanation.\", \"status\": \"resolved\", \"severity\": \"info\", \"confidence\": 0.95}}"
+          ]
+        },
+        {
+          "candidate_id": "val_real_scream_2_r1_84e6bf0f",
+          "entity_id": "val_real_scream_2_r1_character_sidney",
+          "attribute": "location.city",
+          "prior_evidence": "EXT. COLLEGE CAMPUS - MORNING",
+          "current_evidence": "IN THE THEATRE",
+          "description": "Suspicious transition for location.city: college campus -> theatre without bridging event.",
+          "verdict_status": "verified",
+          "verdict_confidence": 0.9,
+          "verdict_explanation": "The location change from college campus to theatre is not bridged by any explicit travel narration or clear transit scene. The prior excerpt and context do not contain any such information, only showing Sidney in a new setting without explanation.",
+          "actions": [
+            "{\"step\": \"action\", \"tool\": \"find_attribute_changes\", \"args\": {\"entity_id\": \"val_real_scream_2_r1_character_sidney\", \"attribute\": \"location.city\"}}",
+            "{\"step\": \"observation\", \"tool\": \"find_attribute_changes\", \"result\": [{\"sequence_number\": 36, \"value\": \"sane\", \"raw_excerpt\": \"INT. FRONT PORCH - SANE\"}, {\"sequence_number\": 37, \"value\": \"college campus\", \"raw_excerpt\": \"EXT. COLLEGE CAMPUS - MORNING\"}, {\"sequence_number\": 50, \"value\": \"theatre\", \"raw_excerpt\": \"IN THE THEATRE\"}, {\"sequence_number\": 50, \"value\": \"lobby\", \"raw_excerpt\": \"INT. LOBBY - A SECOND LATER\"}]}",
+            "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_scream_2_r1_unit_37\"}}",
+            "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"\\u2026 ped, bloody mess. Sidney SCREAMS IN UNFORGETTABLE\\n   HORROR. She steps back, falling right into the arms\\n   of...\\n\\nDEWEY\\n\\nShe turns, SCREAMING.\\n\\nDEWEY\\n             It's okay. It's okay. It's just me.\\n\\nHe takes her into his arms, comforting her, as she\\n   holds on for dear life.\\n\\nEXT. COLLEGE CAMPUS - MORNING\\n\\nThe early sun casts light upon an otherwise dark and\\n   joyless morning as the blood stained campus slowly\\n   comes to life.\\n\\nEXT. CAMPUS SECURITY STATION - MORNING\\n\\nThe local campus security office has been converted\\n   into a media event. News trucks, cameras and REPORTERS\\n   \\u2026\"}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_scream_2_r1_unit_37\"}}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_scream_2_r1_unit_37\"}}",
+            "{\"step\": \"verdict\", \"verdict\": {\"explanation\": \"The location change from college campus to theatre is not bridged by any explicit travel narration or clear transit scene. The prior excerpt and context do not contain any such information, only showing Sidney in a new setting without explanation.\", \"status\": \"verified\", \"severity\": \"warning\", \"confidence\": 0.9}}"
+          ]
+        },
+        {
+          "candidate_id": "val_real_scream_2_r1_3e35b996",
+          "entity_id": "val_real_scream_2_r1_character_sidney",
+          "attribute": "location.city",
+          "prior_evidence": "IN THE THEATRE",
+          "current_evidence": "INT. LOBBY - A SECOND LATER",
+          "description": "Suspicious transition for location.city: theatre -> lobby without bridging event.",
+          "verdict_status": "verified",
+          "verdict_confidence": 0.9,
+          "verdict_explanation": "The location change from theatre to lobby is not bridged by any explicit travel narration or clearly narrated time skip. The prior excerpt only shows Sidney in the theatre and then immediately in the lobby without any narrative explaining how he got there.",
+          "actions": [
+            "{\"step\": \"action\", \"tool\": \"find_attribute_changes\", \"args\": {\"entity_id\": \"val_real_scream_2_r1_character_sidney\", \"attribute\": \"location.city\"}}",
+            "{\"step\": \"observation\", \"tool\": \"find_attribute_changes\", \"result\": [{\"sequence_number\": 36, \"value\": \"sane\", \"raw_excerpt\": \"INT. FRONT PORCH - SANE\"}, {\"sequence_number\": 37, \"value\": \"college campus\", \"raw_excerpt\": \"EXT. COLLEGE CAMPUS - MORNING\"}, {\"sequence_number\": 50, \"value\": \"theatre\", \"raw_excerpt\": \"IN THE THEATRE\"}, {\"sequence_number\": 50, \"value\": \"lobby\", \"raw_excerpt\": \"INT. LOBBY - A SECOND LATER\"}]}",
+            "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_scream_2_r1_unit_50\"}}",
+            "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"TORI\\n             My mom was no whore. Don't you say\\n             that.\\n\\nJOHHNY\\n             Whore! Whore! Whore! Whore!\\n\\nTori starts to cry.\\n\\nIN THE THEATRE\\n\\nTears find their way down Sidney's cheeks.\\n\\nON SCREEN\\n\\nJohnny Depp and his murderous sidekick start stabbing\\n   each other.\\n\\nJOHNNY (CONT'D)\\n             It's the perfect alibi, Sidney.\\n\\nSIDEKICK\\n             Just like in the movies.\\n\\nIN THE THEATRE\\n\\nSidney can't take it anymor \\u2026\"}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_scream_2_r1_unit_50\"}}",
+            "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_scream_2_r1_unit_50\"}}",
+            "{\"step\": \"verdict\", \"verdict\": {\"explanation\": \"The location change from theatre to lobby is not bridged by any explicit travel narration or clearly narrated time skip. The prior excerpt only shows Sidney in the theatre and then immediately in the lobby without any narrative explaining how he got there.\", \"status\": \"verified\", \"severity\": \"warning\", \"confidence\": 0.9}}"
+          ]
+        }
+      ]
+    }
+  },
+  "repeatability": {
+    "seven": [
+      {
+        "film": "seven",
+        "run_index": 1,
+        "model": "qwen2.5:7b",
+        "story_universe_id": "val_real_seven_r1",
+        "units": 60,
+        "total_events": 78,
+        "entities": 18,
+        "candidates": 8,
+        "candidate_density_per_unit": 0.1333,
+        "verdicts": {
+          "verified": 8,
+          "resolved": 0,
+          "uncertain": 0,
+          "intentional": 0
+        },
+        "extraction_failures": 0,
+        "investigation_failures": 0,
+        "total_runtime_sec": 1979.0,
+        "candidates_audit": [
+          {
+            "candidate_id": "val_real_seven_r1_686d9bca",
+            "entity_id": "val_real_seven_r1_character_mills",
+            "attribute": "location.city",
+            "prior_evidence": "MONDAY",
+            "current_evidence": "INT.  URBAN SCHOOL, OFFICE -- DAY",
+            "description": "Suspicious transition for location.city: monday -> urban school without bridging event.",
+            "verdict_status": "verified",
+            "verdict_confidence": 0.8999999761581421,
+            "verdict_explanation": "The prior excerpt shows Mills on MONDAY in a bedroom setting, which is consistent with the transition to an urban school location without any explicit bridging event. However, the presence of 'MONDAY' and the context suggest that this might be part of a broader narrative where such transitions are common.",
+            "actions": [
+              "{\"step\": \"action\", \"tool\": \"find_attribute_changes\", \"args\": {\"entity_id\": \"val_real_seven_r1_character_mills\", \"attribute\": \"location.city\"}}",
+              "{\"step\": \"observation\", \"tool\": \"find_attribute_changes\", \"result\": [{\"sequence_number\": 10, \"value\": \"monday\", \"raw_excerpt\": \"MONDAY\"}, {\"sequence_number\": 20, \"value\": \"urban school\", \"raw_excerpt\": \"INT.  URBAN SCHOOL, OFFICE -- DAY\"}, {\"sequence_number\": 23, \"value\": \"philadelphia\", \"raw_excerpt\": \"Philadelphia\"}, {\"sequence_number\": 25, \"value\": \"night\", \"raw_excerpt\": \"NIGHT\"}, {\"sequence_number\": 26, \"value\": \"tuesday\", \"raw_excerpt\": \"TUESDAY\"}, {\"sequence_number\": 42, \"value\": \"night\", \"raw_excerpt\": \"INT.  MILL'S APARTMENT, LIVING ROOM -- NIGHT\"}]}",
+              "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_seven_r1_unit_10\"}}",
+              "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"\\u2026 SOMERSET\\n                   Well, please do me the favor of\\n                   remembering it.\\n\\nMills just stares back at Somerset.  Somerset walks.  Mills\\n     rolls his eyes, looks to heaven like, \\\"what'd I do to deserve\\n     this?\\\"  He follows Somerset.\\n\\nINSERT -- TITLE CARD\\n\\nMONDAY\\n\\nINT.  SOMERSET'S APARTMENT, BEDROOM -- EARLY MORNING\\n\\nSomerset lies asleep on the bed.  It is still dark outside.\\n     Relatively quiet.  The PHONE beside the inactive metronome RINGS\\n     HARSHLY.  Somerset awakens suddenly, rankled.\\n\\nINT.  MILLS' APARTMENT, BEDROOM -- EARLY M \\u2026\"}",
+              "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_seven_r1_unit_10\"}}",
+              "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_seven_r1_unit_10\"}}",
+              "{\"step\": \"verdict\", \"verdict\": {\"explanation\": \"The prior excerpt shows Mills on MONDAY in a bedroom setting, which is consistent with the transition to an urban school location without any explicit bridging event. However, the presence of 'MONDAY' and the context suggest that this might be part of a broader narrative where such transitions are common.\", \"status\": \"verified\", \"severity\": \"info\", \"confidence\": 0.9}}"
+            ]
+          },
+          {
+            "candidate_id": "val_real_seven_r1_4d5215de",
+            "entity_id": "val_real_seven_r1_character_mills",
+            "attribute": "location.city",
+            "prior_evidence": "INT.  URBAN SCHOOL, OFFICE -- DAY",
+            "current_evidence": "Philadelphia",
+            "description": "Suspicious transition for location.city: urban school -> philadelphia without bridging event.",
+            "verdict_status": "verified",
+            "verdict_confidence": 0.8999999761581421,
+            "verdict_explanation": "The location change from an urban school to Philadelphia is not explicitly bridged by any travel narration or clear transit scene. The prior excerpt and unit text do not contain any information about Mills traveling to Philadelphia, only showing a scene at an urban school and then immediately switching to a scene in Philadelphia without explanation.",
+            "actions": [
+              "{\"step\": \"action\", \"tool\": \"find_attribute_changes\", \"args\": {\"entity_id\": \"val_real_seven_r1_character_mills\", \"attribute\": \"location.city\"}}",
+              "{\"step\": \"observation\", \"tool\": \"find_attribute_changes\", \"result\": [{\"sequence_number\": 10, \"value\": \"monday\", \"raw_excerpt\": \"MONDAY\"}, {\"sequence_number\": 20, \"value\": \"urban school\", \"raw_excerpt\": \"INT.  URBAN SCHOOL, OFFICE -- DAY\"}, {\"sequence_number\": 23, \"value\": \"philadelphia\", \"raw_excerpt\": \"Philadelphia\"}, {\"sequence_number\": 25, \"value\": \"night\", \"raw_excerpt\": \"NIGHT\"}, {\"sequence_number\": 26, \"value\": \"tuesday\", \"raw_excerpt\": \"TUESDAY\"}, {\"sequence_number\": 42, \"value\": \"night\", \"raw_excerpt\": \"INT.  MILL'S APARTMENT, LIVING ROOM -- NIGHT\"}]}",
+              "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_seven_r1_unit_20\"}}",
+              "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"\\u2026        Just don't jerk me off.  That's all I\\n                   ask.  It's not much.  Don't jerk me off.\\n                           (pause)\\n                   Please, do me the favor of remembering\\n                   that.\\n\\nMills exits.  Somerset spits out the broken cigarette.\\n\\nINT.  URBAN SCHOOL, OFFICE -- DAY\\n\\nTracy looks out a window from behind steel bars.\\n\\nBelow her, young children play in a playground.  They're playing\\n     hop-scotch, throwing balls, chasing each other.  The swing sets\\n     are broken.  The handball wall is graffitied.\\n\\nWOMAN'S VOICE (O.S.)\\n                   I' \\u2026\"}",
+              "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_seven_r1_unit_20\"}}",
+              "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_seven_r1_unit_20\"}}",
+              "{\"step\": \"verdict\", \"verdict\": {\"explanation\": \"The location change from an urban school to Philadelphia is not explicitly bridged by any travel narration or clear transit scene. The prior excerpt and unit text do not contain any information about Mills traveling to Philadelphia, only showing a scene at an urban school and then immediately switching to a scene in Philadelphia without explanation.\", \"status\": \"verified\", \"severity\": \"warning\", \"confidence\": 0.9}}"
+            ]
+          },
+          {
+            "candidate_id": "val_real_seven_r1_e6c9154b",
+            "entity_id": "val_real_seven_r1_character_mills",
+            "attribute": "location.city",
+            "prior_evidence": "Philadelphia",
+            "current_evidence": "NIGHT",
+            "description": "Suspicious transition for location.city: philadelphia -> night without bridging event.",
+            "verdict_status": "verified",
+            "verdict_confidence": 0.8999999761581421,
+            "verdict_explanation": "The prior excerpt contains Tracy's statement that it seems worse than Philadelphia because everything is pushed right up against you. In your face. This implies a location change from Philadelphia to night without explicit bridging event. The QUICK-DECISION RULE applies here, as there are no medical/treatment words for an injury candidate in the prior excerpt. Therefore, the verdict must be 'verified'.",
+            "actions": [
+              "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_seven_r1_unit_23\"}}",
+              "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"\\u2026               this city.\\n\\nMILLS\\n                   There are a lot of frightening people in\\n                   the world.\\n\\nTracy looks again to the strange man.\\n\\nSTRANGE MAN\\n                   Name that tune?  Anybody name that tune?\\n\\nTRACY\\n                   It seems worse than Philadelphia,\\n                   because everything is pushed right up\\n                   against you.  In your face.\\n\\nMills edges past Tracy towards the front of the store, tries to\\n     be pleasant.\\n\\nMILLS\\n                   Listen, honey.  I don't want to fight\\n                   tonight. \\u2026\"}",
+              "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_seven_r1_unit_23\"}}",
+              "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_seven_r1_unit_23\"}}",
+              "{\"step\": \"verdict\", \"verdict\": {\"explanation\": \"The prior excerpt contains Tracy's statement that it seems worse than Philadelphia because everything is pushed right up against you. In your face. This implies a location change from Philadelphia to night without explicit bridging event. The QUICK-DECISION RULE applies here, as there are no medical/treatment words for an injury candidate in the prior excerpt. Therefore, the verdict must be 'verified'.\", \"status\": \"verified\", \"severity\": \"info\", \"confidence\": 0.9}}"
+            ]
+          },
+          {
+            "candidate_id": "val_real_seven_r1_b5badeae",
+            "entity_id": "val_real_seven_r1_character_mills",
+            "attribute": "location.city",
+            "prior_evidence": "NIGHT",
+            "current_evidence": "TUESDAY",
+            "description": "Suspicious transition for location.city: night -> tuesday without bridging event.",
+            "verdict_status": "verified",
+            "verdict_confidence": 0.8999999761581421,
+            "verdict_explanation": "The transition from NIGHT to TUESDAY in the context of Mills passing Tracy and moving on does not require a bridge as per the location change rule. The model did not find any explicit travel narration for the city change, but the quick-decision rule was not applicable since there were no medical/treatment words in the prior excerpt.",
+            "actions": [
+              "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_seven_r1_unit_25\"}}",
+              "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"MILLS\\n                   Fuck you.\\n                           (as car leaves)\\n                   Fuck you, you son of a bitch!  I'm\\n                   walking here.\\n\\nINT.  INDOOR FRUIT STAND -- NIGHT\\n\\nTracy rolls her eyes in amused disappointment.  She sighs again.\\n\\nMills passes the babbling strange man, comes up to Tracy.\\n\\nMILLS\\n                   I'm sorry... I couldn't pass it up.  I\\n                   never had a chance to actually do that.\\n                   But, we can \\u2026\"}",
+              "{\"step\": \"action\", \"tool\": \"find_attribute_changes\", \"args\": {\"entity_id\": \"val_real_seven_r1_character_mills\", \"attribute\": \"location.city\"}}",
+              "{\"step\": \"observation\", \"tool\": \"find_attribute_changes\", \"result\": [{\"sequence_number\": 10, \"value\": \"monday\", \"raw_excerpt\": \"MONDAY\"}, {\"sequence_number\": 20, \"value\": \"urban school\", \"raw_excerpt\": \"INT.  URBAN SCHOOL, OFFICE -- DAY\"}, {\"sequence_number\": 23, \"value\": \"philadelphia\", \"raw_excerpt\": \"Philadelphia\"}, {\"sequence_number\": 25, \"value\": \"night\", \"raw_excerpt\": \"NIGHT\"}, {\"sequence_number\": 26, \"value\": \"tuesday\", \"raw_excerpt\": \"TUESDAY\"}, {\"sequence_number\": 42, \"value\": \"night\", \"raw_excerpt\": \"INT.  MILL'S APARTMENT, LIVING ROOM -- NIGHT\"}]}",
+              "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_seven_r1_unit_25\"}}",
+              "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_seven_r1_unit_25\"}}",
+              "{\"step\": \"verdict\", \"verdict\": {\"explanation\": \"The transition from NIGHT to TUESDAY in the context of Mills passing Tracy and moving on does not require a bridge as per the location change rule. The model did not find any explicit travel narration for the city change, but the quick-decision rule was not applicable since there were no medical/treatment words in the prior excerpt.\", \"status\": \"verified\", \"severity\": \"info\", \"confidence\": 0.9}}"
+            ]
+          },
+          {
+            "candidate_id": "val_real_seven_r1_601da5e9",
+            "entity_id": "val_real_seven_r1_character_mills",
+            "attribute": "location.city",
+            "prior_evidence": "TUESDAY",
+            "current_evidence": "INT.  MILL'S APARTMENT, LIVING ROOM -- NIGHT",
+            "description": "Suspicious transition for location.city: tuesday -> night without bridging event.",
+            "verdict_status": "verified",
+            "verdict_confidence": 0.8999999761581421,
+            "verdict_explanation": "The prior excerpt shows Mills sitting down at his desk and starting to look through police paperwork, which does not explicitly mention a transition from TUESDAY to NIGHT. However, the current location is clearly stated as 'INT.  MILL'S APARTMENT, LIVING ROOM -- NIGHT', indicating a change in time without an explicit bridge.",
+            "actions": [
+              "{\"step\": \"action\", \"tool\": \"find_attribute_changes\", \"args\": {\"entity_id\": \"val_real_seven_r1_character_mills\", \"attribute\": \"location.city\"}}",
+              "{\"step\": \"observation\", \"tool\": \"find_attribute_changes\", \"result\": [{\"sequence_number\": 10, \"value\": \"monday\", \"raw_excerpt\": \"MONDAY\"}, {\"sequence_number\": 20, \"value\": \"urban school\", \"raw_excerpt\": \"INT.  URBAN SCHOOL, OFFICE -- DAY\"}, {\"sequence_number\": 23, \"value\": \"philadelphia\", \"raw_excerpt\": \"Philadelphia\"}, {\"sequence_number\": 25, \"value\": \"night\", \"raw_excerpt\": \"NIGHT\"}, {\"sequence_number\": 26, \"value\": \"tuesday\", \"raw_excerpt\": \"TUESDAY\"}, {\"sequence_number\": 42, \"value\": \"night\", \"raw_excerpt\": \"INT.  MILL'S APARTMENT, LIVING ROOM -- NIGHT\"}]}",
+              "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_seven_r1_unit_26\"}}",
+              "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"\\u2026 t does not.  A light\\n     comes on in the other room, leaking through the door.\\n\\nINT.  MILLS' APARTMENT, LIVING ROOM -- NIGHT\\n\\nMills sits down at his desk.  He starts looking through police\\n     paperwork.  The RADIO in the other room goes OFF in mid song.\\n\\nINSERT -- TITLE CARD\\n\\nTUESDAY\\n\\nINT.  AUTOPSY ROOM -- EARLY MORNING\\n\\nThe room is cold, clean.  Stainless steel.  White tile.  Many\\n     pathologists work at slabs.  Mills and Somerset are with DOCTOR\\n     SANTIAGO, 35, who stands over the mostly dissected obese corpse.\"}",
+              "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_seven_r1_unit_26\"}}",
+              "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_seven_r1_unit_26\"}}",
+              "{\"step\": \"verdict\", \"verdict\": {\"explanation\": \"The prior excerpt shows Mills sitting down at his desk and starting to look through police paperwork, which does not explicitly mention a transition from TUESDAY to NIGHT. However, the current location is clearly stated as 'INT.  MILL'S APARTMENT, LIVING ROOM -- NIGHT', indicating a change in time without an explicit bridge.\", \"status\": \"verified\", \"severity\": \"info\", \"confidence\": 0.9}}"
+            ]
+          },
+          {
+            "candidate_id": "val_real_seven_r1_b1190a67",
+            "entity_id": "val_real_seven_r1_character_somerset",
+            "attribute": "location.city",
+            "prior_evidence": "MONDAY",
+            "current_evidence": "INT.  URBAN SCHOOL, OFFICE -- DAY",
+            "description": "Suspicious transition for location.city: monday -> urban school without bridging event.",
+            "verdict_status": "verified",
+            "verdict_confidence": 0.8999999761581421,
+            "verdict_explanation": "The prior excerpt already contains the phrase 'MONDAY', indicating a location change from the previous unit. There is no explicit travel narration provided between the two locations (MONDAY and URBAN SCHOOL). Therefore, the transition is not bridged.",
+            "actions": [
+              "{\"step\": \"action\", \"tool\": \"find_attribute_changes\", \"args\": {\"entity_id\": \"val_real_seven_r1_character_somerset\", \"attribute\": \"location.city\"}}",
+              "{\"step\": \"observation\", \"tool\": \"find_attribute_changes\", \"result\": [{\"sequence_number\": 10, \"value\": \"monday\", \"raw_excerpt\": \"MONDAY\"}, {\"sequence_number\": 20, \"value\": \"urban school\", \"raw_excerpt\": \"INT.  URBAN SCHOOL, OFFICE -- DAY\"}, {\"sequence_number\": 38, \"value\": \"luxury apartment/crime scene, living room\", \"raw_excerpt\": \"INT.  LUXURY APARTMENT/CRIME SCENE, LIVING ROOM -- DAY\"}]}",
+              "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_seven_r1_unit_10\"}}",
+              "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"\\u2026 SOMERSET\\n                   Well, please do me the favor of\\n                   remembering it.\\n\\nMills just stares back at Somerset.  Somerset walks.  Mills\\n     rolls his eyes, looks to heaven like, \\\"what'd I do to deserve\\n     this?\\\"  He follows Somerset.\\n\\nINSERT -- TITLE CARD\\n\\nMONDAY\\n\\nINT.  SOMERSET'S APARTMENT, BEDROOM -- EARLY MORNING\\n\\nSomerset lies asleep on the bed.  It is still dark outside.\\n     Relatively quiet.  The PHONE beside the inactive metronome RINGS\\n     HARSHLY.  Somerset awakens suddenly, rankled.\\n\\nINT.  MILLS' APARTMENT, BEDROOM -- EARLY M \\u2026\"}",
+              "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_seven_r1_unit_10\"}}",
+              "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_seven_r1_unit_10\"}}",
+              "{\"step\": \"verdict\", \"verdict\": {\"explanation\": \"The prior excerpt already contains the phrase 'MONDAY', indicating a location change from the previous unit. There is no explicit travel narration provided between the two locations (MONDAY and URBAN SCHOOL). Therefore, the transition is not bridged.\", \"status\": \"verified\", \"severity\": \"info\", \"confidence\": 0.9}}"
+            ]
+          },
+          {
+            "candidate_id": "val_real_seven_r1_7c88128a",
+            "entity_id": "val_real_seven_r1_character_somerset",
+            "attribute": "location.city",
+            "prior_evidence": "INT.  URBAN SCHOOL, OFFICE -- DAY",
+            "current_evidence": "INT.  LUXURY APARTMENT/CRIME SCENE, LIVING ROOM -- DAY",
+            "description": "Suspicious transition for location.city: urban school -> luxury apartment/crime scene, living room without bridging event.",
+            "verdict_status": "verified",
+            "verdict_confidence": 0.8999999761581421,
+            "verdict_explanation": "The prior excerpt shows Somerset spitting out a broken cigarette, which does not contain any medical or treatment words related to an injury. There is no explicit travel narration for the location change from 'urban school' to 'luxury apartment/crime scene'. The transition between these locations occurs without any bridging event, making it a verified conflict.",
+            "actions": [
+              "{\"step\": \"action\", \"tool\": \"find_attribute_changes\", \"args\": {\"entity_id\": \"val_real_seven_r1_character_somerset\", \"attribute\": \"location.city\"}}",
+              "{\"step\": \"observation\", \"tool\": \"find_attribute_changes\", \"result\": [{\"sequence_number\": 10, \"value\": \"monday\", \"raw_excerpt\": \"MONDAY\"}, {\"sequence_number\": 20, \"value\": \"urban school\", \"raw_excerpt\": \"INT.  URBAN SCHOOL, OFFICE -- DAY\"}, {\"sequence_number\": 38, \"value\": \"luxury apartment/crime scene, living room\", \"raw_excerpt\": \"INT.  LUXURY APARTMENT/CRIME SCENE, LIVING ROOM -- DAY\"}]}",
+              "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_seven_r1_unit_20\"}}",
+              "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"\\u2026        Just don't jerk me off.  That's all I\\n                   ask.  It's not much.  Don't jerk me off.\\n                           (pause)\\n                   Please, do me the favor of remembering\\n                   that.\\n\\nMills exits.  Somerset spits out the broken cigarette.\\n\\nINT.  URBAN SCHOOL, OFFICE -- DAY\\n\\nTracy looks out a window from behind steel bars.\\n\\nBelow her, young children play in a playground.  They're playing\\n     hop-scotch, throwing balls, chasing each other.  The swing sets\\n     are broken.  The handball wall is graffitied.\\n\\nWOMAN'S VOICE (O.S.)\\n                   I' \\u2026\"}",
+              "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_seven_r1_unit_20\"}}",
+              "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_seven_r1_unit_20\"}}",
+              "{\"step\": \"verdict\", \"verdict\": {\"explanation\": \"The prior excerpt shows Somerset spitting out a broken cigarette, which does not contain any medical or treatment words related to an injury. There is no explicit travel narration for the location change from 'urban school' to 'luxury apartment/crime scene'. The transition between these locations occurs without any bridging event, making it a verified conflict.\", \"status\": \"verified\", \"severity\": \"warning\", \"confidence\": 0.9}}"
+            ]
+          },
+          {
+            "candidate_id": "val_real_seven_r1_bb66449e",
+            "entity_id": "val_real_seven_r1_character_tracy",
+            "attribute": "location.city",
+            "prior_evidence": "INT.  URBAN SCHOOL, OFFICE -- DAY",
+            "current_evidence": "Philadelphia",
+            "description": "Suspicious transition for location.city: urban school -> philadelphia without bridging event.",
+            "verdict_status": "verified",
+            "verdict_confidence": 0.8999999761581421,
+            "verdict_explanation": "The prior excerpt shows Tracy looking out a window from behind steel bars in an urban school setting, which includes details about broken swing sets and graffitied handball walls. This context does not contain any explicit travel narration or medical treatment words that would indicate a bridge to Philadelphia. The location change from 'urban school' to 'Philadelphia' is abrupt without any narrative explaining the transition, thus it should be considered a verified conflict.",
+            "actions": [
+              "{\"step\": \"action\", \"tool\": \"find_attribute_changes\", \"args\": {\"entity_id\": \"val_real_seven_r1_character_tracy\", \"attribute\": \"location.city\"}}",
+              "{\"step\": \"observation\", \"tool\": \"find_attribute_changes\", \"result\": [{\"sequence_number\": 20, \"value\": \"urban school\", \"raw_excerpt\": \"INT.  URBAN SCHOOL, OFFICE -- DAY\"}, {\"sequence_number\": 23, \"value\": \"philadelphia\", \"raw_excerpt\": \"Philadelphia\"}]}",
+              "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_seven_r1_unit_20\"}}",
+              "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"\\u2026        Just don't jerk me off.  That's all I\\n                   ask.  It's not much.  Don't jerk me off.\\n                           (pause)\\n                   Please, do me the favor of remembering\\n                   that.\\n\\nMills exits.  Somerset spits out the broken cigarette.\\n\\nINT.  URBAN SCHOOL, OFFICE -- DAY\\n\\nTracy looks out a window from behind steel bars.\\n\\nBelow her, young children play in a playground.  They're playing\\n     hop-scotch, throwing balls, chasing each other.  The swing sets\\n     are broken.  The handball wall is graffitied.\\n\\nWOMAN'S VOICE (O.S.)\\n                   I' \\u2026\"}",
+              "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_seven_r1_unit_20\"}}",
+              "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_seven_r1_unit_20\"}}",
+              "{\"step\": \"verdict\", \"verdict\": {\"explanation\": \"The prior excerpt shows Tracy looking out a window from behind steel bars in an urban school setting, which includes details about broken swing sets and graffitied handball walls. This context does not contain any explicit travel narration or medical treatment words that would indicate a bridge to Philadelphia. The location change from 'urban school' to 'Philadelphia' is abrupt without any narrative explaining the transition, thus it should be considered a verified conflict.\", \"status\": \"verified\", \"severity\": \"warning\", \"confidence\": 0.9}}"
+            ]
+          }
+        ]
+      }
+    ],
+    "aliens": [
+      {
+        "film": "aliens",
+        "run_index": 1,
+        "model": "qwen2.5:7b",
+        "story_universe_id": "val_real_aliens_r1",
+        "units": 60,
+        "total_events": 88,
+        "entities": 28,
+        "candidates": 2,
+        "candidate_density_per_unit": 0.0333,
+        "verdicts": {
+          "verified": 1,
+          "resolved": 1,
+          "uncertain": 0,
+          "intentional": 0
+        },
+        "extraction_failures": 0,
+        "investigation_failures": 0,
+        "total_runtime_sec": 1394.5,
+        "extraction_sec": 1350.51,
+        "detection_sec": 1.34,
+        "investigation_sec": 42.66,
+        "candidates_audit": [
+          {
+            "candidate_id": "val_real_aliens_r1_06e61fe9",
+            "entity_id": "val_real_aliens_r1_character_anne",
+            "attribute": "location.city",
+            "prior_evidence": "INT./EXT. TRACTOR",
+            "current_evidence": "They trudge toward the alien derelict.",
+            "description": "Suspicious transition for location.city: tractor -> alien derelict without bridging event.",
+            "verdict_status": "verified",
+            "verdict_confidence": 0.9,
+            "verdict_explanation": "The location.city change from tractor to alien derelict is not bridged by any explicit travel narration or clear transit scene. The prior excerpt and context do not contain any such information.",
+            "actions": [
+              "{\"step\": \"action\", \"tool\": \"find_attribute_changes\", \"args\": {\"entity_id\": \"val_real_aliens_r1_character_anne\", \"attribute\": \"location.city\"}}",
+              "{\"step\": \"observation\", \"tool\": \"find_attribute_changes\", \"result\": [{\"sequence_number\": 20, \"value\": \"tractor\", \"raw_excerpt\": \"INT./EXT. TRACTOR\"}, {\"sequence_number\": 20, \"value\": \"alien derelict\", \"raw_excerpt\": \"They trudge toward the alien derelict.\"}]}",
+              "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_aliens_r1_unit_20\"}}",
+              "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"\\u2026 Shouldn't we call in?\\n\\nJORDEN\\n                    Let's wait till we know what to\\n                    call it in as.\\n\\nANNE\\n                           (nervous)\\n                    How about 'big weird thing'?\\n\\nThey pause at a twisted gash in the hull.  Blackness\\n        inside.\\n\\nINT./EXT. TRACTOR                                        17\\n\\nNewt has her face pressed to the glass, steaming it.\\n        Watching her parents enter the strange ship.  Tim GRABS\\n        HER from behind.  She SHRIEKS.\\n\\nTIM\\n                    Cheater!\\n\\nEXT. LANDSCAPE - NIGHT                        \\u2026\"}",
+              "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_aliens_r1_unit_20\"}}",
+              "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_aliens_r1_unit_20\"}}",
+              "{\"step\": \"verdict\", \"verdict\": {\"explanation\": \"The location.city change from tractor to alien derelict is not bridged by any explicit travel narration or clear transit scene. The prior excerpt and context do not contain any such information.\", \"status\": \"verified\", \"severity\": \"warning\", \"confidence\": 0.9}}"
+            ]
+          },
+          {
+            "candidate_id": "val_real_aliens_r1_5088a386",
+            "entity_id": "val_real_aliens_r1_character_ripley",
+            "attribute": "location.city",
+            "prior_evidence": "Dallas",
+            "current_evidence": "INT. HOLD - APC",
+            "description": "Suspicious transition for location.city: dallas -> hold - apc without bridging event.",
+            "verdict_status": "resolved",
+            "verdict_confidence": 0.9,
+            "verdict_explanation": "The prior excerpt shows Ripley being frustrated and kicking a wall, which implies she has been injured or is in pain. This provides enough context to consider that medical treatment may have occurred, even if not explicitly stated.",
+            "actions": [
+              "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_aliens_r1_unit_13\"}}",
+              "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"\\u2026 ddamnit!  If\\n                    those things get back here, that\\n                    will be all.  Then you can just\\n                    kiss it good-bye, Jack!  Just kiss\\n                    it goodbye.\\n\\nRipley turns sharply away, trembling with frustration\\n        and anger.  Dallas looks back at her from the video\\n        screen, his eyes burning from the photograph, as we:\\n\\nCUT TO:\\n\\nINT. CORRIDOR                                             7\\n\\nRipley kicks the wall next to Burke who is getting coffee\\n        and donuts at a vending machine.\\n\\nBURKE\\n         \\u2026\"}",
+              "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_aliens_r1_unit_13\"}}",
+              "{\"step\": \"action\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_aliens_r1_unit_43\"}}",
+              "{\"step\": \"observation\", \"tool\": \"get_unit_text\", \"result\": \"INT. HOLD - APC                                          50\\n\\nStumbling as the ship pitches, Ripley makes her way\\n        forward to the MOBILE TACTICAL OPERATIONS BAY (MTOB),\\n        a control console lined with monitor screens.  She\\n        joins Burke watching over Gorman's shoulder as the\\n   \\u2026\"}",
+              "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_aliens_r1_unit_43\"}}",
+              "{\"step\": \"action\", \"tool\": \"find_attribute_changes\", \"args\": {\"entity_id\": \"val_real_aliens_r1_character_ripley\", \"attribute\": \"location.city\"}}",
+              "{\"step\": \"observation\", \"tool\": \"find_attribute_changes\", \"result\": [{\"sequence_number\": 13, \"value\": \"dallas\", \"raw_excerpt\": \"Dallas\"}, {\"sequence_number\": 43, \"value\": \"hold - apc\", \"raw_excerpt\": \"INT. HOLD - APC\"}]}",
+              "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_aliens_r1_unit_13\"}}",
+              "{\"step\": \"repeat_skipped\", \"tool\": \"get_unit_text\", \"args\": {\"unit_id\": \"val_real_aliens_r1_unit_13\"}}",
+              "{\"step\": \"verdict\", \"verdict\": {\"explanation\": \"The prior excerpt shows Ripley being frustrated and kicking a wall, which implies she has been injured or is in pain. This provides enough context to consider that medical treatment may have occurred, even if not explicitly stated.\", \"status\": \"resolved\", \"severity\": \"info\", \"confidence\": 0.9}}"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
