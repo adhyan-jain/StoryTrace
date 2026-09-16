@@ -65,7 +65,7 @@ class OllamaProvider(LLMProvider):
         }
 
         try:
-            response = httpx.post(f"{self.base_url}/api/chat", json=payload, timeout=180.0)
+            response = httpx.post(f"{self.base_url}/api/chat", json=payload, timeout=300.0)
             response.raise_for_status()
         except httpx.HTTPError as exc:
             raise LLMUnavailable(f"Ollama request failed: {exc}") from exc

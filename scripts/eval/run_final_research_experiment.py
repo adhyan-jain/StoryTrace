@@ -402,7 +402,6 @@ async def main():
         logger.info(f"Processing Film {film_idx}/{len(films)}: {film_name} ({film_slug})")
         logger.info(f"=======================================================")
 
-        units = load_screenplay_units(full_path, f"exp_res_{film_slug}")
         film_results = {}
 
         # 1. Condition A
@@ -413,8 +412,9 @@ async def main():
             res_a = cached_a
         else:
             sid_a = f"exp_res_{film_slug}_condA"
+            units_a = load_screenplay_units(full_path, sid_a)
             logger.info(f"[{film_slug}] Executing Condition A...")
-            res_a = await run_condition_a_or_b(units, sid_a, "A", provider, client)
+            res_a = await run_condition_a_or_b(units_a, sid_a, "A", provider, client)
             res_a["film"] = film_slug
             res_a["condition"] = "A"
             with open(file_a, "w", encoding="utf-8") as f:
@@ -429,8 +429,9 @@ async def main():
             res_b = cached_b
         else:
             sid_b = f"exp_res_{film_slug}_condB"
+            units_b = load_screenplay_units(full_path, sid_b)
             logger.info(f"[{film_slug}] Executing Condition B...")
-            res_b = await run_condition_a_or_b(units, sid_b, "B", provider, client)
+            res_b = await run_condition_a_or_b(units_b, sid_b, "B", provider, client)
             res_b["film"] = film_slug
             res_b["condition"] = "B"
             with open(file_b, "w", encoding="utf-8") as f:
@@ -445,8 +446,9 @@ async def main():
             res_c = cached_c
         else:
             sid_c = f"exp_res_{film_slug}_condC"
+            units_c = load_screenplay_units(full_path, sid_c)
             logger.info(f"[{film_slug}] Executing Condition C...")
-            res_c = await run_condition_c(units, sid_c, provider, client)
+            res_c = await run_condition_c(units_c, sid_c, provider, client)
             res_c["film"] = film_slug
             res_c["condition"] = "C"
             with open(file_c, "w", encoding="utf-8") as f:
