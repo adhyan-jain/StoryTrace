@@ -228,6 +228,17 @@ class ClickHouseClient:
                         "docstring above this loop for the known ClickHouse Cloud issue."
                     )
 
+    def _retry_call(self, fn, *args, **kwargs):
+        import time
+        max_retries = 5
+        for attempt in range(max_retries):
+            try:
+                return fn(*args, **kwargs)
+            except Exception as e:
+                if attempt == max_retries - 1:
+                    raise
+                time.sleep(2 ** attempt)
+
     def insert_entities(self, entities: List[Any]):
         if not entities:
             return
@@ -239,7 +250,8 @@ class ClickHouseClient:
             for e in entities
         ]
 
-        self.client.insert(
+        self._retry_call(
+            self.client.insert,
             'entities',
             data,
             column_names=['id', 'story_universe_id', 'type', 'name', 'aliases']
@@ -258,7 +270,8 @@ class ClickHouseClient:
             for e in events
         ]
 
-        self.client.insert(
+        self._retry_call(
+            self.client.insert,
             'state_events',
             data,
             column_names=['id', 'story_universe_id', 'entity_id', 'attribute', 'value', 'unit_id', 'sequence_number', 'page_ref', 'raw_excerpt', 'establishment_type', 'confidence']
@@ -278,7 +291,8 @@ class ClickHouseClient:
             for c in conflicts
         ]
 
-        self.client.insert(
+        self._retry_call(
+            self.client.insert,
             'candidate_conflicts',
             data,
             column_names=['id', 'story_universe_id', 'entity_id', 'attribute', 'prior_evidence_unit_id', 'prior_evidence_excerpt', 'current_evidence_unit_id', 'current_evidence_excerpt', 'description']
@@ -296,7 +310,8 @@ class ClickHouseClient:
             for v in verdicts
         ]
 
-        self.client.insert(
+        self._retry_call(
+            self.client.insert,
             'investigation_verdicts',
             data,
             column_names=['id', 'candidate_id', 'status', 'severity', 'explanation', 'confidence', 'investigation_actions', 'suggested_fix']
