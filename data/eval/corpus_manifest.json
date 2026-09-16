@@ -1,32 +1,188 @@
 {
-  "_note": "Phase 0 PILOT manifest only (2 STAGE screenplays + controlled_test). Scale to the full 10-film corpus only after the Phase 0 checkpoint in ~/.claude/plans/dapper-stargazing-adleman.md passes. real_scene_count is computed from actual INT./EXT. headers in the fetched text (scripts/eval/fetch_stage_screenplay.py) -- STAGE_v0's own english_movie_info.csv num_scenes column was found to use a different, larger unit (see plan item A3) and should not be used for the >80 / 30-80 scene bucket selection.",
+  "_description": "StoryTrace Publication-Grade Research Corpus Manifest (Frozen Pre-Annotation Version).",
+  "_version": "3.0_frozen",
+  "_timestamp": "2026-09-16T18:41:00Z",
+  "frozen_model": "qwen2.5:7b",
+  "model_provider": "ollama",
+  "total_research_films": 10,
+  "total_held_out_films": 2,
+  "total_validation_excluded_films": 5,
   "films": [
     {
-      "film": "Aliens (film)",
+      "film_name": "Chasing Amy",
+      "film_slug": "chasing_amy",
+      "story_universe_id": "res_chasing_amy",
+      "source": "STAGE_v0 / IMSDb",
+      "screenplay_path": "data/eval/screenplays/chasing_amy.txt",
+      "exact_scene_unit_count": 91,
+      "word_count": 23553,
+      "sha256_hash": "fcf158677be6b19c8551de99413188f468347399060eb41bf593728ee0be0727",
+      "corpus_role": "research"
+    },
+    {
+      "film_name": "Darkman",
+      "film_slug": "darkman",
+      "story_universe_id": "res_darkman",
+      "source": "STAGE_v0 / IMSDb",
+      "screenplay_path": "data/eval/screenplays/darkman.txt",
+      "exact_scene_unit_count": 129,
+      "word_count": 26308,
+      "sha256_hash": "100f29046a1edf7d811628ffd40c5a15be1a9d8548063f56769df151a6bdd9b7",
+      "corpus_role": "research"
+    },
+    {
+      "film_name": "Do the Right Thing",
+      "film_slug": "do_the_right_thing",
+      "story_universe_id": "res_do_the_right_thing",
+      "source": "STAGE_v0 / IMSDb",
+      "screenplay_path": "data/eval/screenplays/do_the_right_thing.txt",
+      "exact_scene_unit_count": 64,
+      "word_count": 15721,
+      "sha256_hash": "64900f1b5c67fd30dfd0a477e4622d97200889557d75a2f6b1cf4a42b24fd15d",
+      "corpus_role": "research"
+    },
+    {
+      "film_name": "Dog Day Afternoon",
+      "film_slug": "dog_day_afternoon",
+      "story_universe_id": "res_dog_day_afternoon",
+      "source": "STAGE_v0 / IMSDb",
+      "screenplay_path": "data/eval/screenplays/dog_day_afternoon.txt",
+      "exact_scene_unit_count": 163,
+      "word_count": 27437,
+      "sha256_hash": "2c2de939eb90212e0fb1805121d1ddc19ad871dc6d7e49994d2fca0c7f83be36",
+      "corpus_role": "research"
+    },
+    {
+      "film_name": "Fargo",
+      "film_slug": "fargo_film",
+      "story_universe_id": "res_fargo_film",
+      "source": "STAGE_v0 / IMSDb",
+      "screenplay_path": "data/eval/screenplays/fargo_film.txt",
+      "exact_scene_unit_count": 66,
+      "word_count": 16990,
+      "sha256_hash": "a3c44e61008b0c28c7f9ba5eda86b19ee12fbe10b9089767120ada1399010e2b",
+      "corpus_role": "research"
+    },
+    {
+      "film_name": "Inception",
+      "film_slug": "inception",
+      "story_universe_id": "res_inception",
+      "source": "STAGE_v0 / IMSDb",
+      "screenplay_path": "data/eval/screenplays/inception.txt",
+      "exact_scene_unit_count": 132,
+      "word_count": 27919,
+      "sha256_hash": "2c891fd763a42c69ebbd2bad29640943fc4330b521ebd1022b9759e933499463",
+      "corpus_role": "research"
+    },
+    {
+      "film_name": "Punch-Drunk Love",
+      "film_slug": "punch_drunk_love",
+      "story_universe_id": "res_punch_drunk_love",
+      "source": "STAGE_v0 / IMSDb",
+      "screenplay_path": "data/eval/screenplays/punch_drunk_love.txt",
+      "exact_scene_unit_count": 75,
+      "word_count": 15605,
+      "sha256_hash": "1ba28c2e30b5786694bf0c6a7c7b54f7561af8cf30a00e193e48160a1cbbe251",
+      "corpus_role": "research"
+    },
+    {
+      "film_name": "Smokin' Aces",
+      "film_slug": "smokin_aces",
+      "story_universe_id": "res_smokin_aces",
+      "source": "STAGE_v0 / IMSDb",
+      "screenplay_path": "data/eval/screenplays/smokin_aces.txt",
+      "exact_scene_unit_count": 167,
+      "word_count": 28797,
+      "sha256_hash": "34ebb6004ea12a41d4c030b062ba423d9e883669285d3f192d564ffb768710c8",
+      "corpus_role": "research"
+    },
+    {
+      "film_name": "Snow White and the Huntsman",
+      "film_slug": "snow_white_and_the_huntsman",
+      "story_universe_id": "res_snow_white_and_the_huntsman",
+      "source": "STAGE_v0 / IMSDb",
+      "screenplay_path": "data/eval/screenplays/snow_white_and_the_huntsman.txt",
+      "exact_scene_unit_count": 127,
+      "word_count": 26464,
+      "sha256_hash": "597fea352e1272c93f4008235199eb7276e07b95b067eebcd1cdbaa663149a27",
+      "corpus_role": "research"
+    },
+    {
+      "film_name": "The Bourne Identity",
+      "film_slug": "the_bourne_identity_2002_film",
+      "story_universe_id": "res_the_bourne_identity_2002_film",
+      "source": "STAGE_v0 / IMSDb",
+      "screenplay_path": "data/eval/screenplays/the_bourne_identity_2002_film.txt",
+      "exact_scene_unit_count": 127,
+      "word_count": 22843,
+      "sha256_hash": "db9a3886175cb5aa28623cbe83aa2cd71498ab55d37e68f713bc10c874699a44",
+      "corpus_role": "research"
+    },
+    {
+      "film_name": "The Green Mile",
+      "film_slug": "the_green_mile_film",
+      "story_universe_id": "held_the_green_mile_film",
+      "source": "STAGE_v0 / IMSDb",
+      "screenplay_path": "data/eval/screenplays/the_green_mile_film.txt",
+      "exact_scene_unit_count": 165,
+      "word_count": 29889,
+      "sha256_hash": "bc0867c15f1d3de5fff085ae8353874318c7b51d02a76d3d8e216f661ca3be7f",
+      "corpus_role": "held_out"
+    },
+    {
+      "film_name": "Seven",
+      "film_slug": "seven",
+      "story_universe_id": "val_seven",
+      "source": "IMSDB",
+      "screenplay_path": "data/test_documents/seven.txt",
+      "exact_scene_unit_count": 174,
+      "word_count": 34477,
+      "sha256_hash": "dc5fdb0d5b9d2891d14f5a132656308e2ed7f3b97a5f27369771a1a9b05bb51a",
+      "corpus_role": "validation_excluded"
+    },
+    {
+      "film_name": "Pulp Fiction",
+      "film_slug": "pulp_fiction",
+      "story_universe_id": "val_pulp_fiction",
+      "source": "IMSDB",
+      "screenplay_path": "data/test_documents/pulp_fiction.txt",
+      "exact_scene_unit_count": 168,
+      "word_count": 27768,
+      "sha256_hash": "4a6c864ab75f8cfefbf8843c72f17dd60e1ba1e0c11d73d9a425edaced418a18",
+      "corpus_role": "validation_excluded"
+    },
+    {
+      "film_name": "Gladiator",
+      "film_slug": "gladiator",
+      "story_universe_id": "val_gladiator",
+      "source": "IMSDB",
+      "screenplay_path": "data/test_documents/gladiator.txt",
+      "exact_scene_unit_count": 100,
+      "word_count": 24714,
+      "sha256_hash": "77c73f880ec3d4abefaf704094d9db2c34052eae74d09de19803c29725073351",
+      "corpus_role": "validation_excluded"
+    },
+    {
+      "film_name": "Aliens",
       "film_slug": "aliens_film",
-      "story_universe_id": "eval_aliens_film",
-      "bucket": ">80 scenes",
-      "real_scene_count": 192,
+      "story_universe_id": "val_aliens_film",
+      "source": "IMSDB",
+      "screenplay_path": "data/eval/screenplays/aliens_film.txt",
+      "exact_scene_unit_count": 163,
       "word_count": 27657,
-      "script_url": "http://www.imsdb.com/scripts/Aliens.html",
-      "screenplay_path": "data/eval/screenplays/aliens_film.txt"
+      "sha256_hash": "98ae50e0ad2e0e9a7abb629ba2ac8a05a1225869b26d55cb43398e9063b1e5e5",
+      "corpus_role": "validation_excluded"
     },
     {
-      "film": "Scream 2",
+      "film_name": "Scream 2",
       "film_slug": "scream_2",
-      "story_universe_id": "eval_scream_2",
-      "bucket": "30-80 scenes",
-      "real_scene_count": 76,
+      "story_universe_id": "val_scream_2",
+      "source": "IMSDB",
+      "screenplay_path": "data/eval/screenplays/scream_2.txt",
+      "exact_scene_unit_count": 95,
       "word_count": 20512,
-      "script_url": "http://www.imsdb.com/scripts/Scream-2.html",
-      "screenplay_path": "data/eval/screenplays/scream_2.txt"
-    },
-    {
-      "film": "Controlled Test (Synthetic)",
-      "story_universe_id": "eval_controlled_test",
-      "scene_count": 18,
-      "gold_complete": true,
-      "note": "Synthetic document with 3 planted verified conflicts and 2 planted resolved cases. Used as diagnostic benchmark. document_path: data/test_documents/controlled_test.txt (see data/eval/golden_dataset.py for the pre-existing golden annotations already used by scripts/eval/run_eval.py)."
+      "sha256_hash": "a31a0ee4bf21ba6a64ee671d64d5aa8ac9ea0d9045693a7dba1898d0d47f11b9",
+      "corpus_role": "validation_excluded"
     }
   ]
 }
