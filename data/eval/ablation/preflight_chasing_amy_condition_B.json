@@ -1,0 +1,72 @@
+{
+  "story_universe_id": "preflight_chasing_amy_condB_1789591096",
+  "units": 60,
+  "total_events": 82,
+  "entities": 10,
+  "candidates_generated": 3,
+  "conflicts_surfaced": 3,
+  "verdict_counts": {
+    "verified": 3,
+    "resolved": 0,
+    "uncertain": 0,
+    "intentional": 0
+  },
+  "total_runtime_sec": 2315.57,
+  "extraction_sec": 2311.45,
+  "detection_sec": 1.25,
+  "investigation_sec": 2.86,
+  "integrity": {
+    "unit_count": 60,
+    "event_count": 82,
+    "candidate_count": 3,
+    "verdict_count": 3,
+    "entity_count": 10
+  },
+  "findings": [
+    {
+      "conflict_id": "preflight_chasing_amy_condB_1789591096_2f9586fb",
+      "entity_id": "preflight_chasing_amy_condb_1789591096_character_alyssa",
+      "attribute": "location.city",
+      "prior_evidence_unit_id": "preflight_chasing_amy_condB_1789591096_unit_49",
+      "prior_evidence_excerpt": "New York",
+      "current_evidence_unit_id": "preflight_chasing_amy_condB_1789591096_unit_53",
+      "current_evidence_excerpt": "INT ALYSSA'S LIVING ROOM - NIGHT",
+      "description": "Suspicious transition for location.city: new york -> night without bridging event.",
+      "status": "verified",
+      "severity": "warning",
+      "confidence": 0.5,
+      "explanation": "Pipeline-only mode (Condition B): candidate flagged without investigation."
+    },
+    {
+      "conflict_id": "preflight_chasing_amy_condB_1789591096_59d43251",
+      "entity_id": "preflight_chasing_amy_condb_1789591096_character_banky",
+      "attribute": "location.city",
+      "prior_evidence_unit_id": "preflight_chasing_amy_condB_1789591096_unit_8",
+      "prior_evidence_excerpt": "INT. STUDIO - DAY",
+      "current_evidence_unit_id": "preflight_chasing_amy_condB_1789591096_unit_53",
+      "current_evidence_excerpt": "INT ALYSSA'S LIVING ROOM - NIGHT",
+      "description": "Suspicious transition for location.city: int. studio - day -> night without bridging event.",
+      "status": "verified",
+      "severity": "warning",
+      "confidence": 0.5,
+      "explanation": "Pipeline-only mode (Condition B): candidate flagged without investigation."
+    },
+    {
+      "conflict_id": "preflight_chasing_amy_condB_1789591096_ebc6f2a9",
+      "entity_id": "preflight_chasing_amy_condb_1789591096_character_holden",
+      "attribute": "location.city",
+      "prior_evidence_unit_id": "preflight_chasing_amy_condB_1789591096_unit_49",
+      "prior_evidence_excerpt": "New York",
+      "current_evidence_unit_id": "preflight_chasing_amy_condB_1789591096_unit_53",
+      "current_evidence_excerpt": "INT ALYSSA'S LIVING ROOM - NIGHT",
+      "description": "Suspicious transition for location.city: new york -> night without bridging event.",
+      "status": "verified",
+      "severity": "warning",
+      "confidence": 0.5,
+      "explanation": "Pipeline-only mode (Condition B): candidate flagged without investigation."
+    }
+  ],
+  "film": "chasing_amy",
+  "condition": "B",
+  "code_path": "Controlled Extraction -> Entity Registry -> Candidate Detector -> PipelineOnlyInvestigator (No Agent)"
+}

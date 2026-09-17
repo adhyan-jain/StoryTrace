@@ -1,0 +1,58 @@
+{
+  "story_universe_id": "preflight_chasing_amy_condA_1789591096",
+  "units": 60,
+  "total_events": 78,
+  "entities": 10,
+  "candidates_generated": 2,
+  "conflicts_surfaced": 1,
+  "verdict_counts": {
+    "verified": 1,
+    "resolved": 1,
+    "uncertain": 0,
+    "intentional": 0
+  },
+  "total_runtime_sec": 2579.73,
+  "extraction_sec": 2518.57,
+  "detection_sec": 1.34,
+  "investigation_sec": 59.82,
+  "integrity": {
+    "unit_count": 60,
+    "event_count": 78,
+    "candidate_count": 2,
+    "verdict_count": 2,
+    "entity_count": 10
+  },
+  "findings": [
+    {
+      "conflict_id": "preflight_chasing_amy_condA_1789591096_8c7caa85",
+      "entity_id": "preflight_chasing_amy_conda_1789591096_character_alyssa",
+      "attribute": "location.city",
+      "prior_evidence_unit_id": "preflight_chasing_amy_condA_1789591096_unit_49",
+      "prior_evidence_excerpt": "New York",
+      "current_evidence_unit_id": "preflight_chasing_amy_condA_1789591096_unit_53",
+      "current_evidence_excerpt": "INT ALYSSA'S LIVING ROOM - NIGHT",
+      "description": "Suspicious transition for location.city: new york -> night without bridging event.",
+      "status": "resolved",
+      "severity": "info",
+      "confidence": 0.9,
+      "explanation": "The prior excerpt shows Alyssa mentioning she is going to hitch to New York, which implies a travel event from her current location (presumably not in New York). While there are no explicit travel narration words like 'flew', 'took the train', or 'drove', the context of Alyssa planning to go to New York and Holden's reaction strongly suggest she has already traveled. Therefore, the transition from New York to INT ALYSSA'S LIVING ROOM - NIGHT is bridged by implicit travel."
+    },
+    {
+      "conflict_id": "preflight_chasing_amy_condA_1789591096_becfbb90",
+      "entity_id": "preflight_chasing_amy_conda_1789591096_character_holden",
+      "attribute": "location.city",
+      "prior_evidence_unit_id": "preflight_chasing_amy_condA_1789591096_unit_49",
+      "prior_evidence_excerpt": "New York",
+      "current_evidence_unit_id": "preflight_chasing_amy_condA_1789591096_unit_53",
+      "current_evidence_excerpt": "INT ALYSSA'S LIVING ROOM - NIGHT",
+      "description": "Suspicious transition for location.city: new york -> night without bridging event.",
+      "status": "verified",
+      "severity": "warning",
+      "confidence": 0.9,
+      "explanation": "The location.city change from New York to INT ALYSSA'S LIVING ROOM - NIGHT is not bridged by any explicit travel narration or clear time skip. The prior excerpt does not contain any such information and simply shows Holden and Alyssa in different locations without explanation."
+    }
+  ],
+  "film": "chasing_amy",
+  "condition": "A",
+  "code_path": "Controlled Extraction -> Entity Registry -> Candidate Detector -> Bounded InvestigationAgent"
+}
