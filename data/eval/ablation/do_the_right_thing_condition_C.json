@@ -1,0 +1,57 @@
+{
+  "story_universe_id": "exp_res_do_the_right_thing_condC_1789607559",
+  "units": 60,
+  "total_events": 42,
+  "entities": 16,
+  "candidates_generated": 2,
+  "conflicts_surfaced": 2,
+  "verdict_counts": {
+    "verified": 2,
+    "resolved": 0,
+    "uncertain": 0,
+    "intentional": 0
+  },
+  "total_runtime_sec": 4031.45,
+  "extraction_sec": 3979.16,
+  "detection_sec": 1.47,
+  "investigation_sec": 50.82,
+  "integrity": {
+    "unit_count": 60,
+    "event_count": 42,
+    "candidate_count": 2,
+    "verdict_count": 2,
+    "entity_count": 16
+  },
+  "findings": [
+    {
+      "conflict_id": "exp_res_do_the_right_thing_condC_1789607559_2d9b093b",
+      "entity_id": "exp_res_do_the_right_thing_condc_1789607559_character_da_mayor",
+      "attribute": "location.city",
+      "prior_evidence_unit_id": "exp_res_do_the_right_thing_condC_1789607559_unit_39",
+      "prior_evidence_excerpt": "EXT: FRUIT-N-VEG DELIGHT--DUSK",
+      "current_evidence_unit_id": "exp_res_do_the_right_thing_condC_1789607559_unit_39",
+      "current_evidence_excerpt": "EXT: STREET--DUSK",
+      "description": "Suspicious transition for location.city: fruit-n-veg delight -> street without bridging event.",
+      "status": "verified",
+      "severity": "info",
+      "confidence": 0.9,
+      "explanation": "The location.city change from 'fruit-n-veg delight' to 'street' is not explicitly bridged by any travel narration or clear time skip. The context does not provide any information about Da Mayor traveling between these locations."
+    },
+    {
+      "conflict_id": "exp_res_do_the_right_thing_condC_1789607559_1667541e",
+      "entity_id": "exp_res_do_the_right_thing_condc_1789607559_character_da_mayor",
+      "attribute": "location.city",
+      "prior_evidence_unit_id": "exp_res_do_the_right_thing_condC_1789607559_unit_39",
+      "prior_evidence_excerpt": "EXT: STREET--DUSK",
+      "current_evidence_unit_id": "exp_res_do_the_right_thing_condC_1789607559_unit_45",
+      "current_evidence_excerpt": "August 1, 1939, Snow Hill, Alabama.",
+      "description": "Suspicious transition for location.city: street -> snow hill, alabama without bridging event.",
+      "status": "verified",
+      "severity": "warning",
+      "confidence": 0.8,
+      "explanation": "The prior excerpt shows 'EXT: STREET--DUSK', which is a location description that does not explicitly mention travel or a time skip. However, it is followed by 'August 1, 1939, Snow Hill, Alabama.', indicating a change in the city without explicit travel narration. The criteria for resolving a city change require explicit travel narration, and since none is provided, this change is unverified."
+    }
+  ],
+  "film": "do_the_right_thing",
+  "condition": "C"
+}

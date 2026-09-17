@@ -1,0 +1,68 @@
+{
+  "story_universe_id": "exp_res_dog_day_afternoon_condD_1789615274",
+  "units": 60,
+  "total_events": 0,
+  "entities": 0,
+  "candidates_generated": 4,
+  "conflicts_surfaced": 4,
+  "verdict_counts": {
+    "verified": 4,
+    "resolved": 0,
+    "uncertain": 0,
+    "intentional": 0
+  },
+  "total_runtime_sec": 23.59,
+  "error": null,
+  "findings": [
+    {
+      "conflict_id": "exp_res_dog_day_afternoon_condD_1789615274_one_shot_1",
+      "entity_id": "Sal",
+      "attribute": "clothing",
+      "prior_evidence_excerpt": "He even wears a hat.",
+      "current_evidence_excerpt": "",
+      "description": "Sal is seen wearing a hat in the car, but this detail is not maintained when he enters the bank.",
+      "status": "verified",
+      "severity": "warning",
+      "confidence": 0.8,
+      "explanation": "Sal is seen wearing a hat in the car, but this detail is not maintained when he enters the bank."
+    },
+    {
+      "conflict_id": "exp_res_dog_day_afternoon_condD_1789615274_one_shot_2",
+      "entity_id": "Sonny's watch",
+      "attribute": "time",
+      "prior_evidence_excerpt": "They are waiting. Sonny checks his watch, turns to Sal in back seat: '30 seconds, Sal...'",
+      "current_evidence_excerpt": "INSERT: BANK CLOCK as it CLICKS from 2:57 to 2:58 PM.",
+      "description": "Sonny's watch shows a time of 2:56 or 2:57 in the car, but the bank clock is seen to be at 2:58 when Sonny and Sal enter.",
+      "status": "verified",
+      "severity": "warning",
+      "confidence": 0.8,
+      "explanation": "Sonny's watch shows a time of 2:56 or 2:57 in the car, but the bank clock is seen to be at 2:58 when Sonny and Sal enter."
+    },
+    {
+      "conflict_id": "exp_res_dog_day_afternoon_condD_1789615274_one_shot_3",
+      "entity_id": "Jackie",
+      "attribute": "clothing",
+      "prior_evidence_excerpt": "",
+      "current_evidence_excerpt": "He carries the bag.",
+      "description": "Jackie is not seen wearing a hat in the car, but he is carrying a bag when he enters the bank.",
+      "status": "verified",
+      "severity": "warning",
+      "confidence": 0.8,
+      "explanation": "Jackie is not seen wearing a hat in the car, but he is carrying a bag when he enters the bank."
+    },
+    {
+      "conflict_id": "exp_res_dog_day_afternoon_condD_1789615274_one_shot_4",
+      "entity_id": "register",
+      "attribute": "contents",
+      "prior_evidence_excerpt": "",
+      "current_evidence_excerpt": "Sonny now takes the register and starts to move the two girls toward the rear near the vault.",
+      "description": "The register is not mentioned or shown in the car scene, but it appears in the bank scene with Sonny moving it.",
+      "status": "verified",
+      "severity": "warning",
+      "confidence": 0.8,
+      "explanation": "The register is not mentioned or shown in the car scene, but it appears in the bank scene with Sonny moving it."
+    }
+  ],
+  "film": "dog_day_afternoon",
+  "condition": "D"
+}

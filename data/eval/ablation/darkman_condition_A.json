@@ -1,0 +1,28 @@
+{
+  "story_universe_id": "exp_res_darkman_condA_1789599733",
+  "units": 60,
+  "total_events": 52,
+  "entities": 22,
+  "candidates_generated": 0,
+  "conflicts_surfaced": 0,
+  "verdict_counts": {
+    "verified": 0,
+    "resolved": 0,
+    "uncertain": 0,
+    "intentional": 0
+  },
+  "total_runtime_sec": 2515.83,
+  "extraction_sec": 2515.39,
+  "detection_sec": 0.44,
+  "investigation_sec": 0.0,
+  "integrity": {
+    "unit_count": 60,
+    "event_count": 52,
+    "candidate_count": 0,
+    "verdict_count": 0,
+    "entity_count": 22
+  },
+  "findings": [],
+  "film": "darkman",
+  "condition": "A"
+}

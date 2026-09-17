@@ -1,0 +1,43 @@
+{
+  "story_universe_id": "exp_res_do_the_right_thing_condB_1789607559",
+  "units": 60,
+  "total_events": 68,
+  "entities": 26,
+  "candidates_generated": 1,
+  "conflicts_surfaced": 1,
+  "verdict_counts": {
+    "verified": 1,
+    "resolved": 0,
+    "uncertain": 0,
+    "intentional": 0
+  },
+  "total_runtime_sec": 1666.95,
+  "extraction_sec": 1664.75,
+  "detection_sec": 1.17,
+  "investigation_sec": 1.03,
+  "integrity": {
+    "unit_count": 60,
+    "event_count": 68,
+    "candidate_count": 1,
+    "verdict_count": 1,
+    "entity_count": 26
+  },
+  "findings": [
+    {
+      "conflict_id": "exp_res_do_the_right_thing_condB_1789607559_187ff0e5",
+      "entity_id": "exp_res_do_the_right_thing_condb_1789607559_character_mookie",
+      "attribute": "location.city",
+      "prior_evidence_unit_id": "exp_res_do_the_right_thing_condB_1789607559_unit_12",
+      "prior_evidence_excerpt": "EXT: SAL'S FAMOUS PIZZERIA--DAY",
+      "current_evidence_unit_id": "exp_res_do_the_right_thing_condB_1789607559_unit_51",
+      "current_evidence_excerpt": "INT: SAL'S FAMOUS PIZZERIA--NIGHT",
+      "description": "Suspicious transition for location.city: day -> night without bridging event.",
+      "status": "verified",
+      "severity": "warning",
+      "confidence": 0.5,
+      "explanation": "Pipeline-only mode (Condition B): candidate flagged without investigation."
+    }
+  ],
+  "film": "do_the_right_thing",
+  "condition": "B"
+}

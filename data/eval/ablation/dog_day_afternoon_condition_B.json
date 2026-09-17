@@ -1,0 +1,57 @@
+{
+  "story_universe_id": "exp_res_dog_day_afternoon_condB_1789615274",
+  "units": 60,
+  "total_events": 44,
+  "entities": 13,
+  "candidates_generated": 2,
+  "conflicts_surfaced": 2,
+  "verdict_counts": {
+    "verified": 2,
+    "resolved": 0,
+    "uncertain": 0,
+    "intentional": 0
+  },
+  "total_runtime_sec": 2008.26,
+  "extraction_sec": 2004.82,
+  "detection_sec": 1.26,
+  "investigation_sec": 2.18,
+  "integrity": {
+    "unit_count": 60,
+    "event_count": 44,
+    "candidate_count": 2,
+    "verdict_count": 2,
+    "entity_count": 13
+  },
+  "findings": [
+    {
+      "conflict_id": "exp_res_dog_day_afternoon_condB_1789615274_f52f10d2",
+      "entity_id": "exp_res_dog_day_afternoon_condb_1789615274_character_sonny",
+      "attribute": "location.city",
+      "prior_evidence_unit_id": "exp_res_dog_day_afternoon_condB_1789615274_unit_21",
+      "prior_evidence_excerpt": "St. Louis",
+      "current_evidence_unit_id": "exp_res_dog_day_afternoon_condB_1789615274_unit_28",
+      "current_evidence_excerpt": "New York",
+      "description": "Suspicious transition for location.city: st. louis -> new york without bridging event.",
+      "status": "verified",
+      "severity": "warning",
+      "confidence": 0.5,
+      "explanation": "Pipeline-only mode (Condition B): candidate flagged without investigation."
+    },
+    {
+      "conflict_id": "exp_res_dog_day_afternoon_condB_1789615274_05c1e28d",
+      "entity_id": "exp_res_dog_day_afternoon_condb_1789615274_character_sonny",
+      "attribute": "possession.gun",
+      "prior_evidence_unit_id": "exp_res_dog_day_afternoon_condB_1789615274_unit_36",
+      "prior_evidence_excerpt": "puts gun aside",
+      "current_evidence_unit_id": "exp_res_dog_day_afternoon_condB_1789615274_unit_47",
+      "current_evidence_excerpt": "you can frisk me.",
+      "description": "Suspicious transition for possession.gun: lost -> held without bridging event.",
+      "status": "verified",
+      "severity": "critical",
+      "confidence": 0.5,
+      "explanation": "Pipeline-only mode (Condition B): candidate flagged without investigation."
+    }
+  ],
+  "film": "dog_day_afternoon",
+  "condition": "B"
+}

@@ -1,0 +1,71 @@
+{
+  "story_universe_id": "exp_res_dog_day_afternoon_condC_1789615274",
+  "units": 60,
+  "total_events": 41,
+  "entities": 13,
+  "candidates_generated": 3,
+  "conflicts_surfaced": 3,
+  "verdict_counts": {
+    "verified": 3,
+    "resolved": 0,
+    "uncertain": 0,
+    "intentional": 0
+  },
+  "total_runtime_sec": 4781.97,
+  "extraction_sec": 4711.71,
+  "detection_sec": 1.32,
+  "investigation_sec": 68.94,
+  "integrity": {
+    "unit_count": 60,
+    "event_count": 41,
+    "candidate_count": 3,
+    "verdict_count": 3,
+    "entity_count": 13
+  },
+  "findings": [
+    {
+      "conflict_id": "exp_res_dog_day_afternoon_condC_1789615274_f5c45266",
+      "entity_id": "exp_res_dog_day_afternoon_condc_1789615274_character_sonny",
+      "attribute": "location.city",
+      "prior_evidence_unit_id": "exp_res_dog_day_afternoon_condC_1789615274_unit_3",
+      "prior_evidence_excerpt": "It is parked in a drab Brooklyn street.",
+      "current_evidence_unit_id": "exp_res_dog_day_afternoon_condC_1789615274_unit_11",
+      "current_evidence_excerpt": "Sonny starts to move toward the front of the bank.",
+      "description": "Suspicious transition for location.city: brooklyn -> bank without bridging event.",
+      "status": "verified",
+      "severity": "warning",
+      "confidence": 0.9,
+      "explanation": "The prior excerpt mentions that the character is in Brooklyn ('It is parked in a drab Brooklyn street.'), and the current location is at a bank. There are no explicit travel narration or other bridging events between these two locations. The change from Brooklyn to the bank is abrupt, which does not meet the criteria for a valid bridge."
+    },
+    {
+      "conflict_id": "exp_res_dog_day_afternoon_condC_1789615274_0e0b8546",
+      "entity_id": "exp_res_dog_day_afternoon_condc_1789615274_character_sonny",
+      "attribute": "location.city",
+      "prior_evidence_unit_id": "exp_res_dog_day_afternoon_condC_1789615274_unit_11",
+      "prior_evidence_excerpt": "Sonny starts to move toward the front of the bank.",
+      "current_evidence_unit_id": "exp_res_dog_day_afternoon_condC_1789615274_unit_28",
+      "current_evidence_excerpt": "street-wise, sarcastic New York cop",
+      "description": "Suspicious transition for location.city: bank -> new york without bridging event.",
+      "status": "verified",
+      "severity": "warning",
+      "confidence": 0.9,
+      "explanation": "The location.city change from bank to New York is not bridged by any explicit travel narration or clear transit scene in the provided context. The character simply appears in a new city without any mention of how he got there."
+    },
+    {
+      "conflict_id": "exp_res_dog_day_afternoon_condC_1789615274_f921a80e",
+      "entity_id": "exp_res_dog_day_afternoon_condc_1789615274_character_sonny",
+      "attribute": "location.city",
+      "prior_evidence_unit_id": "exp_res_dog_day_afternoon_condC_1789615274_unit_28",
+      "prior_evidence_excerpt": "street-wise, sarcastic New York cop",
+      "current_evidence_unit_id": "exp_res_dog_day_afternoon_condC_1789615274_unit_36",
+      "current_evidence_excerpt": "as Sonny and Mulvaney move toward the rear of the bank.",
+      "description": "Suspicious transition for location.city: new york -> bank without bridging event.",
+      "status": "verified",
+      "severity": "warning",
+      "confidence": 0.9,
+      "explanation": "The prior excerpt contains explicit medical treatment words: 'street-wise, sarcastic New York cop'. This indicates that the character has transitioned from a previous location (presumably not New York) and is now in New York due to an implicit travel event that was not explicitly narrated. However, the presence of the 'New York cop' description strongly suggests a change in location without explicit narration, which aligns with the criteria for a verified conflict."
+    }
+  ],
+  "film": "dog_day_afternoon",
+  "condition": "C"
+}

@@ -1,0 +1,57 @@
+{
+  "story_universe_id": "exp_res_do_the_right_thing_condA_1789607559",
+  "units": 60,
+  "total_events": 78,
+  "entities": 29,
+  "candidates_generated": 2,
+  "conflicts_surfaced": 2,
+  "verdict_counts": {
+    "verified": 2,
+    "resolved": 0,
+    "uncertain": 0,
+    "intentional": 0
+  },
+  "total_runtime_sec": 2004.44,
+  "extraction_sec": 1960.12,
+  "detection_sec": 1.32,
+  "investigation_sec": 43.0,
+  "integrity": {
+    "unit_count": 60,
+    "event_count": 78,
+    "candidate_count": 2,
+    "verdict_count": 2,
+    "entity_count": 29
+  },
+  "findings": [
+    {
+      "conflict_id": "exp_res_do_the_right_thing_condA_1789607559_1c9a04b2",
+      "entity_id": "exp_res_do_the_right_thing_conda_1789607559_character_buggin'_out",
+      "attribute": "location.city",
+      "prior_evidence_unit_id": "exp_res_do_the_right_thing_condA_1789607559_unit_12",
+      "prior_evidence_excerpt": "EXT: SAL'S FAMOUS PIZZERIA--DAY",
+      "current_evidence_unit_id": "exp_res_do_the_right_thing_condA_1789607559_unit_51",
+      "current_evidence_excerpt": "INT: SAL'S FAMOUS PIZZERIA--NIGHT",
+      "description": "Suspicious transition for location.city: day -> night without bridging event.",
+      "status": "verified",
+      "severity": "warning",
+      "confidence": 0.95,
+      "explanation": "The location.city change from day to night in EXT: SAL'S FAMOUS PIZZERIA--DAY to INT: SAL'S FAMOUS PIZZERIA--NIGHT is not bridged by any explicit travel narration or clearly narrated time skip. The transition happens between two units with no narrative explaining the change, which aligns with the criteria for a verified conflict."
+    },
+    {
+      "conflict_id": "exp_res_do_the_right_thing_condA_1789607559_6cf780c8",
+      "entity_id": "exp_res_do_the_right_thing_conda_1789607559_character_da_mayor",
+      "attribute": "location.city",
+      "prior_evidence_unit_id": "exp_res_do_the_right_thing_condA_1789607559_unit_26",
+      "prior_evidence_excerpt": "EXT: STOOP--DAY",
+      "current_evidence_unit_id": "exp_res_do_the_right_thing_condA_1789607559_unit_39",
+      "current_evidence_excerpt": "EXT: FRUIT-N-VEG DELIGHT--DUSK",
+      "description": "Suspicious transition for location.city: stoop--day -> ext: fruit-n-veg delight--dusk without bridging event.",
+      "status": "verified",
+      "severity": "warning",
+      "confidence": 0.9,
+      "explanation": "The prior excerpt shows Da Mayor sitting on his stoop in STOOP--DAY, and there is no explicit travel narration or time skip that would justify a location change to FRUIT-N-VEG DELIGHT--DUSK. The transition appears abrupt without any bridging event."
+    }
+  ],
+  "film": "do_the_right_thing",
+  "condition": "A"
+}

@@ -1,0 +1,57 @@
+{
+  "story_universe_id": "exp_res_dog_day_afternoon_condA_1789615274",
+  "units": 60,
+  "total_events": 44,
+  "entities": 13,
+  "candidates_generated": 2,
+  "conflicts_surfaced": 1,
+  "verdict_counts": {
+    "verified": 1,
+    "resolved": 1,
+    "uncertain": 0,
+    "intentional": 0
+  },
+  "total_runtime_sec": 2055.6,
+  "extraction_sec": 2007.01,
+  "detection_sec": 1.28,
+  "investigation_sec": 47.31,
+  "integrity": {
+    "unit_count": 60,
+    "event_count": 44,
+    "candidate_count": 2,
+    "verdict_count": 2,
+    "entity_count": 13
+  },
+  "findings": [
+    {
+      "conflict_id": "exp_res_dog_day_afternoon_condA_1789615274_ef220381",
+      "entity_id": "exp_res_dog_day_afternoon_conda_1789615274_character_sonny",
+      "attribute": "location.city",
+      "prior_evidence_unit_id": "exp_res_dog_day_afternoon_condA_1789615274_unit_21",
+      "prior_evidence_excerpt": "St. Louis",
+      "current_evidence_unit_id": "exp_res_dog_day_afternoon_condA_1789615274_unit_28",
+      "current_evidence_excerpt": "New York",
+      "description": "Suspicious transition for location.city: st. louis -> new york without bridging event.",
+      "status": "verified",
+      "severity": "warning",
+      "confidence": 0.9,
+      "explanation": "The character Mulvaney is described as a New York cop in the current excerpt, while he was previously mentioned as being from St. Louis. There is no explicit travel narration between these two units, only a change in location without any bridging event."
+    },
+    {
+      "conflict_id": "exp_res_dog_day_afternoon_condA_1789615274_d1359ec8",
+      "entity_id": "exp_res_dog_day_afternoon_conda_1789615274_character_sonny",
+      "attribute": "possession.gun",
+      "prior_evidence_unit_id": "exp_res_dog_day_afternoon_condA_1789615274_unit_36",
+      "prior_evidence_excerpt": "puts gun aside",
+      "current_evidence_unit_id": "exp_res_dog_day_afternoon_condA_1789615274_unit_47",
+      "current_evidence_excerpt": "you can frisk me.",
+      "description": "Suspicious transition for possession.gun: lost -> held without bridging event.",
+      "status": "resolved",
+      "severity": "info",
+      "confidence": 0.9,
+      "explanation": "The prior excerpt already shows Sonny putting the gun aside, which includes the action of cleaning or treating it (\"tests it.\"). This meets the criteria for a valid bridge as per the injury healing rule."
+    }
+  ],
+  "film": "dog_day_afternoon",
+  "condition": "A"
+}
