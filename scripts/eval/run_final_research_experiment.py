@@ -477,6 +477,11 @@ async def main():
 
         all_experiment_results[film_slug] = film_results
 
+        pause_target = os.environ.get("PAUSE_AFTER_FILM", "fargo_film")
+        if pause_target and film_slug == pause_target:
+            logger.info(f"PAUSING experiment runner after completion of target film '{film_slug}' per user request.")
+            break
+
     # Save aggregate raw results
     with open(RAW_RESULTS_PATH, "w", encoding="utf-8") as f:
         json.dump(all_experiment_results, f, indent=2)
