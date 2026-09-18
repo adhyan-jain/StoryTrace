@@ -1,0 +1,85 @@
+{
+  "story_universe_id": "exp_res_smokin_aces_condB_1789677086",
+  "units": 60,
+  "total_events": 105,
+  "entities": 39,
+  "candidates_generated": 4,
+  "conflicts_surfaced": 4,
+  "verdict_counts": {
+    "verified": 4,
+    "resolved": 0,
+    "uncertain": 0,
+    "intentional": 0
+  },
+  "total_runtime_sec": 2143.25,
+  "extraction_sec": 2132.76,
+  "detection_sec": 3.04,
+  "investigation_sec": 7.45,
+  "integrity": {
+    "unit_count": 60,
+    "event_count": 105,
+    "candidate_count": 4,
+    "verdict_count": 4,
+    "entity_count": 39
+  },
+  "findings": [
+    {
+      "conflict_id": "exp_res_smokin_aces_condB_1789677086_099f8b0e",
+      "entity_id": "exp_res_smokin_aces_condb_1789677086_character_carruthers",
+      "attribute": "location.city",
+      "prior_evidence_unit_id": "exp_res_smokin_aces_condB_1789677086_unit_8",
+      "prior_evidence_excerpt": "WASHINGTON",
+      "current_evidence_unit_id": "exp_res_smokin_aces_condB_1789677086_unit_50",
+      "current_evidence_excerpt": "San Francisco",
+      "description": "Suspicious transition for location.city: washington -> san francisco without bridging event.",
+      "status": "verified",
+      "severity": "warning",
+      "confidence": 0.5,
+      "explanation": "Pipeline-only mode (Condition B): candidate flagged without investigation."
+    },
+    {
+      "conflict_id": "exp_res_smokin_aces_condB_1789677086_51cb32b4",
+      "entity_id": "exp_res_smokin_aces_condb_1789677086_character_dupree",
+      "attribute": "location.city",
+      "prior_evidence_unit_id": "exp_res_smokin_aces_condB_1789677086_unit_8",
+      "prior_evidence_excerpt": "WASHINGTON",
+      "current_evidence_unit_id": "exp_res_smokin_aces_condB_1789677086_unit_18",
+      "current_evidence_excerpt": "NIGHT",
+      "description": "Suspicious transition for location.city: washington -> night without bridging event.",
+      "status": "verified",
+      "severity": "warning",
+      "confidence": 0.5,
+      "explanation": "Pipeline-only mode (Condition B): candidate flagged without investigation."
+    },
+    {
+      "conflict_id": "exp_res_smokin_aces_condB_1789677086_99c311f5",
+      "entity_id": "exp_res_smokin_aces_condb_1789677086_character_dupree",
+      "attribute": "location.city",
+      "prior_evidence_unit_id": "exp_res_smokin_aces_condB_1789677086_unit_18",
+      "prior_evidence_excerpt": "NIGHT",
+      "current_evidence_unit_id": "exp_res_smokin_aces_condB_1789677086_unit_55",
+      "current_evidence_excerpt": "up here in Heaven",
+      "description": "Suspicious transition for location.city: night -> heaven without bridging event.",
+      "status": "verified",
+      "severity": "warning",
+      "confidence": 0.5,
+      "explanation": "Pipeline-only mode (Condition B): candidate flagged without investigation."
+    },
+    {
+      "conflict_id": "exp_res_smokin_aces_condB_1789677086_f1d10a7a",
+      "entity_id": "exp_res_smokin_aces_condb_1789677086_character_watters",
+      "attribute": "location.city",
+      "prior_evidence_unit_id": "exp_res_smokin_aces_condB_1789677086_unit_56",
+      "prior_evidence_excerpt": "MORNING",
+      "current_evidence_unit_id": "exp_res_smokin_aces_condB_1789677086_unit_56",
+      "current_evidence_excerpt": "INT. NOMAD HOTEL AND CASINO -- LOBBY -- MORNING",
+      "description": "Suspicious transition for location.city: morning -> nomad hotel and casino -- lobby without bridging event.",
+      "status": "verified",
+      "severity": "warning",
+      "confidence": 0.5,
+      "explanation": "Pipeline-only mode (Condition B): candidate flagged without investigation."
+    }
+  ],
+  "film": "smokin_aces",
+  "condition": "B"
+}

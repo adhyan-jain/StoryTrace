@@ -1,0 +1,113 @@
+{
+  "story_universe_id": "exp_res_fargo_film_condA_1789625973",
+  "units": 60,
+  "total_events": 89,
+  "entities": 24,
+  "candidates_generated": 6,
+  "conflicts_surfaced": 5,
+  "verdict_counts": {
+    "verified": 5,
+    "resolved": 1,
+    "uncertain": 0,
+    "intentional": 0
+  },
+  "total_runtime_sec": 3586.91,
+  "extraction_sec": 3451.98,
+  "detection_sec": 1.18,
+  "investigation_sec": 133.76,
+  "integrity": {
+    "unit_count": 60,
+    "event_count": 89,
+    "candidate_count": 6,
+    "verdict_count": 6,
+    "entity_count": 24
+  },
+  "findings": [
+    {
+      "conflict_id": "exp_res_fargo_film_condA_1789625973_a19d940d",
+      "entity_id": "exp_res_fargo_film_conda_1789625973_character_carl",
+      "attribute": "location.city",
+      "prior_evidence_unit_id": "exp_res_fargo_film_condA_1789625973_unit_39",
+      "prior_evidence_excerpt": "GUSTAFSON OLDS GARAGE",
+      "current_evidence_unit_id": "exp_res_fargo_film_condA_1789625973_unit_52",
+      "current_evidence_excerpt": "EXT. CAR",
+      "description": "Suspicious transition for location.city: gustafson olds garage -> car without bridging event.",
+      "status": "verified",
+      "severity": "warning",
+      "confidence": 0.9,
+      "explanation": "The location.city change from GUSTAFSON OLDS GARAGE to CAR is not bridged by any explicit travel narration or clear transit scene. The transition occurs between two units without any narrative explaining how Carl moved from one place to another."
+    },
+    {
+      "conflict_id": "exp_res_fargo_film_condA_1789625973_537f0dc9",
+      "entity_id": "exp_res_fargo_film_conda_1789625973_character_jerry",
+      "attribute": "location.city",
+      "prior_evidence_unit_id": "exp_res_fargo_film_condA_1789625973_unit_26",
+      "prior_evidence_excerpt": "EMBERS FAMILY RESTAURANT",
+      "current_evidence_unit_id": "exp_res_fargo_film_condA_1789625973_unit_36",
+      "current_evidence_excerpt": "Minneapolis",
+      "description": "Suspicious transition for location.city: embers family restaurant -> minneapolis without bridging event.",
+      "status": "verified",
+      "severity": "warning",
+      "confidence": 0.9,
+      "explanation": "The prior excerpt shows Jerry, Wade, and Stan Grossman sitting in a booth at EMBERS FAMILY RESTAURANT, with no mention of travel or any other bridging event. The current location is Minneapolis, but there is no explicit travel narration provided. Therefore, the change from EMBERS FAMILY RESTAURANT to Minneapolis without a bridging event is a verified conflict."
+    },
+    {
+      "conflict_id": "exp_res_fargo_film_condA_1789625973_d65b6949",
+      "entity_id": "exp_res_fargo_film_conda_1789625973_character_marge",
+      "attribute": "location.city",
+      "prior_evidence_unit_id": "exp_res_fargo_film_condA_1789625973_unit_32",
+      "prior_evidence_excerpt": "BRAINERD MAIN STREET",
+      "current_evidence_unit_id": "exp_res_fargo_film_condA_1789625973_unit_33",
+      "current_evidence_excerpt": "I'm down in the Twin Cities",
+      "description": "Suspicious transition for location.city: brainerd -> twin cities without bridging event.",
+      "status": "verified",
+      "severity": "warning",
+      "confidence": 0.9,
+      "explanation": "The prior excerpt shows 'BRAINERD MAIN STREET', which includes a location name that could be interpreted as a medical treatment or an injury context (e.g., 'Brain' in Brainard). However, there is no explicit travel narration between the two locations mentioned. The current unit text does not provide any additional context to suggest a bridge event. Therefore, based on the criteria, this change should be considered a verified conflict."
+    },
+    {
+      "conflict_id": "exp_res_fargo_film_condA_1789625973_3d2276fb",
+      "entity_id": "exp_res_fargo_film_conda_1789625973_character_marge",
+      "attribute": "location.city",
+      "prior_evidence_unit_id": "exp_res_fargo_film_condA_1789625973_unit_33",
+      "prior_evidence_excerpt": "I'm down in the Twin Cities",
+      "current_evidence_unit_id": "exp_res_fargo_film_condA_1789625973_unit_38",
+      "current_evidence_excerpt": "MINNEAPOLIS",
+      "description": "Suspicious transition for location.city: twin cities -> minneapolis without bridging event.",
+      "status": "resolved",
+      "severity": "info",
+      "confidence": 0.9,
+      "explanation": "The prior excerpt contains the phrase 'I was just watching on TV about these shootings up in Brainderd', which implies a travel or transition from the Twin Cities to Minneapolis (Brainderd is part of the Twin Cities area). Although not explicitly stated, this context strongly suggests a transit or travel event that bridges the location change."
+    },
+    {
+      "conflict_id": "exp_res_fargo_film_condA_1789625973_95f2fa18",
+      "entity_id": "exp_res_fargo_film_conda_1789625973_character_marge",
+      "attribute": "location.city",
+      "prior_evidence_unit_id": "exp_res_fargo_film_condA_1789625973_unit_38",
+      "prior_evidence_excerpt": "MINNEAPOLIS",
+      "current_evidence_unit_id": "exp_res_fargo_film_condA_1789625973_unit_40",
+      "current_evidence_excerpt": "back in Stillwater.",
+      "description": "Suspicious transition for location.city: minneapolis -> stillwater without bridging event.",
+      "status": "verified",
+      "severity": "warning",
+      "confidence": 0.9,
+      "explanation": "The prior excerpt shows 'MINNEAPOLIS', which includes medical treatment words like 'MINNEAPOLIS' in context, indicating a character's presence there. No explicit travel narration is provided for the transition to Stillwater. Therefore, the location change from Minneapolis to Stillwater is not bridged."
+    },
+    {
+      "conflict_id": "exp_res_fargo_film_condA_1789625973_d1285574",
+      "entity_id": "exp_res_fargo_film_conda_1789625973_character_marge",
+      "attribute": "location.city",
+      "prior_evidence_unit_id": "exp_res_fargo_film_condA_1789625973_unit_40",
+      "prior_evidence_excerpt": "back in Stillwater.",
+      "current_evidence_unit_id": "exp_res_fargo_film_condA_1789625973_unit_57",
+      "current_evidence_excerpt": "She's visiting relatives in Florida.",
+      "description": "Suspicious transition for location.city: stillwater -> florida without bridging event.",
+      "status": "verified",
+      "severity": "warning",
+      "confidence": 0.9,
+      "explanation": "The prior excerpt shows Marge explicitly mentioning that Shep is currently on parole in Stillwater, and there is a clear context of discussing his past criminal activities and potential violations of parole. The current location change from Stillwater to Florida is not accompanied by any explicit travel narration or other bridging event, but the context strongly suggests that the transition is due to a violation of Shep's parole conditions."
+    }
+  ],
+  "film": "fargo_film",
+  "condition": "A"
+}

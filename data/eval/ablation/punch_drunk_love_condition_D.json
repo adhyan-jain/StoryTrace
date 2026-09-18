@@ -1,0 +1,19 @@
+{
+  "story_universe_id": "exp_res_punch_drunk_love_condD_1789669913",
+  "units": 60,
+  "total_events": 0,
+  "entities": 0,
+  "candidates_generated": 0,
+  "conflicts_surfaced": 0,
+  "verdict_counts": {
+    "verified": 0,
+    "resolved": 0,
+    "uncertain": 0,
+    "intentional": 0
+  },
+  "total_runtime_sec": 18.76,
+  "error": null,
+  "findings": [],
+  "film": "punch_drunk_love",
+  "condition": "D"
+}

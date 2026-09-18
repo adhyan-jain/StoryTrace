@@ -1,0 +1,113 @@
+{
+  "story_universe_id": "exp_res_smokin_aces_condA_1789677086",
+  "units": 60,
+  "total_events": 109,
+  "entities": 39,
+  "candidates_generated": 6,
+  "conflicts_surfaced": 4,
+  "verdict_counts": {
+    "verified": 4,
+    "resolved": 2,
+    "uncertain": 0,
+    "intentional": 0
+  },
+  "total_runtime_sec": 2769.88,
+  "extraction_sec": 2636.14,
+  "detection_sec": 1.35,
+  "investigation_sec": 132.39,
+  "integrity": {
+    "unit_count": 60,
+    "event_count": 109,
+    "candidate_count": 6,
+    "verdict_count": 6,
+    "entity_count": 39
+  },
+  "findings": [
+    {
+      "conflict_id": "exp_res_smokin_aces_condA_1789677086_1ad714df",
+      "entity_id": "exp_res_smokin_aces_conda_1789677086_character_carruthers",
+      "attribute": "location.city",
+      "prior_evidence_unit_id": "exp_res_smokin_aces_condA_1789677086_unit_8",
+      "prior_evidence_excerpt": "WASHINGTON",
+      "current_evidence_unit_id": "exp_res_smokin_aces_condA_1789677086_unit_46",
+      "current_evidence_excerpt": "INT. \"TAHOE SKILLET\" RESTAURANT -- MORNING",
+      "description": "Suspicious transition for location.city: washington -> tahoe without bridging event.",
+      "status": "verified",
+      "severity": "warning",
+      "confidence": 0.9,
+      "explanation": "The location.city change from Washington to Tahoe is not bridged by any explicit travel narration or clear time skip in the provided context. The prior excerpt and subsequent unit text do not mention how Carruthers moved from Washington to Tahoe, only showing his presence at different locations without a transition event."
+    },
+    {
+      "conflict_id": "exp_res_smokin_aces_condA_1789677086_2e726829",
+      "entity_id": "exp_res_smokin_aces_conda_1789677086_character_carruthers",
+      "attribute": "location.city",
+      "prior_evidence_unit_id": "exp_res_smokin_aces_condA_1789677086_unit_46",
+      "prior_evidence_excerpt": "INT. \"TAHOE SKILLET\" RESTAURANT -- MORNING",
+      "current_evidence_unit_id": "exp_res_smokin_aces_condA_1789677086_unit_50",
+      "current_evidence_excerpt": "San Francisco",
+      "description": "Suspicious transition for location.city: tahoe -> san francisco without bridging event.",
+      "status": "verified",
+      "severity": "warning",
+      "confidence": 0.9,
+      "explanation": "The character CARRUTHERS transitions from being in Tahoe to San Francisco without any explicit travel narration or bridging event. The prior excerpt does not contain any medical/treatment words for an injury candidate, and there is no clear indication of a location change with a travel scene."
+    },
+    {
+      "conflict_id": "exp_res_smokin_aces_condA_1789677086_c8885552",
+      "entity_id": "exp_res_smokin_aces_conda_1789677086_character_dupree",
+      "attribute": "location.city",
+      "prior_evidence_unit_id": "exp_res_smokin_aces_condA_1789677086_unit_8",
+      "prior_evidence_excerpt": "WASHINGTON",
+      "current_evidence_unit_id": "exp_res_smokin_aces_condA_1789677086_unit_18",
+      "current_evidence_excerpt": "NIGHT",
+      "description": "Suspicious transition for location.city: washington -> night without bridging event.",
+      "status": "verified",
+      "severity": "warning",
+      "confidence": 0.9,
+      "explanation": "The location.city change from WASHINGTON to NIGHT is not bridged by any explicit travel narration or clear time skip. The observation shows a transition without an intervening unit that narrates movement between these locations."
+    },
+    {
+      "conflict_id": "exp_res_smokin_aces_condA_1789677086_29dfa68c",
+      "entity_id": "exp_res_smokin_aces_conda_1789677086_character_dupree",
+      "attribute": "location.city",
+      "prior_evidence_unit_id": "exp_res_smokin_aces_condA_1789677086_unit_18",
+      "prior_evidence_excerpt": "NIGHT",
+      "current_evidence_unit_id": "exp_res_smokin_aces_condA_1789677086_unit_55",
+      "current_evidence_excerpt": "up here in Heaven",
+      "description": "Suspicious transition for location.city: night -> heaven without bridging event.",
+      "status": "resolved",
+      "severity": "info",
+      "confidence": 0.95,
+      "explanation": "The prior excerpt shows McGarey getting out of the club alive and wounded (s bullets to the lower back and can't walk), which implies medical treatment is needed. While no explicit time-skip or travel narration is provided between the two units, the presence of an injury candidate in the 'prior' unit suggests a bridge through implied medical treatment."
+    },
+    {
+      "conflict_id": "exp_res_smokin_aces_condA_1789677086_ddd96081",
+      "entity_id": "exp_res_smokin_aces_conda_1789677086_character_israel",
+      "attribute": "location.city",
+      "prior_evidence_unit_id": "exp_res_smokin_aces_condA_1789677086_unit_39",
+      "prior_evidence_excerpt": "INT. PENTHOUSE SUITE -- DAY",
+      "current_evidence_unit_id": "exp_res_smokin_aces_condA_1789677086_unit_46",
+      "current_evidence_excerpt": "INT. \"TAHOE SKILLET\" RESTAURANT -- MORNING",
+      "description": "Suspicious transition for location.city: penthouse suite -> tahoe without bridging event.",
+      "status": "verified",
+      "severity": "critical",
+      "confidence": 0.9,
+      "explanation": "The prior excerpt shows Israel in a penthouse suite and then abruptly changes to a restaurant in Tahoe without any explicit travel narration or other bridging event. The change in location.city from 'penthouse suite' to 'tahoe' is unexplained, making this a verified conflict."
+    },
+    {
+      "conflict_id": "exp_res_smokin_aces_condA_1789677086_1c8e46ed",
+      "entity_id": "exp_res_smokin_aces_conda_1789677086_character_watters",
+      "attribute": "location.city",
+      "prior_evidence_unit_id": "exp_res_smokin_aces_condA_1789677086_unit_56",
+      "prior_evidence_excerpt": "MORNING",
+      "current_evidence_unit_id": "exp_res_smokin_aces_condA_1789677086_unit_56",
+      "current_evidence_excerpt": "INT. NOMAD HOTEL AND CASINO -- LOBBY -- MORNING",
+      "description": "Suspicious transition for location.city: morning -> nomad hotel and casino -- lobby without bridging event.",
+      "status": "resolved",
+      "severity": "info",
+      "confidence": 0.9,
+      "explanation": "The prior excerpt already contains medical/treatment words (paramedic) for an injury candidate, which is sufficient to resolve the location change from morning to nomad hotel and casino -- lobby without a need for additional bridging event."
+    }
+  ],
+  "film": "smokin_aces",
+  "condition": "A"
+}

@@ -1,0 +1,57 @@
+{
+  "story_universe_id": "exp_res_smokin_aces_condC_1789677086",
+  "units": 60,
+  "total_events": 61,
+  "entities": 29,
+  "candidates_generated": 2,
+  "conflicts_surfaced": 2,
+  "verdict_counts": {
+    "verified": 2,
+    "resolved": 0,
+    "uncertain": 0,
+    "intentional": 0
+  },
+  "total_runtime_sec": 3068.58,
+  "extraction_sec": 3018.62,
+  "detection_sec": 1.32,
+  "investigation_sec": 48.64,
+  "integrity": {
+    "unit_count": 60,
+    "event_count": 61,
+    "candidate_count": 2,
+    "verdict_count": 2,
+    "entity_count": 29
+  },
+  "findings": [
+    {
+      "conflict_id": "exp_res_smokin_aces_condC_1789677086_d9e85c9d",
+      "entity_id": "exp_res_smokin_aces_condc_1789677086_character_israel",
+      "attribute": "location.city",
+      "prior_evidence_unit_id": "exp_res_smokin_aces_condC_1789677086_unit_46",
+      "prior_evidence_excerpt": "INT. \"TAHOE SKILLET\" RESTAURANT -- MORNING",
+      "current_evidence_unit_id": "exp_res_smokin_aces_condC_1789677086_unit_47",
+      "current_evidence_excerpt": "Penthouse level.",
+      "description": "Suspicious transition for location.city: tahoe -> penthouse level without bridging event.",
+      "status": "verified",
+      "severity": "warning",
+      "confidence": 0.9,
+      "explanation": "The prior excerpt already contains a location change from 'TAHOE SKILLET' restaurant to 'Penthouse level', with no explicit travel narration in between. The context strongly suggests that the character has moved without any bridging event, which is exactly the kind of unexplained jump this system exists to catch."
+    },
+    {
+      "conflict_id": "exp_res_smokin_aces_condC_1789677086_4691f647",
+      "entity_id": "exp_res_smokin_aces_condc_1789677086_character_watters",
+      "attribute": "location.city",
+      "prior_evidence_unit_id": "exp_res_smokin_aces_condC_1789677086_unit_13",
+      "prior_evidence_excerpt": "INT. DINER -- NIGHT",
+      "current_evidence_unit_id": "exp_res_smokin_aces_condC_1789677086_unit_56",
+      "current_evidence_excerpt": "INT. NOMAD HOTEL AND CASINO -- LOBBY -- MORNING",
+      "description": "Suspicious transition for location.city: diner -> nomad hotel and casino - lobby without bridging event.",
+      "status": "verified",
+      "severity": "warning",
+      "confidence": 0.9,
+      "explanation": "The prior excerpt shows 'INT. DINER -- NIGHT', which does not contain any medical/treatment words. The current location is 'INT. NOMAD HOTEL AND CASINO -- LOBBY -- MORNING'. There is no explicit travel narration between the diner and the hotel/casino, only a change in location without an intervening scene or time skip. Therefore, this transition is unexplained."
+    }
+  ],
+  "film": "smokin_aces",
+  "condition": "C"
+}

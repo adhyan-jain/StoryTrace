@@ -1,0 +1,43 @@
+{
+  "story_universe_id": "exp_res_fargo_film_condC_1789654012",
+  "units": 60,
+  "total_events": 51,
+  "entities": 13,
+  "candidates_generated": 1,
+  "conflicts_surfaced": 1,
+  "verdict_counts": {
+    "verified": 1,
+    "resolved": 0,
+    "uncertain": 0,
+    "intentional": 0
+  },
+  "total_runtime_sec": 4384.87,
+  "extraction_sec": 4352.81,
+  "detection_sec": 1.26,
+  "investigation_sec": 30.81,
+  "integrity": {
+    "unit_count": 60,
+    "event_count": 51,
+    "candidate_count": 1,
+    "verdict_count": 1,
+    "entity_count": 13
+  },
+  "findings": [
+    {
+      "conflict_id": "exp_res_fargo_film_condC_1789654012_c5fe1c7a",
+      "entity_id": "exp_res_fargo_film_condc_1789654012_character_jerry",
+      "attribute": "location.city",
+      "prior_evidence_unit_id": "exp_res_fargo_film_condC_1789654012_unit_5",
+      "prior_evidence_excerpt": "MINNEAPOLIS SUBURBAN HOUSE",
+      "current_evidence_unit_id": "exp_res_fargo_film_condC_1789654012_unit_36",
+      "current_evidence_excerpt": "Minneapolis",
+      "description": "Suspicious transition for location.city: minneapolis suburban house -> minneapolis without bridging event.",
+      "status": "verified",
+      "severity": "info",
+      "confidence": 0.9,
+      "explanation": "The location change from 'MINNEAPOLIS SUBURBAN HOUSE' to 'Minneapolis' is not explicitly narrated with a travel scene or time skip. The prior excerpt does not contain any explicit travel narration, and the current context also lacks such details."
+    }
+  ],
+  "film": "fargo_film",
+  "condition": "C"
+}

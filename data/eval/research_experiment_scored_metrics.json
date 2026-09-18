@@ -1,0 +1,634 @@
+{
+  "A": {
+    "overall": {
+      "precision": 0.5965,
+      "recall": 0.0344,
+      "f1": 0.065,
+      "tp": 34,
+      "fp": 23,
+      "fn": 955,
+      "total_surfaced": 57,
+      "total_gold": 989,
+      "total_runtime_sec": 25964.47,
+      "macro_f1": 0.0672
+    },
+    "category_breakdown": {
+      "possession": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 47
+      },
+      "injury": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      "location": {
+        "precision": 1.0,
+        "recall": 0.155,
+        "f1": 0.2684,
+        "tp": 146,
+        "fp": 0,
+        "fn": 796
+      },
+      "clothing_appearance": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      "other": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      }
+    },
+    "per_film": {
+      "chasing_amy": {
+        "precision": 1.0,
+        "recall": 0.0156,
+        "f1": 0.0308,
+        "tp": 1,
+        "fp": 0,
+        "fn": 63,
+        "surfaced_count": 1,
+        "gold_count": 64
+      },
+      "darkman": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 86,
+        "surfaced_count": 0,
+        "gold_count": 86
+      },
+      "do_the_right_thing": {
+        "precision": 0.5,
+        "recall": 0.005,
+        "f1": 0.0098,
+        "tp": 1,
+        "fp": 1,
+        "fn": 201,
+        "surfaced_count": 2,
+        "gold_count": 202
+      },
+      "dog_day_afternoon": {
+        "precision": 1.0,
+        "recall": 0.0238,
+        "f1": 0.0465,
+        "tp": 1,
+        "fp": 0,
+        "fn": 41,
+        "surfaced_count": 1,
+        "gold_count": 42
+      },
+      "fargo_film": {
+        "precision": 0.4,
+        "recall": 0.069,
+        "f1": 0.1176,
+        "tp": 2,
+        "fp": 3,
+        "fn": 27,
+        "surfaced_count": 5,
+        "gold_count": 29
+      },
+      "inception": {
+        "precision": 0.6,
+        "recall": 0.0465,
+        "f1": 0.0863,
+        "tp": 6,
+        "fp": 4,
+        "fn": 123,
+        "surfaced_count": 10,
+        "gold_count": 129
+      },
+      "punch_drunk_love": {
+        "precision": 1.0,
+        "recall": 0.0377,
+        "f1": 0.0727,
+        "tp": 4,
+        "fp": 0,
+        "fn": 102,
+        "surfaced_count": 4,
+        "gold_count": 106
+      },
+      "smokin_aces": {
+        "precision": 0.75,
+        "recall": 0.0337,
+        "f1": 0.0645,
+        "tp": 3,
+        "fp": 1,
+        "fn": 86,
+        "surfaced_count": 4,
+        "gold_count": 89
+      },
+      "snow_white_and_the_huntsman": {
+        "precision": 1.0,
+        "recall": 0.0352,
+        "f1": 0.068,
+        "tp": 5,
+        "fp": 0,
+        "fn": 137,
+        "surfaced_count": 5,
+        "gold_count": 142
+      },
+      "the_bourne_identity_2002_film": {
+        "precision": 0.44,
+        "recall": 0.11,
+        "f1": 0.176,
+        "tp": 11,
+        "fp": 14,
+        "fn": 89,
+        "surfaced_count": 25,
+        "gold_count": 100
+      }
+    }
+  },
+  "B": {
+    "overall": {
+      "precision": 0.6265,
+      "recall": 0.0526,
+      "f1": 0.097,
+      "tp": 52,
+      "fp": 31,
+      "fn": 937,
+      "total_surfaced": 83,
+      "total_gold": 989,
+      "total_runtime_sec": 22522.5,
+      "macro_f1": 0.1024
+    },
+    "category_breakdown": {
+      "possession": {
+        "precision": 1.0,
+        "recall": 0.0426,
+        "f1": 0.0816,
+        "tp": 2,
+        "fp": 0,
+        "fn": 45
+      },
+      "injury": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      "location": {
+        "precision": 1.0,
+        "recall": 0.2144,
+        "f1": 0.3531,
+        "tp": 202,
+        "fp": 0,
+        "fn": 740
+      },
+      "clothing_appearance": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      "other": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      }
+    },
+    "per_film": {
+      "chasing_amy": {
+        "precision": 1.0,
+        "recall": 0.0469,
+        "f1": 0.0896,
+        "tp": 3,
+        "fp": 0,
+        "fn": 61,
+        "surfaced_count": 3,
+        "gold_count": 64
+      },
+      "darkman": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 86,
+        "surfaced_count": 0,
+        "gold_count": 86
+      },
+      "do_the_right_thing": {
+        "precision": 1.0,
+        "recall": 0.005,
+        "f1": 0.0099,
+        "tp": 1,
+        "fp": 0,
+        "fn": 201,
+        "surfaced_count": 1,
+        "gold_count": 202
+      },
+      "dog_day_afternoon": {
+        "precision": 0.5,
+        "recall": 0.0238,
+        "f1": 0.0455,
+        "tp": 1,
+        "fp": 1,
+        "fn": 41,
+        "surfaced_count": 2,
+        "gold_count": 42
+      },
+      "fargo_film": {
+        "precision": 0.5,
+        "recall": 0.1379,
+        "f1": 0.2162,
+        "tp": 4,
+        "fp": 4,
+        "fn": 25,
+        "surfaced_count": 8,
+        "gold_count": 29
+      },
+      "inception": {
+        "precision": 0.6667,
+        "recall": 0.0775,
+        "f1": 0.1389,
+        "tp": 10,
+        "fp": 5,
+        "fn": 119,
+        "surfaced_count": 15,
+        "gold_count": 129
+      },
+      "punch_drunk_love": {
+        "precision": 0.75,
+        "recall": 0.0566,
+        "f1": 0.1053,
+        "tp": 6,
+        "fp": 2,
+        "fn": 100,
+        "surfaced_count": 8,
+        "gold_count": 106
+      },
+      "smokin_aces": {
+        "precision": 1.0,
+        "recall": 0.0449,
+        "f1": 0.086,
+        "tp": 4,
+        "fp": 0,
+        "fn": 85,
+        "surfaced_count": 4,
+        "gold_count": 89
+      },
+      "snow_white_and_the_huntsman": {
+        "precision": 0.8571,
+        "recall": 0.0423,
+        "f1": 0.0805,
+        "tp": 6,
+        "fp": 1,
+        "fn": 136,
+        "surfaced_count": 7,
+        "gold_count": 142
+      },
+      "the_bourne_identity_2002_film": {
+        "precision": 0.4857,
+        "recall": 0.17,
+        "f1": 0.2519,
+        "tp": 17,
+        "fp": 18,
+        "fn": 83,
+        "surfaced_count": 35,
+        "gold_count": 100
+      }
+    }
+  },
+  "C": {
+    "overall": {
+      "precision": 0.6952,
+      "recall": 0.0738,
+      "f1": 0.1335,
+      "tp": 73,
+      "fp": 32,
+      "fn": 916,
+      "total_surfaced": 105,
+      "total_gold": 989,
+      "total_runtime_sec": 39052.86,
+      "macro_f1": 0.1331
+    },
+    "category_breakdown": {
+      "possession": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 47
+      },
+      "injury": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      "location": {
+        "precision": 1.0,
+        "recall": 0.2113,
+        "f1": 0.3488,
+        "tp": 199,
+        "fp": 0,
+        "fn": 743
+      },
+      "clothing_appearance": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      "other": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      }
+    },
+    "per_film": {
+      "chasing_amy": {
+        "precision": 1.0,
+        "recall": 0.1406,
+        "f1": 0.2466,
+        "tp": 9,
+        "fp": 0,
+        "fn": 55,
+        "surfaced_count": 9,
+        "gold_count": 64
+      },
+      "darkman": {
+        "precision": 1.0,
+        "recall": 0.093,
+        "f1": 0.1702,
+        "tp": 8,
+        "fp": 0,
+        "fn": 78,
+        "surfaced_count": 8,
+        "gold_count": 86
+      },
+      "do_the_right_thing": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 2,
+        "fn": 202,
+        "surfaced_count": 2,
+        "gold_count": 202
+      },
+      "dog_day_afternoon": {
+        "precision": 0.3333,
+        "recall": 0.0238,
+        "f1": 0.0444,
+        "tp": 1,
+        "fp": 2,
+        "fn": 41,
+        "surfaced_count": 3,
+        "gold_count": 42
+      },
+      "fargo_film": {
+        "precision": 1.0,
+        "recall": 0.0345,
+        "f1": 0.0667,
+        "tp": 1,
+        "fp": 0,
+        "fn": 28,
+        "surfaced_count": 1,
+        "gold_count": 29
+      },
+      "inception": {
+        "precision": 0.6667,
+        "recall": 0.1085,
+        "f1": 0.1867,
+        "tp": 14,
+        "fp": 7,
+        "fn": 115,
+        "surfaced_count": 21,
+        "gold_count": 129
+      },
+      "punch_drunk_love": {
+        "precision": 1.0,
+        "recall": 0.1038,
+        "f1": 0.188,
+        "tp": 11,
+        "fp": 0,
+        "fn": 95,
+        "surfaced_count": 11,
+        "gold_count": 106
+      },
+      "smokin_aces": {
+        "precision": 1.0,
+        "recall": 0.0225,
+        "f1": 0.044,
+        "tp": 2,
+        "fp": 0,
+        "fn": 87,
+        "surfaced_count": 2,
+        "gold_count": 89
+      },
+      "snow_white_and_the_huntsman": {
+        "precision": 0.5,
+        "recall": 0.0915,
+        "f1": 0.1548,
+        "tp": 13,
+        "fp": 13,
+        "fn": 129,
+        "surfaced_count": 26,
+        "gold_count": 142
+      },
+      "the_bourne_identity_2002_film": {
+        "precision": 0.6364,
+        "recall": 0.14,
+        "f1": 0.2295,
+        "tp": 14,
+        "fp": 8,
+        "fn": 86,
+        "surfaced_count": 22,
+        "gold_count": 100
+      }
+    }
+  },
+  "D": {
+    "overall": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 8,
+      "fn": 989,
+      "total_surfaced": 8,
+      "total_gold": 989,
+      "total_runtime_sec": 138.26,
+      "macro_f1": 0.0
+    },
+    "category_breakdown": {
+      "possession": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 47
+      },
+      "injury": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      "location": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 942
+      },
+      "clothing_appearance": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      "other": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      }
+    },
+    "per_film": {
+      "chasing_amy": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 64,
+        "surfaced_count": 0,
+        "gold_count": 64
+      },
+      "darkman": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 86,
+        "surfaced_count": 0,
+        "gold_count": 86
+      },
+      "do_the_right_thing": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 202,
+        "surfaced_count": 0,
+        "gold_count": 202
+      },
+      "dog_day_afternoon": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 4,
+        "fn": 42,
+        "surfaced_count": 4,
+        "gold_count": 42
+      },
+      "fargo_film": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 29,
+        "surfaced_count": 0,
+        "gold_count": 29
+      },
+      "inception": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 129,
+        "surfaced_count": 0,
+        "gold_count": 129
+      },
+      "punch_drunk_love": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 106,
+        "surfaced_count": 0,
+        "gold_count": 106
+      },
+      "smokin_aces": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 2,
+        "fn": 89,
+        "surfaced_count": 2,
+        "gold_count": 89
+      },
+      "snow_white_and_the_huntsman": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 142,
+        "surfaced_count": 0,
+        "gold_count": 142
+      },
+      "the_bourne_identity_2002_film": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 2,
+        "fn": 100,
+        "surfaced_count": 2,
+        "gold_count": 100
+      }
+    }
+  }
+}

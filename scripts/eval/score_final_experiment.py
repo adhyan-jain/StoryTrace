@@ -53,10 +53,7 @@ def is_matching_finding(finding: dict, gold_item: dict) -> bool:
     return entity_match and attr_match
 
 
-def score_film_condition(film_slug: str, condition: str, findings: list[dict], gold_items: list[dict]) -> dict:
-    # Filter gold items for this film that are true conflicts (verified)
-    film_gold = [g for g in gold_items if g.get("film") == film_slug and g.get("consensus_verdict") == "verified"]
-
+def score_film_condition(film_slug: str, condition: str, findings: list[dict], film_gold: list[dict]) -> dict:
     # Filter surfaced findings (for A, C: status == 'verified'; for B: candidates; for D: surfaced)
     if condition in ("A", "C"):
         surfaced = [f for f in findings if f.get("status") == "verified"]
@@ -90,7 +87,7 @@ def main():
         return
 
     gold_data = load_gold_dataset()
-    gold_items = gold_data.get("items", [])
+    films_gold = gold_data.get("films", {})
 
     with open(RAW_RESULTS_PATH, encoding="utf-8") as f:
         raw_results = json.load(f)
@@ -107,14 +104,15 @@ def main():
     }
 
     for film_slug, film_conds in raw_results.items():
-        film_gold = [g for g in gold_items if g.get("film") == film_slug and g.get("consensus_verdict") == "verified"]
+        film_items = films_gold.get(film_slug, [])
+        film_gold = [g for g in film_items if g.get("verdict_status") == "verified" or g.get("consensus_verdict") == "verified"]
 
         for cond in ("A", "B", "C", "D"):
             cond_data = film_conds.get(cond, {})
             findings = cond_data.get("findings", [])
             runtime = cond_data.get("total_runtime_sec", 0.0)
 
-            score = score_film_condition(film_slug, cond, findings, gold_items)
+            score = score_film_condition(film_slug, cond, findings, film_gold)
             metrics_by_condition[cond][film_slug] = score
 
             aggregate_counts[cond]["tp"] += score["tp"]

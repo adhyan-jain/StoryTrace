@@ -1,0 +1,44 @@
+{
+  "story_universe_id": "exp_res_the_bourne_identity_2002_film_condD_1789693545",
+  "units": 60,
+  "total_events": 0,
+  "entities": 0,
+  "candidates_generated": 2,
+  "conflicts_surfaced": 2,
+  "verdict_counts": {
+    "verified": 2,
+    "resolved": 0,
+    "uncertain": 0,
+    "intentional": 0
+  },
+  "total_runtime_sec": 27.86,
+  "error": null,
+  "findings": [
+    {
+      "conflict_id": "exp_res_the_bourne_identity_2002_film_condD_1789693545_one_shot_1",
+      "entity_id": "The Man",
+      "attribute": "identity",
+      "prior_evidence_excerpt": "THE MAN's HAND SLAMS down onto GIANCARLO'S and we SMASH CUT INTO A --\n\nFIRST PERSON POV -- we are staring up at --\n\nGIANCARLO: You're awake. Can you hear me?\nwe're blinking --\nYou've been shot. I'm trying to help you.\nwe're trying to find our voice --\nYou were in the water. You've been shot. It's okay now.",
+      "current_evidence_excerpt": "INT. BANK HALLWAY -- DAY\nTHE MAN is alone. And there it is, right in front of him. This is it. Here are the answers. He lifts the lid.\nTHE BOX. There's a shallow tray on top. In this tray: a beat-up passport in the name of Jason Bourne.",
+      "description": "The Man initially does not remember his identity but later finds a passport with his name, suggesting he should have known who he was from the start.",
+      "status": "verified",
+      "severity": "warning",
+      "confidence": 0.8,
+      "explanation": "The Man initially does not remember his identity but later finds a passport with his name, suggesting he should have known who he was from the start."
+    },
+    {
+      "conflict_id": "exp_res_the_bourne_identity_2002_film_condD_1789693545_one_shot_2",
+      "entity_id": "GIANCARLO",
+      "attribute": "injury",
+      "prior_evidence_excerpt": "Now -- GIANCARLO with a flashlight in his teeth -- TINK -- TINK -- TINK -- bullet fragments falling into a washed-out olive jar.",
+      "current_evidence_excerpt": "EXT. FISHING BOAT DECK -- DAY\nTHE MAN stands at the rail, staring out to sea. So lost. He turns to head inside -- there, a surfcasting rod propped against a locker.\nTHE MAN picks up the rod -- flips the bail -- traps the line -- and starts reeling in.",
+      "description": "Giancarlo is shown with multiple bullet fragments in his hand, suggesting he was injured. However, later scenes do not show any signs of injury on him.",
+      "status": "verified",
+      "severity": "warning",
+      "confidence": 0.8,
+      "explanation": "Giancarlo is shown with multiple bullet fragments in his hand, suggesting he was injured. However, later scenes do not show any signs of injury on him."
+    }
+  ],
+  "film": "the_bourne_identity_2002_film",
+  "condition": "D"
+}

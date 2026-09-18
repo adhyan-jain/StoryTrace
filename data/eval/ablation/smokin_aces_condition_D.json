@@ -1,0 +1,44 @@
+{
+  "story_universe_id": "exp_res_smokin_aces_condD_1789677086",
+  "units": 60,
+  "total_events": 0,
+  "entities": 0,
+  "candidates_generated": 2,
+  "conflicts_surfaced": 2,
+  "verdict_counts": {
+    "verified": 2,
+    "resolved": 0,
+    "uncertain": 0,
+    "intentional": 0
+  },
+  "total_runtime_sec": 28.23,
+  "error": null,
+  "findings": [
+    {
+      "conflict_id": "exp_res_smokin_aces_condD_1789677086_one_shot_1",
+      "entity_id": "Buddy Israel",
+      "attribute": "age and career progression",
+      "prior_evidence_excerpt": "DUPREE: Point is, he passed on all this slight of hand shit onto Aces and the kid is sick with it...By the age of twelve Buddy Israel is positively prodigal with a deck of cards. By sixteen, he's headlining the MGM's main room.",
+      "current_evidence_excerpt": "ELMORE: The bond on Israel expires in eighteen hours, after that, it's a jump ball. Our window is now.\nDUPREE: I know his location, we've got the drop of a maybe half a day before that location gets grape-vined and the rest of the world gets hipped.",
+      "description": "Buddy Israel\u2019s age progression from twelve to sixteen years old in the past scenes does not align with the present-day depiction where he is described as an adult capable of leading a casino and being involved in high-stakes criminal activities.",
+      "status": "verified",
+      "severity": "warning",
+      "confidence": 0.8,
+      "explanation": "Buddy Israel\u2019s age progression from twelve to sixteen years old in the past scenes does not align with the present-day depiction where he is described as an adult capable of leading a casino and being involved in high-stakes criminal activities."
+    },
+    {
+      "conflict_id": "exp_res_smokin_aces_condD_1789677086_one_shot_2",
+      "entity_id": "Freeman Heller",
+      "attribute": "cover identity",
+      "prior_evidence_excerpt": "LOCKE: Sparazza is rumored to have performed in excess of one-hundred and thirty contract murders, including one of the bureau's most celebrated agents. Freeman Heller. You heard of 'The Turnpike Murders' that was Sparazza.",
+      "current_evidence_excerpt": "A '51 Ford Fairlane, flush with an embankment, bullet perforated, dead-body draped. A top-coated gunman (presumably Primo Sparazza) stalks the vehicle's sole survivor, FREEMAN HELLER; faux mafioso, full-time federal agent.",
+      "description": "Freeman Heller is described as a bureau agent who infiltrated the mob and was killed by Sparazza. However, in the scene where he is shot, he is portrayed as a 'full-time federal agent' with a top coat, which contradicts his established background.",
+      "status": "verified",
+      "severity": "warning",
+      "confidence": 0.8,
+      "explanation": "Freeman Heller is described as a bureau agent who infiltrated the mob and was killed by Sparazza. However, in the scene where he is shot, he is portrayed as a 'full-time federal agent' with a top coat, which contradicts his established background."
+    }
+  ],
+  "film": "smokin_aces",
+  "condition": "D"
+}
