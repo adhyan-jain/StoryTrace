@@ -1,10 +1,12 @@
 """One-time data migration: copy every row from the local ClickHouse
 (docker-compose, storytrace-clickhouse-1) into a ClickHouse Cloud instance.
 
-Local connection is hardcoded to the docker-compose defaults (localhost:8123,
-default/admin); Cloud connection is read from the environment the same way
-ClickHouseClient does, so run this with the target Cloud values already
-exported (e.g. `set -a; source .env; set +a` first).
+Local connection targets localhost:8123/default, with the password read from
+CLICKHOUSE_LOCAL_PASSWORD (the same variable docker-compose.yml requires for
+the local container -- see its CLICKHOUSE_PASSWORD entry there). Cloud
+connection is read from the environment the same way ClickHouseClient does,
+so run this with both the local and target Cloud values already exported
+(e.g. `set -a; source .env; set +a` first).
 
 Usage: python3 -m scripts.migrate_to_cloud
 """
@@ -29,8 +31,9 @@ _TABLES = [
 
 
 def main() -> None:
+    local_password = os.environ["CLICKHOUSE_LOCAL_PASSWORD"]
     local = clickhouse_connect.get_client(
-        host="localhost", port=8123, user="default", password="admin", database="storytrace"
+        host="localhost", port=8123, user="default", password=local_password, database="storytrace"
     )
     cloud = ClickHouseClient().client
 
