@@ -12,7 +12,7 @@
 
 To establish a publication-grade evaluation dataset without introducing model bias or rubber-stamping StoryTrace's own predictions, an **LLM-assisted independent two-pass annotation workflow** was executed across the 10 research screenplays in `data/eval/corpus_manifest.json`.
 
-All annotations were generated directly from frozen screenplay text and `docs/ANNOTATION_GUIDELINES.md` **without** showing StoryTrace candidates, pipeline predictions, or investigation agent outputs to the annotators.
+All annotations were generated directly from frozen screenplay text and `docs/RESEARCH/ANNOTATION_GUIDELINES.md` **without** showing StoryTrace candidates, pipeline predictions, or investigation agent outputs to the annotators.
 
 > [!IMPORTANT]
 > **Methodological Naming Requirement:**  
@@ -73,7 +73,7 @@ Two independent annotation passes were generated (`data/annotation/llm_pass_a.js
 - **Consensus Matches**: 1,034 items (87.7%)
 - **Disagreements Adjudicated**: 146 items (12.3%)
 - **Adjudication Output File**: 📋 **[llm_adjudication.json](file:///home/adhyan/Desktop/StoryTrace/data/annotation/llm_adjudication.json)**
-- **Adjudication Protocol**: Disagreements were adjudicated via `scripts/eval/adjudicate_gold_dataset.py` under `docs/ANNOTATION_GUIDELINES.md`. If either independent pass identified an unbridged spatial transition, the item was resolved as `verified` with `warning` severity.
+- **Adjudication Protocol**: Disagreements were adjudicated via `scripts/eval/adjudicate_gold_dataset.py` under `docs/RESEARCH/ANNOTATION_GUIDELINES.md`. If either independent pass identified an unbridged spatial transition, the item was resolved as `verified` with `warning` severity.
 
 ---
 

@@ -22,7 +22,7 @@
 | 8  | Is the result robust across detector rules?       | PASS               | All 8 SQL rules operational; no single rule drives total score.  |
 | 9  | Is Green Mile a legitimate held-out test?         | PASS               | 100% held-out; verified 26.27% suppression & zero crashes.       |
 | 10 | Is the evidence sufficient for a research paper?  | PASS               | Comprehensive ablation, statistical CIs, and held-out validation.|
-| 11 | What claims are safe to make?                     | PASS               | Documented in docs/V2_CLAIM_AUDIT.md.                            |
+| 11 | What claims are safe to make?                     | PASS               | Documented in docs/RESEARCH/V2_CLAIM_AUDIT.md.                            |
 | 12 | What claims must NOT be made?                     | PASS               | Overclaiming terms eliminated; conservative bounds established.  |
 +----+---------------------------------------------------+--------------------+------------------------------------------------------------------+
 ```

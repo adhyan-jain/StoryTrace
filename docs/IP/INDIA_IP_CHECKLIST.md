@@ -63,7 +63,7 @@ When filing through Vellore Institute of Technology (VIT), the following institu
 
 ## 4. Required Package for VIT IPR Cell Hand-Off
 
-1. **Invention Disclosure Document:** Detailed technical writeup ([`IP_TECHNICAL_CORE.md`](file:///home/adhyan/Desktop/StoryTrace/docs/IP_TECHNICAL_CORE.md)).
-2. **Prior Art & Novelty Assessment:** Comprehensive matrix demonstrating non-obviousness over ATLAS, STAGE, and US 11,256,928 ([`PRIOR_ART_MATRIX.md`](file:///home/adhyan/Desktop/StoryTrace/docs/PRIOR_ART_MATRIX.md)).
-3. **Draft Claim Structure:** Proposed System, Method, and CRM claims ([`PATENT_CLAIM_ARCHITECTURE.md`](file:///home/adhyan/Desktop/StoryTrace/docs/PATENT_CLAIM_ARCHITECTURE.md)).
-4. **Empirical Validation Evidence:** Audited benchmark metrics, confusion matrix, and held-out validation data ([`V2_FINAL_RESULTS.md`](file:///home/adhyan/Desktop/StoryTrace/docs/V2_FINAL_RESULTS.md)).
+1. **Invention Disclosure Document:** Detailed technical writeup ([`IP_TECHNICAL_CORE.md`](file:///home/adhyan/Desktop/StoryTrace/docs/IP/IP_TECHNICAL_CORE.md)).
+2. **Prior Art & Novelty Assessment:** Comprehensive matrix demonstrating non-obviousness over ATLAS, STAGE, and US 11,256,928 ([`PRIOR_ART_MATRIX.md`](file:///home/adhyan/Desktop/StoryTrace/docs/IP/PRIOR_ART_MATRIX.md)).
+3. **Draft Claim Structure:** Proposed System, Method, and CRM claims ([`PATENT_CLAIM_ARCHITECTURE.md`](file:///home/adhyan/Desktop/StoryTrace/docs/IP/PATENT_CLAIM_ARCHITECTURE.md)).
+4. **Empirical Validation Evidence:** Audited benchmark metrics, confusion matrix, and held-out validation data ([`V2_FINAL_RESULTS.md`](file:///home/adhyan/Desktop/StoryTrace/docs/RESULTS/V2_FINAL_RESULTS.md)).

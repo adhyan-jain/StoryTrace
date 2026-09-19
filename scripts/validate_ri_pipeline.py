@@ -1,5 +1,5 @@
 """Step 5 validation: run the pipeline on the first 10 NarrativeUnits of the
-Reverend Insanity dataset and report what happened. See PIPELINE_VERIFICATION.md
+Reverend Insanity dataset and report what happened. See docs/HISTORY/PIPELINE_VERIFICATION.md
 for the query output this produces.
 """
 

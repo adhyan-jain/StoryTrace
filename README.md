@@ -59,7 +59,7 @@ python3 -m scripts.run_pipeline_on_text data/test_documents/controlled_test.txt
 python3 -m scripts.run_pipeline_on_screenplay data/test_documents/<screenplay>.txt
 ```
 
-Set `MODEL_PROVIDER=gemini` to use the Gemini API (API key auth) instead of the local Ollama default (Gemini's free tier is capped at 20 requests/day per model -- see `FINDINGS.md`). Set `MODEL_PROVIDER=vertexai` to use Vertex AI instead -- same Gemini models, but authenticated against a GCP project via Application Default Credentials rather than an API key, with GCP's normal Vertex AI rate limits rather than the free-tier per-day cap. Requires `GOOGLE_CLOUD_PROJECT` (and `gcloud auth application-default login` locally, or `GOOGLE_APPLICATION_CREDENTIALS` pointing at a service-account key for deployment) -- see `.env.example`.
+Set `MODEL_PROVIDER=gemini` to use the Gemini API (API key auth) instead of the local Ollama default (Gemini's free tier is capped at 20 requests/day per model -- see `docs/HISTORY/FINDINGS.md`). Set `MODEL_PROVIDER=vertexai` to use Vertex AI instead -- same Gemini models, but authenticated against a GCP project via Application Default Credentials rather than an API key, with GCP's normal Vertex AI rate limits rather than the free-tier per-day cap. Requires `GOOGLE_CLOUD_PROJECT` (and `gcloud auth application-default login` locally, or `GOOGLE_APPLICATION_CREDENTIALS` pointing at a service-account key for deployment) -- see `.env.example`.
 
 ## Evaluation
 

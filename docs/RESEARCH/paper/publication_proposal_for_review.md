@@ -181,7 +181,7 @@ The evaluation corpus spans 10 canonical feature films representing diverse genr
 ## 5. Research Roadmap & Proposed Faculty Collaboration
 
 1. **Inter-Annotator Agreement (IAA) Study:**
-   - Onboard 2 independent student annotators using our standardized [`docs/ANNOTATION_GUIDELINES.md`](file:///home/adhyan/Desktop/StoryTrace/docs/ANNOTATION_GUIDELINES.md) to calculate Cohen's $\kappa$ / Fleiss' $\kappa$ across the 10-film gold standard.
+   - Onboard 2 independent student annotators using our standardized [`docs/RESEARCH/ANNOTATION_GUIDELINES.md`](file:///home/adhyan/Desktop/StoryTrace/docs/RESEARCH/ANNOTATION_GUIDELINES.md) to calculate Cohen's $\kappa$ / Fleiss' $\kappa$ across the 10-film gold standard.
 2. **Multi-Model Scaling Comparison:**
    - Benchmark local open-weights inference (`qwen2.5:7b`, `llama-3.1:8b`) against proprietary frontier models (`gemini-1.5-pro`, `gpt-4o`) to quantify neurosymbolic architectural gains across model sizes.
 3. **Conference Target:**

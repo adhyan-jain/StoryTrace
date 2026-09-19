@@ -51,12 +51,12 @@
 
 ```
 [ACTION 1: Hand-Off IP Package to VIT IPR Cell]
-Submit docs/IP_TECHNICAL_CORE.md, docs/PRIOR_ART_MATRIX.md, docs/PATENT_CLAIM_ARCHITECTURE.md,
-and docs/INDIA_IP_CHECKLIST.md to VIT IPR Cell for internal review and Form 1/Form 2 drafting.
+Submit docs/IP/IP_TECHNICAL_CORE.md, docs/IP/PRIOR_ART_MATRIX.md, docs/IP/PATENT_CLAIM_ARCHITECTURE.md,
+and docs/IP/INDIA_IP_CHECKLIST.md to VIT IPR Cell for internal review and Form 1/Form 2 drafting.
 
 [ACTION 2: Draft Academic Research Paper]
-Assemble full paper manuscript using docs/PAPER_CONTRIBUTIONS.md, docs/PAPER_EXPERIMENTAL_STORY.md,
-and docs/V2_FINAL_RESULTS.md following ACL/EMNLP LaTeX format.
+Assemble full paper manuscript using docs/RESEARCH/PAPER_CONTRIBUTIONS.md, docs/RESEARCH/PAPER_EXPERIMENTAL_STORY.md,
+and docs/RESULTS/V2_FINAL_RESULTS.md following ACL/EMNLP LaTeX format.
 
 [ACTION 3: Coordinated Filing & Submission]
 Secure Provisional Patent Application Filing Number at the Indian Patent Office, then immediately

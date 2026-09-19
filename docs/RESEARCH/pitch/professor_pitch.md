@@ -36,7 +36,7 @@ center on.
 A Phase 0 pilot (all 4 conditions, real Vertex AI, on Aliens + Scream 2 +
 the synthetic `controlled_test.txt`) ran 2026-09-14/15 to validate the
 pipeline end-to-end before committing to the full 10-film study -- see
-`docs/paper/draft.md` Section 6.0 for the full breakdown. Headline: on
+`docs/RESEARCH/paper/draft.md` Section 6.0 for the full breakdown. Headline: on
 `controlled_test.txt` (the only pilot item with gold labels), Condition A
 scored overall F1 0.812 (Extraction 0.659, Detection/Investigation 0.889
 each), comparable to the existing Ollama baseline's 0.832 on the same
@@ -76,7 +76,7 @@ above.
 **This section describes filing *readiness*, not filing *likelihood of
 grant*** -- novelty/obviousness requires a professional search a
 professor's sign-off cannot substitute for.
-- A full invention disclosure draft exists (`docs/patent/invention_disclosure.md`)
+- A full invention disclosure draft exists (`docs/IP/invention_disclosure.md`)
   with preliminary claims and a prior-art table, ready for attorney review.
 - **Before anything else**: VIT Vellore's IP cell needs to confirm whether
   this work is subject to a university invention-assignment policy -- that

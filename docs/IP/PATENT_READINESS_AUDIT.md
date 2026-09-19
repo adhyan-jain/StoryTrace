@@ -83,7 +83,7 @@ We audited the repository implementation against 35 U.S.C. § 112 (Written Descr
 | **5. Investigation Workflow & Agent** | ✅ **Complete** | [`backend/agent/investigator.py`](file:///home/adhyan/Desktop/StoryTrace/backend/agent/investigator.py) (`InvestigationAgent._run_loop`) |
 | **6. Tool Protocol (MCP Server)** | ✅ **Complete** | [`backend/mcp/server.py`](file:///home/adhyan/Desktop/StoryTrace/backend/mcp/server.py) (FastMCP registered tools) |
 | **7. Reproducible Evaluation Pipeline**| ✅ **Complete** | [`scripts/eval/run_final_research_experiment.py`](file:///home/adhyan/Desktop/StoryTrace/scripts/eval/run_final_research_experiment.py), [`scripts/eval/score_final_experiment.py`](file:///home/adhyan/Desktop/StoryTrace/scripts/eval/score_final_experiment.py) |
-| **8. System Architecture Diagrams** | ⚠️ **Needs Polishing**| Textual diagrams exist in `docs/architecture.md`; formal patent-style block flowcharts should be prepared. |
+| **8. System Architecture Diagrams** | ⚠️ **Needs Polishing**| Textual diagrams exist in `docs/ARCHITECTURE.md`; formal patent-style block flowcharts should be prepared. |
 | **9. Formal Pseudocode Listings** | ⚠️ **Needs Expansion** | SQL queries and Python code exist; concise LaTeX/algorithmic pseudocode for the patent specification is recommended. |
 
 ---

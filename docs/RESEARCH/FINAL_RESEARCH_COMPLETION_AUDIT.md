@@ -13,7 +13,7 @@
 
 **RESEARCH COMPLETE — MINOR ANALYSIS/DOCUMENTATION REMAINING**
 
-The experimental execution across all 10 feature screenplays and 4 conditions (40 total runs) is **100% complete, verified, and frozen on disk**. All raw ablation JSONs, raw aggregations, scored metrics, and statistical significance tests are generated and reproducible. No further inference runs or model tuning are required. The remaining work consists strictly of updating the research manuscript draft ([`docs/paper/draft.md`](file:///home/adhyan/Desktop/StoryTrace/docs/paper/draft.md)) to reflect the actual empirical findings, inserting the exact statistical values, and completing the optional multi-annotator agreement study before journal submission.
+The experimental execution across all 10 feature screenplays and 4 conditions (40 total runs) is **100% complete, verified, and frozen on disk**. All raw ablation JSONs, raw aggregations, scored metrics, and statistical significance tests are generated and reproducible. No further inference runs or model tuning are required. The remaining work consists strictly of updating the research manuscript draft ([`docs/RESEARCH/paper/draft.md`](file:///home/adhyan/Desktop/StoryTrace/docs/RESEARCH/paper/draft.md)) to reflect the actual empirical findings, inserting the exact statistical values, and completing the optional multi-annotator agreement study before journal submission.
 
 ---
 
@@ -153,7 +153,7 @@ $$\begin{aligned}
 ---
 
 ## 11. MUST FIX BEFORE PAPER
-1. **Update [`docs/paper/draft.md`](file:///home/adhyan/Desktop/StoryTrace/docs/paper/draft.md)**:
+1. **Update [`docs/RESEARCH/paper/draft.md`](file:///home/adhyan/Desktop/StoryTrace/docs/RESEARCH/paper/draft.md)**:
    - Replace all `[INSERT]` placeholders with the exact empirical figures (Micro F1: Condition A 0.0650, Condition B 0.0970, Condition C 0.1335, Condition D 0.0000).
    - Reframe Section 1 and Section 6 from "F1 superiority" to "Noise suppression (31.3%), compute efficiency (33.5%), and auditability".
 2. **Explicit Gold Dataset Documentation**:
@@ -180,6 +180,6 @@ $$\begin{aligned}
 ## 14. Final Research Readiness Verdict
 
 - **Is the research scientifically complete?** **YES.** The 10-film $\times$ 4-condition experiment is 100% complete, verified, and statistically characterized.
-- **What exact blockers remain?** Only updating the text of [`docs/paper/draft.md`](file:///home/adhyan/Desktop/StoryTrace/docs/paper/draft.md) with the empirical numbers and reframed narrative.
+- **What exact blockers remain?** Only updating the text of [`docs/RESEARCH/paper/draft.md`](file:///home/adhyan/Desktop/StoryTrace/docs/RESEARCH/paper/draft.md) with the empirical numbers and reframed narrative.
 - **Does anything require a new experiment?** **NO.** The existing 40 runs provide complete, uncorrupted empirical evidence.
-- **What is the next step after this audit?** Integrating these finalized tables into [`docs/paper/draft.md`](file:///home/adhyan/Desktop/StoryTrace/docs/paper/draft.md) and presenting the complete package to your professor.
+- **What is the next step after this audit?** Integrating these finalized tables into [`docs/RESEARCH/paper/draft.md`](file:///home/adhyan/Desktop/StoryTrace/docs/RESEARCH/paper/draft.md) and presenting the complete package to your professor.

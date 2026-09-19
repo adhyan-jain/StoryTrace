@@ -7,7 +7,7 @@ from scripts.eval.run_eval import run_full_eval
 
 async def main() -> None:
     # Support --v2 flag to run against controlled_test_v2.txt instead of
-    # controlled_test.txt, for overfitting validation (see EVAL_IMPROVEMENT_LOG.md).
+    # controlled_test.txt, for overfitting validation (see docs/HISTORY/EVAL_IMPROVEMENT_LOG.md).
     use_v2 = "--v2" in sys.argv
 
     golden = None

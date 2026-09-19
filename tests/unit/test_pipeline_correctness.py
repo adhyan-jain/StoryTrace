@@ -1,7 +1,7 @@
 """Regression tests for every confirmed correctness issue in StoryTrace.
 
 Each test is pinned to a specific historical bug or property confirmed
-in FINDINGS.md, EVAL_IMPROVEMENT_LOG.md, or PIPELINE_VERIFICATION.md.
+in docs/HISTORY/FINDINGS.md, docs/HISTORY/EVAL_IMPROVEMENT_LOG.md, or docs/HISTORY/PIPELINE_VERIFICATION.md.
 Reference is given in the docstring so a future reader can trace it.
 """
 
@@ -30,7 +30,7 @@ from backend.llm.provider import get_llm_provider
 
 # --------------------------------------------------------------------------
 # BUG-1: Provider-selection drift
-# EVAL_IMPROVEMENT_LOG.md notes .env was set to `vertexai` which silently
+# docs/HISTORY/EVAL_IMPROVEMENT_LOG.md notes .env was set to `vertexai` which silently
 # routes eval runs through metered Vertex AI quota. Ollama must be default.
 # --------------------------------------------------------------------------
 class TestProviderSelection:
@@ -77,7 +77,7 @@ class TestProviderSelection:
 # --------------------------------------------------------------------------
 # BUG-2: Attribute-name drift (injury.forearm vs injury.right_forearm vs
 #         injury.arm vs injury.arm.forearm)
-# FINDINGS.md: "The injury was extracted three times under three different
+# docs/HISTORY/FINDINGS.md: "The injury was extracted three times under three different
 # attribute names for the same physical wound."
 # --------------------------------------------------------------------------
 class TestLateralityStripping:
@@ -122,7 +122,7 @@ class TestLateralityStripping:
         )
 
     def test_all_three_forms_collapse_consistently(self):
-        """All three forms from the known FINDINGS.md bug produce either
+        """All three forms from the known docs/HISTORY/FINDINGS.md bug produce either
         injury.forearm or injury.arm, never three different attributes."""
         results = set()
         for raw in ("injury.right_forearm", "injury.arm", "injury.arm.forearm"):
@@ -291,7 +291,7 @@ class TestInjuryGrounding:
 
 # --------------------------------------------------------------------------
 # BUG-6: Over-nested possession attributes (possession.field_kit.gauze)
-# FINDINGS.md + EVAL_IMPROVEMENT_LOG.md: possession.field_kit.gauze was
+# docs/HISTORY/FINDINGS.md + docs/HISTORY/EVAL_IMPROVEMENT_LOG.md: possession.field_kit.gauze was
 # stored, but the golden expects possession.gauze -- breaks entity resolution.
 # --------------------------------------------------------------------------
 class TestPossessionNormalization:
@@ -338,7 +338,7 @@ class TestPossessionNormalization:
 
 # --------------------------------------------------------------------------
 # BUG-7: Prop entities used as character entities
-# EVAL_IMPROVEMENT_LOG.md item 16: model emits entity_name="FILE" or "BADGE"
+# docs/HISTORY/EVAL_IMPROVEMENT_LOG.md item 16: model emits entity_name="FILE" or "BADGE"
 # as entity_type="character" -- should be rejected.
 # --------------------------------------------------------------------------
 class TestPropEntityFilter:
@@ -392,7 +392,7 @@ class TestPropEntityFilter:
 
 # --------------------------------------------------------------------------
 # BUG-8: Vague city values that are not real city names
-# EVAL_IMPROVEMENT_LOG.md item 11 + 27: model emits "city", "unspecified", etc.
+# docs/HISTORY/EVAL_IMPROVEMENT_LOG.md item 11 + 27: model emits "city", "unspecified", etc.
 # --------------------------------------------------------------------------
 class TestCityValueFilters:
     def test_vague_cities_rejected(self):
@@ -431,7 +431,7 @@ class TestPropTypedPossession:
 
 # --------------------------------------------------------------------------
 # BUG-10: Clothing items that are really possessions
-# EVAL_IMPROVEMENT_LOG.md item 14: model emits clothing.badge/clothing.gun --
+# docs/HISTORY/EVAL_IMPROVEMENT_LOG.md item 14: model emits clothing.badge/clothing.gun --
 # these must be rejected (badge and gun are always possession, not clothing).
 # --------------------------------------------------------------------------
 class TestClothingFilter:
@@ -450,7 +450,7 @@ class TestClothingFilter:
 
 # --------------------------------------------------------------------------
 # BUG-11: Location pronoun filter
-# EVAL_IMPROVEMENT_LOG.md item 13: "between them", "across from him" etc.
+# docs/HISTORY/EVAL_IMPROVEMENT_LOG.md item 13: "between them", "across from him" etc.
 # are positional descriptions, not real locations.
 # --------------------------------------------------------------------------
 class TestLocationPronounFilter:

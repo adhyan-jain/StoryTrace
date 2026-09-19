@@ -211,7 +211,7 @@ preceding explanation.
 ## 9. Experimental Evidence of Technical Effect
 A Phase 0 pilot ran 2026-09-14/15 (all 4 conditions, real Vertex AI, on 2
 screenplays + 1 synthetic document) to validate the pipeline runs
-end-to-end before the full evidentiary run -- see `docs/paper/draft.md`
+end-to-end before the full evidentiary run -- see `docs/RESEARCH/paper/draft.md`
 Section 6.0. This is preliminary validation only (N=1, no statistical
 test) and does NOT itself constitute the experimental evidence this
 section requires; that still needs the full Phase 1/2 run below.
