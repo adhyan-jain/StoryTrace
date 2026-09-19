@@ -45,7 +45,7 @@ Per `CLAUDE.md`'s explicit rule: **local testing and eval must use Ollama** (`MO
 python3 -m pytest
 ```
 
-**Verified live this pass: 115 passed, 0 failed**, 5 third-party deprecation warnings (httpx/starlette, google-genai, slowapi — not project code). Runtime ~7s.
+**Verified live this pass: 114 passed, 0 failed** (final count, after fixing `pytest.ini` to scope collection to `testpaths = tests` — see `DEAD_CODE_AUDIT.md` for why), 5 third-party deprecation warnings (httpx/starlette, google-genai, slowapi — not project code). Runtime ~4-7s.
 
 ## Running candidate detection / investigation (V1, live API path)
 

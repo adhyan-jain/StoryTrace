@@ -2,7 +2,10 @@
 
 ## Baseline
 
-`python3 -m pytest -q` → **115 passed, 0 failed**, before and after this cleanup pass's deletions (`tests/benchmark/`, `tests/unit/test_llm.py` — both already excluded from collection via `pytest.ini`, so removing them changed the collected count by exactly zero).
+`python3 -m pytest -q` → **114 passed, 0 failed** (final, after this pass's fixes). This count moved twice during the pass, for two different reasons — both documented below rather than silently normalized:
+
+1. Deleting `tests/benchmark/`/`tests/unit/test_llm.py` (see `DEAD_CODE_AUDIT.md`) changed the count by exactly zero — they were already excluded from collection via `pytest.ini`. Count stayed at 115 immediately after that deletion.
+2. `test_ri.py` (repo root) was a mislabeled data-generation script, not a real test (no assertions), that pytest's default discovery was silently collecting and running — including writing `data/processed/ri_parsed.json` as an undeclared side effect on every test run. Restricting `pytest.ini` to `testpaths = tests` and relocating the script to `scripts/generate_ri_parsed_dataset.py` (see `DEAD_CODE_AUDIT.md`) corrected the count from a stale 115 down to a true **114**.
 
 ## Test files and rough per-file test-function counts
 

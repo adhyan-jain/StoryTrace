@@ -94,7 +94,7 @@ Every `StateEvent` and downstream `CandidateConflict`/`InvestigationVerdict` ret
 - `tests/unit/` — auth, projects, diff, report, pipeline correctness/integrity (V1 path).
 - `tests/v2/` — candidate detector, extractor, investigator, models (V2 path).
 - `tests/benchmark/` and `tests/unit/test_llm.py` previously existed but imported an unvendored `echotales` package and could not be collected; both were deleted during the final repository cleanup pass (see `DEAD_CODE_AUDIT.md`).
-- Current state: `python3 -m pytest -q` → **115 passed, 0 failed** (verified 2026-09-19, unchanged before/after the deletion above since those files were already excluded from collection).
+- Current state: `python3 -m pytest -q` → **114 passed, 0 failed** (verified 2026-09-19). This is the final count after fixing `pytest.ini` to scope collection to `testpaths = tests`, which stopped a mislabeled root-level script (`test_ri.py` → relocated to `scripts/generate_ri_parsed_dataset.py`) from being silently collected and run as a "test" — see `DEAD_CODE_AUDIT.md`.
 
 ## 12. Reproducibility Instructions
 
@@ -105,7 +105,7 @@ python3 -m venv venv && source venv/bin/activate
 pip install -r requirements.txt
 cp .env.example .env   # fill in CLICKHOUSE_PASSWORD, JWT secret, etc.
 docker compose up -d clickhouse   # or run ClickHouse locally
-python3 -m pytest                 # 115 passed
+python3 -m pytest                 # 114 passed
 python3 -m scripts.eval           # V1 eval against data/eval/golden_dataset.py
 python3 -m scripts.eval --v2      # V2 eval against data/eval/golden_dataset_v2.py
 ```
