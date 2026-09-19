@@ -1,0 +1,46 @@
+{
+  "summary": "StoryTrace V2 Investigator Candidate Confusion & Filtering Matrix",
+  "total_candidates_evaluated": 929,
+  "raw_candidate_breakdown": {
+    "true_positive_candidates": 691,
+    "false_positive_candidates": 238,
+    "candidate_precision": 0.7438,
+    "candidate_recall_global": 0.6987,
+    "candidate_f1": 0.7205
+  },
+  "investigator_adjudication": {
+    "true_positives_by_verdict": {
+      "verified_hard_conflict": 515,
+      "verified_narrative_anomaly": 142,
+      "resolved": 34,
+      "uncertain": 0
+    },
+    "false_positives_by_verdict": {
+      "verified_narrative_anomaly": 34,
+      "resolved": 204,
+      "verified_hard_conflict": 0,
+      "uncertain": 0
+    },
+    "tp_surfaced": 657,
+    "tp_suppressed": 34,
+    "fp_surfaced": 34,
+    "fp_suppressed": 204
+  },
+  "investigator_performance_metrics": {
+    "tp_retention_rate": 0.9508,
+    "tp_suppression_rate": 0.0492,
+    "fp_filtering_rate": 0.8571,
+    "fp_survival_rate": 0.1429,
+    "overall_candidate_suppression_rate": 0.2562,
+    "final_precision": 0.9508,
+    "final_recall_global": 0.6643,
+    "final_f1": 0.7821,
+    "precision_gain": 0.207
+  },
+  "tool_call_audit": {
+    "total_tool_calls": 2787,
+    "avg_tool_calls_per_candidate": 3.0,
+    "max_tool_calls_observed": 3,
+    "hard_bound_satisfied": true
+  }
+}

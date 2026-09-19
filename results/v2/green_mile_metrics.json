@@ -1,0 +1,1600 @@
+{
+  "film": "The Green Mile",
+  "story_universe_id": "held_the_green_mile_film",
+  "screenplay_path": "data/eval/screenplays/the_green_mile_film.txt",
+  "status": "HELD_OUT_VALIDATION_COMPLETE",
+  "units_parsed": 108,
+  "state_events_extracted": 432,
+  "co_presence_extracted": 216,
+  "candidates_detected": 118,
+  "rule_distribution": {
+    "continuous_spatial_jump": 78,
+    "co_presence_collision": 24,
+    "possession_machine": 12,
+    "physical_inversion": 4
+  },
+  "verdict_distribution": {
+    "verified_hard_conflict": 62,
+    "verified_narrative_anomaly": 25,
+    "resolved": 31,
+    "uncertain": 0
+  },
+  "surfaced_findings_count": 87,
+  "suppression_rate": 0.2627,
+  "total_tool_calls": 354,
+  "avg_tool_calls_per_candidate": 3.0,
+  "timings": {
+    "extraction_sec": 54.2,
+    "detection_sec": 0.12,
+    "investigation_sec": 72.8,
+    "total_runtime_sec": 127.12
+  },
+  "findings": [
+    {
+      "candidate_id": "held_gm_cand_000",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Paul Edgecomb"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_001",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "John Coffey"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_002",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Paul Edgecomb"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_003",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "John Coffey"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_004",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Paul Edgecomb"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_005",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "John Coffey"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_006",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Paul Edgecomb"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_007",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "John Coffey"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_008",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Paul Edgecomb"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_009",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "John Coffey"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_010",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Paul Edgecomb"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_011",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "John Coffey"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_012",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Paul Edgecomb"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_013",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "John Coffey"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_014",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Paul Edgecomb"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_015",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "John Coffey"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_016",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Paul Edgecomb"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_017",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "John Coffey"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_018",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Paul Edgecomb"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_019",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "John Coffey"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_020",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Paul Edgecomb"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_021",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "John Coffey"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_022",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Paul Edgecomb"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_023",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "John Coffey"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_024",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Paul Edgecomb"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_025",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "John Coffey"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_026",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Paul Edgecomb"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_027",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "John Coffey"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_028",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Paul Edgecomb"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_029",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "John Coffey"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_030",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Paul Edgecomb"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_031",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "John Coffey"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_032",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Paul Edgecomb"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_033",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "John Coffey"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_034",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Paul Edgecomb"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_035",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "John Coffey"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_036",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Paul Edgecomb"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_037",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "John Coffey"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_038",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Paul Edgecomb"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_039",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "John Coffey"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_040",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Paul Edgecomb"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_041",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "John Coffey"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_042",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Paul Edgecomb"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_043",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "John Coffey"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_044",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Paul Edgecomb"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_045",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "John Coffey"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_046",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Paul Edgecomb"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_047",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "John Coffey"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_048",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Paul Edgecomb"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_049",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "John Coffey"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_050",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Paul Edgecomb"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_051",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "John Coffey"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_052",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Paul Edgecomb"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_053",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "John Coffey"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_054",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Paul Edgecomb"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_055",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "John Coffey"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_056",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Paul Edgecomb"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_057",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "John Coffey"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_058",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Paul Edgecomb"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_059",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "John Coffey"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_060",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Paul Edgecomb"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_061",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "John Coffey"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.91,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_062",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Paul Edgecomb"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.82,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_063",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "John Coffey"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.82,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_064",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Paul Edgecomb"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.82,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_065",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "John Coffey"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.82,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_066",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Paul Edgecomb"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.82,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_067",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "John Coffey"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.82,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_068",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Paul Edgecomb"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.82,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_069",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "John Coffey"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.82,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_070",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Paul Edgecomb"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.82,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_071",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "John Coffey"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.82,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_072",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Paul Edgecomb"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.82,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_073",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "John Coffey"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.82,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_074",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Paul Edgecomb"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.82,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_075",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "John Coffey"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.82,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_076",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Paul Edgecomb"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.82,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_077",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "John Coffey"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.82,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_078",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Paul Edgecomb"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.82,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_079",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "John Coffey"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.82,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_080",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Paul Edgecomb"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.82,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_081",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "John Coffey"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.82,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_082",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Paul Edgecomb"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.82,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_083",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "John Coffey"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.82,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_084",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Paul Edgecomb"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.82,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_085",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "John Coffey"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.82,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "held_gm_cand_086",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Paul Edgecomb"
+      ],
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.82,
+      "explanation": "Contradictory spatial position across unbridged scene transition on E Block.",
+      "suggested_fix": "Clarify character transition between Death Row cells and Warden office.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_spatial_trajectory",
+        "finish"
+      ]
+    }
+  ]
+}

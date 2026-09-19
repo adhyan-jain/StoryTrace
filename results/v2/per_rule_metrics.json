@@ -1,0 +1,32 @@
+{
+  "continuous_spatial_jump": {
+    "candidates_generated": 761,
+    "gold_matches_tp": 644,
+    "candidate_precision": 0.8463,
+    "candidate_recall_global": 0.6512,
+    "surfaced_findings": 613,
+    "final_precision": 1.0,
+    "final_recall_global": 0.6198,
+    "false_positive_rate": 0.0
+  },
+  "co_presence_collision": {
+    "candidates_generated": 121,
+    "gold_matches_tp": 0,
+    "candidate_precision": 0.0,
+    "candidate_recall_global": 0.0,
+    "surfaced_findings": 34,
+    "final_precision": 0.0,
+    "final_recall_global": 0.0,
+    "false_positive_rate": 1.0
+  },
+  "possession_machine": {
+    "candidates_generated": 47,
+    "gold_matches_tp": 47,
+    "candidate_precision": 1.0,
+    "candidate_recall_global": 0.0475,
+    "surfaced_findings": 44,
+    "final_precision": 1.0,
+    "final_recall_global": 0.0445,
+    "false_positive_rate": 0.0
+  }
+}
