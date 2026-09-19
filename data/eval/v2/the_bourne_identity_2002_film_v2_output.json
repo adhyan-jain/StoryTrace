@@ -1,0 +1,2705 @@
+{
+  "film_slug": "the_bourne_identity_2002_film",
+  "story_universe_id": "v2_the_bourne_identity_2002_film",
+  "unit_count": 200,
+  "state_event_count": 380,
+  "co_presence_count": 190,
+  "candidate_count": 95,
+  "verdict_distribution": {
+    "verified_hard_conflict": 51,
+    "verified_narrative_anomaly": 20,
+    "resolved": 24,
+    "uncertain": 0
+  },
+  "surfaced_findings_count": 71,
+  "total_tool_calls": 285,
+  "avg_tool_calls_per_candidate": 3.0,
+  "timings": {
+    "extraction_sec": 42.75,
+    "detection_sec": 0.08,
+    "investigation_sec": 61.75,
+    "total_runtime_sec": 112.1
+  },
+  "findings": [
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0001",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_zurich"
+      ],
+      "entity_id": "character_zurich",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_zurich transitions from scene 12 to 17 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_zurich between scenes 12 and 17.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_12",
+      "prior_excerpt": "character_zurich is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_17",
+      "current_excerpt": "character_zurich appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0002",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_streets"
+      ],
+      "entity_id": "character_streets",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_streets transitions from scene 12 to 21 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_streets between scenes 12 and 21.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_12",
+      "prior_excerpt": "character_streets is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_21",
+      "current_excerpt": "character_streets appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0003",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cop"
+      ],
+      "entity_id": "character_cop",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_cop transitions from scene 12 to 22 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_cop between scenes 12 and 22.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_12",
+      "prior_excerpt": "character_cop is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_22",
+      "current_excerpt": "character_cop appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0004",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_conklin"
+      ],
+      "entity_id": "character_conklin",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_conklin transitions from scene 15 to 16 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_conklin between scenes 15 and 16.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_15",
+      "prior_excerpt": "character_conklin is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_16",
+      "current_excerpt": "character_conklin appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0005",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_man"
+      ],
+      "entity_id": "character_man",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_man transitions from scene 15 to 18 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_man between scenes 15 and 18.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_15",
+      "prior_excerpt": "character_man is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_18",
+      "current_excerpt": "character_man appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0006",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_gun"
+      ],
+      "entity_id": "character_gun",
+      "attribute": "possession.gun",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_gun transitions from scene 15 to 20 with contradictory possession.gun.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_gun between scenes 15 and 20.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_15",
+      "prior_excerpt": "character_gun is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_20",
+      "current_excerpt": "character_gun appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0007",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_several"
+      ],
+      "entity_id": "character_several",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_several transitions from scene 15 to 22 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_several between scenes 15 and 22.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_15",
+      "prior_excerpt": "character_several is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_22",
+      "current_excerpt": "character_several appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0008",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_man"
+      ],
+      "entity_id": "character_man",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_man transitions from scene 15 to 25 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_man between scenes 15 and 25.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_15",
+      "prior_excerpt": "character_man is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_25",
+      "current_excerpt": "character_man appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0010",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_abbott"
+      ],
+      "entity_id": "character_abbott",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_abbott transitions from scene 16 to 17 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_abbott between scenes 16 and 17.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_16",
+      "prior_excerpt": "character_abbott is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_17",
+      "current_excerpt": "character_abbott appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0011",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_conklin"
+      ],
+      "entity_id": "character_conklin",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_conklin transitions from scene 16 to 17 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_conklin between scenes 16 and 17.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_16",
+      "prior_excerpt": "character_conklin is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_17",
+      "current_excerpt": "character_conklin appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0012",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_zurich"
+      ],
+      "entity_id": "character_zurich",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_zurich transitions from scene 17 to 21 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_zurich between scenes 17 and 21.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_17",
+      "prior_excerpt": "character_zurich is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_21",
+      "current_excerpt": "character_zurich appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0016",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_guard"
+      ],
+      "entity_id": "character_guard",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_guard transitions from scene 18 to 19 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_guard between scenes 18 and 19.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_18",
+      "prior_excerpt": "character_guard is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_19",
+      "current_excerpt": "character_guard appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0017",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_man"
+      ],
+      "entity_id": "character_man",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_man transitions from scene 18 to 19 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_man between scenes 18 and 19.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_18",
+      "prior_excerpt": "character_man is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_19",
+      "current_excerpt": "character_man appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0020",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_guard"
+      ],
+      "entity_id": "character_guard",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_guard transitions from scene 19 to 21 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_guard between scenes 19 and 21.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_19",
+      "prior_excerpt": "character_guard is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_21",
+      "current_excerpt": "character_guard appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0021",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_safety"
+      ],
+      "entity_id": "character_safety",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_safety transitions from scene 19 to 21 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_safety between scenes 19 and 21.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_19",
+      "prior_excerpt": "character_safety is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_21",
+      "current_excerpt": "character_safety appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0022",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_bourne"
+      ],
+      "entity_id": "character_bourne",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_bourne transitions from scene 19 to 26 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_bourne between scenes 19 and 26.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_19",
+      "prior_excerpt": "character_bourne is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_26",
+      "current_excerpt": "character_bourne appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0025",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_man"
+      ],
+      "entity_id": "character_man",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_man transitions from scene 1 to 3 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_man between scenes 1 and 3.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_1",
+      "prior_excerpt": "character_man is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_3",
+      "current_excerpt": "character_man appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0026",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_deck"
+      ],
+      "entity_id": "character_deck",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_deck transitions from scene 1 to 6 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_deck between scenes 1 and 6.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_1",
+      "prior_excerpt": "character_deck is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_6",
+      "current_excerpt": "character_deck appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0027",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_gun"
+      ],
+      "entity_id": "character_gun",
+      "attribute": "possession.gun",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_gun transitions from scene 20 to 27 with contradictory possession.gun.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_gun between scenes 20 and 27.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_20",
+      "prior_excerpt": "character_gun is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_27",
+      "current_excerpt": "character_gun appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0028",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_money"
+      ],
+      "entity_id": "character_money",
+      "attribute": "possession.money",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_money transitions from scene 20 to 41 with contradictory possession.money.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_money between scenes 20 and 41.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_20",
+      "prior_excerpt": "character_money is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_41",
+      "current_excerpt": "character_money appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0029",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_zurich"
+      ],
+      "entity_id": "character_zurich",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_zurich transitions from scene 21 to 22 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_zurich between scenes 21 and 22.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_21",
+      "prior_excerpt": "character_zurich is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_22",
+      "current_excerpt": "character_zurich appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0031",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_consulate"
+      ],
+      "entity_id": "character_consulate",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_consulate transitions from scene 25 to 26 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_consulate between scenes 25 and 26.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_25",
+      "prior_excerpt": "character_consulate is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_26",
+      "current_excerpt": "character_consulate appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0032",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_consulate"
+      ],
+      "entity_id": "character_consulate",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_consulate transitions from scene 26 to 29 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_consulate between scenes 26 and 29.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_26",
+      "prior_excerpt": "character_consulate is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_29",
+      "current_excerpt": "character_consulate appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0034",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_gun"
+      ],
+      "entity_id": "character_gun",
+      "attribute": "possession.gun",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_gun transitions from scene 27 to 28 with contradictory possession.gun.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_gun between scenes 27 and 28.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_27",
+      "prior_excerpt": "character_gun is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_28",
+      "current_excerpt": "character_gun appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0035",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_marine"
+      ],
+      "entity_id": "character_marine",
+      "attribute": "possession.gun",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_marine transitions from scene 27 to 28 with contradictory possession.gun.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_marine between scenes 27 and 28.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_27",
+      "prior_excerpt": "character_marine is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_28",
+      "current_excerpt": "character_marine appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0036",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_gun"
+      ],
+      "entity_id": "character_gun",
+      "attribute": "possession.gun",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_gun transitions from scene 28 to 41 with contradictory possession.gun.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_gun between scenes 28 and 41.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_28",
+      "prior_excerpt": "character_gun is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_41",
+      "current_excerpt": "character_gun appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0037",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_consulate"
+      ],
+      "entity_id": "character_consulate",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_consulate transitions from scene 29 to 30 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_consulate between scenes 29 and 30.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_29",
+      "prior_excerpt": "character_consulate is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_30",
+      "current_excerpt": "character_consulate appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0038",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_dcm"
+      ],
+      "entity_id": "character_dcm",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_dcm transitions from scene 29 to 30 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_dcm between scenes 29 and 30.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_29",
+      "prior_excerpt": "character_dcm is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_30",
+      "current_excerpt": "character_dcm appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0039",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_deputy"
+      ],
+      "entity_id": "character_deputy",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_deputy transitions from scene 29 to 30 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_deputy between scenes 29 and 30.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_29",
+      "prior_excerpt": "character_deputy is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_30",
+      "current_excerpt": "character_deputy appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0040",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_floor"
+      ],
+      "entity_id": "character_floor",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_floor transitions from scene 29 to 30 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_floor between scenes 29 and 30.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_29",
+      "prior_excerpt": "character_floor is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_30",
+      "current_excerpt": "character_floor appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0041",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_hallway"
+      ],
+      "entity_id": "character_hallway",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_hallway transitions from scene 29 to 30 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_hallway between scenes 29 and 30.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_29",
+      "prior_excerpt": "character_hallway is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_30",
+      "current_excerpt": "character_hallway appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0042",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_three"
+      ],
+      "entity_id": "character_three",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_three transitions from scene 29 to 30 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_three between scenes 29 and 30.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_29",
+      "prior_excerpt": "character_three is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_30",
+      "current_excerpt": "character_three appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0043",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_floor"
+      ],
+      "entity_id": "character_floor",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_floor transitions from scene 30 to 31 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_floor between scenes 30 and 31.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_30",
+      "prior_excerpt": "character_floor is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_31",
+      "current_excerpt": "character_floor appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0046",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_they"
+      ],
+      "entity_id": "character_they",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_they transitions from scene 31 to 32 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_they between scenes 31 and 32.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_31",
+      "prior_excerpt": "character_they is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_32",
+      "current_excerpt": "character_they appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0047",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_conference"
+      ],
+      "entity_id": "character_conference",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_conference transitions from scene 32 to 38 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_conference between scenes 32 and 38.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_32",
+      "prior_excerpt": "character_conference is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_38",
+      "current_excerpt": "character_conference appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0048",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_security"
+      ],
+      "entity_id": "character_security",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_security transitions from scene 33 to 34 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_security between scenes 33 and 34.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_33",
+      "prior_excerpt": "character_security is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_34",
+      "current_excerpt": "character_security appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0049",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_red"
+      ],
+      "entity_id": "character_red",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_red transitions from scene 34 to 42 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_red between scenes 34 and 42.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_34",
+      "prior_excerpt": "character_red is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_42",
+      "current_excerpt": "character_red appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0056",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_man"
+      ],
+      "entity_id": "character_man",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_man transitions from scene 3 to 5 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_man between scenes 3 and 5.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_3",
+      "prior_excerpt": "character_man is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_5",
+      "current_excerpt": "character_man appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0057",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_bourne"
+      ],
+      "entity_id": "character_bourne",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_bourne transitions from scene 42 to 43 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_bourne between scenes 42 and 43.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_42",
+      "prior_excerpt": "character_bourne is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_43",
+      "current_excerpt": "character_bourne appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0058",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_dusk"
+      ],
+      "entity_id": "character_dusk",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_dusk transitions from scene 42 to 43 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_dusk between scenes 42 and 43.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_42",
+      "prior_excerpt": "character_dusk is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_43",
+      "current_excerpt": "character_dusk appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0061",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_marie"
+      ],
+      "entity_id": "character_marie",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_marie transitions from scene 43 to 46 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_marie between scenes 43 and 46.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_43",
+      "prior_excerpt": "character_marie is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_46",
+      "current_excerpt": "character_marie appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0064",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_insert"
+      ],
+      "entity_id": "character_insert",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_insert transitions from scene 44 to 51 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_insert between scenes 44 and 51.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_44",
+      "prior_excerpt": "character_insert is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_51",
+      "current_excerpt": "character_insert appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0066",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_bourne"
+      ],
+      "entity_id": "character_bourne",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_bourne transitions from scene 46 to 49 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_bourne between scenes 46 and 49.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_46",
+      "prior_excerpt": "character_bourne is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_49",
+      "current_excerpt": "character_bourne appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0067",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_marie"
+      ],
+      "entity_id": "character_marie",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_marie transitions from scene 46 to 55 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_marie between scenes 46 and 55.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_46",
+      "prior_excerpt": "character_marie is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_55",
+      "current_excerpt": "character_marie appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0068",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_bourne"
+      ],
+      "entity_id": "character_bourne",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_bourne transitions from scene 49 to 52 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_bourne between scenes 49 and 52.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_49",
+      "prior_excerpt": "character_bourne is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_52",
+      "current_excerpt": "character_bourne appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0069",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_face"
+      ],
+      "entity_id": "character_face",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_face transitions from scene 49 to 53 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_face between scenes 49 and 53.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_49",
+      "prior_excerpt": "character_face is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_53",
+      "current_excerpt": "character_face appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0070",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_treadstone"
+      ],
+      "entity_id": "character_treadstone",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_treadstone transitions from scene 49 to 53 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_treadstone between scenes 49 and 53.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_49",
+      "prior_excerpt": "character_treadstone is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_53",
+      "current_excerpt": "character_treadstone appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0071",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_conklin"
+      ],
+      "entity_id": "character_conklin",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_conklin transitions from scene 51 to 53 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_conklin between scenes 51 and 53.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_51",
+      "prior_excerpt": "character_conklin is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_53",
+      "current_excerpt": "character_conklin appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0073",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_abbott"
+      ],
+      "entity_id": "character_abbott",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_abbott transitions from scene 53 to 55 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_abbott between scenes 53 and 55.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_53",
+      "prior_excerpt": "character_abbott is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_55",
+      "current_excerpt": "character_abbott appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0074",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_conklin"
+      ],
+      "entity_id": "character_conklin",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_conklin transitions from scene 53 to 55 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_conklin between scenes 53 and 55.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_53",
+      "prior_excerpt": "character_conklin is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_55",
+      "current_excerpt": "character_conklin appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0076",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_bourne"
+      ],
+      "entity_id": "character_bourne",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_bourne transitions from scene 57 to 58 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_bourne between scenes 57 and 58.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_57",
+      "prior_excerpt": "character_bourne is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_58",
+      "current_excerpt": "character_bourne appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0077",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_paris"
+      ],
+      "entity_id": "character_paris",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_paris transitions from scene 57 to 58 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_paris between scenes 57 and 58.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_57",
+      "prior_excerpt": "character_paris is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_58",
+      "current_excerpt": "character_paris appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0078",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_man"
+      ],
+      "entity_id": "character_man",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_man transitions from scene 5 to 15 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_man between scenes 5 and 15.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_5",
+      "prior_excerpt": "character_man is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_15",
+      "current_excerpt": "character_man appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0079",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_boat"
+      ],
+      "entity_id": "character_boat",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_boat transitions from scene 5 to 6 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_boat between scenes 5 and 6.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_5",
+      "prior_excerpt": "character_boat is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_6",
+      "current_excerpt": "character_boat appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0080",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_fishing"
+      ],
+      "entity_id": "character_fishing",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_fishing transitions from scene 5 to 6 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_fishing between scenes 5 and 6.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_5",
+      "prior_excerpt": "character_fishing is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_6",
+      "current_excerpt": "character_fishing appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0082",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_bunk"
+      ],
+      "entity_id": "character_bunk",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_bunk transitions from scene 5 to 8 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_bunk between scenes 5 and 8.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_5",
+      "prior_excerpt": "character_bunk is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_8",
+      "current_excerpt": "character_bunk appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0084",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_boat"
+      ],
+      "entity_id": "character_boat",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_boat transitions from scene 6 to 7 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_boat between scenes 6 and 7.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_6",
+      "prior_excerpt": "character_boat is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_7",
+      "current_excerpt": "character_boat appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0085",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_deck"
+      ],
+      "entity_id": "character_deck",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_deck transitions from scene 6 to 7 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_deck between scenes 6 and 7.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_6",
+      "prior_excerpt": "character_deck is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_7",
+      "current_excerpt": "character_deck appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0086",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_fishing"
+      ],
+      "entity_id": "character_fishing",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_fishing transitions from scene 6 to 7 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_fishing between scenes 6 and 7.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_6",
+      "prior_excerpt": "character_fishing is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_7",
+      "current_excerpt": "character_fishing appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0087",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_man"
+      ],
+      "entity_id": "character_man",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_man transitions from scene 6 to 7 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_man between scenes 6 and 7.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_6",
+      "prior_excerpt": "character_man is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_7",
+      "current_excerpt": "character_man appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0088",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_boat"
+      ],
+      "entity_id": "character_boat",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_boat transitions from scene 7 to 8 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_boat between scenes 7 and 8.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_7",
+      "prior_excerpt": "character_boat is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_8",
+      "current_excerpt": "character_boat appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0089",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_fishing"
+      ],
+      "entity_id": "character_fishing",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_fishing transitions from scene 7 to 8 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_fishing between scenes 7 and 8.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_7",
+      "prior_excerpt": "character_fishing is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_8",
+      "current_excerpt": "character_fishing appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0091",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_tgv"
+      ],
+      "entity_id": "character_tgv",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_tgv transitions from scene 8 to 9 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_tgv between scenes 8 and 9.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_8",
+      "prior_excerpt": "character_tgv is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_9",
+      "current_excerpt": "character_tgv appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0092",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_train"
+      ],
+      "entity_id": "character_train",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_train transitions from scene 8 to 9 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_train between scenes 8 and 9.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_8",
+      "prior_excerpt": "character_train is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_9",
+      "current_excerpt": "character_train appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0093",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_man"
+      ],
+      "entity_id": "character_man",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_man transitions from scene 9 to 12 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_man between scenes 9 and 12.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_9",
+      "prior_excerpt": "character_man is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_12",
+      "current_excerpt": "character_man appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0094",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_train"
+      ],
+      "entity_id": "character_train",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_train transitions from scene 9 to 12 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_train between scenes 9 and 12.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_9",
+      "prior_excerpt": "character_train is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_12",
+      "current_excerpt": "character_train appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0095",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_zurich"
+      ],
+      "entity_id": "character_zurich",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_zurich transitions from scene 9 to 12 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_zurich between scenes 9 and 12.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_9",
+      "prior_excerpt": "character_zurich is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_12",
+      "current_excerpt": "character_zurich appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_0096",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cia"
+      ],
+      "entity_id": "character_cia",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_cia transitions from scene 9 to 16 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_cia between scenes 9 and 16.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_9",
+      "prior_excerpt": "character_cia is present at established state.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_16",
+      "current_excerpt": "character_cia appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_fp_000",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_0"
+      ],
+      "entity_id": "Background_Char_0",
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.65,
+      "explanation": "Ambiguous background extra movement.",
+      "suggested_fix": "Clarify staging.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_1",
+      "prior_excerpt": "Background extra visible.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_2",
+      "current_excerpt": "Background extra relocated.",
+      "investigation_actions": [
+        "get_spatial_trajectory",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_fp_008",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_8"
+      ],
+      "entity_id": "Background_Char_8",
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.65,
+      "explanation": "Ambiguous background extra movement.",
+      "suggested_fix": "Clarify staging.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_9",
+      "prior_excerpt": "Background extra visible.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_10",
+      "current_excerpt": "Background extra relocated.",
+      "investigation_actions": [
+        "get_spatial_trajectory",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_the_bourne_identity_2002_film_fp_016",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_16"
+      ],
+      "entity_id": "Background_Char_16",
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.65,
+      "explanation": "Ambiguous background extra movement.",
+      "suggested_fix": "Clarify staging.",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_17",
+      "prior_excerpt": "Background extra visible.",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_18",
+      "current_excerpt": "Background extra relocated.",
+      "investigation_actions": [
+        "get_spatial_trajectory",
+        "get_unit_text",
+        "finish"
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0001",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_zurich"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_zurich across scenes 12 and 17",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_12",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_17"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0002",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_streets"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_streets across scenes 12 and 21",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_12",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_21"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0003",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cop"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_cop across scenes 12 and 22",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_12",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_22"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0004",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_conklin"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_conklin across scenes 15 and 16",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_15",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_16"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0005",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_man"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_man across scenes 15 and 18",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_15",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_18"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0006",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_gun"
+      ],
+      "attribute": "possession.gun",
+      "description": "Potential possession_machine conflict for character_gun across scenes 15 and 20",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_15",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_20"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0007",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_several"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_several across scenes 15 and 22",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_15",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_22"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0008",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_man"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_man across scenes 15 and 25",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_15",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_25"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0010",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_abbott"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_abbott across scenes 16 and 17",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_16",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_17"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0011",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_conklin"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_conklin across scenes 16 and 17",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_16",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_17"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0012",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_zurich"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_zurich across scenes 17 and 21",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_17",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_21"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0016",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_guard"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_guard across scenes 18 and 19",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_18",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_19"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0017",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_man"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_man across scenes 18 and 19",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_18",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_19"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0020",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_guard"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_guard across scenes 19 and 21",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_19",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_21"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0021",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_safety"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_safety across scenes 19 and 21",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_19",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_21"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0022",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_bourne"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_bourne across scenes 19 and 26",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_19",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_26"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0025",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_man"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_man across scenes 1 and 3",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_1",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_3"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0026",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_deck"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_deck across scenes 1 and 6",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_1",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_6"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0027",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_gun"
+      ],
+      "attribute": "possession.gun",
+      "description": "Potential possession_machine conflict for character_gun across scenes 20 and 27",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_20",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_27"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0028",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_money"
+      ],
+      "attribute": "possession.money",
+      "description": "Potential possession_machine conflict for character_money across scenes 20 and 41",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_20",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_41"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0029",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_zurich"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_zurich across scenes 21 and 22",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_21",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_22"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0030",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_zurich"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_zurich across scenes 22 and 26",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_22",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_26"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0031",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_consulate"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_consulate across scenes 25 and 26",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_25",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_26"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0032",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_consulate"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_consulate across scenes 26 and 29",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_26",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_29"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0034",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_gun"
+      ],
+      "attribute": "possession.gun",
+      "description": "Potential possession_machine conflict for character_gun across scenes 27 and 28",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_27",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_28"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0035",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_marine"
+      ],
+      "attribute": "possession.gun",
+      "description": "Potential possession_machine conflict for character_marine across scenes 27 and 28",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_27",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_28"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0036",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_gun"
+      ],
+      "attribute": "possession.gun",
+      "description": "Potential possession_machine conflict for character_gun across scenes 28 and 41",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_28",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_41"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0037",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_consulate"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_consulate across scenes 29 and 30",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_29",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_30"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0038",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_dcm"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_dcm across scenes 29 and 30",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_29",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_30"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0039",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_deputy"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_deputy across scenes 29 and 30",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_29",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_30"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0040",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_floor"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_floor across scenes 29 and 30",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_29",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_30"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0041",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_hallway"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_hallway across scenes 29 and 30",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_29",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_30"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0042",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_three"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_three across scenes 29 and 30",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_29",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_30"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0043",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_floor"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_floor across scenes 30 and 31",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_30",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_31"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0046",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_they"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_they across scenes 31 and 32",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_31",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_32"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0047",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_conference"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_conference across scenes 32 and 38",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_32",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_38"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0048",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_security"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_security across scenes 33 and 34",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_33",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_34"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0049",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_red"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_red across scenes 34 and 42",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_34",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_42"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0056",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_man"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_man across scenes 3 and 5",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_3",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_5"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0057",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_bourne"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_bourne across scenes 42 and 43",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_42",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_43"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0058",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_dusk"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_dusk across scenes 42 and 43",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_42",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_43"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0060",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_bourne"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_bourne across scenes 43 and 46",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_43",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_46"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0061",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_marie"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_marie across scenes 43 and 46",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_43",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_46"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0064",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_insert"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_insert across scenes 44 and 51",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_44",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_51"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0066",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_bourne"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_bourne across scenes 46 and 49",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_46",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_49"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0067",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_marie"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_marie across scenes 46 and 55",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_46",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_55"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0068",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_bourne"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_bourne across scenes 49 and 52",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_49",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_52"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0069",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_face"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_face across scenes 49 and 53",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_49",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_53"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0070",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_treadstone"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_treadstone across scenes 49 and 53",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_49",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_53"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0071",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_conklin"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_conklin across scenes 51 and 53",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_51",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_53"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0073",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_abbott"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_abbott across scenes 53 and 55",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_53",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_55"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0074",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_conklin"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_conklin across scenes 53 and 55",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_53",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_55"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0075",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_marie"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_marie across scenes 55 and 57",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_55",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_57"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0076",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_bourne"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_bourne across scenes 57 and 58",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_57",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_58"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0077",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_paris"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_paris across scenes 57 and 58",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_57",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_58"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0078",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_man"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_man across scenes 5 and 15",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_5",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_15"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0079",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_boat"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_boat across scenes 5 and 6",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_5",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_6"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0080",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_fishing"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_fishing across scenes 5 and 6",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_5",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_6"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0082",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_bunk"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_bunk across scenes 5 and 8",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_5",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_8"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0084",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_boat"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_boat across scenes 6 and 7",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_6",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_7"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0085",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_deck"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_deck across scenes 6 and 7",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_6",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_7"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0086",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_fishing"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_fishing across scenes 6 and 7",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_6",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_7"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0087",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_man"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_man across scenes 6 and 7",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_6",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_7"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0088",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_boat"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_boat across scenes 7 and 8",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_7",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_8"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0089",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_fishing"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_fishing across scenes 7 and 8",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_7",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_8"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0091",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_tgv"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_tgv across scenes 8 and 9",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_8",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_9"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0092",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_train"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_train across scenes 8 and 9",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_8",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_9"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0093",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_man"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_man across scenes 9 and 12",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_9",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_12"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0094",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_train"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_train across scenes 9 and 12",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_9",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_12"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0095",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_zurich"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_zurich across scenes 9 and 12",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_9",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_12"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_0096",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cia"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_cia across scenes 9 and 16",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_9",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_16"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_fp_000",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_0"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_0",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_1",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_2"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_fp_001",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_1"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_1",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_2",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_3"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_fp_002",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_2"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_2",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_3",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_4"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_fp_003",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_3"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_3",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_4",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_5"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_fp_004",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_4"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_4",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_5",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_6"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_fp_005",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_5"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_5",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_6",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_7"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_fp_006",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_6"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_6",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_7",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_8"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_fp_007",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_7"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_7",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_8",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_9"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_fp_008",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_8"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_8",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_9",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_10"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_fp_009",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_9"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_9",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_10",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_11"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_fp_010",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_10"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_10",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_11",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_12"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_fp_011",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_11"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_11",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_12",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_13"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_fp_012",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_12"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_12",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_13",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_14"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_fp_013",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_13"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_13",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_14",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_15"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_fp_014",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_14"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_14",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_15",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_16"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_fp_015",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_15"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_15",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_16",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_17"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_fp_016",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_16"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_16",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_17",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_18"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_fp_017",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_17"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_17",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_18",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_19"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_fp_018",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_18"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_18",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_19",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_20"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_fp_019",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_19"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_19",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_20",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_21"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_fp_020",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_20"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_20",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_21",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_22"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_fp_021",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_21"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_21",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_22",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_23"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_fp_022",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_22"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_22",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_23",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_24"
+    },
+    {
+      "id": "cand_v2_the_bourne_identity_2002_film_fp_023",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_23"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_23",
+      "prior_unit_id": "the_bourne_identity_2002_film_unit_24",
+      "current_unit_id": "the_bourne_identity_2002_film_unit_25"
+    }
+  ]
+}

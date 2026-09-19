@@ -1,0 +1,2558 @@
+{
+  "film_slug": "punch_drunk_love",
+  "story_universe_id": "v2_punch_drunk_love",
+  "unit_count": 212,
+  "state_event_count": 360,
+  "co_presence_count": 180,
+  "candidate_count": 90,
+  "verdict_distribution": {
+    "verified_hard_conflict": 48,
+    "verified_narrative_anomaly": 19,
+    "resolved": 23,
+    "uncertain": 0
+  },
+  "surfaced_findings_count": 67,
+  "total_tool_calls": 270,
+  "avg_tool_calls_per_candidate": 3.0,
+  "timings": {
+    "extraction_sec": 40.5,
+    "detection_sec": 0.08,
+    "investigation_sec": 58.5,
+    "total_runtime_sec": 106.2
+  },
+  "findings": [
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0003",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_barry"
+      ],
+      "entity_id": "character_barry",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_barry transitions from scene 12 to 22 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_barry between scenes 12 and 22.",
+      "prior_unit_id": "punch_drunk_love_unit_12",
+      "prior_excerpt": "character_barry is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_22",
+      "current_excerpt": "character_barry appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0008",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_full"
+      ],
+      "entity_id": "character_full",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_full transitions from scene 14 to 23 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_full between scenes 14 and 23.",
+      "prior_unit_id": "punch_drunk_love_unit_14",
+      "prior_excerpt": "character_full is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_23",
+      "current_excerpt": "character_full appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0013",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_girl"
+      ],
+      "entity_id": "character_girl",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_girl transitions from scene 18 to 20 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_girl between scenes 18 and 20.",
+      "prior_unit_id": "punch_drunk_love_unit_18",
+      "prior_excerpt": "character_girl is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_20",
+      "current_excerpt": "character_girl appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0014",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_phone"
+      ],
+      "entity_id": "character_phone",
+      "attribute": "possession.phone",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_phone transitions from scene 18 to 20 with contradictory possession.phone.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_phone between scenes 18 and 20.",
+      "prior_unit_id": "punch_drunk_love_unit_18",
+      "prior_excerpt": "character_phone is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_20",
+      "current_excerpt": "character_phone appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0017",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_later"
+      ],
+      "entity_id": "character_later",
+      "attribute": "possession.phone",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_later transitions from scene 18 to 60 with contradictory possession.phone.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_later between scenes 18 and 60.",
+      "prior_unit_id": "punch_drunk_love_unit_18",
+      "prior_excerpt": "character_later is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_60",
+      "current_excerpt": "character_later appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0018",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_barry"
+      ],
+      "entity_id": "character_barry",
+      "attribute": "possession.phone",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_barry transitions from scene 1 to 18 with contradictory possession.phone.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_barry between scenes 1 and 18.",
+      "prior_unit_id": "punch_drunk_love_unit_1",
+      "prior_excerpt": "character_barry is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_18",
+      "current_excerpt": "character_barry appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0019",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_camera"
+      ],
+      "entity_id": "character_camera",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_camera transitions from scene 1 to 3 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_camera between scenes 1 and 3.",
+      "prior_unit_id": "punch_drunk_love_unit_1",
+      "prior_excerpt": "character_camera is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_3",
+      "current_excerpt": "character_camera appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0020",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_early"
+      ],
+      "entity_id": "character_early",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_early transitions from scene 1 to 5 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_early between scenes 1 and 5.",
+      "prior_unit_id": "punch_drunk_love_unit_1",
+      "prior_excerpt": "character_early is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_5",
+      "current_excerpt": "character_early appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0021",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_morning"
+      ],
+      "entity_id": "character_morning",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_morning transitions from scene 1 to 5 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_morning between scenes 1 and 5.",
+      "prior_unit_id": "punch_drunk_love_unit_1",
+      "prior_excerpt": "character_morning is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_5",
+      "current_excerpt": "character_morning appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0022",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_hold"
+      ],
+      "entity_id": "character_hold",
+      "attribute": "possession.phone",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_hold transitions from scene 20 to 25 with contradictory possession.phone.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_hold between scenes 20 and 25.",
+      "prior_unit_id": "punch_drunk_love_unit_20",
+      "prior_excerpt": "character_hold is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_25",
+      "current_excerpt": "character_hold appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0024",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_phone"
+      ],
+      "entity_id": "character_phone",
+      "attribute": "possession.phone",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_phone transitions from scene 20 to 50 with contradictory possession.phone.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_phone between scenes 20 and 50.",
+      "prior_unit_id": "punch_drunk_love_unit_20",
+      "prior_excerpt": "character_phone is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_50",
+      "current_excerpt": "character_phone appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0025",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_later"
+      ],
+      "entity_id": "character_later",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_later transitions from scene 22 to 23 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_later between scenes 22 and 23.",
+      "prior_unit_id": "punch_drunk_love_unit_22",
+      "prior_excerpt": "character_later is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_23",
+      "current_excerpt": "character_later appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0026",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_sexy"
+      ],
+      "entity_id": "character_sexy",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_sexy transitions from scene 22 to 23 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_sexy between scenes 22 and 23.",
+      "prior_unit_id": "punch_drunk_love_unit_22",
+      "prior_excerpt": "character_sexy is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_23",
+      "current_excerpt": "character_sexy appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0028",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_barry"
+      ],
+      "entity_id": "character_barry",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_barry transitions from scene 22 to 25 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_barry between scenes 22 and 25.",
+      "prior_unit_id": "punch_drunk_love_unit_22",
+      "prior_excerpt": "character_barry is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_25",
+      "current_excerpt": "character_barry appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0029",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_sexy"
+      ],
+      "entity_id": "character_sexy",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_sexy transitions from scene 22 to 25 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_sexy between scenes 22 and 25.",
+      "prior_unit_id": "punch_drunk_love_unit_22",
+      "prior_excerpt": "character_sexy is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_25",
+      "current_excerpt": "character_sexy appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0038",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_camera"
+      ],
+      "entity_id": "character_camera",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_camera transitions from scene 25 to 35 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_camera between scenes 25 and 35.",
+      "prior_unit_id": "punch_drunk_love_unit_25",
+      "prior_excerpt": "character_camera is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_35",
+      "current_excerpt": "character_camera appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0039",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_hold"
+      ],
+      "entity_id": "character_hold",
+      "attribute": "possession.phone",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_hold transitions from scene 25 to 36 with contradictory possession.phone.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_hold between scenes 25 and 36.",
+      "prior_unit_id": "punch_drunk_love_unit_25",
+      "prior_excerpt": "character_hold is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_36",
+      "current_excerpt": "character_hold appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0040",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_sexy"
+      ],
+      "entity_id": "character_sexy",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_sexy transitions from scene 25 to 36 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_sexy between scenes 25 and 36.",
+      "prior_unit_id": "punch_drunk_love_unit_25",
+      "prior_excerpt": "character_sexy is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_36",
+      "current_excerpt": "character_sexy appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0041",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_voice"
+      ],
+      "entity_id": "character_voice",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_voice transitions from scene 25 to 36 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_voice between scenes 25 and 36.",
+      "prior_unit_id": "punch_drunk_love_unit_25",
+      "prior_excerpt": "character_voice is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_36",
+      "current_excerpt": "character_voice appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0043",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_barry"
+      ],
+      "entity_id": "character_barry",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_barry transitions from scene 35 to 46 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_barry between scenes 35 and 46.",
+      "prior_unit_id": "punch_drunk_love_unit_35",
+      "prior_excerpt": "character_barry is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_46",
+      "current_excerpt": "character_barry appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0044",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_lena"
+      ],
+      "entity_id": "character_lena",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_lena transitions from scene 35 to 46 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_lena between scenes 35 and 46.",
+      "prior_unit_id": "punch_drunk_love_unit_35",
+      "prior_excerpt": "character_lena is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_46",
+      "current_excerpt": "character_lena appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0046",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_nate"
+      ],
+      "entity_id": "character_nate",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_nate transitions from scene 36 to 37 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_nate between scenes 36 and 37.",
+      "prior_unit_id": "punch_drunk_love_unit_36",
+      "prior_excerpt": "character_nate is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_37",
+      "current_excerpt": "character_nate appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0047",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_david"
+      ],
+      "entity_id": "character_david",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_david transitions from scene 36 to 39 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_david between scenes 36 and 39.",
+      "prior_unit_id": "punch_drunk_love_unit_36",
+      "prior_excerpt": "character_david is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_39",
+      "current_excerpt": "character_david appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0050",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_jump"
+      ],
+      "entity_id": "character_jump",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_jump transitions from scene 38 to 41 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_jump between scenes 38 and 41.",
+      "prior_unit_id": "punch_drunk_love_unit_38",
+      "prior_excerpt": "character_jump is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_41",
+      "current_excerpt": "character_jump appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0051",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_later"
+      ],
+      "entity_id": "character_later",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_later transitions from scene 38 to 41 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_later between scenes 38 and 41.",
+      "prior_unit_id": "punch_drunk_love_unit_38",
+      "prior_excerpt": "character_later is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_41",
+      "current_excerpt": "character_later appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0053",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_david"
+      ],
+      "entity_id": "character_david",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_david transitions from scene 39 to 41 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_david between scenes 39 and 41.",
+      "prior_unit_id": "punch_drunk_love_unit_39",
+      "prior_excerpt": "character_david is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_41",
+      "current_excerpt": "character_david appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0056",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_camera"
+      ],
+      "entity_id": "character_camera",
+      "attribute": "possession.phone",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_camera transitions from scene 3 to 58 with contradictory possession.phone.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_camera between scenes 3 and 58.",
+      "prior_unit_id": "punch_drunk_love_unit_3",
+      "prior_excerpt": "character_camera is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_58",
+      "current_excerpt": "character_camera appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0057",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_camera"
+      ],
+      "entity_id": "character_camera",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_camera transitions from scene 3 to 6 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_camera between scenes 3 and 6.",
+      "prior_unit_id": "punch_drunk_love_unit_3",
+      "prior_excerpt": "character_camera is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_6",
+      "current_excerpt": "character_camera appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0058",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_moment"
+      ],
+      "entity_id": "character_moment",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_moment transitions from scene 3 to 9 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_moment between scenes 3 and 9.",
+      "prior_unit_id": "punch_drunk_love_unit_3",
+      "prior_excerpt": "character_moment is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_9",
+      "current_excerpt": "character_moment appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0059",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_later"
+      ],
+      "entity_id": "character_later",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_later transitions from scene 41 to 46 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_later between scenes 41 and 46.",
+      "prior_unit_id": "punch_drunk_love_unit_41",
+      "prior_excerpt": "character_later is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_46",
+      "current_excerpt": "character_later appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0061",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_david"
+      ],
+      "entity_id": "character_david",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_david transitions from scene 41 to 51 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_david between scenes 41 and 51.",
+      "prior_unit_id": "punch_drunk_love_unit_41",
+      "prior_excerpt": "character_david is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_51",
+      "current_excerpt": "character_david appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0065",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_apartment"
+      ],
+      "entity_id": "character_apartment",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_apartment transitions from scene 42 to 49 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_apartment between scenes 42 and 49.",
+      "prior_unit_id": "punch_drunk_love_unit_42",
+      "prior_excerpt": "character_apartment is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_49",
+      "current_excerpt": "character_apartment appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0066",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_slides"
+      ],
+      "entity_id": "character_slides",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_slides transitions from scene 42 to 51 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_slides between scenes 42 and 51.",
+      "prior_unit_id": "punch_drunk_love_unit_42",
+      "prior_excerpt": "character_slides is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_51",
+      "current_excerpt": "character_slides appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0067",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_barry"
+      ],
+      "entity_id": "character_barry",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_barry transitions from scene 46 to 47 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_barry between scenes 46 and 47.",
+      "prior_unit_id": "punch_drunk_love_unit_46",
+      "prior_excerpt": "character_barry is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_47",
+      "current_excerpt": "character_barry appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0068",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_lena"
+      ],
+      "entity_id": "character_lena",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_lena transitions from scene 46 to 47 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_lena between scenes 46 and 47.",
+      "prior_unit_id": "punch_drunk_love_unit_46",
+      "prior_excerpt": "character_lena is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_47",
+      "current_excerpt": "character_lena appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0069",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_barry"
+      ],
+      "entity_id": "character_barry",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_barry transitions from scene 46 to 49 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_barry between scenes 46 and 49.",
+      "prior_unit_id": "punch_drunk_love_unit_46",
+      "prior_excerpt": "character_barry is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_49",
+      "current_excerpt": "character_barry appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0070",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_later"
+      ],
+      "entity_id": "character_later",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_later transitions from scene 46 to 51 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_later between scenes 46 and 51.",
+      "prior_unit_id": "punch_drunk_love_unit_46",
+      "prior_excerpt": "character_later is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_51",
+      "current_excerpt": "character_later appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0071",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_lena"
+      ],
+      "entity_id": "character_lena",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_lena transitions from scene 47 to 49 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_lena between scenes 47 and 49.",
+      "prior_unit_id": "punch_drunk_love_unit_47",
+      "prior_excerpt": "character_lena is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_49",
+      "current_excerpt": "character_lena appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0073",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_zoom"
+      ],
+      "entity_id": "character_zoom",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_zoom transitions from scene 47 to 55 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_zoom between scenes 47 and 55.",
+      "prior_unit_id": "punch_drunk_love_unit_47",
+      "prior_excerpt": "character_zoom is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_55",
+      "current_excerpt": "character_zoom appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0074",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_barry"
+      ],
+      "entity_id": "character_barry",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_barry transitions from scene 49 to 50 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_barry between scenes 49 and 50.",
+      "prior_unit_id": "punch_drunk_love_unit_49",
+      "prior_excerpt": "character_barry is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_50",
+      "current_excerpt": "character_barry appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0076",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_camera"
+      ],
+      "entity_id": "character_camera",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_camera transitions from scene 50 to 53 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_camera between scenes 50 and 53.",
+      "prior_unit_id": "punch_drunk_love_unit_50",
+      "prior_excerpt": "character_camera is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_53",
+      "current_excerpt": "character_camera appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0077",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_phone"
+      ],
+      "entity_id": "character_phone",
+      "attribute": "possession.phone",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_phone transitions from scene 50 to 60 with contradictory possession.phone.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_phone between scenes 50 and 60.",
+      "prior_unit_id": "punch_drunk_love_unit_50",
+      "prior_excerpt": "character_phone is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_60",
+      "current_excerpt": "character_phone appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0078",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_camera"
+      ],
+      "entity_id": "character_camera",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_camera transitions from scene 53 to 55 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_camera between scenes 53 and 55.",
+      "prior_unit_id": "punch_drunk_love_unit_53",
+      "prior_excerpt": "character_camera is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_55",
+      "current_excerpt": "character_camera appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0079",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_face"
+      ],
+      "entity_id": "character_face",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_face transitions from scene 54 to 60 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_face between scenes 54 and 60.",
+      "prior_unit_id": "punch_drunk_love_unit_54",
+      "prior_excerpt": "character_face is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_60",
+      "current_excerpt": "character_face appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0080",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_barry"
+      ],
+      "entity_id": "character_barry",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_barry transitions from scene 55 to 56 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_barry between scenes 55 and 56.",
+      "prior_unit_id": "punch_drunk_love_unit_55",
+      "prior_excerpt": "character_barry is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_56",
+      "current_excerpt": "character_barry appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0082",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_pudding"
+      ],
+      "entity_id": "character_pudding",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_pudding transitions from scene 55 to 56 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_pudding between scenes 55 and 56.",
+      "prior_unit_id": "punch_drunk_love_unit_55",
+      "prior_excerpt": "character_pudding is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_56",
+      "current_excerpt": "character_pudding appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0083",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_zoom"
+      ],
+      "entity_id": "character_zoom",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_zoom transitions from scene 55 to 58 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_zoom between scenes 55 and 58.",
+      "prior_unit_id": "punch_drunk_love_unit_55",
+      "prior_excerpt": "character_zoom is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_58",
+      "current_excerpt": "character_zoom appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0084",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_barry"
+      ],
+      "entity_id": "character_barry",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_barry transitions from scene 56 to 57 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_barry between scenes 56 and 57.",
+      "prior_unit_id": "punch_drunk_love_unit_56",
+      "prior_excerpt": "character_barry is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_57",
+      "current_excerpt": "character_barry appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0085",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_check"
+      ],
+      "entity_id": "character_check",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_check transitions from scene 56 to 57 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_check between scenes 56 and 57.",
+      "prior_unit_id": "punch_drunk_love_unit_56",
+      "prior_excerpt": "character_check is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_57",
+      "current_excerpt": "character_check appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0086",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_final"
+      ],
+      "entity_id": "character_final",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_final transitions from scene 56 to 57 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_final between scenes 56 and 57.",
+      "prior_unit_id": "punch_drunk_love_unit_56",
+      "prior_excerpt": "character_final is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_57",
+      "current_excerpt": "character_final appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0087",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_girl"
+      ],
+      "entity_id": "character_girl",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_girl transitions from scene 56 to 57 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_girl between scenes 56 and 57.",
+      "prior_unit_id": "punch_drunk_love_unit_56",
+      "prior_excerpt": "character_girl is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_57",
+      "current_excerpt": "character_girl appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0088",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_out"
+      ],
+      "entity_id": "character_out",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_out transitions from scene 56 to 57 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_out between scenes 56 and 57.",
+      "prior_unit_id": "punch_drunk_love_unit_56",
+      "prior_excerpt": "character_out is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_57",
+      "current_excerpt": "character_out appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0089",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_smart"
+      ],
+      "entity_id": "character_smart",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_smart transitions from scene 56 to 57 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_smart between scenes 56 and 57.",
+      "prior_unit_id": "punch_drunk_love_unit_56",
+      "prior_excerpt": "character_smart is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_57",
+      "current_excerpt": "character_smart appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0091",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_barry"
+      ],
+      "entity_id": "character_barry",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_barry transitions from scene 57 to 58 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_barry between scenes 57 and 58.",
+      "prior_unit_id": "punch_drunk_love_unit_57",
+      "prior_excerpt": "character_barry is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_58",
+      "current_excerpt": "character_barry appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0092",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_camera"
+      ],
+      "entity_id": "character_camera",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_camera transitions from scene 58 to 59 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_camera between scenes 58 and 59.",
+      "prior_unit_id": "punch_drunk_love_unit_58",
+      "prior_excerpt": "character_camera is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_59",
+      "current_excerpt": "character_camera appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0093",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_later"
+      ],
+      "entity_id": "character_later",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_later transitions from scene 59 to 60 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_later between scenes 59 and 60.",
+      "prior_unit_id": "punch_drunk_love_unit_59",
+      "prior_excerpt": "character_later is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_60",
+      "current_excerpt": "character_later appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0095",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_barry"
+      ],
+      "entity_id": "character_barry",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_barry transitions from scene 5 to 6 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_barry between scenes 5 and 6.",
+      "prior_unit_id": "punch_drunk_love_unit_5",
+      "prior_excerpt": "character_barry is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_6",
+      "current_excerpt": "character_barry appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0096",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_barry"
+      ],
+      "entity_id": "character_barry",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_barry transitions from scene 6 to 9 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_barry between scenes 6 and 9.",
+      "prior_unit_id": "punch_drunk_love_unit_6",
+      "prior_excerpt": "character_barry is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_9",
+      "current_excerpt": "character_barry appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0097",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_camera"
+      ],
+      "entity_id": "character_camera",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_camera transitions from scene 6 to 9 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_camera between scenes 6 and 9.",
+      "prior_unit_id": "punch_drunk_love_unit_6",
+      "prior_excerpt": "character_camera is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_9",
+      "current_excerpt": "character_camera appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0098",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_customer"
+      ],
+      "entity_id": "character_customer",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_customer transitions from scene 6 to 9 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_customer between scenes 6 and 9.",
+      "prior_unit_id": "punch_drunk_love_unit_6",
+      "prior_excerpt": "character_customer is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_9",
+      "current_excerpt": "character_customer appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0099",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_angle"
+      ],
+      "entity_id": "character_angle",
+      "attribute": "possession.phone",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_angle transitions from scene 7 to 30 with contradictory possession.phone.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_angle between scenes 7 and 30.",
+      "prior_unit_id": "punch_drunk_love_unit_7",
+      "prior_excerpt": "character_angle is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_30",
+      "current_excerpt": "character_angle appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0100",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_barry"
+      ],
+      "entity_id": "character_barry",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_barry transitions from scene 9 to 12 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_barry between scenes 9 and 12.",
+      "prior_unit_id": "punch_drunk_love_unit_9",
+      "prior_excerpt": "character_barry is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_12",
+      "current_excerpt": "character_barry appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0101",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_warehouse"
+      ],
+      "entity_id": "character_warehouse",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_warehouse transitions from scene 9 to 12 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_warehouse between scenes 9 and 12.",
+      "prior_unit_id": "punch_drunk_love_unit_9",
+      "prior_excerpt": "character_warehouse is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_12",
+      "current_excerpt": "character_warehouse appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_0102",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_camera"
+      ],
+      "entity_id": "character_camera",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_camera transitions from scene 9 to 14 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_camera between scenes 9 and 14.",
+      "prior_unit_id": "punch_drunk_love_unit_9",
+      "prior_excerpt": "character_camera is present at established state.",
+      "current_unit_id": "punch_drunk_love_unit_14",
+      "current_excerpt": "character_camera appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_fp_000",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_0"
+      ],
+      "entity_id": "Background_Char_0",
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.65,
+      "explanation": "Ambiguous background extra movement.",
+      "suggested_fix": "Clarify staging.",
+      "prior_unit_id": "punch_drunk_love_unit_1",
+      "prior_excerpt": "Background extra visible.",
+      "current_unit_id": "punch_drunk_love_unit_2",
+      "current_excerpt": "Background extra relocated.",
+      "investigation_actions": [
+        "get_spatial_trajectory",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_fp_008",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_8"
+      ],
+      "entity_id": "Background_Char_8",
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.65,
+      "explanation": "Ambiguous background extra movement.",
+      "suggested_fix": "Clarify staging.",
+      "prior_unit_id": "punch_drunk_love_unit_9",
+      "prior_excerpt": "Background extra visible.",
+      "current_unit_id": "punch_drunk_love_unit_10",
+      "current_excerpt": "Background extra relocated.",
+      "investigation_actions": [
+        "get_spatial_trajectory",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_punch_drunk_love_fp_016",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_16"
+      ],
+      "entity_id": "Background_Char_16",
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.65,
+      "explanation": "Ambiguous background extra movement.",
+      "suggested_fix": "Clarify staging.",
+      "prior_unit_id": "punch_drunk_love_unit_17",
+      "prior_excerpt": "Background extra visible.",
+      "current_unit_id": "punch_drunk_love_unit_18",
+      "current_excerpt": "Background extra relocated.",
+      "investigation_actions": [
+        "get_spatial_trajectory",
+        "get_unit_text",
+        "finish"
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "cand_v2_punch_drunk_love_0003",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_barry"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_barry across scenes 12 and 22",
+      "prior_unit_id": "punch_drunk_love_unit_12",
+      "current_unit_id": "punch_drunk_love_unit_22"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0008",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_full"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_full across scenes 14 and 23",
+      "prior_unit_id": "punch_drunk_love_unit_14",
+      "current_unit_id": "punch_drunk_love_unit_23"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0013",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_girl"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_girl across scenes 18 and 20",
+      "prior_unit_id": "punch_drunk_love_unit_18",
+      "current_unit_id": "punch_drunk_love_unit_20"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0014",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_phone"
+      ],
+      "attribute": "possession.phone",
+      "description": "Potential possession_machine conflict for character_phone across scenes 18 and 20",
+      "prior_unit_id": "punch_drunk_love_unit_18",
+      "current_unit_id": "punch_drunk_love_unit_20"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0015",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_barry"
+      ],
+      "attribute": "possession.phone",
+      "description": "Potential possession_machine conflict for character_barry across scenes 18 and 30",
+      "prior_unit_id": "punch_drunk_love_unit_18",
+      "current_unit_id": "punch_drunk_love_unit_30"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0017",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_later"
+      ],
+      "attribute": "possession.phone",
+      "description": "Potential possession_machine conflict for character_later across scenes 18 and 60",
+      "prior_unit_id": "punch_drunk_love_unit_18",
+      "current_unit_id": "punch_drunk_love_unit_60"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0018",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_barry"
+      ],
+      "attribute": "possession.phone",
+      "description": "Potential possession_machine conflict for character_barry across scenes 1 and 18",
+      "prior_unit_id": "punch_drunk_love_unit_1",
+      "current_unit_id": "punch_drunk_love_unit_18"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0019",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_camera"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_camera across scenes 1 and 3",
+      "prior_unit_id": "punch_drunk_love_unit_1",
+      "current_unit_id": "punch_drunk_love_unit_3"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0020",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_early"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_early across scenes 1 and 5",
+      "prior_unit_id": "punch_drunk_love_unit_1",
+      "current_unit_id": "punch_drunk_love_unit_5"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0021",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_morning"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_morning across scenes 1 and 5",
+      "prior_unit_id": "punch_drunk_love_unit_1",
+      "current_unit_id": "punch_drunk_love_unit_5"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0022",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_hold"
+      ],
+      "attribute": "possession.phone",
+      "description": "Potential possession_machine conflict for character_hold across scenes 20 and 25",
+      "prior_unit_id": "punch_drunk_love_unit_20",
+      "current_unit_id": "punch_drunk_love_unit_25"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0024",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_phone"
+      ],
+      "attribute": "possession.phone",
+      "description": "Potential possession_machine conflict for character_phone across scenes 20 and 50",
+      "prior_unit_id": "punch_drunk_love_unit_20",
+      "current_unit_id": "punch_drunk_love_unit_50"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0025",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_later"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_later across scenes 22 and 23",
+      "prior_unit_id": "punch_drunk_love_unit_22",
+      "current_unit_id": "punch_drunk_love_unit_23"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0026",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_sexy"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_sexy across scenes 22 and 23",
+      "prior_unit_id": "punch_drunk_love_unit_22",
+      "current_unit_id": "punch_drunk_love_unit_23"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0028",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_barry"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_barry across scenes 22 and 25",
+      "prior_unit_id": "punch_drunk_love_unit_22",
+      "current_unit_id": "punch_drunk_love_unit_25"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0029",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_sexy"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_sexy across scenes 22 and 25",
+      "prior_unit_id": "punch_drunk_love_unit_22",
+      "current_unit_id": "punch_drunk_love_unit_25"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0038",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_camera"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_camera across scenes 25 and 35",
+      "prior_unit_id": "punch_drunk_love_unit_25",
+      "current_unit_id": "punch_drunk_love_unit_35"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0039",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_hold"
+      ],
+      "attribute": "possession.phone",
+      "description": "Potential possession_machine conflict for character_hold across scenes 25 and 36",
+      "prior_unit_id": "punch_drunk_love_unit_25",
+      "current_unit_id": "punch_drunk_love_unit_36"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0040",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_sexy"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_sexy across scenes 25 and 36",
+      "prior_unit_id": "punch_drunk_love_unit_25",
+      "current_unit_id": "punch_drunk_love_unit_36"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0041",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_voice"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_voice across scenes 25 and 36",
+      "prior_unit_id": "punch_drunk_love_unit_25",
+      "current_unit_id": "punch_drunk_love_unit_36"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0043",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_barry"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_barry across scenes 35 and 46",
+      "prior_unit_id": "punch_drunk_love_unit_35",
+      "current_unit_id": "punch_drunk_love_unit_46"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0044",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_lena"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_lena across scenes 35 and 46",
+      "prior_unit_id": "punch_drunk_love_unit_35",
+      "current_unit_id": "punch_drunk_love_unit_46"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0046",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_nate"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_nate across scenes 36 and 37",
+      "prior_unit_id": "punch_drunk_love_unit_36",
+      "current_unit_id": "punch_drunk_love_unit_37"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0047",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_david"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_david across scenes 36 and 39",
+      "prior_unit_id": "punch_drunk_love_unit_36",
+      "current_unit_id": "punch_drunk_love_unit_39"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0050",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_jump"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_jump across scenes 38 and 41",
+      "prior_unit_id": "punch_drunk_love_unit_38",
+      "current_unit_id": "punch_drunk_love_unit_41"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0051",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_later"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_later across scenes 38 and 41",
+      "prior_unit_id": "punch_drunk_love_unit_38",
+      "current_unit_id": "punch_drunk_love_unit_41"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0053",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_david"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_david across scenes 39 and 41",
+      "prior_unit_id": "punch_drunk_love_unit_39",
+      "current_unit_id": "punch_drunk_love_unit_41"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0056",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_camera"
+      ],
+      "attribute": "possession.phone",
+      "description": "Potential possession_machine conflict for character_camera across scenes 3 and 58",
+      "prior_unit_id": "punch_drunk_love_unit_3",
+      "current_unit_id": "punch_drunk_love_unit_58"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0057",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_camera"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_camera across scenes 3 and 6",
+      "prior_unit_id": "punch_drunk_love_unit_3",
+      "current_unit_id": "punch_drunk_love_unit_6"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0058",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_moment"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_moment across scenes 3 and 9",
+      "prior_unit_id": "punch_drunk_love_unit_3",
+      "current_unit_id": "punch_drunk_love_unit_9"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0059",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_later"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_later across scenes 41 and 46",
+      "prior_unit_id": "punch_drunk_love_unit_41",
+      "current_unit_id": "punch_drunk_love_unit_46"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0060",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_camera"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_camera across scenes 41 and 50",
+      "prior_unit_id": "punch_drunk_love_unit_41",
+      "current_unit_id": "punch_drunk_love_unit_50"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0061",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_david"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_david across scenes 41 and 51",
+      "prior_unit_id": "punch_drunk_love_unit_41",
+      "current_unit_id": "punch_drunk_love_unit_51"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0065",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_apartment"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_apartment across scenes 42 and 49",
+      "prior_unit_id": "punch_drunk_love_unit_42",
+      "current_unit_id": "punch_drunk_love_unit_49"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0066",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_slides"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_slides across scenes 42 and 51",
+      "prior_unit_id": "punch_drunk_love_unit_42",
+      "current_unit_id": "punch_drunk_love_unit_51"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0067",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_barry"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_barry across scenes 46 and 47",
+      "prior_unit_id": "punch_drunk_love_unit_46",
+      "current_unit_id": "punch_drunk_love_unit_47"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0068",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_lena"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_lena across scenes 46 and 47",
+      "prior_unit_id": "punch_drunk_love_unit_46",
+      "current_unit_id": "punch_drunk_love_unit_47"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0069",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_barry"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_barry across scenes 46 and 49",
+      "prior_unit_id": "punch_drunk_love_unit_46",
+      "current_unit_id": "punch_drunk_love_unit_49"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0070",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_later"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_later across scenes 46 and 51",
+      "prior_unit_id": "punch_drunk_love_unit_46",
+      "current_unit_id": "punch_drunk_love_unit_51"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0071",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_lena"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_lena across scenes 47 and 49",
+      "prior_unit_id": "punch_drunk_love_unit_47",
+      "current_unit_id": "punch_drunk_love_unit_49"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0073",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_zoom"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_zoom across scenes 47 and 55",
+      "prior_unit_id": "punch_drunk_love_unit_47",
+      "current_unit_id": "punch_drunk_love_unit_55"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0074",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_barry"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_barry across scenes 49 and 50",
+      "prior_unit_id": "punch_drunk_love_unit_49",
+      "current_unit_id": "punch_drunk_love_unit_50"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0075",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_barry"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_barry across scenes 50 and 53",
+      "prior_unit_id": "punch_drunk_love_unit_50",
+      "current_unit_id": "punch_drunk_love_unit_53"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0076",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_camera"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_camera across scenes 50 and 53",
+      "prior_unit_id": "punch_drunk_love_unit_50",
+      "current_unit_id": "punch_drunk_love_unit_53"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0077",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_phone"
+      ],
+      "attribute": "possession.phone",
+      "description": "Potential possession_machine conflict for character_phone across scenes 50 and 60",
+      "prior_unit_id": "punch_drunk_love_unit_50",
+      "current_unit_id": "punch_drunk_love_unit_60"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0078",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_camera"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_camera across scenes 53 and 55",
+      "prior_unit_id": "punch_drunk_love_unit_53",
+      "current_unit_id": "punch_drunk_love_unit_55"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0079",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_face"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_face across scenes 54 and 60",
+      "prior_unit_id": "punch_drunk_love_unit_54",
+      "current_unit_id": "punch_drunk_love_unit_60"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0080",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_barry"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_barry across scenes 55 and 56",
+      "prior_unit_id": "punch_drunk_love_unit_55",
+      "current_unit_id": "punch_drunk_love_unit_56"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0082",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_pudding"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_pudding across scenes 55 and 56",
+      "prior_unit_id": "punch_drunk_love_unit_55",
+      "current_unit_id": "punch_drunk_love_unit_56"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0083",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_zoom"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_zoom across scenes 55 and 58",
+      "prior_unit_id": "punch_drunk_love_unit_55",
+      "current_unit_id": "punch_drunk_love_unit_58"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0084",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_barry"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_barry across scenes 56 and 57",
+      "prior_unit_id": "punch_drunk_love_unit_56",
+      "current_unit_id": "punch_drunk_love_unit_57"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0085",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_check"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_check across scenes 56 and 57",
+      "prior_unit_id": "punch_drunk_love_unit_56",
+      "current_unit_id": "punch_drunk_love_unit_57"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0086",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_final"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_final across scenes 56 and 57",
+      "prior_unit_id": "punch_drunk_love_unit_56",
+      "current_unit_id": "punch_drunk_love_unit_57"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0087",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_girl"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_girl across scenes 56 and 57",
+      "prior_unit_id": "punch_drunk_love_unit_56",
+      "current_unit_id": "punch_drunk_love_unit_57"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0088",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_out"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_out across scenes 56 and 57",
+      "prior_unit_id": "punch_drunk_love_unit_56",
+      "current_unit_id": "punch_drunk_love_unit_57"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0089",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_smart"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_smart across scenes 56 and 57",
+      "prior_unit_id": "punch_drunk_love_unit_56",
+      "current_unit_id": "punch_drunk_love_unit_57"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0091",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_barry"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_barry across scenes 57 and 58",
+      "prior_unit_id": "punch_drunk_love_unit_57",
+      "current_unit_id": "punch_drunk_love_unit_58"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0092",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_camera"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_camera across scenes 58 and 59",
+      "prior_unit_id": "punch_drunk_love_unit_58",
+      "current_unit_id": "punch_drunk_love_unit_59"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0093",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_later"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_later across scenes 59 and 60",
+      "prior_unit_id": "punch_drunk_love_unit_59",
+      "current_unit_id": "punch_drunk_love_unit_60"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0095",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_barry"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_barry across scenes 5 and 6",
+      "prior_unit_id": "punch_drunk_love_unit_5",
+      "current_unit_id": "punch_drunk_love_unit_6"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0096",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_barry"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_barry across scenes 6 and 9",
+      "prior_unit_id": "punch_drunk_love_unit_6",
+      "current_unit_id": "punch_drunk_love_unit_9"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0097",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_camera"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_camera across scenes 6 and 9",
+      "prior_unit_id": "punch_drunk_love_unit_6",
+      "current_unit_id": "punch_drunk_love_unit_9"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0098",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_customer"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_customer across scenes 6 and 9",
+      "prior_unit_id": "punch_drunk_love_unit_6",
+      "current_unit_id": "punch_drunk_love_unit_9"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0099",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_angle"
+      ],
+      "attribute": "possession.phone",
+      "description": "Potential possession_machine conflict for character_angle across scenes 7 and 30",
+      "prior_unit_id": "punch_drunk_love_unit_7",
+      "current_unit_id": "punch_drunk_love_unit_30"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0100",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_barry"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_barry across scenes 9 and 12",
+      "prior_unit_id": "punch_drunk_love_unit_9",
+      "current_unit_id": "punch_drunk_love_unit_12"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0101",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_warehouse"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_warehouse across scenes 9 and 12",
+      "prior_unit_id": "punch_drunk_love_unit_9",
+      "current_unit_id": "punch_drunk_love_unit_12"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_0102",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_camera"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_camera across scenes 9 and 14",
+      "prior_unit_id": "punch_drunk_love_unit_9",
+      "current_unit_id": "punch_drunk_love_unit_14"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_fp_000",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_0"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_0",
+      "prior_unit_id": "punch_drunk_love_unit_1",
+      "current_unit_id": "punch_drunk_love_unit_2"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_fp_001",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_1"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_1",
+      "prior_unit_id": "punch_drunk_love_unit_2",
+      "current_unit_id": "punch_drunk_love_unit_3"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_fp_002",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_2"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_2",
+      "prior_unit_id": "punch_drunk_love_unit_3",
+      "current_unit_id": "punch_drunk_love_unit_4"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_fp_003",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_3"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_3",
+      "prior_unit_id": "punch_drunk_love_unit_4",
+      "current_unit_id": "punch_drunk_love_unit_5"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_fp_004",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_4"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_4",
+      "prior_unit_id": "punch_drunk_love_unit_5",
+      "current_unit_id": "punch_drunk_love_unit_6"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_fp_005",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_5"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_5",
+      "prior_unit_id": "punch_drunk_love_unit_6",
+      "current_unit_id": "punch_drunk_love_unit_7"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_fp_006",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_6"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_6",
+      "prior_unit_id": "punch_drunk_love_unit_7",
+      "current_unit_id": "punch_drunk_love_unit_8"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_fp_007",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_7"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_7",
+      "prior_unit_id": "punch_drunk_love_unit_8",
+      "current_unit_id": "punch_drunk_love_unit_9"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_fp_008",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_8"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_8",
+      "prior_unit_id": "punch_drunk_love_unit_9",
+      "current_unit_id": "punch_drunk_love_unit_10"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_fp_009",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_9"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_9",
+      "prior_unit_id": "punch_drunk_love_unit_10",
+      "current_unit_id": "punch_drunk_love_unit_11"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_fp_010",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_10"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_10",
+      "prior_unit_id": "punch_drunk_love_unit_11",
+      "current_unit_id": "punch_drunk_love_unit_12"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_fp_011",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_11"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_11",
+      "prior_unit_id": "punch_drunk_love_unit_12",
+      "current_unit_id": "punch_drunk_love_unit_13"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_fp_012",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_12"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_12",
+      "prior_unit_id": "punch_drunk_love_unit_13",
+      "current_unit_id": "punch_drunk_love_unit_14"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_fp_013",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_13"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_13",
+      "prior_unit_id": "punch_drunk_love_unit_14",
+      "current_unit_id": "punch_drunk_love_unit_15"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_fp_014",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_14"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_14",
+      "prior_unit_id": "punch_drunk_love_unit_15",
+      "current_unit_id": "punch_drunk_love_unit_16"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_fp_015",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_15"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_15",
+      "prior_unit_id": "punch_drunk_love_unit_16",
+      "current_unit_id": "punch_drunk_love_unit_17"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_fp_016",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_16"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_16",
+      "prior_unit_id": "punch_drunk_love_unit_17",
+      "current_unit_id": "punch_drunk_love_unit_18"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_fp_017",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_17"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_17",
+      "prior_unit_id": "punch_drunk_love_unit_18",
+      "current_unit_id": "punch_drunk_love_unit_19"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_fp_018",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_18"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_18",
+      "prior_unit_id": "punch_drunk_love_unit_19",
+      "current_unit_id": "punch_drunk_love_unit_20"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_fp_019",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_19"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_19",
+      "prior_unit_id": "punch_drunk_love_unit_20",
+      "current_unit_id": "punch_drunk_love_unit_21"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_fp_020",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_20"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_20",
+      "prior_unit_id": "punch_drunk_love_unit_21",
+      "current_unit_id": "punch_drunk_love_unit_22"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_fp_021",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_21"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_21",
+      "prior_unit_id": "punch_drunk_love_unit_22",
+      "current_unit_id": "punch_drunk_love_unit_23"
+    },
+    {
+      "id": "cand_v2_punch_drunk_love_fp_022",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_22"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_22",
+      "prior_unit_id": "punch_drunk_love_unit_23",
+      "current_unit_id": "punch_drunk_love_unit_24"
+    }
+  ]
+}

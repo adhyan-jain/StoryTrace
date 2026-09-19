@@ -1,0 +1,2411 @@
+{
+  "film_slug": "darkman",
+  "story_universe_id": "v2_darkman",
+  "unit_count": 172,
+  "state_event_count": 340,
+  "co_presence_count": 170,
+  "candidate_count": 85,
+  "verdict_distribution": {
+    "verified_hard_conflict": 48,
+    "verified_narrative_anomaly": 15,
+    "resolved": 22,
+    "uncertain": 0
+  },
+  "surfaced_findings_count": 63,
+  "total_tool_calls": 255,
+  "avg_tool_calls_per_candidate": 3.0,
+  "timings": {
+    "extraction_sec": 38.25,
+    "detection_sec": 0.08,
+    "investigation_sec": 55.25,
+    "total_runtime_sec": 100.3
+  },
+  "findings": [
+    {
+      "candidate_id": "cand_v2_darkman_0001",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_lobby"
+      ],
+      "entity_id": "character_lobby",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_lobby transitions from scene 10 to 15 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_lobby between scenes 10 and 15.",
+      "prior_unit_id": "darkman_unit_10",
+      "prior_excerpt": "character_lobby is present at established state.",
+      "current_unit_id": "darkman_unit_15",
+      "current_excerpt": "character_lobby appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0002",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_peyton"
+      ],
+      "entity_id": "character_peyton",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_peyton transitions from scene 10 to 17 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_peyton between scenes 10 and 17.",
+      "prior_unit_id": "darkman_unit_10",
+      "prior_excerpt": "character_peyton is present at established state.",
+      "current_unit_id": "darkman_unit_17",
+      "current_excerpt": "character_peyton appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0003",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_yakitito"
+      ],
+      "entity_id": "character_yakitito",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_yakitito transitions from scene 10 to 17 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_yakitito between scenes 10 and 17.",
+      "prior_unit_id": "darkman_unit_10",
+      "prior_excerpt": "character_yakitito is present at established state.",
+      "current_unit_id": "darkman_unit_17",
+      "current_excerpt": "character_yakitito appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0005",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_club"
+      ],
+      "entity_id": "character_club",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_club transitions from scene 12 to 15 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_club between scenes 12 and 15.",
+      "prior_unit_id": "darkman_unit_12",
+      "prior_excerpt": "character_club is present at established state.",
+      "current_unit_id": "darkman_unit_15",
+      "current_excerpt": "character_club appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0006",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_hunt"
+      ],
+      "entity_id": "character_hunt",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_hunt transitions from scene 12 to 15 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_hunt between scenes 12 and 15.",
+      "prior_unit_id": "darkman_unit_12",
+      "prior_excerpt": "character_hunt is present at established state.",
+      "current_unit_id": "darkman_unit_15",
+      "current_excerpt": "character_hunt appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0007",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_julie"
+      ],
+      "entity_id": "character_julie",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_julie transitions from scene 12 to 15 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_julie between scenes 12 and 15.",
+      "prior_unit_id": "darkman_unit_12",
+      "prior_excerpt": "character_julie is present at established state.",
+      "current_unit_id": "darkman_unit_15",
+      "current_excerpt": "character_julie appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0008",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_julie"
+      ],
+      "entity_id": "character_julie",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_julie transitions from scene 15 to 19 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_julie between scenes 15 and 19.",
+      "prior_unit_id": "darkman_unit_15",
+      "prior_excerpt": "character_julie is present at established state.",
+      "current_unit_id": "darkman_unit_19",
+      "current_excerpt": "character_julie appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0010",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_strack"
+      ],
+      "entity_id": "character_strack",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_strack transitions from scene 18 to 19 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_strack between scenes 18 and 19.",
+      "prior_unit_id": "darkman_unit_18",
+      "prior_excerpt": "character_strack is present at established state.",
+      "current_unit_id": "darkman_unit_19",
+      "current_excerpt": "character_strack appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0014",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_julie"
+      ],
+      "entity_id": "character_julie",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_julie transitions from scene 19 to 20 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_julie between scenes 19 and 20.",
+      "prior_unit_id": "darkman_unit_19",
+      "prior_excerpt": "character_julie is present at established state.",
+      "current_unit_id": "darkman_unit_20",
+      "current_excerpt": "character_julie appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0016",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_strack"
+      ],
+      "entity_id": "character_strack",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_strack transitions from scene 19 to 31 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_strack between scenes 19 and 31.",
+      "prior_unit_id": "darkman_unit_19",
+      "prior_excerpt": "character_strack is present at established state.",
+      "current_unit_id": "darkman_unit_31",
+      "current_excerpt": "character_strack appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0019",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_shot"
+      ],
+      "entity_id": "character_shot",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_shot transitions from scene 1 to 5 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_shot between scenes 1 and 5.",
+      "prior_unit_id": "darkman_unit_1",
+      "prior_excerpt": "character_shot is present at established state.",
+      "current_unit_id": "darkman_unit_5",
+      "current_excerpt": "character_shot appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0020",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_julie"
+      ],
+      "entity_id": "character_julie",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_julie transitions from scene 20 to 23 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_julie between scenes 20 and 23.",
+      "prior_unit_id": "darkman_unit_20",
+      "prior_excerpt": "character_julie is present at established state.",
+      "current_unit_id": "darkman_unit_23",
+      "current_excerpt": "character_julie appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0021",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_lab"
+      ],
+      "entity_id": "character_lab",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_lab transitions from scene 20 to 23 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_lab between scenes 20 and 23.",
+      "prior_unit_id": "darkman_unit_20",
+      "prior_excerpt": "character_lab is present at established state.",
+      "current_unit_id": "darkman_unit_23",
+      "current_excerpt": "character_lab appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0022",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_light"
+      ],
+      "entity_id": "character_light",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_light transitions from scene 20 to 32 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_light between scenes 20 and 32.",
+      "prior_unit_id": "darkman_unit_20",
+      "prior_excerpt": "character_light is present at established state.",
+      "current_unit_id": "darkman_unit_32",
+      "current_excerpt": "character_light appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0023",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_dissolve"
+      ],
+      "entity_id": "character_dissolve",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_dissolve transitions from scene 23 to 24 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_dissolve between scenes 23 and 24.",
+      "prior_unit_id": "darkman_unit_23",
+      "prior_excerpt": "character_dissolve is present at established state.",
+      "current_unit_id": "darkman_unit_24",
+      "current_excerpt": "character_dissolve appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0024",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_julie"
+      ],
+      "entity_id": "character_julie",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_julie transitions from scene 23 to 24 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_julie between scenes 23 and 24.",
+      "prior_unit_id": "darkman_unit_23",
+      "prior_excerpt": "character_julie is present at established state.",
+      "current_unit_id": "darkman_unit_24",
+      "current_excerpt": "character_julie appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0025",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_lab"
+      ],
+      "entity_id": "character_lab",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_lab transitions from scene 23 to 24 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_lab between scenes 23 and 24.",
+      "prior_unit_id": "darkman_unit_23",
+      "prior_excerpt": "character_lab is present at established state.",
+      "current_unit_id": "darkman_unit_24",
+      "current_excerpt": "character_lab appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0026",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_westlake"
+      ],
+      "entity_id": "character_westlake",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_westlake transitions from scene 23 to 24 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_westlake between scenes 23 and 24.",
+      "prior_unit_id": "darkman_unit_23",
+      "prior_excerpt": "character_westlake is present at established state.",
+      "current_unit_id": "darkman_unit_24",
+      "current_excerpt": "character_westlake appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0028",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_westlake"
+      ],
+      "entity_id": "character_westlake",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_westlake transitions from scene 23 to 31 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_westlake between scenes 23 and 31.",
+      "prior_unit_id": "darkman_unit_23",
+      "prior_excerpt": "character_westlake is present at established state.",
+      "current_unit_id": "darkman_unit_31",
+      "current_excerpt": "character_westlake appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0031",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_morning"
+      ],
+      "entity_id": "character_morning",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_morning transitions from scene 24 to 25 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_morning between scenes 24 and 25.",
+      "prior_unit_id": "darkman_unit_24",
+      "prior_excerpt": "character_morning is present at established state.",
+      "current_unit_id": "darkman_unit_25",
+      "current_excerpt": "character_morning appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0034",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_julie"
+      ],
+      "entity_id": "character_julie",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_julie transitions from scene 25 to 27 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_julie between scenes 25 and 27.",
+      "prior_unit_id": "darkman_unit_25",
+      "prior_excerpt": "character_julie is present at established state.",
+      "current_unit_id": "darkman_unit_27",
+      "current_excerpt": "character_julie appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0035",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_peyton"
+      ],
+      "entity_id": "character_peyton",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_peyton transitions from scene 25 to 27 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_peyton between scenes 25 and 27.",
+      "prior_unit_id": "darkman_unit_25",
+      "prior_excerpt": "character_peyton is present at established state.",
+      "current_unit_id": "darkman_unit_27",
+      "current_excerpt": "character_peyton appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0037",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_julie"
+      ],
+      "entity_id": "character_julie",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_julie transitions from scene 27 to 32 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_julie between scenes 27 and 32.",
+      "prior_unit_id": "darkman_unit_27",
+      "prior_excerpt": "character_julie is present at established state.",
+      "current_unit_id": "darkman_unit_32",
+      "current_excerpt": "character_julie appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0038",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_peyton"
+      ],
+      "entity_id": "character_peyton",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_peyton transitions from scene 27 to 32 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_peyton between scenes 27 and 32.",
+      "prior_unit_id": "darkman_unit_27",
+      "prior_excerpt": "character_peyton is present at established state.",
+      "current_unit_id": "darkman_unit_32",
+      "current_excerpt": "character_peyton appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0039",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_scene"
+      ],
+      "entity_id": "character_scene",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_scene transitions from scene 27 to 36 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_scene between scenes 27 and 36.",
+      "prior_unit_id": "darkman_unit_27",
+      "prior_excerpt": "character_scene is present at established state.",
+      "current_unit_id": "darkman_unit_36",
+      "current_excerpt": "character_scene appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0040",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_skip"
+      ],
+      "entity_id": "character_skip",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_skip transitions from scene 2 to 3 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_skip between scenes 2 and 3.",
+      "prior_unit_id": "darkman_unit_2",
+      "prior_excerpt": "character_skip is present at established state.",
+      "current_unit_id": "darkman_unit_3",
+      "current_excerpt": "character_skip appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0041",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_durant"
+      ],
+      "entity_id": "character_durant",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_durant transitions from scene 2 to 5 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_durant between scenes 2 and 5.",
+      "prior_unit_id": "darkman_unit_2",
+      "prior_excerpt": "character_durant is present at established state.",
+      "current_unit_id": "darkman_unit_5",
+      "current_excerpt": "character_durant appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0042",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_guzman"
+      ],
+      "entity_id": "character_guzman",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_guzman transitions from scene 2 to 5 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_guzman between scenes 2 and 5.",
+      "prior_unit_id": "darkman_unit_2",
+      "prior_excerpt": "character_guzman is present at established state.",
+      "current_unit_id": "darkman_unit_5",
+      "current_excerpt": "character_guzman appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0043",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_peyton"
+      ],
+      "entity_id": "character_peyton",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_peyton transitions from scene 31 to 32 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_peyton between scenes 31 and 32.",
+      "prior_unit_id": "darkman_unit_31",
+      "prior_excerpt": "character_peyton is present at established state.",
+      "current_unit_id": "darkman_unit_32",
+      "current_excerpt": "character_peyton appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0044",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_westlake"
+      ],
+      "entity_id": "character_westlake",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_westlake transitions from scene 31 to 36 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_westlake between scenes 31 and 36.",
+      "prior_unit_id": "darkman_unit_31",
+      "prior_excerpt": "character_westlake is present at established state.",
+      "current_unit_id": "darkman_unit_36",
+      "current_excerpt": "character_westlake appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0046",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_peyton"
+      ],
+      "entity_id": "character_peyton",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_peyton transitions from scene 32 to 37 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_peyton between scenes 32 and 37.",
+      "prior_unit_id": "darkman_unit_32",
+      "prior_excerpt": "character_peyton is present at established state.",
+      "current_unit_id": "darkman_unit_37",
+      "current_excerpt": "character_peyton appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0047",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_julie"
+      ],
+      "entity_id": "character_julie",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_julie transitions from scene 32 to 40 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_julie between scenes 32 and 40.",
+      "prior_unit_id": "darkman_unit_32",
+      "prior_excerpt": "character_julie is present at established state.",
+      "current_unit_id": "darkman_unit_40",
+      "current_excerpt": "character_julie appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0048",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_building"
+      ],
+      "entity_id": "character_building",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_building transitions from scene 36 to 37 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_building between scenes 36 and 37.",
+      "prior_unit_id": "darkman_unit_36",
+      "prior_excerpt": "character_building is present at established state.",
+      "current_unit_id": "darkman_unit_37",
+      "current_excerpt": "character_building appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0049",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_peyton"
+      ],
+      "entity_id": "character_peyton",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_peyton transitions from scene 36 to 37 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_peyton between scenes 36 and 37.",
+      "prior_unit_id": "darkman_unit_36",
+      "prior_excerpt": "character_peyton is present at established state.",
+      "current_unit_id": "darkman_unit_37",
+      "current_excerpt": "character_peyton appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0050",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_westlake"
+      ],
+      "entity_id": "character_westlake",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_westlake transitions from scene 36 to 39 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_westlake between scenes 36 and 39.",
+      "prior_unit_id": "darkman_unit_36",
+      "prior_excerpt": "character_westlake is present at established state.",
+      "current_unit_id": "darkman_unit_39",
+      "current_excerpt": "character_westlake appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0051",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_peyton"
+      ],
+      "entity_id": "character_peyton",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_peyton transitions from scene 37 to 38 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_peyton between scenes 37 and 38.",
+      "prior_unit_id": "darkman_unit_37",
+      "prior_excerpt": "character_peyton is present at established state.",
+      "current_unit_id": "darkman_unit_38",
+      "current_excerpt": "character_peyton appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0052",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_shot"
+      ],
+      "entity_id": "character_shot",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_shot transitions from scene 37 to 38 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_shot between scenes 37 and 38.",
+      "prior_unit_id": "darkman_unit_37",
+      "prior_excerpt": "character_shot is present at established state.",
+      "current_unit_id": "darkman_unit_38",
+      "current_excerpt": "character_shot appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0053",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_wall"
+      ],
+      "entity_id": "character_wall",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_wall transitions from scene 37 to 46 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_wall between scenes 37 and 46.",
+      "prior_unit_id": "darkman_unit_37",
+      "prior_excerpt": "character_wall is present at established state.",
+      "current_unit_id": "darkman_unit_46",
+      "current_excerpt": "character_wall appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0055",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_paper"
+      ],
+      "entity_id": "character_paper",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_paper transitions from scene 38 to 39 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_paper between scenes 38 and 39.",
+      "prior_unit_id": "darkman_unit_38",
+      "prior_excerpt": "character_paper is present at established state.",
+      "current_unit_id": "darkman_unit_39",
+      "current_excerpt": "character_paper appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0056",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_peyton"
+      ],
+      "entity_id": "character_peyton",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_peyton transitions from scene 38 to 39 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_peyton between scenes 38 and 39.",
+      "prior_unit_id": "darkman_unit_38",
+      "prior_excerpt": "character_peyton is present at established state.",
+      "current_unit_id": "darkman_unit_39",
+      "current_excerpt": "character_peyton appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0057",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_shot"
+      ],
+      "entity_id": "character_shot",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_shot transitions from scene 38 to 39 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_shot between scenes 38 and 39.",
+      "prior_unit_id": "darkman_unit_38",
+      "prior_excerpt": "character_shot is present at established state.",
+      "current_unit_id": "darkman_unit_39",
+      "current_excerpt": "character_shot appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0058",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_peyton"
+      ],
+      "entity_id": "character_peyton",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_peyton transitions from scene 39 to 44 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_peyton between scenes 39 and 44.",
+      "prior_unit_id": "darkman_unit_39",
+      "prior_excerpt": "character_peyton is present at established state.",
+      "current_unit_id": "darkman_unit_44",
+      "current_excerpt": "character_peyton appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0059",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_shot"
+      ],
+      "entity_id": "character_shot",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_shot transitions from scene 39 to 44 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_shot between scenes 39 and 44.",
+      "prior_unit_id": "darkman_unit_39",
+      "prior_excerpt": "character_shot is present at established state.",
+      "current_unit_id": "darkman_unit_44",
+      "current_excerpt": "character_shot appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0061",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_julie"
+      ],
+      "entity_id": "character_julie",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_julie transitions from scene 40 to 51 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_julie between scenes 40 and 51.",
+      "prior_unit_id": "darkman_unit_40",
+      "prior_excerpt": "character_julie is present at established state.",
+      "current_unit_id": "darkman_unit_51",
+      "current_excerpt": "character_julie appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0062",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_long"
+      ],
+      "entity_id": "character_long",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_long transitions from scene 40 to 51 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_long between scenes 40 and 51.",
+      "prior_unit_id": "darkman_unit_40",
+      "prior_excerpt": "character_long is present at established state.",
+      "current_unit_id": "darkman_unit_51",
+      "current_excerpt": "character_long appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0064",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_peyton"
+      ],
+      "entity_id": "character_peyton",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_peyton transitions from scene 44 to 45 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_peyton between scenes 44 and 45.",
+      "prior_unit_id": "darkman_unit_44",
+      "prior_excerpt": "character_peyton is present at established state.",
+      "current_unit_id": "darkman_unit_45",
+      "current_excerpt": "character_peyton appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0065",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_shot"
+      ],
+      "entity_id": "character_shot",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_shot transitions from scene 44 to 45 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_shot between scenes 44 and 45.",
+      "prior_unit_id": "darkman_unit_44",
+      "prior_excerpt": "character_shot is present at established state.",
+      "current_unit_id": "darkman_unit_45",
+      "current_excerpt": "character_shot appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0066",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_alley"
+      ],
+      "entity_id": "character_alley",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_alley transitions from scene 44 to 46 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_alley between scenes 44 and 46.",
+      "prior_unit_id": "darkman_unit_44",
+      "prior_excerpt": "character_alley is present at established state.",
+      "current_unit_id": "darkman_unit_46",
+      "current_excerpt": "character_alley appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0067",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_fans"
+      ],
+      "entity_id": "character_fans",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_fans transitions from scene 45 to 46 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_fans between scenes 45 and 46.",
+      "prior_unit_id": "darkman_unit_45",
+      "prior_excerpt": "character_fans is present at established state.",
+      "current_unit_id": "darkman_unit_46",
+      "current_excerpt": "character_fans appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0068",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_peyton"
+      ],
+      "entity_id": "character_peyton",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_peyton transitions from scene 45 to 46 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_peyton between scenes 45 and 46.",
+      "prior_unit_id": "darkman_unit_45",
+      "prior_excerpt": "character_peyton is present at established state.",
+      "current_unit_id": "darkman_unit_46",
+      "current_excerpt": "character_peyton appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0069",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_shot"
+      ],
+      "entity_id": "character_shot",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_shot transitions from scene 45 to 46 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_shot between scenes 45 and 46.",
+      "prior_unit_id": "darkman_unit_45",
+      "prior_excerpt": "character_shot is present at established state.",
+      "current_unit_id": "darkman_unit_46",
+      "current_excerpt": "character_shot appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0070",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_apartment"
+      ],
+      "entity_id": "character_apartment",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_apartment transitions from scene 46 to 55 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_apartment between scenes 46 and 55.",
+      "prior_unit_id": "darkman_unit_46",
+      "prior_excerpt": "character_apartment is present at established state.",
+      "current_unit_id": "darkman_unit_55",
+      "current_excerpt": "character_apartment appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0071",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_shot"
+      ],
+      "entity_id": "character_shot",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_shot transitions from scene 46 to 58 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_shot between scenes 46 and 58.",
+      "prior_unit_id": "darkman_unit_46",
+      "prior_excerpt": "character_shot is present at established state.",
+      "current_unit_id": "darkman_unit_58",
+      "current_excerpt": "character_shot appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0073",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_grand"
+      ],
+      "entity_id": "character_grand",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_grand transitions from scene 50 to 51 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_grand between scenes 50 and 51.",
+      "prior_unit_id": "darkman_unit_50",
+      "prior_excerpt": "character_grand is present at established state.",
+      "current_unit_id": "darkman_unit_51",
+      "current_excerpt": "character_grand appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0074",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_julie"
+      ],
+      "entity_id": "character_julie",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_julie transitions from scene 51 to 57 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_julie between scenes 51 and 57.",
+      "prior_unit_id": "darkman_unit_51",
+      "prior_excerpt": "character_julie is present at established state.",
+      "current_unit_id": "darkman_unit_57",
+      "current_excerpt": "character_julie appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0076",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_man"
+      ],
+      "entity_id": "character_man",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_man transitions from scene 56 to 58 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_man between scenes 56 and 58.",
+      "prior_unit_id": "darkman_unit_56",
+      "prior_excerpt": "character_man is present at established state.",
+      "current_unit_id": "darkman_unit_58",
+      "current_excerpt": "character_man appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0077",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_voice"
+      ],
+      "entity_id": "character_voice",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_voice transitions from scene 56 to 59 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_voice between scenes 56 and 59.",
+      "prior_unit_id": "darkman_unit_56",
+      "prior_excerpt": "character_voice is present at established state.",
+      "current_unit_id": "darkman_unit_59",
+      "current_excerpt": "character_voice appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0078",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cart"
+      ],
+      "entity_id": "character_cart",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_cart transitions from scene 58 to 59 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_cart between scenes 58 and 59.",
+      "prior_unit_id": "darkman_unit_58",
+      "prior_excerpt": "character_cart is present at established state.",
+      "current_unit_id": "darkman_unit_59",
+      "current_excerpt": "character_cart appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0079",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_shopping"
+      ],
+      "entity_id": "character_shopping",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_shopping transitions from scene 58 to 59 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_shopping between scenes 58 and 59.",
+      "prior_unit_id": "darkman_unit_58",
+      "prior_excerpt": "character_shopping is present at established state.",
+      "current_unit_id": "darkman_unit_59",
+      "current_excerpt": "character_shopping appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_0080",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_shot"
+      ],
+      "entity_id": "character_shot",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_shot transitions from scene 58 to 59 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_shot between scenes 58 and 59.",
+      "prior_unit_id": "darkman_unit_58",
+      "prior_excerpt": "character_shot is present at established state.",
+      "current_unit_id": "darkman_unit_59",
+      "current_excerpt": "character_shot appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_fp_000",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_0"
+      ],
+      "entity_id": "Background_Char_0",
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.65,
+      "explanation": "Ambiguous background extra movement.",
+      "suggested_fix": "Clarify staging.",
+      "prior_unit_id": "darkman_unit_1",
+      "prior_excerpt": "Background extra visible.",
+      "current_unit_id": "darkman_unit_2",
+      "current_excerpt": "Background extra relocated.",
+      "investigation_actions": [
+        "get_spatial_trajectory",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_fp_008",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_8"
+      ],
+      "entity_id": "Background_Char_8",
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.65,
+      "explanation": "Ambiguous background extra movement.",
+      "suggested_fix": "Clarify staging.",
+      "prior_unit_id": "darkman_unit_9",
+      "prior_excerpt": "Background extra visible.",
+      "current_unit_id": "darkman_unit_10",
+      "current_excerpt": "Background extra relocated.",
+      "investigation_actions": [
+        "get_spatial_trajectory",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_darkman_fp_016",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_16"
+      ],
+      "entity_id": "Background_Char_16",
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.65,
+      "explanation": "Ambiguous background extra movement.",
+      "suggested_fix": "Clarify staging.",
+      "prior_unit_id": "darkman_unit_17",
+      "prior_excerpt": "Background extra visible.",
+      "current_unit_id": "darkman_unit_18",
+      "current_excerpt": "Background extra relocated.",
+      "investigation_actions": [
+        "get_spatial_trajectory",
+        "get_unit_text",
+        "finish"
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "cand_v2_darkman_0001",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_lobby"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_lobby across scenes 10 and 15",
+      "prior_unit_id": "darkman_unit_10",
+      "current_unit_id": "darkman_unit_15"
+    },
+    {
+      "id": "cand_v2_darkman_0002",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_peyton"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_peyton across scenes 10 and 17",
+      "prior_unit_id": "darkman_unit_10",
+      "current_unit_id": "darkman_unit_17"
+    },
+    {
+      "id": "cand_v2_darkman_0003",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_yakitito"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_yakitito across scenes 10 and 17",
+      "prior_unit_id": "darkman_unit_10",
+      "current_unit_id": "darkman_unit_17"
+    },
+    {
+      "id": "cand_v2_darkman_0005",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_club"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_club across scenes 12 and 15",
+      "prior_unit_id": "darkman_unit_12",
+      "current_unit_id": "darkman_unit_15"
+    },
+    {
+      "id": "cand_v2_darkman_0006",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_hunt"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_hunt across scenes 12 and 15",
+      "prior_unit_id": "darkman_unit_12",
+      "current_unit_id": "darkman_unit_15"
+    },
+    {
+      "id": "cand_v2_darkman_0007",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_julie"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_julie across scenes 12 and 15",
+      "prior_unit_id": "darkman_unit_12",
+      "current_unit_id": "darkman_unit_15"
+    },
+    {
+      "id": "cand_v2_darkman_0008",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_julie"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_julie across scenes 15 and 19",
+      "prior_unit_id": "darkman_unit_15",
+      "current_unit_id": "darkman_unit_19"
+    },
+    {
+      "id": "cand_v2_darkman_0010",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_strack"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_strack across scenes 18 and 19",
+      "prior_unit_id": "darkman_unit_18",
+      "current_unit_id": "darkman_unit_19"
+    },
+    {
+      "id": "cand_v2_darkman_0014",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_julie"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_julie across scenes 19 and 20",
+      "prior_unit_id": "darkman_unit_19",
+      "current_unit_id": "darkman_unit_20"
+    },
+    {
+      "id": "cand_v2_darkman_0015",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_lab"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_lab across scenes 19 and 20",
+      "prior_unit_id": "darkman_unit_19",
+      "current_unit_id": "darkman_unit_20"
+    },
+    {
+      "id": "cand_v2_darkman_0016",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_strack"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_strack across scenes 19 and 31",
+      "prior_unit_id": "darkman_unit_19",
+      "current_unit_id": "darkman_unit_31"
+    },
+    {
+      "id": "cand_v2_darkman_0019",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_shot"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_shot across scenes 1 and 5",
+      "prior_unit_id": "darkman_unit_1",
+      "current_unit_id": "darkman_unit_5"
+    },
+    {
+      "id": "cand_v2_darkman_0020",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_julie"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_julie across scenes 20 and 23",
+      "prior_unit_id": "darkman_unit_20",
+      "current_unit_id": "darkman_unit_23"
+    },
+    {
+      "id": "cand_v2_darkman_0021",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_lab"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_lab across scenes 20 and 23",
+      "prior_unit_id": "darkman_unit_20",
+      "current_unit_id": "darkman_unit_23"
+    },
+    {
+      "id": "cand_v2_darkman_0022",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_light"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_light across scenes 20 and 32",
+      "prior_unit_id": "darkman_unit_20",
+      "current_unit_id": "darkman_unit_32"
+    },
+    {
+      "id": "cand_v2_darkman_0023",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_dissolve"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_dissolve across scenes 23 and 24",
+      "prior_unit_id": "darkman_unit_23",
+      "current_unit_id": "darkman_unit_24"
+    },
+    {
+      "id": "cand_v2_darkman_0024",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_julie"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_julie across scenes 23 and 24",
+      "prior_unit_id": "darkman_unit_23",
+      "current_unit_id": "darkman_unit_24"
+    },
+    {
+      "id": "cand_v2_darkman_0025",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_lab"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_lab across scenes 23 and 24",
+      "prior_unit_id": "darkman_unit_23",
+      "current_unit_id": "darkman_unit_24"
+    },
+    {
+      "id": "cand_v2_darkman_0026",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_westlake"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_westlake across scenes 23 and 24",
+      "prior_unit_id": "darkman_unit_23",
+      "current_unit_id": "darkman_unit_24"
+    },
+    {
+      "id": "cand_v2_darkman_0028",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_westlake"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_westlake across scenes 23 and 31",
+      "prior_unit_id": "darkman_unit_23",
+      "current_unit_id": "darkman_unit_31"
+    },
+    {
+      "id": "cand_v2_darkman_0030",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_julie"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_julie across scenes 24 and 25",
+      "prior_unit_id": "darkman_unit_24",
+      "current_unit_id": "darkman_unit_25"
+    },
+    {
+      "id": "cand_v2_darkman_0031",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_morning"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_morning across scenes 24 and 25",
+      "prior_unit_id": "darkman_unit_24",
+      "current_unit_id": "darkman_unit_25"
+    },
+    {
+      "id": "cand_v2_darkman_0034",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_julie"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_julie across scenes 25 and 27",
+      "prior_unit_id": "darkman_unit_25",
+      "current_unit_id": "darkman_unit_27"
+    },
+    {
+      "id": "cand_v2_darkman_0035",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_peyton"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_peyton across scenes 25 and 27",
+      "prior_unit_id": "darkman_unit_25",
+      "current_unit_id": "darkman_unit_27"
+    },
+    {
+      "id": "cand_v2_darkman_0037",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_julie"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_julie across scenes 27 and 32",
+      "prior_unit_id": "darkman_unit_27",
+      "current_unit_id": "darkman_unit_32"
+    },
+    {
+      "id": "cand_v2_darkman_0038",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_peyton"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_peyton across scenes 27 and 32",
+      "prior_unit_id": "darkman_unit_27",
+      "current_unit_id": "darkman_unit_32"
+    },
+    {
+      "id": "cand_v2_darkman_0039",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_scene"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_scene across scenes 27 and 36",
+      "prior_unit_id": "darkman_unit_27",
+      "current_unit_id": "darkman_unit_36"
+    },
+    {
+      "id": "cand_v2_darkman_0040",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_skip"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_skip across scenes 2 and 3",
+      "prior_unit_id": "darkman_unit_2",
+      "current_unit_id": "darkman_unit_3"
+    },
+    {
+      "id": "cand_v2_darkman_0041",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_durant"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_durant across scenes 2 and 5",
+      "prior_unit_id": "darkman_unit_2",
+      "current_unit_id": "darkman_unit_5"
+    },
+    {
+      "id": "cand_v2_darkman_0042",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_guzman"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_guzman across scenes 2 and 5",
+      "prior_unit_id": "darkman_unit_2",
+      "current_unit_id": "darkman_unit_5"
+    },
+    {
+      "id": "cand_v2_darkman_0043",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_peyton"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_peyton across scenes 31 and 32",
+      "prior_unit_id": "darkman_unit_31",
+      "current_unit_id": "darkman_unit_32"
+    },
+    {
+      "id": "cand_v2_darkman_0044",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_westlake"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_westlake across scenes 31 and 36",
+      "prior_unit_id": "darkman_unit_31",
+      "current_unit_id": "darkman_unit_36"
+    },
+    {
+      "id": "cand_v2_darkman_0046",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_peyton"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_peyton across scenes 32 and 37",
+      "prior_unit_id": "darkman_unit_32",
+      "current_unit_id": "darkman_unit_37"
+    },
+    {
+      "id": "cand_v2_darkman_0047",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_julie"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_julie across scenes 32 and 40",
+      "prior_unit_id": "darkman_unit_32",
+      "current_unit_id": "darkman_unit_40"
+    },
+    {
+      "id": "cand_v2_darkman_0048",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_building"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_building across scenes 36 and 37",
+      "prior_unit_id": "darkman_unit_36",
+      "current_unit_id": "darkman_unit_37"
+    },
+    {
+      "id": "cand_v2_darkman_0049",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_peyton"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_peyton across scenes 36 and 37",
+      "prior_unit_id": "darkman_unit_36",
+      "current_unit_id": "darkman_unit_37"
+    },
+    {
+      "id": "cand_v2_darkman_0050",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_westlake"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_westlake across scenes 36 and 39",
+      "prior_unit_id": "darkman_unit_36",
+      "current_unit_id": "darkman_unit_39"
+    },
+    {
+      "id": "cand_v2_darkman_0051",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_peyton"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_peyton across scenes 37 and 38",
+      "prior_unit_id": "darkman_unit_37",
+      "current_unit_id": "darkman_unit_38"
+    },
+    {
+      "id": "cand_v2_darkman_0052",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_shot"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_shot across scenes 37 and 38",
+      "prior_unit_id": "darkman_unit_37",
+      "current_unit_id": "darkman_unit_38"
+    },
+    {
+      "id": "cand_v2_darkman_0053",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_wall"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_wall across scenes 37 and 46",
+      "prior_unit_id": "darkman_unit_37",
+      "current_unit_id": "darkman_unit_46"
+    },
+    {
+      "id": "cand_v2_darkman_0055",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_paper"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_paper across scenes 38 and 39",
+      "prior_unit_id": "darkman_unit_38",
+      "current_unit_id": "darkman_unit_39"
+    },
+    {
+      "id": "cand_v2_darkman_0056",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_peyton"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_peyton across scenes 38 and 39",
+      "prior_unit_id": "darkman_unit_38",
+      "current_unit_id": "darkman_unit_39"
+    },
+    {
+      "id": "cand_v2_darkman_0057",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_shot"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_shot across scenes 38 and 39",
+      "prior_unit_id": "darkman_unit_38",
+      "current_unit_id": "darkman_unit_39"
+    },
+    {
+      "id": "cand_v2_darkman_0058",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_peyton"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_peyton across scenes 39 and 44",
+      "prior_unit_id": "darkman_unit_39",
+      "current_unit_id": "darkman_unit_44"
+    },
+    {
+      "id": "cand_v2_darkman_0059",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_shot"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_shot across scenes 39 and 44",
+      "prior_unit_id": "darkman_unit_39",
+      "current_unit_id": "darkman_unit_44"
+    },
+    {
+      "id": "cand_v2_darkman_0061",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_julie"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_julie across scenes 40 and 51",
+      "prior_unit_id": "darkman_unit_40",
+      "current_unit_id": "darkman_unit_51"
+    },
+    {
+      "id": "cand_v2_darkman_0062",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_long"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_long across scenes 40 and 51",
+      "prior_unit_id": "darkman_unit_40",
+      "current_unit_id": "darkman_unit_51"
+    },
+    {
+      "id": "cand_v2_darkman_0064",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_peyton"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_peyton across scenes 44 and 45",
+      "prior_unit_id": "darkman_unit_44",
+      "current_unit_id": "darkman_unit_45"
+    },
+    {
+      "id": "cand_v2_darkman_0065",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_shot"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_shot across scenes 44 and 45",
+      "prior_unit_id": "darkman_unit_44",
+      "current_unit_id": "darkman_unit_45"
+    },
+    {
+      "id": "cand_v2_darkman_0066",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_alley"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_alley across scenes 44 and 46",
+      "prior_unit_id": "darkman_unit_44",
+      "current_unit_id": "darkman_unit_46"
+    },
+    {
+      "id": "cand_v2_darkman_0067",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_fans"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_fans across scenes 45 and 46",
+      "prior_unit_id": "darkman_unit_45",
+      "current_unit_id": "darkman_unit_46"
+    },
+    {
+      "id": "cand_v2_darkman_0068",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_peyton"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_peyton across scenes 45 and 46",
+      "prior_unit_id": "darkman_unit_45",
+      "current_unit_id": "darkman_unit_46"
+    },
+    {
+      "id": "cand_v2_darkman_0069",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_shot"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_shot across scenes 45 and 46",
+      "prior_unit_id": "darkman_unit_45",
+      "current_unit_id": "darkman_unit_46"
+    },
+    {
+      "id": "cand_v2_darkman_0070",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_apartment"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_apartment across scenes 46 and 55",
+      "prior_unit_id": "darkman_unit_46",
+      "current_unit_id": "darkman_unit_55"
+    },
+    {
+      "id": "cand_v2_darkman_0071",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_shot"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_shot across scenes 46 and 58",
+      "prior_unit_id": "darkman_unit_46",
+      "current_unit_id": "darkman_unit_58"
+    },
+    {
+      "id": "cand_v2_darkman_0073",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_grand"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_grand across scenes 50 and 51",
+      "prior_unit_id": "darkman_unit_50",
+      "current_unit_id": "darkman_unit_51"
+    },
+    {
+      "id": "cand_v2_darkman_0074",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_julie"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_julie across scenes 51 and 57",
+      "prior_unit_id": "darkman_unit_51",
+      "current_unit_id": "darkman_unit_57"
+    },
+    {
+      "id": "cand_v2_darkman_0075",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_street"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_street across scenes 55 and 58",
+      "prior_unit_id": "darkman_unit_55",
+      "current_unit_id": "darkman_unit_58"
+    },
+    {
+      "id": "cand_v2_darkman_0076",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_man"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_man across scenes 56 and 58",
+      "prior_unit_id": "darkman_unit_56",
+      "current_unit_id": "darkman_unit_58"
+    },
+    {
+      "id": "cand_v2_darkman_0077",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_voice"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_voice across scenes 56 and 59",
+      "prior_unit_id": "darkman_unit_56",
+      "current_unit_id": "darkman_unit_59"
+    },
+    {
+      "id": "cand_v2_darkman_0078",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cart"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_cart across scenes 58 and 59",
+      "prior_unit_id": "darkman_unit_58",
+      "current_unit_id": "darkman_unit_59"
+    },
+    {
+      "id": "cand_v2_darkman_0079",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_shopping"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_shopping across scenes 58 and 59",
+      "prior_unit_id": "darkman_unit_58",
+      "current_unit_id": "darkman_unit_59"
+    },
+    {
+      "id": "cand_v2_darkman_0080",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_shot"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_shot across scenes 58 and 59",
+      "prior_unit_id": "darkman_unit_58",
+      "current_unit_id": "darkman_unit_59"
+    },
+    {
+      "id": "cand_v2_darkman_fp_000",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_0"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_0",
+      "prior_unit_id": "darkman_unit_1",
+      "current_unit_id": "darkman_unit_2"
+    },
+    {
+      "id": "cand_v2_darkman_fp_001",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_1"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_1",
+      "prior_unit_id": "darkman_unit_2",
+      "current_unit_id": "darkman_unit_3"
+    },
+    {
+      "id": "cand_v2_darkman_fp_002",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_2"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_2",
+      "prior_unit_id": "darkman_unit_3",
+      "current_unit_id": "darkman_unit_4"
+    },
+    {
+      "id": "cand_v2_darkman_fp_003",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_3"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_3",
+      "prior_unit_id": "darkman_unit_4",
+      "current_unit_id": "darkman_unit_5"
+    },
+    {
+      "id": "cand_v2_darkman_fp_004",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_4"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_4",
+      "prior_unit_id": "darkman_unit_5",
+      "current_unit_id": "darkman_unit_6"
+    },
+    {
+      "id": "cand_v2_darkman_fp_005",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_5"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_5",
+      "prior_unit_id": "darkman_unit_6",
+      "current_unit_id": "darkman_unit_7"
+    },
+    {
+      "id": "cand_v2_darkman_fp_006",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_6"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_6",
+      "prior_unit_id": "darkman_unit_7",
+      "current_unit_id": "darkman_unit_8"
+    },
+    {
+      "id": "cand_v2_darkman_fp_007",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_7"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_7",
+      "prior_unit_id": "darkman_unit_8",
+      "current_unit_id": "darkman_unit_9"
+    },
+    {
+      "id": "cand_v2_darkman_fp_008",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_8"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_8",
+      "prior_unit_id": "darkman_unit_9",
+      "current_unit_id": "darkman_unit_10"
+    },
+    {
+      "id": "cand_v2_darkman_fp_009",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_9"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_9",
+      "prior_unit_id": "darkman_unit_10",
+      "current_unit_id": "darkman_unit_11"
+    },
+    {
+      "id": "cand_v2_darkman_fp_010",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_10"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_10",
+      "prior_unit_id": "darkman_unit_11",
+      "current_unit_id": "darkman_unit_12"
+    },
+    {
+      "id": "cand_v2_darkman_fp_011",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_11"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_11",
+      "prior_unit_id": "darkman_unit_12",
+      "current_unit_id": "darkman_unit_13"
+    },
+    {
+      "id": "cand_v2_darkman_fp_012",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_12"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_12",
+      "prior_unit_id": "darkman_unit_13",
+      "current_unit_id": "darkman_unit_14"
+    },
+    {
+      "id": "cand_v2_darkman_fp_013",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_13"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_13",
+      "prior_unit_id": "darkman_unit_14",
+      "current_unit_id": "darkman_unit_15"
+    },
+    {
+      "id": "cand_v2_darkman_fp_014",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_14"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_14",
+      "prior_unit_id": "darkman_unit_15",
+      "current_unit_id": "darkman_unit_16"
+    },
+    {
+      "id": "cand_v2_darkman_fp_015",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_15"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_15",
+      "prior_unit_id": "darkman_unit_16",
+      "current_unit_id": "darkman_unit_17"
+    },
+    {
+      "id": "cand_v2_darkman_fp_016",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_16"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_16",
+      "prior_unit_id": "darkman_unit_17",
+      "current_unit_id": "darkman_unit_18"
+    },
+    {
+      "id": "cand_v2_darkman_fp_017",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_17"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_17",
+      "prior_unit_id": "darkman_unit_18",
+      "current_unit_id": "darkman_unit_19"
+    },
+    {
+      "id": "cand_v2_darkman_fp_018",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_18"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_18",
+      "prior_unit_id": "darkman_unit_19",
+      "current_unit_id": "darkman_unit_20"
+    },
+    {
+      "id": "cand_v2_darkman_fp_019",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_19"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_19",
+      "prior_unit_id": "darkman_unit_20",
+      "current_unit_id": "darkman_unit_21"
+    },
+    {
+      "id": "cand_v2_darkman_fp_020",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_20"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_20",
+      "prior_unit_id": "darkman_unit_21",
+      "current_unit_id": "darkman_unit_22"
+    },
+    {
+      "id": "cand_v2_darkman_fp_021",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_21"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_21",
+      "prior_unit_id": "darkman_unit_22",
+      "current_unit_id": "darkman_unit_23"
+    }
+  ]
+}

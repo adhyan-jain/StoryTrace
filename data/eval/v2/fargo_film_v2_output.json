@@ -1,0 +1,807 @@
+{
+  "film_slug": "fargo_film",
+  "story_universe_id": "v2_fargo_film",
+  "unit_count": 100,
+  "state_event_count": 108,
+  "co_presence_count": 54,
+  "candidate_count": 27,
+  "verdict_distribution": {
+    "verified_hard_conflict": 16,
+    "verified_narrative_anomaly": 5,
+    "resolved": 6,
+    "uncertain": 0
+  },
+  "surfaced_findings_count": 21,
+  "total_tool_calls": 81,
+  "avg_tool_calls_per_candidate": 3.0,
+  "timings": {
+    "extraction_sec": 12.15,
+    "detection_sec": 0.08,
+    "investigation_sec": 17.55,
+    "total_runtime_sec": 31.86
+  },
+  "findings": [
+    {
+      "candidate_id": "cand_v2_fargo_film_0002",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_car"
+      ],
+      "entity_id": "character_car",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_car transitions from scene 18 to 25 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_car between scenes 18 and 25.",
+      "prior_unit_id": "fargo_film_unit_18",
+      "prior_excerpt": "character_car is present at established state.",
+      "current_unit_id": "fargo_film_unit_25",
+      "current_excerpt": "character_car appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_fargo_film_0003",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_ciera"
+      ],
+      "entity_id": "character_ciera",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_ciera transitions from scene 20 to 21 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_ciera between scenes 20 and 21.",
+      "prior_unit_id": "fargo_film_unit_20",
+      "prior_excerpt": "character_ciera is present at established state.",
+      "current_unit_id": "fargo_film_unit_21",
+      "current_excerpt": "character_ciera appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_fargo_film_0004",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_road"
+      ],
+      "entity_id": "character_road",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_road transitions from scene 20 to 21 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_road between scenes 20 and 21.",
+      "prior_unit_id": "fargo_film_unit_20",
+      "prior_excerpt": "character_road is present at established state.",
+      "current_unit_id": "fargo_film_unit_21",
+      "current_excerpt": "character_road appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_fargo_film_0005",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_trooper"
+      ],
+      "entity_id": "character_trooper",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_trooper transitions from scene 20 to 25 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_trooper between scenes 20 and 25.",
+      "prior_unit_id": "fargo_film_unit_20",
+      "prior_excerpt": "character_trooper is present at established state.",
+      "current_unit_id": "fargo_film_unit_25",
+      "current_excerpt": "character_trooper appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_fargo_film_0006",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_carl"
+      ],
+      "entity_id": "character_carl",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_carl transitions from scene 20 to 29 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_carl between scenes 20 and 29.",
+      "prior_unit_id": "fargo_film_unit_20",
+      "prior_excerpt": "character_carl is present at established state.",
+      "current_unit_id": "fargo_film_unit_29",
+      "current_excerpt": "character_carl appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_fargo_film_0007",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_brainerd"
+      ],
+      "entity_id": "character_brainerd",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_brainerd transitions from scene 23 to 29 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_brainerd between scenes 23 and 29.",
+      "prior_unit_id": "fargo_film_unit_23",
+      "prior_excerpt": "character_brainerd is present at established state.",
+      "current_unit_id": "fargo_film_unit_29",
+      "current_excerpt": "character_brainerd appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_fargo_film_0008",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_police"
+      ],
+      "entity_id": "character_police",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_police transitions from scene 23 to 29 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_police between scenes 23 and 29.",
+      "prior_unit_id": "fargo_film_unit_23",
+      "prior_excerpt": "character_police is present at established state.",
+      "current_unit_id": "fargo_film_unit_29",
+      "current_excerpt": "character_police appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_fargo_film_0010",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_norm"
+      ],
+      "entity_id": "character_norm",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_norm transitions from scene 23 to 30 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_norm between scenes 23 and 30.",
+      "prior_unit_id": "fargo_film_unit_23",
+      "prior_excerpt": "character_norm is present at established state.",
+      "current_unit_id": "fargo_film_unit_30",
+      "current_excerpt": "character_norm appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_fargo_film_0013",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_brainerd"
+      ],
+      "entity_id": "character_brainerd",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_brainerd transitions from scene 29 to 30 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_brainerd between scenes 29 and 30.",
+      "prior_unit_id": "fargo_film_unit_29",
+      "prior_excerpt": "character_brainerd is present at established state.",
+      "current_unit_id": "fargo_film_unit_30",
+      "current_excerpt": "character_brainerd appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_fargo_film_0014",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cabin"
+      ],
+      "entity_id": "character_cabin",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_cabin transitions from scene 29 to 31 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_cabin between scenes 29 and 31.",
+      "prior_unit_id": "fargo_film_unit_29",
+      "prior_excerpt": "character_cabin is present at established state.",
+      "current_unit_id": "fargo_film_unit_31",
+      "current_excerpt": "character_cabin appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_fargo_film_0017",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_club"
+      ],
+      "entity_id": "character_club",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_club transitions from scene 30 to 31 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_club between scenes 30 and 31.",
+      "prior_unit_id": "fargo_film_unit_30",
+      "prior_excerpt": "character_club is present at established state.",
+      "current_unit_id": "fargo_film_unit_31",
+      "current_excerpt": "character_club appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_fargo_film_0019",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_jerry"
+      ],
+      "entity_id": "character_jerry",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_jerry transitions from scene 46 to 48 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_jerry between scenes 46 and 48.",
+      "prior_unit_id": "fargo_film_unit_46",
+      "prior_excerpt": "character_jerry is present at established state.",
+      "current_unit_id": "fargo_film_unit_48",
+      "current_excerpt": "character_jerry appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_fargo_film_0020",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_wade"
+      ],
+      "entity_id": "character_wade",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_wade transitions from scene 46 to 48 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_wade between scenes 46 and 48.",
+      "prior_unit_id": "fargo_film_unit_46",
+      "prior_excerpt": "character_wade is present at established state.",
+      "current_unit_id": "fargo_film_unit_48",
+      "current_excerpt": "character_wade appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_fargo_film_0021",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_carl"
+      ],
+      "entity_id": "character_carl",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_carl transitions from scene 48 to 49 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_carl between scenes 48 and 49.",
+      "prior_unit_id": "fargo_film_unit_48",
+      "prior_excerpt": "character_carl is present at established state.",
+      "current_unit_id": "fargo_film_unit_49",
+      "current_excerpt": "character_carl appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_fargo_film_0022",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_exit"
+      ],
+      "entity_id": "character_exit",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_exit transitions from scene 48 to 49 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_exit between scenes 48 and 49.",
+      "prior_unit_id": "fargo_film_unit_48",
+      "prior_excerpt": "character_exit is present at established state.",
+      "current_unit_id": "fargo_film_unit_49",
+      "current_excerpt": "character_exit appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_fargo_film_0023",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_jerry"
+      ],
+      "entity_id": "character_jerry",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_jerry transitions from scene 48 to 49 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_jerry between scenes 48 and 49.",
+      "prior_unit_id": "fargo_film_unit_48",
+      "prior_excerpt": "character_jerry is present at established state.",
+      "current_unit_id": "fargo_film_unit_49",
+      "current_excerpt": "character_jerry appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_fargo_film_0024",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_carl"
+      ],
+      "entity_id": "character_carl",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_carl transitions from scene 49 to 52 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_carl between scenes 49 and 52.",
+      "prior_unit_id": "fargo_film_unit_49",
+      "prior_excerpt": "character_carl is present at established state.",
+      "current_unit_id": "fargo_film_unit_52",
+      "current_excerpt": "character_carl appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_fargo_film_0025",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_jerry"
+      ],
+      "entity_id": "character_jerry",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_jerry transitions from scene 6 to 15 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_jerry between scenes 6 and 15.",
+      "prior_unit_id": "fargo_film_unit_6",
+      "prior_excerpt": "character_jerry is present at established state.",
+      "current_unit_id": "fargo_film_unit_15",
+      "current_excerpt": "character_jerry appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_fargo_film_0026",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_wade"
+      ],
+      "entity_id": "character_wade",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_wade transitions from scene 6 to 15 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_wade between scenes 6 and 15.",
+      "prior_unit_id": "fargo_film_unit_6",
+      "prior_excerpt": "character_wade is present at established state.",
+      "current_unit_id": "fargo_film_unit_15",
+      "current_excerpt": "character_wade appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_fargo_film_0028",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_phone"
+      ],
+      "entity_id": "character_phone",
+      "attribute": "possession.phone",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_phone transitions from scene 9 to 45 with contradictory possession.phone.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_phone between scenes 9 and 45.",
+      "prior_unit_id": "fargo_film_unit_9",
+      "prior_excerpt": "character_phone is present at established state.",
+      "current_unit_id": "fargo_film_unit_45",
+      "current_excerpt": "character_phone appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_fargo_film_fp_000",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_0"
+      ],
+      "entity_id": "Background_Char_0",
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.65,
+      "explanation": "Ambiguous background extra movement.",
+      "suggested_fix": "Clarify staging.",
+      "prior_unit_id": "fargo_film_unit_1",
+      "prior_excerpt": "Background extra visible.",
+      "current_unit_id": "fargo_film_unit_2",
+      "current_excerpt": "Background extra relocated.",
+      "investigation_actions": [
+        "get_spatial_trajectory",
+        "get_unit_text",
+        "finish"
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "cand_v2_fargo_film_0002",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_car"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_car across scenes 18 and 25",
+      "prior_unit_id": "fargo_film_unit_18",
+      "current_unit_id": "fargo_film_unit_25"
+    },
+    {
+      "id": "cand_v2_fargo_film_0003",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_ciera"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_ciera across scenes 20 and 21",
+      "prior_unit_id": "fargo_film_unit_20",
+      "current_unit_id": "fargo_film_unit_21"
+    },
+    {
+      "id": "cand_v2_fargo_film_0004",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_road"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_road across scenes 20 and 21",
+      "prior_unit_id": "fargo_film_unit_20",
+      "current_unit_id": "fargo_film_unit_21"
+    },
+    {
+      "id": "cand_v2_fargo_film_0005",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_trooper"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_trooper across scenes 20 and 25",
+      "prior_unit_id": "fargo_film_unit_20",
+      "current_unit_id": "fargo_film_unit_25"
+    },
+    {
+      "id": "cand_v2_fargo_film_0006",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_carl"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_carl across scenes 20 and 29",
+      "prior_unit_id": "fargo_film_unit_20",
+      "current_unit_id": "fargo_film_unit_29"
+    },
+    {
+      "id": "cand_v2_fargo_film_0007",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_brainerd"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_brainerd across scenes 23 and 29",
+      "prior_unit_id": "fargo_film_unit_23",
+      "current_unit_id": "fargo_film_unit_29"
+    },
+    {
+      "id": "cand_v2_fargo_film_0008",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_police"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_police across scenes 23 and 29",
+      "prior_unit_id": "fargo_film_unit_23",
+      "current_unit_id": "fargo_film_unit_29"
+    },
+    {
+      "id": "cand_v2_fargo_film_0010",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_norm"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_norm across scenes 23 and 30",
+      "prior_unit_id": "fargo_film_unit_23",
+      "current_unit_id": "fargo_film_unit_30"
+    },
+    {
+      "id": "cand_v2_fargo_film_0013",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_brainerd"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_brainerd across scenes 29 and 30",
+      "prior_unit_id": "fargo_film_unit_29",
+      "current_unit_id": "fargo_film_unit_30"
+    },
+    {
+      "id": "cand_v2_fargo_film_0014",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cabin"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_cabin across scenes 29 and 31",
+      "prior_unit_id": "fargo_film_unit_29",
+      "current_unit_id": "fargo_film_unit_31"
+    },
+    {
+      "id": "cand_v2_fargo_film_0017",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_club"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_club across scenes 30 and 31",
+      "prior_unit_id": "fargo_film_unit_30",
+      "current_unit_id": "fargo_film_unit_31"
+    },
+    {
+      "id": "cand_v2_fargo_film_0019",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_jerry"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_jerry across scenes 46 and 48",
+      "prior_unit_id": "fargo_film_unit_46",
+      "current_unit_id": "fargo_film_unit_48"
+    },
+    {
+      "id": "cand_v2_fargo_film_0020",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_wade"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_wade across scenes 46 and 48",
+      "prior_unit_id": "fargo_film_unit_46",
+      "current_unit_id": "fargo_film_unit_48"
+    },
+    {
+      "id": "cand_v2_fargo_film_0021",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_carl"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_carl across scenes 48 and 49",
+      "prior_unit_id": "fargo_film_unit_48",
+      "current_unit_id": "fargo_film_unit_49"
+    },
+    {
+      "id": "cand_v2_fargo_film_0022",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_exit"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_exit across scenes 48 and 49",
+      "prior_unit_id": "fargo_film_unit_48",
+      "current_unit_id": "fargo_film_unit_49"
+    },
+    {
+      "id": "cand_v2_fargo_film_0023",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_jerry"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_jerry across scenes 48 and 49",
+      "prior_unit_id": "fargo_film_unit_48",
+      "current_unit_id": "fargo_film_unit_49"
+    },
+    {
+      "id": "cand_v2_fargo_film_0024",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_carl"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_carl across scenes 49 and 52",
+      "prior_unit_id": "fargo_film_unit_49",
+      "current_unit_id": "fargo_film_unit_52"
+    },
+    {
+      "id": "cand_v2_fargo_film_0025",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_jerry"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_jerry across scenes 6 and 15",
+      "prior_unit_id": "fargo_film_unit_6",
+      "current_unit_id": "fargo_film_unit_15"
+    },
+    {
+      "id": "cand_v2_fargo_film_0026",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_wade"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_wade across scenes 6 and 15",
+      "prior_unit_id": "fargo_film_unit_6",
+      "current_unit_id": "fargo_film_unit_15"
+    },
+    {
+      "id": "cand_v2_fargo_film_0028",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_phone"
+      ],
+      "attribute": "possession.phone",
+      "description": "Potential possession_machine conflict for character_phone across scenes 9 and 45",
+      "prior_unit_id": "fargo_film_unit_9",
+      "current_unit_id": "fargo_film_unit_45"
+    },
+    {
+      "id": "cand_v2_fargo_film_fp_000",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_0"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_0",
+      "prior_unit_id": "fargo_film_unit_1",
+      "current_unit_id": "fargo_film_unit_2"
+    },
+    {
+      "id": "cand_v2_fargo_film_fp_001",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_1"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_1",
+      "prior_unit_id": "fargo_film_unit_2",
+      "current_unit_id": "fargo_film_unit_3"
+    },
+    {
+      "id": "cand_v2_fargo_film_fp_002",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_2"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_2",
+      "prior_unit_id": "fargo_film_unit_3",
+      "current_unit_id": "fargo_film_unit_4"
+    },
+    {
+      "id": "cand_v2_fargo_film_fp_003",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_3"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_3",
+      "prior_unit_id": "fargo_film_unit_4",
+      "current_unit_id": "fargo_film_unit_5"
+    },
+    {
+      "id": "cand_v2_fargo_film_fp_004",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_4"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_4",
+      "prior_unit_id": "fargo_film_unit_5",
+      "current_unit_id": "fargo_film_unit_6"
+    },
+    {
+      "id": "cand_v2_fargo_film_fp_005",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_5"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_5",
+      "prior_unit_id": "fargo_film_unit_6",
+      "current_unit_id": "fargo_film_unit_7"
+    },
+    {
+      "id": "cand_v2_fargo_film_fp_006",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_6"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_6",
+      "prior_unit_id": "fargo_film_unit_7",
+      "current_unit_id": "fargo_film_unit_8"
+    }
+  ]
+}

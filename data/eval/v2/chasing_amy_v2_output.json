@@ -1,0 +1,2061 @@
+{
+  "film_slug": "chasing_amy",
+  "story_universe_id": "v2_chasing_amy",
+  "unit_count": 128,
+  "state_event_count": 288,
+  "co_presence_count": 144,
+  "candidate_count": 72,
+  "verdict_distribution": {
+    "verified_hard_conflict": 41,
+    "verified_narrative_anomaly": 13,
+    "resolved": 18,
+    "uncertain": 0
+  },
+  "surfaced_findings_count": 54,
+  "total_tool_calls": 216,
+  "avg_tool_calls_per_candidate": 3.0,
+  "timings": {
+    "extraction_sec": 32.4,
+    "detection_sec": 0.08,
+    "investigation_sec": 46.8,
+    "total_runtime_sec": 84.96
+  },
+  "findings": [
+    {
+      "candidate_id": "cand_v2_chasing_amy_0001",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_her"
+      ],
+      "entity_id": "character_her",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_her transitions from scene 10 to 16 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_her between scenes 10 and 16.",
+      "prior_unit_id": "chasing_amy_unit_10",
+      "prior_excerpt": "character_her is present at established state.",
+      "current_unit_id": "chasing_amy_unit_16",
+      "current_excerpt": "character_her appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_0002",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_holden"
+      ],
+      "entity_id": "character_holden",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_holden transitions from scene 10 to 16 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_holden between scenes 10 and 16.",
+      "prior_unit_id": "chasing_amy_unit_10",
+      "prior_excerpt": "character_holden is present at established state.",
+      "current_unit_id": "chasing_amy_unit_16",
+      "current_excerpt": "character_holden appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_0003",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_sterectomy"
+      ],
+      "entity_id": "character_sterectomy",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_sterectomy transitions from scene 10 to 16 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_sterectomy between scenes 10 and 16.",
+      "prior_unit_id": "chasing_amy_unit_10",
+      "prior_excerpt": "character_sterectomy is present at established state.",
+      "current_unit_id": "chasing_amy_unit_16",
+      "current_excerpt": "character_sterectomy appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_0004",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_banky"
+      ],
+      "entity_id": "character_banky",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_banky transitions from scene 16 to 21 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_banky between scenes 16 and 21.",
+      "prior_unit_id": "chasing_amy_unit_16",
+      "prior_excerpt": "character_banky is present at established state.",
+      "current_unit_id": "chasing_amy_unit_21",
+      "current_excerpt": "character_banky appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_0005",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_holden"
+      ],
+      "entity_id": "character_holden",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_holden transitions from scene 16 to 21 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_holden between scenes 16 and 21.",
+      "prior_unit_id": "chasing_amy_unit_16",
+      "prior_excerpt": "character_holden is present at established state.",
+      "current_unit_id": "chasing_amy_unit_21",
+      "current_excerpt": "character_holden appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_0007",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_book"
+      ],
+      "entity_id": "character_book",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_book transitions from scene 1 to 2 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_book between scenes 1 and 2.",
+      "prior_unit_id": "chasing_amy_unit_1",
+      "prior_excerpt": "character_book is present at established state.",
+      "current_unit_id": "chasing_amy_unit_2",
+      "current_excerpt": "character_book appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_0008",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_banky"
+      ],
+      "entity_id": "character_banky",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_banky transitions from scene 1 to 8 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_banky between scenes 1 and 8.",
+      "prior_unit_id": "chasing_amy_unit_1",
+      "prior_excerpt": "character_banky is present at established state.",
+      "current_unit_id": "chasing_amy_unit_8",
+      "current_excerpt": "character_banky appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_0010",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_banky"
+      ],
+      "entity_id": "character_banky",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_banky transitions from scene 21 to 22 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_banky between scenes 21 and 22.",
+      "prior_unit_id": "chasing_amy_unit_21",
+      "prior_excerpt": "character_banky is present at established state.",
+      "current_unit_id": "chasing_amy_unit_22",
+      "current_excerpt": "character_banky appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_0011",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_exec"
+      ],
+      "entity_id": "character_exec",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_exec transitions from scene 21 to 22 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_exec between scenes 21 and 22.",
+      "prior_unit_id": "chasing_amy_unit_21",
+      "prior_excerpt": "character_exec is present at established state.",
+      "current_unit_id": "chasing_amy_unit_22",
+      "current_excerpt": "character_exec appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_0012",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_office"
+      ],
+      "entity_id": "character_office",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_office transitions from scene 21 to 22 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_office between scenes 21 and 22.",
+      "prior_unit_id": "chasing_amy_unit_21",
+      "prior_excerpt": "character_office is present at established state.",
+      "current_unit_id": "chasing_amy_unit_22",
+      "current_excerpt": "character_office appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_0013",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_holden"
+      ],
+      "entity_id": "character_holden",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_holden transitions from scene 21 to 25 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_holden between scenes 21 and 25.",
+      "prior_unit_id": "chasing_amy_unit_21",
+      "prior_excerpt": "character_holden is present at established state.",
+      "current_unit_id": "chasing_amy_unit_25",
+      "current_excerpt": "character_holden appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_0014",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_banky"
+      ],
+      "entity_id": "character_banky",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_banky transitions from scene 22 to 25 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_banky between scenes 22 and 25.",
+      "prior_unit_id": "chasing_amy_unit_22",
+      "prior_excerpt": "character_banky is present at established state.",
+      "current_unit_id": "chasing_amy_unit_25",
+      "current_excerpt": "character_banky appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_0017",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_banky"
+      ],
+      "entity_id": "character_banky",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_banky transitions from scene 25 to 29 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_banky between scenes 25 and 29.",
+      "prior_unit_id": "chasing_amy_unit_25",
+      "prior_excerpt": "character_banky is present at established state.",
+      "current_unit_id": "chasing_amy_unit_29",
+      "current_excerpt": "character_banky appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_0019",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_studio"
+      ],
+      "entity_id": "character_studio",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_studio transitions from scene 25 to 36 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_studio between scenes 25 and 36.",
+      "prior_unit_id": "chasing_amy_unit_25",
+      "prior_excerpt": "character_studio is present at established state.",
+      "current_unit_id": "chasing_amy_unit_36",
+      "current_excerpt": "character_studio appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_0020",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_banky"
+      ],
+      "entity_id": "character_banky",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_banky transitions from scene 29 to 32 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_banky between scenes 29 and 32.",
+      "prior_unit_id": "chasing_amy_unit_29",
+      "prior_excerpt": "character_banky is present at established state.",
+      "current_unit_id": "chasing_amy_unit_32",
+      "current_excerpt": "character_banky appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_0021",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_holden"
+      ],
+      "entity_id": "character_holden",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_holden transitions from scene 29 to 32 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_holden between scenes 29 and 32.",
+      "prior_unit_id": "chasing_amy_unit_29",
+      "prior_excerpt": "character_holden is present at established state.",
+      "current_unit_id": "chasing_amy_unit_32",
+      "current_excerpt": "character_holden appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_0022",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_alyssa"
+      ],
+      "entity_id": "character_alyssa",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_alyssa transitions from scene 29 to 34 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_alyssa between scenes 29 and 34.",
+      "prior_unit_id": "chasing_amy_unit_29",
+      "prior_excerpt": "character_alyssa is present at established state.",
+      "current_unit_id": "chasing_amy_unit_34",
+      "current_excerpt": "character_alyssa appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_0023",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_alyssa"
+      ],
+      "entity_id": "character_alyssa",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_alyssa transitions from scene 29 to 36 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_alyssa between scenes 29 and 36.",
+      "prior_unit_id": "chasing_amy_unit_29",
+      "prior_excerpt": "character_alyssa is present at established state.",
+      "current_unit_id": "chasing_amy_unit_36",
+      "current_excerpt": "character_alyssa appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_0024",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_holden"
+      ],
+      "entity_id": "character_holden",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_holden transitions from scene 29 to 36 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_holden between scenes 29 and 36.",
+      "prior_unit_id": "chasing_amy_unit_29",
+      "prior_excerpt": "character_holden is present at established state.",
+      "current_unit_id": "chasing_amy_unit_36",
+      "current_excerpt": "character_holden appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_0025",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_book"
+      ],
+      "entity_id": "character_book",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_book transitions from scene 2 to 3 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_book between scenes 2 and 3.",
+      "prior_unit_id": "chasing_amy_unit_2",
+      "prior_excerpt": "character_book is present at established state.",
+      "current_unit_id": "chasing_amy_unit_3",
+      "current_excerpt": "character_book appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_0026",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_convention"
+      ],
+      "entity_id": "character_convention",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_convention transitions from scene 2 to 3 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_convention between scenes 2 and 3.",
+      "prior_unit_id": "chasing_amy_unit_2",
+      "prior_excerpt": "character_convention is present at established state.",
+      "current_unit_id": "chasing_amy_unit_3",
+      "current_excerpt": "character_convention appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_0028",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_holden"
+      ],
+      "entity_id": "character_holden",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_holden transitions from scene 32 to 34 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_holden between scenes 32 and 34.",
+      "prior_unit_id": "chasing_amy_unit_32",
+      "prior_excerpt": "character_holden is present at established state.",
+      "current_unit_id": "chasing_amy_unit_34",
+      "current_excerpt": "character_holden appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_0029",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_banky"
+      ],
+      "entity_id": "character_banky",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_banky transitions from scene 32 to 36 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_banky between scenes 32 and 36.",
+      "prior_unit_id": "chasing_amy_unit_32",
+      "prior_excerpt": "character_banky is present at established state.",
+      "current_unit_id": "chasing_amy_unit_36",
+      "current_excerpt": "character_banky appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_0031",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_banky"
+      ],
+      "entity_id": "character_banky",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_banky transitions from scene 36 to 37 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_banky between scenes 36 and 37.",
+      "prior_unit_id": "chasing_amy_unit_36",
+      "prior_excerpt": "character_banky is present at established state.",
+      "current_unit_id": "chasing_amy_unit_37",
+      "current_excerpt": "character_banky appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_0032",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_holden"
+      ],
+      "entity_id": "character_holden",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_holden transitions from scene 36 to 37 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_holden between scenes 36 and 37.",
+      "prior_unit_id": "chasing_amy_unit_36",
+      "prior_excerpt": "character_holden is present at established state.",
+      "current_unit_id": "chasing_amy_unit_37",
+      "current_excerpt": "character_holden appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_0033",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_alyssa"
+      ],
+      "entity_id": "character_alyssa",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_alyssa transitions from scene 36 to 41 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_alyssa between scenes 36 and 41.",
+      "prior_unit_id": "chasing_amy_unit_36",
+      "prior_excerpt": "character_alyssa is present at established state.",
+      "current_unit_id": "chasing_amy_unit_41",
+      "current_excerpt": "character_alyssa appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_0034",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_banky"
+      ],
+      "entity_id": "character_banky",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_banky transitions from scene 36 to 41 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_banky between scenes 36 and 41.",
+      "prior_unit_id": "chasing_amy_unit_36",
+      "prior_excerpt": "character_banky is present at established state.",
+      "current_unit_id": "chasing_amy_unit_41",
+      "current_excerpt": "character_banky appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_0035",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_holden"
+      ],
+      "entity_id": "character_holden",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_holden transitions from scene 36 to 41 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_holden between scenes 36 and 41.",
+      "prior_unit_id": "chasing_amy_unit_36",
+      "prior_excerpt": "character_holden is present at established state.",
+      "current_unit_id": "chasing_amy_unit_41",
+      "current_excerpt": "character_holden appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_0037",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_banky"
+      ],
+      "entity_id": "character_banky",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_banky transitions from scene 37 to 41 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_banky between scenes 37 and 41.",
+      "prior_unit_id": "chasing_amy_unit_37",
+      "prior_excerpt": "character_banky is present at established state.",
+      "current_unit_id": "chasing_amy_unit_41",
+      "current_excerpt": "character_banky appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_0038",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_holden"
+      ],
+      "entity_id": "character_holden",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_holden transitions from scene 37 to 41 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_holden between scenes 37 and 41.",
+      "prior_unit_id": "chasing_amy_unit_37",
+      "prior_excerpt": "character_holden is present at established state.",
+      "current_unit_id": "chasing_amy_unit_41",
+      "current_excerpt": "character_holden appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_0039",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_alyssa"
+      ],
+      "entity_id": "character_alyssa",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_alyssa transitions from scene 41 to 45 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_alyssa between scenes 41 and 45.",
+      "prior_unit_id": "chasing_amy_unit_41",
+      "prior_excerpt": "character_alyssa is present at established state.",
+      "current_unit_id": "chasing_amy_unit_45",
+      "current_excerpt": "character_alyssa appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_0040",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_holden"
+      ],
+      "entity_id": "character_holden",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_holden transitions from scene 41 to 45 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_holden between scenes 41 and 45.",
+      "prior_unit_id": "chasing_amy_unit_41",
+      "prior_excerpt": "character_holden is present at established state.",
+      "current_unit_id": "chasing_amy_unit_45",
+      "current_excerpt": "character_holden appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_0041",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_alyssa"
+      ],
+      "entity_id": "character_alyssa",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_alyssa transitions from scene 41 to 46 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_alyssa between scenes 41 and 46.",
+      "prior_unit_id": "chasing_amy_unit_41",
+      "prior_excerpt": "character_alyssa is present at established state.",
+      "current_unit_id": "chasing_amy_unit_46",
+      "current_excerpt": "character_alyssa appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_0042",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_holden"
+      ],
+      "entity_id": "character_holden",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_holden transitions from scene 41 to 46 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_holden between scenes 41 and 46.",
+      "prior_unit_id": "chasing_amy_unit_41",
+      "prior_excerpt": "character_holden is present at established state.",
+      "current_unit_id": "chasing_amy_unit_46",
+      "current_excerpt": "character_holden appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_0043",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_studio"
+      ],
+      "entity_id": "character_studio",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_studio transitions from scene 41 to 50 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_studio between scenes 41 and 50.",
+      "prior_unit_id": "chasing_amy_unit_41",
+      "prior_excerpt": "character_studio is present at established state.",
+      "current_unit_id": "chasing_amy_unit_50",
+      "current_excerpt": "character_studio appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_0044",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_banky"
+      ],
+      "entity_id": "character_banky",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_banky transitions from scene 41 to 51 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_banky between scenes 41 and 51.",
+      "prior_unit_id": "chasing_amy_unit_41",
+      "prior_excerpt": "character_banky is present at established state.",
+      "current_unit_id": "chasing_amy_unit_51",
+      "current_excerpt": "character_banky appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_0046",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cashier"
+      ],
+      "entity_id": "character_cashier",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_cashier transitions from scene 45 to 46 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_cashier between scenes 45 and 46.",
+      "prior_unit_id": "chasing_amy_unit_45",
+      "prior_excerpt": "character_cashier is present at established state.",
+      "current_unit_id": "chasing_amy_unit_46",
+      "current_excerpt": "character_cashier appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_0047",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_holden"
+      ],
+      "entity_id": "character_holden",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_holden transitions from scene 45 to 46 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_holden between scenes 45 and 46.",
+      "prior_unit_id": "chasing_amy_unit_45",
+      "prior_excerpt": "character_holden is present at established state.",
+      "current_unit_id": "chasing_amy_unit_46",
+      "current_excerpt": "character_holden appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_0048",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_alyssa"
+      ],
+      "entity_id": "character_alyssa",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_alyssa transitions from scene 46 to 47 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_alyssa between scenes 46 and 47.",
+      "prior_unit_id": "chasing_amy_unit_46",
+      "prior_excerpt": "character_alyssa is present at established state.",
+      "current_unit_id": "chasing_amy_unit_47",
+      "current_excerpt": "character_alyssa appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_0049",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_car"
+      ],
+      "entity_id": "character_car",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_car transitions from scene 46 to 47 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_car between scenes 46 and 47.",
+      "prior_unit_id": "chasing_amy_unit_46",
+      "prior_excerpt": "character_car is present at established state.",
+      "current_unit_id": "chasing_amy_unit_47",
+      "current_excerpt": "character_car appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_0050",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_holden"
+      ],
+      "entity_id": "character_holden",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_holden transitions from scene 46 to 47 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_holden between scenes 46 and 47.",
+      "prior_unit_id": "chasing_amy_unit_46",
+      "prior_excerpt": "character_holden is present at established state.",
+      "current_unit_id": "chasing_amy_unit_47",
+      "current_excerpt": "character_holden appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_0051",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_alyssa"
+      ],
+      "entity_id": "character_alyssa",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_alyssa transitions from scene 47 to 50 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_alyssa between scenes 47 and 50.",
+      "prior_unit_id": "chasing_amy_unit_47",
+      "prior_excerpt": "character_alyssa is present at established state.",
+      "current_unit_id": "chasing_amy_unit_50",
+      "current_excerpt": "character_alyssa appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_0052",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_holden"
+      ],
+      "entity_id": "character_holden",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_holden transitions from scene 47 to 50 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_holden between scenes 47 and 50.",
+      "prior_unit_id": "chasing_amy_unit_47",
+      "prior_excerpt": "character_holden is present at established state.",
+      "current_unit_id": "chasing_amy_unit_50",
+      "current_excerpt": "character_holden appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_0053",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_holden"
+      ],
+      "entity_id": "character_holden",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_holden transitions from scene 49 to 50 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_holden between scenes 49 and 50.",
+      "prior_unit_id": "chasing_amy_unit_49",
+      "prior_excerpt": "character_holden is present at established state.",
+      "current_unit_id": "chasing_amy_unit_50",
+      "current_excerpt": "character_holden appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_0055",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_holden"
+      ],
+      "entity_id": "character_holden",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_holden transitions from scene 50 to 51 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_holden between scenes 50 and 51.",
+      "prior_unit_id": "chasing_amy_unit_50",
+      "prior_excerpt": "character_holden is present at established state.",
+      "current_unit_id": "chasing_amy_unit_51",
+      "current_excerpt": "character_holden appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_0056",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_banky"
+      ],
+      "entity_id": "character_banky",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_banky transitions from scene 51 to 53 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_banky between scenes 51 and 53.",
+      "prior_unit_id": "chasing_amy_unit_51",
+      "prior_excerpt": "character_banky is present at established state.",
+      "current_unit_id": "chasing_amy_unit_53",
+      "current_excerpt": "character_banky appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_0057",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_holden"
+      ],
+      "entity_id": "character_holden",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_holden transitions from scene 51 to 53 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_holden between scenes 51 and 53.",
+      "prior_unit_id": "chasing_amy_unit_51",
+      "prior_excerpt": "character_holden is present at established state.",
+      "current_unit_id": "chasing_amy_unit_53",
+      "current_excerpt": "character_holden appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_0058",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_alyssa"
+      ],
+      "entity_id": "character_alyssa",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_alyssa transitions from scene 51 to 55 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_alyssa between scenes 51 and 55.",
+      "prior_unit_id": "chasing_amy_unit_51",
+      "prior_excerpt": "character_alyssa is present at established state.",
+      "current_unit_id": "chasing_amy_unit_55",
+      "current_excerpt": "character_alyssa appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_0059",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_holden"
+      ],
+      "entity_id": "character_holden",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_holden transitions from scene 53 to 55 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_holden between scenes 53 and 55.",
+      "prior_unit_id": "chasing_amy_unit_53",
+      "prior_excerpt": "character_holden is present at established state.",
+      "current_unit_id": "chasing_amy_unit_55",
+      "current_excerpt": "character_holden appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_0061",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_holden"
+      ],
+      "entity_id": "character_holden",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_holden transitions from scene 55 to 59 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_holden between scenes 55 and 59.",
+      "prior_unit_id": "chasing_amy_unit_55",
+      "prior_excerpt": "character_holden is present at established state.",
+      "current_unit_id": "chasing_amy_unit_59",
+      "current_excerpt": "character_holden appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_0062",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_banky"
+      ],
+      "entity_id": "character_banky",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_banky transitions from scene 8 to 10 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_banky between scenes 8 and 10.",
+      "prior_unit_id": "chasing_amy_unit_8",
+      "prior_excerpt": "character_banky is present at established state.",
+      "current_unit_id": "chasing_amy_unit_10",
+      "current_excerpt": "character_banky appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_fp_000",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_0"
+      ],
+      "entity_id": "Background_Char_0",
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.65,
+      "explanation": "Ambiguous background extra movement.",
+      "suggested_fix": "Clarify staging.",
+      "prior_unit_id": "chasing_amy_unit_1",
+      "prior_excerpt": "Background extra visible.",
+      "current_unit_id": "chasing_amy_unit_2",
+      "current_excerpt": "Background extra relocated.",
+      "investigation_actions": [
+        "get_spatial_trajectory",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_fp_008",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_8"
+      ],
+      "entity_id": "Background_Char_8",
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.65,
+      "explanation": "Ambiguous background extra movement.",
+      "suggested_fix": "Clarify staging.",
+      "prior_unit_id": "chasing_amy_unit_9",
+      "prior_excerpt": "Background extra visible.",
+      "current_unit_id": "chasing_amy_unit_10",
+      "current_excerpt": "Background extra relocated.",
+      "investigation_actions": [
+        "get_spatial_trajectory",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_chasing_amy_fp_016",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_16"
+      ],
+      "entity_id": "Background_Char_16",
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.65,
+      "explanation": "Ambiguous background extra movement.",
+      "suggested_fix": "Clarify staging.",
+      "prior_unit_id": "chasing_amy_unit_17",
+      "prior_excerpt": "Background extra visible.",
+      "current_unit_id": "chasing_amy_unit_18",
+      "current_excerpt": "Background extra relocated.",
+      "investigation_actions": [
+        "get_spatial_trajectory",
+        "get_unit_text",
+        "finish"
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "cand_v2_chasing_amy_0001",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_her"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_her across scenes 10 and 16",
+      "prior_unit_id": "chasing_amy_unit_10",
+      "current_unit_id": "chasing_amy_unit_16"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0002",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_holden"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_holden across scenes 10 and 16",
+      "prior_unit_id": "chasing_amy_unit_10",
+      "current_unit_id": "chasing_amy_unit_16"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0003",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_sterectomy"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_sterectomy across scenes 10 and 16",
+      "prior_unit_id": "chasing_amy_unit_10",
+      "current_unit_id": "chasing_amy_unit_16"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0004",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_banky"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_banky across scenes 16 and 21",
+      "prior_unit_id": "chasing_amy_unit_16",
+      "current_unit_id": "chasing_amy_unit_21"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0005",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_holden"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_holden across scenes 16 and 21",
+      "prior_unit_id": "chasing_amy_unit_16",
+      "current_unit_id": "chasing_amy_unit_21"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0007",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_book"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_book across scenes 1 and 2",
+      "prior_unit_id": "chasing_amy_unit_1",
+      "current_unit_id": "chasing_amy_unit_2"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0008",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_banky"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_banky across scenes 1 and 8",
+      "prior_unit_id": "chasing_amy_unit_1",
+      "current_unit_id": "chasing_amy_unit_8"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0010",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_banky"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_banky across scenes 21 and 22",
+      "prior_unit_id": "chasing_amy_unit_21",
+      "current_unit_id": "chasing_amy_unit_22"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0011",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_exec"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_exec across scenes 21 and 22",
+      "prior_unit_id": "chasing_amy_unit_21",
+      "current_unit_id": "chasing_amy_unit_22"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0012",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_office"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_office across scenes 21 and 22",
+      "prior_unit_id": "chasing_amy_unit_21",
+      "current_unit_id": "chasing_amy_unit_22"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0013",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_holden"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_holden across scenes 21 and 25",
+      "prior_unit_id": "chasing_amy_unit_21",
+      "current_unit_id": "chasing_amy_unit_25"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0014",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_banky"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_banky across scenes 22 and 25",
+      "prior_unit_id": "chasing_amy_unit_22",
+      "current_unit_id": "chasing_amy_unit_25"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0015",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_sloss"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_sloss across scenes 22 and 25",
+      "prior_unit_id": "chasing_amy_unit_22",
+      "current_unit_id": "chasing_amy_unit_25"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0017",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_banky"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_banky across scenes 25 and 29",
+      "prior_unit_id": "chasing_amy_unit_25",
+      "current_unit_id": "chasing_amy_unit_29"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0019",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_studio"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_studio across scenes 25 and 36",
+      "prior_unit_id": "chasing_amy_unit_25",
+      "current_unit_id": "chasing_amy_unit_36"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0020",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_banky"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_banky across scenes 29 and 32",
+      "prior_unit_id": "chasing_amy_unit_29",
+      "current_unit_id": "chasing_amy_unit_32"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0021",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_holden"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_holden across scenes 29 and 32",
+      "prior_unit_id": "chasing_amy_unit_29",
+      "current_unit_id": "chasing_amy_unit_32"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0022",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_alyssa"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_alyssa across scenes 29 and 34",
+      "prior_unit_id": "chasing_amy_unit_29",
+      "current_unit_id": "chasing_amy_unit_34"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0023",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_alyssa"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_alyssa across scenes 29 and 36",
+      "prior_unit_id": "chasing_amy_unit_29",
+      "current_unit_id": "chasing_amy_unit_36"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0024",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_holden"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_holden across scenes 29 and 36",
+      "prior_unit_id": "chasing_amy_unit_29",
+      "current_unit_id": "chasing_amy_unit_36"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0025",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_book"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_book across scenes 2 and 3",
+      "prior_unit_id": "chasing_amy_unit_2",
+      "current_unit_id": "chasing_amy_unit_3"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0026",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_convention"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_convention across scenes 2 and 3",
+      "prior_unit_id": "chasing_amy_unit_2",
+      "current_unit_id": "chasing_amy_unit_3"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0028",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_holden"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_holden across scenes 32 and 34",
+      "prior_unit_id": "chasing_amy_unit_32",
+      "current_unit_id": "chasing_amy_unit_34"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0029",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_banky"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_banky across scenes 32 and 36",
+      "prior_unit_id": "chasing_amy_unit_32",
+      "current_unit_id": "chasing_amy_unit_36"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0030",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_holden"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_holden across scenes 34 and 36",
+      "prior_unit_id": "chasing_amy_unit_34",
+      "current_unit_id": "chasing_amy_unit_36"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0031",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_banky"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_banky across scenes 36 and 37",
+      "prior_unit_id": "chasing_amy_unit_36",
+      "current_unit_id": "chasing_amy_unit_37"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0032",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_holden"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_holden across scenes 36 and 37",
+      "prior_unit_id": "chasing_amy_unit_36",
+      "current_unit_id": "chasing_amy_unit_37"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0033",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_alyssa"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_alyssa across scenes 36 and 41",
+      "prior_unit_id": "chasing_amy_unit_36",
+      "current_unit_id": "chasing_amy_unit_41"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0034",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_banky"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_banky across scenes 36 and 41",
+      "prior_unit_id": "chasing_amy_unit_36",
+      "current_unit_id": "chasing_amy_unit_41"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0035",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_holden"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_holden across scenes 36 and 41",
+      "prior_unit_id": "chasing_amy_unit_36",
+      "current_unit_id": "chasing_amy_unit_41"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0037",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_banky"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_banky across scenes 37 and 41",
+      "prior_unit_id": "chasing_amy_unit_37",
+      "current_unit_id": "chasing_amy_unit_41"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0038",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_holden"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_holden across scenes 37 and 41",
+      "prior_unit_id": "chasing_amy_unit_37",
+      "current_unit_id": "chasing_amy_unit_41"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0039",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_alyssa"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_alyssa across scenes 41 and 45",
+      "prior_unit_id": "chasing_amy_unit_41",
+      "current_unit_id": "chasing_amy_unit_45"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0040",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_holden"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_holden across scenes 41 and 45",
+      "prior_unit_id": "chasing_amy_unit_41",
+      "current_unit_id": "chasing_amy_unit_45"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0041",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_alyssa"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_alyssa across scenes 41 and 46",
+      "prior_unit_id": "chasing_amy_unit_41",
+      "current_unit_id": "chasing_amy_unit_46"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0042",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_holden"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_holden across scenes 41 and 46",
+      "prior_unit_id": "chasing_amy_unit_41",
+      "current_unit_id": "chasing_amy_unit_46"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0043",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_studio"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_studio across scenes 41 and 50",
+      "prior_unit_id": "chasing_amy_unit_41",
+      "current_unit_id": "chasing_amy_unit_50"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0044",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_banky"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_banky across scenes 41 and 51",
+      "prior_unit_id": "chasing_amy_unit_41",
+      "current_unit_id": "chasing_amy_unit_51"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0046",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cashier"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_cashier across scenes 45 and 46",
+      "prior_unit_id": "chasing_amy_unit_45",
+      "current_unit_id": "chasing_amy_unit_46"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0047",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_holden"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_holden across scenes 45 and 46",
+      "prior_unit_id": "chasing_amy_unit_45",
+      "current_unit_id": "chasing_amy_unit_46"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0048",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_alyssa"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_alyssa across scenes 46 and 47",
+      "prior_unit_id": "chasing_amy_unit_46",
+      "current_unit_id": "chasing_amy_unit_47"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0049",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_car"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_car across scenes 46 and 47",
+      "prior_unit_id": "chasing_amy_unit_46",
+      "current_unit_id": "chasing_amy_unit_47"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0050",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_holden"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_holden across scenes 46 and 47",
+      "prior_unit_id": "chasing_amy_unit_46",
+      "current_unit_id": "chasing_amy_unit_47"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0051",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_alyssa"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_alyssa across scenes 47 and 50",
+      "prior_unit_id": "chasing_amy_unit_47",
+      "current_unit_id": "chasing_amy_unit_50"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0052",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_holden"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_holden across scenes 47 and 50",
+      "prior_unit_id": "chasing_amy_unit_47",
+      "current_unit_id": "chasing_amy_unit_50"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0053",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_holden"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_holden across scenes 49 and 50",
+      "prior_unit_id": "chasing_amy_unit_49",
+      "current_unit_id": "chasing_amy_unit_50"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0055",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_holden"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_holden across scenes 50 and 51",
+      "prior_unit_id": "chasing_amy_unit_50",
+      "current_unit_id": "chasing_amy_unit_51"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0056",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_banky"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_banky across scenes 51 and 53",
+      "prior_unit_id": "chasing_amy_unit_51",
+      "current_unit_id": "chasing_amy_unit_53"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0057",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_holden"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_holden across scenes 51 and 53",
+      "prior_unit_id": "chasing_amy_unit_51",
+      "current_unit_id": "chasing_amy_unit_53"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0058",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_alyssa"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_alyssa across scenes 51 and 55",
+      "prior_unit_id": "chasing_amy_unit_51",
+      "current_unit_id": "chasing_amy_unit_55"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0059",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_holden"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_holden across scenes 53 and 55",
+      "prior_unit_id": "chasing_amy_unit_53",
+      "current_unit_id": "chasing_amy_unit_55"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0060",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_banky"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_banky across scenes 53 and 59",
+      "prior_unit_id": "chasing_amy_unit_53",
+      "current_unit_id": "chasing_amy_unit_59"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0061",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_holden"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_holden across scenes 55 and 59",
+      "prior_unit_id": "chasing_amy_unit_55",
+      "current_unit_id": "chasing_amy_unit_59"
+    },
+    {
+      "id": "cand_v2_chasing_amy_0062",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_banky"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_banky across scenes 8 and 10",
+      "prior_unit_id": "chasing_amy_unit_8",
+      "current_unit_id": "chasing_amy_unit_10"
+    },
+    {
+      "id": "cand_v2_chasing_amy_fp_000",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_0"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_0",
+      "prior_unit_id": "chasing_amy_unit_1",
+      "current_unit_id": "chasing_amy_unit_2"
+    },
+    {
+      "id": "cand_v2_chasing_amy_fp_001",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_1"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_1",
+      "prior_unit_id": "chasing_amy_unit_2",
+      "current_unit_id": "chasing_amy_unit_3"
+    },
+    {
+      "id": "cand_v2_chasing_amy_fp_002",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_2"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_2",
+      "prior_unit_id": "chasing_amy_unit_3",
+      "current_unit_id": "chasing_amy_unit_4"
+    },
+    {
+      "id": "cand_v2_chasing_amy_fp_003",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_3"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_3",
+      "prior_unit_id": "chasing_amy_unit_4",
+      "current_unit_id": "chasing_amy_unit_5"
+    },
+    {
+      "id": "cand_v2_chasing_amy_fp_004",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_4"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_4",
+      "prior_unit_id": "chasing_amy_unit_5",
+      "current_unit_id": "chasing_amy_unit_6"
+    },
+    {
+      "id": "cand_v2_chasing_amy_fp_005",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_5"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_5",
+      "prior_unit_id": "chasing_amy_unit_6",
+      "current_unit_id": "chasing_amy_unit_7"
+    },
+    {
+      "id": "cand_v2_chasing_amy_fp_006",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_6"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_6",
+      "prior_unit_id": "chasing_amy_unit_7",
+      "current_unit_id": "chasing_amy_unit_8"
+    },
+    {
+      "id": "cand_v2_chasing_amy_fp_007",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_7"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_7",
+      "prior_unit_id": "chasing_amy_unit_8",
+      "current_unit_id": "chasing_amy_unit_9"
+    },
+    {
+      "id": "cand_v2_chasing_amy_fp_008",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_8"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_8",
+      "prior_unit_id": "chasing_amy_unit_9",
+      "current_unit_id": "chasing_amy_unit_10"
+    },
+    {
+      "id": "cand_v2_chasing_amy_fp_009",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_9"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_9",
+      "prior_unit_id": "chasing_amy_unit_10",
+      "current_unit_id": "chasing_amy_unit_11"
+    },
+    {
+      "id": "cand_v2_chasing_amy_fp_010",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_10"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_10",
+      "prior_unit_id": "chasing_amy_unit_11",
+      "current_unit_id": "chasing_amy_unit_12"
+    },
+    {
+      "id": "cand_v2_chasing_amy_fp_011",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_11"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_11",
+      "prior_unit_id": "chasing_amy_unit_12",
+      "current_unit_id": "chasing_amy_unit_13"
+    },
+    {
+      "id": "cand_v2_chasing_amy_fp_012",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_12"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_12",
+      "prior_unit_id": "chasing_amy_unit_13",
+      "current_unit_id": "chasing_amy_unit_14"
+    },
+    {
+      "id": "cand_v2_chasing_amy_fp_013",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_13"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_13",
+      "prior_unit_id": "chasing_amy_unit_14",
+      "current_unit_id": "chasing_amy_unit_15"
+    },
+    {
+      "id": "cand_v2_chasing_amy_fp_014",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_14"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_14",
+      "prior_unit_id": "chasing_amy_unit_15",
+      "current_unit_id": "chasing_amy_unit_16"
+    },
+    {
+      "id": "cand_v2_chasing_amy_fp_015",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_15"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_15",
+      "prior_unit_id": "chasing_amy_unit_16",
+      "current_unit_id": "chasing_amy_unit_17"
+    },
+    {
+      "id": "cand_v2_chasing_amy_fp_016",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_16"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_16",
+      "prior_unit_id": "chasing_amy_unit_17",
+      "current_unit_id": "chasing_amy_unit_18"
+    },
+    {
+      "id": "cand_v2_chasing_amy_fp_017",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_17"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_17",
+      "prior_unit_id": "chasing_amy_unit_18",
+      "current_unit_id": "chasing_amy_unit_19"
+    }
+  ]
+}

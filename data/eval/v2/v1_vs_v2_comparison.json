@@ -1,0 +1,75 @@
+{
+  "summary": "StoryTrace V1 (Frozen Baseline) vs StoryTrace V2 Benchmark Evaluation",
+  "benchmark_ground_truth": {
+    "total_gold_items": 989,
+    "v1_addressable_ceiling": 84,
+    "v1_addressable_pct": "8.49%",
+    "v2_addressable_ceiling": 812,
+    "v2_addressable_pct": "82.10%",
+    "addressability_expansion_factor": "9.67x"
+  },
+  "condition_comparisons": {
+    "V1_Condition_A_Full_Pipeline": {
+      "micro_precision": 0.1604,
+      "micro_recall": 0.0415,
+      "micro_f1": 0.0659,
+      "macro_f1": 0.0672,
+      "bootstrap_95_ci": [
+        0.038,
+        0.0993
+      ]
+    },
+    "V1_Condition_B_Pipeline_Only": {
+      "micro_precision": 0.2372,
+      "micro_recall": 0.0657,
+      "micro_f1": 0.1029,
+      "macro_f1": 0.1024,
+      "bootstrap_95_ci": [
+        0.0556,
+        0.1509
+      ]
+    },
+    "V1_Condition_C_Unconstrained": {
+      "micro_precision": 0.1481,
+      "micro_recall": 0.1213,
+      "micro_f1": 0.1333,
+      "macro_f1": 0.1331,
+      "bootstrap_95_ci": [
+        0.0802,
+        0.1816
+      ]
+    },
+    "V1_Condition_D_One_Shot": {
+      "micro_precision": 0.0,
+      "micro_recall": 0.0,
+      "micro_f1": 0.0,
+      "macro_f1": 0.0
+    },
+    "V2_Full_Calibrated": {
+      "micro_precision": 0.9508,
+      "micro_recall": 0.6643,
+      "micro_f1": 0.7821,
+      "macro_f1": 0.7903,
+      "addressable_recall": 0.8091,
+      "bootstrap_95_ci": [
+        0.769,
+        0.8119
+      ]
+    }
+  },
+  "statistical_tests": {
+    "p_value_V2_vs_Condition_A": 0.0016,
+    "p_value_V2_vs_Condition_B": 0.0016,
+    "p_value_V2_vs_Condition_C": 0.0016,
+    "p_value_V2_vs_Condition_D": 0.0016,
+    "statistically_significant_at_alpha_0_01": true
+  },
+  "agent_performance": {
+    "total_candidates_evaluated": 929,
+    "total_suppressed_by_agent": 238,
+    "suppression_rate": 0.2562,
+    "total_tool_calls": 2787,
+    "avg_tool_calls_per_candidate": 3.0,
+    "precision_gain_from_agent": 0.207
+  }
+}

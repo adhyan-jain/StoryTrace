@@ -1,0 +1,3925 @@
+{
+  "film_slug": "snow_white_and_the_huntsman",
+  "story_universe_id": "v2_snow_white_and_the_huntsman",
+  "unit_count": 284,
+  "state_event_count": 556,
+  "co_presence_count": 278,
+  "candidate_count": 139,
+  "verdict_distribution": {
+    "verified_hard_conflict": 78,
+    "verified_narrative_anomaly": 25,
+    "resolved": 36,
+    "uncertain": 0
+  },
+  "surfaced_findings_count": 103,
+  "total_tool_calls": 417,
+  "avg_tool_calls_per_candidate": 3.0,
+  "timings": {
+    "extraction_sec": 62.55,
+    "detection_sec": 0.08,
+    "investigation_sec": 90.35,
+    "total_runtime_sec": 164.02
+  },
+  "findings": [
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0001",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_ravenna"
+      ],
+      "entity_id": "character_ravenna",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_ravenna transitions from scene 10 to 12 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_ravenna between scenes 10 and 12.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_10",
+      "prior_excerpt": "character_ravenna is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_12",
+      "current_excerpt": "character_ravenna appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0002",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_bedroom"
+      ],
+      "entity_id": "character_bedroom",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_bedroom transitions from scene 10 to 13 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_bedroom between scenes 10 and 13.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_10",
+      "prior_excerpt": "character_bedroom is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_13",
+      "current_excerpt": "character_bedroom appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0004",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_royal"
+      ],
+      "entity_id": "character_royal",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_royal transitions from scene 11 to 13 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_royal between scenes 11 and 13.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_11",
+      "prior_excerpt": "character_royal is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_13",
+      "current_excerpt": "character_royal appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0005",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_him"
+      ],
+      "entity_id": "character_him",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_him transitions from scene 11 to 14 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_him between scenes 11 and 14.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_11",
+      "prior_excerpt": "character_him is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_14",
+      "current_excerpt": "character_him appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0006",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_finn"
+      ],
+      "entity_id": "character_finn",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_finn transitions from scene 12 to 13 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_finn between scenes 12 and 13.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_12",
+      "prior_excerpt": "character_finn is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_13",
+      "current_excerpt": "character_finn appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0007",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_white"
+      ],
+      "entity_id": "character_white",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_white transitions from scene 12 to 13 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_white between scenes 12 and 13.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_12",
+      "prior_excerpt": "character_white is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_13",
+      "current_excerpt": "character_white appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0008",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_flashback"
+      ],
+      "entity_id": "character_flashback",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_flashback transitions from scene 12 to 15 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_flashback between scenes 12 and 15.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_12",
+      "prior_excerpt": "character_flashback is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_15",
+      "current_excerpt": "character_flashback appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0010",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mother"
+      ],
+      "entity_id": "character_mother",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_mother transitions from scene 12 to 15 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_mother between scenes 12 and 15.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_12",
+      "prior_excerpt": "character_mother is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_15",
+      "current_excerpt": "character_mother appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0011",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_ravenna"
+      ],
+      "entity_id": "character_ravenna",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_ravenna transitions from scene 12 to 15 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_ravenna between scenes 12 and 15.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_12",
+      "prior_excerpt": "character_ravenna is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_15",
+      "current_excerpt": "character_ravenna appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0012",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_finn"
+      ],
+      "entity_id": "character_finn",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_finn transitions from scene 13 to 14 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_finn between scenes 13 and 14.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_13",
+      "prior_excerpt": "character_finn is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_14",
+      "current_excerpt": "character_finn appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0013",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_white"
+      ],
+      "entity_id": "character_white",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_white transitions from scene 13 to 16 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_white between scenes 13 and 16.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_13",
+      "prior_excerpt": "character_white is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_16",
+      "current_excerpt": "character_white appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0020",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mirror"
+      ],
+      "entity_id": "character_mirror",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_mirror transitions from scene 15 to 26 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_mirror between scenes 15 and 26.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_15",
+      "prior_excerpt": "character_mirror is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_26",
+      "current_excerpt": "character_mirror appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0021",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_ravenna"
+      ],
+      "entity_id": "character_ravenna",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_ravenna transitions from scene 15 to 27 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_ravenna between scenes 15 and 27.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_15",
+      "prior_excerpt": "character_ravenna is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_27",
+      "current_excerpt": "character_ravenna appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0022",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_eric"
+      ],
+      "entity_id": "character_eric",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_eric transitions from scene 16 to 17 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_eric between scenes 16 and 17.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_16",
+      "prior_excerpt": "character_eric is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_17",
+      "current_excerpt": "character_eric appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0023",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_hear"
+      ],
+      "entity_id": "character_hear",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_hear transitions from scene 16 to 17 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_hear between scenes 16 and 17.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_16",
+      "prior_excerpt": "character_hear is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_17",
+      "current_excerpt": "character_hear appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0024",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_white"
+      ],
+      "entity_id": "character_white",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_white transitions from scene 16 to 17 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_white between scenes 16 and 17.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_16",
+      "prior_excerpt": "character_white is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_17",
+      "current_excerpt": "character_white appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0025",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_general"
+      ],
+      "entity_id": "character_general",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_general transitions from scene 16 to 21 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_general between scenes 16 and 21.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_16",
+      "prior_excerpt": "character_general is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_21",
+      "current_excerpt": "character_general appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0026",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_general"
+      ],
+      "entity_id": "character_general",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_general transitions from scene 16 to 22 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_general between scenes 16 and 22.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_16",
+      "prior_excerpt": "character_general is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_22",
+      "current_excerpt": "character_general appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0028",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_white"
+      ],
+      "entity_id": "character_white",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_white transitions from scene 17 to 20 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_white between scenes 17 and 20.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_17",
+      "prior_excerpt": "character_white is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_20",
+      "current_excerpt": "character_white appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0029",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_eric"
+      ],
+      "entity_id": "character_eric",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_eric transitions from scene 18 to 19 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_eric between scenes 18 and 19.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_18",
+      "prior_excerpt": "character_eric is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_19",
+      "current_excerpt": "character_eric appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0033",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_eric"
+      ],
+      "entity_id": "character_eric",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_eric transitions from scene 19 to 20 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_eric between scenes 19 and 20.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_19",
+      "prior_excerpt": "character_eric is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_20",
+      "current_excerpt": "character_eric appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0034",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_omitted"
+      ],
+      "entity_id": "character_omitted",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_omitted transitions from scene 19 to 20 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_omitted between scenes 19 and 20.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_19",
+      "prior_excerpt": "character_omitted is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_20",
+      "current_excerpt": "character_omitted appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0035",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_bedroom"
+      ],
+      "entity_id": "character_bedroom",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_bedroom transitions from scene 1 to 10 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_bedroom between scenes 1 and 10.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_1",
+      "prior_excerpt": "character_bedroom is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_10",
+      "current_excerpt": "character_bedroom appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0037",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_boom"
+      ],
+      "entity_id": "character_boom",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_boom transitions from scene 1 to 12 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_boom between scenes 1 and 12.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_1",
+      "prior_excerpt": "character_boom is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_12",
+      "current_excerpt": "character_boom appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0038",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_eric"
+      ],
+      "entity_id": "character_eric",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_eric transitions from scene 1 to 2 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_eric between scenes 1 and 2.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_1",
+      "prior_excerpt": "character_eric is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_2",
+      "current_excerpt": "character_eric appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0039",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_white"
+      ],
+      "entity_id": "character_white",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_white transitions from scene 1 to 2 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_white between scenes 1 and 2.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_1",
+      "prior_excerpt": "character_white is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_2",
+      "current_excerpt": "character_white appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0040",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_white"
+      ],
+      "entity_id": "character_white",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_white transitions from scene 20 to 21 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_white between scenes 20 and 21.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_20",
+      "prior_excerpt": "character_white is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_21",
+      "current_excerpt": "character_white appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0041",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cell"
+      ],
+      "entity_id": "character_cell",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_cell transitions from scene 20 to 22 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_cell between scenes 20 and 22.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_20",
+      "prior_excerpt": "character_cell is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_22",
+      "current_excerpt": "character_cell appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0042",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_guard"
+      ],
+      "entity_id": "character_guard",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_guard transitions from scene 20 to 26 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_guard between scenes 20 and 26.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_20",
+      "prior_excerpt": "character_guard is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_26",
+      "current_excerpt": "character_guard appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0044",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_bathing"
+      ],
+      "entity_id": "character_bathing",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_bathing transitions from scene 21 to 22 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_bathing between scenes 21 and 22.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_21",
+      "prior_excerpt": "character_bathing is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_22",
+      "current_excerpt": "character_bathing appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0046",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cell"
+      ],
+      "entity_id": "character_cell",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_cell transitions from scene 22 to 26 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_cell between scenes 22 and 26.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_22",
+      "prior_excerpt": "character_cell is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_26",
+      "current_excerpt": "character_cell appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0047",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_white"
+      ],
+      "entity_id": "character_white",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_white transitions from scene 23 to 27 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_white between scenes 23 and 27.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_23",
+      "prior_excerpt": "character_white is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_27",
+      "current_excerpt": "character_white appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0049",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cell"
+      ],
+      "entity_id": "character_cell",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_cell transitions from scene 26 to 27 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_cell between scenes 26 and 27.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_26",
+      "prior_excerpt": "character_cell is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_27",
+      "current_excerpt": "character_cell appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0050",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_chamber"
+      ],
+      "entity_id": "character_chamber",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_chamber transitions from scene 26 to 33 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_chamber between scenes 26 and 33.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_26",
+      "prior_excerpt": "character_chamber is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_33",
+      "current_excerpt": "character_chamber appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0051",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cell"
+      ],
+      "entity_id": "character_cell",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_cell transitions from scene 27 to 29 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_cell between scenes 27 and 29.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_27",
+      "prior_excerpt": "character_cell is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_29",
+      "current_excerpt": "character_cell appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0052",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_finn"
+      ],
+      "entity_id": "character_finn",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_finn transitions from scene 27 to 29 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_finn between scenes 27 and 29.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_27",
+      "prior_excerpt": "character_finn is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_29",
+      "current_excerpt": "character_finn appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0053",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_white"
+      ],
+      "entity_id": "character_white",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_white transitions from scene 27 to 29 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_white between scenes 27 and 29.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_27",
+      "prior_excerpt": "character_white is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_29",
+      "current_excerpt": "character_white appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0056",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_white"
+      ],
+      "entity_id": "character_white",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_white transitions from scene 29 to 30 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_white between scenes 29 and 30.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_29",
+      "prior_excerpt": "character_white is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_30",
+      "current_excerpt": "character_white appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0057",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_castle"
+      ],
+      "entity_id": "character_castle",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_castle transitions from scene 29 to 33 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_castle between scenes 29 and 33.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_29",
+      "prior_excerpt": "character_castle is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_33",
+      "current_excerpt": "character_castle appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0058",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_finn"
+      ],
+      "entity_id": "character_finn",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_finn transitions from scene 29 to 35 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_finn between scenes 29 and 35.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_29",
+      "prior_excerpt": "character_finn is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_35",
+      "current_excerpt": "character_finn appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0061",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_eric"
+      ],
+      "entity_id": "character_eric",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_eric transitions from scene 2 to 5 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_eric between scenes 2 and 5.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_2",
+      "prior_excerpt": "character_eric is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_5",
+      "current_excerpt": "character_eric appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0062",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_young"
+      ],
+      "entity_id": "character_young",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_young transitions from scene 2 to 7 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_young between scenes 2 and 7.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_2",
+      "prior_excerpt": "character_young is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_7",
+      "current_excerpt": "character_young appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0064",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_magpies"
+      ],
+      "entity_id": "character_magpies",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_magpies transitions from scene 31 to 32 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_magpies between scenes 31 and 32.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_31",
+      "prior_excerpt": "character_magpies is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_32",
+      "current_excerpt": "character_magpies appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0068",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_bogs"
+      ],
+      "entity_id": "character_bogs",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_bogs transitions from scene 32 to 40 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_bogs between scenes 32 and 40.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_32",
+      "prior_excerpt": "character_bogs is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_40",
+      "current_excerpt": "character_bogs appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0069",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_trees"
+      ],
+      "entity_id": "character_trees",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_trees transitions from scene 32 to 41 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_trees between scenes 32 and 41.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_32",
+      "prior_excerpt": "character_trees is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_41",
+      "current_excerpt": "character_trees appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0070",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_castle"
+      ],
+      "entity_id": "character_castle",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_castle transitions from scene 33 to 36 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_castle between scenes 33 and 36.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_33",
+      "prior_excerpt": "character_castle is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_36",
+      "current_excerpt": "character_castle appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0073",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_finn"
+      ],
+      "entity_id": "character_finn",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_finn transitions from scene 35 to 36 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_finn between scenes 35 and 36.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_35",
+      "prior_excerpt": "character_finn is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_36",
+      "current_excerpt": "character_finn appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0074",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_omitted"
+      ],
+      "entity_id": "character_omitted",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_omitted transitions from scene 35 to 36 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_omitted between scenes 35 and 36.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_35",
+      "prior_excerpt": "character_omitted is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_36",
+      "current_excerpt": "character_omitted appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0076",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_eric"
+      ],
+      "entity_id": "character_eric",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_eric transitions from scene 36 to 39 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_eric between scenes 36 and 39.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_36",
+      "prior_excerpt": "character_eric is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_39",
+      "current_excerpt": "character_eric appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0077",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_finn"
+      ],
+      "entity_id": "character_finn",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_finn transitions from scene 36 to 39 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_finn between scenes 36 and 39.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_36",
+      "prior_excerpt": "character_finn is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_39",
+      "current_excerpt": "character_finn appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0079",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_dark"
+      ],
+      "entity_id": "character_dark",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_dark transitions from scene 39 to 40 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_dark between scenes 39 and 40.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_39",
+      "prior_excerpt": "character_dark is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_40",
+      "current_excerpt": "character_dark appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0080",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_eric"
+      ],
+      "entity_id": "character_eric",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_eric transitions from scene 39 to 40 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_eric between scenes 39 and 40.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_39",
+      "prior_excerpt": "character_eric is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_40",
+      "current_excerpt": "character_eric appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0082",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_forest"
+      ],
+      "entity_id": "character_forest",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_forest transitions from scene 39 to 40 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_forest between scenes 39 and 40.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_39",
+      "prior_excerpt": "character_forest is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_40",
+      "current_excerpt": "character_forest appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0084",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_castle"
+      ],
+      "entity_id": "character_castle",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_castle transitions from scene 3 to 5 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_castle between scenes 3 and 5.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_3",
+      "prior_excerpt": "character_castle is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_5",
+      "current_excerpt": "character_castle appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0085",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_omitted"
+      ],
+      "entity_id": "character_omitted",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_omitted transitions from scene 3 to 5 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_omitted between scenes 3 and 5.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_3",
+      "prior_excerpt": "character_omitted is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_5",
+      "current_excerpt": "character_omitted appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0086",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_snow"
+      ],
+      "entity_id": "character_snow",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_snow transitions from scene 3 to 8 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_snow between scenes 3 and 8.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_3",
+      "prior_excerpt": "character_snow is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_8",
+      "current_excerpt": "character_snow appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0087",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_dark"
+      ],
+      "entity_id": "character_dark",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_dark transitions from scene 40 to 41 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_dark between scenes 40 and 41.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_40",
+      "prior_excerpt": "character_dark is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_41",
+      "current_excerpt": "character_dark appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0088",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_eric"
+      ],
+      "entity_id": "character_eric",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_eric transitions from scene 40 to 41 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_eric between scenes 40 and 41.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_40",
+      "prior_excerpt": "character_eric is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_41",
+      "current_excerpt": "character_eric appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0089",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_forest"
+      ],
+      "entity_id": "character_forest",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_forest transitions from scene 40 to 41 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_forest between scenes 40 and 41.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_40",
+      "prior_excerpt": "character_forest is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_41",
+      "current_excerpt": "character_forest appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0091",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_eric"
+      ],
+      "entity_id": "character_eric",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_eric transitions from scene 41 to 42 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_eric between scenes 41 and 42.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_41",
+      "prior_excerpt": "character_eric is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_42",
+      "current_excerpt": "character_eric appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0092",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_forest"
+      ],
+      "entity_id": "character_forest",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_forest transitions from scene 41 to 42 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_forest between scenes 41 and 42.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_41",
+      "prior_excerpt": "character_forest is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_42",
+      "current_excerpt": "character_forest appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0093",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_trees"
+      ],
+      "entity_id": "character_trees",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_trees transitions from scene 41 to 42 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_trees between scenes 41 and 42.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_41",
+      "prior_excerpt": "character_trees is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_42",
+      "current_excerpt": "character_trees appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0094",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_dark"
+      ],
+      "entity_id": "character_dark",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_dark transitions from scene 41 to 46 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_dark between scenes 41 and 46.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_41",
+      "prior_excerpt": "character_dark is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_46",
+      "current_excerpt": "character_dark appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0095",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_eric"
+      ],
+      "entity_id": "character_eric",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_eric transitions from scene 41 to 49 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_eric between scenes 41 and 49.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_41",
+      "prior_excerpt": "character_eric is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_49",
+      "current_excerpt": "character_eric appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0096",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_eric"
+      ],
+      "entity_id": "character_eric",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_eric transitions from scene 42 to 47 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_eric between scenes 42 and 47.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_42",
+      "prior_excerpt": "character_eric is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_47",
+      "current_excerpt": "character_eric appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0097",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_finn"
+      ],
+      "entity_id": "character_finn",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_finn transitions from scene 46 to 47 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_finn between scenes 46 and 47.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_46",
+      "prior_excerpt": "character_finn is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_47",
+      "current_excerpt": "character_finn appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0098",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_same"
+      ],
+      "entity_id": "character_same",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_same transitions from scene 46 to 47 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_same between scenes 46 and 47.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_46",
+      "prior_excerpt": "character_same is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_47",
+      "current_excerpt": "character_same appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0100",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_forest"
+      ],
+      "entity_id": "character_forest",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_forest transitions from scene 46 to 49 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_forest between scenes 46 and 49.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_46",
+      "prior_excerpt": "character_forest is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_49",
+      "current_excerpt": "character_forest appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0101",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_white"
+      ],
+      "entity_id": "character_white",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_white transitions from scene 47 to 49 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_white between scenes 47 and 49.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_47",
+      "prior_excerpt": "character_white is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_49",
+      "current_excerpt": "character_white appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0102",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_finn"
+      ],
+      "entity_id": "character_finn",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_finn transitions from scene 47 to 52 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_finn between scenes 47 and 52.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_47",
+      "prior_excerpt": "character_finn is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_52",
+      "current_excerpt": "character_finn appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0103",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_finn"
+      ],
+      "entity_id": "character_finn",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_finn transitions from scene 47 to 54 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_finn between scenes 47 and 54.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_47",
+      "prior_excerpt": "character_finn is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_54",
+      "current_excerpt": "character_finn appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0104",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_omitted"
+      ],
+      "entity_id": "character_omitted",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_omitted transitions from scene 49 to 52 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_omitted between scenes 49 and 52.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_49",
+      "prior_excerpt": "character_omitted is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_52",
+      "current_excerpt": "character_omitted appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0106",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_forest"
+      ],
+      "entity_id": "character_forest",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_forest transitions from scene 49 to 54 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_forest between scenes 49 and 54.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_49",
+      "prior_excerpt": "character_forest is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_54",
+      "current_excerpt": "character_forest appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0107",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_omitted"
+      ],
+      "entity_id": "character_omitted",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_omitted transitions from scene 49 to 54 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_omitted between scenes 49 and 54.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_49",
+      "prior_excerpt": "character_omitted is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_54",
+      "current_excerpt": "character_omitted appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0109",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_white"
+      ],
+      "entity_id": "character_white",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_white transitions from scene 49 to 57 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_white between scenes 49 and 57.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_49",
+      "prior_excerpt": "character_white is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_57",
+      "current_excerpt": "character_white appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0111",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_hammond"
+      ],
+      "entity_id": "character_hammond",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_hammond transitions from scene 4 to 5 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_hammond between scenes 4 and 5.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_4",
+      "prior_excerpt": "character_hammond is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_5",
+      "current_excerpt": "character_hammond appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0112",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_white"
+      ],
+      "entity_id": "character_white",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_white transitions from scene 4 to 9 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_white between scenes 4 and 9.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_4",
+      "prior_excerpt": "character_white is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_9",
+      "current_excerpt": "character_white appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0113",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_omitted"
+      ],
+      "entity_id": "character_omitted",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_omitted transitions from scene 52 to 54 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_omitted between scenes 52 and 54.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_52",
+      "prior_excerpt": "character_omitted is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_54",
+      "current_excerpt": "character_omitted appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0114",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_moved"
+      ],
+      "entity_id": "character_moved",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_moved transitions from scene 52 to 59 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_moved between scenes 52 and 59.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_52",
+      "prior_excerpt": "character_moved is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_59",
+      "current_excerpt": "character_moved appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0115",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_dark"
+      ],
+      "entity_id": "character_dark",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_dark transitions from scene 54 to 57 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_dark between scenes 54 and 57.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_54",
+      "prior_excerpt": "character_dark is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_57",
+      "current_excerpt": "character_dark appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0116",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_forest"
+      ],
+      "entity_id": "character_forest",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_forest transitions from scene 54 to 57 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_forest between scenes 54 and 57.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_54",
+      "prior_excerpt": "character_forest is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_57",
+      "current_excerpt": "character_forest appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0118",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_white"
+      ],
+      "entity_id": "character_white",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_white transitions from scene 57 to 58 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_white between scenes 57 and 58.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_57",
+      "prior_excerpt": "character_white is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_58",
+      "current_excerpt": "character_white appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0119",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_eric"
+      ],
+      "entity_id": "character_eric",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_eric transitions from scene 58 to 59 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_eric between scenes 58 and 59.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_58",
+      "prior_excerpt": "character_eric is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_59",
+      "current_excerpt": "character_eric appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0121",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_castle"
+      ],
+      "entity_id": "character_castle",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_castle transitions from scene 5 to 13 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_castle between scenes 5 and 13.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_5",
+      "prior_excerpt": "character_castle is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_13",
+      "current_excerpt": "character_castle appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0122",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_hammond"
+      ],
+      "entity_id": "character_hammond",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_hammond transitions from scene 5 to 14 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_hammond between scenes 5 and 14.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_5",
+      "prior_excerpt": "character_hammond is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_14",
+      "current_excerpt": "character_hammond appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0125",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_eric"
+      ],
+      "entity_id": "character_eric",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_eric transitions from scene 5 to 7 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_eric between scenes 5 and 7.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_5",
+      "prior_excerpt": "character_eric is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_7",
+      "current_excerpt": "character_eric appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0127",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_gypsy"
+      ],
+      "entity_id": "character_gypsy",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_gypsy transitions from scene 7 to 12 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_gypsy between scenes 7 and 12.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_7",
+      "prior_excerpt": "character_gypsy is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_12",
+      "current_excerpt": "character_gypsy appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0128",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mother"
+      ],
+      "entity_id": "character_mother",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_mother transitions from scene 7 to 12 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_mother between scenes 7 and 12.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_7",
+      "prior_excerpt": "character_mother is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_12",
+      "current_excerpt": "character_mother appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0129",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_eric"
+      ],
+      "entity_id": "character_eric",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_eric transitions from scene 7 to 16 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_eric between scenes 7 and 16.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_7",
+      "prior_excerpt": "character_eric is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_16",
+      "current_excerpt": "character_eric appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0130",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_eric"
+      ],
+      "entity_id": "character_eric",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_eric transitions from scene 7 to 18 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_eric between scenes 7 and 18.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_7",
+      "prior_excerpt": "character_eric is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_18",
+      "current_excerpt": "character_eric appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0131",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_gypsy"
+      ],
+      "entity_id": "character_gypsy",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_gypsy transitions from scene 7 to 8 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_gypsy between scenes 7 and 8.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_7",
+      "prior_excerpt": "character_gypsy is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_8",
+      "current_excerpt": "character_gypsy appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0132",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_ravenna"
+      ],
+      "entity_id": "character_ravenna",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_ravenna transitions from scene 7 to 9 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_ravenna between scenes 7 and 9.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_7",
+      "prior_excerpt": "character_ravenna is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_9",
+      "current_excerpt": "character_ravenna appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0133",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_young"
+      ],
+      "entity_id": "character_young",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_young transitions from scene 7 to 9 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_young between scenes 7 and 9.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_7",
+      "prior_excerpt": "character_young is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_9",
+      "current_excerpt": "character_young appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0134",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_gypsy"
+      ],
+      "entity_id": "character_gypsy",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_gypsy transitions from scene 8 to 15 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_gypsy between scenes 8 and 15.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_8",
+      "prior_excerpt": "character_gypsy is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_15",
+      "current_excerpt": "character_gypsy appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0136",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_snow"
+      ],
+      "entity_id": "character_snow",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_snow transitions from scene 8 to 9 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_snow between scenes 8 and 9.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_8",
+      "prior_excerpt": "character_snow is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_9",
+      "current_excerpt": "character_snow appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0137",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_ravenna"
+      ],
+      "entity_id": "character_ravenna",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_ravenna transitions from scene 9 to 10 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_ravenna between scenes 9 and 10.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_9",
+      "prior_excerpt": "character_ravenna is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_10",
+      "current_excerpt": "character_ravenna appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0138",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_white"
+      ],
+      "entity_id": "character_white",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_white transitions from scene 9 to 12 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_white between scenes 9 and 12.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_9",
+      "prior_excerpt": "character_white is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_12",
+      "current_excerpt": "character_white appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_0139",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_young"
+      ],
+      "entity_id": "character_young",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_young transitions from scene 9 to 14 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_young between scenes 9 and 14.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_9",
+      "prior_excerpt": "character_young is present at established state.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_14",
+      "current_excerpt": "character_young appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_fp_000",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_0"
+      ],
+      "entity_id": "Background_Char_0",
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.65,
+      "explanation": "Ambiguous background extra movement.",
+      "suggested_fix": "Clarify staging.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_1",
+      "prior_excerpt": "Background extra visible.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_2",
+      "current_excerpt": "Background extra relocated.",
+      "investigation_actions": [
+        "get_spatial_trajectory",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_fp_008",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_8"
+      ],
+      "entity_id": "Background_Char_8",
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.65,
+      "explanation": "Ambiguous background extra movement.",
+      "suggested_fix": "Clarify staging.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_9",
+      "prior_excerpt": "Background extra visible.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_10",
+      "current_excerpt": "Background extra relocated.",
+      "investigation_actions": [
+        "get_spatial_trajectory",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_fp_016",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_16"
+      ],
+      "entity_id": "Background_Char_16",
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.65,
+      "explanation": "Ambiguous background extra movement.",
+      "suggested_fix": "Clarify staging.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_17",
+      "prior_excerpt": "Background extra visible.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_18",
+      "current_excerpt": "Background extra relocated.",
+      "investigation_actions": [
+        "get_spatial_trajectory",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_fp_024",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_24"
+      ],
+      "entity_id": "Background_Char_24",
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.65,
+      "explanation": "Ambiguous background extra movement.",
+      "suggested_fix": "Clarify staging.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_25",
+      "prior_excerpt": "Background extra visible.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_26",
+      "current_excerpt": "Background extra relocated.",
+      "investigation_actions": [
+        "get_spatial_trajectory",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_snow_white_and_the_huntsman_fp_032",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_32"
+      ],
+      "entity_id": "Background_Char_32",
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.65,
+      "explanation": "Ambiguous background extra movement.",
+      "suggested_fix": "Clarify staging.",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_33",
+      "prior_excerpt": "Background extra visible.",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_34",
+      "current_excerpt": "Background extra relocated.",
+      "investigation_actions": [
+        "get_spatial_trajectory",
+        "get_unit_text",
+        "finish"
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0001",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_ravenna"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_ravenna across scenes 10 and 12",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_10",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_12"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0002",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_bedroom"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_bedroom across scenes 10 and 13",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_10",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_13"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0004",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_royal"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_royal across scenes 11 and 13",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_11",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_13"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0005",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_him"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_him across scenes 11 and 14",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_11",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_14"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0006",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_finn"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_finn across scenes 12 and 13",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_12",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_13"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0007",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_white"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_white across scenes 12 and 13",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_12",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_13"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0008",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_flashback"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_flashback across scenes 12 and 15",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_12",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_15"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0010",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mother"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_mother across scenes 12 and 15",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_12",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_15"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0011",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_ravenna"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_ravenna across scenes 12 and 15",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_12",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_15"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0012",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_finn"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_finn across scenes 13 and 14",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_13",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_14"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0013",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_white"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_white across scenes 13 and 16",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_13",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_16"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0015",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_beautiful"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_beautiful across scenes 14 and 19",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_14",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_19"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0020",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mirror"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_mirror across scenes 15 and 26",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_15",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_26"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0021",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_ravenna"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_ravenna across scenes 15 and 27",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_15",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_27"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0022",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_eric"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_eric across scenes 16 and 17",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_16",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_17"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0023",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_hear"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_hear across scenes 16 and 17",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_16",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_17"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0024",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_white"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_white across scenes 16 and 17",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_16",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_17"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0025",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_general"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_general across scenes 16 and 21",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_16",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_21"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0026",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_general"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_general across scenes 16 and 22",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_16",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_22"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0028",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_white"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_white across scenes 17 and 20",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_17",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_20"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0029",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_eric"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_eric across scenes 18 and 19",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_18",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_19"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0033",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_eric"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_eric across scenes 19 and 20",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_19",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_20"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0034",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_omitted"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_omitted across scenes 19 and 20",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_19",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_20"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0035",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_bedroom"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_bedroom across scenes 1 and 10",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_1",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_10"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0037",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_boom"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_boom across scenes 1 and 12",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_1",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_12"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0038",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_eric"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_eric across scenes 1 and 2",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_1",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_2"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0039",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_white"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_white across scenes 1 and 2",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_1",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_2"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0040",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_white"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_white across scenes 20 and 21",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_20",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_21"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0041",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cell"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_cell across scenes 20 and 22",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_20",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_22"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0042",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_guard"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_guard across scenes 20 and 26",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_20",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_26"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0044",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_bathing"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_bathing across scenes 21 and 22",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_21",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_22"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0046",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cell"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_cell across scenes 22 and 26",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_22",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_26"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0047",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_white"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_white across scenes 23 and 27",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_23",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_27"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0049",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cell"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_cell across scenes 26 and 27",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_26",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_27"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0050",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_chamber"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_chamber across scenes 26 and 33",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_26",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_33"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0051",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cell"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_cell across scenes 27 and 29",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_27",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_29"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0052",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_finn"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_finn across scenes 27 and 29",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_27",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_29"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0053",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_white"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_white across scenes 27 and 29",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_27",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_29"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0056",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_white"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_white across scenes 29 and 30",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_29",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_30"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0057",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_castle"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_castle across scenes 29 and 33",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_29",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_33"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0058",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_finn"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_finn across scenes 29 and 35",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_29",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_35"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0060",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_white"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_white across scenes 2 and 4",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_2",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_4"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0061",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_eric"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_eric across scenes 2 and 5",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_2",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_5"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0062",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_young"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_young across scenes 2 and 7",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_2",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_7"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0064",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_magpies"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_magpies across scenes 31 and 32",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_31",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_32"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0068",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_bogs"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_bogs across scenes 32 and 40",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_32",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_40"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0069",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_trees"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_trees across scenes 32 and 41",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_32",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_41"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0070",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_castle"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_castle across scenes 33 and 36",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_33",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_36"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0073",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_finn"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_finn across scenes 35 and 36",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_35",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_36"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0074",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_omitted"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_omitted across scenes 35 and 36",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_35",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_36"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0075",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_same"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_same across scenes 35 and 46",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_35",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_46"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0076",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_eric"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_eric across scenes 36 and 39",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_36",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_39"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0077",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_finn"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_finn across scenes 36 and 39",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_36",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_39"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0079",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_dark"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_dark across scenes 39 and 40",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_39",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_40"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0080",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_eric"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_eric across scenes 39 and 40",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_39",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_40"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0082",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_forest"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_forest across scenes 39 and 40",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_39",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_40"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0084",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_castle"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_castle across scenes 3 and 5",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_3",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_5"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0085",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_omitted"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_omitted across scenes 3 and 5",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_3",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_5"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0086",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_snow"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_snow across scenes 3 and 8",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_3",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_8"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0087",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_dark"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_dark across scenes 40 and 41",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_40",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_41"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0088",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_eric"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_eric across scenes 40 and 41",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_40",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_41"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0089",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_forest"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_forest across scenes 40 and 41",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_40",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_41"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0091",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_eric"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_eric across scenes 41 and 42",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_41",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_42"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0092",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_forest"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_forest across scenes 41 and 42",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_41",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_42"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0093",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_trees"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_trees across scenes 41 and 42",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_41",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_42"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0094",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_dark"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_dark across scenes 41 and 46",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_41",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_46"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0095",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_eric"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_eric across scenes 41 and 49",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_41",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_49"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0096",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_eric"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_eric across scenes 42 and 47",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_42",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_47"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0097",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_finn"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_finn across scenes 46 and 47",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_46",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_47"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0098",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_same"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_same across scenes 46 and 47",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_46",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_47"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0100",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_forest"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_forest across scenes 46 and 49",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_46",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_49"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0101",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_white"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_white across scenes 47 and 49",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_47",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_49"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0102",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_finn"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_finn across scenes 47 and 52",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_47",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_52"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0103",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_finn"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_finn across scenes 47 and 54",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_47",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_54"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0104",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_omitted"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_omitted across scenes 49 and 52",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_49",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_52"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0105",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_dark"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_dark across scenes 49 and 54",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_49",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_54"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0106",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_forest"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_forest across scenes 49 and 54",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_49",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_54"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0107",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_omitted"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_omitted across scenes 49 and 54",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_49",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_54"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0109",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_white"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_white across scenes 49 and 57",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_49",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_57"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0111",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_hammond"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_hammond across scenes 4 and 5",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_4",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_5"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0112",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_white"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_white across scenes 4 and 9",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_4",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_9"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0113",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_omitted"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_omitted across scenes 52 and 54",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_52",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_54"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0114",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_moved"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_moved across scenes 52 and 59",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_52",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_59"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0115",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_dark"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_dark across scenes 54 and 57",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_54",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_57"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0116",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_forest"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_forest across scenes 54 and 57",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_54",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_57"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0118",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_white"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_white across scenes 57 and 58",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_57",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_58"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0119",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_eric"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_eric across scenes 58 and 59",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_58",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_59"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0120",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_white"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_white across scenes 58 and 59",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_58",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_59"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0121",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_castle"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_castle across scenes 5 and 13",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_5",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_13"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0122",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_hammond"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_hammond across scenes 5 and 14",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_5",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_14"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0125",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_eric"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_eric across scenes 5 and 7",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_5",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_7"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0127",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_gypsy"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_gypsy across scenes 7 and 12",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_7",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_12"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0128",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mother"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_mother across scenes 7 and 12",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_7",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_12"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0129",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_eric"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_eric across scenes 7 and 16",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_7",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_16"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0130",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_eric"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_eric across scenes 7 and 18",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_7",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_18"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0131",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_gypsy"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_gypsy across scenes 7 and 8",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_7",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_8"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0132",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_ravenna"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_ravenna across scenes 7 and 9",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_7",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_9"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0133",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_young"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_young across scenes 7 and 9",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_7",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_9"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0134",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_gypsy"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_gypsy across scenes 8 and 15",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_8",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_15"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0136",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_snow"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_snow across scenes 8 and 9",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_8",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_9"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0137",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_ravenna"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_ravenna across scenes 9 and 10",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_9",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_10"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0138",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_white"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_white across scenes 9 and 12",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_9",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_12"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_0139",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_young"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_young across scenes 9 and 14",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_9",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_14"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_fp_000",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_0"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_0",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_1",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_2"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_fp_001",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_1"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_1",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_2",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_3"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_fp_002",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_2"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_2",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_3",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_4"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_fp_003",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_3"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_3",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_4",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_5"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_fp_004",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_4"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_4",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_5",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_6"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_fp_005",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_5"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_5",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_6",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_7"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_fp_006",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_6"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_6",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_7",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_8"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_fp_007",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_7"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_7",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_8",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_9"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_fp_008",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_8"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_8",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_9",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_10"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_fp_009",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_9"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_9",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_10",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_11"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_fp_010",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_10"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_10",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_11",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_12"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_fp_011",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_11"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_11",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_12",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_13"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_fp_012",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_12"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_12",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_13",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_14"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_fp_013",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_13"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_13",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_14",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_15"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_fp_014",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_14"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_14",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_15",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_16"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_fp_015",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_15"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_15",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_16",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_17"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_fp_016",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_16"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_16",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_17",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_18"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_fp_017",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_17"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_17",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_18",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_19"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_fp_018",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_18"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_18",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_19",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_20"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_fp_019",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_19"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_19",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_20",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_21"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_fp_020",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_20"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_20",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_21",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_22"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_fp_021",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_21"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_21",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_22",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_23"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_fp_022",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_22"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_22",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_23",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_24"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_fp_023",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_23"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_23",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_24",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_25"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_fp_024",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_24"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_24",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_25",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_26"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_fp_025",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_25"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_25",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_26",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_27"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_fp_026",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_26"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_26",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_27",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_28"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_fp_027",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_27"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_27",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_28",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_29"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_fp_028",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_28"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_28",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_29",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_30"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_fp_029",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_29"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_29",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_30",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_31"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_fp_030",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_30"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_30",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_31",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_32"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_fp_031",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_31"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_31",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_32",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_33"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_fp_032",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_32"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_32",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_33",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_34"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_fp_033",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_33"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_33",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_34",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_35"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_fp_034",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_34"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_34",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_35",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_36"
+    },
+    {
+      "id": "cand_v2_snow_white_and_the_huntsman_fp_035",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_35"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_35",
+      "prior_unit_id": "snow_white_and_the_huntsman_unit_36",
+      "current_unit_id": "snow_white_and_the_huntsman_unit_37"
+    }
+  ]
+}

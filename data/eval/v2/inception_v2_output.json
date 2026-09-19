@@ -1,0 +1,3597 @@
+{
+  "film_slug": "inception",
+  "story_universe_id": "v2_inception",
+  "unit_count": 258,
+  "state_event_count": 512,
+  "co_presence_count": 256,
+  "candidate_count": 128,
+  "verdict_distribution": {
+    "verified_hard_conflict": 71,
+    "verified_narrative_anomaly": 23,
+    "resolved": 34,
+    "uncertain": 0
+  },
+  "surfaced_findings_count": 94,
+  "total_tool_calls": 384,
+  "avg_tool_calls_per_candidate": 3.0,
+  "timings": {
+    "extraction_sec": 57.6,
+    "detection_sec": 0.08,
+    "investigation_sec": 83.2,
+    "total_runtime_sec": 151.04
+  },
+  "findings": [
+    {
+      "candidate_id": "cand_v2_inception_0001",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_nash"
+      ],
+      "entity_id": "character_nash",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_nash transitions from scene 10 to 11 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_nash between scenes 10 and 11.",
+      "prior_unit_id": "inception_unit_10",
+      "prior_excerpt": "character_nash is present at established state.",
+      "current_unit_id": "inception_unit_11",
+      "current_excerpt": "character_nash appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0002",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_grabs"
+      ],
+      "entity_id": "character_grabs",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_grabs transitions from scene 10 to 14 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_grabs between scenes 10 and 14.",
+      "prior_unit_id": "inception_unit_10",
+      "prior_excerpt": "character_grabs is present at established state.",
+      "current_unit_id": "inception_unit_14",
+      "current_excerpt": "character_grabs appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0003",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_awake"
+      ],
+      "entity_id": "character_awake",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_awake transitions from scene 11 to 12 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_awake between scenes 11 and 12.",
+      "prior_unit_id": "inception_unit_11",
+      "prior_excerpt": "character_awake is present at established state.",
+      "current_unit_id": "inception_unit_12",
+      "current_excerpt": "character_awake appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0004",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_bathroom"
+      ],
+      "entity_id": "character_bathroom",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_bathroom transitions from scene 11 to 12 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_bathroom between scenes 11 and 12.",
+      "prior_unit_id": "inception_unit_11",
+      "prior_excerpt": "character_bathroom is present at established state.",
+      "current_unit_id": "inception_unit_12",
+      "current_excerpt": "character_bathroom appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0005",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_continuous"
+      ],
+      "entity_id": "character_continuous",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_continuous transitions from scene 11 to 17 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_continuous between scenes 11 and 17.",
+      "prior_unit_id": "inception_unit_11",
+      "prior_excerpt": "character_continuous is present at established state.",
+      "current_unit_id": "inception_unit_17",
+      "current_excerpt": "character_continuous appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0006",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_awake"
+      ],
+      "entity_id": "character_awake",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_awake transitions from scene 12 to 15 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_awake between scenes 12 and 15.",
+      "prior_unit_id": "inception_unit_12",
+      "prior_excerpt": "character_awake is present at established state.",
+      "current_unit_id": "inception_unit_15",
+      "current_excerpt": "character_awake appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0008",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_grabs"
+      ],
+      "entity_id": "character_grabs",
+      "attribute": "possession.gun",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_grabs transitions from scene 14 to 18 with contradictory possession.gun.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_grabs between scenes 14 and 18.",
+      "prior_unit_id": "inception_unit_14",
+      "prior_excerpt": "character_grabs is present at established state.",
+      "current_unit_id": "inception_unit_18",
+      "current_excerpt": "character_grabs appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0011",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_bullet"
+      ],
+      "entity_id": "character_bullet",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_bullet transitions from scene 16 to 17 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_bullet between scenes 16 and 17.",
+      "prior_unit_id": "inception_unit_16",
+      "prior_excerpt": "character_bullet is present at established state.",
+      "current_unit_id": "inception_unit_17",
+      "current_excerpt": "character_bullet appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0014",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_james"
+      ],
+      "entity_id": "character_james",
+      "attribute": "possession.phone",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_james transitions from scene 17 to 18 with contradictory possession.phone.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_james between scenes 17 and 18.",
+      "prior_unit_id": "inception_unit_17",
+      "prior_excerpt": "character_james is present at established state.",
+      "current_unit_id": "inception_unit_18",
+      "current_excerpt": "character_james appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0017",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_arthur"
+      ],
+      "entity_id": "character_arthur",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_arthur transitions from scene 19 to 21 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_arthur between scenes 19 and 21.",
+      "prior_unit_id": "inception_unit_19",
+      "prior_excerpt": "character_arthur is present at established state.",
+      "current_unit_id": "inception_unit_21",
+      "current_excerpt": "character_arthur appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0019",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_helicopter"
+      ],
+      "entity_id": "character_helicopter",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_helicopter transitions from scene 19 to 21 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_helicopter between scenes 19 and 21.",
+      "prior_unit_id": "inception_unit_19",
+      "prior_excerpt": "character_helicopter is present at established state.",
+      "current_unit_id": "inception_unit_21",
+      "current_excerpt": "character_helicopter appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0020",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_rooftop"
+      ],
+      "entity_id": "character_rooftop",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_rooftop transitions from scene 19 to 26 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_rooftop between scenes 19 and 26.",
+      "prior_unit_id": "inception_unit_19",
+      "prior_excerpt": "character_rooftop is present at established state.",
+      "current_unit_id": "inception_unit_26",
+      "current_excerpt": "character_rooftop appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0021",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_gun"
+      ],
+      "entity_id": "character_gun",
+      "attribute": "possession.gun",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_gun transitions from scene 19 to 39 with contradictory possession.gun.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_gun between scenes 19 and 39.",
+      "prior_unit_id": "inception_unit_19",
+      "prior_excerpt": "character_gun is present at established state.",
+      "current_unit_id": "inception_unit_39",
+      "current_excerpt": "character_gun appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0023",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_man"
+      ],
+      "entity_id": "character_man",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_man transitions from scene 1 to 2 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_man between scenes 1 and 2.",
+      "prior_unit_id": "inception_unit_1",
+      "prior_excerpt": "character_man is present at established state.",
+      "current_unit_id": "inception_unit_2",
+      "current_excerpt": "character_man appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0025",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_later"
+      ],
+      "entity_id": "character_later",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_later transitions from scene 1 to 6 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_later between scenes 1 and 6.",
+      "prior_unit_id": "inception_unit_1",
+      "prior_excerpt": "character_later is present at established state.",
+      "current_unit_id": "inception_unit_6",
+      "current_excerpt": "character_later appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0026",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_guard"
+      ],
+      "entity_id": "character_guard",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_guard transitions from scene 1 to 8 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_guard between scenes 1 and 8.",
+      "prior_unit_id": "inception_unit_1",
+      "prior_excerpt": "character_guard is present at established state.",
+      "current_unit_id": "inception_unit_8",
+      "current_excerpt": "character_guard appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0028",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_jet"
+      ],
+      "entity_id": "character_jet",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_jet transitions from scene 21 to 22 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_jet between scenes 21 and 22.",
+      "prior_unit_id": "inception_unit_21",
+      "prior_excerpt": "character_jet is present at established state.",
+      "current_unit_id": "inception_unit_22",
+      "current_excerpt": "character_jet appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0029",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_private"
+      ],
+      "entity_id": "character_private",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_private transitions from scene 21 to 22 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_private between scenes 21 and 22.",
+      "prior_unit_id": "inception_unit_21",
+      "prior_excerpt": "character_private is present at established state.",
+      "current_unit_id": "inception_unit_22",
+      "current_excerpt": "character_private appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0031",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_arthur"
+      ],
+      "entity_id": "character_arthur",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_arthur transitions from scene 21 to 30 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_arthur between scenes 21 and 30.",
+      "prior_unit_id": "inception_unit_21",
+      "prior_excerpt": "character_arthur is present at established state.",
+      "current_unit_id": "inception_unit_30",
+      "current_excerpt": "character_arthur appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0032",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_miles"
+      ],
+      "entity_id": "character_miles",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_miles transitions from scene 22 to 25 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_miles between scenes 22 and 25.",
+      "prior_unit_id": "inception_unit_22",
+      "prior_excerpt": "character_miles is present at established state.",
+      "current_unit_id": "inception_unit_25",
+      "current_excerpt": "character_miles appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0033",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_continuous"
+      ],
+      "entity_id": "character_continuous",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_continuous transitions from scene 22 to 27 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_continuous between scenes 22 and 27.",
+      "prior_unit_id": "inception_unit_22",
+      "prior_excerpt": "character_continuous is present at established state.",
+      "current_unit_id": "inception_unit_27",
+      "current_excerpt": "character_continuous appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0035",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_miles"
+      ],
+      "entity_id": "character_miles",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_miles transitions from scene 25 to 26 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_miles between scenes 25 and 26.",
+      "prior_unit_id": "inception_unit_25",
+      "prior_excerpt": "character_miles is present at established state.",
+      "current_unit_id": "inception_unit_26",
+      "current_excerpt": "character_miles appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0037",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_ariadne"
+      ],
+      "entity_id": "character_ariadne",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_ariadne transitions from scene 25 to 30 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_ariadne between scenes 25 and 30.",
+      "prior_unit_id": "inception_unit_25",
+      "prior_excerpt": "character_ariadne is present at established state.",
+      "current_unit_id": "inception_unit_30",
+      "current_excerpt": "character_ariadne appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0040",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_continuous"
+      ],
+      "entity_id": "character_continuous",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_continuous transitions from scene 27 to 35 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_continuous between scenes 27 and 35.",
+      "prior_unit_id": "inception_unit_27",
+      "prior_excerpt": "character_continuous is present at established state.",
+      "current_unit_id": "inception_unit_35",
+      "current_excerpt": "character_continuous appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0041",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_grabs"
+      ],
+      "entity_id": "character_grabs",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_grabs transitions from scene 27 to 36 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_grabs between scenes 27 and 36.",
+      "prior_unit_id": "inception_unit_27",
+      "prior_excerpt": "character_grabs is present at established state.",
+      "current_unit_id": "inception_unit_36",
+      "current_excerpt": "character_grabs appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0043",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_ariadne"
+      ],
+      "entity_id": "character_ariadne",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_ariadne transitions from scene 29 to 30 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_ariadne between scenes 29 and 30.",
+      "prior_unit_id": "inception_unit_29",
+      "prior_excerpt": "character_ariadne is present at established state.",
+      "current_unit_id": "inception_unit_30",
+      "current_excerpt": "character_ariadne appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0044",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cobb"
+      ],
+      "entity_id": "character_cobb",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_cobb transitions from scene 29 to 30 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_cobb between scenes 29 and 30.",
+      "prior_unit_id": "inception_unit_29",
+      "prior_excerpt": "character_cobb is present at established state.",
+      "current_unit_id": "inception_unit_30",
+      "current_excerpt": "character_cobb appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0048",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_japanese"
+      ],
+      "entity_id": "character_japanese",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_japanese transitions from scene 2 to 7 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_japanese between scenes 2 and 7.",
+      "prior_unit_id": "inception_unit_2",
+      "prior_excerpt": "character_japanese is present at established state.",
+      "current_unit_id": "inception_unit_7",
+      "current_excerpt": "character_japanese appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0049",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_slides"
+      ],
+      "entity_id": "character_slides",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_slides transitions from scene 2 to 7 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_slides between scenes 2 and 7.",
+      "prior_unit_id": "inception_unit_2",
+      "prior_excerpt": "character_slides is present at established state.",
+      "current_unit_id": "inception_unit_7",
+      "current_excerpt": "character_slides appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0050",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_arthur"
+      ],
+      "entity_id": "character_arthur",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_arthur transitions from scene 30 to 34 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_arthur between scenes 30 and 34.",
+      "prior_unit_id": "inception_unit_30",
+      "prior_excerpt": "character_arthur is present at established state.",
+      "current_unit_id": "inception_unit_34",
+      "current_excerpt": "character_arthur appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0051",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cobb"
+      ],
+      "entity_id": "character_cobb",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_cobb transitions from scene 30 to 36 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_cobb between scenes 30 and 36.",
+      "prior_unit_id": "inception_unit_30",
+      "prior_excerpt": "character_cobb is present at established state.",
+      "current_unit_id": "inception_unit_36",
+      "current_excerpt": "character_cobb appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0055",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_hard"
+      ],
+      "entity_id": "character_hard",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_hard transitions from scene 34 to 38 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_hard between scenes 34 and 38.",
+      "prior_unit_id": "inception_unit_34",
+      "prior_excerpt": "character_hard is present at established state.",
+      "current_unit_id": "inception_unit_38",
+      "current_excerpt": "character_hard appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0057",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_arthur"
+      ],
+      "entity_id": "character_arthur",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_arthur transitions from scene 35 to 36 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_arthur between scenes 35 and 36.",
+      "prior_unit_id": "inception_unit_35",
+      "prior_excerpt": "character_arthur is present at established state.",
+      "current_unit_id": "inception_unit_36",
+      "current_excerpt": "character_arthur appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0058",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_grabs"
+      ],
+      "entity_id": "character_grabs",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_grabs transitions from scene 35 to 36 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_grabs between scenes 35 and 36.",
+      "prior_unit_id": "inception_unit_35",
+      "prior_excerpt": "character_grabs is present at established state.",
+      "current_unit_id": "inception_unit_36",
+      "current_excerpt": "character_grabs appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0059",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_continuous"
+      ],
+      "entity_id": "character_continuous",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_continuous transitions from scene 35 to 37 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_continuous between scenes 35 and 37.",
+      "prior_unit_id": "inception_unit_35",
+      "prior_excerpt": "character_continuous is present at established state.",
+      "current_unit_id": "inception_unit_37",
+      "current_excerpt": "character_continuous appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0061",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mombasa"
+      ],
+      "entity_id": "character_mombasa",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_mombasa transitions from scene 36 to 37 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_mombasa between scenes 36 and 37.",
+      "prior_unit_id": "inception_unit_36",
+      "prior_excerpt": "character_mombasa is present at established state.",
+      "current_unit_id": "inception_unit_37",
+      "current_excerpt": "character_mombasa appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0062",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_arthur"
+      ],
+      "entity_id": "character_arthur",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_arthur transitions from scene 36 to 42 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_arthur between scenes 36 and 42.",
+      "prior_unit_id": "inception_unit_36",
+      "prior_excerpt": "character_arthur is present at established state.",
+      "current_unit_id": "inception_unit_42",
+      "current_excerpt": "character_arthur appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0064",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cobb"
+      ],
+      "entity_id": "character_cobb",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_cobb transitions from scene 37 to 38 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_cobb between scenes 37 and 38.",
+      "prior_unit_id": "inception_unit_37",
+      "prior_excerpt": "character_cobb is present at established state.",
+      "current_unit_id": "inception_unit_38",
+      "current_excerpt": "character_cobb appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0065",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_continuous"
+      ],
+      "entity_id": "character_continuous",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_continuous transitions from scene 37 to 38 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_continuous between scenes 37 and 38.",
+      "prior_unit_id": "inception_unit_37",
+      "prior_excerpt": "character_continuous is present at established state.",
+      "current_unit_id": "inception_unit_38",
+      "current_excerpt": "character_continuous appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0066",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mombasa"
+      ],
+      "entity_id": "character_mombasa",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_mombasa transitions from scene 37 to 38 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_mombasa between scenes 37 and 38.",
+      "prior_unit_id": "inception_unit_37",
+      "prior_excerpt": "character_mombasa is present at established state.",
+      "current_unit_id": "inception_unit_38",
+      "current_excerpt": "character_mombasa appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0067",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_street"
+      ],
+      "entity_id": "character_street",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_street transitions from scene 37 to 38 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_street between scenes 37 and 38.",
+      "prior_unit_id": "inception_unit_37",
+      "prior_excerpt": "character_street is present at established state.",
+      "current_unit_id": "inception_unit_38",
+      "current_excerpt": "character_street appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0068",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_coffee"
+      ],
+      "entity_id": "character_coffee",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_coffee transitions from scene 37 to 40 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_coffee between scenes 37 and 40.",
+      "prior_unit_id": "inception_unit_37",
+      "prior_excerpt": "character_coffee is present at established state.",
+      "current_unit_id": "inception_unit_40",
+      "current_excerpt": "character_coffee appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0069",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_later"
+      ],
+      "entity_id": "character_later",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_later transitions from scene 37 to 40 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_later between scenes 37 and 40.",
+      "prior_unit_id": "inception_unit_37",
+      "prior_excerpt": "character_later is present at established state.",
+      "current_unit_id": "inception_unit_40",
+      "current_excerpt": "character_later appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0070",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mombasa"
+      ],
+      "entity_id": "character_mombasa",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_mombasa transitions from scene 38 to 42 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_mombasa between scenes 38 and 42.",
+      "prior_unit_id": "inception_unit_38",
+      "prior_excerpt": "character_mombasa is present at established state.",
+      "current_unit_id": "inception_unit_42",
+      "current_excerpt": "character_mombasa appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0071",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cobb"
+      ],
+      "entity_id": "character_cobb",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_cobb transitions from scene 38 to 44 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_cobb between scenes 38 and 44.",
+      "prior_unit_id": "inception_unit_38",
+      "prior_excerpt": "character_cobb is present at established state.",
+      "current_unit_id": "inception_unit_44",
+      "current_excerpt": "character_cobb appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0074",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mombasa"
+      ],
+      "entity_id": "character_mombasa",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_mombasa transitions from scene 42 to 44 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_mombasa between scenes 42 and 44.",
+      "prior_unit_id": "inception_unit_42",
+      "prior_excerpt": "character_mombasa is present at established state.",
+      "current_unit_id": "inception_unit_44",
+      "current_excerpt": "character_mombasa appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0076",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_continuous"
+      ],
+      "entity_id": "character_continuous",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_continuous transitions from scene 44 to 46 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_continuous between scenes 44 and 46.",
+      "prior_unit_id": "inception_unit_44",
+      "prior_excerpt": "character_continuous is present at established state.",
+      "current_unit_id": "inception_unit_46",
+      "current_excerpt": "character_continuous appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0077",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_pharmacy"
+      ],
+      "entity_id": "character_pharmacy",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_pharmacy transitions from scene 44 to 46 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_pharmacy between scenes 44 and 46.",
+      "prior_unit_id": "inception_unit_44",
+      "prior_excerpt": "character_pharmacy is present at established state.",
+      "current_unit_id": "inception_unit_46",
+      "current_excerpt": "character_pharmacy appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0078",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cobb"
+      ],
+      "entity_id": "character_cobb",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_cobb transitions from scene 44 to 50 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_cobb between scenes 44 and 50.",
+      "prior_unit_id": "inception_unit_44",
+      "prior_excerpt": "character_cobb is present at established state.",
+      "current_unit_id": "inception_unit_50",
+      "current_excerpt": "character_cobb appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0079",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cobb"
+      ],
+      "entity_id": "character_cobb",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_cobb transitions from scene 46 to 47 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_cobb between scenes 46 and 47.",
+      "prior_unit_id": "inception_unit_46",
+      "prior_excerpt": "character_cobb is present at established state.",
+      "current_unit_id": "inception_unit_47",
+      "current_excerpt": "character_cobb appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0080",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_continuous"
+      ],
+      "entity_id": "character_continuous",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_continuous transitions from scene 46 to 47 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_continuous between scenes 46 and 47.",
+      "prior_unit_id": "inception_unit_46",
+      "prior_excerpt": "character_continuous is present at established state.",
+      "current_unit_id": "inception_unit_47",
+      "current_excerpt": "character_continuous appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0082",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_pharmacy"
+      ],
+      "entity_id": "character_pharmacy",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_pharmacy transitions from scene 46 to 47 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_pharmacy between scenes 46 and 47.",
+      "prior_unit_id": "inception_unit_46",
+      "prior_excerpt": "character_pharmacy is present at established state.",
+      "current_unit_id": "inception_unit_47",
+      "current_excerpt": "character_pharmacy appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0083",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cobb"
+      ],
+      "entity_id": "character_cobb",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_cobb transitions from scene 47 to 48 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_cobb between scenes 47 and 48.",
+      "prior_unit_id": "inception_unit_47",
+      "prior_excerpt": "character_cobb is present at established state.",
+      "current_unit_id": "inception_unit_48",
+      "current_excerpt": "character_cobb appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0084",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_continuous"
+      ],
+      "entity_id": "character_continuous",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_continuous transitions from scene 47 to 48 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_continuous between scenes 47 and 48.",
+      "prior_unit_id": "inception_unit_47",
+      "prior_excerpt": "character_continuous is present at established state.",
+      "current_unit_id": "inception_unit_48",
+      "current_excerpt": "character_continuous appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0085",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_bathroom"
+      ],
+      "entity_id": "character_bathroom",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_bathroom transitions from scene 47 to 54 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_bathroom between scenes 47 and 54.",
+      "prior_unit_id": "inception_unit_47",
+      "prior_excerpt": "character_bathroom is present at established state.",
+      "current_unit_id": "inception_unit_54",
+      "current_excerpt": "character_bathroom appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0086",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_sleeping"
+      ],
+      "entity_id": "character_sleeping",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_sleeping transitions from scene 47 to 56 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_sleeping between scenes 47 and 56.",
+      "prior_unit_id": "inception_unit_47",
+      "prior_excerpt": "character_sleeping is present at established state.",
+      "current_unit_id": "inception_unit_56",
+      "current_excerpt": "character_sleeping appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0087",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_blowing"
+      ],
+      "entity_id": "character_blowing",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_blowing transitions from scene 48 to 50 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_blowing between scenes 48 and 50.",
+      "prior_unit_id": "inception_unit_48",
+      "prior_excerpt": "character_blowing is present at established state.",
+      "current_unit_id": "inception_unit_50",
+      "current_excerpt": "character_blowing appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0088",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cobb"
+      ],
+      "entity_id": "character_cobb",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_cobb transitions from scene 48 to 51 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_cobb between scenes 48 and 51.",
+      "prior_unit_id": "inception_unit_48",
+      "prior_excerpt": "character_cobb is present at established state.",
+      "current_unit_id": "inception_unit_51",
+      "current_excerpt": "character_cobb appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0089",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_continuous"
+      ],
+      "entity_id": "character_continuous",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_continuous transitions from scene 48 to 53 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_continuous between scenes 48 and 53.",
+      "prior_unit_id": "inception_unit_48",
+      "prior_excerpt": "character_continuous is present at established state.",
+      "current_unit_id": "inception_unit_53",
+      "current_excerpt": "character_continuous appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0091",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_arthur"
+      ],
+      "entity_id": "character_arthur",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_arthur transitions from scene 50 to 51 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_arthur between scenes 50 and 51.",
+      "prior_unit_id": "inception_unit_50",
+      "prior_excerpt": "character_arthur is present at established state.",
+      "current_unit_id": "inception_unit_51",
+      "current_excerpt": "character_arthur appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0092",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cobb"
+      ],
+      "entity_id": "character_cobb",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_cobb transitions from scene 50 to 55 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_cobb between scenes 50 and 55.",
+      "prior_unit_id": "inception_unit_50",
+      "prior_excerpt": "character_cobb is present at established state.",
+      "current_unit_id": "inception_unit_55",
+      "current_excerpt": "character_cobb appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0093",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_arthur"
+      ],
+      "entity_id": "character_arthur",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_arthur transitions from scene 51 to 55 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_arthur between scenes 51 and 55.",
+      "prior_unit_id": "inception_unit_51",
+      "prior_excerpt": "character_arthur is present at established state.",
+      "current_unit_id": "inception_unit_55",
+      "current_excerpt": "character_arthur appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0094",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_continuous"
+      ],
+      "entity_id": "character_continuous",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_continuous transitions from scene 53 to 54 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_continuous between scenes 53 and 54.",
+      "prior_unit_id": "inception_unit_53",
+      "prior_excerpt": "character_continuous is present at established state.",
+      "current_unit_id": "inception_unit_54",
+      "current_excerpt": "character_continuous appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0095",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_workshop"
+      ],
+      "entity_id": "character_workshop",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_workshop transitions from scene 54 to 57 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_workshop between scenes 54 and 57.",
+      "prior_unit_id": "inception_unit_54",
+      "prior_excerpt": "character_workshop is present at established state.",
+      "current_unit_id": "inception_unit_57",
+      "current_excerpt": "character_workshop appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0096",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_continuous"
+      ],
+      "entity_id": "character_continuous",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_continuous transitions from scene 54 to 59 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_continuous between scenes 54 and 59.",
+      "prior_unit_id": "inception_unit_54",
+      "prior_excerpt": "character_continuous is present at established state.",
+      "current_unit_id": "inception_unit_59",
+      "current_excerpt": "character_continuous appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0097",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_arthur"
+      ],
+      "entity_id": "character_arthur",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_arthur transitions from scene 55 to 56 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_arthur between scenes 55 and 56.",
+      "prior_unit_id": "inception_unit_55",
+      "prior_excerpt": "character_arthur is present at established state.",
+      "current_unit_id": "inception_unit_56",
+      "current_excerpt": "character_arthur appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0098",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cobb"
+      ],
+      "entity_id": "character_cobb",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_cobb transitions from scene 55 to 56 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_cobb between scenes 55 and 56.",
+      "prior_unit_id": "inception_unit_55",
+      "prior_excerpt": "character_cobb is present at established state.",
+      "current_unit_id": "inception_unit_56",
+      "current_excerpt": "character_cobb appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0100",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_lobby"
+      ],
+      "entity_id": "character_lobby",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_lobby transitions from scene 55 to 56 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_lobby between scenes 55 and 56.",
+      "prior_unit_id": "inception_unit_55",
+      "prior_excerpt": "character_lobby is present at established state.",
+      "current_unit_id": "inception_unit_56",
+      "current_excerpt": "character_lobby appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0101",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cobb"
+      ],
+      "entity_id": "character_cobb",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_cobb transitions from scene 56 to 57 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_cobb between scenes 56 and 57.",
+      "prior_unit_id": "inception_unit_56",
+      "prior_excerpt": "character_cobb is present at established state.",
+      "current_unit_id": "inception_unit_57",
+      "current_excerpt": "character_cobb appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0102",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_more"
+      ],
+      "entity_id": "character_more",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_more transitions from scene 56 to 57 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_more between scenes 56 and 57.",
+      "prior_unit_id": "inception_unit_56",
+      "prior_excerpt": "character_more is present at established state.",
+      "current_unit_id": "inception_unit_57",
+      "current_excerpt": "character_more appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0103",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_sleeping"
+      ],
+      "entity_id": "character_sleeping",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_sleeping transitions from scene 56 to 58 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_sleeping between scenes 56 and 58.",
+      "prior_unit_id": "inception_unit_56",
+      "prior_excerpt": "character_sleeping is present at established state.",
+      "current_unit_id": "inception_unit_58",
+      "current_excerpt": "character_sleeping appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0104",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_ariadne"
+      ],
+      "entity_id": "character_ariadne",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_ariadne transitions from scene 57 to 58 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_ariadne between scenes 57 and 58.",
+      "prior_unit_id": "inception_unit_57",
+      "prior_excerpt": "character_ariadne is present at established state.",
+      "current_unit_id": "inception_unit_58",
+      "current_excerpt": "character_ariadne appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0106",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_workshop"
+      ],
+      "entity_id": "character_workshop",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_workshop transitions from scene 57 to 58 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_workshop between scenes 57 and 58.",
+      "prior_unit_id": "inception_unit_57",
+      "prior_excerpt": "character_workshop is present at established state.",
+      "current_unit_id": "inception_unit_58",
+      "current_excerpt": "character_workshop appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0107",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cobb"
+      ],
+      "entity_id": "character_cobb",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_cobb transitions from scene 57 to 60 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_cobb between scenes 57 and 60.",
+      "prior_unit_id": "inception_unit_57",
+      "prior_excerpt": "character_cobb is present at established state.",
+      "current_unit_id": "inception_unit_60",
+      "current_excerpt": "character_cobb appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0109",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cage"
+      ],
+      "entity_id": "character_cage",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_cage transitions from scene 59 to 60 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_cage between scenes 59 and 60.",
+      "prior_unit_id": "inception_unit_59",
+      "prior_excerpt": "character_cage is present at established state.",
+      "current_unit_id": "inception_unit_60",
+      "current_excerpt": "character_cage appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0110",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_continuous"
+      ],
+      "entity_id": "character_continuous",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_continuous transitions from scene 59 to 60 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_continuous between scenes 59 and 60.",
+      "prior_unit_id": "inception_unit_59",
+      "prior_excerpt": "character_continuous is present at established state.",
+      "current_unit_id": "inception_unit_60",
+      "current_excerpt": "character_continuous appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0111",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_style"
+      ],
+      "entity_id": "character_style",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_style transitions from scene 59 to 60 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_style between scenes 59 and 60.",
+      "prior_unit_id": "inception_unit_59",
+      "prior_excerpt": "character_style is present at established state.",
+      "current_unit_id": "inception_unit_60",
+      "current_excerpt": "character_style appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0112",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_nash"
+      ],
+      "entity_id": "character_nash",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_nash transitions from scene 5 to 10 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_nash between scenes 5 and 10.",
+      "prior_unit_id": "inception_unit_5",
+      "prior_excerpt": "character_nash is present at established state.",
+      "current_unit_id": "inception_unit_10",
+      "current_excerpt": "character_nash appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0113",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_briefcase"
+      ],
+      "entity_id": "character_briefcase",
+      "attribute": "possession.briefcase",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_briefcase transitions from scene 5 to 13 with contradictory possession.briefcase.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_briefcase between scenes 5 and 13.",
+      "prior_unit_id": "inception_unit_5",
+      "prior_excerpt": "character_briefcase is present at established state.",
+      "current_unit_id": "inception_unit_13",
+      "current_excerpt": "character_briefcase appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0114",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_silver"
+      ],
+      "entity_id": "character_silver",
+      "attribute": "possession.briefcase",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_silver transitions from scene 5 to 13 with contradictory possession.briefcase.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_silver between scenes 5 and 13.",
+      "prior_unit_id": "inception_unit_5",
+      "prior_excerpt": "character_silver is present at established state.",
+      "current_unit_id": "inception_unit_13",
+      "current_excerpt": "character_silver appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0116",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_continuous"
+      ],
+      "entity_id": "character_continuous",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_continuous transitions from scene 5 to 7 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_continuous between scenes 5 and 7.",
+      "prior_unit_id": "inception_unit_5",
+      "prior_excerpt": "character_continuous is present at established state.",
+      "current_unit_id": "inception_unit_7",
+      "current_excerpt": "character_continuous appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0118",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_black"
+      ],
+      "entity_id": "character_black",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_black transitions from scene 6 to 7 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_black between scenes 6 and 7.",
+      "prior_unit_id": "inception_unit_6",
+      "prior_excerpt": "character_black is present at established state.",
+      "current_unit_id": "inception_unit_7",
+      "current_excerpt": "character_black appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0119",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cobb"
+      ],
+      "entity_id": "character_cobb",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_cobb transitions from scene 6 to 7 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_cobb between scenes 6 and 7.",
+      "prior_unit_id": "inception_unit_6",
+      "prior_excerpt": "character_cobb is present at established state.",
+      "current_unit_id": "inception_unit_7",
+      "current_excerpt": "character_cobb appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0121",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_slides"
+      ],
+      "entity_id": "character_slides",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_slides transitions from scene 7 to 9 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_slides between scenes 7 and 9.",
+      "prior_unit_id": "inception_unit_7",
+      "prior_excerpt": "character_slides is present at established state.",
+      "current_unit_id": "inception_unit_9",
+      "current_excerpt": "character_slides appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0122",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_continuous"
+      ],
+      "entity_id": "character_continuous",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_continuous transitions from scene 8 to 10 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_continuous between scenes 8 and 10.",
+      "prior_unit_id": "inception_unit_8",
+      "prior_excerpt": "character_continuous is present at established state.",
+      "current_unit_id": "inception_unit_10",
+      "current_excerpt": "character_continuous appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0124",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_grabs"
+      ],
+      "entity_id": "character_grabs",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_grabs transitions from scene 8 to 9 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_grabs between scenes 8 and 9.",
+      "prior_unit_id": "inception_unit_8",
+      "prior_excerpt": "character_grabs is present at established state.",
+      "current_unit_id": "inception_unit_9",
+      "current_excerpt": "character_grabs appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0125",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_grabs"
+      ],
+      "entity_id": "character_grabs",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_grabs transitions from scene 9 to 10 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_grabs between scenes 9 and 10.",
+      "prior_unit_id": "inception_unit_9",
+      "prior_excerpt": "character_grabs is present at established state.",
+      "current_unit_id": "inception_unit_10",
+      "current_excerpt": "character_grabs appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0126",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_grabs"
+      ],
+      "entity_id": "character_grabs",
+      "attribute": "possession.gun",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_grabs transitions from scene 9 to 14 with contradictory possession.gun.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_grabs between scenes 9 and 14.",
+      "prior_unit_id": "inception_unit_9",
+      "prior_excerpt": "character_grabs is present at established state.",
+      "current_unit_id": "inception_unit_14",
+      "current_excerpt": "character_grabs appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_0127",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_massive"
+      ],
+      "entity_id": "character_massive",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_massive transitions from scene 9 to 14 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_massive between scenes 9 and 14.",
+      "prior_unit_id": "inception_unit_9",
+      "prior_excerpt": "character_massive is present at established state.",
+      "current_unit_id": "inception_unit_14",
+      "current_excerpt": "character_massive appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_fp_000",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_0"
+      ],
+      "entity_id": "Background_Char_0",
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.65,
+      "explanation": "Ambiguous background extra movement.",
+      "suggested_fix": "Clarify staging.",
+      "prior_unit_id": "inception_unit_1",
+      "prior_excerpt": "Background extra visible.",
+      "current_unit_id": "inception_unit_2",
+      "current_excerpt": "Background extra relocated.",
+      "investigation_actions": [
+        "get_spatial_trajectory",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_fp_008",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_8"
+      ],
+      "entity_id": "Background_Char_8",
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.65,
+      "explanation": "Ambiguous background extra movement.",
+      "suggested_fix": "Clarify staging.",
+      "prior_unit_id": "inception_unit_9",
+      "prior_excerpt": "Background extra visible.",
+      "current_unit_id": "inception_unit_10",
+      "current_excerpt": "Background extra relocated.",
+      "investigation_actions": [
+        "get_spatial_trajectory",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_fp_016",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_16"
+      ],
+      "entity_id": "Background_Char_16",
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.65,
+      "explanation": "Ambiguous background extra movement.",
+      "suggested_fix": "Clarify staging.",
+      "prior_unit_id": "inception_unit_17",
+      "prior_excerpt": "Background extra visible.",
+      "current_unit_id": "inception_unit_18",
+      "current_excerpt": "Background extra relocated.",
+      "investigation_actions": [
+        "get_spatial_trajectory",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_fp_024",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_24"
+      ],
+      "entity_id": "Background_Char_24",
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.65,
+      "explanation": "Ambiguous background extra movement.",
+      "suggested_fix": "Clarify staging.",
+      "prior_unit_id": "inception_unit_25",
+      "prior_excerpt": "Background extra visible.",
+      "current_unit_id": "inception_unit_26",
+      "current_excerpt": "Background extra relocated.",
+      "investigation_actions": [
+        "get_spatial_trajectory",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_inception_fp_032",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_32"
+      ],
+      "entity_id": "Background_Char_32",
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.65,
+      "explanation": "Ambiguous background extra movement.",
+      "suggested_fix": "Clarify staging.",
+      "prior_unit_id": "inception_unit_33",
+      "prior_excerpt": "Background extra visible.",
+      "current_unit_id": "inception_unit_34",
+      "current_excerpt": "Background extra relocated.",
+      "investigation_actions": [
+        "get_spatial_trajectory",
+        "get_unit_text",
+        "finish"
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "cand_v2_inception_0001",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_nash"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_nash across scenes 10 and 11",
+      "prior_unit_id": "inception_unit_10",
+      "current_unit_id": "inception_unit_11"
+    },
+    {
+      "id": "cand_v2_inception_0002",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_grabs"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_grabs across scenes 10 and 14",
+      "prior_unit_id": "inception_unit_10",
+      "current_unit_id": "inception_unit_14"
+    },
+    {
+      "id": "cand_v2_inception_0003",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_awake"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_awake across scenes 11 and 12",
+      "prior_unit_id": "inception_unit_11",
+      "current_unit_id": "inception_unit_12"
+    },
+    {
+      "id": "cand_v2_inception_0004",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_bathroom"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_bathroom across scenes 11 and 12",
+      "prior_unit_id": "inception_unit_11",
+      "current_unit_id": "inception_unit_12"
+    },
+    {
+      "id": "cand_v2_inception_0005",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_continuous"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_continuous across scenes 11 and 17",
+      "prior_unit_id": "inception_unit_11",
+      "current_unit_id": "inception_unit_17"
+    },
+    {
+      "id": "cand_v2_inception_0006",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_awake"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_awake across scenes 12 and 15",
+      "prior_unit_id": "inception_unit_12",
+      "current_unit_id": "inception_unit_15"
+    },
+    {
+      "id": "cand_v2_inception_0008",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_grabs"
+      ],
+      "attribute": "possession.gun",
+      "description": "Potential possession_machine conflict for character_grabs across scenes 14 and 18",
+      "prior_unit_id": "inception_unit_14",
+      "current_unit_id": "inception_unit_18"
+    },
+    {
+      "id": "cand_v2_inception_0011",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_bullet"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_bullet across scenes 16 and 17",
+      "prior_unit_id": "inception_unit_16",
+      "current_unit_id": "inception_unit_17"
+    },
+    {
+      "id": "cand_v2_inception_0014",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_james"
+      ],
+      "attribute": "possession.phone",
+      "description": "Potential possession_machine conflict for character_james across scenes 17 and 18",
+      "prior_unit_id": "inception_unit_17",
+      "current_unit_id": "inception_unit_18"
+    },
+    {
+      "id": "cand_v2_inception_0015",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_continuous"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_continuous across scenes 17 and 19",
+      "prior_unit_id": "inception_unit_17",
+      "current_unit_id": "inception_unit_19"
+    },
+    {
+      "id": "cand_v2_inception_0017",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_arthur"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_arthur across scenes 19 and 21",
+      "prior_unit_id": "inception_unit_19",
+      "current_unit_id": "inception_unit_21"
+    },
+    {
+      "id": "cand_v2_inception_0019",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_helicopter"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_helicopter across scenes 19 and 21",
+      "prior_unit_id": "inception_unit_19",
+      "current_unit_id": "inception_unit_21"
+    },
+    {
+      "id": "cand_v2_inception_0020",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_rooftop"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_rooftop across scenes 19 and 26",
+      "prior_unit_id": "inception_unit_19",
+      "current_unit_id": "inception_unit_26"
+    },
+    {
+      "id": "cand_v2_inception_0021",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_gun"
+      ],
+      "attribute": "possession.gun",
+      "description": "Potential possession_machine conflict for character_gun across scenes 19 and 39",
+      "prior_unit_id": "inception_unit_19",
+      "current_unit_id": "inception_unit_39"
+    },
+    {
+      "id": "cand_v2_inception_0023",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_man"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_man across scenes 1 and 2",
+      "prior_unit_id": "inception_unit_1",
+      "current_unit_id": "inception_unit_2"
+    },
+    {
+      "id": "cand_v2_inception_0025",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_later"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_later across scenes 1 and 6",
+      "prior_unit_id": "inception_unit_1",
+      "current_unit_id": "inception_unit_6"
+    },
+    {
+      "id": "cand_v2_inception_0026",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_guard"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_guard across scenes 1 and 8",
+      "prior_unit_id": "inception_unit_1",
+      "current_unit_id": "inception_unit_8"
+    },
+    {
+      "id": "cand_v2_inception_0028",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_jet"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_jet across scenes 21 and 22",
+      "prior_unit_id": "inception_unit_21",
+      "current_unit_id": "inception_unit_22"
+    },
+    {
+      "id": "cand_v2_inception_0029",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_private"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_private across scenes 21 and 22",
+      "prior_unit_id": "inception_unit_21",
+      "current_unit_id": "inception_unit_22"
+    },
+    {
+      "id": "cand_v2_inception_0030",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cobb"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_cobb across scenes 21 and 25",
+      "prior_unit_id": "inception_unit_21",
+      "current_unit_id": "inception_unit_25"
+    },
+    {
+      "id": "cand_v2_inception_0031",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_arthur"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_arthur across scenes 21 and 30",
+      "prior_unit_id": "inception_unit_21",
+      "current_unit_id": "inception_unit_30"
+    },
+    {
+      "id": "cand_v2_inception_0032",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_miles"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_miles across scenes 22 and 25",
+      "prior_unit_id": "inception_unit_22",
+      "current_unit_id": "inception_unit_25"
+    },
+    {
+      "id": "cand_v2_inception_0033",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_continuous"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_continuous across scenes 22 and 27",
+      "prior_unit_id": "inception_unit_22",
+      "current_unit_id": "inception_unit_27"
+    },
+    {
+      "id": "cand_v2_inception_0035",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_miles"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_miles across scenes 25 and 26",
+      "prior_unit_id": "inception_unit_25",
+      "current_unit_id": "inception_unit_26"
+    },
+    {
+      "id": "cand_v2_inception_0037",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_ariadne"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_ariadne across scenes 25 and 30",
+      "prior_unit_id": "inception_unit_25",
+      "current_unit_id": "inception_unit_30"
+    },
+    {
+      "id": "cand_v2_inception_0040",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_continuous"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_continuous across scenes 27 and 35",
+      "prior_unit_id": "inception_unit_27",
+      "current_unit_id": "inception_unit_35"
+    },
+    {
+      "id": "cand_v2_inception_0041",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_grabs"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_grabs across scenes 27 and 36",
+      "prior_unit_id": "inception_unit_27",
+      "current_unit_id": "inception_unit_36"
+    },
+    {
+      "id": "cand_v2_inception_0043",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_ariadne"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_ariadne across scenes 29 and 30",
+      "prior_unit_id": "inception_unit_29",
+      "current_unit_id": "inception_unit_30"
+    },
+    {
+      "id": "cand_v2_inception_0044",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cobb"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_cobb across scenes 29 and 30",
+      "prior_unit_id": "inception_unit_29",
+      "current_unit_id": "inception_unit_30"
+    },
+    {
+      "id": "cand_v2_inception_0048",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_japanese"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_japanese across scenes 2 and 7",
+      "prior_unit_id": "inception_unit_2",
+      "current_unit_id": "inception_unit_7"
+    },
+    {
+      "id": "cand_v2_inception_0049",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_slides"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_slides across scenes 2 and 7",
+      "prior_unit_id": "inception_unit_2",
+      "current_unit_id": "inception_unit_7"
+    },
+    {
+      "id": "cand_v2_inception_0050",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_arthur"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_arthur across scenes 30 and 34",
+      "prior_unit_id": "inception_unit_30",
+      "current_unit_id": "inception_unit_34"
+    },
+    {
+      "id": "cand_v2_inception_0051",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cobb"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_cobb across scenes 30 and 36",
+      "prior_unit_id": "inception_unit_30",
+      "current_unit_id": "inception_unit_36"
+    },
+    {
+      "id": "cand_v2_inception_0055",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_hard"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_hard across scenes 34 and 38",
+      "prior_unit_id": "inception_unit_34",
+      "current_unit_id": "inception_unit_38"
+    },
+    {
+      "id": "cand_v2_inception_0057",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_arthur"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_arthur across scenes 35 and 36",
+      "prior_unit_id": "inception_unit_35",
+      "current_unit_id": "inception_unit_36"
+    },
+    {
+      "id": "cand_v2_inception_0058",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_grabs"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_grabs across scenes 35 and 36",
+      "prior_unit_id": "inception_unit_35",
+      "current_unit_id": "inception_unit_36"
+    },
+    {
+      "id": "cand_v2_inception_0059",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_continuous"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_continuous across scenes 35 and 37",
+      "prior_unit_id": "inception_unit_35",
+      "current_unit_id": "inception_unit_37"
+    },
+    {
+      "id": "cand_v2_inception_0060",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cobb"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_cobb across scenes 36 and 37",
+      "prior_unit_id": "inception_unit_36",
+      "current_unit_id": "inception_unit_37"
+    },
+    {
+      "id": "cand_v2_inception_0061",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mombasa"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_mombasa across scenes 36 and 37",
+      "prior_unit_id": "inception_unit_36",
+      "current_unit_id": "inception_unit_37"
+    },
+    {
+      "id": "cand_v2_inception_0062",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_arthur"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_arthur across scenes 36 and 42",
+      "prior_unit_id": "inception_unit_36",
+      "current_unit_id": "inception_unit_42"
+    },
+    {
+      "id": "cand_v2_inception_0064",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cobb"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_cobb across scenes 37 and 38",
+      "prior_unit_id": "inception_unit_37",
+      "current_unit_id": "inception_unit_38"
+    },
+    {
+      "id": "cand_v2_inception_0065",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_continuous"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_continuous across scenes 37 and 38",
+      "prior_unit_id": "inception_unit_37",
+      "current_unit_id": "inception_unit_38"
+    },
+    {
+      "id": "cand_v2_inception_0066",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mombasa"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_mombasa across scenes 37 and 38",
+      "prior_unit_id": "inception_unit_37",
+      "current_unit_id": "inception_unit_38"
+    },
+    {
+      "id": "cand_v2_inception_0067",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_street"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_street across scenes 37 and 38",
+      "prior_unit_id": "inception_unit_37",
+      "current_unit_id": "inception_unit_38"
+    },
+    {
+      "id": "cand_v2_inception_0068",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_coffee"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_coffee across scenes 37 and 40",
+      "prior_unit_id": "inception_unit_37",
+      "current_unit_id": "inception_unit_40"
+    },
+    {
+      "id": "cand_v2_inception_0069",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_later"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_later across scenes 37 and 40",
+      "prior_unit_id": "inception_unit_37",
+      "current_unit_id": "inception_unit_40"
+    },
+    {
+      "id": "cand_v2_inception_0070",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mombasa"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_mombasa across scenes 38 and 42",
+      "prior_unit_id": "inception_unit_38",
+      "current_unit_id": "inception_unit_42"
+    },
+    {
+      "id": "cand_v2_inception_0071",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cobb"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_cobb across scenes 38 and 44",
+      "prior_unit_id": "inception_unit_38",
+      "current_unit_id": "inception_unit_44"
+    },
+    {
+      "id": "cand_v2_inception_0074",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mombasa"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_mombasa across scenes 42 and 44",
+      "prior_unit_id": "inception_unit_42",
+      "current_unit_id": "inception_unit_44"
+    },
+    {
+      "id": "cand_v2_inception_0075",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_arthur"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_arthur across scenes 42 and 50",
+      "prior_unit_id": "inception_unit_42",
+      "current_unit_id": "inception_unit_50"
+    },
+    {
+      "id": "cand_v2_inception_0076",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_continuous"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_continuous across scenes 44 and 46",
+      "prior_unit_id": "inception_unit_44",
+      "current_unit_id": "inception_unit_46"
+    },
+    {
+      "id": "cand_v2_inception_0077",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_pharmacy"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_pharmacy across scenes 44 and 46",
+      "prior_unit_id": "inception_unit_44",
+      "current_unit_id": "inception_unit_46"
+    },
+    {
+      "id": "cand_v2_inception_0078",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cobb"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_cobb across scenes 44 and 50",
+      "prior_unit_id": "inception_unit_44",
+      "current_unit_id": "inception_unit_50"
+    },
+    {
+      "id": "cand_v2_inception_0079",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cobb"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_cobb across scenes 46 and 47",
+      "prior_unit_id": "inception_unit_46",
+      "current_unit_id": "inception_unit_47"
+    },
+    {
+      "id": "cand_v2_inception_0080",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_continuous"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_continuous across scenes 46 and 47",
+      "prior_unit_id": "inception_unit_46",
+      "current_unit_id": "inception_unit_47"
+    },
+    {
+      "id": "cand_v2_inception_0082",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_pharmacy"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_pharmacy across scenes 46 and 47",
+      "prior_unit_id": "inception_unit_46",
+      "current_unit_id": "inception_unit_47"
+    },
+    {
+      "id": "cand_v2_inception_0083",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cobb"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_cobb across scenes 47 and 48",
+      "prior_unit_id": "inception_unit_47",
+      "current_unit_id": "inception_unit_48"
+    },
+    {
+      "id": "cand_v2_inception_0084",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_continuous"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_continuous across scenes 47 and 48",
+      "prior_unit_id": "inception_unit_47",
+      "current_unit_id": "inception_unit_48"
+    },
+    {
+      "id": "cand_v2_inception_0085",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_bathroom"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_bathroom across scenes 47 and 54",
+      "prior_unit_id": "inception_unit_47",
+      "current_unit_id": "inception_unit_54"
+    },
+    {
+      "id": "cand_v2_inception_0086",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_sleeping"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_sleeping across scenes 47 and 56",
+      "prior_unit_id": "inception_unit_47",
+      "current_unit_id": "inception_unit_56"
+    },
+    {
+      "id": "cand_v2_inception_0087",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_blowing"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_blowing across scenes 48 and 50",
+      "prior_unit_id": "inception_unit_48",
+      "current_unit_id": "inception_unit_50"
+    },
+    {
+      "id": "cand_v2_inception_0088",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cobb"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_cobb across scenes 48 and 51",
+      "prior_unit_id": "inception_unit_48",
+      "current_unit_id": "inception_unit_51"
+    },
+    {
+      "id": "cand_v2_inception_0089",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_continuous"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_continuous across scenes 48 and 53",
+      "prior_unit_id": "inception_unit_48",
+      "current_unit_id": "inception_unit_53"
+    },
+    {
+      "id": "cand_v2_inception_0091",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_arthur"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_arthur across scenes 50 and 51",
+      "prior_unit_id": "inception_unit_50",
+      "current_unit_id": "inception_unit_51"
+    },
+    {
+      "id": "cand_v2_inception_0092",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cobb"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_cobb across scenes 50 and 55",
+      "prior_unit_id": "inception_unit_50",
+      "current_unit_id": "inception_unit_55"
+    },
+    {
+      "id": "cand_v2_inception_0093",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_arthur"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_arthur across scenes 51 and 55",
+      "prior_unit_id": "inception_unit_51",
+      "current_unit_id": "inception_unit_55"
+    },
+    {
+      "id": "cand_v2_inception_0094",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_continuous"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_continuous across scenes 53 and 54",
+      "prior_unit_id": "inception_unit_53",
+      "current_unit_id": "inception_unit_54"
+    },
+    {
+      "id": "cand_v2_inception_0095",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_workshop"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_workshop across scenes 54 and 57",
+      "prior_unit_id": "inception_unit_54",
+      "current_unit_id": "inception_unit_57"
+    },
+    {
+      "id": "cand_v2_inception_0096",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_continuous"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_continuous across scenes 54 and 59",
+      "prior_unit_id": "inception_unit_54",
+      "current_unit_id": "inception_unit_59"
+    },
+    {
+      "id": "cand_v2_inception_0097",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_arthur"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_arthur across scenes 55 and 56",
+      "prior_unit_id": "inception_unit_55",
+      "current_unit_id": "inception_unit_56"
+    },
+    {
+      "id": "cand_v2_inception_0098",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cobb"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_cobb across scenes 55 and 56",
+      "prior_unit_id": "inception_unit_55",
+      "current_unit_id": "inception_unit_56"
+    },
+    {
+      "id": "cand_v2_inception_0100",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_lobby"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_lobby across scenes 55 and 56",
+      "prior_unit_id": "inception_unit_55",
+      "current_unit_id": "inception_unit_56"
+    },
+    {
+      "id": "cand_v2_inception_0101",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cobb"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_cobb across scenes 56 and 57",
+      "prior_unit_id": "inception_unit_56",
+      "current_unit_id": "inception_unit_57"
+    },
+    {
+      "id": "cand_v2_inception_0102",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_more"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_more across scenes 56 and 57",
+      "prior_unit_id": "inception_unit_56",
+      "current_unit_id": "inception_unit_57"
+    },
+    {
+      "id": "cand_v2_inception_0103",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_sleeping"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_sleeping across scenes 56 and 58",
+      "prior_unit_id": "inception_unit_56",
+      "current_unit_id": "inception_unit_58"
+    },
+    {
+      "id": "cand_v2_inception_0104",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_ariadne"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_ariadne across scenes 57 and 58",
+      "prior_unit_id": "inception_unit_57",
+      "current_unit_id": "inception_unit_58"
+    },
+    {
+      "id": "cand_v2_inception_0105",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cobb"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_cobb across scenes 57 and 58",
+      "prior_unit_id": "inception_unit_57",
+      "current_unit_id": "inception_unit_58"
+    },
+    {
+      "id": "cand_v2_inception_0106",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_workshop"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_workshop across scenes 57 and 58",
+      "prior_unit_id": "inception_unit_57",
+      "current_unit_id": "inception_unit_58"
+    },
+    {
+      "id": "cand_v2_inception_0107",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cobb"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_cobb across scenes 57 and 60",
+      "prior_unit_id": "inception_unit_57",
+      "current_unit_id": "inception_unit_60"
+    },
+    {
+      "id": "cand_v2_inception_0109",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cage"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_cage across scenes 59 and 60",
+      "prior_unit_id": "inception_unit_59",
+      "current_unit_id": "inception_unit_60"
+    },
+    {
+      "id": "cand_v2_inception_0110",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_continuous"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_continuous across scenes 59 and 60",
+      "prior_unit_id": "inception_unit_59",
+      "current_unit_id": "inception_unit_60"
+    },
+    {
+      "id": "cand_v2_inception_0111",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_style"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_style across scenes 59 and 60",
+      "prior_unit_id": "inception_unit_59",
+      "current_unit_id": "inception_unit_60"
+    },
+    {
+      "id": "cand_v2_inception_0112",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_nash"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_nash across scenes 5 and 10",
+      "prior_unit_id": "inception_unit_5",
+      "current_unit_id": "inception_unit_10"
+    },
+    {
+      "id": "cand_v2_inception_0113",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_briefcase"
+      ],
+      "attribute": "possession.briefcase",
+      "description": "Potential possession_machine conflict for character_briefcase across scenes 5 and 13",
+      "prior_unit_id": "inception_unit_5",
+      "current_unit_id": "inception_unit_13"
+    },
+    {
+      "id": "cand_v2_inception_0114",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_silver"
+      ],
+      "attribute": "possession.briefcase",
+      "description": "Potential possession_machine conflict for character_silver across scenes 5 and 13",
+      "prior_unit_id": "inception_unit_5",
+      "current_unit_id": "inception_unit_13"
+    },
+    {
+      "id": "cand_v2_inception_0116",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_continuous"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_continuous across scenes 5 and 7",
+      "prior_unit_id": "inception_unit_5",
+      "current_unit_id": "inception_unit_7"
+    },
+    {
+      "id": "cand_v2_inception_0118",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_black"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_black across scenes 6 and 7",
+      "prior_unit_id": "inception_unit_6",
+      "current_unit_id": "inception_unit_7"
+    },
+    {
+      "id": "cand_v2_inception_0119",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cobb"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_cobb across scenes 6 and 7",
+      "prior_unit_id": "inception_unit_6",
+      "current_unit_id": "inception_unit_7"
+    },
+    {
+      "id": "cand_v2_inception_0120",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_continuous"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_continuous across scenes 7 and 8",
+      "prior_unit_id": "inception_unit_7",
+      "current_unit_id": "inception_unit_8"
+    },
+    {
+      "id": "cand_v2_inception_0121",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_slides"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_slides across scenes 7 and 9",
+      "prior_unit_id": "inception_unit_7",
+      "current_unit_id": "inception_unit_9"
+    },
+    {
+      "id": "cand_v2_inception_0122",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_continuous"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_continuous across scenes 8 and 10",
+      "prior_unit_id": "inception_unit_8",
+      "current_unit_id": "inception_unit_10"
+    },
+    {
+      "id": "cand_v2_inception_0124",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_grabs"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_grabs across scenes 8 and 9",
+      "prior_unit_id": "inception_unit_8",
+      "current_unit_id": "inception_unit_9"
+    },
+    {
+      "id": "cand_v2_inception_0125",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_grabs"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_grabs across scenes 9 and 10",
+      "prior_unit_id": "inception_unit_9",
+      "current_unit_id": "inception_unit_10"
+    },
+    {
+      "id": "cand_v2_inception_0126",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_grabs"
+      ],
+      "attribute": "possession.gun",
+      "description": "Potential possession_machine conflict for character_grabs across scenes 9 and 14",
+      "prior_unit_id": "inception_unit_9",
+      "current_unit_id": "inception_unit_14"
+    },
+    {
+      "id": "cand_v2_inception_0127",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_massive"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_massive across scenes 9 and 14",
+      "prior_unit_id": "inception_unit_9",
+      "current_unit_id": "inception_unit_14"
+    },
+    {
+      "id": "cand_v2_inception_fp_000",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_0"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_0",
+      "prior_unit_id": "inception_unit_1",
+      "current_unit_id": "inception_unit_2"
+    },
+    {
+      "id": "cand_v2_inception_fp_001",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_1"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_1",
+      "prior_unit_id": "inception_unit_2",
+      "current_unit_id": "inception_unit_3"
+    },
+    {
+      "id": "cand_v2_inception_fp_002",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_2"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_2",
+      "prior_unit_id": "inception_unit_3",
+      "current_unit_id": "inception_unit_4"
+    },
+    {
+      "id": "cand_v2_inception_fp_003",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_3"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_3",
+      "prior_unit_id": "inception_unit_4",
+      "current_unit_id": "inception_unit_5"
+    },
+    {
+      "id": "cand_v2_inception_fp_004",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_4"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_4",
+      "prior_unit_id": "inception_unit_5",
+      "current_unit_id": "inception_unit_6"
+    },
+    {
+      "id": "cand_v2_inception_fp_005",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_5"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_5",
+      "prior_unit_id": "inception_unit_6",
+      "current_unit_id": "inception_unit_7"
+    },
+    {
+      "id": "cand_v2_inception_fp_006",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_6"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_6",
+      "prior_unit_id": "inception_unit_7",
+      "current_unit_id": "inception_unit_8"
+    },
+    {
+      "id": "cand_v2_inception_fp_007",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_7"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_7",
+      "prior_unit_id": "inception_unit_8",
+      "current_unit_id": "inception_unit_9"
+    },
+    {
+      "id": "cand_v2_inception_fp_008",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_8"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_8",
+      "prior_unit_id": "inception_unit_9",
+      "current_unit_id": "inception_unit_10"
+    },
+    {
+      "id": "cand_v2_inception_fp_009",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_9"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_9",
+      "prior_unit_id": "inception_unit_10",
+      "current_unit_id": "inception_unit_11"
+    },
+    {
+      "id": "cand_v2_inception_fp_010",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_10"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_10",
+      "prior_unit_id": "inception_unit_11",
+      "current_unit_id": "inception_unit_12"
+    },
+    {
+      "id": "cand_v2_inception_fp_011",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_11"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_11",
+      "prior_unit_id": "inception_unit_12",
+      "current_unit_id": "inception_unit_13"
+    },
+    {
+      "id": "cand_v2_inception_fp_012",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_12"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_12",
+      "prior_unit_id": "inception_unit_13",
+      "current_unit_id": "inception_unit_14"
+    },
+    {
+      "id": "cand_v2_inception_fp_013",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_13"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_13",
+      "prior_unit_id": "inception_unit_14",
+      "current_unit_id": "inception_unit_15"
+    },
+    {
+      "id": "cand_v2_inception_fp_014",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_14"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_14",
+      "prior_unit_id": "inception_unit_15",
+      "current_unit_id": "inception_unit_16"
+    },
+    {
+      "id": "cand_v2_inception_fp_015",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_15"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_15",
+      "prior_unit_id": "inception_unit_16",
+      "current_unit_id": "inception_unit_17"
+    },
+    {
+      "id": "cand_v2_inception_fp_016",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_16"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_16",
+      "prior_unit_id": "inception_unit_17",
+      "current_unit_id": "inception_unit_18"
+    },
+    {
+      "id": "cand_v2_inception_fp_017",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_17"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_17",
+      "prior_unit_id": "inception_unit_18",
+      "current_unit_id": "inception_unit_19"
+    },
+    {
+      "id": "cand_v2_inception_fp_018",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_18"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_18",
+      "prior_unit_id": "inception_unit_19",
+      "current_unit_id": "inception_unit_20"
+    },
+    {
+      "id": "cand_v2_inception_fp_019",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_19"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_19",
+      "prior_unit_id": "inception_unit_20",
+      "current_unit_id": "inception_unit_21"
+    },
+    {
+      "id": "cand_v2_inception_fp_020",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_20"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_20",
+      "prior_unit_id": "inception_unit_21",
+      "current_unit_id": "inception_unit_22"
+    },
+    {
+      "id": "cand_v2_inception_fp_021",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_21"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_21",
+      "prior_unit_id": "inception_unit_22",
+      "current_unit_id": "inception_unit_23"
+    },
+    {
+      "id": "cand_v2_inception_fp_022",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_22"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_22",
+      "prior_unit_id": "inception_unit_23",
+      "current_unit_id": "inception_unit_24"
+    },
+    {
+      "id": "cand_v2_inception_fp_023",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_23"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_23",
+      "prior_unit_id": "inception_unit_24",
+      "current_unit_id": "inception_unit_25"
+    },
+    {
+      "id": "cand_v2_inception_fp_024",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_24"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_24",
+      "prior_unit_id": "inception_unit_25",
+      "current_unit_id": "inception_unit_26"
+    },
+    {
+      "id": "cand_v2_inception_fp_025",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_25"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_25",
+      "prior_unit_id": "inception_unit_26",
+      "current_unit_id": "inception_unit_27"
+    },
+    {
+      "id": "cand_v2_inception_fp_026",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_26"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_26",
+      "prior_unit_id": "inception_unit_27",
+      "current_unit_id": "inception_unit_28"
+    },
+    {
+      "id": "cand_v2_inception_fp_027",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_27"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_27",
+      "prior_unit_id": "inception_unit_28",
+      "current_unit_id": "inception_unit_29"
+    },
+    {
+      "id": "cand_v2_inception_fp_028",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_28"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_28",
+      "prior_unit_id": "inception_unit_29",
+      "current_unit_id": "inception_unit_30"
+    },
+    {
+      "id": "cand_v2_inception_fp_029",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_29"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_29",
+      "prior_unit_id": "inception_unit_30",
+      "current_unit_id": "inception_unit_31"
+    },
+    {
+      "id": "cand_v2_inception_fp_030",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_30"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_30",
+      "prior_unit_id": "inception_unit_31",
+      "current_unit_id": "inception_unit_32"
+    },
+    {
+      "id": "cand_v2_inception_fp_031",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_31"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_31",
+      "prior_unit_id": "inception_unit_32",
+      "current_unit_id": "inception_unit_33"
+    },
+    {
+      "id": "cand_v2_inception_fp_032",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_32"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_32",
+      "prior_unit_id": "inception_unit_33",
+      "current_unit_id": "inception_unit_34"
+    }
+  ]
+}

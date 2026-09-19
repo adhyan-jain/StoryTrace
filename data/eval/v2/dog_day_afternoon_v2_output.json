@@ -1,0 +1,1191 @@
+{
+  "film_slug": "dog_day_afternoon",
+  "story_universe_id": "v2_dog_day_afternoon",
+  "unit_count": 100,
+  "state_event_count": 164,
+  "co_presence_count": 82,
+  "candidate_count": 41,
+  "verdict_distribution": {
+    "verified_hard_conflict": 20,
+    "verified_narrative_anomaly": 11,
+    "resolved": 10,
+    "uncertain": 0
+  },
+  "surfaced_findings_count": 31,
+  "total_tool_calls": 123,
+  "avg_tool_calls_per_candidate": 3.0,
+  "timings": {
+    "extraction_sec": 18.45,
+    "detection_sec": 0.08,
+    "investigation_sec": 26.65,
+    "total_runtime_sec": 48.38
+  },
+  "findings": [
+    {
+      "candidate_id": "cand_v2_dog_day_afternoon_0001",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_phone"
+      ],
+      "entity_id": "character_phone",
+      "attribute": "possession.phone",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_phone transitions from scene 15 to 17 with contradictory possession.phone.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_phone between scenes 15 and 17.",
+      "prior_unit_id": "dog_day_afternoon_unit_15",
+      "prior_excerpt": "character_phone is present at established state.",
+      "current_unit_id": "dog_day_afternoon_unit_17",
+      "current_excerpt": "character_phone appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_dog_day_afternoon_0002",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_ring"
+      ],
+      "entity_id": "character_ring",
+      "attribute": "possession.phone",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_ring transitions from scene 15 to 17 with contradictory possession.phone.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_ring between scenes 15 and 17.",
+      "prior_unit_id": "dog_day_afternoon_unit_15",
+      "prior_excerpt": "character_ring is present at established state.",
+      "current_unit_id": "dog_day_afternoon_unit_17",
+      "current_excerpt": "character_ring appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_dog_day_afternoon_0003",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_starts"
+      ],
+      "entity_id": "character_starts",
+      "attribute": "possession.phone",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_starts transitions from scene 15 to 30 with contradictory possession.phone.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_starts between scenes 15 and 30.",
+      "prior_unit_id": "dog_day_afternoon_unit_15",
+      "prior_excerpt": "character_starts is present at established state.",
+      "current_unit_id": "dog_day_afternoon_unit_30",
+      "current_excerpt": "character_starts appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_dog_day_afternoon_0004",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_phone"
+      ],
+      "entity_id": "character_phone",
+      "attribute": "possession.phone",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_phone transitions from scene 17 to 18 with contradictory possession.phone.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_phone between scenes 17 and 18.",
+      "prior_unit_id": "dog_day_afternoon_unit_17",
+      "prior_excerpt": "character_phone is present at established state.",
+      "current_unit_id": "dog_day_afternoon_unit_18",
+      "current_excerpt": "character_phone appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_dog_day_afternoon_0005",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_again"
+      ],
+      "entity_id": "character_again",
+      "attribute": "possession.phone",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_again transitions from scene 17 to 24 with contradictory possession.phone.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_again between scenes 17 and 24.",
+      "prior_unit_id": "dog_day_afternoon_unit_17",
+      "prior_excerpt": "character_again is present at established state.",
+      "current_unit_id": "dog_day_afternoon_unit_24",
+      "current_excerpt": "character_again appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_dog_day_afternoon_0006",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_begins"
+      ],
+      "entity_id": "character_begins",
+      "attribute": "possession.phone",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_begins transitions from scene 17 to 24 with contradictory possession.phone.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_begins between scenes 17 and 24.",
+      "prior_unit_id": "dog_day_afternoon_unit_17",
+      "prior_excerpt": "character_begins is present at established state.",
+      "current_unit_id": "dog_day_afternoon_unit_24",
+      "current_excerpt": "character_begins appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_dog_day_afternoon_0007",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_ring"
+      ],
+      "entity_id": "character_ring",
+      "attribute": "possession.phone",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_ring transitions from scene 17 to 24 with contradictory possession.phone.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_ring between scenes 17 and 24.",
+      "prior_unit_id": "dog_day_afternoon_unit_17",
+      "prior_excerpt": "character_ring is present at established state.",
+      "current_unit_id": "dog_day_afternoon_unit_24",
+      "current_excerpt": "character_ring appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_dog_day_afternoon_0008",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_phone"
+      ],
+      "entity_id": "character_phone",
+      "attribute": "possession.phone",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_phone transitions from scene 18 to 24 with contradictory possession.phone.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_phone between scenes 18 and 24.",
+      "prior_unit_id": "dog_day_afternoon_unit_18",
+      "prior_excerpt": "character_phone is present at established state.",
+      "current_unit_id": "dog_day_afternoon_unit_24",
+      "current_excerpt": "character_phone appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_dog_day_afternoon_0009",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_mulvaney"
+      ],
+      "entity_id": "character_mulvaney",
+      "attribute": "possession.phone",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_mulvaney transitions from scene 18 to 25 with contradictory possession.phone.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_mulvaney between scenes 18 and 25.",
+      "prior_unit_id": "dog_day_afternoon_unit_18",
+      "prior_excerpt": "character_mulvaney is present at established state.",
+      "current_unit_id": "dog_day_afternoon_unit_25",
+      "current_excerpt": "character_mulvaney appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_dog_day_afternoon_0010",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_announcer"
+      ],
+      "entity_id": "character_announcer",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_announcer transitions from scene 1 to 2 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_announcer between scenes 1 and 2.",
+      "prior_unit_id": "dog_day_afternoon_unit_1",
+      "prior_excerpt": "character_announcer is present at established state.",
+      "current_unit_id": "dog_day_afternoon_unit_2",
+      "current_excerpt": "character_announcer appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_dog_day_afternoon_0011",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_shot"
+      ],
+      "entity_id": "character_shot",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_shot transitions from scene 1 to 9 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_shot between scenes 1 and 9.",
+      "prior_unit_id": "dog_day_afternoon_unit_1",
+      "prior_excerpt": "character_shot is present at established state.",
+      "current_unit_id": "dog_day_afternoon_unit_9",
+      "current_excerpt": "character_shot appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_dog_day_afternoon_0012",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_phone"
+      ],
+      "entity_id": "character_phone",
+      "attribute": "possession.phone",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_phone transitions from scene 24 to 25 with contradictory possession.phone.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_phone between scenes 24 and 25.",
+      "prior_unit_id": "dog_day_afternoon_unit_24",
+      "prior_excerpt": "character_phone is present at established state.",
+      "current_unit_id": "dog_day_afternoon_unit_25",
+      "current_excerpt": "character_phone appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_dog_day_afternoon_0013",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_again"
+      ],
+      "entity_id": "character_again",
+      "attribute": "possession.phone",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_again transitions from scene 24 to 27 with contradictory possession.phone.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_again between scenes 24 and 27.",
+      "prior_unit_id": "dog_day_afternoon_unit_24",
+      "prior_excerpt": "character_again is present at established state.",
+      "current_unit_id": "dog_day_afternoon_unit_27",
+      "current_excerpt": "character_again appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_dog_day_afternoon_0014",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_ring"
+      ],
+      "entity_id": "character_ring",
+      "attribute": "possession.phone",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_ring transitions from scene 24 to 30 with contradictory possession.phone.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_ring between scenes 24 and 30.",
+      "prior_unit_id": "dog_day_afternoon_unit_24",
+      "prior_excerpt": "character_ring is present at established state.",
+      "current_unit_id": "dog_day_afternoon_unit_30",
+      "current_excerpt": "character_ring appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_dog_day_afternoon_0016",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_phone"
+      ],
+      "entity_id": "character_phone",
+      "attribute": "possession.phone",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_phone transitions from scene 25 to 27 with contradictory possession.phone.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_phone between scenes 25 and 27.",
+      "prior_unit_id": "dog_day_afternoon_unit_25",
+      "prior_excerpt": "character_phone is present at established state.",
+      "current_unit_id": "dog_day_afternoon_unit_27",
+      "current_excerpt": "character_phone appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_dog_day_afternoon_0017",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_phone"
+      ],
+      "entity_id": "character_phone",
+      "attribute": "possession.phone",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_phone transitions from scene 27 to 30 with contradictory possession.phone.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_phone between scenes 27 and 30.",
+      "prior_unit_id": "dog_day_afternoon_unit_27",
+      "prior_excerpt": "character_phone is present at established state.",
+      "current_unit_id": "dog_day_afternoon_unit_30",
+      "current_excerpt": "character_phone appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_dog_day_afternoon_0020",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_phone"
+      ],
+      "entity_id": "character_phone",
+      "attribute": "possession.phone",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_phone transitions from scene 30 to 31 with contradictory possession.phone.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_phone between scenes 30 and 31.",
+      "prior_unit_id": "dog_day_afternoon_unit_30",
+      "prior_excerpt": "character_phone is present at established state.",
+      "current_unit_id": "dog_day_afternoon_unit_31",
+      "current_excerpt": "character_phone appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_dog_day_afternoon_0021",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_ring"
+      ],
+      "entity_id": "character_ring",
+      "attribute": "possession.phone",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_ring transitions from scene 30 to 31 with contradictory possession.phone.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_ring between scenes 30 and 31.",
+      "prior_unit_id": "dog_day_afternoon_unit_30",
+      "prior_excerpt": "character_ring is present at established state.",
+      "current_unit_id": "dog_day_afternoon_unit_31",
+      "current_excerpt": "character_ring appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_dog_day_afternoon_0022",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_starts"
+      ],
+      "entity_id": "character_starts",
+      "attribute": "possession.phone",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_starts transitions from scene 30 to 45 with contradictory possession.phone.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_starts between scenes 30 and 45.",
+      "prior_unit_id": "dog_day_afternoon_unit_30",
+      "prior_excerpt": "character_starts is present at established state.",
+      "current_unit_id": "dog_day_afternoon_unit_45",
+      "current_excerpt": "character_starts appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_dog_day_afternoon_0023",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_phone"
+      ],
+      "entity_id": "character_phone",
+      "attribute": "possession.phone",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_phone transitions from scene 31 to 44 with contradictory possession.phone.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_phone between scenes 31 and 44.",
+      "prior_unit_id": "dog_day_afternoon_unit_31",
+      "prior_excerpt": "character_phone is present at established state.",
+      "current_unit_id": "dog_day_afternoon_unit_44",
+      "current_excerpt": "character_phone appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_dog_day_afternoon_0024",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_ring"
+      ],
+      "entity_id": "character_ring",
+      "attribute": "possession.phone",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_ring transitions from scene 31 to 45 with contradictory possession.phone.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_ring between scenes 31 and 45.",
+      "prior_unit_id": "dog_day_afternoon_unit_31",
+      "prior_excerpt": "character_ring is present at established state.",
+      "current_unit_id": "dog_day_afternoon_unit_45",
+      "current_excerpt": "character_ring appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_dog_day_afternoon_0027",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_cop"
+      ],
+      "entity_id": "character_cop",
+      "attribute": "possession.phone",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_cop transitions from scene 43 to 44 with contradictory possession.phone.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_cop between scenes 43 and 44.",
+      "prior_unit_id": "dog_day_afternoon_unit_43",
+      "prior_excerpt": "character_cop is present at established state.",
+      "current_unit_id": "dog_day_afternoon_unit_44",
+      "current_excerpt": "character_cop appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_dog_day_afternoon_0028",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_moretti"
+      ],
+      "entity_id": "character_moretti",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_moretti transitions from scene 43 to 44 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_moretti between scenes 43 and 44.",
+      "prior_unit_id": "dog_day_afternoon_unit_43",
+      "prior_excerpt": "character_moretti is present at established state.",
+      "current_unit_id": "dog_day_afternoon_unit_44",
+      "current_excerpt": "character_moretti appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_dog_day_afternoon_0031",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_moretti"
+      ],
+      "entity_id": "character_moretti",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_moretti transitions from scene 44 to 56 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_moretti between scenes 44 and 56.",
+      "prior_unit_id": "dog_day_afternoon_unit_44",
+      "prior_excerpt": "character_moretti is present at established state.",
+      "current_unit_id": "dog_day_afternoon_unit_56",
+      "current_excerpt": "character_moretti appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_dog_day_afternoon_0032",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_phone"
+      ],
+      "entity_id": "character_phone",
+      "attribute": "possession.phone",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_phone transitions from scene 45 to 60 with contradictory possession.phone.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_phone between scenes 45 and 60.",
+      "prior_unit_id": "dog_day_afternoon_unit_45",
+      "prior_excerpt": "character_phone is present at established state.",
+      "current_unit_id": "dog_day_afternoon_unit_60",
+      "current_excerpt": "character_phone appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_dog_day_afternoon_0033",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_ring"
+      ],
+      "entity_id": "character_ring",
+      "attribute": "possession.phone",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_ring transitions from scene 45 to 60 with contradictory possession.phone.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_ring between scenes 45 and 60.",
+      "prior_unit_id": "dog_day_afternoon_unit_45",
+      "prior_excerpt": "character_ring is present at established state.",
+      "current_unit_id": "dog_day_afternoon_unit_60",
+      "current_excerpt": "character_ring appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_dog_day_afternoon_0037",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_set"
+      ],
+      "entity_id": "character_set",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_set transitions from scene 56 to 59 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_set between scenes 56 and 59.",
+      "prior_unit_id": "dog_day_afternoon_unit_56",
+      "prior_excerpt": "character_set is present at established state.",
+      "current_unit_id": "dog_day_afternoon_unit_59",
+      "current_excerpt": "character_set appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_dog_day_afternoon_0038",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_bank"
+      ],
+      "entity_id": "character_bank",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_bank transitions from scene 9 to 10 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_bank between scenes 9 and 10.",
+      "prior_unit_id": "dog_day_afternoon_unit_9",
+      "prior_excerpt": "character_bank is present at established state.",
+      "current_unit_id": "dog_day_afternoon_unit_10",
+      "current_excerpt": "character_bank appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_dog_day_afternoon_0039",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_jackie"
+      ],
+      "entity_id": "character_jackie",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_jackie transitions from scene 9 to 10 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_jackie between scenes 9 and 10.",
+      "prior_unit_id": "dog_day_afternoon_unit_9",
+      "prior_excerpt": "character_jackie is present at established state.",
+      "current_unit_id": "dog_day_afternoon_unit_10",
+      "current_excerpt": "character_jackie appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_dog_day_afternoon_fp_000",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_0"
+      ],
+      "entity_id": "Background_Char_0",
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.65,
+      "explanation": "Ambiguous background extra movement.",
+      "suggested_fix": "Clarify staging.",
+      "prior_unit_id": "dog_day_afternoon_unit_1",
+      "prior_excerpt": "Background extra visible.",
+      "current_unit_id": "dog_day_afternoon_unit_2",
+      "current_excerpt": "Background extra relocated.",
+      "investigation_actions": [
+        "get_spatial_trajectory",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_dog_day_afternoon_fp_008",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_8"
+      ],
+      "entity_id": "Background_Char_8",
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.65,
+      "explanation": "Ambiguous background extra movement.",
+      "suggested_fix": "Clarify staging.",
+      "prior_unit_id": "dog_day_afternoon_unit_9",
+      "prior_excerpt": "Background extra visible.",
+      "current_unit_id": "dog_day_afternoon_unit_10",
+      "current_excerpt": "Background extra relocated.",
+      "investigation_actions": [
+        "get_spatial_trajectory",
+        "get_unit_text",
+        "finish"
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "cand_v2_dog_day_afternoon_0001",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_phone"
+      ],
+      "attribute": "possession.phone",
+      "description": "Potential possession_machine conflict for character_phone across scenes 15 and 17",
+      "prior_unit_id": "dog_day_afternoon_unit_15",
+      "current_unit_id": "dog_day_afternoon_unit_17"
+    },
+    {
+      "id": "cand_v2_dog_day_afternoon_0002",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_ring"
+      ],
+      "attribute": "possession.phone",
+      "description": "Potential possession_machine conflict for character_ring across scenes 15 and 17",
+      "prior_unit_id": "dog_day_afternoon_unit_15",
+      "current_unit_id": "dog_day_afternoon_unit_17"
+    },
+    {
+      "id": "cand_v2_dog_day_afternoon_0003",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_starts"
+      ],
+      "attribute": "possession.phone",
+      "description": "Potential possession_machine conflict for character_starts across scenes 15 and 30",
+      "prior_unit_id": "dog_day_afternoon_unit_15",
+      "current_unit_id": "dog_day_afternoon_unit_30"
+    },
+    {
+      "id": "cand_v2_dog_day_afternoon_0004",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_phone"
+      ],
+      "attribute": "possession.phone",
+      "description": "Potential possession_machine conflict for character_phone across scenes 17 and 18",
+      "prior_unit_id": "dog_day_afternoon_unit_17",
+      "current_unit_id": "dog_day_afternoon_unit_18"
+    },
+    {
+      "id": "cand_v2_dog_day_afternoon_0005",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_again"
+      ],
+      "attribute": "possession.phone",
+      "description": "Potential possession_machine conflict for character_again across scenes 17 and 24",
+      "prior_unit_id": "dog_day_afternoon_unit_17",
+      "current_unit_id": "dog_day_afternoon_unit_24"
+    },
+    {
+      "id": "cand_v2_dog_day_afternoon_0006",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_begins"
+      ],
+      "attribute": "possession.phone",
+      "description": "Potential possession_machine conflict for character_begins across scenes 17 and 24",
+      "prior_unit_id": "dog_day_afternoon_unit_17",
+      "current_unit_id": "dog_day_afternoon_unit_24"
+    },
+    {
+      "id": "cand_v2_dog_day_afternoon_0007",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_ring"
+      ],
+      "attribute": "possession.phone",
+      "description": "Potential possession_machine conflict for character_ring across scenes 17 and 24",
+      "prior_unit_id": "dog_day_afternoon_unit_17",
+      "current_unit_id": "dog_day_afternoon_unit_24"
+    },
+    {
+      "id": "cand_v2_dog_day_afternoon_0008",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_phone"
+      ],
+      "attribute": "possession.phone",
+      "description": "Potential possession_machine conflict for character_phone across scenes 18 and 24",
+      "prior_unit_id": "dog_day_afternoon_unit_18",
+      "current_unit_id": "dog_day_afternoon_unit_24"
+    },
+    {
+      "id": "cand_v2_dog_day_afternoon_0009",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_mulvaney"
+      ],
+      "attribute": "possession.phone",
+      "description": "Potential possession_machine conflict for character_mulvaney across scenes 18 and 25",
+      "prior_unit_id": "dog_day_afternoon_unit_18",
+      "current_unit_id": "dog_day_afternoon_unit_25"
+    },
+    {
+      "id": "cand_v2_dog_day_afternoon_0010",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_announcer"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_announcer across scenes 1 and 2",
+      "prior_unit_id": "dog_day_afternoon_unit_1",
+      "current_unit_id": "dog_day_afternoon_unit_2"
+    },
+    {
+      "id": "cand_v2_dog_day_afternoon_0011",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_shot"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_shot across scenes 1 and 9",
+      "prior_unit_id": "dog_day_afternoon_unit_1",
+      "current_unit_id": "dog_day_afternoon_unit_9"
+    },
+    {
+      "id": "cand_v2_dog_day_afternoon_0012",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_phone"
+      ],
+      "attribute": "possession.phone",
+      "description": "Potential possession_machine conflict for character_phone across scenes 24 and 25",
+      "prior_unit_id": "dog_day_afternoon_unit_24",
+      "current_unit_id": "dog_day_afternoon_unit_25"
+    },
+    {
+      "id": "cand_v2_dog_day_afternoon_0013",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_again"
+      ],
+      "attribute": "possession.phone",
+      "description": "Potential possession_machine conflict for character_again across scenes 24 and 27",
+      "prior_unit_id": "dog_day_afternoon_unit_24",
+      "current_unit_id": "dog_day_afternoon_unit_27"
+    },
+    {
+      "id": "cand_v2_dog_day_afternoon_0014",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_ring"
+      ],
+      "attribute": "possession.phone",
+      "description": "Potential possession_machine conflict for character_ring across scenes 24 and 30",
+      "prior_unit_id": "dog_day_afternoon_unit_24",
+      "current_unit_id": "dog_day_afternoon_unit_30"
+    },
+    {
+      "id": "cand_v2_dog_day_afternoon_0015",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_begins"
+      ],
+      "attribute": "possession.phone",
+      "description": "Potential possession_machine conflict for character_begins across scenes 24 and 60",
+      "prior_unit_id": "dog_day_afternoon_unit_24",
+      "current_unit_id": "dog_day_afternoon_unit_60"
+    },
+    {
+      "id": "cand_v2_dog_day_afternoon_0016",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_phone"
+      ],
+      "attribute": "possession.phone",
+      "description": "Potential possession_machine conflict for character_phone across scenes 25 and 27",
+      "prior_unit_id": "dog_day_afternoon_unit_25",
+      "current_unit_id": "dog_day_afternoon_unit_27"
+    },
+    {
+      "id": "cand_v2_dog_day_afternoon_0017",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_phone"
+      ],
+      "attribute": "possession.phone",
+      "description": "Potential possession_machine conflict for character_phone across scenes 27 and 30",
+      "prior_unit_id": "dog_day_afternoon_unit_27",
+      "current_unit_id": "dog_day_afternoon_unit_30"
+    },
+    {
+      "id": "cand_v2_dog_day_afternoon_0020",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_phone"
+      ],
+      "attribute": "possession.phone",
+      "description": "Potential possession_machine conflict for character_phone across scenes 30 and 31",
+      "prior_unit_id": "dog_day_afternoon_unit_30",
+      "current_unit_id": "dog_day_afternoon_unit_31"
+    },
+    {
+      "id": "cand_v2_dog_day_afternoon_0021",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_ring"
+      ],
+      "attribute": "possession.phone",
+      "description": "Potential possession_machine conflict for character_ring across scenes 30 and 31",
+      "prior_unit_id": "dog_day_afternoon_unit_30",
+      "current_unit_id": "dog_day_afternoon_unit_31"
+    },
+    {
+      "id": "cand_v2_dog_day_afternoon_0022",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_starts"
+      ],
+      "attribute": "possession.phone",
+      "description": "Potential possession_machine conflict for character_starts across scenes 30 and 45",
+      "prior_unit_id": "dog_day_afternoon_unit_30",
+      "current_unit_id": "dog_day_afternoon_unit_45"
+    },
+    {
+      "id": "cand_v2_dog_day_afternoon_0023",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_phone"
+      ],
+      "attribute": "possession.phone",
+      "description": "Potential possession_machine conflict for character_phone across scenes 31 and 44",
+      "prior_unit_id": "dog_day_afternoon_unit_31",
+      "current_unit_id": "dog_day_afternoon_unit_44"
+    },
+    {
+      "id": "cand_v2_dog_day_afternoon_0024",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_ring"
+      ],
+      "attribute": "possession.phone",
+      "description": "Potential possession_machine conflict for character_ring across scenes 31 and 45",
+      "prior_unit_id": "dog_day_afternoon_unit_31",
+      "current_unit_id": "dog_day_afternoon_unit_45"
+    },
+    {
+      "id": "cand_v2_dog_day_afternoon_0027",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_cop"
+      ],
+      "attribute": "possession.phone",
+      "description": "Potential possession_machine conflict for character_cop across scenes 43 and 44",
+      "prior_unit_id": "dog_day_afternoon_unit_43",
+      "current_unit_id": "dog_day_afternoon_unit_44"
+    },
+    {
+      "id": "cand_v2_dog_day_afternoon_0028",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_moretti"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_moretti across scenes 43 and 44",
+      "prior_unit_id": "dog_day_afternoon_unit_43",
+      "current_unit_id": "dog_day_afternoon_unit_44"
+    },
+    {
+      "id": "cand_v2_dog_day_afternoon_0030",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_phone"
+      ],
+      "attribute": "possession.phone",
+      "description": "Potential possession_machine conflict for character_phone across scenes 44 and 45",
+      "prior_unit_id": "dog_day_afternoon_unit_44",
+      "current_unit_id": "dog_day_afternoon_unit_45"
+    },
+    {
+      "id": "cand_v2_dog_day_afternoon_0031",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_moretti"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_moretti across scenes 44 and 56",
+      "prior_unit_id": "dog_day_afternoon_unit_44",
+      "current_unit_id": "dog_day_afternoon_unit_56"
+    },
+    {
+      "id": "cand_v2_dog_day_afternoon_0032",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_phone"
+      ],
+      "attribute": "possession.phone",
+      "description": "Potential possession_machine conflict for character_phone across scenes 45 and 60",
+      "prior_unit_id": "dog_day_afternoon_unit_45",
+      "current_unit_id": "dog_day_afternoon_unit_60"
+    },
+    {
+      "id": "cand_v2_dog_day_afternoon_0033",
+      "rule_type": "possession_machine",
+      "entity_ids": [
+        "character_ring"
+      ],
+      "attribute": "possession.phone",
+      "description": "Potential possession_machine conflict for character_ring across scenes 45 and 60",
+      "prior_unit_id": "dog_day_afternoon_unit_45",
+      "current_unit_id": "dog_day_afternoon_unit_60"
+    },
+    {
+      "id": "cand_v2_dog_day_afternoon_0037",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_set"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_set across scenes 56 and 59",
+      "prior_unit_id": "dog_day_afternoon_unit_56",
+      "current_unit_id": "dog_day_afternoon_unit_59"
+    },
+    {
+      "id": "cand_v2_dog_day_afternoon_0038",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_bank"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_bank across scenes 9 and 10",
+      "prior_unit_id": "dog_day_afternoon_unit_9",
+      "current_unit_id": "dog_day_afternoon_unit_10"
+    },
+    {
+      "id": "cand_v2_dog_day_afternoon_0039",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_jackie"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_jackie across scenes 9 and 10",
+      "prior_unit_id": "dog_day_afternoon_unit_9",
+      "current_unit_id": "dog_day_afternoon_unit_10"
+    },
+    {
+      "id": "cand_v2_dog_day_afternoon_fp_000",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_0"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_0",
+      "prior_unit_id": "dog_day_afternoon_unit_1",
+      "current_unit_id": "dog_day_afternoon_unit_2"
+    },
+    {
+      "id": "cand_v2_dog_day_afternoon_fp_001",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_1"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_1",
+      "prior_unit_id": "dog_day_afternoon_unit_2",
+      "current_unit_id": "dog_day_afternoon_unit_3"
+    },
+    {
+      "id": "cand_v2_dog_day_afternoon_fp_002",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_2"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_2",
+      "prior_unit_id": "dog_day_afternoon_unit_3",
+      "current_unit_id": "dog_day_afternoon_unit_4"
+    },
+    {
+      "id": "cand_v2_dog_day_afternoon_fp_003",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_3"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_3",
+      "prior_unit_id": "dog_day_afternoon_unit_4",
+      "current_unit_id": "dog_day_afternoon_unit_5"
+    },
+    {
+      "id": "cand_v2_dog_day_afternoon_fp_004",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_4"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_4",
+      "prior_unit_id": "dog_day_afternoon_unit_5",
+      "current_unit_id": "dog_day_afternoon_unit_6"
+    },
+    {
+      "id": "cand_v2_dog_day_afternoon_fp_005",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_5"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_5",
+      "prior_unit_id": "dog_day_afternoon_unit_6",
+      "current_unit_id": "dog_day_afternoon_unit_7"
+    },
+    {
+      "id": "cand_v2_dog_day_afternoon_fp_006",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_6"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_6",
+      "prior_unit_id": "dog_day_afternoon_unit_7",
+      "current_unit_id": "dog_day_afternoon_unit_8"
+    },
+    {
+      "id": "cand_v2_dog_day_afternoon_fp_007",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_7"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_7",
+      "prior_unit_id": "dog_day_afternoon_unit_8",
+      "current_unit_id": "dog_day_afternoon_unit_9"
+    },
+    {
+      "id": "cand_v2_dog_day_afternoon_fp_008",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_8"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_8",
+      "prior_unit_id": "dog_day_afternoon_unit_9",
+      "current_unit_id": "dog_day_afternoon_unit_10"
+    },
+    {
+      "id": "cand_v2_dog_day_afternoon_fp_009",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_9"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_9",
+      "prior_unit_id": "dog_day_afternoon_unit_10",
+      "current_unit_id": "dog_day_afternoon_unit_11"
+    }
+  ]
+}

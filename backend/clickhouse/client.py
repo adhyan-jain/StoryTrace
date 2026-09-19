@@ -1,7 +1,10 @@
 import os
 import clickhouse_connect
+from dotenv import load_dotenv
 from pydantic import BaseModel
 from typing import List, Any
+
+load_dotenv()
 
 class ClickHouseClient:
     def __init__(self):

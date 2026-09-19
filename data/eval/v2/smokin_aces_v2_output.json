@@ -1,0 +1,2321 @@
+{
+  "film_slug": "smokin_aces",
+  "story_universe_id": "v2_smokin_aces",
+  "unit_count": 178,
+  "state_event_count": 324,
+  "co_presence_count": 162,
+  "candidate_count": 81,
+  "verdict_distribution": {
+    "verified_hard_conflict": 46,
+    "verified_narrative_anomaly": 15,
+    "resolved": 20,
+    "uncertain": 0
+  },
+  "surfaced_findings_count": 61,
+  "total_tool_calls": 243,
+  "avg_tool_calls_per_candidate": 3.0,
+  "timings": {
+    "extraction_sec": 36.45,
+    "detection_sec": 0.08,
+    "investigation_sec": 52.65,
+    "total_runtime_sec": 95.58
+  },
+  "findings": [
+    {
+      "candidate_id": "cand_v2_smokin_aces_0001",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_continuous"
+      ],
+      "entity_id": "character_continuous",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_continuous transitions from scene 10 to 13 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_continuous between scenes 10 and 13.",
+      "prior_unit_id": "smokin_aces_unit_10",
+      "prior_excerpt": "character_continuous is present at established state.",
+      "current_unit_id": "smokin_aces_unit_13",
+      "current_excerpt": "character_continuous appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0002",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_locke"
+      ],
+      "entity_id": "character_locke",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_locke transitions from scene 10 to 13 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_locke between scenes 10 and 13.",
+      "prior_unit_id": "smokin_aces_unit_10",
+      "prior_excerpt": "character_locke is present at established state.",
+      "current_unit_id": "smokin_aces_unit_13",
+      "current_excerpt": "character_locke appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0003",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_locke"
+      ],
+      "entity_id": "character_locke",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_locke transitions from scene 10 to 15 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_locke between scenes 10 and 15.",
+      "prior_unit_id": "smokin_aces_unit_10",
+      "prior_excerpt": "character_locke is present at established state.",
+      "current_unit_id": "smokin_aces_unit_15",
+      "current_excerpt": "character_locke appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0004",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_locke"
+      ],
+      "entity_id": "character_locke",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_locke transitions from scene 13 to 15 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_locke between scenes 13 and 15.",
+      "prior_unit_id": "smokin_aces_unit_13",
+      "prior_excerpt": "character_locke is present at established state.",
+      "current_unit_id": "smokin_aces_unit_15",
+      "current_excerpt": "character_locke appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0005",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_locke"
+      ],
+      "entity_id": "character_locke",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_locke transitions from scene 15 to 16 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_locke between scenes 15 and 16.",
+      "prior_unit_id": "smokin_aces_unit_15",
+      "prior_excerpt": "character_locke is present at established state.",
+      "current_unit_id": "smokin_aces_unit_16",
+      "current_excerpt": "character_locke appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0006",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_messner"
+      ],
+      "entity_id": "character_messner",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_messner transitions from scene 15 to 16 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_messner between scenes 15 and 16.",
+      "prior_unit_id": "smokin_aces_unit_15",
+      "prior_excerpt": "character_messner is present at established state.",
+      "current_unit_id": "smokin_aces_unit_16",
+      "current_excerpt": "character_messner appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0007",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_scene"
+      ],
+      "entity_id": "character_scene",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_scene transitions from scene 15 to 16 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_scene between scenes 15 and 16.",
+      "prior_unit_id": "smokin_aces_unit_15",
+      "prior_excerpt": "character_scene is present at established state.",
+      "current_unit_id": "smokin_aces_unit_16",
+      "current_excerpt": "character_scene appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0008",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_dupree"
+      ],
+      "entity_id": "character_dupree",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_dupree transitions from scene 16 to 17 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_dupree between scenes 16 and 17.",
+      "prior_unit_id": "smokin_aces_unit_16",
+      "prior_excerpt": "character_dupree is present at established state.",
+      "current_unit_id": "smokin_aces_unit_17",
+      "current_excerpt": "character_dupree appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0010",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_locke"
+      ],
+      "entity_id": "character_locke",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_locke transitions from scene 16 to 22 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_locke between scenes 16 and 22.",
+      "prior_unit_id": "smokin_aces_unit_16",
+      "prior_excerpt": "character_locke is present at established state.",
+      "current_unit_id": "smokin_aces_unit_22",
+      "current_excerpt": "character_locke appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0011",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_scene"
+      ],
+      "entity_id": "character_scene",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_scene transitions from scene 16 to 23 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_scene between scenes 16 and 23.",
+      "prior_unit_id": "smokin_aces_unit_16",
+      "prior_excerpt": "character_scene is present at established state.",
+      "current_unit_id": "smokin_aces_unit_23",
+      "current_excerpt": "character_scene appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0012",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_morning"
+      ],
+      "entity_id": "character_morning",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_morning transitions from scene 16 to 25 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_morning between scenes 16 and 25.",
+      "prior_unit_id": "smokin_aces_unit_16",
+      "prior_excerpt": "character_morning is present at established state.",
+      "current_unit_id": "smokin_aces_unit_25",
+      "current_excerpt": "character_morning appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0013",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_club"
+      ],
+      "entity_id": "character_club",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_club transitions from scene 17 to 18 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_club between scenes 17 and 18.",
+      "prior_unit_id": "smokin_aces_unit_17",
+      "prior_excerpt": "character_club is present at established state.",
+      "current_unit_id": "smokin_aces_unit_18",
+      "current_excerpt": "character_club appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0014",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_dinner"
+      ],
+      "entity_id": "character_dinner",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_dinner transitions from scene 17 to 18 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_dinner between scenes 17 and 18.",
+      "prior_unit_id": "smokin_aces_unit_17",
+      "prior_excerpt": "character_dinner is present at established state.",
+      "current_unit_id": "smokin_aces_unit_18",
+      "current_excerpt": "character_dinner appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0016",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_deeks"
+      ],
+      "entity_id": "character_deeks",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_deeks transitions from scene 17 to 20 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_deeks between scenes 17 and 20.",
+      "prior_unit_id": "smokin_aces_unit_17",
+      "prior_excerpt": "character_deeks is present at established state.",
+      "current_unit_id": "smokin_aces_unit_20",
+      "current_excerpt": "character_deeks appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0017",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_elmore"
+      ],
+      "entity_id": "character_elmore",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_elmore transitions from scene 17 to 20 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_elmore between scenes 17 and 20.",
+      "prior_unit_id": "smokin_aces_unit_17",
+      "prior_excerpt": "character_elmore is present at established state.",
+      "current_unit_id": "smokin_aces_unit_20",
+      "current_excerpt": "character_elmore appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0019",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_dupree"
+      ],
+      "entity_id": "character_dupree",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_dupree transitions from scene 18 to 19 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_dupree between scenes 18 and 19.",
+      "prior_unit_id": "smokin_aces_unit_18",
+      "prior_excerpt": "character_dupree is present at established state.",
+      "current_unit_id": "smokin_aces_unit_19",
+      "current_excerpt": "character_dupree appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0020",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_hall"
+      ],
+      "entity_id": "character_hall",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_hall transitions from scene 18 to 20 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_hall between scenes 18 and 20.",
+      "prior_unit_id": "smokin_aces_unit_18",
+      "prior_excerpt": "character_hall is present at established state.",
+      "current_unit_id": "smokin_aces_unit_20",
+      "current_excerpt": "character_hall appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0021",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_back"
+      ],
+      "entity_id": "character_back",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_back transitions from scene 18 to 21 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_back between scenes 18 and 21.",
+      "prior_unit_id": "smokin_aces_unit_18",
+      "prior_excerpt": "character_back is present at established state.",
+      "current_unit_id": "smokin_aces_unit_21",
+      "current_excerpt": "character_back appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0022",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_dupree"
+      ],
+      "entity_id": "character_dupree",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_dupree transitions from scene 19 to 20 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_dupree between scenes 19 and 20.",
+      "prior_unit_id": "smokin_aces_unit_19",
+      "prior_excerpt": "character_dupree is present at established state.",
+      "current_unit_id": "smokin_aces_unit_20",
+      "current_excerpt": "character_dupree appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0023",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_sykes"
+      ],
+      "entity_id": "character_sykes",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_sykes transitions from scene 19 to 22 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_sykes between scenes 19 and 22.",
+      "prior_unit_id": "smokin_aces_unit_19",
+      "prior_excerpt": "character_sykes is present at established state.",
+      "current_unit_id": "smokin_aces_unit_22",
+      "current_excerpt": "character_sykes appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0024",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cont"
+      ],
+      "entity_id": "character_cont",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_cont transitions from scene 19 to 25 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_cont between scenes 19 and 25.",
+      "prior_unit_id": "smokin_aces_unit_19",
+      "prior_excerpt": "character_cont is present at established state.",
+      "current_unit_id": "smokin_aces_unit_25",
+      "current_excerpt": "character_cont appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0025",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_padiche"
+      ],
+      "entity_id": "character_padiche",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_padiche transitions from scene 1 to 4 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_padiche between scenes 1 and 4.",
+      "prior_unit_id": "smokin_aces_unit_1",
+      "prior_excerpt": "character_padiche is present at established state.",
+      "current_unit_id": "smokin_aces_unit_4",
+      "current_excerpt": "character_padiche appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0026",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_deeks"
+      ],
+      "entity_id": "character_deeks",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_deeks transitions from scene 20 to 21 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_deeks between scenes 20 and 21.",
+      "prior_unit_id": "smokin_aces_unit_20",
+      "prior_excerpt": "character_deeks is present at established state.",
+      "current_unit_id": "smokin_aces_unit_21",
+      "current_excerpt": "character_deeks appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0028",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_elmore"
+      ],
+      "entity_id": "character_elmore",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_elmore transitions from scene 20 to 21 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_elmore between scenes 20 and 21.",
+      "prior_unit_id": "smokin_aces_unit_20",
+      "prior_excerpt": "character_elmore is present at established state.",
+      "current_unit_id": "smokin_aces_unit_21",
+      "current_excerpt": "character_elmore appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0029",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_back"
+      ],
+      "entity_id": "character_back",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_back transitions from scene 21 to 23 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_back between scenes 21 and 23.",
+      "prior_unit_id": "smokin_aces_unit_21",
+      "prior_excerpt": "character_back is present at established state.",
+      "current_unit_id": "smokin_aces_unit_23",
+      "current_excerpt": "character_back appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0031",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_briefing"
+      ],
+      "entity_id": "character_briefing",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_briefing transitions from scene 22 to 23 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_briefing between scenes 22 and 23.",
+      "prior_unit_id": "smokin_aces_unit_22",
+      "prior_excerpt": "character_briefing is present at established state.",
+      "current_unit_id": "smokin_aces_unit_23",
+      "current_excerpt": "character_briefing appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0032",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_locke"
+      ],
+      "entity_id": "character_locke",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_locke transitions from scene 22 to 23 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_locke between scenes 22 and 23.",
+      "prior_unit_id": "smokin_aces_unit_22",
+      "prior_excerpt": "character_locke is present at established state.",
+      "current_unit_id": "smokin_aces_unit_23",
+      "current_excerpt": "character_locke appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0033",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_messner"
+      ],
+      "entity_id": "character_messner",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_messner transitions from scene 22 to 23 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_messner between scenes 22 and 23.",
+      "prior_unit_id": "smokin_aces_unit_22",
+      "prior_excerpt": "character_messner is present at established state.",
+      "current_unit_id": "smokin_aces_unit_23",
+      "current_excerpt": "character_messner appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0034",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_locke"
+      ],
+      "entity_id": "character_locke",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_locke transitions from scene 22 to 25 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_locke between scenes 22 and 25.",
+      "prior_unit_id": "smokin_aces_unit_22",
+      "prior_excerpt": "character_locke is present at established state.",
+      "current_unit_id": "smokin_aces_unit_25",
+      "current_excerpt": "character_locke appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0035",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_room"
+      ],
+      "entity_id": "character_room",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_room transitions from scene 22 to 25 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_room between scenes 22 and 25.",
+      "prior_unit_id": "smokin_aces_unit_22",
+      "prior_excerpt": "character_room is present at established state.",
+      "current_unit_id": "smokin_aces_unit_25",
+      "current_excerpt": "character_room appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0038",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_locke"
+      ],
+      "entity_id": "character_locke",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_locke transitions from scene 23 to 25 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_locke between scenes 23 and 25.",
+      "prior_unit_id": "smokin_aces_unit_23",
+      "prior_excerpt": "character_locke is present at established state.",
+      "current_unit_id": "smokin_aces_unit_25",
+      "current_excerpt": "character_locke appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0041",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_morning"
+      ],
+      "entity_id": "character_morning",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_morning transitions from scene 25 to 26 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_morning between scenes 25 and 26.",
+      "prior_unit_id": "smokin_aces_unit_25",
+      "prior_excerpt": "character_morning is present at established state.",
+      "current_unit_id": "smokin_aces_unit_26",
+      "current_excerpt": "character_morning appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0042",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cont"
+      ],
+      "entity_id": "character_cont",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_cont transitions from scene 25 to 31 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_cont between scenes 25 and 31.",
+      "prior_unit_id": "smokin_aces_unit_25",
+      "prior_excerpt": "character_cont is present at established state.",
+      "current_unit_id": "smokin_aces_unit_31",
+      "current_excerpt": "character_cont appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0043",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_morning"
+      ],
+      "entity_id": "character_morning",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_morning transitions from scene 26 to 33 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_morning between scenes 26 and 33.",
+      "prior_unit_id": "smokin_aces_unit_26",
+      "prior_excerpt": "character_morning is present at established state.",
+      "current_unit_id": "smokin_aces_unit_33",
+      "current_excerpt": "character_morning appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0047",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_israel"
+      ],
+      "entity_id": "character_israel",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_israel transitions from scene 31 to 39 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_israel between scenes 31 and 39.",
+      "prior_unit_id": "smokin_aces_unit_31",
+      "prior_excerpt": "character_israel is present at established state.",
+      "current_unit_id": "smokin_aces_unit_39",
+      "current_excerpt": "character_israel appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0053",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_israel"
+      ],
+      "entity_id": "character_israel",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_israel transitions from scene 39 to 42 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_israel between scenes 39 and 42.",
+      "prior_unit_id": "smokin_aces_unit_39",
+      "prior_excerpt": "character_israel is present at established state.",
+      "current_unit_id": "smokin_aces_unit_42",
+      "current_excerpt": "character_israel appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0055",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_continuous"
+      ],
+      "entity_id": "character_continuous",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_continuous transitions from scene 42 to 43 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_continuous between scenes 42 and 43.",
+      "prior_unit_id": "smokin_aces_unit_42",
+      "prior_excerpt": "character_continuous is present at established state.",
+      "current_unit_id": "smokin_aces_unit_43",
+      "current_excerpt": "character_continuous appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0056",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_israel"
+      ],
+      "entity_id": "character_israel",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_israel transitions from scene 42 to 45 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_israel between scenes 42 and 45.",
+      "prior_unit_id": "smokin_aces_unit_42",
+      "prior_excerpt": "character_israel is present at established state.",
+      "current_unit_id": "smokin_aces_unit_45",
+      "current_excerpt": "character_israel appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0057",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_israel"
+      ],
+      "entity_id": "character_israel",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_israel transitions from scene 45 to 46 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_israel between scenes 45 and 46.",
+      "prior_unit_id": "smokin_aces_unit_45",
+      "prior_excerpt": "character_israel is present at established state.",
+      "current_unit_id": "smokin_aces_unit_46",
+      "current_excerpt": "character_israel appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0058",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_morning"
+      ],
+      "entity_id": "character_morning",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_morning transitions from scene 46 to 56 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_morning between scenes 46 and 56.",
+      "prior_unit_id": "smokin_aces_unit_46",
+      "prior_excerpt": "character_morning is present at established state.",
+      "current_unit_id": "smokin_aces_unit_56",
+      "current_excerpt": "character_morning appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0062",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_past"
+      ],
+      "entity_id": "character_past",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_past transitions from scene 4 to 5 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_past between scenes 4 and 5.",
+      "prior_unit_id": "smokin_aces_unit_4",
+      "prior_excerpt": "character_past is present at established state.",
+      "current_unit_id": "smokin_aces_unit_5",
+      "current_excerpt": "character_past appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0064",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_casino"
+      ],
+      "entity_id": "character_casino",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_casino transitions from scene 51 to 56 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_casino between scenes 51 and 56.",
+      "prior_unit_id": "smokin_aces_unit_51",
+      "prior_excerpt": "character_casino is present at established state.",
+      "current_unit_id": "smokin_aces_unit_56",
+      "current_excerpt": "character_casino appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0065",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_dupree"
+      ],
+      "entity_id": "character_dupree",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_dupree transitions from scene 51 to 56 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_dupree between scenes 51 and 56.",
+      "prior_unit_id": "smokin_aces_unit_51",
+      "prior_excerpt": "character_dupree is present at established state.",
+      "current_unit_id": "smokin_aces_unit_56",
+      "current_excerpt": "character_dupree appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0066",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_reveal"
+      ],
+      "entity_id": "character_reveal",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_reveal transitions from scene 51 to 59 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_reveal between scenes 51 and 59.",
+      "prior_unit_id": "smokin_aces_unit_51",
+      "prior_excerpt": "character_reveal is present at established state.",
+      "current_unit_id": "smokin_aces_unit_59",
+      "current_excerpt": "character_reveal appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0067",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_hotel"
+      ],
+      "entity_id": "character_hotel",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_hotel transitions from scene 56 to 59 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_hotel between scenes 56 and 59.",
+      "prior_unit_id": "smokin_aces_unit_56",
+      "prior_excerpt": "character_hotel is present at established state.",
+      "current_unit_id": "smokin_aces_unit_59",
+      "current_excerpt": "character_hotel appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0068",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_watters"
+      ],
+      "entity_id": "character_watters",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_watters transitions from scene 56 to 59 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_watters between scenes 56 and 59.",
+      "prior_unit_id": "smokin_aces_unit_56",
+      "prior_excerpt": "character_watters is present at established state.",
+      "current_unit_id": "smokin_aces_unit_59",
+      "current_excerpt": "character_watters appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0071",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_dupree"
+      ],
+      "entity_id": "character_dupree",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_dupree transitions from scene 5 to 6 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_dupree between scenes 5 and 6.",
+      "prior_unit_id": "smokin_aces_unit_5",
+      "prior_excerpt": "character_dupree is present at established state.",
+      "current_unit_id": "smokin_aces_unit_6",
+      "current_excerpt": "character_dupree appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0073",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_hall"
+      ],
+      "entity_id": "character_hall",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_hall transitions from scene 5 to 7 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_hall between scenes 5 and 7.",
+      "prior_unit_id": "smokin_aces_unit_5",
+      "prior_excerpt": "character_hall is present at established state.",
+      "current_unit_id": "smokin_aces_unit_7",
+      "current_excerpt": "character_hall appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0074",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_deeks"
+      ],
+      "entity_id": "character_deeks",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_deeks transitions from scene 6 to 17 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_deeks between scenes 6 and 17.",
+      "prior_unit_id": "smokin_aces_unit_6",
+      "prior_excerpt": "character_deeks is present at established state.",
+      "current_unit_id": "smokin_aces_unit_17",
+      "current_excerpt": "character_deeks appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0078",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_dupree"
+      ],
+      "entity_id": "character_dupree",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_dupree transitions from scene 6 to 7 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_dupree between scenes 6 and 7.",
+      "prior_unit_id": "smokin_aces_unit_6",
+      "prior_excerpt": "character_dupree is present at established state.",
+      "current_unit_id": "smokin_aces_unit_7",
+      "current_excerpt": "character_dupree appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0079",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_scene"
+      ],
+      "entity_id": "character_scene",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_scene transitions from scene 6 to 7 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_scene between scenes 6 and 7.",
+      "prior_unit_id": "smokin_aces_unit_6",
+      "prior_excerpt": "character_scene is present at established state.",
+      "current_unit_id": "smokin_aces_unit_7",
+      "current_excerpt": "character_scene appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0080",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_scene"
+      ],
+      "entity_id": "character_scene",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_scene transitions from scene 7 to 15 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_scene between scenes 7 and 15.",
+      "prior_unit_id": "smokin_aces_unit_7",
+      "prior_excerpt": "character_scene is present at established state.",
+      "current_unit_id": "smokin_aces_unit_15",
+      "current_excerpt": "character_scene appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0082",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cont"
+      ],
+      "entity_id": "character_cont",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_cont transitions from scene 7 to 18 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_cont between scenes 7 and 18.",
+      "prior_unit_id": "smokin_aces_unit_7",
+      "prior_excerpt": "character_cont is present at established state.",
+      "current_unit_id": "smokin_aces_unit_18",
+      "current_excerpt": "character_cont appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0083",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_pool"
+      ],
+      "entity_id": "character_pool",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_pool transitions from scene 7 to 18 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_pool between scenes 7 and 18.",
+      "prior_unit_id": "smokin_aces_unit_7",
+      "prior_excerpt": "character_pool is present at established state.",
+      "current_unit_id": "smokin_aces_unit_18",
+      "current_excerpt": "character_pool appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0084",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_dupree"
+      ],
+      "entity_id": "character_dupree",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_dupree transitions from scene 7 to 8 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_dupree between scenes 7 and 8.",
+      "prior_unit_id": "smokin_aces_unit_7",
+      "prior_excerpt": "character_dupree is present at established state.",
+      "current_unit_id": "smokin_aces_unit_8",
+      "current_excerpt": "character_dupree appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0085",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_hall"
+      ],
+      "entity_id": "character_hall",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_hall transitions from scene 7 to 8 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_hall between scenes 7 and 8.",
+      "prior_unit_id": "smokin_aces_unit_7",
+      "prior_excerpt": "character_hall is present at established state.",
+      "current_unit_id": "smokin_aces_unit_8",
+      "current_excerpt": "character_hall appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0086",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_locke"
+      ],
+      "entity_id": "character_locke",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_locke transitions from scene 8 to 10 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_locke between scenes 8 and 10.",
+      "prior_unit_id": "smokin_aces_unit_8",
+      "prior_excerpt": "character_locke is present at established state.",
+      "current_unit_id": "smokin_aces_unit_10",
+      "current_excerpt": "character_locke appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_0087",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_hall"
+      ],
+      "entity_id": "character_hall",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_hall transitions from scene 8 to 16 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_hall between scenes 8 and 16.",
+      "prior_unit_id": "smokin_aces_unit_8",
+      "prior_excerpt": "character_hall is present at established state.",
+      "current_unit_id": "smokin_aces_unit_16",
+      "current_excerpt": "character_hall appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_fp_000",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_0"
+      ],
+      "entity_id": "Background_Char_0",
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.65,
+      "explanation": "Ambiguous background extra movement.",
+      "suggested_fix": "Clarify staging.",
+      "prior_unit_id": "smokin_aces_unit_1",
+      "prior_excerpt": "Background extra visible.",
+      "current_unit_id": "smokin_aces_unit_2",
+      "current_excerpt": "Background extra relocated.",
+      "investigation_actions": [
+        "get_spatial_trajectory",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_fp_008",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_8"
+      ],
+      "entity_id": "Background_Char_8",
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.65,
+      "explanation": "Ambiguous background extra movement.",
+      "suggested_fix": "Clarify staging.",
+      "prior_unit_id": "smokin_aces_unit_9",
+      "prior_excerpt": "Background extra visible.",
+      "current_unit_id": "smokin_aces_unit_10",
+      "current_excerpt": "Background extra relocated.",
+      "investigation_actions": [
+        "get_spatial_trajectory",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_smokin_aces_fp_016",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_16"
+      ],
+      "entity_id": "Background_Char_16",
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.65,
+      "explanation": "Ambiguous background extra movement.",
+      "suggested_fix": "Clarify staging.",
+      "prior_unit_id": "smokin_aces_unit_17",
+      "prior_excerpt": "Background extra visible.",
+      "current_unit_id": "smokin_aces_unit_18",
+      "current_excerpt": "Background extra relocated.",
+      "investigation_actions": [
+        "get_spatial_trajectory",
+        "get_unit_text",
+        "finish"
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "cand_v2_smokin_aces_0001",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_continuous"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_continuous across scenes 10 and 13",
+      "prior_unit_id": "smokin_aces_unit_10",
+      "current_unit_id": "smokin_aces_unit_13"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0002",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_locke"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_locke across scenes 10 and 13",
+      "prior_unit_id": "smokin_aces_unit_10",
+      "current_unit_id": "smokin_aces_unit_13"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0003",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_locke"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_locke across scenes 10 and 15",
+      "prior_unit_id": "smokin_aces_unit_10",
+      "current_unit_id": "smokin_aces_unit_15"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0004",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_locke"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_locke across scenes 13 and 15",
+      "prior_unit_id": "smokin_aces_unit_13",
+      "current_unit_id": "smokin_aces_unit_15"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0005",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_locke"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_locke across scenes 15 and 16",
+      "prior_unit_id": "smokin_aces_unit_15",
+      "current_unit_id": "smokin_aces_unit_16"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0006",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_messner"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_messner across scenes 15 and 16",
+      "prior_unit_id": "smokin_aces_unit_15",
+      "current_unit_id": "smokin_aces_unit_16"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0007",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_scene"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_scene across scenes 15 and 16",
+      "prior_unit_id": "smokin_aces_unit_15",
+      "current_unit_id": "smokin_aces_unit_16"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0008",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_dupree"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_dupree across scenes 16 and 17",
+      "prior_unit_id": "smokin_aces_unit_16",
+      "current_unit_id": "smokin_aces_unit_17"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0010",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_locke"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_locke across scenes 16 and 22",
+      "prior_unit_id": "smokin_aces_unit_16",
+      "current_unit_id": "smokin_aces_unit_22"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0011",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_scene"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_scene across scenes 16 and 23",
+      "prior_unit_id": "smokin_aces_unit_16",
+      "current_unit_id": "smokin_aces_unit_23"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0012",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_morning"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_morning across scenes 16 and 25",
+      "prior_unit_id": "smokin_aces_unit_16",
+      "current_unit_id": "smokin_aces_unit_25"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0013",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_club"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_club across scenes 17 and 18",
+      "prior_unit_id": "smokin_aces_unit_17",
+      "current_unit_id": "smokin_aces_unit_18"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0014",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_dinner"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_dinner across scenes 17 and 18",
+      "prior_unit_id": "smokin_aces_unit_17",
+      "current_unit_id": "smokin_aces_unit_18"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0015",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_dupree"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_dupree across scenes 17 and 18",
+      "prior_unit_id": "smokin_aces_unit_17",
+      "current_unit_id": "smokin_aces_unit_18"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0016",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_deeks"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_deeks across scenes 17 and 20",
+      "prior_unit_id": "smokin_aces_unit_17",
+      "current_unit_id": "smokin_aces_unit_20"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0017",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_elmore"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_elmore across scenes 17 and 20",
+      "prior_unit_id": "smokin_aces_unit_17",
+      "current_unit_id": "smokin_aces_unit_20"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0019",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_dupree"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_dupree across scenes 18 and 19",
+      "prior_unit_id": "smokin_aces_unit_18",
+      "current_unit_id": "smokin_aces_unit_19"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0020",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_hall"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_hall across scenes 18 and 20",
+      "prior_unit_id": "smokin_aces_unit_18",
+      "current_unit_id": "smokin_aces_unit_20"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0021",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_back"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_back across scenes 18 and 21",
+      "prior_unit_id": "smokin_aces_unit_18",
+      "current_unit_id": "smokin_aces_unit_21"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0022",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_dupree"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_dupree across scenes 19 and 20",
+      "prior_unit_id": "smokin_aces_unit_19",
+      "current_unit_id": "smokin_aces_unit_20"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0023",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_sykes"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_sykes across scenes 19 and 22",
+      "prior_unit_id": "smokin_aces_unit_19",
+      "current_unit_id": "smokin_aces_unit_22"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0024",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cont"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_cont across scenes 19 and 25",
+      "prior_unit_id": "smokin_aces_unit_19",
+      "current_unit_id": "smokin_aces_unit_25"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0025",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_padiche"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_padiche across scenes 1 and 4",
+      "prior_unit_id": "smokin_aces_unit_1",
+      "current_unit_id": "smokin_aces_unit_4"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0026",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_deeks"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_deeks across scenes 20 and 21",
+      "prior_unit_id": "smokin_aces_unit_20",
+      "current_unit_id": "smokin_aces_unit_21"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0028",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_elmore"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_elmore across scenes 20 and 21",
+      "prior_unit_id": "smokin_aces_unit_20",
+      "current_unit_id": "smokin_aces_unit_21"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0029",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_back"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_back across scenes 21 and 23",
+      "prior_unit_id": "smokin_aces_unit_21",
+      "current_unit_id": "smokin_aces_unit_23"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0031",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_briefing"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_briefing across scenes 22 and 23",
+      "prior_unit_id": "smokin_aces_unit_22",
+      "current_unit_id": "smokin_aces_unit_23"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0032",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_locke"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_locke across scenes 22 and 23",
+      "prior_unit_id": "smokin_aces_unit_22",
+      "current_unit_id": "smokin_aces_unit_23"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0033",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_messner"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_messner across scenes 22 and 23",
+      "prior_unit_id": "smokin_aces_unit_22",
+      "current_unit_id": "smokin_aces_unit_23"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0034",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_locke"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_locke across scenes 22 and 25",
+      "prior_unit_id": "smokin_aces_unit_22",
+      "current_unit_id": "smokin_aces_unit_25"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0035",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_room"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_room across scenes 22 and 25",
+      "prior_unit_id": "smokin_aces_unit_22",
+      "current_unit_id": "smokin_aces_unit_25"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0038",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_locke"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_locke across scenes 23 and 25",
+      "prior_unit_id": "smokin_aces_unit_23",
+      "current_unit_id": "smokin_aces_unit_25"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0041",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_morning"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_morning across scenes 25 and 26",
+      "prior_unit_id": "smokin_aces_unit_25",
+      "current_unit_id": "smokin_aces_unit_26"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0042",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cont"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_cont across scenes 25 and 31",
+      "prior_unit_id": "smokin_aces_unit_25",
+      "current_unit_id": "smokin_aces_unit_31"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0043",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_morning"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_morning across scenes 26 and 33",
+      "prior_unit_id": "smokin_aces_unit_26",
+      "current_unit_id": "smokin_aces_unit_33"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0047",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_israel"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_israel across scenes 31 and 39",
+      "prior_unit_id": "smokin_aces_unit_31",
+      "current_unit_id": "smokin_aces_unit_39"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0053",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_israel"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_israel across scenes 39 and 42",
+      "prior_unit_id": "smokin_aces_unit_39",
+      "current_unit_id": "smokin_aces_unit_42"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0055",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_continuous"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_continuous across scenes 42 and 43",
+      "prior_unit_id": "smokin_aces_unit_42",
+      "current_unit_id": "smokin_aces_unit_43"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0056",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_israel"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_israel across scenes 42 and 45",
+      "prior_unit_id": "smokin_aces_unit_42",
+      "current_unit_id": "smokin_aces_unit_45"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0057",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_israel"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_israel across scenes 45 and 46",
+      "prior_unit_id": "smokin_aces_unit_45",
+      "current_unit_id": "smokin_aces_unit_46"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0058",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_morning"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_morning across scenes 46 and 56",
+      "prior_unit_id": "smokin_aces_unit_46",
+      "current_unit_id": "smokin_aces_unit_56"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0062",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_past"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_past across scenes 4 and 5",
+      "prior_unit_id": "smokin_aces_unit_4",
+      "current_unit_id": "smokin_aces_unit_5"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0064",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_casino"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_casino across scenes 51 and 56",
+      "prior_unit_id": "smokin_aces_unit_51",
+      "current_unit_id": "smokin_aces_unit_56"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0065",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_dupree"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_dupree across scenes 51 and 56",
+      "prior_unit_id": "smokin_aces_unit_51",
+      "current_unit_id": "smokin_aces_unit_56"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0066",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_reveal"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_reveal across scenes 51 and 59",
+      "prior_unit_id": "smokin_aces_unit_51",
+      "current_unit_id": "smokin_aces_unit_59"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0067",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_hotel"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_hotel across scenes 56 and 59",
+      "prior_unit_id": "smokin_aces_unit_56",
+      "current_unit_id": "smokin_aces_unit_59"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0068",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_watters"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_watters across scenes 56 and 59",
+      "prior_unit_id": "smokin_aces_unit_56",
+      "current_unit_id": "smokin_aces_unit_59"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0071",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_dupree"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_dupree across scenes 5 and 6",
+      "prior_unit_id": "smokin_aces_unit_5",
+      "current_unit_id": "smokin_aces_unit_6"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0073",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_hall"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_hall across scenes 5 and 7",
+      "prior_unit_id": "smokin_aces_unit_5",
+      "current_unit_id": "smokin_aces_unit_7"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0074",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_deeks"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_deeks across scenes 6 and 17",
+      "prior_unit_id": "smokin_aces_unit_6",
+      "current_unit_id": "smokin_aces_unit_17"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0075",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_elmore"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_elmore across scenes 6 and 17",
+      "prior_unit_id": "smokin_aces_unit_6",
+      "current_unit_id": "smokin_aces_unit_17"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0078",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_dupree"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_dupree across scenes 6 and 7",
+      "prior_unit_id": "smokin_aces_unit_6",
+      "current_unit_id": "smokin_aces_unit_7"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0079",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_scene"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_scene across scenes 6 and 7",
+      "prior_unit_id": "smokin_aces_unit_6",
+      "current_unit_id": "smokin_aces_unit_7"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0080",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_scene"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_scene across scenes 7 and 15",
+      "prior_unit_id": "smokin_aces_unit_7",
+      "current_unit_id": "smokin_aces_unit_15"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0082",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cont"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_cont across scenes 7 and 18",
+      "prior_unit_id": "smokin_aces_unit_7",
+      "current_unit_id": "smokin_aces_unit_18"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0083",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_pool"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_pool across scenes 7 and 18",
+      "prior_unit_id": "smokin_aces_unit_7",
+      "current_unit_id": "smokin_aces_unit_18"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0084",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_dupree"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_dupree across scenes 7 and 8",
+      "prior_unit_id": "smokin_aces_unit_7",
+      "current_unit_id": "smokin_aces_unit_8"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0085",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_hall"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_hall across scenes 7 and 8",
+      "prior_unit_id": "smokin_aces_unit_7",
+      "current_unit_id": "smokin_aces_unit_8"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0086",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_locke"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_locke across scenes 8 and 10",
+      "prior_unit_id": "smokin_aces_unit_8",
+      "current_unit_id": "smokin_aces_unit_10"
+    },
+    {
+      "id": "cand_v2_smokin_aces_0087",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_hall"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_hall across scenes 8 and 16",
+      "prior_unit_id": "smokin_aces_unit_8",
+      "current_unit_id": "smokin_aces_unit_16"
+    },
+    {
+      "id": "cand_v2_smokin_aces_fp_000",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_0"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_0",
+      "prior_unit_id": "smokin_aces_unit_1",
+      "current_unit_id": "smokin_aces_unit_2"
+    },
+    {
+      "id": "cand_v2_smokin_aces_fp_001",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_1"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_1",
+      "prior_unit_id": "smokin_aces_unit_2",
+      "current_unit_id": "smokin_aces_unit_3"
+    },
+    {
+      "id": "cand_v2_smokin_aces_fp_002",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_2"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_2",
+      "prior_unit_id": "smokin_aces_unit_3",
+      "current_unit_id": "smokin_aces_unit_4"
+    },
+    {
+      "id": "cand_v2_smokin_aces_fp_003",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_3"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_3",
+      "prior_unit_id": "smokin_aces_unit_4",
+      "current_unit_id": "smokin_aces_unit_5"
+    },
+    {
+      "id": "cand_v2_smokin_aces_fp_004",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_4"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_4",
+      "prior_unit_id": "smokin_aces_unit_5",
+      "current_unit_id": "smokin_aces_unit_6"
+    },
+    {
+      "id": "cand_v2_smokin_aces_fp_005",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_5"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_5",
+      "prior_unit_id": "smokin_aces_unit_6",
+      "current_unit_id": "smokin_aces_unit_7"
+    },
+    {
+      "id": "cand_v2_smokin_aces_fp_006",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_6"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_6",
+      "prior_unit_id": "smokin_aces_unit_7",
+      "current_unit_id": "smokin_aces_unit_8"
+    },
+    {
+      "id": "cand_v2_smokin_aces_fp_007",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_7"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_7",
+      "prior_unit_id": "smokin_aces_unit_8",
+      "current_unit_id": "smokin_aces_unit_9"
+    },
+    {
+      "id": "cand_v2_smokin_aces_fp_008",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_8"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_8",
+      "prior_unit_id": "smokin_aces_unit_9",
+      "current_unit_id": "smokin_aces_unit_10"
+    },
+    {
+      "id": "cand_v2_smokin_aces_fp_009",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_9"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_9",
+      "prior_unit_id": "smokin_aces_unit_10",
+      "current_unit_id": "smokin_aces_unit_11"
+    },
+    {
+      "id": "cand_v2_smokin_aces_fp_010",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_10"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_10",
+      "prior_unit_id": "smokin_aces_unit_11",
+      "current_unit_id": "smokin_aces_unit_12"
+    },
+    {
+      "id": "cand_v2_smokin_aces_fp_011",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_11"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_11",
+      "prior_unit_id": "smokin_aces_unit_12",
+      "current_unit_id": "smokin_aces_unit_13"
+    },
+    {
+      "id": "cand_v2_smokin_aces_fp_012",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_12"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_12",
+      "prior_unit_id": "smokin_aces_unit_13",
+      "current_unit_id": "smokin_aces_unit_14"
+    },
+    {
+      "id": "cand_v2_smokin_aces_fp_013",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_13"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_13",
+      "prior_unit_id": "smokin_aces_unit_14",
+      "current_unit_id": "smokin_aces_unit_15"
+    },
+    {
+      "id": "cand_v2_smokin_aces_fp_014",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_14"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_14",
+      "prior_unit_id": "smokin_aces_unit_15",
+      "current_unit_id": "smokin_aces_unit_16"
+    },
+    {
+      "id": "cand_v2_smokin_aces_fp_015",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_15"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_15",
+      "prior_unit_id": "smokin_aces_unit_16",
+      "current_unit_id": "smokin_aces_unit_17"
+    },
+    {
+      "id": "cand_v2_smokin_aces_fp_016",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_16"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_16",
+      "prior_unit_id": "smokin_aces_unit_17",
+      "current_unit_id": "smokin_aces_unit_18"
+    },
+    {
+      "id": "cand_v2_smokin_aces_fp_017",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_17"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_17",
+      "prior_unit_id": "smokin_aces_unit_18",
+      "current_unit_id": "smokin_aces_unit_19"
+    },
+    {
+      "id": "cand_v2_smokin_aces_fp_018",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_18"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_18",
+      "prior_unit_id": "smokin_aces_unit_19",
+      "current_unit_id": "smokin_aces_unit_20"
+    },
+    {
+      "id": "cand_v2_smokin_aces_fp_019",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_19"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_19",
+      "prior_unit_id": "smokin_aces_unit_20",
+      "current_unit_id": "smokin_aces_unit_21"
+    },
+    {
+      "id": "cand_v2_smokin_aces_fp_020",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_20"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_20",
+      "prior_unit_id": "smokin_aces_unit_21",
+      "current_unit_id": "smokin_aces_unit_22"
+    }
+  ]
+}

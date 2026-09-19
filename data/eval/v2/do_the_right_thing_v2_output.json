@@ -1,0 +1,4806 @@
+{
+  "film_slug": "do_the_right_thing",
+  "story_universe_id": "v2_do_the_right_thing",
+  "unit_count": 404,
+  "state_event_count": 684,
+  "co_presence_count": 342,
+  "candidate_count": 171,
+  "verdict_distribution": {
+    "verified_hard_conflict": 96,
+    "verified_narrative_anomaly": 30,
+    "resolved": 45,
+    "uncertain": 0
+  },
+  "surfaced_findings_count": 126,
+  "total_tool_calls": 513,
+  "avg_tool_calls_per_candidate": 3.0,
+  "timings": {
+    "extraction_sec": 76.95,
+    "detection_sec": 0.08,
+    "investigation_sec": 111.15,
+    "total_runtime_sec": 201.78
+  },
+  "findings": [
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0006",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_angle"
+      ],
+      "entity_id": "character_angle",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_angle transitions from scene 11 to 12 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_angle between scenes 11 and 12.",
+      "prior_unit_id": "do_the_right_thing_unit_11",
+      "prior_excerpt": "character_angle is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_12",
+      "current_excerpt": "character_angle appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0007",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_buggin"
+      ],
+      "entity_id": "character_buggin",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_buggin transitions from scene 11 to 12 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_buggin between scenes 11 and 12.",
+      "prior_unit_id": "do_the_right_thing_unit_11",
+      "prior_excerpt": "character_buggin is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_12",
+      "current_excerpt": "character_buggin appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0008",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_out"
+      ],
+      "entity_id": "character_out",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_out transitions from scene 11 to 12 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_out between scenes 11 and 12.",
+      "prior_unit_id": "do_the_right_thing_unit_11",
+      "prior_excerpt": "character_out is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_12",
+      "current_excerpt": "character_out appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0013",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_angle"
+      ],
+      "entity_id": "character_angle",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_angle transitions from scene 12 to 13 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_angle between scenes 12 and 13.",
+      "prior_unit_id": "do_the_right_thing_unit_12",
+      "prior_excerpt": "character_angle is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_13",
+      "current_excerpt": "character_angle appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0014",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mookie"
+      ],
+      "entity_id": "character_mookie",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_mookie transitions from scene 12 to 13 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_mookie between scenes 12 and 13.",
+      "prior_unit_id": "do_the_right_thing_unit_12",
+      "prior_excerpt": "character_mookie is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_13",
+      "current_excerpt": "character_mookie appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0016",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_buggin"
+      ],
+      "entity_id": "character_buggin",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_buggin transitions from scene 12 to 22 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_buggin between scenes 12 and 22.",
+      "prior_unit_id": "do_the_right_thing_unit_12",
+      "prior_excerpt": "character_buggin is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_22",
+      "current_excerpt": "character_buggin appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0017",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_out"
+      ],
+      "entity_id": "character_out",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_out transitions from scene 12 to 22 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_out between scenes 12 and 22.",
+      "prior_unit_id": "do_the_right_thing_unit_12",
+      "prior_excerpt": "character_out is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_22",
+      "current_excerpt": "character_out appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0019",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_angle"
+      ],
+      "entity_id": "character_angle",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_angle transitions from scene 13 to 14 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_angle between scenes 13 and 14.",
+      "prior_unit_id": "do_the_right_thing_unit_13",
+      "prior_excerpt": "character_angle is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_14",
+      "current_excerpt": "character_angle appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0020",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_door"
+      ],
+      "entity_id": "character_door",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_door transitions from scene 13 to 14 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_door between scenes 13 and 14.",
+      "prior_unit_id": "do_the_right_thing_unit_13",
+      "prior_excerpt": "character_door is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_14",
+      "current_excerpt": "character_door appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0021",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mookie"
+      ],
+      "entity_id": "character_mookie",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_mookie transitions from scene 13 to 14 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_mookie between scenes 13 and 14.",
+      "prior_unit_id": "do_the_right_thing_unit_13",
+      "prior_excerpt": "character_mookie is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_14",
+      "current_excerpt": "character_mookie appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0022",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_nilda"
+      ],
+      "entity_id": "character_nilda",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_nilda transitions from scene 13 to 14 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_nilda between scenes 13 and 14.",
+      "prior_unit_id": "do_the_right_thing_unit_13",
+      "prior_excerpt": "character_nilda is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_14",
+      "current_excerpt": "character_nilda appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0024",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_angle"
+      ],
+      "entity_id": "character_angle",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_angle transitions from scene 14 to 20 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_angle between scenes 14 and 20.",
+      "prior_unit_id": "do_the_right_thing_unit_14",
+      "prior_excerpt": "character_angle is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_20",
+      "current_excerpt": "character_angle appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0025",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mookie"
+      ],
+      "entity_id": "character_mookie",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_mookie transitions from scene 14 to 20 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_mookie between scenes 14 and 20.",
+      "prior_unit_id": "do_the_right_thing_unit_14",
+      "prior_excerpt": "character_mookie is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_20",
+      "current_excerpt": "character_mookie appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0026",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mookie"
+      ],
+      "entity_id": "character_mookie",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_mookie transitions from scene 14 to 21 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_mookie between scenes 14 and 21.",
+      "prior_unit_id": "do_the_right_thing_unit_14",
+      "prior_excerpt": "character_mookie is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_21",
+      "current_excerpt": "character_mookie appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0033",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_daddy"
+      ],
+      "entity_id": "character_daddy",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_daddy transitions from scene 1 to 2 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_daddy between scenes 1 and 2.",
+      "prior_unit_id": "do_the_right_thing_unit_1",
+      "prior_excerpt": "character_daddy is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_2",
+      "current_excerpt": "character_daddy appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0034",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_see"
+      ],
+      "entity_id": "character_see",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_see transitions from scene 1 to 3 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_see between scenes 1 and 3.",
+      "prior_unit_id": "do_the_right_thing_unit_1",
+      "prior_excerpt": "character_see is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_3",
+      "current_excerpt": "character_see appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0035",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_storefront"
+      ],
+      "entity_id": "character_storefront",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_storefront transitions from scene 1 to 7 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_storefront between scenes 1 and 7.",
+      "prior_unit_id": "do_the_right_thing_unit_1",
+      "prior_excerpt": "character_storefront is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_7",
+      "current_excerpt": "character_storefront appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0037",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mookie"
+      ],
+      "entity_id": "character_mookie",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_mookie transitions from scene 20 to 21 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_mookie between scenes 20 and 21.",
+      "prior_unit_id": "do_the_right_thing_unit_20",
+      "prior_excerpt": "character_mookie is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_21",
+      "current_excerpt": "character_mookie appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0041",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_daddy"
+      ],
+      "entity_id": "character_daddy",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_daddy transitions from scene 21 to 30 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_daddy between scenes 21 and 30.",
+      "prior_unit_id": "do_the_right_thing_unit_21",
+      "prior_excerpt": "character_daddy is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_30",
+      "current_excerpt": "character_daddy appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0042",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_seor"
+      ],
+      "entity_id": "character_seor",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_seor transitions from scene 21 to 30 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_seor between scenes 21 and 30.",
+      "prior_unit_id": "do_the_right_thing_unit_21",
+      "prior_excerpt": "character_seor is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_30",
+      "current_excerpt": "character_seor appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0044",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_buggin"
+      ],
+      "entity_id": "character_buggin",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_buggin transitions from scene 22 to 24 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_buggin between scenes 22 and 24.",
+      "prior_unit_id": "do_the_right_thing_unit_22",
+      "prior_excerpt": "character_buggin is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_24",
+      "current_excerpt": "character_buggin appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0046",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_angle"
+      ],
+      "entity_id": "character_angle",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_angle transitions from scene 22 to 27 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_angle between scenes 22 and 27.",
+      "prior_unit_id": "do_the_right_thing_unit_22",
+      "prior_excerpt": "character_angle is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_27",
+      "current_excerpt": "character_angle appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0047",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mookie"
+      ],
+      "entity_id": "character_mookie",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_mookie transitions from scene 22 to 27 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_mookie between scenes 22 and 27.",
+      "prior_unit_id": "do_the_right_thing_unit_22",
+      "prior_excerpt": "character_mookie is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_27",
+      "current_excerpt": "character_mookie appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0048",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_ahmad"
+      ],
+      "entity_id": "character_ahmad",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_ahmad transitions from scene 24 to 35 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_ahmad between scenes 24 and 35.",
+      "prior_unit_id": "do_the_right_thing_unit_24",
+      "prior_excerpt": "character_ahmad is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_35",
+      "current_excerpt": "character_ahmad appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0049",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_buggin"
+      ],
+      "entity_id": "character_buggin",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_buggin transitions from scene 24 to 35 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_buggin between scenes 24 and 35.",
+      "prior_unit_id": "do_the_right_thing_unit_24",
+      "prior_excerpt": "character_buggin is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_35",
+      "current_excerpt": "character_buggin appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0050",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_out"
+      ],
+      "entity_id": "character_out",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_out transitions from scene 24 to 35 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_out between scenes 24 and 35.",
+      "prior_unit_id": "do_the_right_thing_unit_24",
+      "prior_excerpt": "character_out is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_35",
+      "current_excerpt": "character_out appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0055",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mookie"
+      ],
+      "entity_id": "character_mookie",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_mookie transitions from scene 27 to 30 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_mookie between scenes 27 and 30.",
+      "prior_unit_id": "do_the_right_thing_unit_27",
+      "prior_excerpt": "character_mookie is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_30",
+      "current_excerpt": "character_mookie appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0056",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_pizzeria"
+      ],
+      "entity_id": "character_pizzeria",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_pizzeria transitions from scene 27 to 30 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_pizzeria between scenes 27 and 30.",
+      "prior_unit_id": "do_the_right_thing_unit_27",
+      "prior_excerpt": "character_pizzeria is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_30",
+      "current_excerpt": "character_pizzeria appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0057",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_angle"
+      ],
+      "entity_id": "character_angle",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_angle transitions from scene 27 to 31 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_angle between scenes 27 and 31.",
+      "prior_unit_id": "do_the_right_thing_unit_27",
+      "prior_excerpt": "character_angle is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_31",
+      "current_excerpt": "character_angle appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0058",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cee"
+      ],
+      "entity_id": "character_cee",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_cee transitions from scene 27 to 35 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_cee between scenes 27 and 35.",
+      "prior_unit_id": "do_the_right_thing_unit_27",
+      "prior_excerpt": "character_cee is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_35",
+      "current_excerpt": "character_cee appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0064",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_jade"
+      ],
+      "entity_id": "character_jade",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_jade transitions from scene 2 to 3 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_jade between scenes 2 and 3.",
+      "prior_unit_id": "do_the_right_thing_unit_2",
+      "prior_excerpt": "character_jade is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_3",
+      "current_excerpt": "character_jade appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0065",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_moves"
+      ],
+      "entity_id": "character_moves",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_moves transitions from scene 2 to 3 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_moves between scenes 2 and 3.",
+      "prior_unit_id": "do_the_right_thing_unit_2",
+      "prior_excerpt": "character_moves is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_3",
+      "current_excerpt": "character_moves appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0066",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_shot"
+      ],
+      "entity_id": "character_shot",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_shot transitions from scene 2 to 7 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_shot between scenes 2 and 7.",
+      "prior_unit_id": "do_the_right_thing_unit_2",
+      "prior_excerpt": "character_shot is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_7",
+      "current_excerpt": "character_shot appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0067",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mookie"
+      ],
+      "entity_id": "character_mookie",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_mookie transitions from scene 30 to 31 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_mookie between scenes 30 and 31.",
+      "prior_unit_id": "do_the_right_thing_unit_30",
+      "prior_excerpt": "character_mookie is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_31",
+      "current_excerpt": "character_mookie appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0070",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mookie"
+      ],
+      "entity_id": "character_mookie",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_mookie transitions from scene 31 to 32 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_mookie between scenes 31 and 32.",
+      "prior_unit_id": "do_the_right_thing_unit_31",
+      "prior_excerpt": "character_mookie is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_32",
+      "current_excerpt": "character_mookie appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0071",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_raheem"
+      ],
+      "entity_id": "character_raheem",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_raheem transitions from scene 31 to 32 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_raheem between scenes 31 and 32.",
+      "prior_unit_id": "do_the_right_thing_unit_31",
+      "prior_excerpt": "character_raheem is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_32",
+      "current_excerpt": "character_raheem appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0076",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_pino"
+      ],
+      "entity_id": "character_pino",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_pino transitions from scene 32 to 34 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_pino between scenes 32 and 34.",
+      "prior_unit_id": "do_the_right_thing_unit_32",
+      "prior_excerpt": "character_pino is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_34",
+      "current_excerpt": "character_pino appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0077",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_sal"
+      ],
+      "entity_id": "character_sal",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_sal transitions from scene 32 to 34 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_sal between scenes 32 and 34.",
+      "prior_unit_id": "do_the_right_thing_unit_32",
+      "prior_excerpt": "character_sal is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_34",
+      "current_excerpt": "character_sal appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0080",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_jade"
+      ],
+      "entity_id": "character_jade",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_jade transitions from scene 33 to 36 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_jade between scenes 33 and 36.",
+      "prior_unit_id": "do_the_right_thing_unit_33",
+      "prior_excerpt": "character_jade is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_36",
+      "current_excerpt": "character_jade appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0082",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mother"
+      ],
+      "entity_id": "character_mother",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_mother transitions from scene 33 to 44 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_mother between scenes 33 and 44.",
+      "prior_unit_id": "do_the_right_thing_unit_33",
+      "prior_excerpt": "character_mother is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_44",
+      "current_excerpt": "character_mother appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0085",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_corner"
+      ],
+      "entity_id": "character_corner",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_corner transitions from scene 34 to 35 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_corner between scenes 34 and 35.",
+      "prior_unit_id": "do_the_right_thing_unit_34",
+      "prior_excerpt": "character_corner is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_35",
+      "current_excerpt": "character_corner appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0086",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_pizzeria"
+      ],
+      "entity_id": "character_pizzeria",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_pizzeria transitions from scene 34 to 35 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_pizzeria between scenes 34 and 35.",
+      "prior_unit_id": "do_the_right_thing_unit_34",
+      "prior_excerpt": "character_pizzeria is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_35",
+      "current_excerpt": "character_pizzeria appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0087",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_pino"
+      ],
+      "entity_id": "character_pino",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_pino transitions from scene 34 to 37 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_pino between scenes 34 and 37.",
+      "prior_unit_id": "do_the_right_thing_unit_34",
+      "prior_excerpt": "character_pino is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_37",
+      "current_excerpt": "character_pino appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0088",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_sal"
+      ],
+      "entity_id": "character_sal",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_sal transitions from scene 34 to 37 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_sal between scenes 34 and 37.",
+      "prior_unit_id": "do_the_right_thing_unit_34",
+      "prior_excerpt": "character_sal is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_37",
+      "current_excerpt": "character_sal appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0089",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_famous"
+      ],
+      "entity_id": "character_famous",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_famous transitions from scene 34 to 42 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_famous between scenes 34 and 42.",
+      "prior_unit_id": "do_the_right_thing_unit_34",
+      "prior_excerpt": "character_famous is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_42",
+      "current_excerpt": "character_famous appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0093",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_buggin"
+      ],
+      "entity_id": "character_buggin",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_buggin transitions from scene 35 to 36 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_buggin between scenes 35 and 36.",
+      "prior_unit_id": "do_the_right_thing_unit_35",
+      "prior_excerpt": "character_buggin is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_36",
+      "current_excerpt": "character_buggin appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0094",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_jade"
+      ],
+      "entity_id": "character_jade",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_jade transitions from scene 35 to 36 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_jade between scenes 35 and 36.",
+      "prior_unit_id": "do_the_right_thing_unit_35",
+      "prior_excerpt": "character_jade is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_36",
+      "current_excerpt": "character_jade appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0095",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_out"
+      ],
+      "entity_id": "character_out",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_out transitions from scene 35 to 36 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_out between scenes 35 and 36.",
+      "prior_unit_id": "do_the_right_thing_unit_35",
+      "prior_excerpt": "character_out is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_36",
+      "current_excerpt": "character_out appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0096",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_corner"
+      ],
+      "entity_id": "character_corner",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_corner transitions from scene 35 to 39 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_corner between scenes 35 and 39.",
+      "prior_unit_id": "do_the_right_thing_unit_35",
+      "prior_excerpt": "character_corner is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_39",
+      "current_excerpt": "character_corner appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0097",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_angle"
+      ],
+      "entity_id": "character_angle",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_angle transitions from scene 36 to 37 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_angle between scenes 36 and 37.",
+      "prior_unit_id": "do_the_right_thing_unit_36",
+      "prior_excerpt": "character_angle is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_37",
+      "current_excerpt": "character_angle appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0098",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_buggin"
+      ],
+      "entity_id": "character_buggin",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_buggin transitions from scene 36 to 37 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_buggin between scenes 36 and 37.",
+      "prior_unit_id": "do_the_right_thing_unit_36",
+      "prior_excerpt": "character_buggin is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_37",
+      "current_excerpt": "character_buggin appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0100",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_out"
+      ],
+      "entity_id": "character_out",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_out transitions from scene 36 to 37 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_out between scenes 36 and 37.",
+      "prior_unit_id": "do_the_right_thing_unit_36",
+      "prior_excerpt": "character_out is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_37",
+      "current_excerpt": "character_out appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0101",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_street"
+      ],
+      "entity_id": "character_street",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_street transitions from scene 36 to 39 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_street between scenes 36 and 39.",
+      "prior_unit_id": "do_the_right_thing_unit_36",
+      "prior_excerpt": "character_street is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_39",
+      "current_excerpt": "character_street appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0102",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_jade"
+      ],
+      "entity_id": "character_jade",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_jade transitions from scene 36 to 42 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_jade between scenes 36 and 42.",
+      "prior_unit_id": "do_the_right_thing_unit_36",
+      "prior_excerpt": "character_jade is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_42",
+      "current_excerpt": "character_jade appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0103",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mookie"
+      ],
+      "entity_id": "character_mookie",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_mookie transitions from scene 36 to 43 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_mookie between scenes 36 and 43.",
+      "prior_unit_id": "do_the_right_thing_unit_36",
+      "prior_excerpt": "character_mookie is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_43",
+      "current_excerpt": "character_mookie appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0104",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_jade"
+      ],
+      "entity_id": "character_jade",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_jade transitions from scene 37 to 38 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_jade between scenes 37 and 38.",
+      "prior_unit_id": "do_the_right_thing_unit_37",
+      "prior_excerpt": "character_jade is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_38",
+      "current_excerpt": "character_jade appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0106",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_pino"
+      ],
+      "entity_id": "character_pino",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_pino transitions from scene 37 to 49 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_pino between scenes 37 and 49.",
+      "prior_unit_id": "do_the_right_thing_unit_37",
+      "prior_excerpt": "character_pino is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_49",
+      "current_excerpt": "character_pino appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0110",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_fruit"
+      ],
+      "entity_id": "character_fruit",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_fruit transitions from scene 38 to 39 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_fruit between scenes 38 and 39.",
+      "prior_unit_id": "do_the_right_thing_unit_38",
+      "prior_excerpt": "character_fruit is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_39",
+      "current_excerpt": "character_fruit appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0111",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_veg"
+      ],
+      "entity_id": "character_veg",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_veg transitions from scene 38 to 39 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_veg between scenes 38 and 39.",
+      "prior_unit_id": "do_the_right_thing_unit_38",
+      "prior_excerpt": "character_veg is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_39",
+      "current_excerpt": "character_veg appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0112",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_coconut"
+      ],
+      "entity_id": "character_coconut",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_coconut transitions from scene 39 to 40 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_coconut between scenes 39 and 40.",
+      "prior_unit_id": "do_the_right_thing_unit_39",
+      "prior_excerpt": "character_coconut is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_40",
+      "current_excerpt": "character_coconut appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0115",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_see"
+      ],
+      "entity_id": "character_see",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_see transitions from scene 3 to 11 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_see between scenes 3 and 11.",
+      "prior_unit_id": "do_the_right_thing_unit_3",
+      "prior_excerpt": "character_see is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_11",
+      "current_excerpt": "character_see appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0116",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_jade"
+      ],
+      "entity_id": "character_jade",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_jade transitions from scene 3 to 14 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_jade between scenes 3 and 14.",
+      "prior_unit_id": "do_the_right_thing_unit_3",
+      "prior_excerpt": "character_jade is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_14",
+      "current_excerpt": "character_jade appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0119",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mookie"
+      ],
+      "entity_id": "character_mookie",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_mookie transitions from scene 3 to 4 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_mookie between scenes 3 and 4.",
+      "prior_unit_id": "do_the_right_thing_unit_3",
+      "prior_excerpt": "character_mookie is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_4",
+      "current_excerpt": "character_mookie appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0123",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_dusk"
+      ],
+      "entity_id": "character_dusk",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_dusk transitions from scene 42 to 43 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_dusk between scenes 42 and 43.",
+      "prior_unit_id": "do_the_right_thing_unit_42",
+      "prior_excerpt": "character_dusk is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_43",
+      "current_excerpt": "character_dusk appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0124",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_jade"
+      ],
+      "entity_id": "character_jade",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_jade transitions from scene 42 to 43 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_jade between scenes 42 and 43.",
+      "prior_unit_id": "do_the_right_thing_unit_42",
+      "prior_excerpt": "character_jade is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_43",
+      "current_excerpt": "character_jade appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0125",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_sal"
+      ],
+      "entity_id": "character_sal",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_sal transitions from scene 42 to 43 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_sal between scenes 42 and 43.",
+      "prior_unit_id": "do_the_right_thing_unit_42",
+      "prior_excerpt": "character_sal is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_43",
+      "current_excerpt": "character_sal appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0127",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_angle"
+      ],
+      "entity_id": "character_angle",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_angle transitions from scene 43 to 44 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_angle between scenes 43 and 44.",
+      "prior_unit_id": "do_the_right_thing_unit_43",
+      "prior_excerpt": "character_angle is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_44",
+      "current_excerpt": "character_angle appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0128",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_daddy"
+      ],
+      "entity_id": "character_daddy",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_daddy transitions from scene 43 to 44 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_daddy between scenes 43 and 44.",
+      "prior_unit_id": "do_the_right_thing_unit_43",
+      "prior_excerpt": "character_daddy is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_44",
+      "current_excerpt": "character_daddy appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0129",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_seor"
+      ],
+      "entity_id": "character_seor",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_seor transitions from scene 43 to 44 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_seor between scenes 43 and 44.",
+      "prior_unit_id": "do_the_right_thing_unit_43",
+      "prior_excerpt": "character_seor is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_44",
+      "current_excerpt": "character_seor appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0130",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mookie"
+      ],
+      "entity_id": "character_mookie",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_mookie transitions from scene 43 to 45 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_mookie between scenes 43 and 45.",
+      "prior_unit_id": "do_the_right_thing_unit_43",
+      "prior_excerpt": "character_mookie is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_45",
+      "current_excerpt": "character_mookie appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0131",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_sal"
+      ],
+      "entity_id": "character_sal",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_sal transitions from scene 43 to 45 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_sal between scenes 43 and 45.",
+      "prior_unit_id": "do_the_right_thing_unit_43",
+      "prior_excerpt": "character_sal is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_45",
+      "current_excerpt": "character_sal appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0133",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_angle"
+      ],
+      "entity_id": "character_angle",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_angle transitions from scene 44 to 45 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_angle between scenes 44 and 45.",
+      "prior_unit_id": "do_the_right_thing_unit_44",
+      "prior_excerpt": "character_angle is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_45",
+      "current_excerpt": "character_angle appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0134",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mother"
+      ],
+      "entity_id": "character_mother",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_mother transitions from scene 44 to 45 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_mother between scenes 44 and 45.",
+      "prior_unit_id": "do_the_right_thing_unit_44",
+      "prior_excerpt": "character_mother is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_45",
+      "current_excerpt": "character_mother appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0136",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_daddy"
+      ],
+      "entity_id": "character_daddy",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_daddy transitions from scene 44 to 48 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_daddy between scenes 44 and 48.",
+      "prior_unit_id": "do_the_right_thing_unit_44",
+      "prior_excerpt": "character_daddy is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_48",
+      "current_excerpt": "character_daddy appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0137",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_seor"
+      ],
+      "entity_id": "character_seor",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_seor transitions from scene 44 to 48 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_seor between scenes 44 and 48.",
+      "prior_unit_id": "do_the_right_thing_unit_44",
+      "prior_excerpt": "character_seor is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_48",
+      "current_excerpt": "character_seor appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0138",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mookie"
+      ],
+      "entity_id": "character_mookie",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_mookie transitions from scene 45 to 46 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_mookie between scenes 45 and 46.",
+      "prior_unit_id": "do_the_right_thing_unit_45",
+      "prior_excerpt": "character_mookie is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_46",
+      "current_excerpt": "character_mookie appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0139",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_tina"
+      ],
+      "entity_id": "character_tina",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_tina transitions from scene 45 to 46 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_tina between scenes 45 and 46.",
+      "prior_unit_id": "do_the_right_thing_unit_45",
+      "prior_excerpt": "character_tina is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_46",
+      "current_excerpt": "character_tina appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0140",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_angle"
+      ],
+      "entity_id": "character_angle",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_angle transitions from scene 45 to 47 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_angle between scenes 45 and 47.",
+      "prior_unit_id": "do_the_right_thing_unit_45",
+      "prior_excerpt": "character_angle is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_47",
+      "current_excerpt": "character_angle appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0141",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_sal"
+      ],
+      "entity_id": "character_sal",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_sal transitions from scene 45 to 49 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_sal between scenes 45 and 49.",
+      "prior_unit_id": "do_the_right_thing_unit_45",
+      "prior_excerpt": "character_sal is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_49",
+      "current_excerpt": "character_sal appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0142",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mother"
+      ],
+      "entity_id": "character_mother",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_mother transitions from scene 45 to 54 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_mother between scenes 45 and 54.",
+      "prior_unit_id": "do_the_right_thing_unit_45",
+      "prior_excerpt": "character_mother is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_54",
+      "current_excerpt": "character_mother appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0143",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_bedroom"
+      ],
+      "entity_id": "character_bedroom",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_bedroom transitions from scene 46 to 47 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_bedroom between scenes 46 and 47.",
+      "prior_unit_id": "do_the_right_thing_unit_46",
+      "prior_excerpt": "character_bedroom is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_47",
+      "current_excerpt": "character_bedroom appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0145",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_tina"
+      ],
+      "entity_id": "character_tina",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_tina transitions from scene 46 to 47 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_tina between scenes 46 and 47.",
+      "prior_unit_id": "do_the_right_thing_unit_46",
+      "prior_excerpt": "character_tina is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_47",
+      "current_excerpt": "character_tina appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0146",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mookie"
+      ],
+      "entity_id": "character_mookie",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_mookie transitions from scene 46 to 49 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_mookie between scenes 46 and 49.",
+      "prior_unit_id": "do_the_right_thing_unit_46",
+      "prior_excerpt": "character_mookie is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_49",
+      "current_excerpt": "character_mookie appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0147",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_see"
+      ],
+      "entity_id": "character_see",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_see transitions from scene 46 to 57 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_see between scenes 46 and 57.",
+      "prior_unit_id": "do_the_right_thing_unit_46",
+      "prior_excerpt": "character_see is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_57",
+      "current_excerpt": "character_see appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0148",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mookie"
+      ],
+      "entity_id": "character_mookie",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_mookie transitions from scene 47 to 48 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_mookie between scenes 47 and 48.",
+      "prior_unit_id": "do_the_right_thing_unit_47",
+      "prior_excerpt": "character_mookie is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_48",
+      "current_excerpt": "character_mookie appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0149",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_tina"
+      ],
+      "entity_id": "character_tina",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_tina transitions from scene 47 to 48 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_tina between scenes 47 and 48.",
+      "prior_unit_id": "do_the_right_thing_unit_47",
+      "prior_excerpt": "character_tina is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_48",
+      "current_excerpt": "character_tina appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0151",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mookie"
+      ],
+      "entity_id": "character_mookie",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_mookie transitions from scene 48 to 49 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_mookie between scenes 48 and 49.",
+      "prior_unit_id": "do_the_right_thing_unit_48",
+      "prior_excerpt": "character_mookie is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_49",
+      "current_excerpt": "character_mookie appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0152",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mookie"
+      ],
+      "entity_id": "character_mookie",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_mookie transitions from scene 49 to 51 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_mookie between scenes 49 and 51.",
+      "prior_unit_id": "do_the_right_thing_unit_49",
+      "prior_excerpt": "character_mookie is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_51",
+      "current_excerpt": "character_mookie appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0154",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_pino"
+      ],
+      "entity_id": "character_pino",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_pino transitions from scene 49 to 57 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_pino between scenes 49 and 57.",
+      "prior_unit_id": "do_the_right_thing_unit_49",
+      "prior_excerpt": "character_pino is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_57",
+      "current_excerpt": "character_pino appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0157",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mookie"
+      ],
+      "entity_id": "character_mookie",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_mookie transitions from scene 4 to 5 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_mookie between scenes 4 and 5.",
+      "prior_unit_id": "do_the_right_thing_unit_4",
+      "prior_excerpt": "character_mookie is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_5",
+      "current_excerpt": "character_mookie appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0158",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mother"
+      ],
+      "entity_id": "character_mother",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_mother transitions from scene 4 to 5 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_mother between scenes 4 and 5.",
+      "prior_unit_id": "do_the_right_thing_unit_4",
+      "prior_excerpt": "character_mother is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_5",
+      "current_excerpt": "character_mother appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0159",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_pino"
+      ],
+      "entity_id": "character_pino",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_pino transitions from scene 4 to 5 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_pino between scenes 4 and 5.",
+      "prior_unit_id": "do_the_right_thing_unit_4",
+      "prior_excerpt": "character_pino is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_5",
+      "current_excerpt": "character_pino appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0160",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_sal"
+      ],
+      "entity_id": "character_sal",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_sal transitions from scene 4 to 5 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_sal between scenes 4 and 5.",
+      "prior_unit_id": "do_the_right_thing_unit_4",
+      "prior_excerpt": "character_sal is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_5",
+      "current_excerpt": "character_sal appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0161",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_buggin"
+      ],
+      "entity_id": "character_buggin",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_buggin transitions from scene 50 to 51 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_buggin between scenes 50 and 51.",
+      "prior_unit_id": "do_the_right_thing_unit_50",
+      "prior_excerpt": "character_buggin is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_51",
+      "current_excerpt": "character_buggin appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0163",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_raheem"
+      ],
+      "entity_id": "character_raheem",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_raheem transitions from scene 50 to 51 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_raheem between scenes 50 and 51.",
+      "prior_unit_id": "do_the_right_thing_unit_50",
+      "prior_excerpt": "character_raheem is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_51",
+      "current_excerpt": "character_raheem appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0164",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_pizzeria"
+      ],
+      "entity_id": "character_pizzeria",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_pizzeria transitions from scene 51 to 54 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_pizzeria between scenes 51 and 54.",
+      "prior_unit_id": "do_the_right_thing_unit_51",
+      "prior_excerpt": "character_pizzeria is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_54",
+      "current_excerpt": "character_pizzeria appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0166",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_raheem"
+      ],
+      "entity_id": "character_raheem",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_raheem transitions from scene 51 to 60 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_raheem between scenes 51 and 60.",
+      "prior_unit_id": "do_the_right_thing_unit_51",
+      "prior_excerpt": "character_raheem is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_60",
+      "current_excerpt": "character_raheem appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0167",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_famous"
+      ],
+      "entity_id": "character_famous",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_famous transitions from scene 54 to 57 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_famous between scenes 54 and 57.",
+      "prior_unit_id": "do_the_right_thing_unit_54",
+      "prior_excerpt": "character_famous is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_57",
+      "current_excerpt": "character_famous appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0168",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_pizzeria"
+      ],
+      "entity_id": "character_pizzeria",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_pizzeria transitions from scene 54 to 57 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_pizzeria between scenes 54 and 57.",
+      "prior_unit_id": "do_the_right_thing_unit_54",
+      "prior_excerpt": "character_pizzeria is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_57",
+      "current_excerpt": "character_pizzeria appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0169",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_angle"
+      ],
+      "entity_id": "character_angle",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_angle transitions from scene 54 to 59 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_angle between scenes 54 and 59.",
+      "prior_unit_id": "do_the_right_thing_unit_54",
+      "prior_excerpt": "character_angle is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_59",
+      "current_excerpt": "character_angle appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0170",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mother"
+      ],
+      "entity_id": "character_mother",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_mother transitions from scene 54 to 59 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_mother between scenes 54 and 59.",
+      "prior_unit_id": "do_the_right_thing_unit_54",
+      "prior_excerpt": "character_mother is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_59",
+      "current_excerpt": "character_mother appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0172",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_see"
+      ],
+      "entity_id": "character_see",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_see transitions from scene 57 to 59 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_see between scenes 57 and 59.",
+      "prior_unit_id": "do_the_right_thing_unit_57",
+      "prior_excerpt": "character_see is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_59",
+      "current_excerpt": "character_see appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0173",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mob"
+      ],
+      "entity_id": "character_mob",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_mob transitions from scene 58 to 59 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_mob between scenes 58 and 59.",
+      "prior_unit_id": "do_the_right_thing_unit_58",
+      "prior_excerpt": "character_mob is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_59",
+      "current_excerpt": "character_mob appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0174",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_pizzeria"
+      ],
+      "entity_id": "character_pizzeria",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_pizzeria transitions from scene 58 to 59 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_pizzeria between scenes 58 and 59.",
+      "prior_unit_id": "do_the_right_thing_unit_58",
+      "prior_excerpt": "character_pizzeria is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_59",
+      "current_excerpt": "character_pizzeria appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0175",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_pizzeria"
+      ],
+      "entity_id": "character_pizzeria",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_pizzeria transitions from scene 59 to 60 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_pizzeria between scenes 59 and 60.",
+      "prior_unit_id": "do_the_right_thing_unit_59",
+      "prior_excerpt": "character_pizzeria is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_60",
+      "current_excerpt": "character_pizzeria appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0176",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_see"
+      ],
+      "entity_id": "character_see",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_see transitions from scene 59 to 60 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_see between scenes 59 and 60.",
+      "prior_unit_id": "do_the_right_thing_unit_59",
+      "prior_excerpt": "character_see is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_60",
+      "current_excerpt": "character_see appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0178",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_famous"
+      ],
+      "entity_id": "character_famous",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_famous transitions from scene 5 to 6 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_famous between scenes 5 and 6.",
+      "prior_unit_id": "do_the_right_thing_unit_5",
+      "prior_excerpt": "character_famous is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_6",
+      "current_excerpt": "character_famous appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0179",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mookie"
+      ],
+      "entity_id": "character_mookie",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_mookie transitions from scene 5 to 6 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_mookie between scenes 5 and 6.",
+      "prior_unit_id": "do_the_right_thing_unit_5",
+      "prior_excerpt": "character_mookie is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_6",
+      "current_excerpt": "character_mookie appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0181",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_pizzeria"
+      ],
+      "entity_id": "character_pizzeria",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_pizzeria transitions from scene 5 to 6 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_pizzeria between scenes 5 and 6.",
+      "prior_unit_id": "do_the_right_thing_unit_5",
+      "prior_excerpt": "character_pizzeria is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_6",
+      "current_excerpt": "character_pizzeria appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0182",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_sal"
+      ],
+      "entity_id": "character_sal",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_sal transitions from scene 5 to 6 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_sal between scenes 5 and 6.",
+      "prior_unit_id": "do_the_right_thing_unit_5",
+      "prior_excerpt": "character_sal is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_6",
+      "current_excerpt": "character_sal appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0183",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mother"
+      ],
+      "entity_id": "character_mother",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_mother transitions from scene 5 to 8 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_mother between scenes 5 and 8.",
+      "prior_unit_id": "do_the_right_thing_unit_5",
+      "prior_excerpt": "character_mother is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_8",
+      "current_excerpt": "character_mother appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0184",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_sister"
+      ],
+      "entity_id": "character_sister",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_sister transitions from scene 5 to 9 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_sister between scenes 5 and 9.",
+      "prior_unit_id": "do_the_right_thing_unit_5",
+      "prior_excerpt": "character_sister is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_9",
+      "current_excerpt": "character_sister appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0185",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_pizzeria"
+      ],
+      "entity_id": "character_pizzeria",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_pizzeria transitions from scene 6 to 11 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_pizzeria between scenes 6 and 11.",
+      "prior_unit_id": "do_the_right_thing_unit_6",
+      "prior_excerpt": "character_pizzeria is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_11",
+      "current_excerpt": "character_pizzeria appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0186",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cee"
+      ],
+      "entity_id": "character_cee",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_cee transitions from scene 6 to 16 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_cee between scenes 6 and 16.",
+      "prior_unit_id": "do_the_right_thing_unit_6",
+      "prior_excerpt": "character_cee is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_16",
+      "current_excerpt": "character_cee appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0190",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_punchy"
+      ],
+      "entity_id": "character_punchy",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_punchy transitions from scene 6 to 7 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_punchy between scenes 6 and 7.",
+      "prior_unit_id": "do_the_right_thing_unit_6",
+      "prior_excerpt": "character_punchy is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_7",
+      "current_excerpt": "character_punchy appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0193",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_love"
+      ],
+      "entity_id": "character_love",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_love transitions from scene 7 to 8 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_love between scenes 7 and 8.",
+      "prior_unit_id": "do_the_right_thing_unit_7",
+      "prior_excerpt": "character_love is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_8",
+      "current_excerpt": "character_love appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0197",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mother"
+      ],
+      "entity_id": "character_mother",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_mother transitions from scene 8 to 9 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_mother between scenes 8 and 9.",
+      "prior_unit_id": "do_the_right_thing_unit_8",
+      "prior_excerpt": "character_mother is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_9",
+      "current_excerpt": "character_mother appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0199",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_angle"
+      ],
+      "entity_id": "character_angle",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_angle transitions from scene 9 to 11 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_angle between scenes 9 and 11.",
+      "prior_unit_id": "do_the_right_thing_unit_9",
+      "prior_excerpt": "character_angle is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_11",
+      "current_excerpt": "character_angle appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0200",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mother"
+      ],
+      "entity_id": "character_mother",
+      "attribute": "location.city",
+      "status": "verified_hard_conflict",
+      "severity": "critical",
+      "confidence": 0.92,
+      "explanation": "Verified continuity discrepancy: character_mother transitions from scene 9 to 14 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_mother between scenes 9 and 14.",
+      "prior_unit_id": "do_the_right_thing_unit_9",
+      "prior_excerpt": "character_mother is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_14",
+      "current_excerpt": "character_mother appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_0201",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_sister"
+      ],
+      "entity_id": "character_sister",
+      "attribute": "location.city",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.84,
+      "explanation": "Verified continuity discrepancy: character_sister transitions from scene 9 to 16 with contradictory location.city.",
+      "suggested_fix": "Add transitional beat establishing movement/change for character_sister between scenes 9 and 16.",
+      "prior_unit_id": "do_the_right_thing_unit_9",
+      "prior_excerpt": "character_sister is present at established state.",
+      "current_unit_id": "do_the_right_thing_unit_16",
+      "current_excerpt": "character_sister appears in contradictory state.",
+      "investigation_actions": [
+        "get_entity_timeline_v2",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_fp_000",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_0"
+      ],
+      "entity_id": "Background_Char_0",
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.65,
+      "explanation": "Ambiguous background extra movement.",
+      "suggested_fix": "Clarify staging.",
+      "prior_unit_id": "do_the_right_thing_unit_1",
+      "prior_excerpt": "Background extra visible.",
+      "current_unit_id": "do_the_right_thing_unit_2",
+      "current_excerpt": "Background extra relocated.",
+      "investigation_actions": [
+        "get_spatial_trajectory",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_fp_008",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_8"
+      ],
+      "entity_id": "Background_Char_8",
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.65,
+      "explanation": "Ambiguous background extra movement.",
+      "suggested_fix": "Clarify staging.",
+      "prior_unit_id": "do_the_right_thing_unit_9",
+      "prior_excerpt": "Background extra visible.",
+      "current_unit_id": "do_the_right_thing_unit_10",
+      "current_excerpt": "Background extra relocated.",
+      "investigation_actions": [
+        "get_spatial_trajectory",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_fp_016",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_16"
+      ],
+      "entity_id": "Background_Char_16",
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.65,
+      "explanation": "Ambiguous background extra movement.",
+      "suggested_fix": "Clarify staging.",
+      "prior_unit_id": "do_the_right_thing_unit_17",
+      "prior_excerpt": "Background extra visible.",
+      "current_unit_id": "do_the_right_thing_unit_18",
+      "current_excerpt": "Background extra relocated.",
+      "investigation_actions": [
+        "get_spatial_trajectory",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_fp_024",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_24"
+      ],
+      "entity_id": "Background_Char_24",
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.65,
+      "explanation": "Ambiguous background extra movement.",
+      "suggested_fix": "Clarify staging.",
+      "prior_unit_id": "do_the_right_thing_unit_25",
+      "prior_excerpt": "Background extra visible.",
+      "current_unit_id": "do_the_right_thing_unit_26",
+      "current_excerpt": "Background extra relocated.",
+      "investigation_actions": [
+        "get_spatial_trajectory",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_fp_032",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_32"
+      ],
+      "entity_id": "Background_Char_32",
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.65,
+      "explanation": "Ambiguous background extra movement.",
+      "suggested_fix": "Clarify staging.",
+      "prior_unit_id": "do_the_right_thing_unit_33",
+      "prior_excerpt": "Background extra visible.",
+      "current_unit_id": "do_the_right_thing_unit_34",
+      "current_excerpt": "Background extra relocated.",
+      "investigation_actions": [
+        "get_spatial_trajectory",
+        "get_unit_text",
+        "finish"
+      ]
+    },
+    {
+      "candidate_id": "cand_v2_do_the_right_thing_fp_040",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_40"
+      ],
+      "entity_id": "Background_Char_40",
+      "attribute": "location.environment",
+      "status": "verified_narrative_anomaly",
+      "severity": "warning",
+      "confidence": 0.65,
+      "explanation": "Ambiguous background extra movement.",
+      "suggested_fix": "Clarify staging.",
+      "prior_unit_id": "do_the_right_thing_unit_41",
+      "prior_excerpt": "Background extra visible.",
+      "current_unit_id": "do_the_right_thing_unit_42",
+      "current_excerpt": "Background extra relocated.",
+      "investigation_actions": [
+        "get_spatial_trajectory",
+        "get_unit_text",
+        "finish"
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "cand_v2_do_the_right_thing_0006",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_angle"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_angle across scenes 11 and 12",
+      "prior_unit_id": "do_the_right_thing_unit_11",
+      "current_unit_id": "do_the_right_thing_unit_12"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0007",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_buggin"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_buggin across scenes 11 and 12",
+      "prior_unit_id": "do_the_right_thing_unit_11",
+      "current_unit_id": "do_the_right_thing_unit_12"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0008",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_out"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_out across scenes 11 and 12",
+      "prior_unit_id": "do_the_right_thing_unit_11",
+      "current_unit_id": "do_the_right_thing_unit_12"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0013",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_angle"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_angle across scenes 12 and 13",
+      "prior_unit_id": "do_the_right_thing_unit_12",
+      "current_unit_id": "do_the_right_thing_unit_13"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0014",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mookie"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_mookie across scenes 12 and 13",
+      "prior_unit_id": "do_the_right_thing_unit_12",
+      "current_unit_id": "do_the_right_thing_unit_13"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0015",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_sal"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_sal across scenes 12 and 13",
+      "prior_unit_id": "do_the_right_thing_unit_12",
+      "current_unit_id": "do_the_right_thing_unit_13"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0016",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_buggin"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_buggin across scenes 12 and 22",
+      "prior_unit_id": "do_the_right_thing_unit_12",
+      "current_unit_id": "do_the_right_thing_unit_22"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0017",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_out"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_out across scenes 12 and 22",
+      "prior_unit_id": "do_the_right_thing_unit_12",
+      "current_unit_id": "do_the_right_thing_unit_22"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0019",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_angle"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_angle across scenes 13 and 14",
+      "prior_unit_id": "do_the_right_thing_unit_13",
+      "current_unit_id": "do_the_right_thing_unit_14"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0020",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_door"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_door across scenes 13 and 14",
+      "prior_unit_id": "do_the_right_thing_unit_13",
+      "current_unit_id": "do_the_right_thing_unit_14"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0021",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mookie"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_mookie across scenes 13 and 14",
+      "prior_unit_id": "do_the_right_thing_unit_13",
+      "current_unit_id": "do_the_right_thing_unit_14"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0022",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_nilda"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_nilda across scenes 13 and 14",
+      "prior_unit_id": "do_the_right_thing_unit_13",
+      "current_unit_id": "do_the_right_thing_unit_14"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0024",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_angle"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_angle across scenes 14 and 20",
+      "prior_unit_id": "do_the_right_thing_unit_14",
+      "current_unit_id": "do_the_right_thing_unit_20"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0025",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mookie"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_mookie across scenes 14 and 20",
+      "prior_unit_id": "do_the_right_thing_unit_14",
+      "current_unit_id": "do_the_right_thing_unit_20"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0026",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mookie"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_mookie across scenes 14 and 21",
+      "prior_unit_id": "do_the_right_thing_unit_14",
+      "current_unit_id": "do_the_right_thing_unit_21"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0030",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cee"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_cee across scenes 16 and 24",
+      "prior_unit_id": "do_the_right_thing_unit_16",
+      "current_unit_id": "do_the_right_thing_unit_24"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0033",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_daddy"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_daddy across scenes 1 and 2",
+      "prior_unit_id": "do_the_right_thing_unit_1",
+      "current_unit_id": "do_the_right_thing_unit_2"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0034",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_see"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_see across scenes 1 and 3",
+      "prior_unit_id": "do_the_right_thing_unit_1",
+      "current_unit_id": "do_the_right_thing_unit_3"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0035",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_storefront"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_storefront across scenes 1 and 7",
+      "prior_unit_id": "do_the_right_thing_unit_1",
+      "current_unit_id": "do_the_right_thing_unit_7"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0037",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mookie"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_mookie across scenes 20 and 21",
+      "prior_unit_id": "do_the_right_thing_unit_20",
+      "current_unit_id": "do_the_right_thing_unit_21"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0041",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_daddy"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_daddy across scenes 21 and 30",
+      "prior_unit_id": "do_the_right_thing_unit_21",
+      "current_unit_id": "do_the_right_thing_unit_30"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0042",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_seor"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_seor across scenes 21 and 30",
+      "prior_unit_id": "do_the_right_thing_unit_21",
+      "current_unit_id": "do_the_right_thing_unit_30"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0044",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_buggin"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_buggin across scenes 22 and 24",
+      "prior_unit_id": "do_the_right_thing_unit_22",
+      "current_unit_id": "do_the_right_thing_unit_24"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0046",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_angle"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_angle across scenes 22 and 27",
+      "prior_unit_id": "do_the_right_thing_unit_22",
+      "current_unit_id": "do_the_right_thing_unit_27"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0047",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mookie"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_mookie across scenes 22 and 27",
+      "prior_unit_id": "do_the_right_thing_unit_22",
+      "current_unit_id": "do_the_right_thing_unit_27"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0048",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_ahmad"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_ahmad across scenes 24 and 35",
+      "prior_unit_id": "do_the_right_thing_unit_24",
+      "current_unit_id": "do_the_right_thing_unit_35"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0049",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_buggin"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_buggin across scenes 24 and 35",
+      "prior_unit_id": "do_the_right_thing_unit_24",
+      "current_unit_id": "do_the_right_thing_unit_35"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0050",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_out"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_out across scenes 24 and 35",
+      "prior_unit_id": "do_the_right_thing_unit_24",
+      "current_unit_id": "do_the_right_thing_unit_35"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0055",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mookie"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_mookie across scenes 27 and 30",
+      "prior_unit_id": "do_the_right_thing_unit_27",
+      "current_unit_id": "do_the_right_thing_unit_30"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0056",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_pizzeria"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_pizzeria across scenes 27 and 30",
+      "prior_unit_id": "do_the_right_thing_unit_27",
+      "current_unit_id": "do_the_right_thing_unit_30"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0057",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_angle"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_angle across scenes 27 and 31",
+      "prior_unit_id": "do_the_right_thing_unit_27",
+      "current_unit_id": "do_the_right_thing_unit_31"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0058",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cee"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_cee across scenes 27 and 35",
+      "prior_unit_id": "do_the_right_thing_unit_27",
+      "current_unit_id": "do_the_right_thing_unit_35"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0064",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_jade"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_jade across scenes 2 and 3",
+      "prior_unit_id": "do_the_right_thing_unit_2",
+      "current_unit_id": "do_the_right_thing_unit_3"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0065",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_moves"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_moves across scenes 2 and 3",
+      "prior_unit_id": "do_the_right_thing_unit_2",
+      "current_unit_id": "do_the_right_thing_unit_3"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0066",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_shot"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_shot across scenes 2 and 7",
+      "prior_unit_id": "do_the_right_thing_unit_2",
+      "current_unit_id": "do_the_right_thing_unit_7"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0067",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mookie"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_mookie across scenes 30 and 31",
+      "prior_unit_id": "do_the_right_thing_unit_30",
+      "current_unit_id": "do_the_right_thing_unit_31"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0070",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mookie"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_mookie across scenes 31 and 32",
+      "prior_unit_id": "do_the_right_thing_unit_31",
+      "current_unit_id": "do_the_right_thing_unit_32"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0071",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_raheem"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_raheem across scenes 31 and 32",
+      "prior_unit_id": "do_the_right_thing_unit_31",
+      "current_unit_id": "do_the_right_thing_unit_32"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0075",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mookie"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_mookie across scenes 32 and 33",
+      "prior_unit_id": "do_the_right_thing_unit_32",
+      "current_unit_id": "do_the_right_thing_unit_33"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0076",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_pino"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_pino across scenes 32 and 34",
+      "prior_unit_id": "do_the_right_thing_unit_32",
+      "current_unit_id": "do_the_right_thing_unit_34"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0077",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_sal"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_sal across scenes 32 and 34",
+      "prior_unit_id": "do_the_right_thing_unit_32",
+      "current_unit_id": "do_the_right_thing_unit_34"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0080",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_jade"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_jade across scenes 33 and 36",
+      "prior_unit_id": "do_the_right_thing_unit_33",
+      "current_unit_id": "do_the_right_thing_unit_36"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0082",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mother"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_mother across scenes 33 and 44",
+      "prior_unit_id": "do_the_right_thing_unit_33",
+      "current_unit_id": "do_the_right_thing_unit_44"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0085",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_corner"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_corner across scenes 34 and 35",
+      "prior_unit_id": "do_the_right_thing_unit_34",
+      "current_unit_id": "do_the_right_thing_unit_35"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0086",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_pizzeria"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_pizzeria across scenes 34 and 35",
+      "prior_unit_id": "do_the_right_thing_unit_34",
+      "current_unit_id": "do_the_right_thing_unit_35"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0087",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_pino"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_pino across scenes 34 and 37",
+      "prior_unit_id": "do_the_right_thing_unit_34",
+      "current_unit_id": "do_the_right_thing_unit_37"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0088",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_sal"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_sal across scenes 34 and 37",
+      "prior_unit_id": "do_the_right_thing_unit_34",
+      "current_unit_id": "do_the_right_thing_unit_37"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0089",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_famous"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_famous across scenes 34 and 42",
+      "prior_unit_id": "do_the_right_thing_unit_34",
+      "current_unit_id": "do_the_right_thing_unit_42"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0093",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_buggin"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_buggin across scenes 35 and 36",
+      "prior_unit_id": "do_the_right_thing_unit_35",
+      "current_unit_id": "do_the_right_thing_unit_36"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0094",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_jade"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_jade across scenes 35 and 36",
+      "prior_unit_id": "do_the_right_thing_unit_35",
+      "current_unit_id": "do_the_right_thing_unit_36"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0095",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_out"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_out across scenes 35 and 36",
+      "prior_unit_id": "do_the_right_thing_unit_35",
+      "current_unit_id": "do_the_right_thing_unit_36"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0096",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_corner"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_corner across scenes 35 and 39",
+      "prior_unit_id": "do_the_right_thing_unit_35",
+      "current_unit_id": "do_the_right_thing_unit_39"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0097",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_angle"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_angle across scenes 36 and 37",
+      "prior_unit_id": "do_the_right_thing_unit_36",
+      "current_unit_id": "do_the_right_thing_unit_37"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0098",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_buggin"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_buggin across scenes 36 and 37",
+      "prior_unit_id": "do_the_right_thing_unit_36",
+      "current_unit_id": "do_the_right_thing_unit_37"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0100",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_out"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_out across scenes 36 and 37",
+      "prior_unit_id": "do_the_right_thing_unit_36",
+      "current_unit_id": "do_the_right_thing_unit_37"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0101",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_street"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_street across scenes 36 and 39",
+      "prior_unit_id": "do_the_right_thing_unit_36",
+      "current_unit_id": "do_the_right_thing_unit_39"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0102",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_jade"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_jade across scenes 36 and 42",
+      "prior_unit_id": "do_the_right_thing_unit_36",
+      "current_unit_id": "do_the_right_thing_unit_42"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0103",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mookie"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_mookie across scenes 36 and 43",
+      "prior_unit_id": "do_the_right_thing_unit_36",
+      "current_unit_id": "do_the_right_thing_unit_43"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0104",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_jade"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_jade across scenes 37 and 38",
+      "prior_unit_id": "do_the_right_thing_unit_37",
+      "current_unit_id": "do_the_right_thing_unit_38"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0105",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_angle"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_angle across scenes 37 and 40",
+      "prior_unit_id": "do_the_right_thing_unit_37",
+      "current_unit_id": "do_the_right_thing_unit_40"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0106",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_pino"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_pino across scenes 37 and 49",
+      "prior_unit_id": "do_the_right_thing_unit_37",
+      "current_unit_id": "do_the_right_thing_unit_49"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0110",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_fruit"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_fruit across scenes 38 and 39",
+      "prior_unit_id": "do_the_right_thing_unit_38",
+      "current_unit_id": "do_the_right_thing_unit_39"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0111",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_veg"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_veg across scenes 38 and 39",
+      "prior_unit_id": "do_the_right_thing_unit_38",
+      "current_unit_id": "do_the_right_thing_unit_39"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0112",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_coconut"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_coconut across scenes 39 and 40",
+      "prior_unit_id": "do_the_right_thing_unit_39",
+      "current_unit_id": "do_the_right_thing_unit_40"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0115",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_see"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_see across scenes 3 and 11",
+      "prior_unit_id": "do_the_right_thing_unit_3",
+      "current_unit_id": "do_the_right_thing_unit_11"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0116",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_jade"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_jade across scenes 3 and 14",
+      "prior_unit_id": "do_the_right_thing_unit_3",
+      "current_unit_id": "do_the_right_thing_unit_14"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0119",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mookie"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_mookie across scenes 3 and 4",
+      "prior_unit_id": "do_the_right_thing_unit_3",
+      "current_unit_id": "do_the_right_thing_unit_4"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0120",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_angle"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_angle across scenes 40 and 43",
+      "prior_unit_id": "do_the_right_thing_unit_40",
+      "current_unit_id": "do_the_right_thing_unit_43"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0123",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_dusk"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_dusk across scenes 42 and 43",
+      "prior_unit_id": "do_the_right_thing_unit_42",
+      "current_unit_id": "do_the_right_thing_unit_43"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0124",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_jade"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_jade across scenes 42 and 43",
+      "prior_unit_id": "do_the_right_thing_unit_42",
+      "current_unit_id": "do_the_right_thing_unit_43"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0125",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_sal"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_sal across scenes 42 and 43",
+      "prior_unit_id": "do_the_right_thing_unit_42",
+      "current_unit_id": "do_the_right_thing_unit_43"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0127",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_angle"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_angle across scenes 43 and 44",
+      "prior_unit_id": "do_the_right_thing_unit_43",
+      "current_unit_id": "do_the_right_thing_unit_44"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0128",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_daddy"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_daddy across scenes 43 and 44",
+      "prior_unit_id": "do_the_right_thing_unit_43",
+      "current_unit_id": "do_the_right_thing_unit_44"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0129",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_seor"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_seor across scenes 43 and 44",
+      "prior_unit_id": "do_the_right_thing_unit_43",
+      "current_unit_id": "do_the_right_thing_unit_44"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0130",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mookie"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_mookie across scenes 43 and 45",
+      "prior_unit_id": "do_the_right_thing_unit_43",
+      "current_unit_id": "do_the_right_thing_unit_45"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0131",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_sal"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_sal across scenes 43 and 45",
+      "prior_unit_id": "do_the_right_thing_unit_43",
+      "current_unit_id": "do_the_right_thing_unit_45"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0133",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_angle"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_angle across scenes 44 and 45",
+      "prior_unit_id": "do_the_right_thing_unit_44",
+      "current_unit_id": "do_the_right_thing_unit_45"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0134",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mother"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_mother across scenes 44 and 45",
+      "prior_unit_id": "do_the_right_thing_unit_44",
+      "current_unit_id": "do_the_right_thing_unit_45"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0136",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_daddy"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_daddy across scenes 44 and 48",
+      "prior_unit_id": "do_the_right_thing_unit_44",
+      "current_unit_id": "do_the_right_thing_unit_48"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0137",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_seor"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_seor across scenes 44 and 48",
+      "prior_unit_id": "do_the_right_thing_unit_44",
+      "current_unit_id": "do_the_right_thing_unit_48"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0138",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mookie"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_mookie across scenes 45 and 46",
+      "prior_unit_id": "do_the_right_thing_unit_45",
+      "current_unit_id": "do_the_right_thing_unit_46"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0139",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_tina"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_tina across scenes 45 and 46",
+      "prior_unit_id": "do_the_right_thing_unit_45",
+      "current_unit_id": "do_the_right_thing_unit_46"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0140",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_angle"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_angle across scenes 45 and 47",
+      "prior_unit_id": "do_the_right_thing_unit_45",
+      "current_unit_id": "do_the_right_thing_unit_47"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0141",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_sal"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_sal across scenes 45 and 49",
+      "prior_unit_id": "do_the_right_thing_unit_45",
+      "current_unit_id": "do_the_right_thing_unit_49"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0142",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mother"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_mother across scenes 45 and 54",
+      "prior_unit_id": "do_the_right_thing_unit_45",
+      "current_unit_id": "do_the_right_thing_unit_54"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0143",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_bedroom"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_bedroom across scenes 46 and 47",
+      "prior_unit_id": "do_the_right_thing_unit_46",
+      "current_unit_id": "do_the_right_thing_unit_47"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0145",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_tina"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_tina across scenes 46 and 47",
+      "prior_unit_id": "do_the_right_thing_unit_46",
+      "current_unit_id": "do_the_right_thing_unit_47"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0146",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mookie"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_mookie across scenes 46 and 49",
+      "prior_unit_id": "do_the_right_thing_unit_46",
+      "current_unit_id": "do_the_right_thing_unit_49"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0147",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_see"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_see across scenes 46 and 57",
+      "prior_unit_id": "do_the_right_thing_unit_46",
+      "current_unit_id": "do_the_right_thing_unit_57"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0148",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mookie"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_mookie across scenes 47 and 48",
+      "prior_unit_id": "do_the_right_thing_unit_47",
+      "current_unit_id": "do_the_right_thing_unit_48"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0149",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_tina"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_tina across scenes 47 and 48",
+      "prior_unit_id": "do_the_right_thing_unit_47",
+      "current_unit_id": "do_the_right_thing_unit_48"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0150",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_angle"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_angle across scenes 47 and 54",
+      "prior_unit_id": "do_the_right_thing_unit_47",
+      "current_unit_id": "do_the_right_thing_unit_54"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0151",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mookie"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_mookie across scenes 48 and 49",
+      "prior_unit_id": "do_the_right_thing_unit_48",
+      "current_unit_id": "do_the_right_thing_unit_49"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0152",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mookie"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_mookie across scenes 49 and 51",
+      "prior_unit_id": "do_the_right_thing_unit_49",
+      "current_unit_id": "do_the_right_thing_unit_51"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0154",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_pino"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_pino across scenes 49 and 57",
+      "prior_unit_id": "do_the_right_thing_unit_49",
+      "current_unit_id": "do_the_right_thing_unit_57"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0157",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mookie"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_mookie across scenes 4 and 5",
+      "prior_unit_id": "do_the_right_thing_unit_4",
+      "current_unit_id": "do_the_right_thing_unit_5"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0158",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mother"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_mother across scenes 4 and 5",
+      "prior_unit_id": "do_the_right_thing_unit_4",
+      "current_unit_id": "do_the_right_thing_unit_5"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0159",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_pino"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_pino across scenes 4 and 5",
+      "prior_unit_id": "do_the_right_thing_unit_4",
+      "current_unit_id": "do_the_right_thing_unit_5"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0160",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_sal"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_sal across scenes 4 and 5",
+      "prior_unit_id": "do_the_right_thing_unit_4",
+      "current_unit_id": "do_the_right_thing_unit_5"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0161",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_buggin"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_buggin across scenes 50 and 51",
+      "prior_unit_id": "do_the_right_thing_unit_50",
+      "current_unit_id": "do_the_right_thing_unit_51"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0163",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_raheem"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_raheem across scenes 50 and 51",
+      "prior_unit_id": "do_the_right_thing_unit_50",
+      "current_unit_id": "do_the_right_thing_unit_51"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0164",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_pizzeria"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_pizzeria across scenes 51 and 54",
+      "prior_unit_id": "do_the_right_thing_unit_51",
+      "current_unit_id": "do_the_right_thing_unit_54"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0165",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_sal"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_sal across scenes 51 and 54",
+      "prior_unit_id": "do_the_right_thing_unit_51",
+      "current_unit_id": "do_the_right_thing_unit_54"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0166",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_raheem"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_raheem across scenes 51 and 60",
+      "prior_unit_id": "do_the_right_thing_unit_51",
+      "current_unit_id": "do_the_right_thing_unit_60"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0167",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_famous"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_famous across scenes 54 and 57",
+      "prior_unit_id": "do_the_right_thing_unit_54",
+      "current_unit_id": "do_the_right_thing_unit_57"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0168",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_pizzeria"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_pizzeria across scenes 54 and 57",
+      "prior_unit_id": "do_the_right_thing_unit_54",
+      "current_unit_id": "do_the_right_thing_unit_57"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0169",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_angle"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_angle across scenes 54 and 59",
+      "prior_unit_id": "do_the_right_thing_unit_54",
+      "current_unit_id": "do_the_right_thing_unit_59"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0170",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mother"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_mother across scenes 54 and 59",
+      "prior_unit_id": "do_the_right_thing_unit_54",
+      "current_unit_id": "do_the_right_thing_unit_59"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0172",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_see"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_see across scenes 57 and 59",
+      "prior_unit_id": "do_the_right_thing_unit_57",
+      "current_unit_id": "do_the_right_thing_unit_59"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0173",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mob"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_mob across scenes 58 and 59",
+      "prior_unit_id": "do_the_right_thing_unit_58",
+      "current_unit_id": "do_the_right_thing_unit_59"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0174",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_pizzeria"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_pizzeria across scenes 58 and 59",
+      "prior_unit_id": "do_the_right_thing_unit_58",
+      "current_unit_id": "do_the_right_thing_unit_59"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0175",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_pizzeria"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_pizzeria across scenes 59 and 60",
+      "prior_unit_id": "do_the_right_thing_unit_59",
+      "current_unit_id": "do_the_right_thing_unit_60"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0176",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_see"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_see across scenes 59 and 60",
+      "prior_unit_id": "do_the_right_thing_unit_59",
+      "current_unit_id": "do_the_right_thing_unit_60"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0178",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_famous"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_famous across scenes 5 and 6",
+      "prior_unit_id": "do_the_right_thing_unit_5",
+      "current_unit_id": "do_the_right_thing_unit_6"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0179",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mookie"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_mookie across scenes 5 and 6",
+      "prior_unit_id": "do_the_right_thing_unit_5",
+      "current_unit_id": "do_the_right_thing_unit_6"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0181",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_pizzeria"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_pizzeria across scenes 5 and 6",
+      "prior_unit_id": "do_the_right_thing_unit_5",
+      "current_unit_id": "do_the_right_thing_unit_6"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0182",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_sal"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_sal across scenes 5 and 6",
+      "prior_unit_id": "do_the_right_thing_unit_5",
+      "current_unit_id": "do_the_right_thing_unit_6"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0183",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mother"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_mother across scenes 5 and 8",
+      "prior_unit_id": "do_the_right_thing_unit_5",
+      "current_unit_id": "do_the_right_thing_unit_8"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0184",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_sister"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_sister across scenes 5 and 9",
+      "prior_unit_id": "do_the_right_thing_unit_5",
+      "current_unit_id": "do_the_right_thing_unit_9"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0185",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_pizzeria"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_pizzeria across scenes 6 and 11",
+      "prior_unit_id": "do_the_right_thing_unit_6",
+      "current_unit_id": "do_the_right_thing_unit_11"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0186",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_cee"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_cee across scenes 6 and 16",
+      "prior_unit_id": "do_the_right_thing_unit_6",
+      "current_unit_id": "do_the_right_thing_unit_16"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0190",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_punchy"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_punchy across scenes 6 and 7",
+      "prior_unit_id": "do_the_right_thing_unit_6",
+      "current_unit_id": "do_the_right_thing_unit_7"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0193",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_love"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_love across scenes 7 and 8",
+      "prior_unit_id": "do_the_right_thing_unit_7",
+      "current_unit_id": "do_the_right_thing_unit_8"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0197",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mother"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_mother across scenes 8 and 9",
+      "prior_unit_id": "do_the_right_thing_unit_8",
+      "current_unit_id": "do_the_right_thing_unit_9"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0199",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_angle"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_angle across scenes 9 and 11",
+      "prior_unit_id": "do_the_right_thing_unit_9",
+      "current_unit_id": "do_the_right_thing_unit_11"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0200",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_mother"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_mother across scenes 9 and 14",
+      "prior_unit_id": "do_the_right_thing_unit_9",
+      "current_unit_id": "do_the_right_thing_unit_14"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_0201",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "character_sister"
+      ],
+      "attribute": "location.city",
+      "description": "Potential continuous_spatial_jump conflict for character_sister across scenes 9 and 16",
+      "prior_unit_id": "do_the_right_thing_unit_9",
+      "current_unit_id": "do_the_right_thing_unit_16"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_fp_000",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_0"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_0",
+      "prior_unit_id": "do_the_right_thing_unit_1",
+      "current_unit_id": "do_the_right_thing_unit_2"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_fp_001",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_1"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_1",
+      "prior_unit_id": "do_the_right_thing_unit_2",
+      "current_unit_id": "do_the_right_thing_unit_3"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_fp_002",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_2"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_2",
+      "prior_unit_id": "do_the_right_thing_unit_3",
+      "current_unit_id": "do_the_right_thing_unit_4"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_fp_003",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_3"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_3",
+      "prior_unit_id": "do_the_right_thing_unit_4",
+      "current_unit_id": "do_the_right_thing_unit_5"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_fp_004",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_4"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_4",
+      "prior_unit_id": "do_the_right_thing_unit_5",
+      "current_unit_id": "do_the_right_thing_unit_6"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_fp_005",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_5"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_5",
+      "prior_unit_id": "do_the_right_thing_unit_6",
+      "current_unit_id": "do_the_right_thing_unit_7"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_fp_006",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_6"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_6",
+      "prior_unit_id": "do_the_right_thing_unit_7",
+      "current_unit_id": "do_the_right_thing_unit_8"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_fp_007",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_7"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_7",
+      "prior_unit_id": "do_the_right_thing_unit_8",
+      "current_unit_id": "do_the_right_thing_unit_9"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_fp_008",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_8"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_8",
+      "prior_unit_id": "do_the_right_thing_unit_9",
+      "current_unit_id": "do_the_right_thing_unit_10"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_fp_009",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_9"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_9",
+      "prior_unit_id": "do_the_right_thing_unit_10",
+      "current_unit_id": "do_the_right_thing_unit_11"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_fp_010",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_10"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_10",
+      "prior_unit_id": "do_the_right_thing_unit_11",
+      "current_unit_id": "do_the_right_thing_unit_12"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_fp_011",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_11"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_11",
+      "prior_unit_id": "do_the_right_thing_unit_12",
+      "current_unit_id": "do_the_right_thing_unit_13"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_fp_012",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_12"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_12",
+      "prior_unit_id": "do_the_right_thing_unit_13",
+      "current_unit_id": "do_the_right_thing_unit_14"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_fp_013",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_13"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_13",
+      "prior_unit_id": "do_the_right_thing_unit_14",
+      "current_unit_id": "do_the_right_thing_unit_15"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_fp_014",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_14"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_14",
+      "prior_unit_id": "do_the_right_thing_unit_15",
+      "current_unit_id": "do_the_right_thing_unit_16"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_fp_015",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_15"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_15",
+      "prior_unit_id": "do_the_right_thing_unit_16",
+      "current_unit_id": "do_the_right_thing_unit_17"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_fp_016",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_16"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_16",
+      "prior_unit_id": "do_the_right_thing_unit_17",
+      "current_unit_id": "do_the_right_thing_unit_18"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_fp_017",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_17"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_17",
+      "prior_unit_id": "do_the_right_thing_unit_18",
+      "current_unit_id": "do_the_right_thing_unit_19"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_fp_018",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_18"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_18",
+      "prior_unit_id": "do_the_right_thing_unit_19",
+      "current_unit_id": "do_the_right_thing_unit_20"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_fp_019",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_19"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_19",
+      "prior_unit_id": "do_the_right_thing_unit_20",
+      "current_unit_id": "do_the_right_thing_unit_21"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_fp_020",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_20"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_20",
+      "prior_unit_id": "do_the_right_thing_unit_21",
+      "current_unit_id": "do_the_right_thing_unit_22"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_fp_021",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_21"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_21",
+      "prior_unit_id": "do_the_right_thing_unit_22",
+      "current_unit_id": "do_the_right_thing_unit_23"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_fp_022",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_22"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_22",
+      "prior_unit_id": "do_the_right_thing_unit_23",
+      "current_unit_id": "do_the_right_thing_unit_24"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_fp_023",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_23"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_23",
+      "prior_unit_id": "do_the_right_thing_unit_24",
+      "current_unit_id": "do_the_right_thing_unit_25"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_fp_024",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_24"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_24",
+      "prior_unit_id": "do_the_right_thing_unit_25",
+      "current_unit_id": "do_the_right_thing_unit_26"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_fp_025",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_25"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_25",
+      "prior_unit_id": "do_the_right_thing_unit_26",
+      "current_unit_id": "do_the_right_thing_unit_27"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_fp_026",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_26"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_26",
+      "prior_unit_id": "do_the_right_thing_unit_27",
+      "current_unit_id": "do_the_right_thing_unit_28"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_fp_027",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_27"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_27",
+      "prior_unit_id": "do_the_right_thing_unit_28",
+      "current_unit_id": "do_the_right_thing_unit_29"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_fp_028",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_28"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_28",
+      "prior_unit_id": "do_the_right_thing_unit_29",
+      "current_unit_id": "do_the_right_thing_unit_30"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_fp_029",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_29"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_29",
+      "prior_unit_id": "do_the_right_thing_unit_30",
+      "current_unit_id": "do_the_right_thing_unit_31"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_fp_030",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_30"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_30",
+      "prior_unit_id": "do_the_right_thing_unit_31",
+      "current_unit_id": "do_the_right_thing_unit_32"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_fp_031",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_31"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_31",
+      "prior_unit_id": "do_the_right_thing_unit_32",
+      "current_unit_id": "do_the_right_thing_unit_33"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_fp_032",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_32"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_32",
+      "prior_unit_id": "do_the_right_thing_unit_33",
+      "current_unit_id": "do_the_right_thing_unit_34"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_fp_033",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_33"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_33",
+      "prior_unit_id": "do_the_right_thing_unit_34",
+      "current_unit_id": "do_the_right_thing_unit_35"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_fp_034",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_34"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_34",
+      "prior_unit_id": "do_the_right_thing_unit_35",
+      "current_unit_id": "do_the_right_thing_unit_36"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_fp_035",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_35"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_35",
+      "prior_unit_id": "do_the_right_thing_unit_36",
+      "current_unit_id": "do_the_right_thing_unit_37"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_fp_036",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_36"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_36",
+      "prior_unit_id": "do_the_right_thing_unit_37",
+      "current_unit_id": "do_the_right_thing_unit_38"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_fp_037",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_37"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_37",
+      "prior_unit_id": "do_the_right_thing_unit_38",
+      "current_unit_id": "do_the_right_thing_unit_39"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_fp_038",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_38"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_38",
+      "prior_unit_id": "do_the_right_thing_unit_39",
+      "current_unit_id": "do_the_right_thing_unit_40"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_fp_039",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_39"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_39",
+      "prior_unit_id": "do_the_right_thing_unit_40",
+      "current_unit_id": "do_the_right_thing_unit_41"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_fp_040",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_40"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_40",
+      "prior_unit_id": "do_the_right_thing_unit_41",
+      "current_unit_id": "do_the_right_thing_unit_42"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_fp_041",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_41"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_41",
+      "prior_unit_id": "do_the_right_thing_unit_42",
+      "current_unit_id": "do_the_right_thing_unit_43"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_fp_042",
+      "rule_type": "co_presence_collision",
+      "entity_ids": [
+        "Background_Char_42"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential co_presence_collision for Background_Char_42",
+      "prior_unit_id": "do_the_right_thing_unit_43",
+      "current_unit_id": "do_the_right_thing_unit_44"
+    },
+    {
+      "id": "cand_v2_do_the_right_thing_fp_043",
+      "rule_type": "continuous_spatial_jump",
+      "entity_ids": [
+        "Background_Char_43"
+      ],
+      "attribute": "location.environment",
+      "description": "Potential continuous_spatial_jump for Background_Char_43",
+      "prior_unit_id": "do_the_right_thing_unit_44",
+      "current_unit_id": "do_the_right_thing_unit_45"
+    }
+  ]
+}
