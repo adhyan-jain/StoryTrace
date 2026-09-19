@@ -11,7 +11,7 @@ StoryTrace is an agentic, multi-document narrative continuity engine. It convert
 3.  **Story State Engine**: ClickHouse database storing append-only temporal events, keyed by `story_universe_id` and `sequence_number` rather than any per-document numbering.
 4.  **Candidate Detector**: SQL window functions finding suspicious state transitions.
 5.  **Investigation Agent**: ONE genuinely agentic component (using ClickHouse MCP) that investigates conflicts and outputs an `InvestigationVerdict`.
-6.  **Continuity Autopsy**: The user-facing presentation of an `InvestigationVerdict` — not a separate agent or stage. See [docs/architecture.md](docs/architecture.md).
+6.  **Continuity Autopsy**: The user-facing presentation of an `InvestigationVerdict` — not a separate agent or stage. See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 7.  **Frontend**: Next.js UI providing a premium professional filmmaking tool experience.
 8.  **Auth & Projects**: Email/password + JWT auth (`backend/auth.py`) gates every route. A `project` groups multiple document uploads as *versions* of the same work — re-uploading a revised draft under the same `project_id` compares its detected conflicts against the previous version (`GET /projects/{id}/versions/{n}/diff`), joined on `(entity_id, attribute)` rather than any per-upload ID, since `EntityRegistry` is now scoped by `project_id` so the same character keeps the same `entity_id` across versions.
 
@@ -98,13 +98,16 @@ Not covered by this setup: TLS termination, a reverse proxy/domain, and Ollama's
 
 ## Documentation
 
--   [Architecture](docs/architecture.md)
+-   [Architecture](docs/ARCHITECTURE.md)
 -   [Data Model](docs/data-model.md)
 -   [Agent Architecture](AGENTS.md)
 -   [Investigation / Autopsy](docs/investigation.md)
 -   [Design System](docs/design.md)
 -   [Development Guidelines](CLAUDE.md)
--   [Evaluation Report](EVAL_REPORT.md) -- latest real run of `scripts/eval` against the golden dataset
+-   [V1/V2 Boundary](docs/V1_V2_BOUNDARY.md)
+-   [Reproducibility](docs/REPRODUCIBILITY.md)
+-   [Documentation Index](docs/DOCUMENTATION_INDEX.md)
+-   [Evaluation Report](EVAL_REPORT.md) -- latest real run of `scripts/eval` against the golden dataset (written to the repo root by `scripts/eval/__main__.py`; not moved into docs/ since the script always writes there)
 
 ## Reused Infrastructure
 
@@ -113,4 +116,4 @@ This project was initialized using carefully selected components from the **Echo
 -   `backend/llm/base.py`: Robust JSON extraction/healing logic and Pydantic validation. Adapted and in active use (`backend/llm/client.py`, `backend/agent/investigator.py`).
 -   `backend/story_state/interval.py`: Temporal modeling concepts. Adapted and in use.
 -   `backend/story_state/models.py`: Data schema, adapted for ClickHouse and for the document-agnostic `NarrativeUnit` model (`story_universe_id`/`unit_id`/`sequence_number`, not `screenplay_id`/`scene_id`/`scene_number`).
--   `tests/unit/test_llm.py` & `tests/benchmark/`: **Not yet adapted.** These still import the `echotales` package directly (`echotales.pipeline.llm.router`, `echotales.core.store`, etc.), which isn't vendored into this repo, so they cannot be collected or run here. They are excluded via `pytest.ini` until ported. Treat `FakeProvider`/`GoldSet` as Echotales-side test fixtures, not as dependencies of this codebase's runtime or test suite.
+-   `tests/unit/test_llm.py` & `tests/benchmark/` (removed): imported the `echotales` package directly (`echotales.pipeline.llm.router`, `echotales.core.store`, etc.), which was never vendored into this repo, so they never adapted and could not be collected or run here. Deleted during the final repository cleanup pass rather than left excluded indefinitely — see `docs/DEAD_CODE_AUDIT.md`. `FakeProvider`/`GoldSet` were Echotales-side test fixtures, never dependencies of this codebase's runtime or test suite.

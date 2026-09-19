@@ -4,6 +4,8 @@ This document describes what is actually implemented and reachable in the reposi
 
 ## 1. System Overview
 
+> StoryTrace builds a persistent, queryable model of a story's evolving world.
+
 StoryTrace ingests a screenplay or novel (PDF, EPUB-derived text, Fountain, or plain text), parses it into document-type-agnostic `NarrativeUnit`s, extracts trackable story-state facts from each unit via an LLM, stores those facts as `StateEvent`s in ClickHouse, uses ClickHouse SQL window functions to deterministically detect suspicious state transitions ("candidate conflicts"), and hands each candidate to a single `InvestigationAgent` that adjudicates it (verified / resolved / uncertain) using read-only ClickHouse tools exposed over MCP. Verdicts, with full provenance back to the source text, are served through a FastAPI backend to a Next.js frontend ("Continuity Autopsy" UI).
 
 ## 2. Directory Structure
@@ -32,7 +34,7 @@ scripts/
 tests/
   unit/             pytest — auth, projects, diff, report, pipeline correctness/integrity
   v2/               pytest — V2 candidate detector, extractor, investigator, models
-  benchmark/        orphaned (imports unvendored `echotales`, excluded via pytest.ini)
+  (benchmark/ removed — imported unvendored `echotales`, see DEAD_CODE_AUDIT.md)
 data/
   eval/             golden_dataset.py / golden_dataset_v2.py (tracked), corpus manifest,
                      scored metrics JSON
@@ -91,8 +93,8 @@ Every `StateEvent` and downstream `CandidateConflict`/`InvestigationVerdict` ret
 
 - `tests/unit/` — auth, projects, diff, report, pipeline correctness/integrity (V1 path).
 - `tests/v2/` — candidate detector, extractor, investigator, models (V2 path).
-- `tests/benchmark/` and part of `tests/unit/test_llm.py` — orphaned (import an unvendored `echotales` package), excluded via `pytest.ini`; see `DEAD_CODE_AUDIT.md`.
-- Current state: `python3 -m pytest -q` → **115 passed, 0 failed** (verified 2026-09-19).
+- `tests/benchmark/` and `tests/unit/test_llm.py` previously existed but imported an unvendored `echotales` package and could not be collected; both were deleted during the final repository cleanup pass (see `DEAD_CODE_AUDIT.md`).
+- Current state: `python3 -m pytest -q` → **115 passed, 0 failed** (verified 2026-09-19, unchanged before/after the deletion above since those files were already excluded from collection).
 
 ## 12. Reproducibility Instructions
 
