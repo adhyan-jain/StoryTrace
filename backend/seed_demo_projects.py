@@ -32,28 +32,27 @@ DEMO_SOURCES = [
         # Stable id this demo project is recognized by, independent of its
         # (user-renameable) title -- see has_demo_projects and
         # projects.demo_source_id in schema.sql.
-        "demo_source_id": "reverend_insanity",
-        "source_project_id": "0dec3afb5ebe4483a4ea45136f3eea20",
-        "title": "Reverend Insanity (Sample)",
+        "demo_source_id": "chasing_amy",
+        "source_project_id": "demo_proj_chasing_amy",
+        "title": "Demo: Chasing Amy (Top Film #1)",
         "versions": [
-            (1, "ri_sample_41f2c938", "Reverend Insanity -- complete"),
+            (1, "demo_suid_chasing_amy", "Chasing Amy Screenplay"),
         ],
     },
     {
-        "demo_source_id": "controlled_test",
-        "source_project_id": "e5ee7501878c4c24ae9f1d831f5316aa",
-        "title": "Demo: Controlled Test",
+        "demo_source_id": "darkman",
+        "source_project_id": "demo_proj_darkman",
+        "title": "Demo: Darkman (Top Film #2)",
         "versions": [
-            (1, "dbec5a9296404283b043006ecf917ebb", "controlled_test.txt"),
-            (2, "fd5465d6b7e54b63b666165077095e3f", "controlled_test_v2.txt"),
+            (1, "demo_suid_darkman", "Darkman Screenplay"),
         ],
     },
     {
-        "demo_source_id": "oppenheimer",
-        "source_project_id": "af78c054e6a9427881e297a0a6162589",
-        "title": "Demo: Oppenheimer",
+        "demo_source_id": "fargo_film",
+        "source_project_id": "demo_proj_fargo",
+        "title": "Demo: Fargo (Top Film #3)",
         "versions": [
-            (1, "edfb34d65ef94001a3a5e2d53ad7a795", "oppenheimer.pdf"),
+            (1, "demo_suid_fargo", "Fargo Screenplay"),
         ],
     },
 ]
