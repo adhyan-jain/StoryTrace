@@ -1,0 +1,40 @@
+{
+ "prereg": "research/ssr_bench/V2_PREREGISTRATION.md",
+ "selection": {
+  "dev_pairs": 20,
+  "long_pairs": 30,
+  "per_depth_selected": {
+   "1": 30,
+   "2": 30,
+   "3": 30,
+   "4": 30
+  },
+  "set_valued_items": 30,
+  "test_main_n_events_histogram": {
+   "9": 3,
+   "11": 4,
+   "12": 7,
+   "13": 16
+  },
+  "train_pairs": 620
+ },
+ "splits": {
+  "dev": {
+   "sha256_gold": "2b737f0ab8ac36dd4091b65f4075f0cd50c839b7020ebafeb29329a5f2451e77",
+   "sha256_task": "9482e0c54b858a02e4438fd0b372571d5e2d60e6fbddd6c0c7ac1aefdbb1e3b4"
+  },
+  "set_valued": {
+   "sha256_gold": "586be9943ceafd2af8c8cc19f26ac01bef30428e4ad25a95356529c48bd59aac",
+   "sha256_task": "4e2f61e21ccec0fe7222a95fa48129fe3699f9b2734bbd7c6bb84b16c0a4d47c"
+  },
+  "test_main": {
+   "sha256_gold": "a63ef3bfd77eef71b6ed0c42e4784a5550b12b5f87d9c014e8fca6bfc4bb3efd",
+   "sha256_task": "103ca9bc98f552a2ace1f80b9f0bea2db4ea7f178ff91a7b2d5640b2cb56e9d0"
+  },
+  "train": {
+   "sha256_gold": "b56f4288932e19c8b9af525018cd53e9c7eb37b3114e18d409d09dd3a0e59f0b",
+   "sha256_task": "5af3ff32ac1be07596ab4c4520df8e8312830d140c106d88181a35bbba1eea2b"
+  }
+ },
+ "version": "ssr-v2-1.0"
+}
