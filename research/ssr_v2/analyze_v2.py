@@ -108,7 +108,7 @@ def main(root=os.path.join(V2, "raw"), split_of=None, out_tag=""):
                             "K3a": "test_main", "K3b": "test_main", "K1-delta": "test_main_sub100"}
     conds = list(split_of)
     R = {}
-    A = {"cells": {}, "contrasts": {}, "pair_consistency": {}, "depth": {}, "decomposition": {}, "classes": {}, "setvalued": {}}
+    A = {"cells": {}, "contrasts": {}, "pair_consistency": {}, "depth": {}, "decomposition": {}, "classes": {}, "setvalued": {}, "external": {}}
     os.makedirs(os.path.join(V2, "scored"), exist_ok=True)
     for m in MODELS:
         for c in conds:
@@ -123,6 +123,12 @@ def main(root=os.path.join(V2, "raw"), split_of=None, out_tag=""):
                 A["cells"][f"{m}|{c}"] = dict(agg, sem_ci=pair_boot(lst, f_sem, 2000), strict_ci=pair_boot(lst, f_strict, 2000))
                 A["classes"][f"{m}|{c}"] = {k: int(sum(1 for r in lst for v in r["classes"].values() if v == k)) for k in
                                            ("correct_revision", "under_revision", "wrong_value_revision", "correct_preserve", "over_revision", "collateral_unrelated", "invalid")}
+        for c in ("K1", "PG", "S0"):
+            ext_rows = load_runs(root, c, "external", m)
+            if ext_rows:
+                lst_ext = list(ext_rows.values())
+                agg_ext = aggregate(lst_ext)
+                A["external"][f"{m}|{c}"] = dict(agg_ext, sem_ci=pair_boot(lst_ext, f_sem, 2000), strict_ci=pair_boot(lst_ext, f_strict, 2000))
     # paired contrasts vs K1 (same items), Holm per model
     for m in MODELS:
         fam, raw = {}, {}
