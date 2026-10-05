@@ -20,3 +20,17 @@ data/*
 # a regeneratable data blob, and other eval code imports it directly.
 !data/eval/
 !data/eval/golden_dataset.py
+
+# Intermediate research results and raw LLM trace outputs
+research/results/**/*.log
+research/results/adv/
+research/results/raw/
+research/results/snapshot_*/
+research/results/v2/raw/
+research/results/v2/raw_dev/
+research/results/v2/scored/
+research/results/*.log
+research/results/baseline_results.json
+research/results/deep_analysis.json
+research/results/leakage_report.json
+
