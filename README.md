@@ -1,119 +1,103 @@
-# StoryTrace (formerly SceneSentry)
+# StoryTrace: Narrative Continuity Engine & SSR-Bench V2
 
-**Your story's continuity guardian.**
+**Your story's continuity guardian and a benchmark for Sequential State Revision in LLMs.**
 
-StoryTrace is an agentic, multi-document narrative continuity engine. It converts screenplay or novel documents into a structured temporal model of a shared story universe (`NarrativeUnit`s), tracks state over time (character presence, location, prop possession, etc.) across those documents, detects conflicts, and uses an Investigation Agent to verify findings against the original narrative text.
+StoryTrace is a dual-purpose system:
+1. **Agentic Narrative Continuity Engine**: A production multi-document continuity tracker that converts screenplays, novels, and controlled narratives into a structured temporal model (`NarrativeUnit`s), tracks state transitions across documents in ClickHouse, detects candidate continuity errors via SQL window functions, and verifies them using an autonomous **Investigation Agent** with ClickHouse MCP tools.
+2. **SSR-Bench V2 (Sequential State Revision Benchmark)**: A rigorous, leak-free benchmark evaluating how Large Language Models perform causally localized state updates across sequential trajectories while preserving causally unaffected state.
 
-## Architecture
+---
 
-1.  **Document Parsers**: A `ScreenplayParser` and `NovelParser` each extract raw text into document-type-agnostic `NarrativeUnit`s (scenes, chapters, or passages), maintaining exact page boundaries.
-2.  **Entity Resolver & State Extraction**: Uses Gemini to structure state events from each `NarrativeUnit`.
-3.  **Story State Engine**: ClickHouse database storing append-only temporal events, keyed by `story_universe_id` and `sequence_number` rather than any per-document numbering.
-4.  **Candidate Detector**: SQL window functions finding suspicious state transitions.
-5.  **Investigation Agent**: ONE genuinely agentic component (using ClickHouse MCP) that investigates conflicts and outputs an `InvestigationVerdict`.
-6.  **Continuity Autopsy**: The user-facing presentation of an `InvestigationVerdict` — not a separate agent or stage. See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
-7.  **Frontend**: Next.js UI providing a premium professional filmmaking tool experience.
-8.  **Auth & Projects**: Email/password + JWT auth (`backend/auth.py`) gates every route. A `project` groups multiple document uploads as *versions* of the same work — re-uploading a revised draft under the same `project_id` compares its detected conflicts against the previous version (`GET /projects/{id}/versions/{n}/diff`), joined on `(entity_id, attribute)` rather than any per-upload ID, since `EntityRegistry` is now scoped by `project_id` so the same character keeps the same `entity_id` across versions.
+## 🔬 SSR-Bench V2 Core Novelty & Empirical Discoveries
 
-## Auth
+SSR-Bench V2 evaluates LLMs on **Sequential State Revision** using minimal matched narrative pairs $(S_1, S_2)$ that differ by exactly one pivot event sentence, sharing identical evidence prompts and claim keys.
 
-Every route requires `Authorization: Bearer <token>` from `POST /auth/signup` or `POST /auth/login`. Passwords are bcrypt-hashed; JWTs are HS256-signed with `JWT_SECRET` (set your own in `.env`, generated via `openssl rand -hex 32` — never commit a real value). Every project/version/conflict/report route checks the caller owns the resource before returning anything.
+### 1. Leak-Free Validity & Integrity (G9 Gate PASS)
+- **Story-Blind Attackers (8 classifiers)**: Item semantic state-EM = **0.000**, pair-both = **0.000** (Gradient Boosting, Logistic Regression, TF-IDF, positional, lexical, majority prior).
+- **Story-Blind Bayes Bound**: **0.500** item-level, **0.000** pair-both.
+- **Story-Replay Oracle**: **1.000** (300/300 `test_main`, 30/30 `set_valued`, 1240/1240 `train`).
+- **Hard Pair Invariants**: 0 validator violations across all dataset splits.
+- **Adversarial Invariance**: All 8 adversarial transforms (entity swapping, paraphrase, shuffle, novel templates, etc.) maintain 100% oracle invariance and 0 validator violations.
 
-Login and signup are rate-limited (`slowapi`, 5 requests/minute per IP) to blunt credential-stuffing/brute-force attempts against `/auth/login`.
+### 2. Empirical Benchmark Findings (4 Models × 17 Experimental Conditions)
 
-Known limitation: `users`/`projects` live in ClickHouse (not a real OLTP store), so there's no database-enforced unique constraint on email. Signup does a pre-insert existence check *and* a post-insert re-check (picks the earliest `(created_at, id)` row for the email and rejects the request if it isn't the one it just wrote) to close most of the race window between two near-simultaneous signups for the same address, but ReplacingMergeTree still gives no atomic compare-and-swap, so a vanishingly rare double-signup remains possible in theory. Acceptable for this project's scope; a production deployment would use a real relational store with a unique constraint for these tables.
+| Model | $K_1$ (Standard Prompt) | $K_2$ (No Rules) | $K_4$ (Implicit Laws) | $PG$ (Prior State Given) | Required Change Recall | Preservation Rate | Collateral Edit Rate |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| **qwen2.5:7b** | **0.000** | 0.026 | 0.000 | **0.163** | 72.1% | 47.1% | 52.9% |
+| **llama3:latest** | **0.007** | 0.013 | 0.007 | **0.083** | 72.8% | 57.0% | 43.0% |
+| **qwen3:8b** | **0.020** | 0.026 | 0.010 | **0.203** | 73.5% | 60.5% | 39.5% |
+| **mistral:7b** | **0.000** | 0.000 | 0.000 | **0.133** | 75.5% | 50.8% | 49.2% |
 
-The frontend also has no server-side session store: a 24h-old JWT is simply rejected with 401, and the API client (`apps/web/src/lib/api.ts`) treats any 401 on an authenticated request as an expired session, clearing the stored token and redirecting to `/login`.
+### Key Scientific Conclusions
+1. **The Phenomenon is Real**: Standard LLMs achieve near-zero semantic state exact match ($0.000$–$0.020$) despite high required change recall (~72–75%).
+2. **Collateral Over-Revision**: The primary cause of failure is high collateral edit rate (~40–53%)—models unintentionally modify state claims that are causally unaffected by the narrative event.
+3. **Rule-Following Hypothesis REJECTED**: Prompt variations omitting explicit rules ($K_2$), framing as implicit constraints ($K_4$), or providing 3-shot examples ($K_{1\text{-fs}}$) fail to rescue performance ($\le 0.030$), disproving prompt-artifact explanations.
+4. **Prior State Tracking Bottleneck**: Providing the ground-truth prior state in the prompt ($PG$) dramatically increases state preservation to **72%–87%** ($p < 0.0001$, McNemar test with Holm adjustment), isolating **sequential prior-state tracking and state preservation** as the fundamental bottleneck.
 
-## Running the project
+---
 
+## 🏗 Engine Architecture
+
+1. **Document Parsers**: `ScreenplayParser` and `NovelParser` extract raw text into `NarrativeUnit`s while preserving page/line metadata.
+2. **Entity Resolver & State Extraction**: Extracts structured state transitions from narrative units into ClickHouse.
+3. **ClickHouse Story State Engine**: Append-only temporal state store, keyed by `story_universe_id` and `sequence_number`.
+4. **SQL Candidate Detector**: Window functions identifying candidate state discrepancies across narrative trajectories.
+5. **Investigation Agent**: Autonomous ReAct agent utilizing ClickHouse MCP tools (`get_entity_timeline`, `get_unit_text`, `get_state_at_unit`, `find_attribute_changes`) to gather evidence and render auditable verdicts. Max call limit: 8 per investigation.
+6. **Frontend UI**: Next.js dashboard for multi-version screenplay diffing and conflict inspection.
+
+---
+
+## 🚀 Getting Started
+
+### 1. Requirements & Setup
 ```bash
-# 1. ClickHouse (via docker-compose) + schema
+# Clone and enter repo
+cd StoryTrace
+
+# Start ClickHouse database
 docker compose up -d
 docker exec -i storytrace-clickhouse-1 clickhouse-client --database storytrace < backend/clickhouse/schema.sql
 
-# 2. Python deps
-python3 -m venv venv && source venv/bin/activate
+# Create Python environment
+python3 -m venv venv
+source venv/bin/activate
 pip install -r requirements.txt
 
-# 3. Configure environment
-cp .env.example .env    # then set GEMINI_API_KEY (or leave MODEL_PROVIDER=ollama for local-only)
-                         # and JWT_SECRET (openssl rand -hex 32) -- required for any auth/upload call
-
-# 4. Local LLM (optional, for MODEL_PROVIDER=ollama -- the default, no API key needed)
+# Start local LLM server (Ollama)
 ollama pull qwen2.5:7b
+```
 
-# 5. Backend API
+### 2. Running the API & Web App
+```bash
+# Start backend API (port 8000)
 uvicorn backend.api.main:app --reload --port 8000
 
-# 6. Frontend
+# Start Next.js Frontend (port 3000)
 cd apps/web && npm install && npm run dev
 ```
 
-Sign up (`POST /auth/signup`) and log in via the web UI, then upload a `.pdf`, `.epub`, `.txt`, or `.fountain` document (`POST /screenplay/upload`) to kick off the full parse -> extract -> detect -> investigate pipeline as a background job; poll `GET /screenplay/{id}/overview` for progress. Uploading again with the same `project_id` adds a new version to that project instead of starting a new one, and `GET /projects/{id}/versions/{n}/diff` compares it against the version before it. `FRONTEND_ORIGIN` (default `http://localhost:3000`) controls which origin CORS allows -- set it to your deployed frontend's URL in production.
-
-To run the pipeline directly from the CLI against a plain-text document instead of through the API:
-
+### 3. Executing SSR-Bench V2 Benchmarks
 ```bash
-python3 -m scripts.run_pipeline_on_text data/test_documents/controlled_test.txt
-python3 -m scripts.run_pipeline_on_screenplay data/test_documents/<screenplay>.txt
+# Run G9 leakage gates and story-blind attackers
+python3 -m research.ssr_v2.g9
+
+# Run LLM evaluations (Ollama)
+python3 -m research.ssr_v2.run_llm --stage A
+python3 -m research.ssr_v2.run_llm --stage B
+python3 -m research.ssr_v2.run_llm --stage T
+python3 -m research.ssr_v2.run_llm --stage E
+
+# Compute scored analysis, pair consistency, and Holm-adjusted contrasts
+python3 -m research.ssr_v2.analyze_v2
 ```
 
-Set `MODEL_PROVIDER=gemini` to use the Gemini API (API key auth) instead of the local Ollama default (Gemini's free tier is capped at 20 requests/day per model -- see `docs/HISTORY/FINDINGS.md`). Set `MODEL_PROVIDER=vertexai` to use Vertex AI instead -- same Gemini models, but authenticated against a GCP project via Application Default Credentials rather than an API key, with GCP's normal Vertex AI rate limits rather than the free-tier per-day cap. Requires `GOOGLE_CLOUD_PROJECT` (and `gcloud auth application-default login` locally, or `GOOGLE_APPLICATION_CREDENTIALS` pointing at a service-account key for deployment) -- see `.env.example`.
+---
 
-## Evaluation
+## 📚 Documentation & Research Artifacts
 
-`scripts/eval/` measures the preprocessing pipeline (parsing -> extraction -> detection -> investigation) against a manually verified golden dataset for `data/test_documents/controlled_test.txt` (`data/eval/golden_dataset.py`), reporting real Precision/Recall/F1 per phase -- never fabricated:
-
-```bash
-MODEL_PROVIDER=vertexai python3 -m scripts.eval   # or MODEL_PROVIDER=gemini
-```
-
-This runs the real pipeline end-to-end against a dedicated `eval_controlled_test` story_universe_id (never a demo ID -- see `scripts/eval/run_eval.py`'s `DEMO_IDS` guard), then measures extraction/detection/investigation concurrently via `asyncio.gather`, prints a color-coded terminal report, and writes `EVAL_REPORT.md` to the repo root. It also runs a short adversarial baseline (`scripts/eval/adversarial.py`): the same extraction prompt with its controlled vocabulary and few-shot examples stripped out, to quantify what that prompt engineering is actually worth. Exits non-zero if overall F1 drops below 0.6, so it can gate CI later. Expect this to take several minutes -- the investigation phase spawns a fresh `mcp-clickhouse` subprocess and a multi-step ReAct loop per detected candidate.
-
-Two structural detector limitations are expected to show up as false negatives, not eval bugs: the SQL candidate detector (`backend/candidate_detection/detector.py`) only flags `possession: lost -> held` and `injury: injured -> healed` transitions against the *immediately preceding* event for an entity+attribute (ClickHouse `lagInFrame`), so a conflict with no value transition at all, or one separated by an intervening bridging event, will never be raised as a candidate regardless of how the Investigation Agent would have judged it.
-
-## Deployment
-
-The whole stack (ClickHouse, backend, frontend) runs via Docker Compose:
-
-```bash
-cp .env.example .env   # set JWT_SECRET (openssl rand -hex 32) at minimum
-export JWT_SECRET=$(grep ^JWT_SECRET= .env | cut -d= -f2)
-docker compose up --build
-```
-
-This builds the backend (`Dockerfile`, FastAPI + uvicorn on port 8000) and frontend (`apps/web/Dockerfile`, Next.js standalone build on port 3000) images, starts ClickHouse first, waits for its healthcheck, loads `backend/clickhouse/schema.sql` automatically via ClickHouse's `docker-entrypoint-initdb.d`, then brings up the backend and finally the frontend once the backend's healthcheck passes.
-
-Environment variables the compose file reads from the shell (see `.env.example` for the full list):
-
--   `JWT_SECRET` (required) -- compose refuses to start the backend without it.
--   `FRONTEND_ORIGIN` -- CORS allow-list; set to your deployed frontend's public URL.
--   `NEXT_PUBLIC_API_URL` -- the URL the *browser* uses to reach the API; baked into the frontend at build time, so it must be the API's public URL, not the in-network `backend` service name.
--   `MODEL_PROVIDER`, `GEMINI_API_KEY` / `GOOGLE_API_KEY` -- only needed if using `MODEL_PROVIDER=gemini`; `ollama` (the default) needs a reachable Ollama instance instead, which this compose file does not provision.
--   `MODEL_PROVIDER=vertexai`, `GOOGLE_CLOUD_PROJECT`, `GOOGLE_CLOUD_LOCATION`, `VERTEX_MODEL`, `GOOGLE_APPLICATION_CREDENTIALS` -- only needed if using `MODEL_PROVIDER=vertexai`. `GOOGLE_APPLICATION_CREDENTIALS` should point at a mounted service-account key (see the commented-out `volumes:` entry on the `backend` service in `docker-compose.yml`); on Cloud Run, prefer attaching a service account directly (`gcloud run services update <service> --service-account=<sa>@<project>.iam.gserviceaccount.com` with `roles/aiplatform.user` granted) over shipping a key file, so `GOOGLE_APPLICATION_CREDENTIALS` can be left unset entirely.
--   ClickHouse connection vars (`CLICKHOUSE_HOST`/`PORT`/`USER`/`PASSWORD`/`DB`) are pre-wired to the `clickhouse` service and don't need overriding for local/single-host deployment.
-
-Not covered by this setup: TLS termination, a reverse proxy/domain, and Ollama's own container (bring your own, or set `MODEL_PROVIDER=gemini`/`vertexai`) -- add those in front of this compose file for a real public deployment.
-
-## Documentation
-
--   [Architecture](docs/ARCHITECTURE.md)
--   [Data Model](docs/data-model.md)
--   [Agent Architecture](AGENTS.md)
--   [Investigation / Autopsy](docs/investigation.md)
--   [Design System](docs/design.md)
--   [Development Guidelines](CLAUDE.md)
--   [V1/V2 Boundary](docs/V1_V2_BOUNDARY.md)
--   [Reproducibility](docs/REPRODUCIBILITY.md)
--   [Documentation Index](docs/DOCUMENTATION_INDEX.md)
--   [Evaluation Report](EVAL_REPORT.md) -- latest real run of `scripts/eval` against the golden dataset (written to the repo root by `scripts/eval/__main__.py`; not moved into docs/ since the script always writes there)
-
-## Reused Infrastructure
-
-This project was initialized using carefully selected components from the **Echotales** codebase. Status reflects what has actually been adapted to run against `backend.*`, not just copied:
-
--   `backend/llm/base.py`: Robust JSON extraction/healing logic and Pydantic validation. Adapted and in active use (`backend/llm/client.py`, `backend/agent/investigator.py`).
--   `backend/story_state/interval.py`: Temporal modeling concepts. Adapted and in use.
--   `backend/story_state/models.py`: Data schema, adapted for ClickHouse and for the document-agnostic `NarrativeUnit` model (`story_universe_id`/`unit_id`/`sequence_number`, not `screenplay_id`/`scene_id`/`scene_number`).
--   `tests/unit/test_llm.py` & `tests/benchmark/` (removed): imported the `echotales` package directly (`echotales.pipeline.llm.router`, `echotales.core.store`, etc.), which was never vendored into this repo, so they never adapted and could not be collected or run here. Deleted during the final repository cleanup pass rather than left excluded indefinitely — see `docs/DEAD_CODE_AUDIT.md`. `FakeProvider`/`GoldSet` were Echotales-side test fixtures, never dependencies of this codebase's runtime or test suite.
+- [Architecture Guide](docs/ARCHITECTURE.md)
+- [Agent Architecture & Rules](AGENTS.md)
+- [V2 Benchmark Preregistration](research/ssr_bench/V2_PREREGISTRATION.md)
+- [G9 Leakage Diagnostic Report](research/results/V2_G9_DIAGNOSTIC.md)
+- [V2 Scored Analysis Artifacts](research/results/v2/analysis.json)
+- [V1 Audit & Benchmark Post-Mortem](docs/BENCHMARK_FAILURE_AUDIT.md)
