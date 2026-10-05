@@ -1,0 +1,256 @@
+{
+ "attackers": {
+  "majority_prior": {
+   "item_sem_em": 0.0,
+   "pair_both": 0.0,
+   "diff_claim_acc": 0.210431654676259,
+   "ucb_pair_both": 0.0,
+   "ucb_item_sem_em": 0.0,
+   "ucb_diff_claim_acc": 0.25093008018914953,
+   "pass_a": true,
+   "pass_b": true,
+   "pass_c": true
+  },
+  "evidence_apply": {
+   "item_sem_em": 0.0,
+   "pair_both": 0.0,
+   "diff_claim_acc": 0.3597122302158273,
+   "ucb_pair_both": 0.0,
+   "ucb_item_sem_em": 0.0,
+   "ucb_diff_claim_acc": 0.3891044390392216,
+   "pass_a": true,
+   "pass_b": true,
+   "pass_c": true
+  },
+  "claim_count_prior": {
+   "item_sem_em": 0.0,
+   "pair_both": 0.0,
+   "diff_claim_acc": 0.32014388489208634,
+   "ucb_pair_both": 0.0,
+   "ucb_item_sem_em": 0.0,
+   "ucb_diff_claim_acc": 0.3633254701924182,
+   "pass_a": true,
+   "pass_b": true,
+   "pass_c": true
+  },
+  "positional": {
+   "item_sem_em": 0.0,
+   "pair_both": 0.0,
+   "diff_claim_acc": 0.34172661870503596,
+   "ucb_pair_both": 0.0,
+   "ucb_item_sem_em": 0.0,
+   "ucb_diff_claim_acc": 0.375,
+   "pass_a": true,
+   "pass_b": true,
+   "pass_c": true
+  },
+  "lexical_overlap": {
+   "item_sem_em": 0.0,
+   "pair_both": 0.0,
+   "diff_claim_acc": 0.3381294964028777,
+   "ucb_pair_both": 0.0,
+   "ucb_item_sem_em": 0.0,
+   "ucb_diff_claim_acc": 0.3720198799232704,
+   "pass_a": true,
+   "pass_b": true,
+   "pass_c": true
+  },
+  "entity_blind": {
+   "item_sem_em": 0.0,
+   "pair_both": 0.0,
+   "diff_claim_acc": 0.35431654676258995,
+   "ucb_pair_both": 0.0,
+   "ucb_item_sem_em": 0.0,
+   "ucb_diff_claim_acc": 0.38408304498269896,
+   "pass_a": true,
+   "pass_b": true,
+   "pass_c": true
+  },
+  "template_nn": {
+   "item_sem_em": 0.0,
+   "pair_both": 0.0,
+   "diff_claim_acc": 0.35611510791366907,
+   "ucb_pair_both": 0.0,
+   "ucb_item_sem_em": 0.0,
+   "ucb_diff_claim_acc": 0.38612706243934,
+   "pass_a": true,
+   "pass_b": true,
+   "pass_c": true
+  },
+  "gb_all_nonstory": {
+   "item_sem_em": 0.0,
+   "pair_both": 0.0,
+   "diff_claim_acc": 0.3363309352517986,
+   "ucb_pair_both": 0.0,
+   "ucb_item_sem_em": 0.0,
+   "ucb_diff_claim_acc": 0.37056737588652483,
+   "pass_a": true,
+   "pass_b": true,
+   "pass_c": true
+  }
+ },
+ "bayes_bound": {
+  "item_level": 0.5,
+  "pair_both": 0.0,
+  "groups": 150
+ },
+ "replay_oracle": {
+  "test_main": {
+   "semantic": 1.0,
+   "strict": 1.0,
+   "n": 300
+  },
+  "set_valued": {
+   "semantic": 1.0,
+   "strict": 1.0,
+   "n": 30
+  },
+  "train": {
+   "semantic": 1.0,
+   "strict": 1.0,
+   "n": 1240
+  }
+ },
+ "validators": {
+  "train": {
+   "pairs": 620,
+   "pairs_with_violations": 0,
+   "violations": {}
+  },
+  "dev": {
+   "pairs": 20,
+   "pairs_with_violations": 0,
+   "violations": {}
+  },
+  "test_main": {
+   "pairs": 150,
+   "pairs_with_violations": 0,
+   "violations": {}
+  }
+ },
+ "composition": {
+  "by_stratum_category": {
+   "D1|blocked": 24,
+   "D1|irrelevant": 7,
+   "D1|resolving": 29,
+   "D2|blocked": 30,
+   "D2|irrelevant": 4,
+   "D2|resolving": 26,
+   "D2_long|blocked": 38,
+   "D2_long|irrelevant": 2,
+   "D2_long|resolving": 20,
+   "D3|blocked": 28,
+   "D3|irrelevant": 3,
+   "D3|resolving": 29,
+   "D4|blocked": 25,
+   "D4|irrelevant": 2,
+   "D4|resolving": 33
+  },
+  "n_events_by_stratum": {
+   "D1": [
+    [
+     9,
+     6
+    ],
+    [
+     11,
+     8
+    ],
+    [
+     12,
+     14
+    ],
+    [
+     13,
+     32
+    ]
+   ],
+   "D2": [
+    [
+     9,
+     6
+    ],
+    [
+     11,
+     8
+    ],
+    [
+     12,
+     14
+    ],
+    [
+     13,
+     32
+    ]
+   ],
+   "D2_long": [
+    [
+     32,
+     14
+    ],
+    [
+     36,
+     46
+    ]
+   ],
+   "D3": [
+    [
+     9,
+     6
+    ],
+    [
+     11,
+     8
+    ],
+    [
+     12,
+     14
+    ],
+    [
+     13,
+     32
+    ]
+   ],
+   "D4": [
+    [
+     9,
+     6
+    ],
+    [
+     11,
+     8
+    ],
+    [
+     12,
+     14
+    ],
+    [
+     13,
+     32
+    ]
+   ]
+  },
+  "n_sentences_mean_by_stratum": {
+   "D1": 19.8,
+   "D2": 20.0,
+   "D2_long": 42.9,
+   "D3": 19.966666666666665,
+   "D4": 20.366666666666667
+  },
+  "pairs_by_pair_category": {
+   "resolving|blocked": 51,
+   "blocked|resolving": 26,
+   "blocked|blocked": 34,
+   "irrelevant|resolving": 11,
+   "resolving|resolving": 21,
+   "resolving|irrelevant": 7
+  }
+ },
+ "G9": {
+  "attackers_abc": true,
+  "bayes_d": true,
+  "replay_e": true,
+  "validators_g": true,
+  "PASS": true
+ }
+}

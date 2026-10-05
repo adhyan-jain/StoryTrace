@@ -1,0 +1,59 @@
+{
+ "subsample_pairs": 50,
+ "entity_same_pool": {
+  "invariance_failures": 0,
+  "replay_semantic": 1.0,
+  "pairs": 50,
+  "pairs_with_violations": 0,
+  "violation_examples": {}
+ },
+ "entity_cross_pool": {
+  "invariance_failures": 0,
+  "replay_semantic": 1.0,
+  "pairs": 50,
+  "pairs_with_violations": 0,
+  "violation_examples": {}
+ },
+ "narration_shuffle": {
+  "invariance_failures": 0,
+  "replay_semantic": 1.0,
+  "pairs": 50,
+  "pairs_with_violations": 0,
+  "violation_examples": {}
+ },
+ "evidence_paraphrase": {
+  "invariance_failures": 0,
+  "replay_semantic": 1.0,
+  "pairs": 50,
+  "pairs_with_violations": 0,
+  "violation_examples": {}
+ },
+ "lexical_story": {
+  "invariance_failures": 0,
+  "replay_semantic": 1.0,
+  "pairs": 50,
+  "pairs_with_violations": 0,
+  "violation_examples": {}
+ },
+ "novel_templates": {
+  "invariance_failures": 0,
+  "replay_semantic": 1.0,
+  "pairs": 50,
+  "pairs_with_violations": 0,
+  "violation_examples": {}
+ },
+ "irrelevant_context": {
+  "invariance_failures": 0,
+  "replay_semantic": 1.0,
+  "pairs": 50,
+  "pairs_with_violations": 0,
+  "violation_examples": {}
+ },
+ "claim_order_intro": {
+  "invariance_failures": 0,
+  "replay_semantic": 1.0,
+  "pairs": 50,
+  "pairs_with_violations": 0,
+  "violation_examples": {}
+ }
+}

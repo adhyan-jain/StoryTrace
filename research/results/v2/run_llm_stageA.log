@@ -1,0 +1,15 @@
+00:41:52 qwen2.5:7b placement: qwen2.5:7b    845dbda0ea48    5.1 GB    100% GPU     6144       4 minutes from now
+00:59:41 qwen2.5:7b K1/test_main: done
+01:04:08 qwen2.5:7b K2/test_main: done
+01:21:22 qwen2.5:7b K4/test_main: done
+01:38:46 qwen2.5:7b PG/test_main: done
+01:56:02 qwen2.5:7b S0/test_main: done
+01:57:47 qwen2.5:7b K1/set_valued: done
+01:59:35 qwen2.5:7b PG/set_valued: done
+01:59:35 qwen2.5:7b: finished, unloaded
+01:59:35 GPU busy (util 61%, 4969 MiB, loaded=1); waiting before llama3:latest
+02:00:35 GPU free, continuing
+02:00:46 llama3:latest placement: llama3:latest    365c0bd3c000    5.6 GB    100% GPU     6144       4 minutes from now
+02:17:42 llama3:latest K1/test_main: done
+02:21:20 llama3:latest K2/test_main: done
+02:34:06 llama3:latest K4/test_main: done
