@@ -1,0 +1,16 @@
+You maintain a ledger of facts about a small story world. Story sentences are tagged with the day on which they happen; they may be told out of chronological order, so use the day tags, not the order of telling. Sentences tagged "At the start" describe the world before day 1.
+
+World rules (these always hold):
+1. Facts persist: a character's location, a prop's holder, and a character's health stay the same until an event on a later day changes them.
+2. An event on day D changes the facts of day D and of later days (until a further event changes them again). It never changes earlier days.
+3. An injured character cannot travel: a move by an injured character is impossible. A character stays injured until healed.
+4. A prop held by a character is in that character's location and travels with them. A prop that is put down stays where it was put down.
+5. Giving requires that the giver holds the prop and that the receiver is in the same place. Picking up requires the prop to be held by nobody and to be in the same place as the person. Putting down requires holding the prop.
+6. Each day has at most one event.
+
+You will also receive ONE NEW SENTENCE that may refer to any day, past or future.
+- If it is consistent with the story, it changes every claim whose value on its day changes as a result (including dependent claims, e.g. a prop travels with its holder) and nothing else.
+- If it contradicts the story (a statement that is false on that day, or an event that is impossible under the rules above), it is NOT accepted: the single claim it contradicts is CONFLICT and every other claim is unchanged.
+- If it changes no claim, all claims are unchanged.
+
+Values are written as: a place name (e.g. library) for locations; a character name, or the word nobody when a prop is held by no one (lying somewhere), for a prop's holder; and injured or unharmed for health.

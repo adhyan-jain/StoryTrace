@@ -1,0 +1,97 @@
+
+==============================================================================
+Q1. What does each system receive? (function signatures)
+==============================================================================
+B1_SingleAnswer        (episode: 'NarrativeEpisode', intervention_type: 'str') -> 'Dict[Tuple[str, str], str]'
+B2_Deterministic       (episode: 'NarrativeEpisode', intervention_type: 'str') -> 'Dict[Tuple[str, str], str]'
+B3_ConstrainedLLM      (episode: 'NarrativeEpisode', intervention_type: 'str') -> 'Dict[Tuple[str, str], str]'
+Proposed_SSR_Engine    (episode: 'NarrativeEpisode', intervention_type: 'str') -> 'Dict[Tuple[str, str], str]'
+NarrativeEpisode.interventions[type] keys: ['delta', 'labels', 'text']
+
+==============================================================================
+Q2. Which intervention fields does each system actually READ? (instrumented dict)
+==============================================================================
+B1_SingleAnswer        reads ['labels', 'text']  -> reads gold 'labels': True
+B2_Deterministic       reads ['labels', 'text']  -> reads gold 'labels': True
+B3_ConstrainedLLM      reads ['labels']  -> reads gold 'labels': True
+Proposed_SSR_Engine    reads ['labels', 'text']  -> reads gold 'labels': True
+
+==============================================================================
+Q3. Causal test: corrupt ONLY the gold labels (evidence text unchanged)
+==============================================================================
+B1_SingleAnswer        predictions changed: 0/700 (0%); of those, changed TO the corrupted gold: 0
+B2_Deterministic       predictions changed: 0/700 (0%); of those, changed TO the corrupted gold: 0
+B3_ConstrainedLLM      predictions changed: 500/700 (71%); of those, changed TO the corrupted gold: 500
+Proposed_SSR_Engine    predictions changed: 280/700 (40%); of those, changed TO the corrupted gold: 280
+
+==============================================================================
+Q4. Causal test: identical evidence+labels, only the intervention_type string differs
+==============================================================================
+B1_SingleAnswer        output changed: 0/360 (0%)
+B2_Deterministic       output changed: 0/360 (0%)
+B3_ConstrainedLLM      output changed: 100/360 (28%)
+Proposed_SSR_Engine    output changed: 260/360 (72%)
+
+==============================================================================
+Q5. Distinct examples after replacing entity names with role placeholders
+==============================================================================
+episodes=100  intervention items=700  distinct base stories=1  distinct delexicalised items=7
+  RESOLVING              distinct texts=1 distinct gold patterns=1 | <C1> walked over to the <L2> and handed the <PROP> to <C2>.
+  IRRELEVANT             distinct texts=1 distinct gold patterns=1 | A heavy thunderstorm rattled the stained glass windows outside.
+  CONTRADICTORY          distinct texts=1 distinct gold patterns=1 | <C1> pulled the <PROP> from <C2>'s pocket, though <C2> never had it.
+  ALTERNATIVE_RESOLVING  distinct texts=1 distinct gold patterns=1 | <C2> snuck into the <L1> and snatched the <PROP> from <C1>'s bag.
+  TEMPORAL_RESOLVING     distinct texts=1 distinct gold patterns=1 | Hours earlier before entering the <L1>, <C1> had left the <PROP> in the vault.
+  TEMPORAL_IRRELEVANT    distinct texts=1 distinct gold patterns=1 | Years ago, the <L1> was constructed by ancient stone masons.
+  ENTITY_DISAMBIGUATING  distinct texts=1 distinct gold patterns=1 | It was revealed that <C1>'s cousin, not <C1>, was the one who arrived at the <L1>.
+Name pools: 4 characters, 4 props, 4 locations
+
+==============================================================================
+Q6. Metrics on 1 episode (n=7) vs 100 episodes (n=700)
+==============================================================================
+B1_SingleAnswer        identical: True  EM=0.2857 = 2/7
+B2_Deterministic       identical: True  EM=0.2857 = 2/7
+B3_ConstrainedLLM      identical: True  EM=1.0000 = 7/7
+Proposed_SSR_Engine    identical: True  EM=0.7143 = 5/7
+
+==============================================================================
+Q7. Do the reported numbers reproduce exactly?
+==============================================================================
+B1_SingleAnswer        reproduces: True
+B2_Deterministic       reproduces: True
+B3_ConstrainedLLM      reproduces: True
+Proposed_SSR_Engine    reproduces: True
+
+==============================================================================
+Q8. Any train/dev/test split?
+==============================================================================
+tokens matching split|train|test|dev|held_out: []
+
+==============================================================================
+Q9. Shared logic between gold and systems
+==============================================================================
+SSR.revise iterates inter['labels']: True; emits g_label: True; branches on intervention_type: False
+B3         iterates inter['labels']: True; emits g_label: True; branches on intervention_type: True
+B1         iterates inter['labels']: True; emits g_label: False; branches on intervention_type: False
+B2         iterates inter['labels']: True; emits g_label: False; branches on intervention_type: False
+Gold labels derived by simulating events? set_claim used after interventions begin: False
+
+==============================================================================
+Q10. Gold-label semantics on one episode
+==============================================================================
+prior state: {'Alice.location': 'Armory', 'Bob.location': 'Courtyard', 'Alice.possession.golden_key': 'held', 'Bob.possession.golden_key': 'none', 'Alice.status': 'healthy'}
+base text: Alice walked into the Armory holding the golden_key. Meanwhile, Bob remained in the Courtyard quietly reading. Alice inspected the golden_key carefully.
+[CONTRADICTORY] evidence: Alice pulled the golden_key from Bob's pocket, though Bob never had it.
+    gold non-KEEP: {'Bob.possession.golden_key': 'CONFLICT'}
+[TEMPORAL_RESOLVING] evidence: Hours earlier before entering the Armory, Alice had left the golden_key in the vault.
+    gold non-KEEP: {'Alice.possession.golden_key': 'REVISE'}
+[ALTERNATIVE_RESOLVING] evidence: Bob snuck into the Armory and snatched the golden_key from Alice's bag.
+    gold non-KEEP: {'Alice.possession.golden_key': 'REVISE', 'Bob.possession.golden_key': 'REVISE', 'Bob.location': 'REVISE'}
+[ENTITY_DISAMBIGUATING] evidence: It was revealed that Alice's cousin, not Alice, was the one who arrived at the Armory.
+    gold non-KEEP: {'Alice.location': 'INVALIDATE', 'Alice.possession.golden_key': 'INVALIDATE'}
+
+==============================================================================
+Q11. Does any 'LLM' system call a model?
+==============================================================================
+src/baselines/harness.py         imports: ['__future__', 'src.simulator.generator', 'src.simulator.world_state', 'typing']
+src/method/ssr_engine.py         imports: ['__future__', 'src.simulator.generator', 'src.simulator.world_state', 'typing']
+scripts/reproduce_all.py         imports: ['json', 'os', 'src.baselines.harness', 'src.evaluation.metrics', 'src.method.ssr_engine', 'src.simulator.generator', 'sys', 'typing']

@@ -1,0 +1,357 @@
+[
+ {
+  "answer": {
+   "c1": "KEEP",
+   "c10": "KEEP",
+   "c2": "REVISE: tower",
+   "c3": "KEEP",
+   "c4": "KEEP",
+   "c5": "KEEP",
+   "c6": "KEEP",
+   "c7": "KEEP",
+   "c8": "REVISE: tower",
+   "c9": "KEEP"
+  },
+  "task": {
+   "claims": [
+    {
+     "attr": "proploc",
+     "entity": "silver dagger",
+     "id": "c1",
+     "slot": 13,
+     "statement": "On day 13, the silver dagger is located in the garden.",
+     "value": "garden"
+    },
+    {
+     "attr": "loc",
+     "entity": "Lena",
+     "id": "c2",
+     "slot": 12,
+     "statement": "On day 12, Lena is in the library.",
+     "value": "library"
+    },
+    {
+     "attr": "injured",
+     "entity": "Fiona",
+     "id": "c3",
+     "slot": 9,
+     "statement": "On day 9, Fiona is injured.",
+     "value": "injured"
+    },
+    {
+     "attr": "holder",
+     "entity": "silver dagger",
+     "id": "c4",
+     "slot": 9,
+     "statement": "On day 9, the silver dagger is held by Lena.",
+     "value": "Lena"
+    },
+    {
+     "attr": "injured",
+     "entity": "Fiona",
+     "id": "c5",
+     "slot": 3,
+     "statement": "On day 3, Fiona is unharmed.",
+     "value": "unharmed"
+    },
+    {
+     "attr": "loc",
+     "entity": "Lena",
+     "id": "c6",
+     "slot": 15,
+     "statement": "On day 15, Lena is in the stable.",
+     "value": "stable"
+    },
+    {
+     "attr": "holder",
+     "entity": "silver dagger",
+     "id": "c7",
+     "slot": 16,
+     "statement": "On day 16, the silver dagger is held by Lena.",
+     "value": "Lena"
+    },
+    {
+     "attr": "proploc",
+     "entity": "silver dagger",
+     "id": "c8",
+     "slot": 12,
+     "statement": "On day 12, the silver dagger is located in the library.",
+     "value": "library"
+    },
+    {
+     "attr": "injured",
+     "entity": "Bob",
+     "id": "c9",
+     "slot": 10,
+     "statement": "On day 10, Bob is injured.",
+     "value": "injured"
+    },
+    {
+     "attr": "injured",
+     "entity": "Lena",
+     "id": "c10",
+     "slot": 11,
+     "statement": "On day 11, Lena is unharmed.",
+     "value": "unharmed"
+    }
+   ],
+   "evidence": "During day 12, Lena walked to the tower.",
+   "item_id": "train-0069-0",
+   "probe": {
+    "claim_id": "c8",
+    "question": "Where is the silver dagger on day 12?"
+   },
+   "story": [
+    "At the start, Bob was in the garden.",
+    "At the start, Lena was in the stable.",
+    "At the start, Fiona was in the library.",
+    "At the start, Lena was carrying the silver dagger.",
+    "At the start, the iron lantern lay on the floor of the library.",
+    "Day 3: Fiona walked to the stable.",
+    "Day 4: Fiona suffered a wound.",
+    "Day 6: Lena muttered something.",
+    "During day 7, Lena checked the time.",
+    "On day 8, Bob took a nasty fall.",
+    "Day 10: Fiona admired the iron lantern.",
+    "During day 11, Lena made their way to the library.",
+    "On day 13, Lena headed over to the garden.",
+    "During day 14, Lena made their way to the stable."
+   ]
+  }
+ },
+ {
+  "answer": {
+   "c1": "KEEP",
+   "c10": "KEEP",
+   "c2": "KEEP",
+   "c3": "CONFLICT",
+   "c4": "KEEP",
+   "c5": "KEEP",
+   "c6": "KEEP",
+   "c7": "KEEP",
+   "c8": "KEEP",
+   "c9": "KEEP"
+  },
+  "task": {
+   "claims": [
+    {
+     "attr": "loc",
+     "entity": "Kofi",
+     "id": "c1",
+     "slot": 13,
+     "statement": "On day 13, Kofi is in the chapel.",
+     "value": "chapel"
+    },
+    {
+     "attr": "proploc",
+     "entity": "silver dagger",
+     "id": "c2",
+     "slot": 9,
+     "statement": "On day 9, the silver dagger is located in the tower.",
+     "value": "tower"
+    },
+    {
+     "attr": "holder",
+     "entity": "silver dagger",
+     "id": "c3",
+     "slot": 7,
+     "statement": "On day 7, the silver dagger is held by Nadia.",
+     "value": "Nadia"
+    },
+    {
+     "attr": "injured",
+     "entity": "Marco",
+     "id": "c4",
+     "slot": 10,
+     "statement": "On day 10, Marco is unharmed.",
+     "value": "unharmed"
+    },
+    {
+     "attr": "loc",
+     "entity": "Marco",
+     "id": "c5",
+     "slot": 1,
+     "statement": "On day 1, Marco is in the chapel.",
+     "value": "chapel"
+    },
+    {
+     "attr": "injured",
+     "entity": "Marco",
+     "id": "c6",
+     "slot": 7,
+     "statement": "On day 7, Marco is unharmed.",
+     "value": "unharmed"
+    },
+    {
+     "attr": "loc",
+     "entity": "Kofi",
+     "id": "c7",
+     "slot": 1,
+     "statement": "On day 1, Kofi is in the library.",
+     "value": "library"
+    },
+    {
+     "attr": "proploc",
+     "entity": "silver dagger",
+     "id": "c8",
+     "slot": 8,
+     "statement": "On day 8, the silver dagger is located in the tower.",
+     "value": "tower"
+    },
+    {
+     "attr": "loc",
+     "entity": "Marco",
+     "id": "c9",
+     "slot": 7,
+     "statement": "On day 7, Marco is in the chapel.",
+     "value": "chapel"
+    },
+    {
+     "attr": "holder",
+     "entity": "silver dagger",
+     "id": "c10",
+     "slot": 5,
+     "statement": "On day 5, the silver dagger is held by Nadia.",
+     "value": "Nadia"
+    }
+   ],
+   "evidence": "On day 8, Kofi took the silver dagger from the floor.",
+   "item_id": "train-0000-1",
+   "probe": {
+    "claim_id": "c10",
+    "question": "Who is holding the silver dagger on day 5? (answer a name or 'nobody')"
+   },
+   "story": [
+    "At the start, Kofi was in the library.",
+    "At the start, Nadia was in the tower.",
+    "At the start, Marco was in the chapel.",
+    "At the start, Nadia was carrying the glass vial.",
+    "At the start, Nadia was carrying the silver dagger.",
+    "At the start, Kofi was injured.",
+    "During day 3, Kofi got better.",
+    "During day 4, Nadia talked about the tower.",
+    "During day 6, Nadia muttered something.",
+    "Day 7: Kofi made their way to the gatehouse.",
+    "On day 9, Kofi walked to the chapel.",
+    "Day 11: Nadia made their way to the gatehouse."
+   ]
+  }
+ },
+ {
+  "answer": {
+   "c1": "KEEP",
+   "c10": "KEEP",
+   "c2": "KEEP",
+   "c3": "KEEP",
+   "c4": "KEEP",
+   "c5": "KEEP",
+   "c6": "KEEP",
+   "c7": "KEEP",
+   "c8": "KEEP",
+   "c9": "KEEP"
+  },
+  "task": {
+   "claims": [
+    {
+     "attr": "loc",
+     "entity": "Nadia",
+     "id": "c1",
+     "slot": 13,
+     "statement": "On day 13, Nadia is in the armory.",
+     "value": "armory"
+    },
+    {
+     "attr": "loc",
+     "entity": "Nadia",
+     "id": "c2",
+     "slot": 12,
+     "statement": "On day 12, Nadia is in the armory.",
+     "value": "armory"
+    },
+    {
+     "attr": "injured",
+     "entity": "Nadia",
+     "id": "c3",
+     "slot": 12,
+     "statement": "On day 12, Nadia is unharmed.",
+     "value": "unharmed"
+    },
+    {
+     "attr": "loc",
+     "entity": "Nadia",
+     "id": "c4",
+     "slot": 3,
+     "statement": "On day 3, Nadia is in the courtyard.",
+     "value": "courtyard"
+    },
+    {
+     "attr": "loc",
+     "entity": "Nadia",
+     "id": "c5",
+     "slot": 10,
+     "statement": "On day 10, Nadia is in the armory.",
+     "value": "armory"
+    },
+    {
+     "attr": "loc",
+     "entity": "Fiona",
+     "id": "c6",
+     "slot": 3,
+     "statement": "On day 3, Fiona is in the courtyard.",
+     "value": "courtyard"
+    },
+    {
+     "attr": "injured",
+     "entity": "Fiona",
+     "id": "c7",
+     "slot": 4,
+     "statement": "On day 4, Fiona is unharmed.",
+     "value": "unharmed"
+    },
+    {
+     "attr": "injured",
+     "entity": "Nadia",
+     "id": "c8",
+     "slot": 4,
+     "statement": "On day 4, Nadia is unharmed.",
+     "value": "unharmed"
+    },
+    {
+     "attr": "loc",
+     "entity": "Nadia",
+     "id": "c9",
+     "slot": 8,
+     "statement": "On day 8, Nadia is in the courtyard.",
+     "value": "courtyard"
+    },
+    {
+     "attr": "loc",
+     "entity": "Nadia",
+     "id": "c10",
+     "slot": 5,
+     "statement": "On day 5, Nadia is in the courtyard.",
+     "value": "courtyard"
+    }
+   ],
+   "evidence": "On day 12, Nadia moved to the armory.",
+   "item_id": "train-0002-0",
+   "probe": {
+    "claim_id": "c7",
+    "question": "On day 4, is Fiona injured or unharmed?"
+   },
+   "story": [
+    "At the start, Fiona was in the courtyard.",
+    "At the start, Nadia was in the stable.",
+    "At the start, Kofi was in the courtyard.",
+    "At the start, Nadia was carrying the copper coin.",
+    "At the start, the ancient map lay on the floor of the armory.",
+    "On day 2, Nadia made their way to the courtyard.",
+    "Day 3: Kofi headed over to the armory.",
+    "During day 5, Fiona was wounded.",
+    "During day 7, Kofi glanced at the ceiling.",
+    "Day 10: Nadia went into the armory.",
+    "On day 11, Nadia admired the copper coin."
+   ]
+  }
+ }
+]

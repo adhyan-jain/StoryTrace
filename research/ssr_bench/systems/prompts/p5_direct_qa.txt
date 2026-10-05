@@ -1,0 +1,12 @@
+{rules}
+
+STORY
+{story}
+
+NEW SENTENCE
+{evidence}
+
+QUESTION (answer using the story and the new sentence, following the rules above)
+{question}
+
+Reply with a JSON object {{"answer": "<value>"}} where the value is a location name, a character name, "nobody", "injured" or "unharmed".

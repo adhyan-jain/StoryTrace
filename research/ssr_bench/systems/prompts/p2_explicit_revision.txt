@@ -1,0 +1,17 @@
+{rules}
+
+Procedure. (1) Rebuild, for each character and prop mentioned, what happens on which day. (2) Decide whether the new sentence is possible at its day under the rules; if not, find the one claim it contradicts. (3) Otherwise compute what the world looks like with the new sentence added, and compare each claim's value with its current value. Only claims whose value actually differs are REVISE; do not rewrite claims that stay the same.
+
+{examples}
+Now the real task.
+
+STORY
+{story}
+
+NEW SENTENCE
+{evidence}
+
+CLAIMS (current values, before the new sentence)
+{claims}
+
+Answer each claim with KEEP, "REVISE: <new value>" or CONFLICT, as a JSON object from claim id to answer.

@@ -1,0 +1,13 @@
+{rules}
+
+STORY
+{story}
+
+NEW SENTENCE
+{evidence}
+
+CLAIMS (current values, before the new sentence)
+{claims}
+
+For every claim write the value it has AFTER the new sentence is taken into account. If the claim's value does not change, repeat the current value. If the new sentence contradicts that claim, write CONFLICT.
+Reply with a JSON object mapping each claim id to the value, e.g. {{"c1": "library", "c2": "CONFLICT"}}.

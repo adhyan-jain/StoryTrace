@@ -1,0 +1,235 @@
+{
+  "code_sha256": {
+    "generate.py": "05b43f964d23ffbbfc1efff4d71f9c8055be275ac89f6a48d26c518326bdf257",
+    "lexicon.py": "6c76e905502c78262619a0a4de9329a93fe880c704a5bd6d02a5d823c7a5022c",
+    "oracle_a.py": "1ba24b548f0f41fecb4a560852e799f95fbd05755c9cfe481c6df3a75bfef856",
+    "oracle_b.py": "c479280af655e852c302a07f2a19ba717591627849d191f9bb9915fb8d31ace1",
+    "realize.py": "02bac6cd23a94d76b13986c0f3e828785b5ba8075dce466999fd10934e02a9ef",
+    "world.py": "235a52d4640bf5551d1afb07efea530b474bb13ae258ba4405a597043aef43d1"
+  },
+  "m_claims": 10,
+  "python_hash_seed_independent": true,
+  "splits": {
+    "dev": {
+      "config": {
+        "E": [
+          4,
+          6
+        ],
+        "distract": 0.5,
+        "evslot": "late",
+        "heldout_tpl": false,
+        "n_chars": 3,
+        "pools": "A",
+        "seed": 102,
+        "shuffle": false,
+        "stories": 60,
+        "struct": "id"
+      },
+      "items": 180,
+      "sha256_gold": "eed6e8d2348e74450a4231f2866e20017a9fcc9b9bc538ccdfa9e0acdaa9ee92",
+      "sha256_task": "24c03349bd157a826d225c7165337eb62ff3724826965f310976308143be94d6"
+    },
+    "test_challenge": {
+      "config": {
+        "E": [
+          4,
+          6
+        ],
+        "distract": 3.0,
+        "evslot": "late",
+        "heldout_tpl": false,
+        "n_chars": 4,
+        "pools": "NEAR",
+        "seed": 111,
+        "shuffle": true,
+        "stories": 100,
+        "struct": "id"
+      },
+      "items": 300,
+      "sha256_gold": "22925a5a13cb6896ccb76b555fe975229a2e1131c2f6fd47f012b2935cef69e2",
+      "sha256_task": "45d84679a00ba8f4f36cf927d1e028cc430cfa4a801cc704c46a3b1a954b753e"
+    },
+    "test_id": {
+      "config": {
+        "E": [
+          4,
+          6
+        ],
+        "distract": 0.5,
+        "evslot": "late",
+        "heldout_tpl": false,
+        "n_chars": 3,
+        "pools": "A",
+        "seed": 103,
+        "shuffle": false,
+        "stories": 100,
+        "struct": "id"
+      },
+      "items": 300,
+      "sha256_gold": "6882d3bd56a2977ce7c51b5e75a850afd7211625de58f8f16a0c29d5abec7a1f",
+      "sha256_task": "4affb39762893b7398144d29a2c7bce3dea655ea456902cde3ba122ebc550a7b"
+    },
+    "test_ood_distract": {
+      "config": {
+        "E": [
+          4,
+          6
+        ],
+        "distract": 3.0,
+        "evslot": "late",
+        "heldout_tpl": false,
+        "n_chars": 3,
+        "pools": "A",
+        "seed": 109,
+        "shuffle": false,
+        "stories": 100,
+        "struct": "id"
+      },
+      "items": 300,
+      "sha256_gold": "17ffcf1065c5715fe2fdefc59e2b726098f634da324acb4f5d7db352237db6fd",
+      "sha256_task": "8a34804192e2ff7b9707ae7eb93a598674801059f9110a8764cea839e4eeeac1"
+    },
+    "test_ood_ent": {
+      "config": {
+        "E": [
+          4,
+          6
+        ],
+        "distract": 0.5,
+        "evslot": "late",
+        "heldout_tpl": false,
+        "n_chars": 3,
+        "pools": "B",
+        "seed": 105,
+        "shuffle": false,
+        "stories": 100,
+        "struct": "id"
+      },
+      "items": 300,
+      "sha256_gold": "7358fea6c4317c363e4b390df93e2cb1c8c70f8b70c0b544f75be3422e36c975",
+      "sha256_task": "d4b2d2364ee1acab1cfc291c09310c1a6879d38bc75b2c1c7da7626a06d94212"
+    },
+    "test_ood_evorder": {
+      "config": {
+        "E": [
+          4,
+          6
+        ],
+        "distract": 0.5,
+        "evslot": "early",
+        "heldout_tpl": false,
+        "n_chars": 3,
+        "pools": "A",
+        "seed": 110,
+        "shuffle": false,
+        "stories": 100,
+        "struct": "id"
+      },
+      "items": 300,
+      "sha256_gold": "c94cf6ee4886f7b3dbf3307c94e08314292c0c69226012d564845e18accbce9d",
+      "sha256_task": "0aa7ed3d5d44446698677365dc6ab72c2bfa649d95ea2838ebbdb73f135a8bd5"
+    },
+    "test_ood_length": {
+      "config": {
+        "E": [
+          9,
+          12
+        ],
+        "distract": 0.5,
+        "evslot": "late",
+        "heldout_tpl": false,
+        "n_chars": 4,
+        "pools": "A",
+        "seed": 108,
+        "shuffle": false,
+        "stories": 100,
+        "struct": "id"
+      },
+      "items": 300,
+      "sha256_gold": "b7ab857b3ffada06574ff81238c64cd21f372acafc3c076657c2b85ac4e92abb",
+      "sha256_task": "8135ce7223f7a06b7d4af79882ec43d3bdd3f3fda85ea0957bb26b5d84ac2278"
+    },
+    "test_ood_lex": {
+      "config": {
+        "E": [
+          4,
+          6
+        ],
+        "distract": 0.5,
+        "evslot": "late",
+        "heldout_tpl": true,
+        "n_chars": 3,
+        "pools": "A",
+        "seed": 104,
+        "shuffle": false,
+        "stories": 100,
+        "struct": "id"
+      },
+      "items": 300,
+      "sha256_gold": "b7d5b0bf24a136ad60035c29e602a41b1df2748368c4ba6b8f5848b80e4a38a5",
+      "sha256_task": "538cc329af794b70e86011638d20ef9e303769b6f808f301eedb98e093d60739"
+    },
+    "test_ood_nonlinear": {
+      "config": {
+        "E": [
+          4,
+          6
+        ],
+        "distract": 0.5,
+        "evslot": "late",
+        "heldout_tpl": false,
+        "n_chars": 3,
+        "pools": "A",
+        "seed": 107,
+        "shuffle": true,
+        "stories": 100,
+        "struct": "id"
+      },
+      "items": 300,
+      "sha256_gold": "42f6b18f21edb63481c6cb1d98b11d0d4991f7288a4c1496d221641aae8a57ce",
+      "sha256_task": "01bacf336a208d2b9967ffe5faa0c0effba4a5661356df2d6662b21db3be7965"
+    },
+    "test_ood_struct": {
+      "config": {
+        "E": [
+          4,
+          6
+        ],
+        "distract": 0.5,
+        "evslot": "late",
+        "heldout_tpl": false,
+        "n_chars": 3,
+        "pools": "A",
+        "seed": 106,
+        "shuffle": false,
+        "stories": 100,
+        "struct": "ood"
+      },
+      "items": 300,
+      "sha256_gold": "09d6d0966f17bd57fc06e561c89d31eed9225a5f263200d0d8b83584e3ec669d",
+      "sha256_task": "f4de2478b1e8cf799b20c15896340355c8c27a58a66a8ada3d96daa49957acea"
+    },
+    "train": {
+      "config": {
+        "E": [
+          4,
+          6
+        ],
+        "distract": 0.5,
+        "evslot": "late",
+        "heldout_tpl": false,
+        "n_chars": 3,
+        "pools": "A",
+        "seed": 101,
+        "shuffle": false,
+        "stories": 200,
+        "struct": "id"
+      },
+      "items": 600,
+      "sha256_gold": "3b09bd10424d82bcd85194dae15548b1c91db0e6ca3c2e626eebdff3e132cc5b",
+      "sha256_task": "08c361c6396429f9075e19003d86afad3efb843d2e901d12dc62241eb43a806e"
+    }
+  },
+  "version": "ssr-bench-1.0"
+}

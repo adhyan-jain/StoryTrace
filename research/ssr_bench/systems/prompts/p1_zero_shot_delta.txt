@@ -1,0 +1,16 @@
+{rules}
+
+STORY
+{story}
+
+NEW SENTENCE
+{evidence}
+
+CLAIMS (current values, before the new sentence)
+{claims}
+
+For every claim answer exactly one of:
+  KEEP            the claim's value is unchanged
+  REVISE: <value> the claim now has a different value (give the new value only)
+  CONFLICT        the new sentence contradicts this claim
+Reply with a JSON object mapping each claim id to its answer, e.g. {{"c1": "KEEP", "c2": "REVISE: library"}}.

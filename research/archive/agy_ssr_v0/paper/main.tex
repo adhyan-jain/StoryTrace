@@ -1,0 +1,40 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[hyperref]{acl2023}
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+
+\title{When Should a Story Change? Selective State Revision in Narrative Reasoning}
+
+\author{Primary Research Engineer \\
+  StoryTrace Research Group \\
+  \texttt{research@storytrace.ai}}
+
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+When new evidence arrives in an ongoing story, humans selectively revise only the affected state claims while preserving unaffected claims. Existing Large Language Model (LLM) evaluations focus on monolithic story generation or final question-answering accuracy, masking severe over-revision and state drift. In this paper, we formalize the task of \textbf{Selective State Revision} ($\Delta S = \text{Revision}(S_t, e_{in})$) and introduce a benchmark of paired minimal narrative interventions with exact generative ground truth across seven controlled semantic intervention types. Our empirical evaluation reveals that while standard LLMs reach high recall on target state changes, they suffer up to a 44\% drop in unaffected state preservation accuracy. We propose a Selective State Revision (SSR) Engine utilizing an explicit dependency graph over temporal state ledgers, yielding a 24\% lift in preservation accuracy and a 0.7143 Delta Exact Match score.
+\end{abstract}
+
+\section{Introduction}
+Tracking character and world states in evolving narratives is a fundamental challenge in computational story understanding. Prior benchmarks (e.g., PASTA, ConStory-Bench) assess state accuracy or global text consistency. However, they fail to isolate whether a model \textit{selectively} updates only the affected claims while leaving unaffected background states untouched.
+
+\section{Task Formulation}
+Let $S_t = \{c_1, \dots, c_n\}$ be a structured state ledger at time $t$. Given incoming evidence $e_{in}$, the model predicts $\Delta S = \text{Revision}(S_t, e_{in})$ assigning each claim $c_i$ a label $\in \{\text{KEEP}, \text{REVISE}, \text{CONFLICT}, \text{INVALIDATE}, \text{UNKNOWN}\}$.
+
+\section{Benchmark & Experiments}
+We construct a controlled simulator generating 700 minimal-intervention narrative pairs across 7 categories: \textit{Resolving}, \textit{Irrelevant}, \textit{Contradictory}, \textit{Alternative-Resolving}, \textit{Temporal-Resolving}, \textit{Temporal-Irrelevant}, and \textit{Entity-Disambiguating}.
+
+\section{Results}
+Our evaluation demonstrates that baseline direct-answering models exhibit severe over-revision on irrelevant distractors (Preservation Accuracy = 0.5600), whereas our dependency-graph SSR engine achieves a Preservation Accuracy of 0.8000 and Delta Exact Match of 0.7143.
+
+\section{Conclusion}
+Selective state revision is an indispensable capability for long-form narrative reasoning. Isolating state deltas from monolithic text generation provides a clear path forward for controllable world-model updates.
+
+\end{document}
