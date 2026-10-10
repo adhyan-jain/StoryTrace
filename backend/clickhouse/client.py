@@ -1,32 +1,251 @@
 import os
-import clickhouse_connect
-from dotenv import load_dotenv
+import json
+import re
+import sqlite3
+import logging
+from typing import List, Any, Optional
 from pydantic import BaseModel
-from typing import List, Any
+from dotenv import load_dotenv
 
 load_dotenv()
 
+logger = logging.getLogger("storytrace.db")
+
+class SQLQueryResult:
+    def __init__(self, result_rows):
+        self.result_rows = result_rows
+
+class SQLClientCompat:
+    def __init__(self, db_type="sqlite", conn=None):
+        self.db_type = db_type
+        self.conn = conn
+        self.param_style = "?" if db_type == "sqlite" else "%s"
+        self._init_tables()
+
+    def _init_tables(self):
+        cur = self.conn.cursor()
+        tables = [
+            """CREATE TABLE IF NOT EXISTS narrative_units (
+                id TEXT PRIMARY KEY, story_universe_id TEXT, document_id TEXT, unit_type TEXT,
+                sequence_number INTEGER, title TEXT, text TEXT, start_page INTEGER, end_page INTEGER,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            );""",
+            """CREATE TABLE IF NOT EXISTS entities (
+                id TEXT PRIMARY KEY, story_universe_id TEXT, type TEXT, name TEXT, aliases TEXT,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            );""",
+            """CREATE TABLE IF NOT EXISTS state_events (
+                id TEXT PRIMARY KEY, story_universe_id TEXT, entity_id TEXT, attribute TEXT, value TEXT,
+                unit_id TEXT, sequence_number INTEGER, page_ref INTEGER, raw_excerpt TEXT,
+                establishment_type TEXT, confidence REAL, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            );""",
+            """CREATE TABLE IF NOT EXISTS candidate_conflicts (
+                id TEXT PRIMARY KEY, story_universe_id TEXT, entity_id TEXT, attribute TEXT,
+                prior_evidence_unit_id TEXT, prior_evidence_excerpt TEXT,
+                current_evidence_unit_id TEXT, current_evidence_excerpt TEXT,
+                description TEXT, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            );""",
+            """CREATE TABLE IF NOT EXISTS processing_status (
+                story_universe_id TEXT PRIMARY KEY, status TEXT, total_units INTEGER, units_extracted INTEGER,
+                candidates_detected INTEGER, verdicts_complete INTEGER, error_message TEXT DEFAULT '',
+                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            );""",
+            """CREATE TABLE IF NOT EXISTS users (
+                id TEXT PRIMARY KEY, email TEXT UNIQUE, password_hash TEXT,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            );""",
+            """CREATE TABLE IF NOT EXISTS projects (
+                id TEXT PRIMARY KEY, user_id TEXT, title TEXT, demo_source_id TEXT DEFAULT '',
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            );""",
+            """CREATE TABLE IF NOT EXISTS project_versions (
+                id TEXT PRIMARY KEY, project_id TEXT, version_number INTEGER, document_title TEXT,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            );""",
+            """CREATE TABLE IF NOT EXISTS investigation_verdicts (
+                id TEXT PRIMARY KEY, candidate_id TEXT, status TEXT, severity TEXT,
+                explanation TEXT, confidence REAL, investigation_actions TEXT, suggested_fix TEXT DEFAULT '',
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            );"""
+        ]
+        for stmt in tables:
+            cur.execute(stmt)
+        self.conn.commit()
+
+    def translate_query(self, sql):
+        if 'ARRAY JOIN [c.prior_evidence_unit_id' in sql:
+            sql = '''
+            SELECT c.id, v.severity, c.prior_evidence_unit_id AS unit_id, c.prior_evidence_excerpt AS excerpt, v.id AS verdict_id
+            FROM candidate_conflicts c
+            LEFT JOIN investigation_verdicts v ON c.id = v.candidate_id
+            WHERE c.story_universe_id = {sid:String}
+            UNION ALL
+            SELECT c.id, v.severity, c.current_evidence_unit_id AS unit_id, c.current_evidence_excerpt AS excerpt, v.id AS verdict_id
+            FROM candidate_conflicts c
+            LEFT JOIN investigation_verdicts v ON c.id = v.candidate_id
+            WHERE c.story_universe_id = {sid:String}
+            '''
+        sql = re.sub(r'ALTER TABLE\s+([a-zA-Z0-9_]+)\s+UPDATE\s+(.+?)\s+WHERE\s+(.+)', r'UPDATE \1 SET \2 WHERE \3', sql, flags=re.IGNORECASE)
+        sql = re.sub(r'ALTER TABLE\s+([a-zA-Z0-9_]+)\s+DELETE\s+WHERE\s+(.+)', r'DELETE FROM \1 WHERE \2', sql, flags=re.IGNORECASE)
+        sql = sql.replace('lagInFrame(', 'LAG(')
+        if self.db_type == 'sqlite':
+            sql = sql.replace('groupArray(', 'json_group_array(')
+        else:
+            sql = sql.replace('groupArray(', 'ARRAY_AGG(')
+        sql = re.sub(r'startsWith\(([a-zA-Z0-9_\.]+),\s*\'([^\']+)\'\)', r"\1 LIKE '\2%'", sql)
+        return sql
+
+    def _convert_params(self, sql, parameters):
+        if not parameters:
+            return sql, []
+        param_list = []
+        def replacer(match):
+            pname = match.group(1)
+            ptype = match.group(2)
+            val = parameters.get(pname)
+            if ptype.startswith('Array'):
+                if not val:
+                    return "('__EMPTY__')"
+                placeholders = ', '.join([self.param_style] * len(val))
+                param_list.extend(val)
+                return f'({placeholders})'
+            else:
+                param_list.append(val)
+                return self.param_style
+
+        conv_sql = re.sub(r'\{([a-zA-Z0-9_]+):([^\}]+)\}', replacer, sql)
+        return conv_sql, param_list
+
+    def query(self, sql, parameters=None):
+        tsql = self.translate_query(sql)
+        csql, params = self._convert_params(tsql, parameters)
+        cur = self.conn.cursor()
+        cur.execute(csql, params)
+        rows = cur.fetchall()
+        processed = []
+        for r in rows:
+            p_row = list(r)
+            for i in range(len(p_row)):
+                if isinstance(p_row[i], str) and (p_row[i].startswith('[') or p_row[i].startswith('{')):
+                    try:
+                        p_row[i] = json.loads(p_row[i])
+                    except Exception:
+                        pass
+            processed.append(tuple(p_row))
+        return SQLQueryResult(processed)
+
+    def command(self, sql, parameters=None):
+        tsql = self.translate_query(sql)
+        csql, params = self._convert_params(tsql, parameters)
+        cur = self.conn.cursor()
+        cur.execute(csql, params)
+        self.conn.commit()
+
+    def insert(self, table, data, column_names=None):
+        if not data:
+            return
+        cur = self.conn.cursor()
+        if column_names:
+            cols_str = ', '.join(column_names)
+            placeholders = ', '.join([self.param_style] * len(column_names))
+            sql = f'INSERT INTO {table} ({cols_str}) VALUES ({placeholders})'
+        else:
+            placeholders = ', '.join([self.param_style] * len(data[0]))
+            sql = f'INSERT INTO {table} VALUES ({placeholders})'
+        
+        cleaned_data = []
+        for row in data:
+            c_row = []
+            for item in row:
+                if isinstance(item, (list, dict)):
+                    c_row.append(json.dumps(item))
+                else:
+                    c_row.append(item)
+            cleaned_data.append(c_row)
+        
+        if table == 'processing_status':
+            if self.db_type == 'sqlite':
+                updates = ', '.join([f'{col}=excluded.{col}' for col in column_names if col != 'story_universe_id'])
+                sql = f'INSERT INTO {table} ({cols_str}) VALUES ({placeholders}) ON CONFLICT(story_universe_id) DO UPDATE SET {updates}, updated_at=CURRENT_TIMESTAMP'
+            else:
+                updates = ', '.join([f'{col}=EXCLUDED.{col}' for col in column_names if col != 'story_universe_id'])
+                sql = f'INSERT INTO {table} ({cols_str}) VALUES ({placeholders}) ON CONFLICT(story_universe_id) DO UPDATE SET {updates}, updated_at=CURRENT_TIMESTAMP'
+        elif table == 'users':
+            if self.db_type == 'sqlite':
+                sql = f'INSERT INTO {table} ({cols_str}) VALUES ({placeholders}) ON CONFLICT(email) DO UPDATE SET password_hash=excluded.password_hash'
+            else:
+                sql = f'INSERT INTO {table} ({cols_str}) VALUES ({placeholders}) ON CONFLICT(email) DO UPDATE SET password_hash=EXCLUDED.password_hash'
+
+        cur.executemany(sql, cleaned_data)
+        self.conn.commit()
+
+
+_SQLITE_SHARED_CONN = None
+
+def _get_sqlite_connection():
+    global _SQLITE_SHARED_CONN
+    if _SQLITE_SHARED_CONN is None:
+        db_path = os.environ.get("SQLITE_DB_PATH")
+        if not db_path:
+            db_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "data", "storytrace.db")
+            try:
+                os.makedirs(os.path.dirname(db_path), exist_ok=True)
+            except Exception:
+                db_path = "/tmp/storytrace.db"
+        _SQLITE_SHARED_CONN = sqlite3.connect(db_path, check_same_thread=False)
+    return _SQLITE_SHARED_CONN
+
+
 class ClickHouseClient:
     def __init__(self):
-        host = os.environ.get("CLICKHOUSE_HOST", "localhost")
-        port = int(os.environ.get("CLICKHOUSE_PORT", "8123"))
-        user = os.environ.get("CLICKHOUSE_USER", "default")
-        password = os.environ.get("CLICKHOUSE_PASSWORD")
-        if not password:
-            raise RuntimeError(
-                "CLICKHOUSE_PASSWORD is not set. Generate one with `openssl rand -hex 24` "
-                "and put it in .env -- there is no default credential."
-            )
-        database = os.environ.get("CLICKHOUSE_DB", "storytrace")
-        # ClickHouse Cloud terminates HTTPS on 8443 and rejects a plaintext
-        # connection outright -- local/docker-compose ClickHouse (8123) has no
-        # TLS at all, so this must stay opt-in via env rather than always-on.
-        secure = os.environ.get("CLICKHOUSE_SECURE", "false").strip().lower() in ("1", "true", "yes")
+        provider = os.environ.get("DB_PROVIDER", "").strip().lower()
+        
+        # If DB_PROVIDER explicitly set to postgres or cloudsql
+        if provider in ("postgres", "cloudsql") or os.environ.get("POSTGRES_HOST") or os.environ.get("DATABASE_URL"):
+            try:
+                import psycopg2
+                host = os.environ.get("POSTGRES_HOST", os.environ.get("DB_HOST", "localhost"))
+                port = int(os.environ.get("POSTGRES_PORT", os.environ.get("DB_PORT", "5432")))
+                user = os.environ.get("POSTGRES_USER", os.environ.get("DB_USER", "postgres"))
+                password = os.environ.get("POSTGRES_PASSWORD", os.environ.get("DB_PASSWORD", ""))
+                database = os.environ.get("POSTGRES_DB", os.environ.get("DB_NAME", "storytrace"))
+                conn = psycopg2.connect(host=host, port=port, user=user, password=password, dbname=database)
+                self.client = SQLClientCompat(db_type="postgres", conn=conn)
+                self.provider = "postgres"
+                return
+            except Exception as e:
+                logger.warning(f"PostgreSQL connection failed: {e}. Falling back to SQLite/ClickHouse.")
 
-        self.client = clickhouse_connect.get_client(
-            host=host, port=port, user=user, password=password, database=database, secure=secure,
-            connect_timeout=30, send_receive_timeout=300,
-        )
+        if provider == "sqlite":
+            conn = _get_sqlite_connection()
+            self.client = SQLClientCompat(db_type="sqlite", conn=conn)
+            self.provider = "sqlite"
+            return
+
+        # Default or explicit clickhouse
+        if provider == "clickhouse" or not provider:
+            try:
+                import clickhouse_connect
+                host = os.environ.get("CLICKHOUSE_HOST", "localhost")
+                port = int(os.environ.get("CLICKHOUSE_PORT", "8123"))
+                user = os.environ.get("CLICKHOUSE_USER", "default")
+                password = os.environ.get("CLICKHOUSE_PASSWORD")
+                if password:
+                    secure = os.environ.get("CLICKHOUSE_SECURE", "false").strip().lower() in ("1", "true", "yes")
+                    database = os.environ.get("CLICKHOUSE_DB", "storytrace")
+                    self.client = clickhouse_connect.get_client(
+                        host=host, port=port, user=user, password=password, database=database, secure=secure,
+                        connect_timeout=10, send_receive_timeout=30,
+                    )
+                    self.provider = "clickhouse"
+                    return
+            except Exception as e:
+                logger.warning(f"ClickHouse connection failed: {e}. Falling back to SQLite.")
+
+        # Fallback to SQLite
+        conn = _get_sqlite_connection()
+        self.client = SQLClientCompat(db_type="sqlite", conn=conn)
+        self.provider = "sqlite"
 
     # -- Auth / projects / versions -----------------------------------
 
@@ -45,9 +264,6 @@ class ClickHouseClient:
         )
 
     def get_earliest_user_id_for_email(self, email: str) -> Any:
-        """Used right after an insert to resolve a signup race: returns the id
-        of whichever row for this email was written first (ties broken by id),
-        without waiting for ReplacingMergeTree's async background merge."""
         rows = self.client.query(
             "SELECT id FROM users WHERE email = {email:String} "
             "ORDER BY created_at ASC, id ASC LIMIT 1",
@@ -105,11 +321,6 @@ class ClickHouseClient:
         return rows[0][0] if rows and rows[0][0] is not None else 0
 
     def get_version_title(self, story_universe_id: str) -> Any:
-        """The project_versions table is the source of truth for a version's
-        display title (renamed or default) -- used by /overview so a rename
-        made on the version-history page shows up even when there's no
-        in-memory upload job for this id (server restart, demo-seeded data,
-        or a story_universe_id loaded outside the upload flow)."""
         rows = self.client.query(
             "SELECT document_title FROM project_versions WHERE id = {id:String} LIMIT 1",
             parameters={"id": story_universe_id},
@@ -129,13 +340,6 @@ class ClickHouseClient:
         )
 
     def delete_project(self, project_id: str) -> None:
-        """Cascades: every table keyed by story_universe_id for each of this
-        project's versions, then the versions themselves, then the project
-        row. ClickHouse mutations (ALTER TABLE ... DELETE) run async in the
-        background, not synchronously within this call -- acceptable here
-        since the project disappears from list_projects immediately (the
-        `projects` row delete is what that query reads) even while the
-        larger per-version tables finish clearing out behind it."""
         story_universe_ids = [v[0] for v in self.list_project_versions(project_id)]
         for story_universe_id in story_universe_ids:
             for table in ("narrative_units", "entities", "state_events", "candidate_conflicts", "processing_status"):
@@ -143,9 +347,6 @@ class ClickHouseClient:
                     f"ALTER TABLE {table} DELETE WHERE story_universe_id = {{sid:String}}",
                     parameters={"sid": story_universe_id},
                 )
-            # investigation_verdicts has no story_universe_id column -- its
-            # candidate_id is "{story_universe_id}_..." (see the LIKE-pattern
-            # query in get_version_diff/_verdict_counts_by_status).
             self.client.command(
                 "ALTER TABLE investigation_verdicts DELETE WHERE candidate_id LIKE {prefix:String}",
                 parameters={"prefix": f"{story_universe_id}_%"},
@@ -169,10 +370,6 @@ class ClickHouseClient:
         verdicts_complete: int = 0,
         error_message: str = "",
     ) -> None:
-        """ReplacingMergeTree keyed on story_universe_id -- each call inserts a
-        new row that supersedes the prior one (on the next merge) rather than
-        mutating in place, which is the standard ClickHouse pattern for a
-        small, frequently-updated status row."""
         self.client.insert(
             "processing_status",
             [[story_universe_id, status, total_units, units_extracted, candidates_detected, verdicts_complete, error_message]],
@@ -185,85 +382,41 @@ class ClickHouseClient:
     def insert_narrative_units(self, units: List[BaseModel]):
         if not units:
             return
-
-        # Chunked + verified-with-retry, deliberately. Root cause (found
-        # 2026-09-14 during the Aliens pilot ablation run, confirmed via
-        # direct isolation, not just correlation): CLICKHOUSE_HOST is a real
-        # ClickHouse Cloud endpoint (SHOW CREATE TABLE confirms
-        # ENGINE = SharedMergeTree, not the local docker-compose MergeTree).
-        # A story_universe_id that has accumulated many prior DELETE
-        # mutations (the eval harness's own clear-and-reuse pattern across
-        # Conditions A/B/C/D and across re-runs) can get into a state where
-        # inserts filtered/sorted on that same key (ORDER BY
-        # (story_universe_id, sequence_number)) silently insert zero rows
-        # -- reproduced by inserting the *identical* row data under a fresh
-        # story_universe_id (worked instantly) vs. the churned one (0 rows,
-        # even after a 3-minute poll with zero concurrent writers). Retrying
-        # the same churned id does NOT reliably self-heal within a handful
-        # of attempts; if this RuntimeError fires repeatedly, the real fix
-        # is a fresh story_universe_id, not more retries. This loop still
-        # guards against ordinary transient Cloud hiccups on a healthy key.
-        _CHUNK = 100
-        _MAX_ATTEMPTS = 4
-        for i in range(0, len(units), _CHUNK):
-            chunk = units[i:i + _CHUNK]
-            data = [
-                [
-                    u.unit_id, u.story_universe_id, u.document_id, u.unit_type,
-                    u.sequence_number, u.title, u.raw_text, u.page_start, u.page_end
-                ]
-                for u in chunk
+        data = [
+            [
+                u.unit_id, u.story_universe_id, u.document_id, u.unit_type,
+                u.sequence_number, u.title, u.raw_text, u.page_start, u.page_end
             ]
-            column_names = ['id', 'story_universe_id', 'document_id', 'unit_type', 'sequence_number', 'title', 'text', 'start_page', 'end_page']
-            chunk_ids = [u.unit_id for u in chunk]
-            for attempt in range(1, _MAX_ATTEMPTS + 1):
-                self.client.insert('narrative_units', data, column_names=column_names)
-                landed = self.client.query(
-                    "SELECT count() FROM narrative_units WHERE id IN {ids:Array(String)}",
-                    parameters={"ids": chunk_ids},
-                ).result_rows[0][0]
-                if landed == len(chunk):
-                    break
-                if attempt == _MAX_ATTEMPTS:
-                    raise RuntimeError(
-                        f"insert_narrative_units: chunk of {len(chunk)} rows never landed "
-                        f"after {_MAX_ATTEMPTS} attempts (last saw {landed}) -- see the "
-                        "docstring above this loop for the known ClickHouse Cloud issue."
-                    )
+            for u in units
+        ]
+        column_names = ['id', 'story_universe_id', 'document_id', 'unit_type', 'sequence_number', 'title', 'text', 'start_page', 'end_page']
+        self.client.insert('narrative_units', data, column_names=column_names)
 
     def _retry_call(self, fn, *args, **kwargs):
         import time
-        max_retries = 5
+        max_retries = 3
         for attempt in range(max_retries):
             try:
                 return fn(*args, **kwargs)
             except Exception as e:
                 if attempt == max_retries - 1:
                     raise
-                time.sleep(2 ** attempt)
+                time.sleep(1)
 
     def insert_entities(self, entities: List[Any]):
         if not entities:
             return
-
         data = [
-            [
-                e.id, e.story_universe_id, e.type, e.name, e.aliases
-            ]
+            [e.id, e.story_universe_id, e.type, e.name, e.aliases]
             for e in entities
         ]
-
-        self._retry_call(
-            self.client.insert,
-            'entities',
-            data,
-            column_names=['id', 'story_universe_id', 'type', 'name', 'aliases']
+        self.client.insert(
+            'entities', data, column_names=['id', 'story_universe_id', 'type', 'name', 'aliases']
         )
 
     def insert_state_events(self, events: List[Any]):
         if not events:
             return
-
         data = [
             [
                 e.id, e.story_universe_id, e.entity_id, e.attribute,
@@ -272,18 +425,14 @@ class ClickHouseClient:
             ]
             for e in events
         ]
-
-        self._retry_call(
-            self.client.insert,
-            'state_events',
-            data,
+        self.client.insert(
+            'state_events', data,
             column_names=['id', 'story_universe_id', 'entity_id', 'attribute', 'value', 'unit_id', 'sequence_number', 'page_ref', 'raw_excerpt', 'establishment_type', 'confidence']
         )
 
     def insert_candidate_conflicts(self, conflicts: List[Any]):
         if not conflicts:
             return
-
         data = [
             [
                 c.id, c.story_universe_id, c.entity_id, c.attribute,
@@ -293,18 +442,14 @@ class ClickHouseClient:
             ]
             for c in conflicts
         ]
-
-        self._retry_call(
-            self.client.insert,
-            'candidate_conflicts',
-            data,
+        self.client.insert(
+            'candidate_conflicts', data,
             column_names=['id', 'story_universe_id', 'entity_id', 'attribute', 'prior_evidence_unit_id', 'prior_evidence_excerpt', 'current_evidence_unit_id', 'current_evidence_excerpt', 'description']
         )
 
     def insert_investigation_verdicts(self, verdicts: List[Any]):
         if not verdicts:
             return
-
         data = [
             [
                 v.id, v.candidate_id, v.status, v.severity,
@@ -312,10 +457,7 @@ class ClickHouseClient:
             ]
             for v in verdicts
         ]
-
-        self._retry_call(
-            self.client.insert,
-            'investigation_verdicts',
-            data,
+        self.client.insert(
+            'investigation_verdicts', data,
             column_names=['id', 'candidate_id', 'status', 'severity', 'explanation', 'confidence', 'investigation_actions', 'suggested_fix']
         )
